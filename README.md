@@ -44,7 +44,7 @@ install.packages("shiny", lib="../library")
 ```
 
 Then you can compile or run the app
-```
+```bash
 # Run the app
 npm start
 # Build the Executable/App
