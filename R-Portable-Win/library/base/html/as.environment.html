@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Coerce to an Environment Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for as.environment {base}"><tr><td>as.environment {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>A generic function coercing an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object to an
-<code><a href="environment.html">environment</a></code>.  A number or a character string is
+<code><a href="../../base/help/environment.html">environment</a></code>.  A number or a character string is
 converted to the corresponding environment on the search path.
 </p>
 
@@ -34,25 +35,26 @@ is <code>-1</code>, the environment it is called from.  If
 it is a character string, match the string to the names on the
 search list.
 </p>
-<p>If it is a list, the equivalent of <code><a href="list2env.html">list2env</a>(x,
+<p>If it is a list, the equivalent of <code><a href="../../base/help/list2env.html">list2env</a>(x,
       parent = emptyenv())</code> is returned.
 </p>
-<p>If <code><a href="is.object.html">is.object</a>(x)</code> is true and it has a <code><a href="class.html">class</a></code>
+<p>If <code><a href="../../base/help/is.object.html">is.object</a>(x)</code> is true and it has a <code><a href="../../base/help/class.html">class</a></code>
 for which an <code>as.environment</code> method is found, that is used.
 </p>
 </td></tr>
 </table>
 
 
-<h3>Value</h3>
+<h3>Details</h3>
 
-<p>The corresponding environment object.
+<p>This is a <a href="../../base/help/primitive.html">primitive</a> generic function: you can write methods to
+handle specific classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.
 </p>
 
 
-<h3>Note</h3>
+<h3>Value</h3>
 
-<p>This is a <a href="Primitive.html">primitive</a> function.
+<p>The corresponding environment object.
 </p>
 
 
@@ -63,8 +65,9 @@ for which an <code>as.environment</code> method is found, that is used.
 
 <h3>See Also</h3>
 
-<p><code><a href="environment.html">environment</a></code> for creation and manipulation,
-<code><a href="search.html">search</a></code>; <code><a href="list2env.html">list2env</a></code>.
+<p><code><a href="../../base/help/environment.html">environment</a></code> for creation and manipulation,
+<code><a href="../../base/help/search.html">search</a></code>;
+<code><a href="../../base/help/list2env.html">list2env</a></code>.
 </p>
 
 
@@ -80,5 +83,5 @@ ls(ee) # names of objects in ee
 utils::ls.str(ee)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

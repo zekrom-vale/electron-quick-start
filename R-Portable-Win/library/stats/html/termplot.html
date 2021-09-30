@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot Regression Terms</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for termplot {stats}"><tr><td>termplot {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,7 +60,7 @@ found</p>
 <td>
 <p>which terms to plot (default <code>NULL</code> means all
 terms); a vector passed to
-<code><a href="predict.html">predict</a>(.., type = "terms", terms = *)</code>.</p>
+<code><a href="../../stats/help/predict.html">predict</a>(.., type = "terms", terms = *)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>se</code></td>
 <td>
@@ -145,13 +146,13 @@ obtained from <code>smooth-panel.smooth</code>.</p>
 <h3>Details</h3>
 
 <p>The <code>model</code> object must have a <code>predict</code> method that accepts
-<code>type = "terms"</code>, e.g., <code><a href="glm.html">glm</a></code> in the <span class="pkg">stats</span> package,
-<code><a href="../../survival/html/coxph.html">coxph</a></code> and <code><a href="../../survival/html/survreg.html">survreg</a></code> in
+<code>type = "terms"</code>, e.g., <code><a href="../../stats/help/glm.html">glm</a></code> in the <span class="pkg">stats</span> package,
+<code><a href="../../survival/help/coxph.html">coxph</a></code> and <code><a href="../../survival/help/survreg.html">survreg</a></code> in
 the <a href="https://CRAN.R-project.org/package=survival"><span class="pkg">survival</span></a> package.
 </p>
 <p>For the <code>partial.resid = TRUE</code> option <code>model</code> must have a
-<code><a href="residuals.html">residuals</a></code> method that accepts <code>type = "partial"</code>,
-which <code><a href="lm.html">lm</a></code> and <code><a href="glm.html">glm</a></code> do.
+<code><a href="../../stats/help/residuals.html">residuals</a></code> method that accepts <code>type = "partial"</code>,
+which <code><a href="../../stats/help/lm.html">lm</a></code> and <code><a href="../../stats/help/glm.html">glm</a></code> do.
 </p>
 <p>The <code>data</code> argument should rarely be needed, but in some cases
 <code>termplot</code> may be unable to reconstruct the original data
@@ -181,8 +182,8 @@ containing one instance of each level.  The list has attribute
 
 <h3>See Also</h3>
 
-<p>For (generalized) linear models, <code><a href="plot.lm.html">plot.lm</a></code> and
-<code><a href="predict.glm.html">predict.glm</a></code>.</p>
+<p>For (generalized) linear models, <code><a href="../../stats/help/plot.lm.html">plot.lm</a></code> and
+<code><a href="../../stats/help/predict.glm.html">predict.glm</a></code>.</p>
 
 
 <h3>Examples</h3>
@@ -204,7 +205,7 @@ termplot(model, partial.resid = TRUE, se = TRUE, main = TRUE)
 termplot(model, partial.resid = TRUE, smooth = panel.smooth, span.smth = 1/4)
 if(!had.splines &amp;&amp; rs) detach("package:splines")
 
-## requires recommended package MASS
+if(requireNamespace("MASS", quietly = TRUE)) {
 hills.lm &lt;- lm(log(time) ~ log(climb)+log(dist), data = MASS::hills)
 termplot(hills.lm, partial.resid = TRUE, smooth = panel.smooth,
         terms = "log(dist)", main = "Original")
@@ -212,7 +213,7 @@ termplot(hills.lm, transform.x = TRUE,
          partial.resid = TRUE, smooth = panel.smooth,
 	 terms = "log(dist)", main = "Transformed")
 
-</pre>
+}</pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

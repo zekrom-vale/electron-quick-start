@@ -1,24 +1,34 @@
 useDynLib(grDevices, .registration = TRUE, .fixes = "C_")
 
 export(Hershey, adjustcolor, as.graphicsAnnot, as.raster, axisTicks,
-       blues9, boxplot.stats, check.options, chull, CIDFont, col2rgb,
+       blues9, boxplot.stats, cairoSymbolFont,
+       check.options, chull, CIDFont, col2rgb,
        colors, colours, cm, colorRamp, colorRampPalette, contourLines,
        convertColor, colorConverter, colorspaces, cm.colors, densCols,
        devAskNewPage, dev.capabilities, dev.capture, dev.control,
        dev.copy, dev.copy2eps, dev.copy2pdf, dev.cur, dev.hold,
        dev.flush, dev.interactive, dev.list, dev.new, dev.next,
        dev.off, dev.prev, dev.print, dev.set, dev.size, dev2bitmap,
-       deviceIsInteractive, embedFonts, extendrange, getGraphicsEvent,
+       deviceIsInteractive, embedFonts, extendrange,
+       getGraphicsEvent,
        getGraphicsEventEnv, graphics.off, gray, grey, gray.colors,
        grSoftVersion, grey.colors, heat.colors, hsv, hcl, hcl.colors, hcl.pals,
-       is.raster,
+       is.raster, 
        make.rgb, n2mfrow, nclass.Sturges, nclass.FD, nclass.scott,
-       palette, pdf, pdf.options, pdfFonts, pictex, postscript,
-       postscriptFonts, ps.options, rainbow, recordGraphics,
-       recordPlot, replayPlot, rgb, rgb2hsv, savePlot, setEPS,
-       setGraphicsEventEnv, setGraphicsEventHandlers, setPS,
-       terrain.colors, topo.colors, trans3d, Type1Font, .axisPars,
-       xfig, xyTable, xy.coords, xyz.coords)
+       palette, palette.pals, palette.colors,
+       pdf, pdf.options, pdfFonts, pictex, postscript,
+       postscriptFonts, ps.options, 
+       rainbow, recordGraphics,
+       recordPlot, replayPlot, rgb, rgb2hsv, savePlot,
+       setEPS,
+       setGraphicsEventEnv, setGraphicsEventHandlers,
+       setPS, 
+       terrain.colors, 
+       topo.colors, trans3d, Type1Font, .axisPars,
+       xfig, xyTable, xy.coords, xyz.coords,
+
+       .linearGradientPattern, .radialGradientPattern,
+       .setClipPath, .setMask, .setPattern, .tilingPattern)
 
 ## devices common to all platforms
 export(X11, x11, bitmap, bmp, cairo_pdf, cairo_ps, jpeg, png, svg, tiff)

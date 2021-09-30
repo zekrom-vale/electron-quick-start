@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate All Combinations of n Elements, Taken m at a Time</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for combn {utils}"><tr><td>combn {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -108,7 +109,7 @@ all combinations of factors or vectors.
 combn(letters[1:4], 2)
 (m &lt;- combn(10, 5, min))   # minimum value in each combination
 mm &lt;- combn(15, 6, function(x) matrix(x, 2, 3))
-stopifnot(round(choose(10, 5)) == length(m),
+stopifnot(round(choose(10, 5)) == length(m), is.array(m), # 1-dimensional
           c(2,3, round(choose(15, 6))) == dim(mm))
 
 ## Different way of encoding points:
@@ -121,8 +122,9 @@ combn(c(1,1,1,1,2,2,2,3,3,4), 3, tabulate, nbins = 4)
 ## Assuring the identity
 for(n in 1:7)
  for(m in 0:n) stopifnot(is.array(cc &lt;- combn(n, m)),
-                         dim(cc) == c(m, choose(n, m)))
+                         dim(cc) == c(m, choose(n, m)),
+                         identical(cc, combn(n, m, identity)) || m == 1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a Tar Archive</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for tar {utils}"><tr><td>tar {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -119,13 +120,13 @@ implementations diverged from the former standard.
 <p>Many <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> platforms use a version of GNU <code>tar</code> (including
 <code>Rtools</code> on Windows), but the behaviour seems to be changed
 with each version.  macOS &gt;= 10.6 and FreeBSD use <code>bsdtar</code>
-from the libarchive project (but for macOS, a version from 2010), and
-commercial Unixes will have their own versions.  <code>bsdtar</code> is
-available for many other platforms: macOS up to at least 10.9 had GNU
-<code>tar</code> as <code>gnutar</code> and other platforms,
-e.g. Solaris, have it as <code>gtar</code>: on a Unix-alike
-<code>configure</code> will try <code>gnutar</code> and <code>gtar</code>
-before <code>tar</code>.
+from the libarchive project (but for macOS a version from 2017 or
+earlier, 2010 for High Sierra), and commercial Unixes will have their
+own versions.  <code>bsdtar</code> is available for many other platforms:
+macOS up to at least 10.9 had GNU <code>tar</code> as <code>gnutar</code>
+and other platforms, e.g. Solaris, have it as <code>gtar</code>:
+on a Unix-alike <code>configure</code> will try <code>gnutar</code> and
+<code>gtar</code> before <code>tar</code>.
 </p>
 
 
@@ -143,7 +144,7 @@ uses the &lsquo;ustar&rsquo; way from the 1998 POSIX
 standard which supports up to 256 bytes (depending on the path: in
 particular the final component is limited to 100 bytes) if possible,
 otherwise the GNU way (which is widely supported, including by
-<code><a href="untar.html">untar</a></code>).
+<code><a href="../../utils/help/untar.html">untar</a></code>).
 </p>
 <p>Most formats do not record the encoding of file paths.
 </p>
@@ -215,13 +216,12 @@ Solaris do not support compression.
 
 <h3>Note</h3>
 
-<p>For users of macOS (formerly OS X).  Apple's HFS and HFS+ file systems
-have a legacy concept of &lsquo;resource forks&rsquo; dating from classic
-Mac OS and rarely used nowadays.  Apple's version of <code>tar</code>
-stores these as separate files in the tarball with names prefixed by
-&lsquo;<span class="file">._</span>&rsquo;, and unpacks such files into resource forks (if possible):
-other ways of unpacking (including <code><a href="untar.html">untar</a></code> in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>) unpack
-them as separate files.
+<p>For users of macOS.  Apple's file systems have a legacy concept of
+&lsquo;resource forks&rsquo; dating from classic Mac OS and rarely used
+nowadays.  Apple's version of <code>tar</code> stores these as separate
+files in the tarball with names prefixed by &lsquo;<span class="file">._</span>&rsquo;, and unpacks
+such files into resource forks (if possible): other ways of unpacking
+(including <code><a href="../../utils/help/untar.html">untar</a></code> in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>) unpack them as separate files.
 </p>
 <p>When argument <code>tar</code> is set to the command <code>tar</code> on macOS,
 environment variable <span class="env">COPYFILE_DISABLE=1</span> is set, which for the
@@ -233,13 +233,13 @@ included in the tarball.
 <h3>See Also</h3>
 
 <p><a href="https://en.wikipedia.org/wiki/Tar_(file_format)">https://en.wikipedia.org/wiki/Tar_(file_format)</a>,
-<a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_06">http://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_06</a>
+<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_06">https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_06</a>
 for the way the POSIX utility <code>pax</code> handles <code>tar</code> formats.
 </p>
 <p><a href="https://github.com/libarchive/libarchive/wiki/FormatTar">https://github.com/libarchive/libarchive/wiki/FormatTar</a>.
 </p>
-<p><code><a href="untar.html">untar</a></code>.
+<p><code><a href="../../utils/help/untar.html">untar</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

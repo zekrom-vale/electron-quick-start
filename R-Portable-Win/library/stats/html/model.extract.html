@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract Components from a Model Frame</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for model.extract {stats}"><tr><td>model.extract {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>Returns the response, offset, subset, weights or other
 special components of a model frame passed as optional arguments to
-<code><a href="model.frame.html">model.frame</a></code>.
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>.
 </p>
 
 
@@ -51,17 +52,17 @@ Using either of latter two coerces the result to have storage mode
 <p><code>model.extract</code> is provided for compatibility with S, which does
 not have the more specific functions.  It is also useful to extract
 e.g. the <code>etastart</code> and <code>mustart</code> components of a
-<code><a href="glm.html">glm</a></code> fit.
+<code><a href="../../stats/help/glm.html">glm</a></code> fit.
 </p>
 <p><code>model.offset</code> and <code>model.response</code> are equivalent to
 <code>model.extract(, "offset")</code> and <code>model.extract(, "response")</code>
 respectively.  <code>model.offset</code> sums any terms specified by
-<code><a href="offset.html">offset</a></code> terms in the formula or by <code>offset</code> arguments
+<code><a href="../../stats/help/offset.html">offset</a></code> terms in the formula or by <code>offset</code> arguments
 in the call producing the model frame: it does check that the offset
 is numeric.
 </p>
 <p><code>model.weights</code> is slightly different from
-<code>model.frame(, "weights")</code> in not naming the vector it returns.
+<code>model.extract(, "weights")</code> in not naming the vector it returns.
 </p>
 
 
@@ -72,7 +73,7 @@ is numeric.
 
 <h3>See Also</h3>
 
-<p><code><a href="model.frame.html">model.frame</a></code>, <code><a href="offset.html">offset</a></code></p>
+<p><code><a href="../../stats/help/model.frame.html">model.frame</a></code>, <code><a href="../../stats/help/offset.html">offset</a></code></p>
 
 
 <h3>Examples</h3>
@@ -85,7 +86,8 @@ stopifnot(model.extract(a, "response") == model.response(a))
 a &lt;- model.frame(ncases/(ncases+ncontrols) ~ agegp + tobgp + alcgp,
                  data = esoph, weights = ncases+ncontrols)
 model.response(a)
-model.extract(a, "weights")
+(mw &lt;- model.extract(a, "weights"))
+stopifnot(identical(unname(mw), model.weights(a)))
 
 a &lt;- model.frame(cbind(ncases,ncontrols) ~ agegp,
                  something = tobgp, data = esoph)
@@ -93,5 +95,5 @@ names(a)
 stopifnot(model.extract(a, "something") == esoph$tobgp)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

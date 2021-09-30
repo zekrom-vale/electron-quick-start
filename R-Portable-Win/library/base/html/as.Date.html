@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Date Conversion Functions to and from Character</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for as.Date {base}"><tr><td>as.Date {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,19 +44,20 @@ as.character(x, ...)
 </td></tr>
 <tr valign="top"><td><code>format</code></td>
 <td>
-<p><code><a href="character.html">character</a></code> string.  If not specified, it will try
+<p><code><a href="../../base/help/character.html">character</a></code> string.  If not specified, it will try
 <code>tryFormats</code> one by one on the first non-<code>NA</code> element, and
 give an error if none works.  Otherwise, the processing is via
-<code><a href="strptime.html">strptime</a></code>.</p>
+<code><a href="../../base/help/strptime.html">strptime</a>()</code> whose help page describes available
+conversion specifications.</p>
 </td></tr>
 <tr valign="top"><td><code>tryFormats</code></td>
 <td>
-<p><code><a href="character.html">character</a></code> vector of <code>format</code>
+<p><code><a href="../../base/help/character.html">character</a></code> vector of <code>format</code>
 strings to try if <code>format</code> is not specified.</p>
 </td></tr>
 <tr valign="top"><td><code>optional</code></td>
 <td>
-<p><code><a href="logical.html">logical</a></code> indicating to return <code>NA</code>
+<p><code><a href="../../base/help/logical.html">logical</a></code> indicating to return <code>NA</code>
 (instead of signalling an error) if the format guessing does not succeed.</p>
 </td></tr>
 <tr valign="top"><td><code>origin</code></td>
@@ -87,12 +89,12 @@ where appropriate and available.  This affects the names of the days
 and months.
 </p>
 <p>The <code>as.Date</code> methods accept character strings, factors, logical
-<code>NA</code> and objects of classes <code>"<a href="DateTimeClasses.html">POSIXlt</a>"</code> and
-<code>"<a href="DateTimeClasses.html">POSIXct</a>"</code>.  (The last is converted to days by ignoring
+<code>NA</code> and objects of classes <code>"<a href="../../base/help/POSIXlt.html">POSIXlt</a>"</code> and
+<code>"<a href="../../base/help/POSIXct.html">POSIXct</a>"</code>.  (The last is converted to days by ignoring
 the time after midnight in the representation of the time in specified
 time zone, default UTC.)  Also objects of class <code>"date"</code> (from
-package <span class="pkg"><a href="../../date/html/as.date.html">date</a></span>) and <code>"dates"</code> (from
-package <span class="pkg"><a href="../../chron/html/chron.html">chron</a></span>).  Character strings are processed
+package <span class="pkg"><a href="../../date/help/as.date.html">date</a></span>) and <code>"dates"</code> (from
+package <span class="pkg"><a href="../../chron/help/chron.html">chron</a></span>).  Character strings are processed
 as far as necessary for the format specified: any trailing characters
 are ignored.
 </p>
@@ -109,7 +111,7 @@ fractional part of the date.
 <p>The <code>format</code> and <code>as.character</code> methods return a character vector
 representing the date.  <code>NA</code> dates are returned as <code>NA_character_</code>.
 </p>
-<p>The <code>as.Date</code> methods return an object of class <code>"<a href="Dates.html">Date</a>"</code>.
+<p>The <code>as.Date</code> methods return an object of class <code>"<a href="../../base/help/Date.html">Date</a>"</code>.
 </p>
 
 
@@ -166,14 +168,14 @@ intended meaning.
 <em>ISO 8601. Data elements and interchange formats &ndash;
 Information interchange &ndash; Representation of dates and times.</em>
 For links to versions available on-line see (at the time of writing)
-<a href="http://www.qsl.net/g1smd/isopdf.htm">http://www.qsl.net/g1smd/isopdf.htm</a>.
+<a href="https://www.qsl.net/g1smd/isopdf.htm">https://www.qsl.net/g1smd/isopdf.htm</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><a href="Dates.html">Date</a> for details of the date class;
-<code><a href="locales.html">locales</a></code> to query or set a locale.
+<p><a href="../../base/help/Date.html">Date</a> for details of the date class;
+<code><a href="../../base/help/locales.html">locales</a></code> to query or set a locale.
 </p>
 <p>Your system's help pages on <code>strftime</code> and <code>strptime</code> to see
 how to specify their formats.  Windows users will find no help page
@@ -229,5 +231,5 @@ as.Date(z, tz = "NZ")
 as.Date(z, tz = "HST") # Hawaii
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Display Contours</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for contour {graphics}"><tr><td>contour {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -89,7 +90,7 @@ located. Possible values are <code>"simple"</code>, <code>"edge"</code> and
 for the contour labels.  If a character vector of length 2 then
 Hershey vector fonts are used for the contour labels. The first
 element of the vector selects a typeface and the second element
-selects a fontindex (see <code><a href="text.html">text</a></code> for more information).
+selects a fontindex (see <code><a href="../../graphics/help/text.html">text</a></code> for more information).
 The default is <code>NULL</code> on graphics devices with high-quality
 rotation of text and <code>c("sans serif", "plain")</code> otherwise.</p>
 </td></tr>
@@ -100,19 +101,19 @@ rotation of text and <code>c("sans serif", "plain")</code> otherwise.</p>
 <tr valign="top"><td><code>axes, frame.plot</code></td>
 <td>
 <p>logical indicating whether axes or a box
-should be drawn, see <code><a href="plot.default.html">plot.default</a></code>.</p>
+should be drawn, see <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>col</code></td>
 <td>
-<p>color for the lines drawn.</p>
+<p>colour(s) for the lines drawn.</p>
 </td></tr>
 <tr valign="top"><td><code>lty</code></td>
 <td>
-<p>line type for the lines drawn.</p>
+<p>line type(s) for the lines drawn.</p>
 </td></tr>
 <tr valign="top"><td><code>lwd</code></td>
 <td>
-<p>line width for the lines drawn.</p>
+<p>line width(s) for the lines drawn.</p>
 </td></tr>
 <tr valign="top"><td><code>add</code></td>
 <td>
@@ -120,9 +121,9 @@ should be drawn, see <code><a href="plot.default.html">plot.default</a></code>.<
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>additional arguments to <code><a href="plot.window.html">plot.window</a></code>,
-<code><a href="title.html">title</a></code>, <code><a href="zAxis.html">Axis</a></code> and <code><a href="box.html">box</a></code>,
-typically <a href="par.html">graphical parameters</a> such as <code>cex.axis</code>.</p>
+<p>additional arguments to <code><a href="../../graphics/help/plot.window.html">plot.window</a></code>,
+<code><a href="../../graphics/help/title.html">title</a></code>, <code><a href="../../graphics/help/Axis.html">Axis</a></code> and <code><a href="../../graphics/help/box.html">box</a></code>,
+typically <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> such as <code>cex.axis</code>.</p>
 </td></tr>
 </table>
 
@@ -141,7 +142,7 @@ contour line, with no labels overlapping).  The second and third may
 not draw a label on every contour line.
 </p>
 <p>For information about vector fonts, see the
-help for <code><a href="text.html">text</a></code> and <code><a href="../../grDevices/html/Hershey.html">Hershey</a></code>.
+help for <code><a href="../../graphics/help/text.html">text</a></code> and <code><a href="../../grDevices/html/Hershey.html">Hershey</a></code>.
 </p>
 <p>Notice that <code>contour</code> interprets the <code>z</code> matrix as a table of
 <code>f(x[i], y[j])</code> values, so that the x axis corresponds to row
@@ -149,13 +150,16 @@ number and the y axis to column number, with column 1 at the bottom,
 i.e. a 90 degree counter-clockwise rotation of the conventional textual
 layout.
 </p>
-<p>Alternatively, use <code><a href="../../lattice/html/levelplot.html">contourplot</a></code> from the
+<p>Vector (of length <i>&gt; 1</i>) <code>col</code>, <code>lty</code>, and <code>lwd</code> are
+applied along <code>levels</code> and recycled, see the Examples.
+</p>
+<p>Alternatively, use <code><a href="../../lattice/help/levelplot.html">contourplot</a></code> from the
 <a href="https://CRAN.R-project.org/package=lattice"><span class="pkg">lattice</span></a> package where the <code><a href="../../stats/html/formula.html">formula</a></code> notation allows
 to use vectors <code>x</code>, <code>y</code>, and <code>z</code> of the same length.
 </p>
 <p>There is limited control over the axes and frame as arguments
 <code>col</code>, <code>lwd</code> and <code>lty</code> refer to the contour lines
-(rather than being general <a href="par.html">graphical parameters</a>).  For more control,
+(rather than being general <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a>).  For more control,
 add contours to a plot, or add axes and frame to a contour plot.
 </p>
 
@@ -173,11 +177,11 @@ Wadsworth &amp; Brooks/Cole.
 <p><code><a href="../../base/html/options.html">options</a>("max.contour.segments")</code> for the maximal
 complexity of a single contour line.
 </p>
-<p><code><a href="../../grDevices/html/contourLines.html">contourLines</a></code>, <code><a href="filled.contour.html">filled.contour</a></code>
+<p><code><a href="../../grDevices/html/contourLines.html">contourLines</a></code>, <code><a href="../../graphics/help/filled.contour.html">filled.contour</a></code>
 for color-filled contours,
-<code><a href="../../lattice/html/levelplot.html">contourplot</a></code> (and
-<code><a href="../../lattice/html/levelplot.html">levelplot</a></code>) from package <a href="https://CRAN.R-project.org/package=lattice"><span class="pkg">lattice</span></a>.
-Further, <code><a href="image.html">image</a></code> and the graphics demo which can be
+<code><a href="../../lattice/help/levelplot.html">contourplot</a></code> (and
+<code><a href="../../lattice/help/levelplot.html">levelplot</a></code>) from package <a href="https://CRAN.R-project.org/package=lattice"><span class="pkg">lattice</span></a>.
+Further, <code><a href="../../graphics/help/image.html">image</a></code> and the graphics demo which can be
 invoked as <code>demo(graphics)</code>.
 </p>
 
@@ -195,17 +199,28 @@ contour(x, x, z, col = "pink", add = TRUE, method = "edge",
         vfont = c("sans serif", "plain"))
 contour(x, x, z, ylim = c(1, 6), method = "simple", labcex = 1,
         xlab = quote(x[1]), ylab = quote(x[2]))
-contour(x, x, z, ylim = c(-6, 6), nlev = 20, lty = 2, method = "simple",
+contour(x, x, z, ylim = c(-6, 6), nlevels = 20, lty = 2, method = "simple",
         main = "20 levels; \"simple\" labelling method")
 par(op)
 
+## Passing multiple colours / lty / lwd :
+op &lt;- par(mfrow = c(1, 2))
+z &lt;- outer(-9:25, -9:25)
+## Using default levels &lt;- pretty(range(z, finite = TRUE), 10),
+##  the first and last of which typically are *not* drawn:
+(levs &lt;- pretty(z, n=10)) # -300 -200 ... 600 700
+contour(z, col = 1:4)
+## Set levels explicitly; show that 'lwd' and 'lty' are recycled as well:
+contour(z, levels=levs[-c(1,length(levs))], col = 1:5, lwd = 1:3 *1.5, lty = 1:3)
+par(op)
+
 ## Persian Rug Art:
-x &lt;- y &lt;- seq(-4*pi, 4*pi, len = 27)
+x &lt;- y &lt;- seq(-4*pi, 4*pi, length.out = 27)
 r &lt;- sqrt(outer(x^2, y^2, "+"))
 opar &lt;- par(mfrow = c(2, 2), mar = rep(0, 4))
 for(f in pi^(0:3))
   contour(cos(r^2)*exp(-r/f),
-          drawlabels = FALSE, axes = FALSE, frame = TRUE)
+          drawlabels = FALSE, axes = FALSE, frame.plot = TRUE)
 
 rx &lt;- range(x &lt;- 10*1:nrow(volcano))
 ry &lt;- range(y &lt;- 10*1:ncol(volcano))
@@ -231,5 +246,5 @@ invisible(lapply(line.list, lines, lwd=3, col=adjustcolor(2, .3)))
 par(opar)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

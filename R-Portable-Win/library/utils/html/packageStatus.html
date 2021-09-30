@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Package Management Tools</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for packageStatus {utils}"><tr><td>packageStatus {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -51,12 +52,12 @@ If specified as <code>NULL</code>, derive appropriate URLs from <a href="../../b
 </td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
-<p>Download method, see <code><a href="download.file.html">download.file</a></code>.</p>
+<p>Download method, see <code><a href="../../utils/help/download.file.html">download.file</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
 <p>type of package distribution:
-see <code><a href="install.packages.html">install.packages</a></code>.</p>
+see <code><a href="../../utils/help/install.packages.html">install.packages</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>object</code></td>
 <td>
@@ -71,9 +72,9 @@ be upgraded and which not.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>for <code>packageStatus</code>: arguments to be passed to
-<code><a href="available.packages.html">available.packages</a></code> and <code><a href="installed.packages.html">installed.packages</a></code>.<br />
+<code><a href="../../utils/help/available.packages.html">available.packages</a></code> and <code><a href="../../utils/help/installed.packages.html">installed.packages</a></code>.<br />
 for the <code>upgrade</code> method, arguments to be passed to
-<code><a href="install.packages.html">install.packages</a></code><br />
+<code><a href="../../utils/help/install.packages.html">install.packages</a></code><br />
 for other methods: currently not used.</p>
 </td></tr>
 </table>
@@ -90,7 +91,7 @@ appropriate contrib sections of the repositories.  The default is
 tabular summary and the <code>summary</code> method prints the results.
 </p>
 <p>The <code>update</code> method updates the <code>"packageStatus"</code> object.
-The <code>upgrade</code> method is similar to <code><a href="update.packages.html">update.packages</a></code>:
+The <code>upgrade</code> method is similar to <code><a href="../../utils/help/update.packages.html">update.packages</a></code>:
 it offers to install the current versions of those packages which are not
 currently up-to-date.
 </p>
@@ -105,7 +106,7 @@ components
 <tr valign="top"><td><code>inst</code></td>
 <td>
 <p>a data frame with columns as the <em>matrix</em> returned by
-<code><a href="installed.packages.html">installed.packages</a></code> plus <code>"Status"</code>, a factor with
+<code><a href="../../utils/help/installed.packages.html">installed.packages</a></code> plus <code>"Status"</code>, a factor with
 levels <code>c("ok", "upgrade", "unavailable")</code>.  Only the newest 
 version of each package is reported, in the first repository in 
 which it appears.
@@ -114,7 +115,7 @@ which it appears.
 <tr valign="top"><td><code>avail</code></td>
 <td>
 <p>a data frame with columns as the <em>matrix</em> returned by
-<code><a href="available.packages.html">available.packages</a></code> plus <code>"Status"</code>, a factor with
+<code><a href="../../utils/help/available.packages.html">available.packages</a></code> plus <code>"Status"</code>, a factor with
 levels <code>c("installed", "not installed")</code>.
 </p>
 </td></tr>
@@ -139,7 +140,7 @@ each status.
 
 <h3>See Also</h3>
 
-<p><code><a href="installed.packages.html">installed.packages</a></code>, <code><a href="available.packages.html">available.packages</a></code>
+<p><code><a href="../../utils/help/installed.packages.html">installed.packages</a></code>, <code><a href="../../utils/help/available.packages.html">available.packages</a></code>
 </p>
 
 
@@ -156,5 +157,5 @@ print(x)
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

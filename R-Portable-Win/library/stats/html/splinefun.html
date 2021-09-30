@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Interpolating Splines</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for splinefun {stats}"><tr><td>splinefun {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -75,7 +76,7 @@ is to take place.</p>
 <p>handling of tied <code>x</code> values.  The string
 <code>"ordered"</code> or a function (or the name of a function) taking a
 single vector argument and returning a single number or a length-2
-<code><a href="../../base/html/list.html">list</a></code> of both, see <code><a href="approxfun.html">approx</a></code> and its
+<code><a href="../../base/html/list.html">list</a></code> of both, see <code><a href="../../stats/help/approx.html">approx</a></code> and its
 &lsquo;Details&rsquo; section, and the example below.</p>
 </td></tr>
 </table>
@@ -172,15 +173,15 @@ doi: <a href="https://doi.org/10.1137/0904045">10.1137/0904045</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="approxfun.html">approx</a></code> and <code><a href="approxfun.html">approxfun</a></code> for constant and
+<p><code><a href="../../stats/help/approx.html">approx</a></code> and <code><a href="../../stats/help/approxfun.html">approxfun</a></code> for constant and
 linear interpolation.
 </p>
-<p>Package <span class="pkg">splines</span>, especially <code><a href="../../splines/html/interpSpline.html">interpSpline</a></code>
-and <code><a href="../../splines/html/periodicSpline.html">periodicSpline</a></code> for interpolation splines.
+<p>Package <span class="pkg">splines</span>, especially <code><a href="../../splines/help/interpSpline.html">interpSpline</a></code>
+and <code><a href="../../splines/help/periodicSpline.html">periodicSpline</a></code> for interpolation splines.
 That package also generates spline bases that can be used for
 regression splines.
 </p>
-<p><code><a href="smooth.spline.html">smooth.spline</a></code> for smoothing splines.
+<p><code><a href="../../stats/help/smooth.spline.html">smooth.spline</a></code> for smoothing splines.
 </p>
 
 
@@ -241,7 +242,7 @@ str(spline(x, y, n = 201, ties="ordered")) # all '$y' entries are NaN
 ## The default (ties=mean) is ok, but most efficient to use instead is
 sxyo &lt;- spline(x, y, n = 201, ties= list("ordered", mean))
 sapply(sxyo, summary)# all fine now
-plot(x, y, main = "spline(x,y, ties=list(\"ordered\", mean)  for when x has ties")
+plot(x, y, main = "spline(x,y, ties=list(\"ordered\", mean))  for when x has ties")
 lines(sxyo, col="blue")
 
 ## An example of monotone interpolation
@@ -288,5 +289,5 @@ legend("topright",
 ## here, and both are 'much worse' than the regular fmm spline.
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

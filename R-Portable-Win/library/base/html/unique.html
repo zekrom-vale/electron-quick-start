@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract Unique Elements</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for unique {base}"><tr><td>unique {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -52,13 +53,13 @@ the default.  It will be coerced internally to the same type as
 <td>
 <p>logical indicating if duplication should be considered
 from the last, i.e., the last (or rightmost) of identical elements will
-be kept.  This only matters for <code><a href="names.html">names</a></code> or
-<code><a href="dimnames.html">dimnames</a></code>.</p>
+be kept.  This only matters for <code><a href="../../base/help/names.html">names</a></code> or
+<code><a href="../../base/help/dimnames.html">dimnames</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>nmax</code></td>
 <td>
 <p>the maximum number of unique items expected (greater than one).
-See <code><a href="duplicated.html">duplicated</a></code>.</p>
+See <code><a href="../../base/help/duplicated.html">duplicated</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -86,12 +87,12 @@ commonly be used for matrices to find unique rows (the default) or columns
 <em>duplicated</em> and not just <em>repeated</em> elements/rows.  That
 is, an element is omitted if it is equal to any previous element and
 not just if it is equal the immediately previous one.  (For the
-latter, see <code><a href="rle.html">rle</a></code>).
+latter, see <code><a href="../../base/help/rle.html">rle</a></code>).
 </p>
-<p>Missing values (<code>"<a href="NA.html">NA</a>"</code>) are regarded as equal, numeric and
+<p>Missing values (<code>"<a href="../../base/help/NA.html">NA</a>"</code>) are regarded as equal, numeric and
 complex ones differing from <code>NaN</code>; character strings will be compared in a
-&ldquo;common encoding&rdquo;; for details, see <code><a href="match.html">match</a></code> (and
-<code><a href="duplicated.html">duplicated</a></code>) which use the same concept.
+&ldquo;common encoding&rdquo;; for details, see <code><a href="../../base/help/match.html">match</a></code> (and
+<code><a href="../../base/help/duplicated.html">duplicated</a></code>) which use the same concept.
 </p>
 <p>Values in <code>incomparables</code> will never be marked as duplicated.
 This is intended to be used for a fairly small set of values and will
@@ -124,7 +125,7 @@ always has the same number of dimensions as <code>x</code>.
 <h3>Warning</h3>
 
 <p>Using this for lists is potentially slow, especially if the elements
-are not atomic vectors (see <code><a href="vector.html">vector</a></code>) or differ only
+are not atomic vectors (see <code><a href="../../base/help/vector.html">vector</a></code>) or differ only
 in their attributes.  In the worst case it is <i>O(n^2)</i>.
 </p>
 
@@ -139,10 +140,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="duplicated.html">duplicated</a></code> which gives the indices of duplicated
+<p><code><a href="../../base/help/duplicated.html">duplicated</a></code> which gives the indices of duplicated
 elements.
 </p>
-<p><code><a href="rle.html">rle</a></code> which is the equivalent of the Unix <code>uniq -c</code>
+<p><code><a href="../../base/help/rle.html">rle</a></code> which is the equivalent of the Unix <code>uniq -c</code>
 command.
 </p>
 
@@ -161,5 +162,5 @@ length(unique(sample(100, 100, replace = TRUE)))
 unique(iris)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

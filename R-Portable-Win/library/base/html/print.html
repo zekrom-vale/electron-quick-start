@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Print Values</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for print {base}"><tr><td>print {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,8 +11,8 @@
 <h3>Description</h3>
 
 <p><code>print</code> prints its argument and returns it <em>invisibly</em> (via
-<code><a href="invisible.html">invisible</a>(x)</code>).  It is a generic function which means that
-new printing methods can be easily added for new <code><a href="class.html">class</a></code>es.
+<code><a href="../../base/help/invisible.html">invisible</a>(x)</code>).  It is a generic function which means that
+new printing methods can be easily added for new <code><a href="../../base/help/class.html">class</a></code>es.
 </p>
 
 
@@ -65,13 +66,13 @@ such that the levels print on one line of width <code>width</code>.</p>
 <tr valign="top"><td><code>digits</code></td>
 <td>
 <p>minimal number of <em>significant</em> digits, see
-<code><a href="print.default.html">print.default</a></code>.</p>
+<code><a href="../../base/help/print.default.html">print.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>na.print</code></td>
 <td>
 <p>character string (or <code>NULL</code>) indicating
-<code><a href="NA.html">NA</a></code> values in printed output, see
-<code><a href="print.default.html">print.default</a></code>.</p>
+<code><a href="../../base/help/NA.html">NA</a></code> values in printed output, see
+<code><a href="../../base/help/print.default.html">print.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>zero.print</code></td>
 <td>
@@ -87,31 +88,31 @@ right aligned.</p>
 <tr valign="top"><td><code>justify</code></td>
 <td>
 <p>character indicating if strings should left- or
-right-justified or left alone, passed to <code><a href="format.html">format</a></code>.</p>
+right-justified or left alone, passed to <code><a href="../../base/help/format.html">format</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>useSource</code></td>
 <td>
 <p>logical indicating if internally stored source
 should be used for printing when present, e.g., if
-<code><a href="options.html">options</a>(keep.source = TRUE)</code> has been in use.</p>
+<code><a href="../../base/help/options.html">options</a>(keep.source = TRUE)</code> has been in use.</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>The default method, <code><a href="print.default.html">print.default</a></code> has its own help page.
+<p>The default method, <code><a href="../../base/help/print.default.html">print.default</a></code> has its own help page.
 Use <code><a href="../../utils/html/methods.html">methods</a>("print")</code> to get all the methods for the
 <code>print</code> generic.
 </p>
 <p><code>print.factor</code> allows some customization and is used for printing
-<code><a href="factor.html">ordered</a></code> factors as well.
+<code><a href="../../base/help/ordered.html">ordered</a></code> factors as well.
 </p>
-<p><code>print.table</code> for printing <code><a href="table.html">table</a></code>s allows other
-customization. As of R 3.0.0, it only prints a description in case of a table
+<p><code>print.table</code> for printing <code><a href="../../base/help/table.html">table</a></code>s allows other
+customization.  As of R 3.0.0, it only prints a description in case of a table
 with 0-extents (this can happen if a classifier has no valid data).
 </p>
-<p>See <code><a href="noquote.html">noquote</a></code> as an example of a class whose main
+<p>See <code><a href="../../base/help/noquote.html">noquote</a></code> as an example of a class whose main
 purpose is a specific <code>print</code> method.
 </p>
 
@@ -126,13 +127,13 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p>The default method <code><a href="print.default.html">print.default</a></code>, and help for the
-methods above; further <code><a href="options.html">options</a></code>, <code><a href="noquote.html">noquote</a></code>.
+<p>The default method <code><a href="../../base/help/print.default.html">print.default</a></code>, and help for the
+methods above; further <code><a href="../../base/help/options.html">options</a></code>, <code><a href="../../base/help/noquote.html">noquote</a></code>.
 </p>
 <p>For more customizable (but cumbersome) printing, see
-<code><a href="cat.html">cat</a></code>, <code><a href="format.html">format</a></code> or also <code><a href="write.html">write</a></code>.
+<code><a href="../../base/help/cat.html">cat</a></code>, <code><a href="../../base/help/format.html">format</a></code> or also <code><a href="../../base/help/write.html">write</a></code>.
 For a simple prototypical print method, see
-<code><a href="../../tools/html/.print.via.format.html">.print.via.format</a></code> in package <span class="pkg">tools</span>.
+<code><a href="../../tools/help/print.via.format.html">.print.via.format</a></code> in package <span class="pkg">tools</span>.
 </p>
 
 
@@ -169,5 +170,5 @@ print.table(T[,2:8] * 1e9, digits=3, zero.print = ".")
 table(1, NA) # &lt; table of extent 1 x 0 &gt;
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

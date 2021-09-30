@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Gamma Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for GammaDist {stats}"><tr><td>GammaDist {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -109,7 +110,7 @@ large values of <code>scale</code> since the actual generation is done for
 </p>
 <p>The length of the result is determined by <code>n</code> for
 <code>rgamma</code>, and is the maximum of the lengths of the
-numerical arguments for the other functions.  
+numerical arguments for the other functions.
 </p>
 <p>The numerical arguments other than <code>n</code> are recycled to the
 length of the result.  Only the first elements of the logical
@@ -121,7 +122,7 @@ arguments are used.
 
 <p>The S (Becker <em>et al</em>, 1988) parametrization was via <code>shape</code>
 and <code>rate</code>: S had no <code>scale</code> parameter. It is an error
-to supply and <code>scale</code> and <code>rate</code>.
+to supply both <code>scale</code> and <code>rate</code>.
 </p>
 <p><code>pgamma</code> is closely related to the incomplete gamma function.  As
 defined by Abramowitz and Stegun 6.5.1 (and by &lsquo;Numerical
@@ -148,14 +149,14 @@ whereas the incomplete gamma function is also defined for negative
 </p>
 <p>See also
 <a href="https://en.wikipedia.org/wiki/Incomplete_gamma_function">https://en.wikipedia.org/wiki/Incomplete_gamma_function</a>, or
-<a href="http://dlmf.nist.gov/8.2#i">http://dlmf.nist.gov/8.2#i</a>.
+<a href="https://dlmf.nist.gov/8.2#i">https://dlmf.nist.gov/8.2#i</a>.
 </p>
 
 
 <h3>Source</h3>
 
 <p><code>dgamma</code> is computed via the Poisson density, using code contributed
-by Catherine Loader (see <code><a href="Binomial.html">dbinom</a></code>).
+by Catherine Loader (see <code><a href="../../stats/help/dbinom.html">dbinom</a></code>).
 </p>
 <p><code>pgamma</code> uses an unpublished (and not otherwise documented)
 algorithm &lsquo;mainly by Morten Welinder&rsquo;.
@@ -198,7 +199,7 @@ doi: <a href="https://doi.org/10.2307/2347328">10.2307/2347328</a>.
 Chapter 6: Gamma and Related Functions.
 </p>
 <p>NIST Digital Library of Mathematical Functions.
-<a href="http://dlmf.nist.gov/">http://dlmf.nist.gov/</a>, section 8.2.
+<a href="https://dlmf.nist.gov/">https://dlmf.nist.gov/</a>, section 8.2.
 </p>
 
 
@@ -206,8 +207,8 @@ Chapter 6: Gamma and Related Functions.
 
 <p><code><a href="../../base/html/Special.html">gamma</a></code> for the gamma function.
 </p>
-<p><a href="Distributions.html">Distributions</a> for other standard distributions, including
-<code><a href="Beta.html">dbeta</a></code> for the Beta distribution and <code><a href="Chisquare.html">dchisq</a></code>
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions, including
+<code><a href="../../stats/help/dbeta.html">dbeta</a></code> for the Beta distribution and <code><a href="../../stats/help/dchisq.html">dchisq</a></code>
 for the chi-squared distribution which is a special case of the Gamma
 distribution.
 </p>
@@ -229,5 +230,5 @@ pgamma(5e-324, 0.001)  # on most machines 5e-324 is the smallest
 table(rgamma(1e4, 0.001) == 0)/1e4
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

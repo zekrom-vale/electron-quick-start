@@ -422,6 +422,7 @@ p.adjust	p.adjust
 p.adjust.methods	p.adjust
 pacf	acf
 pacf.default	acf
+Pair	Pair
 pairwise.prop.test	pairwise.prop.test
 pairwise.t.test	pairwise.t.test
 pairwise.table	pairwise.table
@@ -436,7 +437,7 @@ pf	Fdist
 pgamma	GammaDist
 pgeom	Geometric
 phyper	Hypergeometric
-plclust	stats-deprecated
+plclust	stats-defunct
 plnorm	Lognormal
 plogis	Logistic
 plot.acf	plot.acf

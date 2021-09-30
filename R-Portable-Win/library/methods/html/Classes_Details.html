@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Class Definitions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Classes_Details {methods}"><tr><td>Classes_Details {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ class of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</
 distinguish them from the informal S3 classes.
 This document gives an overview of S4 classes; for
 details of the class representation objects, see help for the class
-<code><a href="classRepresentation-class.html">classRepresentation</a></code>.
+<code><a href="../../methods/help/classRepresentation-class.html">classRepresentation</a></code>.
 </p>
 
 
@@ -25,7 +26,7 @@ information about that class.  The object, known as the
 <em>metadata</em> defining the class, is not stored under the name of
 the class (to allow programmers to write generating functions of
 that name), but under a specially constructed name.
-To examine the class definition, call <code><a href="getClass.html">getClass</a></code>.  The
+To examine the class definition, call <code><a href="../../methods/help/getClass.html">getClass</a></code>.  The
 information in the metadata object includes:
 </p>
 
@@ -37,7 +38,7 @@ the <em>slots</em> in the class definition.
 <p>Each slot in an object is a component of the object;
 like components (that is, elements) of a
 list, these may be extracted and set, using the
-function <code><a href="slot.html">slot</a>()</code> or more often the operator
+function <code><a href="../../methods/help/slot.html">slot</a>()</code> or more often the operator
 <code>"<a href="../../base/html/slotOp.html">@</a>"</code>.  However, they
 differ from list components in important ways.
 First, slots can only be referred to by name, not by position,
@@ -49,7 +50,7 @@ class definition.  Each slot in each object always is an object
 of  the
 class specified for this slot in the definition of the current class.
 The word &ldquo;is&rdquo; corresponds to the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> function of the same
-name (<code><a href="is.html">is</a></code>), meaning that the class of the object in
+name (<code><a href="../../methods/help/is.html">is</a></code>), meaning that the class of the object in
 the slot must be the same as the class specified in the
 definition, or some class that extends the one in the
 definition (a <em>subclass</em>).
@@ -97,12 +98,12 @@ well.
 <p>The direct superclasses of a class are those superclasses
 explicitly defined.   Direct superclasses can be defined in
 three ways.  Most commonly, the superclasses are listed in the
-<code>contains=</code> argument in the call to <code><a href="setClass.html">setClass</a></code>
+<code>contains=</code> argument in the call to <code><a href="../../methods/help/setClass.html">setClass</a></code>
 that creates the subclass.   In this case the subclass will
 contain all the slots of the superclass, and the relation
 between the class is called <em>simple</em>, as it in fact is.
 Superclasses can also be defined
-explicitly by a call to <code><a href="setIs.html">setIs</a></code>; in this case, the
+explicitly by a call to <code><a href="../../methods/help/setIs.html">setIs</a></code>; in this case, the
 relation requires methods to be specified to go from subclass to
 superclass.   Thirdly, a class union is a superclass of all the
 members of the union.  In this case too the relation is simple,
@@ -118,26 +119,26 @@ legitimate superclasses for purposes such as method selection.
 </p>
 <p>When superclasses are defined  by including the names of
 superclasses in the <code>contains=</code> argument to
-<code><a href="setClass.html">setClass</a></code>, an object from the class will have all the
+<code><a href="../../methods/help/setClass.html">setClass</a></code>, an object from the class will have all the
 slots defined for its own class <em>and</em> all the slots defined
 for all its superclasses as well.
 </p>
 <p>The information about the relation between a class and a
 particular superclass is encoded as an object of class
-<code><a href="SClassExtension-class.html">SClassExtension</a></code>.  A list of such objects for
+<code><a href="../../methods/help/SClassExtension-class.html">SClassExtension</a></code>.  A list of such objects for
 the superclasses (and sometimes for the subclasses) is included in
 the metadata object defining the class.  If you need to compute
 with these objects (for example, to compare the distances), call
-the function <code><a href="is.html">extends</a></code> with argument <code>fullInfo=TRUE</code>.
+the function <code><a href="../../methods/help/extends.html">extends</a></code> with argument <code>fullInfo=TRUE</code>.
 </p>
 </dd>
 <dt>Prototype:</dt><dd>
 <p>The objects from a class created by a call to
-<code><a href="new.html">new</a></code>
+<code><a href="../../methods/help/new.html">new</a></code>
 are defined by the <em>prototype</em> object for the class and by
-additional arguments in the call to <code><a href="new.html">new</a></code>, which are
+additional arguments in the call to <code><a href="../../methods/help/new.html">new</a></code>, which are
 passed to a method for that class for the function
-<code><a href="new.html">initialize</a></code>.
+<code><a href="../../methods/help/initialize.html">initialize</a></code>.
 </p>
 <p>Each class representation object contains a prototype object
 for the class (although for a virtual class the prototype may be
@@ -188,16 +189,16 @@ as described below.
 
 <p>A class definition can extend classes other than
 regular S4 classes, usually by specifying them in the
-<code>contains=</code> argument to <code><a href="setClass.html">setClass</a></code>.  Three groups
+<code>contains=</code> argument to <code><a href="../../methods/help/setClass.html">setClass</a></code>.  Three groups
 of such classes behave distinctly:
 </p>
 
 <ol>
 <li>
 <p>S3 classes, which must have been registered by a previous call to
-<code><a href="setOldClass.html">setOldClass</a></code> (you can check that this has been done
-by calling <code><a href="getClass.html">getClass</a></code>, which should return a class that
-extends <a href="setOldClass.html">oldClass</a>);
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> (you can check that this has been done
+by calling <code><a href="../../methods/help/getClass.html">getClass</a></code>, which should return a class that
+extends <a href="../../methods/help/oldClass-class.html">oldClass</a>);
 </p>
 </li>
 <li>
@@ -209,8 +210,8 @@ below.
 </p>
 </li>
 <li>
-<p>One of the pseudo-classes <code><a href="StructureClasses.html">matrix</a></code>
-and <code><a href="StructureClasses.html">array</a></code>, implying objects with
+<p>One of the pseudo-classes <code><a href="../../methods/help/matrix-class.html">matrix</a></code>
+and <code><a href="../../methods/help/array-class.html">array</a></code>, implying objects with
 arbitrary vector types plus the <code>dim</code> and <code>dimnames</code>
 attributes.
 </p>
@@ -234,7 +235,7 @@ no formal definition of an S3 class.
 </p>
 <p>For example, suppose <code>"myFrame"</code> is an S4 class that includes the
 S3 class <code>"data.frame"</code> in the <code>contains=</code> argument to
-<code><a href="setClass.html">setClass</a></code>.  If an object from this S4 class is passed to
+<code><a href="../../methods/help/setClass.html">setClass</a></code>.  If an object from this S4 class is passed to
 a function, say <code><a href="../../base/html/matrix.html">as.matrix</a></code>, that has an S3 method for
 <code>"data.frame"</code>, the internal code for <code><a href="../../base/html/UseMethod.html">UseMethod</a></code>
 will convert the object to a data frame; in particular, to an S3
@@ -264,12 +265,12 @@ object that does not extend an appropriate S3 class or type is
 passed to a binary operator.
 </p>
 <p>The remainder of this section discusses the mechanisms for
-inheriting from  basic object types. See <code><a href="StructureClasses.html">matrix</a></code>
-or <code><a href="StructureClasses.html">array</a></code>
+inheriting from  basic object types. See <code><a href="../../methods/help/matrix-class.html">matrix</a></code>
+or <code><a href="../../methods/help/array-class.html">array</a></code>
 for inhering from the matrix and array
 pseudo-classes, or from time-series.  For the
 corresponding details for inheritance
-from S3 classes, see <code><a href="setOldClass.html">setOldClass</a></code>.
+from S3 classes, see <code><a href="../../methods/help/setOldClass.html">setOldClass</a></code>.
 </p>
 <p>An object from a class that directly and simply contains one
 of the basic object types in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, has implicitly a corresponding
@@ -283,8 +284,8 @@ slot determines the type of the object (that is, the value of
 <code><a href="../../base/html/typeof.html">typeof</a>(x)</code>).
 For such classes,  <code>.Data</code> is a pseudo-slot; that
 is, extracting or setting it modifies the non-slot data in the
-object.  The functions <code><a href="RClassUtils.html">getDataPart</a></code> and
-<code><a href="RClassUtils.html">setDataPart</a></code> are a cleaner, but essentially
+object.  The functions <code><a href="../../methods/help/getDataPart.html">getDataPart</a></code> and
+<code><a href="../../methods/help/setDataPart.html">setDataPart</a></code> are a cleaner, but essentially
 equivalent way to deal with the data part.
 </p>
 <p>Extending a basic type this way allows objects to
@@ -303,7 +304,7 @@ will not need to take account of the mechanism, but one
 implication is that you should <em>not</em> explicitly use the
 type of an S4 object to detect inheritance from an arbitrary
 object type.  Use
-<code><a href="is.html">is</a></code> and similar functions instead.
+<code><a href="../../methods/help/is.html">is</a></code> and similar functions instead.
 </p>
 
 
@@ -318,13 +319,13 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="Methods_Details.html">Methods_Details</a></code> for analogous discussion of methods,
-<code><a href="setClass.html">setClass</a></code> for details of specifying class definitions,
-<code><a href="is.html">is</a></code>,
-<code><a href="as.html">as</a></code>,
-<code><a href="new.html">new</a></code>,
-<code><a href="slot.html">slot</a></code>
+<p><code><a href="../../methods/help/Methods_Details.html">Methods_Details</a></code> for analogous discussion of methods,
+<code><a href="../../methods/help/setClass.html">setClass</a></code> for details of specifying class definitions,
+<code><a href="../../methods/help/is.html">is</a></code>,
+<code><a href="../../methods/help/as.html">as</a></code>,
+<code><a href="../../methods/help/new.html">new</a></code>,
+<code><a href="../../methods/help/slot.html">slot</a></code>
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

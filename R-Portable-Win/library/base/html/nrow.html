@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Number of Rows/Columns of an Array</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for nrow {base}"><tr><td>nrow {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -13,7 +14,7 @@
 present in <code>x</code>.
 <code>NCOL</code> and <code>NROW</code> do the same treating a vector as
 1-column matrix, even a 0-length vector, compatibly with
-<code><a href="matrix.html">as.matrix</a>()</code> or <code><a href="cbind.html">cbind</a>()</code>, see the example.
+<code><a href="../../base/help/as.matrix.html">as.matrix</a>()</code> or <code><a href="../../base/help/cbind.html">cbind</a>()</code>, see the example.
 </p>
 
 
@@ -32,14 +33,14 @@ NROW(x)
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>a vector, array, data frame, or <code><a href="NULL.html">NULL</a></code>.</p>
+<p>a vector, array, data frame, or <code><a href="../../base/help/NULL.html">NULL</a></code>.</p>
 </td></tr>
 </table>
 
 
 <h3>Value</h3>
 
-<p>an <code><a href="integer.html">integer</a></code> of length 1 or <code><a href="NULL.html">NULL</a></code>, the
+<p>an <code><a href="../../base/help/integer.html">integer</a></code> of length 1 or <code><a href="../../base/help/NULL.html">NULL</a></code>, the
 latter only for <code>ncol</code> and <code>nrow</code>.</p>
 
 
@@ -53,8 +54,11 @@ Wadsworth &amp; Brooks/Cole (<code>ncol</code> and <code>nrow</code>.)
 
 <h3>See Also</h3>
 
-<p><code><a href="dim.html">dim</a></code> which returns <em>all</em> dimensions;
-<code><a href="array.html">array</a></code>, <code><a href="matrix.html">matrix</a></code>.
+<p><code><a href="../../base/help/dim.html">dim</a></code> which returns <em>all</em> dimensions, and
+<code><a href="../../base/help/length.html">length</a></code> which gives a number (a &lsquo;count&rsquo;) also in cases where
+<code>dim()</code> is <code>NULL</code>, and hence <code>nrow()</code> and <code>ncol()</code>
+return <code>NULL</code>;
+<code><a href="../../base/help/array.html">array</a></code>, <code><a href="../../base/help/matrix.html">matrix</a></code>.
 </p>
 
 
@@ -67,7 +71,7 @@ ncol(ma)   # 4
 
 ncol(array(1:24, dim = 2:4)) # 3, the second dimension
 NCOL(1:12) # 1
-NROW(1:12) # 12
+NROW(1:12) # 12, the length() of the vector
 
 ## as.matrix() produces 1-column matrices from 0-length vectors,
 ## and so does cbind() :
@@ -78,5 +82,5 @@ NCOL(numeric()) # 1 and hence
 NCOL(NULL)      # 1
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

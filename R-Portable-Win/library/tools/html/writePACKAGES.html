@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate PACKAGES Files</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for write_PACKAGES {tools}"><tr><td>write_PACKAGES {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -20,7 +21,8 @@ files for a repository of source or Mac/Windows binary packages.
 write_PACKAGES(dir = ".", fields = NULL,
                type = c("source", "mac.binary", "win.binary"),
                verbose = FALSE, unpacked = FALSE, subdirs = FALSE,
-               latestOnly = TRUE, addFiles = FALSE, rds_compress = "xz")
+               latestOnly = TRUE, addFiles = FALSE, rds_compress = "xz",
+               validate = FALSE)
 </pre>
 
 
@@ -95,6 +97,12 @@ available should only the latest version be included?</p>
 &lsquo;<span class="file">PACKAGES.rds</span>&rsquo;: see <code><a href="../../base/html/readRDS.html">saveRDS</a></code>.  The default is the
 one found to give maximal compression, and is as used on <acronym><span class="acronym">CRAN</span></acronym>.</p>
 </td></tr>
+<tr valign="top"><td><code>validate</code></td>
+<td>
+<p>a logical indicating whether &lsquo;<span class="file">DESCRIPTION</span>&rsquo; files
+should be validated, and the corresponding packages skipped in case
+this finds problems.</p>
+</td></tr>
 </table>
 
 
@@ -164,7 +172,7 @@ work on all OSes.
 
 <p>See <code><a href="../../base/html/dcf.html">read.dcf</a></code> and <code><a href="../../base/html/dcf.html">write.dcf</a></code> for reading
 &lsquo;<span class="file">DESCRIPTION</span>&rsquo; files and writing the &lsquo;<span class="file">PACKAGES</span>&rsquo; and
-&lsquo;<span class="file">PACKAGES.gz</span>&rsquo; files. See <code><a href="updatePACKAGES.html">update_PACKAGES</a></code> for
+&lsquo;<span class="file">PACKAGES.gz</span>&rsquo; files. See <code><a href="../../tools/help/update_PACKAGES.html">update_PACKAGES</a></code> for
 efficiently updating existing &lsquo;<span class="file">PACKAGES</span>&rsquo; and &lsquo;<span class="file">PACKAGES.gz</span>&rsquo;
 files.
 </p>
@@ -180,5 +188,5 @@ write_PACKAGES("/pub/RWin/bin/windows/contrib/2.9",
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

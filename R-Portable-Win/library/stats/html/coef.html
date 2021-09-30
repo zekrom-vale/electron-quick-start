@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract Model Coefficients</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for coef {stats}"><tr><td>coef {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -41,9 +42,9 @@ meaningful.</p>
 <code>aov</code> methods:
 logical indicating if the full coefficient vector should be returned
 also in case of an over-determined system where some coefficients
-will be set to <code><a href="../../base/html/NA.html">NA</a></code>, see also <code><a href="alias.html">alias</a></code>.  Note
-that the default <em>differs</em> for <code><a href="lm.html">lm</a>()</code> and
-<code><a href="aov.html">aov</a>()</code> results.</p>
+will be set to <code><a href="../../base/html/NA.html">NA</a></code>, see also <code><a href="../../stats/help/alias.html">alias</a></code>.  Note
+that the default <em>differs</em> for <code><a href="../../stats/help/lm.html">lm</a>()</code> and
+<code><a href="../../stats/help/aov.html">aov</a>()</code> results.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -59,10 +60,10 @@ should provide a <code>coef</code> method or use the default one.
 (Note that the method is for <code>coef</code> and not <code>coefficients</code>.)
 </p>
 <p>The <code>"aov"</code> method does not report aliased coefficients (see
-<code><a href="alias.html">alias</a></code>) by default where <code>complete = FALSE</code>.
+<code><a href="../../stats/help/alias.html">alias</a></code>) by default where <code>complete = FALSE</code>.
 </p>
 <p>The <code>complete</code> argument also exists for compatibility with
-<code><a href="vcov.html">vcov</a></code> methods, and <code>coef</code> and <code>aov</code> methods for
+<code><a href="../../stats/help/vcov.html">vcov</a></code> methods, and <code>coef</code> and <code>aov</code> methods for
 other classes should typically also keep the <code>complete = *</code>
 behavior in sync.  By that, with <code>p &lt;- length(coef(obj, complete = TF))</code>,
 <code>dim(vcov(obj, complete = TF)) == c(p,p)</code> will be fulfilled for both
@@ -75,7 +76,7 @@ behavior in sync.  By that, with <code>p &lt;- length(coef(obj, complete = TF))<
 <p>Coefficients extracted from the model object <code>object</code>.
 </p>
 <p>For standard model fitting classes this will be a named numeric vector.
-For <code>"maov"</code> objects (produced by <code><a href="aov.html">aov</a></code>) it will be a matrix.
+For <code>"maov"</code> objects (produced by <code><a href="../../stats/help/aov.html">aov</a></code>) it will be a matrix.
 </p>
 
 
@@ -89,8 +90,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="fitted.values.html">fitted.values</a></code> and <code><a href="residuals.html">residuals</a></code> for related methods;
-<code><a href="glm.html">glm</a></code>, <code><a href="lm.html">lm</a></code> for model fitting.
+<p><code><a href="../../stats/help/fitted.values.html">fitted.values</a></code> and <code><a href="../../stats/help/residuals.html">residuals</a></code> for related methods;
+<code><a href="../../stats/help/glm.html">glm</a></code>, <code><a href="../../stats/help/lm.html">lm</a></code> for model fitting.
 </p>
 
 
@@ -100,5 +101,5 @@ Wadsworth &amp; Brooks/Cole.
 x &lt;- 1:5; coef(lm(c(1:3, 7, 6) ~ x))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

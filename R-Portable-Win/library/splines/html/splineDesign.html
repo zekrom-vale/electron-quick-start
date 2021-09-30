@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Design Matrix for B-splines</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for splineDesign {splines}"><tr><td>splineDesign {splines}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -61,7 +62,7 @@ outside the <em>inner</em> knots, see the <code>x</code> argument.</p>
 <tr valign="top"><td><code>sparse</code></td>
 <td>
 <p>logical indicating if the result should inherit from class
-<code>"<a href="../../Matrix/html/sparseMatrix-class.html">sparseMatrix</a>"</code> (from package <a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a>).</p>
+<code>"<a href="../../Matrix/help/sparseMatrix-class.html">sparseMatrix</a>"</code> (from package <a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a>).</p>
 </td></tr>
 </table>
 
@@ -98,7 +99,7 @@ function.
 <pre>
 require(graphics)
 splineDesign(knots = 1:10, x = 4:7)
-splineDesign(knots = 1:10, x = 4:7, deriv = 1)
+splineDesign(knots = 1:10, x = 4:7, derivs = 1)
 ## visualize band structure
 Matrix::drop0(zapsmall(6*splineDesign(knots = 1:40, x = 4:37, sparse = TRUE)))
 
@@ -115,5 +116,5 @@ lines(x, rowSums(bb), col = "gray", lwd = 2)
 matlines(x, bb, ylim = c(0,1), lty = 1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>splines</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>splines</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

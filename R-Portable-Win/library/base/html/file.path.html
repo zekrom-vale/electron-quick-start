@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Construct Path to File</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for file.path {base}"><tr><td>file.path {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,11 +27,11 @@ file.path(..., fsep = .Platform$file.sep)
 <table summary="R argblock">
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>character vectors.</p>
+<p>character vectors.  <a href="../../base/help/Long+20vectors.html">Long vectors</a> are not supported.</p>
 </td></tr>
 <tr valign="top"><td><code>fsep</code></td>
 <td>
-<p>the path separator to use.</p>
+<p>the path separator to use (assumed to be ASCII).</p>
 </td></tr>
 </table>
 
@@ -38,14 +39,14 @@ file.path(..., fsep = .Platform$file.sep)
 <h3>Details</h3>
 
 <p>The implementation is designed to be fast (faster than
-<code><a href="paste.html">paste</a></code>) as this function is used extensively in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> itself.
+<code><a href="../../base/help/paste.html">paste</a></code>) as this function is used extensively in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> itself.
 </p>
 <p>It can also be used for environment paths such as <span class="env">PATH</span> and
 <span class="env">R_LIBS</span> with <code>fsep = .Platform$path.sep</code>.
 </p>
 <p>Trailing path separators are invalid for Windows file paths apart from
 &lsquo;<span class="file">/</span>&rsquo; and &lsquo;<span class="file">d:/</span>&rsquo; (although some functions/utilities do accept
-them), so a trailing <code>/</code> or <code>\</code> is removed.
+them), so a trailing <code>/</code> or <code>\</code> is removed there.
 </p>
 
 
@@ -53,7 +54,12 @@ them), so a trailing <code>/</code> or <code>\</code> is removed.
 
 <p>A character vector of the arguments concatenated term-by-term and
 separated by <code>fsep</code> if all arguments have positive length;
-otherwise, an empty character vector (unlike <code><a href="paste.html">paste</a></code>).
+otherwise, an empty character vector (unlike <code><a href="../../base/help/paste.html">paste</a></code>).
+</p>
+<p>An element of the result will be marked (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>) as
+UTF-8 if run in a UTF-8 locale (when marked inputs are converted to
+UTF-8) or if a component of the result is marked as UTF-8, or as
+Latin-1 in a non-Latin-1 locale.
 </p>
 
 
@@ -63,5 +69,11 @@ otherwise, an empty character vector (unlike <code><a href="paste.html">paste</a
 (not <code>\</code>) on Windows.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+
+<h3>See Also</h3>
+
+<p><code><a href="../../base/help/basename.html">basename</a></code>, <code><a href="../../base/help/normalizePath.html">normalizePath</a></code>, <code><a href="../../base/help/path.expand.html">path.expand</a></code>.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

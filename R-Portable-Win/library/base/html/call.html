@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Function Calls</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for call {base}"><tr><td>call {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Create or test for objects of <code><a href="mode.html">mode</a></code> <code>"call"</code> (or
+<p>Create or test for objects of <code><a href="../../base/help/mode.html">mode</a></code> <code>"call"</code> (or
 <code>"("</code>, see Details).
 </p>
 
@@ -47,7 +48,7 @@ as.call(x)
 <dl>
 <dt><code>call</code> </dt><dd><p>returns an unevaluated function call, that is, an
 unevaluated expression which consists of the named function applied to
-the given arguments (<code>name</code> must be a quoted string which gives
+the given arguments (<code>name</code> must be a string which gives
 the name of a function to be called).  Note that although the call is
 unevaluated, the arguments <code>...</code> are evaluated.
 </p>
@@ -66,8 +67,8 @@ of mode <code>"call"</code> or <code>"("</code>).  Note that
 <code>typeof(x) == "language"</code>.
 </p>
 </li>
-<li><p><code><a href="is.language.html">is.language</a>()</code> is also true for calls (but also
-for <code><a href="../../grDevices/html/plotmath.html">symbol</a></code>s and <code><a href="expression.html">expression</a></code>s where
+<li><p><code><a href="../../base/help/is.language.html">is.language</a>()</code> is also true for calls (but also
+for <code><a href="../../grDevices/html/plotmath.html">symbol</a></code>s and <code><a href="../../base/help/expression.html">expression</a></code>s where
 <code>is.call()</code> is false).
 </p>
 </li></ul>
@@ -75,20 +76,22 @@ for <code><a href="../../grDevices/html/plotmath.html">symbol</a></code>s and <c
 </dd>
 <dt><code>as.call(x)</code>: </dt><dd><p>Objects of mode <code>"list"</code> can be coerced to mode <code>"call"</code>.
 The first element of the list becomes the function part of the call,
-so should be a function or the name of one (as a symbol; a quoted
-string will not do).
+so should be a function or the name of one (as a symbol; a character string will not do).
 </p>
 <p>If you think of using <code>as.call(&lt;string&gt;)</code>, consider using
-<code><a href="parse.html">str2lang</a>(*)</code> which is an efficient version of
-<code><a href="parse.html">parse</a>(text=*)</code>.
-Note that <code><a href="call.html">call</a>()</code> and <code><a href="call.html">as.call</a>()</code>, when
-applicable, are much preferable to these <code><a href="parse.html">parse</a>()</code> based
+<code><a href="../../base/help/str2lang.html">str2lang</a>(*)</code> which is an efficient version of
+<code><a href="../../base/help/parse.html">parse</a>(text=*)</code>.
+Note that <code><a href="../../base/help/call.html">call</a>()</code> and <code><a href="../../base/help/as.call.html">as.call</a>()</code>, when
+applicable, are much preferable to these <code><a href="../../base/help/parse.html">parse</a>()</code> based
 approaches.
 </p>
 </dd>
 </dl>
 
-<p>All three are <a href="Primitive.html">primitive</a> functions.
+<p>All three are <a href="../../base/help/primitive.html">primitive</a> functions.
+</p>
+<p><code>as.call</code> is generic: you can write methods to handle specific
+classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.
 </p>
 
 
@@ -109,16 +112,16 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="do.call.html">do.call</a></code> for calling a function by name and argument
+<p><code><a href="../../base/help/do.call.html">do.call</a></code> for calling a function by name and argument
 list;
-<code><a href="Recall.html">Recall</a></code> for recursive calling of functions;
+<code><a href="../../base/help/Recall.html">Recall</a></code> for recursive calling of functions;
 further
-<code><a href="is.language.html">is.language</a></code>,
-<code><a href="expression.html">expression</a></code>,
-<code><a href="function.html">function</a></code>.
+<code><a href="../../base/help/is.language.html">is.language</a></code>,
+<code><a href="../../base/help/expression.html">expression</a></code>,
+<code><a href="../../base/help/function.html">function</a></code>.
 </p>
-<p>Producing <code><a href="call.html">call</a></code>s etc from character: <code><a href="parse.html">str2lang</a></code> and
-<code><a href="parse.html">parse</a></code>.
+<p>Producing <code><a href="../../base/help/call.html">call</a></code>s etc from character: <code><a href="../../base/help/str2lang.html">str2lang</a></code> and
+<code><a href="../../base/help/parse.html">parse</a></code>.
 </p>
 
 
@@ -158,5 +161,5 @@ eval(g)
 ## see also the examples in the help for do.call
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

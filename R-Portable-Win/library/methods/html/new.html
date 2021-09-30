@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate an Object from a Class</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for new {methods}"><tr><td>new {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -19,7 +20,7 @@ values for the corresponding slots and unnamed arguments must be
 objects from superclasses of this class.
 </p>
 <p>A call to a generating function for a class (see
-<code><a href="setClass.html">setClass</a></code>) will pass its ... arguments to a corresponding call to <code>new()</code>.
+<code><a href="../../methods/help/setClass.html">setClass</a></code>) will pass its ... arguments to a corresponding call to <code>new()</code>.
 </p>
 
 
@@ -78,21 +79,21 @@ their second argument (see the examples).  Initialize methods are
 often written when the natural parameters describing the new object
 are not the names of the slots.  If you do define such a method,
 you should include  <code>...</code> as a formal argument, and your method should pass such
-arguments along via <code><a href="NextMethod.html">callNextMethod</a></code>. 
+arguments along via <code><a href="../../methods/help/callNextMethod.html">callNextMethod</a></code>. 
 This helps the definition of future subclasses of your class.  If these
 have additional slots and your method
 does <em>not</em> have this argument, it will be difficult for these
 slots to be included in an initializing call.
 </p>
 <p>See
-<code><a href="initialize-methods.html">initialize-methods</a></code> for a discussion of some classes with existing
+<code><a href="../../methods/help/initialize-methods.html">initialize-methods</a></code> for a discussion of some classes with existing
 methods. 
 </p>
 <p>Methods for <code>initialize</code> can be inherited only by simple
 inheritance, since it is a requirement that the method return an
 object from the target class.  See the
-<code>simpleInheritanceOnly</code> argument to <code><a href="setGeneric.html">setGeneric</a></code> and
-the discussion in <code><a href="setIs.html">setIs</a></code> for the general concept.
+<code>simpleInheritanceOnly</code> argument to <code><a href="../../methods/help/setGeneric.html">setGeneric</a></code> and
+the discussion in <code><a href="../../methods/help/setIs.html">setIs</a></code> for the general concept.
 </p>
 <p>Note that the basic vector classes, <code>"numeric"</code>, etc. are
 implicitly defined, so one can use <code>new</code> for these classes.
@@ -112,8 +113,8 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
- <p><a href="Classes_Details.html">Classes_Details</a> for details of class definitions, and
-<code><a href="setOldClass.html">setOldClass</a></code> for the relation to S3 classes. </p>
+ <p><a href="../../methods/help/Classes_Details.html">Classes_Details</a> for details of class definitions, and
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> for the relation to S3 classes. </p>
 
 
 <h3>Examples</h3>
@@ -158,5 +159,5 @@ setMethod("initialize", "track",
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

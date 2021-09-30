@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a Generic Version of a Function</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for setGeneric {methods}"><tr><td>setGeneric {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>Create a generic version of the named function so that methods may
-be defined for it.  A call to <code><a href="setMethod.html">setMethod</a></code> will call
+be defined for it.  A call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code> will call
 <code>setGeneric</code> automatically if applied to a non-generic
 function.
 </p>
@@ -66,8 +67,8 @@ another package.</em>
 <td>
 <p> The name of the group
 generic function to which this function belongs.  See
-<a href="Methods_Details.html">Methods_Details</a> for details of group generic functions in method
-selection and <a href="S4groupGeneric.html">S4groupGeneric</a> for existing groups.
+<a href="../../methods/help/Methods_Details.html">Methods_Details</a> for details of group generic functions in method
+selection and <a href="../../methods/help/S4groupGeneric.html">S4groupGeneric</a> for existing groups.
 </p>
 </td></tr>
 <tr valign="top"><td><code>valueClass</code></td>
@@ -83,7 +84,7 @@ an error is generated.
 
 <p>The vector of names from among the formal arguments to
 the function, that will be allowed in the signature of methods for this
-function, in calls to <code><a href="setMethod.html">setMethod</a></code>.  By default and
+function, in calls to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>.  By default and
 usually, this will be all formal arguments except <code>...</code>.
 </p>
 <p>A non-standard signature for the generic function may be
@@ -96,7 +97,7 @@ it is possible to have this as the <em>only</em> element of the
 signature.
 Methods will then be selected if their signature matches
 all the <code>...</code> arguments.  See the documentation for topic
-<a href="dotsMethods.html">dotsMethods</a> for details.  It is not
+<a href="../../methods/help/dotsMethods.html">dotsMethods</a> for details.  It is not
 possible to mix <code>...</code> and other arguments in the signature.
 </p>
 <p>It's usually a mistake to omit arguments from the signature in the
@@ -112,13 +113,13 @@ function with that combination of classes.
 <p>Supply this argument as <code>TRUE</code> to require that methods selected
 be inherited through simple inheritance only; that is, from
 superclasses specified in the <code>contains=</code> argument to
-<code><a href="setClass.html">setClass</a></code>, or by simple inheritance to a class union or
+<code><a href="../../methods/help/setClass.html">setClass</a></code>, or by simple inheritance to a class union or
 other virtual class.  Generic functions should require simple
 inheritance if they need to be assured that they get the complete
 original object, not one that has been transformed.  Examples of
-functions requiring simple inheritance are <code><a href="new.html">initialize</a></code>,
+functions requiring simple inheritance are <code><a href="../../methods/help/initialize.html">initialize</a></code>,
 because by definition it must return an object from the same class
-as its argument, and <code><a href="show.html">show</a></code>, because it claims to give a
+as its argument, and <code><a href="../../methods/help/show.html">show</a></code>, because it claims to give a
 full description of the object provided as its argument.
 </p>
 </td></tr>
@@ -193,7 +194,7 @@ Functions that dispatch S3 methods by calling
 <code><a href="../../base/html/UseMethod.html">UseMethod</a></code> are ordinary functions, not objects from the
 <code>"genericFunction"</code> class.  They are made generic like any
 other function, but some special considerations apply to ensure that
-S4 and S3 method dispatch is consistent (see <a href="Methods_for_S3.html">Methods_for_S3</a>).
+S4 and S3 method dispatch is consistent (see <a href="../../methods/help/Methods_for_S3.html">Methods_for_S3</a>).
 </p>
 <p>Primitive functions are handled in C code and don't exist as normal
 functions.
@@ -258,7 +259,7 @@ package slot set to the <em>current</em> package, not the one in which
 the non-generic version of the function is found.
 </p>
 <p>There is a mechanism to define a specialized generic version of a
-non-generic function, the <code><a href="implicitGeneric.html">implicitGeneric</a></code>
+non-generic function, the <code><a href="../../methods/help/implicitGeneric.html">implicitGeneric</a></code>
 construction.
 This defines the generic version, but then reverts the function to
 it non-generic form, saving the implicit generic in a table to be
@@ -268,7 +269,7 @@ in the same package or by the <code>"methods"</code> package itself.
 And in the first case, there is no compelling reason not to simply
 make the function generic, with the non-generic as the default
 method.
-See <code><a href="implicitGeneric.html">implicitGeneric</a></code> for details.
+See <code><a href="../../methods/help/implicitGeneric.html">implicitGeneric</a></code> for details.
 </p>
 <p>The body of a generic function usually does nothing except for
 dispatching methods by a call to <code>standardGeneric</code>.  Under some
@@ -301,9 +302,9 @@ the default case is not defined.
 <p>A new generic function can be created belonging to an existing group
 by including the <code>group</code> argument.  The argument list of the
 new generic must agree with that of the group. See
-<code><a href="setGroupGeneric.html">setGroupGeneric</a></code> for defining a new group generic.
+<code><a href="../../methods/help/setGroupGeneric.html">setGroupGeneric</a></code> for defining a new group generic.
 For the role of group generics in
-dispatching methods, see <a href="S4groupGeneric.html">GroupGenericFunctions</a> and section
+dispatching methods, see <a href="../../methods/help/GroupGenericFunctions.html">GroupGenericFunctions</a> and section
 10.5 of the second reference.
 </p>
 
@@ -313,7 +314,7 @@ dispatching methods, see <a href="S4groupGeneric.html">GroupGenericFunctions</a>
 <p>A number of the basic <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> functions are specially implemented as
 primitive functions, to be evaluated directly in the underlying C code
 rather than by evaluating an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> language definition.  Most have
-implicit generics (see <code><a href="implicitGeneric.html">implicitGeneric</a></code>), and become
+implicit generics (see <code><a href="../../methods/help/implicitGeneric.html">implicitGeneric</a></code>), and become
 generic as soon as methods (including group methods) are defined on
 them.  Others cannot be made generic.
 </p>
@@ -335,8 +336,8 @@ packages should not be allowed to change the behavior of basic R
 computations on existing data types.
 </p>
 <p>To see the generic version of a primitive function, use
-<code><a href="RMethodUtils.html">getGeneric</a>(name)</code>.  The function
-<code><a href="GenericFunctions.html">isGeneric</a></code> will tell you whether methods are defined
+<code><a href="../../methods/help/getGeneric.html">getGeneric</a>(name)</code>.  The function
+<code><a href="../../methods/help/isGeneric.html">isGeneric</a></code> will tell you whether methods are defined
 for the function in the current session.
 </p>
 <p>Note that S4 methods can only be set on those primitives which are
@@ -359,9 +360,9 @@ Springer. (Section 10.5 for some details.)
 
 <h3>See Also</h3>
 
-<p><code><a href="Methods_Details.html">Methods_Details</a></code> and the links there for a general discussion,
-<code><a href="dotsMethods.html">dotsMethods</a></code> for methods that dispatch on
-<code>...</code>, and <code><a href="setMethod.html">setMethod</a></code> for method definitions.
+<p><code><a href="../../methods/help/Methods_Details.html">Methods_Details</a></code> and the links there for a general discussion,
+<code><a href="../../methods/help/dotsMethods.html">dotsMethods</a></code> for methods that dispatch on
+<code>...</code>, and <code><a href="../../methods/help/setMethod.html">setMethod</a></code> for method definitions.
 </p>
 
 
@@ -400,5 +401,5 @@ setGeneric("asRObject", function(object, evaluator) {
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

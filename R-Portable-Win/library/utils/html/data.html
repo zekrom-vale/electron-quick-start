@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Data Sets</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for data {utils}"><tr><td>data {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -85,13 +86,13 @@ case it had been run <em>via</em> <code>utils::data</code>.)
 </p>
 </li>
 <li><p> files ending &lsquo;<span class="file">.tab</span>&rsquo;, &lsquo;<span class="file">.txt</span>&rsquo; or &lsquo;<span class="file">.TXT</span>&rsquo; are read
-using <code><a href="read.table.html">read.table</a>(..., header = TRUE, as.is=FALSE)</code>,
+using <code><a href="../../utils/help/read.table.html">read.table</a>(..., header = TRUE, as.is=FALSE)</code>,
 and hence
 result in a data frame.
 </p>
 </li>
 <li><p> files ending &lsquo;<span class="file">.csv</span>&rsquo; or &lsquo;<span class="file">.CSV</span>&rsquo; are read using
-<code><a href="read.table.html">read.table</a>(..., header = TRUE, sep = ";", as.is=FALSE)</code>,
+<code><a href="../../utils/help/read.table.html">read.table</a>(..., header = TRUE, sep = ";", as.is=FALSE)</code>,
 and also result in a data frame.
 </p>
 </li></ol>
@@ -217,16 +218,22 @@ for the session.
 <p>One can take advantage of the search order and the fact that a
 &lsquo;<span class="file">.R</span>&rsquo; file will change directory.  If raw data are stored in
 &lsquo;<span class="file">mydata.txt</span>&rsquo; then one can set up &lsquo;<span class="file">mydata.R</span>&rsquo; to read
-&lsquo;<span class="file">mydata.txt</span>&rsquo; and pre-process it, e.g., using <code>transform</code>.
+&lsquo;<span class="file">mydata.txt</span>&rsquo; and pre-process it, e.g., using <code><a href="../../base/html/transform.html">transform</a>()</code>.
 For instance one can convert numeric vectors to factors with the
 appropriate labels.  Thus, the &lsquo;<span class="file">.R</span>&rsquo; file can effectively contain
 a metadata specification for the plaintext formats.
+</p>
+<p>In older versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, up to 3.6.x, both <code>package = "base"</code> and
+<code>package = "stats"</code> were using <code>package = "datasets"</code>, (with a
+warning), as before 2004, (most of) the datasets in <span class="pkg">datasets</span> were
+either in <span class="pkg">base</span> or <span class="pkg">stats</span>.  For these packages, the result
+is now empty as they contain no data sets.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="help.html">help</a></code> for obtaining documentation on data sets,
+<p><code><a href="../../utils/help/help.html">help</a></code> for obtaining documentation on data sets,
 <code><a href="../../base/html/save.html">save</a></code> for <em>creating</em> the second (&lsquo;<span class="file">.rda</span>&rsquo;) kind
 of data, typically the most efficient one.
 </p>
@@ -240,7 +247,7 @@ of data, typically the most efficient one.
 <pre>
 require(utils)
 data()                         # list all available data sets
-try(data(package = "rpart") )  # list the data sets in the rpart package
+try(data(package = "rpart"), silent = TRUE) # list the data sets in the rpart package
 data(USArrests, "VADeaths")    # load the data sets 'USArrests' and 'VADeaths'
 ## Not run: ## Alternatively
 ds &lt;- c("USArrests", "VADeaths"); data(list = ds)
@@ -248,5 +255,5 @@ ds &lt;- c("USArrests", "VADeaths"); data(list = ds)
 help(USArrests)                # give information on data set 'USArrests'
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

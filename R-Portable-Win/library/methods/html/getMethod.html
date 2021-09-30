@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get or Test for the Definition of a Method</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for getMethod {methods}"><tr><td>getMethod {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -103,7 +104,7 @@ in matching arguments in function calls (see
 <code><a href="../../base/html/match.call.html">match.call</a></code>).
 </p>
 <p>The strings in the signature may be class names, <code>"missing"</code> or
-<code>"ANY"</code>.  See <a href="Methods_Details.html">Methods_Details</a> for the meaning of these in method
+<code>"ANY"</code>.  See <a href="../../methods/help/Methods_Details.html">Methods_Details</a> for the meaning of these in method
 selection.  Arguments not supplied in the signature implicitly
 correspond to class <code>"ANY"</code>; in particular, giving an empty
 signature means to look for the default method.
@@ -147,7 +148,7 @@ Otherwise an error is thrown if <code>optional</code> is <code>FALSE</code>  and
 <code>optional</code> is <code>TRUE</code>.
 </p>
 <p>The returned method object is a
-<code><a href="MethodDefinition-class.html">MethodDefinition</a></code> object, <em>except</em> that the default method for a primitive function is required to be the primitive itself.
+<code><a href="../../methods/help/MethodDefinition-class.html">MethodDefinition</a></code> object, <em>except</em> that the default method for a primitive function is required to be the primitive itself.
 Note therefore that the only reliable test that the search failed is
 <code>is.null()</code>.
 </p>
@@ -191,9 +192,9 @@ with more arguments.
 
 <h3>Methods for <code>as()</code></h3>
 
-<p>The function <code><a href="setAs.html">setAs</a></code> allows packages to define methods for
+<p>The function <code><a href="../../methods/help/setAs.html">setAs</a></code> allows packages to define methods for
 coercing one class of objects to another class.  This works internally
-by defining methods for the generic function <code><a href="setAs.html">coerce</a>(from,
+by defining methods for the generic function <code><a href="../../methods/help/coerce.html">coerce</a>(from,
 to)</code>,
 which can not be called directly.
 </p>
@@ -223,10 +224,10 @@ Springer. (Section 10.6 for some details of method selection.)
 
 <h3>See Also</h3>
 
-<p><code><a href="Methods_Details.html">Methods_Details</a></code> for the details of method
-selection; <code><a href="GenericFunctions.html">GenericFunctions</a></code> for other functions
+<p><code><a href="../../methods/help/Methods_Details.html">Methods_Details</a></code> for the details of method
+selection; <code><a href="../../methods/help/GenericFunctions.html">GenericFunctions</a></code> for other functions
 manipulating methods and generic function objects;
-<code><a href="MethodDefinition-class.html">MethodDefinition</a></code> for the class that represents
+<code><a href="../../methods/help/MethodDefinition-class.html">MethodDefinition</a></code> for the class that represents
 method definitions.</p>
 
 
@@ -250,5 +251,5 @@ hasMethod("testFun", "ANY")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

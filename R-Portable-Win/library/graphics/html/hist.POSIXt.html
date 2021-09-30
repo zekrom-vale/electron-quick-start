@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Histogram of a Date or Date-Time Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for hist.POSIXt {graphics}"><tr><td>hist.POSIXt {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Method for <code><a href="hist.html">hist</a></code> applied to date or date-time objects.
+<p>Method for <code><a href="../../graphics/help/hist.html">hist</a></code> applied to date or date-time objects.
 </p>
 
 
@@ -18,13 +19,13 @@
 <pre>
 ## S3 method for class 'POSIXt'
 hist(x, breaks, ...,
-     xlab = deparse(substitute(x)),
+     xlab = deparse1(substitute(x)),
      plot = TRUE, freq = FALSE,
      start.on.monday = TRUE, format, right = TRUE)
 
 ## S3 method for class 'Date'
 hist(x, breaks, ...,
-     xlab = deparse(substitute(x)),
+     xlab = deparse1(substitute(x)),
      plot = TRUE, freq = FALSE,
      start.on.monday = TRUE, format, right = TRUE)
 </pre>
@@ -50,8 +51,8 @@ date-time objects.
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p><a href="par.html">graphical parameters</a>, or arguments to
-<code><a href="hist.html">hist.default</a></code> such as <code>include.lowest</code>,
+<p><a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a>, or arguments to
+<code><a href="../../graphics/help/hist.default.html">hist.default</a></code> such as <code>include.lowest</code>,
 <code>right</code> and <code>labels</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>xlab</code></td>
@@ -105,13 +106,13 @@ interval shown in each bar.
 
 <h3>Value</h3>
 
-<p>An object of class <code>"histogram"</code>: see <code><a href="hist.html">hist</a></code>.
+<p>An object of class <code>"histogram"</code>: see <code><a href="../../graphics/help/hist.html">hist</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="../../base/html/seq.POSIXt.html">seq.POSIXt</a></code>, <code><a href="axis.POSIXct.html">axis.POSIXct</a></code>, <code><a href="hist.html">hist</a></code>
+<p><code><a href="../../base/html/seq.POSIXt.html">seq.POSIXt</a></code>, <code><a href="../../graphics/help/axis.POSIXct.html">axis.POSIXct</a></code>, <code><a href="../../graphics/help/hist.html">hist</a></code>
 </p>
 
 
@@ -128,5 +129,5 @@ random.dates &lt;- as.Date("2001/1/1") + 70*stats::runif(100)
 hist(random.dates, "weeks", format = "%d %b")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

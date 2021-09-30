@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Report Versions of Graphics Software</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for grSoftVersion {grDevices}"><tr><td>grSoftVersion {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -30,6 +31,18 @@ grSoftVersion()
 <td>
 <p>the version of cairographics in use, or <code>""</code> if
 cairographics is not available.</p>
+</td></tr>
+<tr valign="top"><td><code>cairoFT</code></td>
+<td>
+<p>the FreeType/FontConfig versions if cairographics is
+using those libraries directly (not <em>via</em> pango); otherwise,
+<code>""</code>.  Earlier versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> returned <code>"yes"</code> rather than
+the versions.  The FontConfig version is determined when <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is built.</p>
+</td></tr>
+<tr valign="top"><td><code>pango</code></td>
+<td>
+<p>the version of pango in use, or <code>""</code> if
+pango is not available.</p>
 </td></tr>
 </table>
 <p>It may also contain the versions of third-party software used by the
@@ -80,5 +93,5 @@ reports its version as <code>"6.2"</code>, the IJG version from which it forked.
 grSoftVersion()
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

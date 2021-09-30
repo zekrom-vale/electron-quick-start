@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Principal Components Analysis</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for princomp {stats}"><tr><td>princomp {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,7 +44,7 @@ numeric variables.</p>
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>an optional data frame (or similar: see
-<code><a href="model.frame.html">model.frame</a></code>) containing the variables in the
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>) containing the variables in the
 formula <code>formula</code>.  By default the variables are taken from
 <code>environment(formula)</code>.</p>
 </td></tr>
@@ -57,8 +58,8 @@ data matrix <code>x</code>.</p>
 <p>a function which indicates what should happen
 when the data contain <code>NA</code>s.  The default is set by
 the <code>na.action</code> setting of <code><a href="../../base/html/options.html">options</a></code>, and is
-<code><a href="na.fail.html">na.fail</a></code> if that is unset. The &lsquo;factory-fresh&rsquo;
-default is <code><a href="na.fail.html">na.omit</a></code>.</p>
+<code><a href="../../stats/help/na.fail.html">na.fail</a></code> if that is unset. The &lsquo;factory-fresh&rsquo;
+default is <code><a href="../../stats/help/na.omit.html">na.omit</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>x</code></td>
 <td>
@@ -79,8 +80,8 @@ principal component should be calculated.</p>
 <tr valign="top"><td><code>covmat</code></td>
 <td>
 <p>a covariance matrix, or a covariance list as returned by
-<code><a href="cov.wt.html">cov.wt</a></code> (and <code><a href="../../MASS/html/cov.rob.html">cov.mve</a></code> or
-<code><a href="../../MASS/html/cov.rob.html">cov.mcd</a></code> from package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>).
+<code><a href="../../stats/help/cov.wt.html">cov.wt</a></code> (and <code><a href="../../MASS/help/cov.rob.html">cov.mve</a></code> or
+<code><a href="../../MASS/help/cov.rob.html">cov.mcd</a></code> from package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>).
 If supplied, this is used rather than the covariance matrix of
 <code>x</code>.</p>
 </td></tr>
@@ -117,7 +118,7 @@ used in the same order.
 <code>"default"</code> methods.
 </p>
 <p>The calculation is done using <code><a href="../../base/html/eigen.html">eigen</a></code> on the correlation or
-covariance matrix, as determined by <code><a href="cor.html">cor</a></code>.  This is done for
+covariance matrix, as determined by <code><a href="../../stats/help/cor.html">cor</a></code>.  This is done for
 compatibility with the S-PLUS result.  A preferred method of
 calculation is to use <code><a href="../../base/html/svd.html">svd</a></code> on <code>x</code>, as is done in
 <code>prcomp</code>.
@@ -126,17 +127,17 @@ calculation is to use <code><a href="../../base/html/svd.html">svd</a></code> on
 covariance matrix.
 </p>
 <p>The <code><a href="../../base/html/print.html">print</a></code> method for these objects prints the
-results in a nice format and the <code><a href="../../graphics/html/plot.html">plot</a></code> method produces
-a scree plot (<code><a href="screeplot.html">screeplot</a></code>).  There is also a
-<code><a href="biplot.html">biplot</a></code> method.
+results in a nice format and the <code><a href="../../graphics/html/plot.default.html">plot</a></code> method produces
+a scree plot (<code><a href="../../stats/help/screeplot.html">screeplot</a></code>).  There is also a
+<code><a href="../../stats/help/biplot.html">biplot</a></code> method.
 </p>
 <p>If <code>x</code> is a formula then the standard NA-handling is applied to
-the scores (if requested): see <code><a href="nafns.html">napredict</a></code>.
+the scores (if requested): see <code><a href="../../stats/help/napredict.html">napredict</a></code>.
 </p>
 <p><code>princomp</code> only handles so-called R-mode PCA, that is feature
 extraction of variables.  If a data matrix is supplied (possibly via a
 formula) it is required that there are at least as many units as
-variables.  For Q-mode PCA use <code><a href="prcomp.html">prcomp</a></code>.
+variables.  For Q-mode PCA use <code><a href="../../stats/help/prcomp.html">prcomp</a></code>.
 </p>
 
 
@@ -154,7 +155,7 @@ containing the following components:
 <td>
 <p>the matrix of variable loadings (i.e., a matrix
 whose columns contain the eigenvectors).  This is of class
-<code>"loadings"</code>: see <code><a href="loadings.html">loadings</a></code> for its <code>print</code>
+<code>"loadings"</code>: see <code><a href="../../stats/help/loadings.html">loadings</a></code> for its <code>print</code>
 method.</p>
 </td></tr>
 <tr valign="top"><td><code>center</code></td>
@@ -175,7 +176,7 @@ method.</p>
 data on the principal components.  These are non-null only if
 <code>x</code> was supplied, and if <code>covmat</code> was also supplied if it
 was a covariance list.  For the formula method,
-<code><a href="nafns.html">napredict</a>()</code> is applied to handle the treatment of
+<code><a href="../../stats/help/napredict.html">napredict</a>()</code> is applied to handle the treatment of
 values omitted by the <code>na.action</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>call</code></td>
@@ -209,9 +210,9 @@ different builds of <span style="font-family: Courier New, Courier; color: #6666
 
 <h3>See Also</h3>
 
-<p><code><a href="summary.princomp.html">summary.princomp</a></code>, <code><a href="screeplot.html">screeplot</a></code>,
-<code><a href="biplot.princomp.html">biplot.princomp</a></code>,
-<code><a href="prcomp.html">prcomp</a></code>, <code><a href="cor.html">cor</a></code>, <code><a href="cor.html">cov</a></code>,
+<p><code><a href="../../stats/help/summary.princomp.html">summary.princomp</a></code>, <code><a href="../../stats/help/screeplot.html">screeplot</a></code>,
+<code><a href="../../stats/help/biplot.princomp.html">biplot.princomp</a></code>,
+<code><a href="../../stats/help/prcomp.html">prcomp</a></code>, <code><a href="../../stats/help/cor.html">cor</a></code>, <code><a href="../../stats/help/cov.html">cov</a></code>,
 <code><a href="../../base/html/eigen.html">eigen</a></code>.
 </p>
 
@@ -250,5 +251,5 @@ pc.cr$scores[1:5, ]
 (pc.rob &lt;- princomp(stackloss, covmat = MASS::cov.rob(stackloss)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

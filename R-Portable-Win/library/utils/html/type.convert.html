@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert Data to Appropriate Type</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for type.convert {utils}"><tr><td>type.convert {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -19,7 +20,7 @@ or factor as appropriate.
 <pre>
 type.convert(x, ...)
 ## Default S3 method:
-type.convert(x, na.strings = "NA", as.is = FALSE, dec = ".",
+type.convert(x, na.strings = "NA", as.is, dec = ".",
              numerals = c("allow.loss", "warn.loss", "no.loss"), ...)
 ## S3 method for class 'data.frame'
 type.convert(x, ...)
@@ -43,8 +44,8 @@ missing values in logical, integer, numeric or complex vectors.</p>
 </td></tr>
 <tr valign="top"><td><code>as.is</code></td>
 <td>
-<p>whether to convert factors to character vectors. The
-default is to convert character vectors to factors.  See
+<p>whether convert to <code><a href="../../base/html/factor.html">factor</a></code>s.  When false (was
+default before <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.0.0), convert character vectors to factors.  See
 &lsquo;Details&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>dec</code></td>
@@ -85,14 +86,15 @@ behavior of <span style="font-family: Courier New, Courier; color: #666666;"><b>
 
 <h3>Details</h3>
 
-<p>This helper function is used by <code><a href="read.table.html">read.table</a></code>. When the
+<p>This helper function is used by <code><a href="../../utils/help/read.table.html">read.table</a></code>. When the
 data object <code>x</code> is a data frame or list, the function is called
 recursively for each column or list element.
 </p>
 <p>Given a vector, the function attempts to convert it to logical,
-integer, numeric or complex, and failing that converts a character
-vector to factor unless <code>as.is = TRUE</code>.  The first type that can
-accept all the non-missing values is chosen.
+integer, numeric or complex, and when additionally <code>as.is = FALSE</code>
+(no longer the default!), converts a character vector to
+<code><a href="../../base/html/factor.html">factor</a></code>.  The first type that can accept all the non-missing
+values is chosen.
 </p>
 <p>Vectors which are entirely missing values are converted to logical,
 since <code>NA</code> is primarily logical.
@@ -106,8 +108,8 @@ followed by other decimal or hexadecimal constants (see
 <a href="../../base/html/NumericConstants.html">NumericConstants</a>), or <code>NaN</code>, <code>Inf</code> or <code>infinity</code>
 (ignoring case) or values from <code>na.strings</code> are converted to
 numeric.  Where converting inputs to numeric or complex would result
-in loss of accuracy they can optionally be returned as strings (for
-<code>as.is = TRUE</code>) or factors.
+in loss of accuracy they can optionally be returned as strings or (for
+<code>as.is = FALSE</code>) factors.
 </p>
 <p>Since this is a helper function, the caller should always pass an
 appropriate value of <code>as.is</code>.
@@ -128,7 +130,7 @@ appropriate.
 
 <h3>See Also</h3>
 
-<p><code><a href="read.table.html">read.table</a></code>, <code><a href="../../base/html/class.html">class</a></code>,
+<p><code><a href="../../utils/help/read.table.html">read.table</a></code>, <code><a href="../../base/html/class.html">class</a></code>,
 <code><a href="../../base/html/mode.html">storage.mode</a></code>.
 </p>
 
@@ -160,5 +162,5 @@ type.convert(chr, as.is = TRUE) # -&gt; character
 type.convert(fac, as.is = TRUE) # -&gt; character
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

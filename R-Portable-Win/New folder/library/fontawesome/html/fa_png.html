@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a PNG version of a Font Awesome icon</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fa_png {fontawesome}"><tr><td>fa_png {fontawesome}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a PNG version of a Font Awesome icon</h2>
+
+<h3>Description</h3>
+
+<p>Get a Font Awesome icon as a PNG file. We can optionally set the fill
+attribute before writing the PNG. Additionally, there is control over the
+output width and height (usually, icons are 512 by 512 pixels). Please note
+that this function requires that the <strong>rsvg</strong> is installed on the system.
+Attempting to use <code>fa_png()</code> without <strong>rsvg</strong> available will result in an
+error message.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fa_png(
+  name,
+  file = NULL,
+  fill = NULL,
+  fill_opacity = NULL,
+  stroke = NULL,
+  stroke_width = NULL,
+  stroke_opacity = NULL,
+  height = NULL,
+  width = NULL
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>The name of the Font Awesome icon.</p>
+</td></tr>
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p>the path to the output file. If <code>NULL</code>, then filename will take
+the short name of the icon and a <code>.png</code> extension will be applied.</p>
+</td></tr>
+<tr valign="top"><td><code>fill, fill_opacity</code></td>
+<td>
+<p>The fill color of the icon can be set with <code>fill</code>.
+If not provided then the default fill color will be black. The opacity
+level of the fill color can be controlled with a decimal value between <code>0</code>
+and <code>1</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>stroke, stroke_width, stroke_opacity</code></td>
+<td>
+<p>The stroke options allow for
+setting the color, width, and opacity of the outline stroke. By default,
+the stroke width is very small at <code>"1px"</code> so a size adjustment with
+<code>"stroke_width"</code> can be useful. The <code>"stroke_opacity"</code> value can be any
+decimal values between <code>0</code> and <code>1</code> (bounds included).</p>
+</td></tr>
+<tr valign="top"><td><code>height, width</code></td>
+<td>
+<p>The output height and width of the rendered PNG. If
+nothing is provided then the output dimensions will match that of the input
+SVG viewBox.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A PNG file written to disk.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+if (interactive()) {
+
+# Create a Font Awesome SVG icon as a
+# PNG file on disk
+fa_png(name = "r-project")
+
+}
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>fontawesome</em> version 0.2.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

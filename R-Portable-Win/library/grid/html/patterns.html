@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Define Gradient and Pattern Fills</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for patterns {grid}"><tr><td>patterns {grid}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2> Define Gradient and Pattern Fills </h2>
+
+<h3>Description</h3>
+
+<p>Functions to define gradient fills and pattern fills.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+linearGradient(colours = c("black", "white"),
+               stops = seq(0, 1, length.out = length(colours)),
+               x1 = unit(0, "npc"), y1 = unit(0, "npc"),  
+               x2 = unit(1, "npc"), y2 = unit(1, "npc"),
+               default.units = "npc",
+               extend = c("pad", "repeat", "reflect", "none")) 
+radialGradient(colours = c("black", "white"),
+               stops = seq(0, 1, length.out = length(colours)),
+               cx1 = unit(.5, "npc"), cy1 = unit(.5, "npc"),
+               r1 = unit(0, "npc"),
+               cx2 = unit(.5, "npc"), cy2 = unit(.5, "npc"),
+               r2 = unit(.5, "npc"),
+               default.units = "npc",
+               extend = c("pad", "repeat", "reflect", "none")) 
+pattern(grob,
+        x = 0.5, y = 0.5, width = 1, height = 1,
+        default.units = "npc",
+        just="centre", hjust=NULL, vjust=NULL,
+        extend = c("pad", "repeat", "reflect", "none"),
+        gp = gpar(fill="transparent")) 
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>colours</code></td>
+<td>
+<p>Two or more colours for the gradient to transition between.</p>
+</td></tr>
+<tr valign="top"><td><code>stops</code></td>
+<td>
+<p>Locations of the gradient colours between the start and end
+points of the gradient (as a proportion of the distance from the
+start point to the end point).</p>
+</td></tr>
+<tr valign="top"><td><code>x1, y1, x2, y2</code></td>
+<td>
+<p>The start and end points for a linear gradient.</p>
+</td></tr>
+<tr valign="top"><td><code>default.units</code></td>
+<td>
+<p>The coordinate system
+to use if any location or dimension is
+specified as just a numeric value.</p>
+</td></tr>
+<tr valign="top"><td><code>extend</code></td>
+<td>
+<p>What happens outside the start and end of the gradient
+(see Details).</p>
+</td></tr>
+<tr valign="top"><td><code>cx1, cy1, r1, cx2, cy2, r2</code></td>
+<td>
+<p>The centre and radius of the start
+and end circles for a radial gradient.</p>
+</td></tr>
+<tr valign="top"><td><code>grob</code></td>
+<td>
+<p>A grob (or a gTree) that will be drawn as the tile in
+a pattern fill.</p>
+</td></tr>
+<tr valign="top"><td><code>x, y, width, height</code></td>
+<td>
+<p>The size of the tile for a pattern fill.</p>
+</td></tr>
+<tr valign="top"><td><code>just, hjust, vjust</code></td>
+<td>
+<p>The justification of the tile relative to
+its location.</p>
+</td></tr>
+<tr valign="top"><td><code>gp</code></td>
+<td>
+<p>Default graphical parameter settings for the tile.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Use these functions to define a gradient fill or pattern fill and
+then use the resulting object as the value for <code>fill</code>
+in a call to the <code>gpar()</code> function.
+</p>
+<p>The possible values of extend, and their meanings, are:
+</p>
+
+<ul>
+<li><p>[<code>pad</code>:] propagate the value of the gradient at its
+boundary.
+</p>
+</li>
+<li><p>[<code>none</code>:] produce no fill beyond the limits of the
+gradient.
+</p>
+</li>
+<li><p>[<code>repeat</code>:] repeat the fill.
+</p>
+</li>
+<li><p>[<code>reflect</code>:] repeat the fill in reverse.
+</p>
+</li></ul>
+
+<p>To create a tiling pattern, provide a simple grob (like a circle),
+specify the location and size of the pattern to include the simple
+grob, and specify <code>extend="repeat"</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A linear gradient or radial gradient or pattern object.
+</p>
+
+
+<h3>Warning</h3>
+
+<p>Gradient fills and pattern fills are not supported on all graphics
+devices.  Where they are not supported, closed shapes will be
+rendered with a transparent fill.  Where they are supported,
+not all values of <code>extend</code> are supported.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Paul Murrell</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../grid/help/gpar.html">gpar</a></code>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>grid</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

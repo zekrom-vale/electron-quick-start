@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Default Printing</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for print.default {base}"><tr><td>print.default {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p><code>print.default</code> is the <em>default</em> method of the generic
-<code><a href="print.html">print</a></code> function which prints its argument.
+<code><a href="../../base/help/print.html">print</a></code> function which prints its argument.
 </p>
 
 
@@ -20,7 +21,7 @@
 ## Default S3 method:
 print(x, digits = NULL, quote = TRUE,
       na.print = NULL, print.gap = NULL, right = FALSE,
-      max = NULL, useSource = TRUE, ...)
+      max = NULL, width = NULL, useSource = TRUE, ...)
 </pre>
 
 
@@ -35,8 +36,8 @@ print(x, digits = NULL, quote = TRUE,
 <td>
 <p>a non-null value for <code>digits</code> specifies the minimum
 number of significant digits to be printed in values.  The default,
-<code>NULL</code>, uses <code><a href="options.html">getOption</a>("digits")</code>.  (For the
-interpretation for complex numbers see <code><a href="Round.html">signif</a></code>.)
+<code>NULL</code>, uses <code><a href="../../base/help/getOption.html">getOption</a>("digits")</code>.  (For the
+interpretation for complex numbers see <code><a href="../../base/help/signif.html">signif</a></code>.)
 Non-integer values will be rounded down, and only values
 greater than or equal to 1 and no greater than 22 are accepted.
 </p>
@@ -44,12 +45,12 @@ greater than or equal to 1 and no greater than 22 are accepted.
 <tr valign="top"><td><code>quote</code></td>
 <td>
 <p>logical, indicating whether or not strings
-(<code><a href="character.html">character</a></code>s) should be printed with surrounding quotes.</p>
+(<code><a href="../../base/help/character.html">character</a></code>s) should be printed with surrounding quotes.</p>
 </td></tr>
 <tr valign="top"><td><code>na.print</code></td>
 <td>
 <p>a character string which is used to indicate
-<code><a href="NA.html">NA</a></code> values in printed output, or <code>NULL</code>
+<code><a href="../../base/help/NA.html">NA</a></code> values in printed output, or <code>NULL</code>
 (see &lsquo;Details&rsquo;).</p>
 </td></tr>
 <tr valign="top"><td><code>print.gap</code></td>
@@ -67,13 +68,20 @@ right aligned.  The default is left alignment.</p>
 <td>
 <p>a non-null value for <code>max</code> specifies the approximate
 maximum number of entries to be printed.  The default, <code>NULL</code>,
-uses <code><a href="options.html">getOption</a>("max.print")</code>; see that help page for more
+uses <code><a href="../../base/help/getOption.html">getOption</a>("max.print")</code>: see that help page for more
 details.</p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>controls the maximum number of columns on a line used in
+printing vectors, matrices, etc.  The default, <code>NULL</code>, uses
+<code><a href="../../base/help/getOption.html">getOption</a>("width")</code>: see that help page for more
+details including allowed values.</p>
 </td></tr>
 <tr valign="top"><td><code>useSource</code></td>
 <td>
 <p>logical, indicating whether to use source
-references or copies rather than deparsing <a href="is.language.html">language objects</a>.
+references or copies rather than deparsing <a href="../../base/help/language+20objects.html">language objects</a>.
 The default is to use the original source if it is available.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
@@ -104,11 +112,11 @@ included if at least one decimal place is selected.
 </p>
 <p>Option <code>width</code> controls the printing of vectors, matrices and
 arrays, and option <code>deparse.cutoff</code> controls the printing of
-<a href="is.language.html">language objects</a> such as calls and formulae.
+<a href="../../base/help/language+20objects.html">language objects</a> such as calls and formulae.
 </p>
 <p>When the <span class="pkg">methods</span> package is attached, <code>print</code> will call
-<code><a href="../../methods/html/show.html">show</a></code> for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects with formal classes if called
-with no optional arguments.
+<code><a href="../../methods/html/show.html">show</a></code> for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects with formal classes (&lsquo;S4&rsquo;)
+if called with no optional arguments.
 </p>
 
 
@@ -126,7 +134,7 @@ implementation of <span class="samp">sprintf()</span> functionality.
 <p>If a non-printable character is encountered during output, it is
 represented as one of the ANSI escape sequences (<span class="samp">\a</span>, <span class="samp">\b</span>,
 <span class="samp">\f</span>, <span class="samp">\n</span>, <span class="samp">\r</span>, <span class="samp">\t</span>, <span class="samp">\v</span>, <span class="samp">\\</span> and
-<span class="samp">\0</span>: see <a href="Quotes.html">Quotes</a>), or failing that as a 3-digit octal
+<span class="samp">\0</span>: see <a href="../../base/help/Quotes.html">Quotes</a>), or failing that as a 3-digit octal
 code: for example the UK currency pound sign in the C locale (if
 implemented correctly) is printed as <span class="samp">\243</span>.  Which characters
 are non-printable depends on the locale.
@@ -141,7 +149,8 @@ locale.)
 <p>In all locales, the characters in the ASCII range (<span class="samp">0x00</span> to
 <span class="samp">0x7f</span>) are printed in the same way, as-is if printable, otherwise
 via ANSI escape sequences or 3-digit octal escapes as described for
-single-byte locales.
+single-byte locales. Whether a character is printable depends on the
+current locale and the operating system (C library).
 </p>
 <p>Multi-byte non-printing characters are printed as an escape sequence
 of the form <span class="samp">\uxxxx</span> (in hexadecimal). This is the Unicode code
@@ -156,10 +165,10 @@ not part of a valid character it is printed in hex in the form
 
 <h3>See Also</h3>
 
-<p>The generic <code><a href="print.html">print</a></code>, <code><a href="options.html">options</a></code>.
-The <code>"<a href="noquote.html">noquote</a>"</code> class and print method.
+<p>The generic <code><a href="../../base/help/print.html">print</a></code>, <code><a href="../../base/help/options.html">options</a></code>.
+The <code>"<a href="../../base/help/noquote.html">noquote</a>"</code> class and print method.
 </p>
-<p><code><a href="encodeString.html">encodeString</a></code>, which encodes a character vector the way
+<p><code><a href="../../base/help/encodeString.html">encodeString</a></code>, which encodes a character vector the way
 it would be printed.
 </p>
 
@@ -178,5 +187,5 @@ utils::head(M)        # makes more sense than
 print(M, max = 1000)  # prints 90 rows and a message about omitting 910
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

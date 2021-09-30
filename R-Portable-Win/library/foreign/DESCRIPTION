@@ -1,10 +1,10 @@
 Package: foreign
 Priority: recommended
-Version: 0.8-72
-Date: 2019-08-02
+Version: 0.8-81
+Date: 2020-12-22
 Title: Read Data Stored by 'Minitab', 'S', 'SAS', 'SPSS', 'Stata',
         'Systat', 'Weka', 'dBase', ...
-Depends: R (>= 3.0.0)
+Depends: R (>= 4.0.0)
 Imports: methods, utils, stats
 Authors@R: c(
    person("R Core Team",
@@ -23,6 +23,7 @@ Authors@R: c(
     person("Frank", "Warmerdam", role = c("ctb", "cph")),
     person("Stephen", "Weigand", role = c("ctb", "cph")),
     person("Free Software Foundation, Inc.", role = "cph"))
+Contact: see 'MailingList'
 Copyright: see file COPYRIGHTS
 Description: Reading and writing data stored by some versions of
 	'Epi Info', 'Minitab', 'S', 'SAS', 'SPSS', 'Stata', 'Systat', 'Weka',
@@ -31,8 +32,10 @@ ByteCompile: yes
 Biarch: yes
 License: GPL (>= 2)
 BugReports: https://bugs.r-project.org
+MailingList: R-help@r-project.org
+URL: https://svn.r-project.org/R-packages/trunk/foreign/
 NeedsCompilation: yes
-Packaged: 2019-08-02 07:24:39 UTC; hornik
+Packaged: 2020-12-22 13:59:32 UTC; hornik
 Author: R Core Team [aut, cph, cre],
   Roger Bivand [ctb, cph],
   Vincent J. Carey [ctb, cph],
@@ -50,6 +53,6 @@ Author: R Core Team [aut, cph, cre],
   Free Software Foundation, Inc. [cph]
 Maintainer: R Core Team <R-core@R-project.org>
 Repository: CRAN
-Date/Publication: 2019-08-02 07:27:08 UTC
-Built: R 3.6.1; x86_64-w64-mingw32; 2019-08-02 22:27:35 UTC; windows
+Date/Publication: 2020-12-22 14:59:20 UTC
+Built: R 4.1.1; x86_64-w64-mingw32; 2021-08-10 08:08:01 UTC; windows
 Archs: i386, x64

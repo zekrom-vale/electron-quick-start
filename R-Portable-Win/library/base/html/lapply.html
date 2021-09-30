@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Apply a Function over a List or Vector</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for lapply {base}"><tr><td>lapply {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ random number generation).
 </p>
 <p><code>simplify2array()</code> is the utility called from <code>sapply()</code>
 when <code>simplify</code> is not false and is similarly called from
-<code><a href="mapply.html">mapply</a>()</code>.
+<code><a href="../../base/help/mapply.html">mapply</a>()</code>.
 </p>
 
 
@@ -53,9 +54,9 @@ simplify2array(x, higher = TRUE)
 <table summary="R argblock">
 <tr valign="top"><td><code>X</code></td>
 <td>
-<p>a vector (atomic or list) or an <code><a href="expression.html">expression</a></code>
+<p>a vector (atomic or list) or an <code><a href="../../base/help/expression.html">expression</a></code>
 object.  Other objects (including classed objects) will be coerced
-by <code>base::<a href="list.html">as.list</a></code>.</p>
+by <code>base::<a href="../../base/help/as.list.html">as.list</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>FUN</code></td>
 <td>
@@ -74,14 +75,14 @@ simplified to a vector, matrix or higher dimensional array if
 possible?  For <code>sapply</code> it must be named and not abbreviated.
 The default value, <code>TRUE</code>, returns a vector or matrix if appropriate,
 whereas if <code>simplify = "array"</code> the result may be an
-<code><a href="array.html">array</a></code> of &ldquo;rank&rdquo;
+<code><a href="../../base/help/array.html">array</a></code> of &ldquo;rank&rdquo;
 (<i>=</i><code>length(dim(.))</code>) one higher than the result
 of <code>FUN(X[[i]])</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>USE.NAMES</code></td>
 <td>
 <p>logical; if <code>TRUE</code> and if <code>X</code> is character,
-use <code>X</code> as <code><a href="names.html">names</a></code> for the result unless it had names
+use <code>X</code> as <code><a href="../../base/help/names.html">names</a></code> for the result unless it had names
 already.  Since this argument follows <code>...</code> its name cannot
 be abbreviated.</p>
 </td></tr>
@@ -96,7 +97,7 @@ value from FUN.  See &lsquo;Details&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>expr</code></td>
 <td>
-<p>the expression (a <a href="is.language.html">language object</a>, usually a call)
+<p>the expression (a <a href="../../base/help/language+20object.html">language object</a>, usually a call)
 to evaluate repeatedly.</p>
 </td></tr>
 <tr valign="top"><td><code>x</code></td>
@@ -116,7 +117,7 @@ These two cases correspond to <code>sapply(*, simplify = "array")</code> or
 
 <h3>Details</h3>
 
-<p><code>FUN</code> is found by a call to <code><a href="match.fun.html">match.fun</a></code> and typically
+<p><code>FUN</code> is found by a call to <code><a href="../../base/help/match.fun.html">match.fun</a></code> and typically
 is specified as a function or a symbol (e.g., a backquoted name) or a
 character string specifying a function to be searched for from the
 environment of the call to <code>lapply</code>.
@@ -151,8 +152,6 @@ the base namespace and not one defined by a user (e.g., by setting S4
 methods on the base function).
 
 </p>
-<p><code>lapply</code> and <code>vapply</code> are <a href="Primitive.html">primitive</a> functions.
-</p>
 
 
 <h3>Value</h3>
@@ -172,10 +171,10 @@ to lists.
 <p><code>vapply</code> returns a vector or array of type matching the
 <code>FUN.VALUE</code>.  If <code>length(FUN.VALUE) == 1</code> a
 vector of the same length as <code>X</code> is returned, otherwise
-an array.  If <code>FUN.VALUE</code> is not an <code><a href="array.html">array</a></code>, the
+an array.  If <code>FUN.VALUE</code> is not an <code><a href="../../base/help/array.html">array</a></code>, the
 result is a matrix   with <code>length(FUN.VALUE)</code> rows and
 <code>length(X)</code> columns, otherwise an array <code>a</code> with
-<code><a href="dim.html">dim</a>(a) == c(dim(FUN.VALUE), length(X))</code>.
+<code><a href="../../base/help/dim.html">dim</a>(a) == c(dim(FUN.VALUE), length(X))</code>.
 </p>
 <p>The (Dim)names of the array value are taken from the <code>FUN.VALUE</code>
 if it is named, otherwise from the result of the first function call.
@@ -195,8 +194,8 @@ unevaluated, and code has been written (e.g., <code>bquote</code>) that
 relies on this.  This means that the recorded call is always of the
 form <code>FUN(X[[i]], ...)</code>, with <code>i</code> replaced by the current
 (integer or double) index.  This is not normally a problem, but it can
-be if <code>FUN</code> uses <code><a href="sys.parent.html">sys.call</a></code> or
-<code><a href="match.call.html">match.call</a></code> or if it is a primitive function that makes
+be if <code>FUN</code> uses <code><a href="../../base/help/sys.call.html">sys.call</a></code> or
+<code><a href="../../base/help/match.call.html">match.call</a></code> or if it is a primitive function that makes
 use of the call.  This means that it is often safer to call primitive
 functions with a wrapper, so that e.g. <code>lapply(ll, function(x)
   is.numeric(x))</code> is required to ensure that method dispatch for
@@ -219,11 +218,11 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="apply.html">apply</a></code>, <code><a href="tapply.html">tapply</a></code>,
-<code><a href="mapply.html">mapply</a></code> for applying a function to <b>m</b>ultiple
-arguments, and <code><a href="rapply.html">rapply</a></code> for a <b>r</b>ecursive version of
-<code>lapply()</code>, <code><a href="eapply.html">eapply</a></code> for applying a function to each
-entry in an <code><a href="environment.html">environment</a></code>.
+<p><code><a href="../../base/help/apply.html">apply</a></code>, <code><a href="../../base/help/tapply.html">tapply</a></code>,
+<code><a href="../../base/help/mapply.html">mapply</a></code> for applying a function to <b>m</b>ultiple
+arguments, and <code><a href="../../base/help/rapply.html">rapply</a></code> for a <b>r</b>ecursive version of
+<code>lapply()</code>, <code><a href="../../base/help/eapply.html">eapply</a></code> for applying a function to each
+entry in an <code><a href="../../base/help/environment.html">environment</a></code>.
 </p>
 
 
@@ -260,5 +259,5 @@ bar &lt;- function(n, x) replicate(n, foo(x = x))
 bar(5, x = 3)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

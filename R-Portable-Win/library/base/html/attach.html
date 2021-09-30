@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Attach Set of R Objects to Search Path</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for attach {base}"><tr><td>attach {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -18,7 +19,7 @@ the database can be accessed by simply giving their names.
 <h3>Usage</h3>
 
 <pre>
-attach(what, pos = 2L, name = deparse(substitute(what), backtick=FALSE),
+attach(what, pos = 2L, name = deparse1(substitute(what), backtick=FALSE),
        warn.conflicts = TRUE)
 </pre>
 
@@ -30,23 +31,23 @@ attach(what, pos = 2L, name = deparse(substitute(what), backtick=FALSE),
 <td>
 <p>&lsquo;database&rsquo;.  This can be a
 <code>data.frame</code> or a <code>list</code> or a <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> data file created with
-<code><a href="save.html">save</a></code> or <code>NULL</code> or an environment.  See also
+<code><a href="../../base/help/save.html">save</a></code> or <code>NULL</code> or an environment.  See also
 &lsquo;Details&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>pos</code></td>
 <td>
-<p>integer specifying position in <code><a href="search.html">search</a>()</code> where
+<p>integer specifying position in <code><a href="../../base/help/search.html">search</a>()</code> where
 to attach.</p>
 </td></tr>
 <tr valign="top"><td><code>name</code></td>
 <td>
 <p>name to use for the attached database. Names starting with
-<code>package:</code> are reserved for <code><a href="library.html">library</a></code>.</p>
+<code>package:</code> are reserved for <code><a href="../../base/help/library.html">library</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>warn.conflicts</code></td>
 <td>
 <p>logical.  If <code>TRUE</code>, warnings are
-printed about <code><a href="conflicts.html">conflicts</a></code> from attaching the database,
+printed about <code><a href="../../base/help/conflicts.html">conflicts</a></code> from attaching the database,
 unless that database contains an object <code>.conflicts.OK</code>.  A
 conflict is a function masking a function, or a non-function masking
 a non-function.
@@ -58,7 +59,7 @@ a non-function.
 <h3>Details</h3>
 
 <p>When evaluating a variable or function name <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> searches for
-that name in the databases listed by <code><a href="search.html">search</a></code>.  The first
+that name in the databases listed by <code><a href="../../base/help/search.html">search</a></code>.  The first
 name of the appropriate type is used.
 </p>
 <p>By attaching a data frame (or list) to the search path it is possible
@@ -76,7 +77,7 @@ but you cannot attach at <code>pos = 1</code>.
 created on the search path and the elements of a list (including
 columns of a data frame) or objects in a save file or an environment
 are <em>copied</em> into the new environment.  If you use
-<code><a href="assignOps.html">&lt;&lt;-</a></code> or <code><a href="assign.html">assign</a></code> to assign to an attached
+<code><a href="../../base/help/+3C+3C-.html">&lt;&lt;-</a></code> or <code><a href="../../base/help/assign.html">assign</a></code> to assign to an attached
 database, you only alter the attached copy, not the original object.
 (Normal assignment will place a modified version in the user's
 workspace: see the examples.)  For this reason <code>attach</code> can lead
@@ -84,25 +85,25 @@ to confusion.
 </p>
 <p>One useful &lsquo;trick&rsquo; is to use <code>what = NULL</code> (or equivalently a
 length-zero list) to create a new environment on the search path into
-which objects can be assigned by <code><a href="assign.html">assign</a></code> or
-<code><a href="load.html">load</a></code> or <code><a href="sys.source.html">sys.source</a></code>.
+which objects can be assigned by <code><a href="../../base/help/assign.html">assign</a></code> or
+<code><a href="../../base/help/load.html">load</a></code> or <code><a href="../../base/help/sys.source.html">sys.source</a></code>.
 </p>
 <p>Names starting <code>"package:"</code> are reserved for
-<code><a href="library.html">library</a></code> and should not be used by end users.  Attached
+<code><a href="../../base/help/library.html">library</a></code> and should not be used by end users.  Attached
 files are by default given the name <code>file:<var>what</var></code>.  The
 <code>name</code> argument given for the attached environment will be used
-by <code><a href="search.html">search</a></code> and can be used as the argument to
-<code><a href="as.environment.html">as.environment</a></code>.
+by <code><a href="../../base/help/search.html">search</a></code> and can be used as the argument to
+<code><a href="../../base/help/as.environment.html">as.environment</a></code>.
 </p>
 <p>There are hooks to attach user-defined table objects of class
 <code>"UserDefinedDatabase"</code>, supported by the Omegahat package
-<span class="pkg">RObjectTables</span>.  See <a href="http://www.omegahat.net/RObjectTables/">http://www.omegahat.net/RObjectTables/</a>.
+<span class="pkg">RObjectTables</span>.
 </p>
 
 
 <h3>Value</h3>
 
-<p>The <code><a href="environment.html">environment</a></code> is returned invisibly with a
+<p>The <code><a href="../../base/help/environment.html">environment</a></code> is returned invisibly with a
 <code>"name"</code> attribute.
 </p>
 
@@ -111,15 +112,15 @@ by <code><a href="search.html">search</a></code> and can be used as the argument
 
 <p><code>attach</code> has the side effect of altering the search path and this
 can easily lead to the wrong object of a particular name being found.
-People do often forget to <code><a href="detach.html">detach</a></code> databases.
+People do often forget to <code><a href="../../base/help/detach.html">detach</a></code> databases.
 </p>
-<p>In interactive use, <code><a href="with.html">with</a></code> is usually preferable to the
+<p>In interactive use, <code><a href="../../base/help/with.html">with</a></code> is usually preferable to the
 use of <code>attach</code>/<code>detach</code>, unless <code>what</code> is a
-<code><a href="save.html">save</a>()</code>-produced file in which case
-<code>attach()</code> is a (safety) wrapper for <code><a href="load.html">load</a>()</code>.
+<code><a href="../../base/help/save.html">save</a>()</code>-produced file in which case
+<code>attach()</code> is a (safety) wrapper for <code><a href="../../base/help/load.html">load</a>()</code>.
 </p>
 <p>In programming, functions should not change the search path unless
-that is their purpose.  Often <code><a href="with.html">with</a></code> can be used within a
+that is their purpose.  Often <code><a href="../../base/help/with.html">with</a></code> can be used within a
 function. If not, good practice is to
 </p>
 
@@ -128,7 +129,7 @@ function. If not, good practice is to
 </p>
 </li>
 <li><p> To immediately follow the <code>attach</code> call by an
-<code><a href="on.exit.html">on.exit</a></code> call to <code>detach</code> using the distinctive name.
+<code><a href="../../base/help/on.exit.html">on.exit</a></code> call to <code>detach</code> using the distinctive name.
 </p>
 </li></ul>
 
@@ -148,8 +149,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="library.html">library</a></code>, <code><a href="detach.html">detach</a></code>, <code><a href="search.html">search</a></code>,
-<code><a href="ls.html">objects</a></code>, <code><a href="environment.html">environment</a></code>, <code><a href="with.html">with</a></code>.
+<p><code><a href="../../base/help/library.html">library</a></code>, <code><a href="../../base/help/detach.html">detach</a></code>, <code><a href="../../base/help/search.html">search</a></code>,
+<code><a href="../../base/help/objects.html">objects</a></code>, <code><a href="../../base/help/environment.html">environment</a></code>, <code><a href="../../base/help/with.html">with</a></code>.
 </p>
 
 
@@ -178,5 +179,5 @@ sys.source("myfuns.R", envir = attach(NULL, name = "myfuns"))
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

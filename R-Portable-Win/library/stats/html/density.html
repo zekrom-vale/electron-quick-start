@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Kernel Density Estimation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for density {stats}"><tr><td>density {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ such that this is the standard deviation of the smoothing kernel.
 (Note this differs from the reference books cited below, and from S-PLUS.)
 </p>
 <p><code>bw</code> can also be a character string giving a rule to choose the
-bandwidth.  See <code><a href="bandwidth.html">bw.nrd</a></code>. <br /> The default,
+bandwidth.  See <code><a href="../../stats/help/bw.nrd.html">bw.nrd</a></code>. <br /> The default,
 <code>"nrd0"</code>, has remained the default for historical and
 compatibility reasons, rather than as a general recommendation,
 where e.g., <code>"SJ"</code> would rather fit, see also Venables and
@@ -99,8 +100,8 @@ instead.</p>
 <td>
 <p>the number of equally spaced points at which the density is
 to be estimated.  When <code>n &gt; 512</code>, it is rounded up to a power
-of 2 during the calculations (as <code><a href="fft.html">fft</a></code> is used) and the
-final result is interpolated by <code><a href="approxfun.html">approx</a></code>.  So it almost
+of 2 during the calculations (as <code><a href="../../stats/help/fft.html">fft</a></code> is used) and the
+final result is interpolated by <code><a href="../../stats/help/approx.html">approx</a></code>.  So it almost
 always makes sense to specify <code>n</code> as a power of two.
 </p>
 </td></tr>
@@ -211,7 +212,8 @@ A reliable data-based bandwidth selection method for kernel density
 estimation.
 <em>Journal of the Royal Statistical Society series B</em>,
 <b>53</b>, 683&ndash;690.
-<a href="http://www.jstor.org/stable/2345597">http://www.jstor.org/stable/2345597</a>.
+doi: <a href="https://doi.org/10.1111/j.2517-6161.1991.tb01857.x">10.1111/j.2517-6161.1991.tb01857.x</a>.
+<a href="https://www.jstor.org/stable/2345597">https://www.jstor.org/stable/2345597</a>.
 </p>
 <p>Silverman, B. W. (1986).
 <em>Density Estimation</em>.
@@ -225,8 +227,8 @@ New York: Springer.
 
 <h3>See Also</h3>
 
-<p><code><a href="bandwidth.html">bw.nrd</a></code>,
-<code><a href="plot.density.html">plot.density</a></code>, <code><a href="../../graphics/html/hist.html">hist</a></code>.
+<p><code><a href="../../stats/help/bw.nrd.html">bw.nrd</a></code>,
+<code><a href="../../stats/help/plot.density.html">plot.density</a></code>, <code><a href="../../graphics/html/hist.html">hist</a></code>.
 </p>
 
 
@@ -312,5 +314,5 @@ for(i in 2:length(kernels))
 legend(55, 0.035, legend = kernels, col = seq(kernels), lty = 1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

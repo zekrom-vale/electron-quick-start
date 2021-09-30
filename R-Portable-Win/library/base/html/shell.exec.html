@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Open a File or URL using Windows File Associations</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for shell.exec {base}"><tr><td>shell.exec {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,11 +34,13 @@ shell.exec(file)
 
 <h3>Details</h3>
 
-<p>The path in <code>file</code> is interpreted relative to the current working
-directory.
+<p>The path in <code>file</code> should be a full path.
 </p>
-<p><span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions 2.13.0 and earlier interpreted <code>file</code> relative to
-the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> home directory, so a complete path was usually needed.
+<p>If the path in <code>file</code> is not a full path, it is interpreted relative
+to the current working directory, but in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions 2.13.0 and earlier it
+was interpreted relative to the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> home directory. To be interpreted as
+relative, the path also needs to use backslashes as separators (at least
+in Windows 10).
 </p>
 <p>Encoded <span class="samp">file://</span> URLs should be in the Windows standard form,
 e.g. <code>"file:///c:/path/to/file.txt"</code>.
@@ -58,7 +61,7 @@ operation fails.
 
 <h3>See Also</h3>
 
-<p><code><a href="system.html">system</a></code>, <code><a href="shell.html">shell</a></code></p>
+<p><code><a href="../../base/help/system.html">system</a></code>, <code><a href="../../base/help/shell.html">shell</a></code></p>
 
 
 <h3>Examples</h3>
@@ -71,5 +74,5 @@ shell.exec("file:///C:/Program Files/BreezeSys/BreezeBrowser/Breezebrowser.htm")
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

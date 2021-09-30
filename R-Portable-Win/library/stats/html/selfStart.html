@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Construct Self-starting Nonlinear Models</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for selfStart {stats}"><tr><td>selfStart {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,10 +11,10 @@
 <h3>Description</h3>
 
 <p>Construct self-starting nonlinear models to be used in
-<code><a href="nls.html">nls</a></code>, etc.  Via function <code>initial</code> to compute
+<code><a href="../../stats/help/nls.html">nls</a></code>, etc.  Via function <code>initial</code> to compute
 approximate parameter values from data, such models are
 &ldquo;self-starting&rdquo;, i.e., do not need a <code>start</code> argument in,
-e.g., <code><a href="nls.html">nls</a>()</code>.
+e.g., <code><a href="../../stats/help/nls.html">nls</a>()</code>.
 </p>
 
 
@@ -30,17 +31,20 @@ selfStart(model, initial, parameters, template)
 <tr valign="top"><td><code>model</code></td>
 <td>
 <p>a function object defining a nonlinear model or
-a nonlinear <code><a href="formula.html">formula</a></code> object of the form <code>~ expression</code>.</p>
+a nonlinear <code><a href="../../stats/help/formula.html">formula</a></code> object of the form <code>~ expression</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>initial</code></td>
 <td>
-<p>a function object, taking three arguments: <code>mCall</code>,
-<code>data</code>, and <code>LHS</code>, representing, respectively, a matched
-call to the function <code>model</code>, a data frame in
+<p>a function object, taking arguments <code>mCall</code>,
+<code>data</code>, and <code>LHS</code>, <em>and</em> <code>...</code>, representing,
+respectively, a matched call to the function <code>model</code>, a data frame in
 which to interpret the variables in <code>mCall</code>, and the expression
 from the left-hand side of the model formula in the call to <code>nls</code>.
 This function should return initial values for the parameters in
-<code>model</code>.</p>
+<code>model</code>.  The <code>...</code> is used by <code><a href="../../stats/help/nls.html">nls</a>()</code> to pass its
+<code>control</code> and <code>trace</code> arguments for the cases where
+<code>initial()</code> itself calls <code>nls()</code> as it does for the ten
+self-starting nonlinear models in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s <span class="pkg">stats</span> package.</p>
 </td></tr>
 <tr valign="top"><td><code>parameters</code></td>
 <td>
@@ -62,7 +66,7 @@ covariates in <code>model</code> coming first and the parameters in
 
 <h3>Details</h3>
 
-<p><code><a href="nls.html">nls</a>()</code> calls <code><a href="getInitial.html">getInitial</a></code> and the
+<p><code><a href="../../stats/help/nls.html">nls</a>()</code> calls <code><a href="../../stats/help/getInitial.html">getInitial</a></code> and the
 <code>initial</code> function for these self-starting models.
 </p>
 <p>This function is generic; methods functions can be written to handle
@@ -73,7 +77,7 @@ specific classes of objects.
 <h3>Value</h3>
 
 <p>a <code><a href="../../base/html/function.html">function</a></code> object of class <code>"selfStart"</code>, for the
-<code>formula</code> method obtained by applying <code><a href="deriv.html">deriv</a></code>
+<code>formula</code> method obtained by applying <code><a href="../../stats/help/deriv.html">deriv</a></code>
 to the right hand side of the <code>model</code> formula.  An
 <code>initial</code> attribute (defined by the <code>initial</code> argument) is
 added to the function to calculate starting estimates for the
@@ -88,15 +92,15 @@ parameters in the model automatically.
 
 <h3>See Also</h3>
 
-<p><code><a href="nls.html">nls</a></code>, <code><a href="getInitial.html">getInitial</a></code>.
+<p><code><a href="../../stats/help/nls.html">nls</a></code>, <code><a href="../../stats/help/getInitial.html">getInitial</a></code>.
 </p>
 <p>Each of the following are <code>"selfStart"</code> models (with examples)
-<code><a href="SSasymp.html">SSasymp</a></code>, <code><a href="SSasympOff.html">SSasympOff</a></code>, <code><a href="SSasympOrig.html">SSasympOrig</a></code>,
-<code><a href="SSbiexp.html">SSbiexp</a></code>, <code><a href="SSfol.html">SSfol</a></code>, <code><a href="SSfpl.html">SSfpl</a></code>,
-<code><a href="SSgompertz.html">SSgompertz</a></code>, <code><a href="SSlogis.html">SSlogis</a></code>, <code><a href="SSmicmen.html">SSmicmen</a></code>,
-<code><a href="SSweibull.html">SSweibull</a></code>.
+<code><a href="../../stats/help/SSasymp.html">SSasymp</a></code>, <code><a href="../../stats/help/SSasympOff.html">SSasympOff</a></code>, <code><a href="../../stats/help/SSasympOrig.html">SSasympOrig</a></code>,
+<code><a href="../../stats/help/SSbiexp.html">SSbiexp</a></code>, <code><a href="../../stats/help/SSfol.html">SSfol</a></code>, <code><a href="../../stats/help/SSfpl.html">SSfpl</a></code>,
+<code><a href="../../stats/help/SSgompertz.html">SSgompertz</a></code>, <code><a href="../../stats/help/SSlogis.html">SSlogis</a></code>, <code><a href="../../stats/help/SSmicmen.html">SSmicmen</a></code>,
+<code><a href="../../stats/help/SSweibull.html">SSweibull</a></code>.
 </p>
-<p>Further, package <a href="https://CRAN.R-project.org/package=nlme"><span class="pkg">nlme</span></a>'s <code><a href="../../nlme/html/nlsList.html">nlsList</a></code>.
+<p>Further, package <a href="https://CRAN.R-project.org/package=nlme"><span class="pkg">nlme</span></a>'s <code><a href="../../nlme/help/nlsList.html">nlsList</a></code>.
 </p>
 
 
@@ -150,5 +154,5 @@ all(sapply(fSS, inherits, "selfStart"))  # -&gt; TRUE
 str(fSS, give.attr = FALSE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

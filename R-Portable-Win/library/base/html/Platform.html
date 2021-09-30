@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Platform Specific Variables</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for .Platform {base}"><tr><td>.Platform {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -49,7 +50,7 @@ not on the former port to Classic Mac OS).
 <b>dyn</b>amically loadable <b>lib</b>raries, e.g., <code>".dll"</code> on
 Windows and <code>".so"</code> or <code>".sl"</code> on Unix-alikes.  (Note for
 macOS users: these are shared objects as loaded by
-<code><a href="dynload.html">dyn.load</a></code> and not dylibs: see <code><a href="dynload.html">dyn.load</a></code>.)
+<code><a href="../../base/help/dyn.load.html">dyn.load</a></code> and not dylibs: see <code><a href="../../base/help/dyn.load.html">dyn.load</a></code>.)
 </p>
 </td></tr>
 <tr valign="top"><td><code>GUI</code></td>
@@ -69,17 +70,16 @@ alternative front-ends or embedded <span style="font-family: Courier New, Courie
 <p>character string, <code>"big"</code> or <code>"little"</code>, giving the
 &lsquo;endianness&rsquo; of the processor in use.  This is relevant when it is
 necessary to know the order to read/write bytes of e.g. an
-integer or double from/to a <a href="connections.html">connection</a>: see
-<code><a href="readBin.html">readBin</a></code>.
+integer or double from/to a <a href="../../base/help/connection.html">connection</a>: see
+<code><a href="../../base/help/readBin.html">readBin</a></code>.
 </p>
 </td></tr>
 <tr valign="top"><td><code>pkgType</code></td>
 <td>
 
 <p>character string, the preferred setting for
-<code><a href="options.html">options</a>("pkgType")</code>.  Values <code>"source"</code>,
-<code>"mac.binary.el-capitan"</code> and <code>"win.binary"</code> are currently
-in use.
+<code><a href="../../base/help/options.html">options</a>("pkgType")</code>.  Values <code>"source"</code>,
+<code>"mac.binary"</code> and <code>"win.binary"</code> are currently in use.
 </p>
 <p>This should <strong>not</strong> be used to identify the OS.
 </p>
@@ -136,14 +136,14 @@ rather than the X11 one.
 
 <h3>See Also</h3>
 
-<p><code><a href="Version.html">R.version</a></code> and <code><a href="Sys.info.html">Sys.info</a></code> give more details
+<p><code><a href="../../base/help/R.version.html">R.version</a></code> and <code><a href="../../base/help/Sys.info.html">Sys.info</a></code> give more details
 about the OS.  In particular, <code>R.version$platform</code> is the
 canonical name of the platform under which <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> was compiled.
 </p>
-<p><code><a href="zMachine.html">.Machine</a></code> for details of the arithmetic used, and
-<code><a href="system.html">system</a></code> for invoking platform-specific system commands.
+<p><code><a href="../../base/help/.Machine.html">.Machine</a></code> for details of the arithmetic used, and
+<code><a href="../../base/help/system.html">system</a></code> for invoking platform-specific system commands.
 </p>
-<p><code><a href="capabilities.html">capabilities</a></code> and <code><a href="extSoftVersion.html">extSoftVersion</a></code> (and links
+<p><code><a href="../../base/help/capabilities.html">capabilities</a></code> and <code><a href="../../base/help/extSoftVersion.html">extSoftVersion</a></code> (and links
 there) for availability of capabilities partly <em>external</em> to <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 but used from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> functions.
 </p>
@@ -161,5 +161,5 @@ if(.Platform$OS.type == "unix") {
 }
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Description of Terms Objects</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for terms.object {stats}"><tr><td>terms.object {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,9 +10,9 @@
 
 <h3>Description</h3>
 
-<p>An object of class <code><a href="terms.html">terms</a></code> holds information about a
+<p>An object of class <code><a href="../../stats/help/terms.html">terms</a></code> holds information about a
 model.  Usually the model was specified in terms of a
-<code><a href="formula.html">formula</a></code> and that formula was used to determine the terms
+<code><a href="../../stats/help/formula.html">formula</a></code> and that formula was used to determine the terms
 object.
 </p>
 
@@ -19,7 +20,7 @@ object.
 <h3>Value</h3>
 
 <p>The object itself is simply the formula supplied to the call of
-<code><a href="terms.formula.html">terms.formula</a></code>.  The object has a number of attributes
+<code><a href="../../stats/help/terms.formula.html">terms.formula</a></code>.  The object has a number of attributes
 and they are used to construct the model frame:
 </p>
 <table summary="R valueblock">
@@ -68,13 +69,13 @@ response.</p>
 </td></tr>
 <tr valign="top"><td><code>offset</code></td>
 <td>
-<p>If the model contains <code><a href="offset.html">offset</a></code> terms there
+<p>If the model contains <code><a href="../../stats/help/offset.html">offset</a></code> terms there
 is an <code>offset</code> attribute indicating which variable(s) are offsets</p>
 </td></tr>
 <tr valign="top"><td><code>specials</code></td>
 <td>
 <p>If a <code>specials</code> argument was given to
-<code><a href="terms.formula.html">terms.formula</a></code> there is a <code>specials</code> attribute, a
+<code><a href="../../stats/help/terms.formula.html">terms.formula</a></code> there is a <code>specials</code> attribute, a
 pairlist of vectors (one for each specified special function) giving
 numeric indices of the arguments of the list returned as the
 <code>variables</code> attribute which contain these special functions.</p>
@@ -82,12 +83,12 @@ numeric indices of the arguments of the list returned as the
 <tr valign="top"><td><code>dataClasses</code></td>
 <td>
 <p>optional.  A named character vector giving the classes
-(as given by <code><a href="checkMFClasses.html">.MFclass</a></code>) of the variables used in a fit.</p>
+(as given by <code><a href="../../stats/help/.MFclass.html">.MFclass</a></code>) of the variables used in a fit.</p>
 </td></tr>
 <tr valign="top"><td><code>predvars</code></td>
 <td>
 <p>optional.  An expression to help in computing 
-predictions at new covariate values; see <code><a href="makepredictcall.html">makepredictcall</a></code>.</p>
+predictions at new covariate values; see <code><a href="../../stats/help/makepredictcall.html">makepredictcall</a></code>.</p>
 </td></tr>
 </table>
 <p>The object has class <code>c("terms", "formula")</code>.
@@ -101,14 +102,14 @@ there is no <code>formula</code> attribute: instead the object is itself a
 formula.  (Thus, the mode of a terms object is different.)
 </p>
 <p>Examples of the <code>specials</code> argument can be seen in the
-<code><a href="aov.html">aov</a></code> and <code><a href="../../survival/html/coxph.html">coxph</a></code> functions, the
+<code><a href="../../stats/help/aov.html">aov</a></code> and <code><a href="../../survival/help/coxph.html">coxph</a></code> functions, the
 latter from package <a href="https://CRAN.R-project.org/package=survival"><span class="pkg">survival</span></a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="terms.html">terms</a></code>, <code><a href="formula.html">formula</a></code>.
+<p><code><a href="../../stats/help/terms.html">terms</a></code>, <code><a href="../../stats/help/formula.html">formula</a></code>.
 </p>
 
 
@@ -126,5 +127,5 @@ rownames(attr(tf, "factors"))[attr(tf, "specials")$s]
 terms(y ~ x + x:z + s(x), specials = "s", keep.order = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

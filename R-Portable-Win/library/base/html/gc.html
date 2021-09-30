@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Garbage Collection</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for gc {base}"><tr><td>gc {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -50,14 +51,14 @@ otherwise only more recently allocated objects may be collected.</p>
 <p>A call of <code>gc</code> causes a garbage collection to take place.
 This will also take place automatically without user intervention, and the
 primary purpose of calling <code>gc</code> is for the report on memory
-usage. For an accurate report <code>full = TRUE</code> should be used.  
+usage.  For an accurate report <code>full = TRUE</code> should be used.
 </p>
 <p>It can be useful to call <code>gc</code> after a large object
 has been removed, as this may prompt <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> to return memory to the
 operating system.
 </p>
 <p><span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> allocates space for vectors in multiples of 8 bytes: hence the
-report of <code>"Vcells"</code>, a relict of an earlier allocator (that used
+report of <code>"Vcells"</code>, a relic of an earlier allocator (that used
 a vector heap).
 </p>
 <p>When <code>gcinfo(TRUE)</code> is in force, messages are sent to the message
@@ -97,10 +98,12 @@ to <code>gc(reset = TRUE)</code> (or since <span style="font-family: Courier New
 
 <p>The &lsquo;R Internals&rsquo; manual.
 </p>
-<p><code><a href="Memory.html">Memory</a></code> on <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s memory management,
-and <code><a href="gctorture.html">gctorture</a></code> if you are an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> developer.
+<p><code><a href="../../base/help/Memory.html">Memory</a></code> on <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s memory management,
+and <code><a href="../../base/help/gctorture.html">gctorture</a></code> if you are an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> developer.
 </p>
-<p><code><a href="reg.finalizer.html">reg.finalizer</a></code> for actions to happen at garbage
+<p><code><a href="../../base/help/gc.time.html">gc.time</a>()</code> reports <em>time</em> used for garbage collection.
+</p>
+<p><code><a href="../../base/help/reg.finalizer.html">reg.finalizer</a></code> for actions to happen at garbage
 collection.
 </p>
 
@@ -110,6 +113,7 @@ collection.
 <pre>
 gc() #- do it now
 gcinfo(TRUE) #-- in the future, show when R does it
+##            vvvvv use larger to *show* something
 x &lt;- integer(100000); for(i in 1:18) x &lt;- c(x, i)
 gcinfo(verbose = FALSE) #-- don't show it anymore
 
@@ -118,5 +122,5 @@ gc(TRUE)
 gc(reset = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

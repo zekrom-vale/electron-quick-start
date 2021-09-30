@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Gray Color Palette</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for gray.colors {grDevices}"><tr><td>gray.colors {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -16,8 +17,8 @@
 <h3>Usage</h3>
 
 <pre>
-gray.colors(n, start = 0.3, end = 0.9, gamma = 2.2, alpha = NULL, rev = FALSE)
-grey.colors(n, start = 0.3, end = 0.9, gamma = 2.2, alpha = NULL, rev = FALSE)
+gray.colors(n, start = 0.3, end = 0.9, gamma = 2.2, alpha, rev = FALSE)
+grey.colors(n, start = 0.3, end = 0.9, gamma = 2.2, alpha, rev = FALSE)
 </pre>
 
 
@@ -45,7 +46,7 @@ indicates <code>"white"</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>alpha</code></td>
 <td>
-<p>the opacity, is specified.</p>
+<p>the opacity, if specified.</p>
 </td></tr>
 <tr valign="top"><td><code>rev</code></td>
 <td>
@@ -75,9 +76,9 @@ This palette is used in <code><a href="../../graphics/html/barplot.html">barplot
 
 <h3>See Also</h3>
 
-<p><code><a href="gray.html">gray</a></code>,
-<code><a href="palettes.html">rainbow</a></code>,
-<code><a href="palette.html">palette</a></code>.
+<p><code><a href="../../grDevices/help/gray.html">gray</a></code>,
+<code><a href="../../grDevices/help/rainbow.html">rainbow</a></code>,
+<code><a href="../../grDevices/help/palette.html">palette</a></code>.
 </p>
 
 
@@ -90,5 +91,5 @@ pie(rep(1, 12), col = gray.colors(12))
 barplot(1:12, col = gray.colors(12))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

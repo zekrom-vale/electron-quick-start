@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Defunct Functions in Package 'stats'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for stats-defunct {stats}"><tr><td>stats-defunct {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -56,6 +57,12 @@ mauchley.test(object, Sigma = diag(nrow = p),
 
 # Defunct in 2.10.0
 clearNames(object)
+
+# Defunct in 4.1.0
+plclust(tree, hang = 0.1, unit = FALSE, level = FALSE, hmin = 0,
+        square = TRUE, labels = NULL, plot. = TRUE,
+        axes = TRUE, frame.plot = FALSE, ann = TRUE,
+        main = "", sub = NULL, xlab = NULL, ylab = "Height")
 </pre>
 
 
@@ -65,18 +72,18 @@ clearNames(object)
 argument, so the <code>*nchisq()</code> functions are no longer needed.
 </p>
 <p><code>reshape*</code>, which were experimental, are replaced by
-<code><a href="reshape.html">reshape</a></code>.  This has a different syntax and allows
+<code><a href="../../stats/help/reshape.html">reshape</a></code>.  This has a different syntax and allows
 multiple time-varying variables.
 </p>
-<p><code>arima0.diag</code> has been replaced by <code><a href="tsdiag.html">tsdiag.arima0</a></code>.
+<p><code>arima0.diag</code> has been replaced by <code><a href="../../stats/help/tsdiag.arima0.html">tsdiag.arima0</a></code>.
 </p>
-<p><code>plot.mts</code> has been removed, as <code><a href="plot.ts.html">plot.ts</a></code> now has the
+<p><code>plot.mts</code> has been removed, as <code><a href="../../stats/help/plot.ts.html">plot.ts</a></code> now has the
 same functionality.
 </p>
-<p><code>print.coefmat</code> was an older name for <code><a href="printCoefmat.html">printCoefmat</a></code>
+<p><code>print.coefmat</code> was an older name for <code><a href="../../stats/help/printCoefmat.html">printCoefmat</a></code>
 with a different default for <code>na.print</code>.
 </p>
-<p><code>anovalist.lm</code> was replaced by <code><a href="anova.lm.html">anova.lmlist</a></code> in
+<p><code>anovalist.lm</code> was replaced by <code><a href="../../stats/help/anova.lmlist.html">anova.lmlist</a></code> in
 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 1.2.0.
 </p>
 <p><code>lm.fit.null</code> and <code>lm.wfit.null</code> are superseded by
@@ -84,10 +91,13 @@ with a different default for <code>na.print</code>.
 Similarly, <code>glm.fit.null</code> is superseded by <code>glm.fit</code>.
 </p>
 <p><code>mauchley.test</code> was a misspelling of Mauchly's name, corrected
-by the introduction of <code><a href="mauchly.test.html">mauchly.test</a></code>.
+by the introduction of <code><a href="../../stats/help/mauchly.test.html">mauchly.test</a></code>.
 </p>
 <p><code>clearNames</code> had been introduced at about the same time as
 <code><a href="../../base/html/unname.html">unname</a></code>, but is less general and has been used rarely.
+</p>
+<p><code>plclust</code> has been drawing dendrograms (&ldquo;cluster - trees&rdquo;) and been replaced by the
+<code>plot()</code> method for class <code>"dendrogram"</code>.
 </p>
 
 
@@ -96,5 +106,5 @@ by the introduction of <code><a href="mauchly.test.html">mauchly.test</a></code>
 <p><code><a href="../../base/html/Defunct.html">Defunct</a></code>
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

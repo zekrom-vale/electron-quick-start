@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test if an Object is Not Sorted</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for is.unsorted {base}"><tr><td>is.unsorted {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -41,6 +42,13 @@ logical or raw vector.</p>
 </table>
 
 
+<h3>Details</h3>
+
+<p><code>is.unsorted</code> is generic: you can write methods to handle
+specific classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.
+</p>
+
+
 <h3>Value</h3>
 
 <p>A length-one logical value.  All objects of length 0 or 1 are sorted.
@@ -48,7 +56,7 @@ Otherwise, the result will be <code>NA</code> except for atomic vectors and
 objects with an S3 class (where the <code>&gt;=</code> or <code>&gt;</code> method is
 used to compare <code>x[i]</code> with <code>x[i-1]</code> for <code>i</code> in
 <code>2:length(x)</code>) or with an S4 class where you have to provide a
-method for <code><a href="is.unsorted.html">is.unsorted</a>()</code>.
+method for <code><a href="../../base/help/is.unsorted.html">is.unsorted</a>()</code>.
 
 </p>
 
@@ -63,7 +71,7 @@ surprising results.
 
 <h3>See Also</h3>
 
-<p><code><a href="sort.html">sort</a></code>, <code><a href="order.html">order</a></code>.</p>
+<p><code><a href="../../base/help/sort.html">sort</a></code>, <code><a href="../../base/help/order.html">order</a></code>.</p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

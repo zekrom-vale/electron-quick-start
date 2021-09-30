@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Functions to Get and Set Hooks for Load, Attach, Detach and...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for userhooks {base}"><tr><td>userhooks {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -62,13 +63,13 @@ packages/namespaces: these hooks are named via calls to
 </p>
 <p>To remove a hook completely, call <code>setHook(hookName, NULL, "replace")</code>.
 </p>
-<p>When an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> package is attached by <code><a href="library.html">library</a></code> or loaded by
+<p>When an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> package is attached by <code><a href="../../base/help/library.html">library</a></code> or loaded by
 other means, it can call initialization code.  See
-<code><a href="ns-hooks.html">.onLoad</a></code> for a description of the package hook functions
+<code><a href="../../base/help/.onLoad.html">.onLoad</a></code> for a description of the package hook functions
 called during initialization.  Users can add their own initialization
 code via the hooks provided by <code>setHook()</code>, functions which will
 be called as <code>funname(pkgname, pkgpath)</code> inside a
-<code><a href="try.html">try</a></code> call.
+<code><a href="../../base/help/try.html">try</a></code> call.
 </p>
 <p>The sequence of events depends on which hooks are defined, and whether
 a package is attached or just loaded.  In the case where all hooks
@@ -80,7 +81,7 @@ events is as follows:
 <li><p> The package namespace is loaded.
 </p>
 </li>
-<li><p> The package's <code><a href="ns-hooks.html">.onLoad</a></code> function is run.
+<li><p> The package's <code><a href="../../base/help/.onLoad.html">.onLoad</a></code> function is run.
 </p>
 </li>
 <li><p> If S4 methods dispatch is on, any actions set by
@@ -96,7 +97,7 @@ events is as follows:
 <li><p> The package is added to the search path.
 </p>
 </li>
-<li><p> The package's <code><a href="ns-hooks.html">.onAttach</a></code> function is run.
+<li><p> The package's <code><a href="../../base/help/.onAttach.html">.onAttach</a></code> function is run.
 </p>
 </li>
 <li><p> The package environment is sealed.
@@ -114,7 +115,7 @@ and its namespace unloaded:
 <li><p> The user's <code>"detach"</code> hook is run.
 </p>
 </li>
-<li><p> The package's <code><a href="ns-hooks.html">.Last.lib</a></code> function is run.
+<li><p> The package's <code><a href="../../base/help/.Last.lib.html">.Last.lib</a></code> function is run.
 </p>
 </li>
 <li><p> The package is removed from the search path.
@@ -123,7 +124,7 @@ and its namespace unloaded:
 <li><p> The user's <code>"onUnload"</code> hook is run.
 </p>
 </li>
-<li><p> The package's <code><a href="ns-hooks.html">.onUnload</a></code> function is run.
+<li><p> The package's <code><a href="../../base/help/.onUnload.html">.onUnload</a></code> function is run.
 </p>
 </li>
 <li><p> The package namespace is unloaded.
@@ -169,9 +170,9 @@ will not work for <span class="pkg">methods</span>.
 
 <h3>See Also</h3>
 
-<p><code><a href="library.html">library</a></code>, <code><a href="detach.html">detach</a></code>, <code><a href="ns-load.html">loadNamespace</a></code>.
+<p><code><a href="../../base/help/library.html">library</a></code>, <code><a href="../../base/help/detach.html">detach</a></code>, <code><a href="../../base/help/loadNamespace.html">loadNamespace</a></code>.
 </p>
-<p>See <code><a href="ns-dblcolon.html">::</a></code>
+<p>See <code><a href="../../base/help/+3A+3A.html">::</a></code>
 for a discussion of the double and triple colon operators.
 </p>
 <p>Other hooks may be added later: functions <code><a href="../../graphics/html/frame.html">plot.new</a></code> and
@@ -186,5 +187,5 @@ setHook(packageEvent("grDevices", "onLoad"),
         function(...) grDevices::ps.options(horizontal = FALSE))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

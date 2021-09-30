@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add Points to a Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for points {graphics}"><tr><td>points {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,11 +36,11 @@ points(x, y = NULL, type = "p", ...)
 <tr valign="top"><td><code>type</code></td>
 <td>
 <p>character indicating the type of plotting; actually any of
-the <code>type</code>s as in <code><a href="plot.default.html">plot.default</a></code>.</p>
+the <code>type</code>s as in <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Further <a href="par.html">graphical parameters</a> may also be supplied as
+<p>Further <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> may also be supplied as
 arguments.  See &lsquo;Details&rsquo;.</p>
 </td></tr>
 </table>
@@ -74,22 +75,22 @@ fontsize of the device, often specified by an argument
 is about 75% of the character height (see <code>par("cin")</code>).
 </p>
 </dd>
-<dt><code>col</code></dt><dd><p>color code or name, see <code><a href="par.html">par</a></code>.</p>
+<dt><code>col</code></dt><dd><p>color code or name, see <code><a href="../../graphics/help/par.html">par</a></code>.</p>
 </dd>
 <dt><code>bg</code></dt><dd><p>background (fill) color for the open plot
 symbols given by <code>pch = 21:25</code>.</p>
 </dd>
 <dt><code>cex</code></dt><dd><p>character (or symbol) expansion: a numerical vector.
-This works as a multiple of <code><a href="par.html">par</a>("cex")</code>.</p>
+This works as a multiple of <code><a href="../../graphics/help/par.html">par</a>("cex")</code>.</p>
 </dd>
-<dt><code>lwd</code></dt><dd><p>line width for drawing symbols see <code><a href="par.html">par</a></code>.</p>
+<dt><code>lwd</code></dt><dd><p>line width for drawing symbols see <code><a href="../../graphics/help/par.html">par</a></code>.</p>
 </dd>
 </dl>
 
 <p>Others less commonly used are <code>lty</code> and <code>lwd</code> for
 types such as <code>"b"</code> and <code>"l"</code>.
 </p>
-<p>The <a href="par.html">graphical parameters</a> <code>pch</code>, <code>col</code>, <code>bg</code>,
+<p>The <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> <code>pch</code>, <code>col</code>, <code>bg</code>,
 <code>cex</code> and <code>lwd</code> can be vectors (which will be recycled as
 needed) giving a value for each point plotted.  If lines are to be
 plotted (e.g., for <code>type = "b"</code>) the first element of <code>lwd</code>
@@ -200,7 +201,7 @@ the plot.
 <p>If <code>pch</code> is <code>NULL</code> or otherwise of length 0,
 <code>par("pch")</code> is used.
 </p>
-<p>If the symbol font (<code><a href="par.html">par</a>(font = 5)</code>) is used, numerical
+<p>If the symbol font (<code><a href="../../graphics/help/par.html">par</a>(font = 5)</code>) is used, numerical
 values should be used for <code>pch</code>: the range is
 <code>c(32:126, 160:254)</code> in all locales (but <code>240</code> is not
 defined (used for &lsquo;apple&rsquo; on macOS) and <code>160</code>, Euro, may
@@ -236,9 +237,9 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.formula.html">points.formula</a></code> for the formula method;
-<code><a href="plot.html">plot</a></code>, <code><a href="lines.html">lines</a></code>, and the underlying
-workhorse function <code><a href="plot.xy.html">plot.xy</a></code>.
+<p><code><a href="../../graphics/help/points.formula.html">points.formula</a></code> for the formula method;
+<code><a href="../../graphics/help/plot.html">plot</a></code>, <code><a href="../../graphics/help/lines.html">lines</a></code>, and the underlying
+workhorse function <code><a href="../../graphics/help/plot.xy.html">plot.xy</a></code>.
 </p>
 
 
@@ -251,7 +252,7 @@ points(rnorm(200), rnorm(200), col = "red")
 points(rnorm(100)/2, rnorm(100)/2, col = "blue", cex = 1.5)
 
 op &lt;- par(bg = "light blue")
-x &lt;- seq(0, 2*pi, len = 51)
+x &lt;- seq(0, 2*pi, length.out = 51)
 ## something "between type='b' and type='o'":
 plot(x, sin(x), type = "o", pch = 21, bg = par("bg"), col = "blue", cex = .6,
  main = 'plot(..., type="o", pch=21, bg=par("bg"))')
@@ -324,5 +325,5 @@ TestChars(font = 5)  # Euro might be at 160 (0+10*16).
 try(TestChars(-1, font = 2))  # bold
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

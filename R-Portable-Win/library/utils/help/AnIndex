@@ -44,6 +44,7 @@ build	PkgUtils
 c.person	person
 capture.output	capture.output
 changedFiles	changedFiles
+charClass	charClass
 check	PkgUtils
 checkCRAN	mirrorAdmin
 choose.dir	choose.dir
@@ -101,6 +102,7 @@ fixInNamespace	getFromNamespace
 flush.console	flush.console
 format.bibentry	bibentry
 format.citation	bibentry
+format.MethodsFunction	methods
 format.object_size	object.size
 format.person	person
 formatOL	format
@@ -132,7 +134,6 @@ head.default	head
 head.ftable	head
 head.function	head
 head.matrix	head
-head.table	head
 help	help
 help.request	help.request
 help.search	help.search
@@ -247,6 +248,8 @@ RShowDoc	RShowDoc
 RSiteSearch	RSiteSearch
 rtags	rtags
 Rtangle	Rtangle
+RtangleFinish	SweaveUtils
+RtangleRuncode	SweaveUtils
 RtangleSetup	Rtangle
 RtangleWritedoc	SweaveUtils
 RweaveChunkPrefix	SweaveUtils
@@ -293,6 +296,7 @@ SweaveSyntaxNoweb	Sweave
 SweaveSyntConv	SweaveSyntConv
 SweaveUtils	SweaveUtils
 tail	head
+tail.array	head
 tail.data.frame	head
 tail.default	head
 tail.ftable	head

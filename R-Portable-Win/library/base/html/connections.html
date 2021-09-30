@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Functions to Manipulate Connections (Files, URLs, ...)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for connections {base}"><tr><td>connections {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -46,7 +47,15 @@ fifo(description, open = "", blocking = FALSE,
 socketConnection(host = "localhost", port, server = FALSE,
                  blocking = FALSE, open = "a+",
                  encoding = getOption("encoding"),
-                 timeout = getOption("timeout"))
+                 timeout = getOption("timeout"),
+                 options = getOption("socketOptions"))
+
+serverSocket(port)
+
+socketAccept(socket, blocking = FALSE, open = "a+",
+             encoding = getOption("encoding"),
+             timeout = getOption("timeout"),
+             options = getOption("socketOptions"))
 
 open(con, ...)
 ## S3 method for class 'connection'
@@ -60,6 +69,8 @@ flush(con)
 
 isOpen(con, rw = "")
 isIncomplete(con)
+
+socketTimeout(socket, timeout = -1)
 </pre>
 
 
@@ -98,15 +109,17 @@ file when opening for text-mode reading, and asserts that the
 <td>
 <p>character string, partially matched to
 <code>c("default", "internal", "wininet", "libcurl")</code>:
-
 see &lsquo;Details&rsquo;.</p>
 </td></tr>
+</table>
+
+<table summary="R argblock">
 <tr valign="top"><td><code>headers</code></td>
 <td>
 <p>named character vector of HTTP headers to use in HTTP
 requests.  It is ignored for non-HTTP URLs.  The <code>User-Agent</code>
 header, coming from the <code>HTTPUserAgent</code> option (see
-<code><a href="options.html">options</a></code>) is used as the first header, automatically.</p>
+<code><a href="../../base/help/options.html">options</a></code>) is used as the first header, automatically.</p>
 </td></tr>
 <tr valign="top"><td><code>compression</code></td>
 <td>
@@ -121,6 +134,11 @@ section.</p>
 connection.  Beware that some OSes may treat very large values as
 zero: however the POSIX standard requires values up to 31 days to be
 supported.</p>
+</td></tr>
+<tr valign="top"><td><code>options</code></td>
+<td>
+<p>optional character vector with options. Currently only
+<code>"no-delay"</code> is supported on TCP sockets.</p>
 </td></tr>
 <tr valign="top"><td><code>filename</code></td>
 <td>
@@ -137,6 +155,10 @@ supported.</p>
 <tr valign="top"><td><code>server</code></td>
 <td>
 <p>logical.  Should the socket be a client or a server?</p>
+</td></tr>
+<tr valign="top"><td><code>socket</code></td>
+<td>
+<p>a server socket listening for connections.</p>
 </td></tr>
 <tr valign="top"><td><code>con</code></td>
 <td>
@@ -160,34 +182,42 @@ partial matches allowed.</p>
 
 <h3>Details</h3>
 
-<p>The first nine functions create connections.  By default the
-connection is not opened (except for a <code>socketConnection</code>), but may
+<p>The first eleven functions create connections.  By default the
+connection is not opened (except for a socket connection created by
+<code>socketConnection</code> or <code>socketAccept</code> and for server socket
+connection created by <code>serverSocket</code>), but may
 be opened by setting a non-empty value of argument <code>open</code>.
 </p>
-<p>For <code>file</code> the description is a path to the file to be opened or
-a complete URL (when it is the same as calling <code>url</code>), or
-<code>""</code> (the default) or <code>"clipboard"</code> (see the
-&lsquo;Clipboard&rsquo; section).  Use <code>"stdin"</code> to refer to the
-C-level &lsquo;standard input&rsquo; of the process (which need not be
-connected to anything in a console or embedded version of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, and is
-not in <code>RGui</code> on Windows).  See also <code><a href="showConnections.html">stdin</a>()</code> for
-the subtly different R-level concept of <code>stdin</code>. See
-<code><a href="showConnections.html">nullfile</a>()</code> for a platform-independent way to get
-filename of the null device.
+<p>For <code>file</code> the description is a path to the file to be opened
+(when <a href="../../base/help/tilde+20expansion.html">tilde expansion</a> is done) or a complete URL (when it is
+the same as calling <code>url</code>), or <code>""</code> (the default) or
+<code>"clipboard"</code> (see the &lsquo;Clipboard&rsquo; section).  Use
+<code>"stdin"</code> to refer to the C-level &lsquo;standard input&rsquo; of the
+process (which need not be connected to anything in a console or
+embedded version of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, and is not in <code>RGui</code> on Windows).  See
+also <code><a href="../../base/help/stdin.html">stdin</a>()</code> for the subtly different R-level concept of
+<code>stdin</code>. See <code><a href="../../base/help/nullfile.html">nullfile</a>()</code> for a platform-independent
+way to get filename of the null device.
 </p>
 <p>For <code>url</code> the description is a complete URL including scheme
 (such as <span class="samp">http://</span>, <span class="samp">https://</span>, <span class="samp">ftp://</span> or
 <span class="samp">file://</span>).  Method <code>"internal"</code> is that available since
-connections were introduced, method <code>"wininet"</code> is only available
-on Windows (it uses the WinINet functions of that OS) and method
-<code>"libcurl"</code> (using the library of that name:
-<a href="http://curl.haxx.se/libcurl/">http://curl.haxx.se/libcurl/</a>) is required on a Unix-alike but
+connections were introduced..  Method <code>"wininet"</code> is only
+available on Windows (it uses the WinINet functions of that OS) and
+method <code>"libcurl"</code> (using the library of that name:
+<a href="https://curl.se/libcurl/">https://curl.se/libcurl/</a>) is required on a Unix-alike but
 optional on Windows.  Method <code>"default"</code> uses method
-<code>"internal"</code> for <span class="samp">file:</span> URLs and <code>"libcurl"</code> for
-<code>ftps:</code> URLs.  On a Unix-alike it uses <code>"libcurl"</code> for
-<span class="samp">http:</span>, <span class="samp">https:</span> and <span class="samp">ftp:</span> URLs; on Windows
-<code>"wininet"</code> for <span class="samp">http:</span>, <span class="samp">ftp:</span> and <span class="samp">https:</span> URLs.
-Proxies can be specified: see <code><a href="../../utils/html/download.file.html">download.file</a></code>.
+<code>"internal"</code> for <span class="samp">file://</span> URLs and uses <code>"libcurl"</code>
+(if available) for <span class="samp">ftp://</span> and <span class="samp">ftps://</span> URLs.  On a
+Unix-alike it uses <code>"libcurl"</code> for <span class="samp">http://</span> and
+<span class="samp">https://</span> URLs; on Windows <code>"wininet"</code> for <span class="samp">http://</span>
+and <span class="samp">https://</span> URLs (and for <span class="samp">ftp://</span> if <code>"libcurl"</code> is
+unavailable).  Which methods support which schemes has varied by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+version &ndash; currently <code>"internal"</code> supports <span class="samp">file://</span>,
+<span class="samp">http://</span> (deprecated) and <span class="samp">ftp://</span> (deprecated);
+<code>"wininet"</code> supports <span class="samp">file://</span>, <span class="samp">http://</span>,
+<span class="samp">https://</span> and <span class="samp">ftp://</span> (deprecated).  Proxies can be
+specified: see <code><a href="../../utils/html/download.file.html">download.file</a></code>.
 </p>
 <p>For <code>gzfile</code> the description is the path to a file compressed by
 <code>gzip</code>: it can also open for reading uncompressed files and
@@ -229,12 +259,12 @@ automatically in due course (with a warning) if there is no longer an
 </p>
 <p>A maximum of 128 connections can be allocated (not necessarily open)
 at any one time.  Three of these are pre-allocated (see
-<code><a href="showConnections.html">stdout</a></code>).   The OS will impose limits on the numbers of
+<code><a href="../../base/help/stdout.html">stdout</a></code>).   The OS will impose limits on the numbers of
 connections of various types, but these are usually larger than 125.
 </p>
 <p><code>flush</code> flushes the output stream of a connection open for
 write/append (where implemented, currently for file and clipboard
-connections, <code><a href="showConnections.html">stdout</a></code> and <code><a href="showConnections.html">stderr</a></code>).
+connections, <code><a href="../../base/help/stdout.html">stdout</a></code> and <code><a href="../../base/help/stderr.html">stderr</a></code>).
 </p>
 <p>If for a <code>file</code> or (on most platforms) a <code>fifo</code> connection
 the description is <code>""</code>, the file/fifo is immediately opened (in
@@ -242,12 +272,31 @@ the description is <code>""</code>, the file/fifo is immediately opened (in
 from the file system.  This provides a temporary file/fifo to write to
 and then read from.
 </p>
+<p><code>socketConnection(server=TRUE)</code> creates a new temporary server socket
+listening on the given port.  As soon as a new socket connection is
+accepted on that port, the server socket is automatically closed. 
+<code>serverSocket</code> creates a listening server socket which can be used
+for accepting multiple socket connections by <code>socketAccept</code>.  To stop
+listening for new connections, a server socket needs to be closed
+explicitly by <code>close</code>.
+</p>
+<p><code>socketConnection</code> and <code>socketAccept</code> support setting of
+socket-specific options. Currently only <code>"no-delay"</code> is
+implemented which enables the <code>TCP_NODELAY</code> socket option, causing
+the socket to flush send buffers immediately (instead of waiting to
+collect all output before sending). This option is useful for
+protocols that need fast request/response turn-around times.
+</p>
+<p><code>socketTimeout</code> sets connection timeout of a socket connection.  A
+negative <code>timeout</code> can be given to query the old value.
+</p>
 
 
 <h3>Value</h3>
 
 <p><code>file</code>, <code>pipe</code>, <code>fifo</code>, <code>url</code>, <code>gzfile</code>,
-<code>bzfile</code>, <code>xzfile</code>, <code>unz</code> and <code>socketConnection</code>
+<code>bzfile</code>, <code>xzfile</code>, <code>unz</code>, <code>socketConnection</code>,
+<code>socketAccept</code> and <code>serverSocket</code>
 return a connection object which inherits from class
 <code>"connection"</code> and has a first more specific class.
 </p>
@@ -267,6 +316,8 @@ currently open.
 attempt was blocked, or for an output text connection whether there is
 unflushed output.
 </p>
+<p><code>socketTimeout</code> returns the old timeout value of a socket connection. 
+</p>
 
 
 <h3>URLs</h3>
@@ -275,9 +326,12 @@ unflushed output.
 <span class="samp">http://</span>, <span class="samp">https://</span> and <span class="samp">ftp://</span>.
 </p>
 <p><code>method = "libcurl"</code> allows more schemes: exactly which schemes
-is platform-dependent (see <code><a href="libcurlVersion.html">libcurlVersion</a></code>), but all
+is platform-dependent (see <code><a href="../../base/help/libcurlVersion.html">libcurlVersion</a></code>), but all
 Unix-alike platforms will support <span class="samp">https://</span> and most platforms
 will support <span class="samp">ftps://</span>.
+</p>
+<p>Support for the <span class="samp">ftp://</span> scheme by the <code>"internal"</code> method was
+deprecated for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.1.1.
 </p>
 <p>Most methods do not percent-encode special characters such as spaces
 in <span class="samp">http://</span> URLs (see <code><a href="../../utils/html/URLencode.html">URLencode</a></code>), but it seems the
@@ -347,18 +401,18 @@ silently substituted.
 </p>
 <p>If a file or fifo is created on a Unix-alike, its permissions will be
 the maximal allowed by the current setting of <code>umask</code> (see
-<code><a href="files2.html">Sys.umask</a></code>).
+<code><a href="../../base/help/Sys.umask.html">Sys.umask</a></code>).
 </p>
 <p>For many connections there is little or no difference between text and
 binary modes.  For file-like connections on Windows, translation of
 line endings (between LF and CRLF) is done in text mode only (but text
-read operations on connections such as <code><a href="readLines.html">readLines</a></code>,
-<code><a href="scan.html">scan</a></code> and <code><a href="source.html">source</a></code> work for any form of line
+read operations on connections such as <code><a href="../../base/help/readLines.html">readLines</a></code>,
+<code><a href="../../base/help/scan.html">scan</a></code> and <code><a href="../../base/help/source.html">source</a></code> work for any form of line
 ending).  Various <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> operations are possible in only one of the modes:
-for example <code><a href="pushBack.html">pushBack</a></code> is text-oriented and is only
+for example <code><a href="../../base/help/pushBack.html">pushBack</a></code> is text-oriented and is only
 allowed on connections open for reading in text mode, and binary
-operations such as <code><a href="readBin.html">readBin</a></code>, <code><a href="load.html">load</a></code> and
-<code><a href="save.html">save</a></code> can only be done on binary-mode connections.
+operations such as <code><a href="../../base/help/readBin.html">readBin</a></code>, <code><a href="../../base/help/load.html">load</a></code> and
+<code><a href="../../base/help/save.html">save</a></code> can only be done on binary-mode connections.
 </p>
 <p>The mode of a connection is determined when actually opened, which is
 deferred if <code>open = ""</code> is given (the default for all but socket
@@ -400,7 +454,7 @@ if <code>open</code> is unspecified and a file of that name exists.  If the
 intention is to open the connection to write a file with a
 <em>different</em> form of compression under that name, specify
 <code>open = "w"</code> when the connection is created or
-<code><a href="unlink.html">unlink</a></code> the file before creating the connection.)
+<code><a href="../../base/help/unlink.html">unlink</a></code> the file before creating the connection.)
 </p>
 <p>For write-mode connections, <code>compress</code> specifies how hard the
 compressor works to minimize the file size, and higher values need
@@ -419,7 +473,7 @@ achieve more compression (although individual files may buck the
 general trend).  Typical experience is that <code>bzip2</code> compression
 is 15% better on text files than <code>gzip</code> compression, and
 <code>xz</code> with maximal compression 30% better.  The experience with
-<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> <code><a href="save.html">save</a></code> files is similar, but on some large &lsquo;<span class="file">.rda</span>&rsquo;
+<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> <code><a href="../../base/help/save.html">save</a></code> files is similar, but on some large &lsquo;<span class="file">.rda</span>&rsquo;
 files <code>xz</code> compression is much better than the other two.  With
 current computers decompression times even with <code>compress = 9</code>
 are typically modest and reading compressed files is usually faster
@@ -431,15 +485,15 @@ than uncompressed ones because of the reduction in disc activity.
 
 <p>The encoding of the input/output stream of a connection can be
 specified by name in the same way as it would be given to
-<code><a href="iconv.html">iconv</a></code>: see that help page for how to find out what
+<code><a href="../../base/help/iconv.html">iconv</a></code>: see that help page for how to find out what
 encoding names are recognized on your platform.  Additionally,
 <code>""</code> and <code>"native.enc"</code> both mean the &lsquo;native&rsquo;
 encoding, that is the internal encoding of the current locale and
 hence no translation is done.
 </p>
 <p>When writing to a text connection, the connections code always assumes its
-input is in native encoding, so e.g.  <code><a href="writeLines.html">writeLines</a></code> has to
-convert text to native encoding.  <code><a href="writeLines.html">writeLines</a></code> does not do the
+input is in native encoding, so e.g.  <code><a href="../../base/help/writeLines.html">writeLines</a></code> has to
+convert text to native encoding.  <code><a href="../../base/help/writeLines.html">writeLines</a></code> does not do the
 conversion when <code>useBytes=TRUE</code> (for expert use only), but the
 connections code still behaves as if the text was in native encoding, so
 any attempt to convert encoding (<code>encoding</code> argument other than
@@ -449,28 +503,28 @@ results.
 <p>When reading from a text connection, the connections code, after
 re-encoding based on the <code>encoding</code> argument, returns text that is
 assumed to be in native encoding; an encoding mark is only added by
-functions that read from the connection, so e.g.  <code><a href="readLines.html">readLines</a></code>
+functions that read from the connection, so e.g.  <code><a href="../../base/help/readLines.html">readLines</a></code>
 can be instructed to mark the text as <code>"UTF-8"</code> or <code>"latin1"</code>,
-but <code><a href="readLines.html">readLines</a></code> does no further conversion.  To allow reading
+but <code><a href="../../base/help/readLines.html">readLines</a></code> does no further conversion.  To allow reading
 text in <code>"UTF-8"</code> on a system that cannot represent all such
 characters in native encoding (currently only Windows), a connection can
 be internally configured to return the read text in UTF-8 even though it
-is not the native encoding; currently <code><a href="readLines.html">readLines</a></code> and
-<code><a href="scan.html">scan</a></code> use this feature when given a connection that is not
+is not the native encoding; currently <code><a href="../../base/help/readLines.html">readLines</a></code> and
+<code><a href="../../base/help/scan.html">scan</a></code> use this feature when given a connection that is not
 yet open and, when using the feature, they unconditionally mark the text
 as <code>"UTF-8"</code>.
 </p>
 <p>Re-encoding only works for connections in text mode: reading from a
 connection with re-encoding specified in binary mode will read the
 stream of bytes, but mixing text and binary mode reads (e.g., mixing
-calls to <code><a href="readLines.html">readLines</a></code> and <code><a href="readChar.html">readChar</a></code>) is likely
+calls to <code><a href="../../base/help/readLines.html">readLines</a></code> and <code><a href="../../base/help/readChar.html">readChar</a></code>) is likely
 to lead to incorrect results.
 </p>
 <p>The encodings <code>"UCS-2LE"</code> and <code>"UTF-16LE"</code> are treated
 specially, as they are appropriate values for Windows &lsquo;Unicode&rsquo;
 text files.  If the first two bytes are the Byte Order Mark
 <code>0xFEFF</code> then these are removed as some implementations of
-<code><a href="iconv.html">iconv</a></code> do not accept BOMs.  Note that whereas most
+<code><a href="../../base/help/iconv.html">iconv</a></code> do not accept BOMs.  Note that whereas most
 implementations will handle BOMs using encoding <code>"UCS-2"</code> and
 choose the appropriate byte order, some (including earlier versions of
 <code>glibc</code>) will not.  There is a subtle distinction between
@@ -501,7 +555,7 @@ error, with a warning.  On input, it will most likely be all or some
 of the input up to the error.
 </p>
 <p>It may be possible to deduce the current native encoding from
-<code><a href="locales.html">Sys.getlocale</a>("LC_CTYPE")</code>, but not all OSes record it.
+<code><a href="../../base/help/Sys.getlocale.html">Sys.getlocale</a>("LC_CTYPE")</code>, but not all OSes record it.
 </p>
 
 
@@ -516,7 +570,7 @@ operations return as soon as possible, so on input they will return
 with whatever input is available (possibly none) and for output they
 will return whether or not the write succeeded.
 </p>
-<p>The function <code><a href="readLines.html">readLines</a></code> behaves differently in respect of
+<p>The function <code><a href="../../base/help/readLines.html">readLines</a></code> behaves differently in respect of
 incomplete last lines in the two modes: see its help page.
 </p>
 <p>Even when a connection is in blocking mode, attempts are made to
@@ -564,6 +618,18 @@ not work as one might expect.
 </p>
 
 
+<h3>File paths</h3>
+
+<p>In most cases these are translated to the native encoding.
+</p>
+<p>The exceptions are <code>file</code> and <code>pipe</code> on Windows, where a
+<code>description</code> which is marked as being in UTF-8 is passed to
+Windows as a &lsquo;wide&rsquo; character string.  This allows files with
+names not in the native encoding to be opened on file systems which
+use Unicode file names (such as NTFS but not FAT32).
+</p>
+
+
 <h3>Note</h3>
 
 <p><span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s connections are modelled on those in S version 4 (see Chambers,
@@ -586,37 +652,39 @@ warning.
 <p>Chambers, J. M. (1998)
 <em>Programming with Data.  A Guide to the S Language.</em> Springer.
 </p>
-<p>Ripley, B. D. (2001) Connections. <em>R News</em>, <b>1/1</b>, 16&ndash;7.
-<a href="https://www.r-project.org/doc/Rnews/Rnews_2001-1.pdf">https://www.r-project.org/doc/Rnews/Rnews_2001-1.pdf</a>
+<p>Ripley, B. D. (2001).
+&ldquo;Connections.&rdquo;
+<em>R News</em>, <b>1</b>(1), 16&ndash;7.
+<a href="https://www.r-project.org/doc/Rnews/Rnews_2001-1.pdf">https://www.r-project.org/doc/Rnews/Rnews_2001-1.pdf</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="textconnections.html">textConnection</a></code>, <code><a href="seek.html">seek</a></code>,
-<code><a href="showConnections.html">showConnections</a></code>, <code><a href="pushBack.html">pushBack</a></code>.
+<p><code><a href="../../base/help/textConnection.html">textConnection</a></code>, <code><a href="../../base/help/seek.html">seek</a></code>,
+<code><a href="../../base/help/showConnections.html">showConnections</a></code>, <code><a href="../../base/help/pushBack.html">pushBack</a></code>.
 </p>
 <p>Functions making direct use of connections are (text-mode)
-<code><a href="readLines.html">readLines</a></code>, <code><a href="writeLines.html">writeLines</a></code>, <code><a href="cat.html">cat</a></code>,
-<code><a href="sink.html">sink</a></code>, <code><a href="scan.html">scan</a></code>, <code><a href="parse.html">parse</a></code>,
-<code><a href="dcf.html">read.dcf</a></code>, <code><a href="dput.html">dput</a></code>, <code><a href="dump.html">dump</a></code> and
-(binary-mode) <code><a href="readBin.html">readBin</a></code>, <code><a href="readChar.html">readChar</a></code>,
-<code><a href="readBin.html">writeBin</a></code>, <code><a href="readChar.html">writeChar</a></code>, <code><a href="load.html">load</a></code>
-and <code><a href="save.html">save</a></code>.
+<code><a href="../../base/help/readLines.html">readLines</a></code>, <code><a href="../../base/help/writeLines.html">writeLines</a></code>, <code><a href="../../base/help/cat.html">cat</a></code>,
+<code><a href="../../base/help/sink.html">sink</a></code>, <code><a href="../../base/help/scan.html">scan</a></code>, <code><a href="../../base/help/parse.html">parse</a></code>,
+<code><a href="../../base/help/read.dcf.html">read.dcf</a></code>, <code><a href="../../base/help/dput.html">dput</a></code>, <code><a href="../../base/help/dump.html">dump</a></code> and
+(binary-mode) <code><a href="../../base/help/readBin.html">readBin</a></code>, <code><a href="../../base/help/readChar.html">readChar</a></code>,
+<code><a href="../../base/help/writeBin.html">writeBin</a></code>, <code><a href="../../base/help/writeChar.html">writeChar</a></code>, <code><a href="../../base/help/load.html">load</a></code>
+and <code><a href="../../base/help/save.html">save</a></code>.
 </p>
-<p><code><a href="capabilities.html">capabilities</a></code> to see if <code>fifo</code> connections are
+<p><code><a href="../../base/help/capabilities.html">capabilities</a></code> to see if <code>fifo</code> connections are
 supported by this build of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
 </p>
-<p><code><a href="gzcon.html">gzcon</a></code> to wrap <code>gzip</code> (de)compression around a
+<p><code><a href="../../base/help/gzcon.html">gzcon</a></code> to wrap <code>gzip</code> (de)compression around a
 connection.
 </p>
-<p><code><a href="options.html">options</a></code> <code>HTTPUserAgent</code>, <code>internet.info</code> and
+<p><code><a href="../../base/help/options.html">options</a></code> <code>HTTPUserAgent</code>, <code>internet.info</code> and
 <code>timeout</code> are used by some of the methods for URL connections.
 </p>
-<p><code><a href="memCompress.html">memCompress</a></code> for more ways to (de)compress and references
+<p><code><a href="../../base/help/memCompress.html">memCompress</a></code> for more ways to (de)compress and references
 on data compression.
 </p>
-<p><code><a href="extSoftVersion.html">extSoftVersion</a></code> for the versions of the <code>zlib</code> (for
+<p><code><a href="../../base/help/extSoftVersion.html">extSoftVersion</a></code> for the versions of the <code>zlib</code> (for
 <code>gzfile</code>), <code>bzip2</code> and <code>xz</code> libraries in use.
 </p>
 <p>To flush output to the Windows and macOS consoles, see
@@ -711,5 +779,5 @@ A &lt;- read.table(con &lt;- file("students", encoding = "UCS-2LE")); close(con)
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

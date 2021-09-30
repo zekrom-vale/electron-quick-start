@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert an R Object to a Character String</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for toString {base}"><tr><td>toString {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>This is a helper function for <code><a href="format.html">format</a></code> to produce a single
+<p>This is a helper function for <code><a href="../../base/help/format.html">format</a></code> to produce a single
 character string describing an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object.
 </p>
 
@@ -49,7 +50,7 @@ The minimum value accepted is 6 and smaller values are taken as 6.</p>
 <p>This is a generic function for which methods can be written: only the
 default method is described here.  Most methods should honor the
 <code>width</code> argument to specify the maximum display width (as measured
-by <code><a href="nchar.html">nchar</a>(type = "width")</code>) of the result.
+by <code><a href="../../base/help/nchar.html">nchar</a>(type = "width")</code>) of the result.
 </p>
 <p>The default method first converts <code>x</code> to character and then
 concatenates the elements separated by <code>", "</code>.
@@ -73,7 +74,7 @@ returns the first <code>width - 4</code> characters of the result with
 
 <h3>See Also</h3>
 
- <p><code><a href="format.html">format</a></code> </p>
+ <p><code><a href="../../base/help/format.html">format</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -84,5 +85,5 @@ toString(x)
 toString(x, width = 8)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Browsing after an Error</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for recover {utils}"><tr><td>recover {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,14 +36,14 @@ evaluated in that environment.
 <code>recover</code> from the browser.  Type another frame number to browse
 some more, or type <code>0</code> to exit <code>recover</code>.
 </p>
-<p>The use of <code>recover</code> largely supersedes <code><a href="debugger.html">dump.frames</a></code>
+<p>The use of <code>recover</code> largely supersedes <code><a href="../../utils/help/dump.frames.html">dump.frames</a></code>
 as an error option, unless you really want to wait to look at the
 error.  If <code>recover</code> is called in non-interactive mode, it
 behaves like <code>dump.frames</code>.  For computations involving large
 amounts of data, <code>recover</code> has the advantage that it does not
 need to copy out all the environments in order to browse in them.  If
 you do decide to quit interactive debugging, call
-<code><a href="debugger.html">dump.frames</a></code> directly while browsing in any frame (see
+<code><a href="../../utils/help/dump.frames.html">dump.frames</a></code> directly while browsing in any frame (see
 the examples).
 </p>
 
@@ -80,7 +81,7 @@ See the compatibility note above, however.
 
 <p><code><a href="../../base/html/browser.html">browser</a></code> for details about the interactive computations;
 <code><a href="../../base/html/options.html">options</a></code> for setting the error option;
-<code><a href="debugger.html">dump.frames</a></code> to save the current environments for later
+<code><a href="../../utils/help/dump.frames.html">dump.frames</a></code> to save the current environments for later
 debugging.
 </p>
 
@@ -122,5 +123,5 @@ Selection: 0 # exit recover
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

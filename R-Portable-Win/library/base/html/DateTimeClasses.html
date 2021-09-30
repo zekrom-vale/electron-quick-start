@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Date-Time Classes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for DateTimeClasses {base}"><tr><td>DateTimeClasses {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -40,13 +41,13 @@ date-time classes.</p>
 </td></tr>
 <tr valign="top"><td><code>tz, usetz</code></td>
 <td>
-<p>for timezone formatting, passed to <code><a href="strptime.html">format.POSIXct</a></code>.</p>
+<p>for timezone formatting, passed to <code><a href="../../base/help/format.POSIXct.html">format.POSIXct</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>max</code></td>
 <td>
 <p>numeric or <code>NULL</code>, specifying the maximal number of
 entries to be printed.  By default, when <code>NULL</code>,
-<code><a href="options.html">getOption</a>("max.print")</code> used.</p>
+<code><a href="../../base/help/getOption.html">getOption</a>("max.print")</code> used.</p>
 </td></tr>
 <tr valign="top"><td><code>digits</code></td>
 <td>
@@ -65,7 +66,7 @@ exactly.</p>
 <tr valign="top"><td><code>time1, time2</code></td>
 <td>
 <p>date-time objects or character vectors.  (Character
-vectors are converted by <code><a href="as.POSIXlt.html">as.POSIXct</a></code>.)</p>
+vectors are converted by <code><a href="../../base/help/as.POSIXct.html">as.POSIXct</a></code>.)</p>
 </td></tr>
 <tr valign="top"><td><code>z</code></td>
 <td>
@@ -102,7 +103,7 @@ a named list of vectors representing
 </dd>
 <dt><code>wday</code></dt><dd><p>0&ndash;6 day of the week, starting on Sunday.</p>
 </dd>
-<dt><code>yday</code></dt><dd><p>0&ndash;365: day of the year.</p>
+<dt><code>yday</code></dt><dd><p>0&ndash;365: day of the year (365 only in leap years).</p>
 </dd>
 <dt><code>isdst</code></dt><dd><p>Daylight Saving Time flag.  Positive if in
 force, zero if not, negative if unknown.</p>
@@ -123,7 +124,7 @@ platform-dependent: they are supported on platforms based on BSD or
 <code>tzcode</code> implementation shipped with <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> (including Windows). But
 they are not necessarily set.).  Note that the internal list structure
 is somewhat hidden, as many methods (including
-<code><a href="length.html">length</a>(x)</code>, <code><a href="print.html">print</a>()</code> and <code><a href="../../utils/html/str.html">str</a></code>)
+<code><a href="../../base/help/length.html">length</a>(x)</code>, <code><a href="../../base/help/print.html">print</a>()</code> and <code><a href="../../utils/html/str.html">str</a></code>)
 apply to the abstract date-time vector, as for <code>"POSIXct"</code>.  As
 from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.5.0, one can extract and replace <em>single</em> components
 via <code>[</code> indexing with two indices (see the examples).  The
@@ -151,16 +152,18 @@ platform-dependent.
 <p>Logical comparisons and some arithmetic operations are available for
 both classes.  One can add or subtract a number of seconds from a
 date-time object, but not add two date-time objects.  Subtraction of
-two date-time objects is equivalent to using <code><a href="difftime.html">difftime</a></code>.
+two date-time objects is equivalent to using <code><a href="../../base/help/difftime.html">difftime</a></code>.
 Be aware that <code>"POSIXlt"</code> objects will be interpreted as being in
 the current time zone for these operations unless a time zone has been
 specified.
 </p>
 <p><code>"POSIXlt"</code> objects will often have an attribute <code>"tzone"</code>,
-a character vector of length 3 giving the time zone name from the
-<span class="env">TZ</span> environment variable and the names of the base time zone
+a character vector of length 3 giving the time zone name (from the <span class="env">TZ</span>
+environment variable or argument <code>tz</code> of functions creating
+<code>"POSIXlt"</code> objects; <code>""</code> marks the current time zone)
+and the names of the base time zone
 and the alternate (daylight-saving) time zone.  Sometimes this may
-just be of length one, giving the <a href="timezones.html">time zone</a> name.
+just be of length one, giving the <a href="../../base/help/time+20zone.html">time zone</a> name.
 </p>
 <p><code>"POSIXct"</code> objects may also have an attribute <code>"tzone"</code>, a
 character vector of length one.  If set to a non-empty value, it will
@@ -184,10 +187,10 @@ platforms ignore them (as required by POSIX).  This is detected and
 corrected for at build time, so <code>"POSIXct"</code> times used by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> do
 not include leap seconds on any platform.
 </p>
-<p>Using <code><a href="c.html">c</a></code> on <code>"POSIXlt"</code> objects converts them to the
+<p>Using <code><a href="../../base/help/c.html">c</a></code> on <code>"POSIXlt"</code> objects converts them to the
 current time zone, and on <code>"POSIXct"</code> objects drops any
-<code>"tzone"</code> attributes (even if they are all marked with the same
-time zone).
+<code>"tzone"</code> attributes, unless they are all marked with the same
+time zone.
 </p>
 <p>A few times have specific issues.  First, the leap seconds are ignored,
 and real times such as <code>"2005-12-31 23:59:60"</code> are (probably)
@@ -202,7 +205,7 @@ also used as an error code.  Thus <code>as.POSIXct("1969-12-31
 (including the code used by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> on Windows) report errors separately
 and so are able to handle that time as valid.
 </p>
-<p>The print methods respect <code><a href="options.html">options</a>("max.print")</code>.
+<p>The print methods respect <code><a href="../../base/help/options.html">options</a>("max.print")</code>.
 </p>
 
 
@@ -213,7 +216,7 @@ fractions of a second.  (Conversion of fractions between the two forms
 may not be exact, but will have better than microsecond accuracy.)
 </p>
 <p>Fractional seconds are printed only if
-<code><a href="options.html">options</a>("digits.secs")</code> is set: see <code><a href="strptime.html">strftime</a></code>.
+<code><a href="../../base/help/options.html">options</a>("digits.secs")</code> is set: see <code><a href="../../base/help/strftime.html">strftime</a></code>.
 </p>
 
 
@@ -267,7 +270,7 @@ for times more than a year or two ahead are speculative.
 <p>Some Unix-like systems (especially Linux ones) do not have environment
 variable <span class="env">TZ</span> set, yet have internal code that expects it (as does
 POSIX).  We have tried to work around this, but if you get unexpected
-results try setting <span class="env">TZ</span>.  See <code><a href="timezones.html">Sys.timezone</a></code> for
+results try setting <span class="env">TZ</span>.  See <code><a href="../../base/help/Sys.timezone.html">Sys.timezone</a></code> for
 valid settings.
 </p>
 <p>Great care is needed when comparing objects of class <code>"POSIXlt"</code>.
@@ -283,31 +286,32 @@ rely on the order for efficiency.
 
 <h3>References</h3>
 
-<p>Ripley, B. D. and Hornik, K. (2001) Date-time classes. <em>R News</em>,
-<b>1/2</b>, 8&ndash;11.
-<a href="https://www.r-project.org/doc/Rnews/Rnews_2001-2.pdf">https://www.r-project.org/doc/Rnews/Rnews_2001-2.pdf</a>
+<p>Ripley, B. D. and Hornik, K. (2001).
+&ldquo;Date-time classes.&rdquo;
+<em>R News</em>, <b>1</b>(2), 8&ndash;11.
+<a href="https://www.r-project.org/doc/Rnews/Rnews_2001-2.pdf">https://www.r-project.org/doc/Rnews/Rnews_2001-2.pdf</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><a href="Dates.html">Dates</a> for dates without times.
+<p><a href="../../base/help/Dates.html">Dates</a> for dates without times.
 </p>
-<p><code><a href="as.POSIXlt.html">as.POSIXct</a></code> and <code><a href="as.POSIXlt.html">as.POSIXlt</a></code> for conversion
+<p><code><a href="../../base/help/as.POSIXct.html">as.POSIXct</a></code> and <code><a href="../../base/help/as.POSIXlt.html">as.POSIXlt</a></code> for conversion
 between the classes.
 </p>
-<p><code><a href="strptime.html">strptime</a></code> for conversion to and from character
+<p><code><a href="../../base/help/strptime.html">strptime</a></code> for conversion to and from character
 representations.
 </p>
-<p><code><a href="Sys.time.html">Sys.time</a></code> for clock time as a <code>"POSIXct"</code> object.
+<p><code><a href="../../base/help/Sys.time.html">Sys.time</a></code> for clock time as a <code>"POSIXct"</code> object.
 </p>
-<p><code><a href="difftime.html">difftime</a></code> for time intervals.
+<p><code><a href="../../base/help/difftime.html">difftime</a></code> for time intervals.
 </p>
-<p><code><a href="cut.POSIXt.html">cut.POSIXt</a></code>, <code><a href="seq.POSIXt.html">seq.POSIXt</a></code>,
-<code><a href="round.POSIXt.html">round.POSIXt</a></code> and <code><a href="round.POSIXt.html">trunc.POSIXt</a></code> for methods
+<p><code><a href="../../base/help/cut.POSIXt.html">cut.POSIXt</a></code>, <code><a href="../../base/help/seq.POSIXt.html">seq.POSIXt</a></code>,
+<code><a href="../../base/help/round.POSIXt.html">round.POSIXt</a></code> and <code><a href="../../base/help/trunc.POSIXt.html">trunc.POSIXt</a></code> for methods
 for these classes.
 </p>
-<p><code><a href="weekday.POSIXt.html">weekdays</a></code> for convenience extraction functions.
+<p><code><a href="../../base/help/weekdays.html">weekdays</a></code> for convenience extraction functions.
 </p>
 
 
@@ -345,5 +349,5 @@ for(lpS in list(.leap.seconds, leapS)) {
 }
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

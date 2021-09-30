@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Trigonometric Functions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Trig {base}"><tr><td>Trig {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,9 +60,9 @@ right angle is <i>&pi;/2</i>), and in &lsquo;half-rotations&rsquo; for
 <p><code>cospi(x)</code>, <code>sinpi(x)</code>, and <code>tanpi(x)</code> are accurate
 for <code>x</code> values which are multiples of a half.
 </p>
-<p>All except <code>atan2</code> are <a href="InternalMethods.html">internal generic</a> <a href="Primitive.html">primitive</a>
+<p>All except <code>atan2</code> are <a href="../../base/help/internal+20generic.html">internal generic</a> <a href="../../base/help/primitive.html">primitive</a>
 functions: methods can be defined for them individually or via the
-<code><a href="groupGeneric.html">Math</a></code> group generic.
+<code><a href="../../base/help/S3groupGeneric.html">Math</a></code> group generic.
 </p>
 <p>These are all wrappers to system calls of the same name (with prefix
 <code>c</code> for complex arguments) where available.  (<code>cospi</code>,
@@ -74,7 +75,7 @@ for  multiples of a half.)
 
 <h3>Value</h3>
 
-<p><code>tanpi(0.5)</code> is <code><a href="is.finite.html">NaN</a></code>.  Similarly for other inputs
+<p><code>tanpi(0.5)</code> is <code><a href="../../base/help/NaN.html">NaN</a></code>.  Similarly for other inputs
 with fractional part <code>0.5</code>.
 </p>
 
@@ -139,5 +140,5 @@ tx[ (x %% 1) %in% c(0, 0.5) ,]
 options(op)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

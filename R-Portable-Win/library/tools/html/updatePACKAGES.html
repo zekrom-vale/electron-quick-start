@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Update Existing PACKAGES Files</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for update_PACKAGES {tools}"><tr><td>update_PACKAGES {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,7 +16,7 @@ are no longer valid, and only processing built package tarballs which do not
 match existing entries.
 </p>
 <p><code>update_PACKAGES</code> can be much faster than
-<code><a href="writePACKAGES.html">write_PACKAGES</a></code> for small-moderate changes to large
+<code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code> for small-moderate changes to large
 repository indexes, particularly in non-strict mode (see Details).
 </p>
 
@@ -35,15 +36,15 @@ update_PACKAGES(dir = ".", fields = NULL, type = c("source",
 <table summary="R argblock">
 <tr valign="top"><td><code>dir</code></td>
 <td>
-<p>See <code><a href="writePACKAGES.html">write_PACKAGES</a></code></p>
+<p>See <code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>fields</code></td>
 <td>
-<p>See <code><a href="writePACKAGES.html">write_PACKAGES</a></code></p>
+<p>See <code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
-<p>See <code><a href="writePACKAGES.html">write_PACKAGES</a></code></p>
+<p>See <code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>verbose.level</code></td>
 <td>
@@ -54,15 +55,15 @@ otherwise. See details for more information.</p>
 </td></tr>
 <tr valign="top"><td><code>latestOnly</code></td>
 <td>
-<p>See <code><a href="writePACKAGES.html">write_PACKAGES</a></code></p>
+<p>See <code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>addFiles</code></td>
 <td>
-<p>See <code><a href="writePACKAGES.html">write_PACKAGES</a></code></p>
+<p>See <code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>rds_compress</code></td>
 <td>
-<p>See <code><a href="writePACKAGES.html">write_PACKAGES</a></code></p>
+<p>See <code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>strict</code></td>
 <td>
@@ -89,7 +90,7 @@ to by the <code>File</code> field of an existing <code>PACKAGES</code> entry).
 <code>PACKAGES</code> file entry.
 </p>
 <p><code>update_PACKAGES</code> calls directly down to
-<code><a href="writePACKAGES.html">write_PACKAGES</a></code> with a warning (and thus all package tarballs
+<code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code> with a warning (and thus all package tarballs
 will be processed), if any of the following conditions hold:
 </p>
 
@@ -125,7 +126,7 @@ excluded from the resulting updated <code>PACKAGES</code> files.
 tarball (by package name and version) are confirmed via MD5 checksum;
 only those that pass are retained as valid. All novel package tarballs
 are fully processed by the standard machinery underlying
-<code><a href="writePACKAGES.html">write_PACKAGES</a></code> and the resulting entries are
+<code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code> and the resulting entries are
 added. Finally, if <code>latestOnly</code> is <code>TRUE</code>, package-version
 pruning is performed across the entries.
 </p>
@@ -157,7 +158,7 @@ existing versions.
 <p>When <code>verbose.level</code> is <code>0</code>, no extra messages are displayed
 to the user. When it is <code>1</code>, detailed information about what is
 happening is conveyed via messages, but underlying machinery from
-<code><a href="writePACKAGES.html">write_PACKAGES</a></code> is invoked with <code>verbose = FALSE</code>.
+<code><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a></code> is invoked with <code>verbose = FALSE</code>.
 Behavior when <code>verbose.level</code> is <code>2</code> is identical to
 <code>verbose.level</code> <code>1</code> with the exception that underlying
 machinery from <code>write_PACKAGE</code> is invoked with
@@ -193,7 +194,7 @@ package which is copyright Genentech, Inc.)
 
 <h3>See Also</h3>
 
-<p><a href="writePACKAGES.html">write_PACKAGES</a>
+<p><a href="../../tools/help/write_PACKAGES.html">write_PACKAGES</a>
 </p>
 
 
@@ -210,5 +211,5 @@ type = "win.binary") # on Linux
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

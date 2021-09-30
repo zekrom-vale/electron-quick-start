@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Spine Plots and Spinograms</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for spineplot {graphics}"><tr><td>spineplot {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -64,7 +65,7 @@ dependent <code>"factor"</code> and a single explanatory variable.</p>
 <tr valign="top"><td><code>breaks</code></td>
 <td>
 <p>if the explanatory variable is numeric, this controls how
-it is discretized. <code>breaks</code> is passed to <code><a href="hist.html">hist</a></code> and can
+it is discretized. <code>breaks</code> is passed to <code><a href="../../graphics/help/hist.html">hist</a></code> and can
 be a list of arguments.</p>
 </td></tr>
 <tr valign="top"><td><code>tol.ylab</code></td>
@@ -110,7 +111,7 @@ level names) are suppressed.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>additional arguments passed to <code><a href="rect.html">rect</a></code>.</p>
+<p>additional arguments passed to <code><a href="../../graphics/help/rect.html">rect</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>subset</code></td>
 <td>
@@ -142,7 +143,7 @@ special formatting of spacing and shading.  Conceptually, they plot
 <i>x</i> and <i>y</i> are categorical), both quantities are approximated
 by the corresponding empirical relative frequencies.  For the
 spinogram (where <i>x</i> is numerical), <i>x</i> is first discretized
-(by calling <code><a href="hist.html">hist</a></code> with <code>breaks</code> argument) and then
+(by calling <code><a href="../../graphics/help/hist.html">hist</a></code> with <code>breaks</code> argument) and then
 empirical relative frequencies are taken.
 </p>
 <p>Thus, spine plots can also be seen as a generalization of stacked bar
@@ -191,7 +192,7 @@ Linked bar charts: Analysing categorical data graphically.
 
 <h3>See Also</h3>
 
-<p><code><a href="mosaicplot.html">mosaicplot</a></code>, <code><a href="hist.html">hist</a></code>, <code><a href="cdplot.html">cdplot</a></code>
+<p><code><a href="../../graphics/help/mosaicplot.html">mosaicplot</a></code>, <code><a href="../../graphics/help/hist.html">hist</a></code>, <code><a href="../../graphics/help/cdplot.html">cdplot</a></code>
 </p>
 
 
@@ -210,9 +211,9 @@ improved &lt;- factor(rep(c(1, 2, 3, 1, 2, 3), c(29, 7, 7, 13, 7, 21)),
 
 ## applications and admissions by department at UC Berkeley
 ## (two-way tables)
-(spineplot(margin.table(UCBAdmissions, c(3, 2)),
+(spineplot(marginSums(UCBAdmissions, c(3, 2)),
            main = "Applications at UCB"))
-(spineplot(margin.table(UCBAdmissions, c(3, 1)),
+(spineplot(marginSums(UCBAdmissions, c(3, 1)),
            main = "Admissions at UCB"))
 
 ## NASA space shuttle o-ring failures
@@ -231,5 +232,5 @@ temperature &lt;- c(53, 57, 58, 63, 66, 67, 67, 67, 68, 69, 70, 70,
 spineplot(fail ~ temperature, ylevels = 2:1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

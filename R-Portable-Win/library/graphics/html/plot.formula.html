@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Formula Notation for Scatterplots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for plot.formula {graphics}"><tr><td>plot.formula {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,7 +60,7 @@ to be used in the fitting process.</p>
 </td></tr>
 <tr valign="top"><td><code>ask</code></td>
 <td>
-<p>logical, see <code><a href="par.html">par</a></code>.</p>
+<p>logical, see <code><a href="../../graphics/help/par.html">par</a></code>.</p>
 </td></tr>
 </table>
 
@@ -86,7 +87,7 @@ against each non-response term.
 <p>For the <code>plot</code> method the formula can be of the form
 <code>~ z + y + z</code>: the variables specified on the right-hand side are
 collected into a data frame, subsetted if specified, and displayed by
-<code><a href="plot.dataframe.html">plot.data.frame</a></code>.
+<code><a href="../../graphics/help/plot.data.frame.html">plot.data.frame</a></code>.
 </p>
 <p>Missing values are not considered in these methods, and in particular
 cases with missing values are not removed.
@@ -95,13 +96,13 @@ cases with missing values are not removed.
 then <code>plot.formula</code> looks for a plot method for that class first.
 Otherwise, the class of <code>x</code> will determine the type of the plot.
 For factors this will be a parallel boxplot, and argument
-<code>horizontal = TRUE</code> can be specified (see <code><a href="boxplot.html">boxplot</a></code>).
+<code>horizontal = TRUE</code> can be specified (see <code><a href="../../graphics/help/boxplot.html">boxplot</a></code>).
 </p>
 <p>Note that some arguments will need to be protected from premature
 evaluation by enclosing them in <code><a href="../../base/html/substitute.html">quote</a></code>: currently this is
 done automatically for <code>main</code>, <code>sub</code> and <code>xlab</code>.  For
 example, it is needed for the <code>panel.first</code> and <code>panel.last</code>
-arguments passed to <code><a href="plot.default.html">plot.default</a></code>.
+arguments passed to <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.
 </p>
 
 
@@ -114,8 +115,8 @@ on the active graphics device.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.default.html">plot.default</a></code>, <code><a href="points.html">points</a></code>, <code><a href="lines.html">lines</a></code>,
-<code><a href="plot.factor.html">plot.factor</a></code>.
+<p><code><a href="../../graphics/help/plot.default.html">plot.default</a></code>, <code><a href="../../graphics/help/points.html">points</a></code>, <code><a href="../../graphics/help/lines.html">lines</a></code>,
+<code><a href="../../graphics/help/plot.factor.html">plot.factor</a></code>.
 </p>
 
 
@@ -132,8 +133,8 @@ par(op)
 wb &lt;- within(warpbreaks, {
     time &lt;- seq_along(breaks); W.T &lt;- wool:tension })
 plot(breaks ~ time, data = wb, type = "b")
-text(breaks ~ time, data = wb, label = W.T, col = 1+as.integer(wool))
+text(breaks ~ time, data = wb, labels = W.T, col = 1+as.integer(wool))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

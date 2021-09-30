@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert a Date or Date-Time Object to a Factor</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for cut.POSIXt {base}"><tr><td>cut.POSIXt {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Method for <code><a href="cut.html">cut</a></code> applied to date-time objects.
+<p>Method for <code><a href="../../base/help/cut.html">cut</a></code> applied to date-time objects.
 </p>
 
 
@@ -72,7 +73,7 @@ week start on Mondays or Sundays?</p>
 <h3>Details</h3>
 
 <p>Note that the default for <code>right</code> differs from the
-<a href="cut.html">default method</a>.  Using <code>include.lowest =
+<a href="../../base/help/cut.default.html">default method</a>.  Using <code>include.lowest =
     TRUE</code> will include both ends of the range of dates.
 </p>
 <p>Using <code>breaks = "quarter"</code> will create intervals of 3 calendar
@@ -96,7 +97,7 @@ the integer level codes.
 
 <h3>See Also</h3>
 
-<p><code><a href="seq.POSIXt.html">seq.POSIXt</a></code>, <code><a href="seq.Date.html">seq.Date</a></code>, <code><a href="cut.html">cut</a></code>
+<p><code><a href="../../base/help/seq.POSIXt.html">seq.POSIXt</a></code>, <code><a href="../../base/help/seq.Date.html">seq.Date</a></code>, <code><a href="../../base/help/cut.html">cut</a></code>
 </p>
 
 
@@ -115,5 +116,5 @@ aggregate(1:24, list(day = cut(tm, "days")), mean)
 aggregate(1:24, list(day = cut(tm, "days", right = TRUE)), mean)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

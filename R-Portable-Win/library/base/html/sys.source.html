@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Parse and Evaluate Expressions from a File</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sys.source {base}"><tr><td>sys.source {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -48,13 +49,13 @@ changed to the directory containing <code>file</code> for evaluating.</p>
 <td>
 <p>logical.  If <code>TRUE</code>, functions keep
 their source including comments, see
-<code><a href="options.html">options</a>(keep.source = *)</code> for more details.</p>
+<code><a href="../../base/help/options.html">options</a>(keep.source = *)</code> for more details.</p>
 </td></tr>
 <tr valign="top"><td><code>keep.parse.data</code></td>
 <td>
 <p>logical.  If <code>TRUE</code> and <code>keep.source</code> is
 also <code>TRUE</code>, functions keep parse data with their source, see
-<code><a href="options.html">options</a>(keep.parse.data = *)</code> for more details.</p>
+<code><a href="../../base/help/options.html">options</a>(keep.parse.data = *)</code> for more details.</p>
 </td></tr>
 <tr valign="top"><td><code>toplevel.env</code></td>
 <td>
@@ -73,7 +74,7 @@ can already save a lot.
 
 In order for the code being evaluated to use the correct environment
 (for example, in global assignments), source code in packages should
-call <code><a href="ns-topenv.html">topenv</a>()</code>, which will return the namespace, if any,
+call <code><a href="../../base/help/topenv.html">topenv</a>()</code>, which will return the namespace, if any,
 the environment set up by <code>sys.source</code>, or the global environment
 if a saved image is being used.
 </p>
@@ -81,7 +82,7 @@ if a saved image is being used.
 
 <h3>See Also</h3>
 
-<p><code><a href="source.html">source</a></code>, and <code><a href="library.html">library</a></code> which uses
+<p><code><a href="../../base/help/source.html">source</a></code>, and <code><a href="../../base/help/library.html">library</a></code> which uses
 <code>sys.source</code>.
 </p>
 
@@ -101,5 +102,5 @@ aaa
 detach("myenv")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

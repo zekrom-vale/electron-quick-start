@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Basic use of S4 Methods and Classes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Introduction {methods}"><tr><td>Introduction {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -16,8 +17,8 @@ Computations will be implemented using <em>methods</em> that implement
 functional computations when one or more of the arguments is an object
 from these classes.
 </p>
-<p>Calls to the functions <code><a href="setClass.html">setClass</a>()</code> define the new classes;
-calls to <code><a href="setMethod.html">setMethod</a></code> define the methods.
+<p>Calls to the functions <code><a href="../../methods/help/setClass.html">setClass</a>()</code> define the new classes;
+calls to <code><a href="../../methods/help/setMethod.html">setMethod</a></code> define the methods.
 These, along with ordinary <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> computations, are sufficient to get
 started for most applications.
 </p>
@@ -36,7 +37,7 @@ languages such as Python, in which methods are part of class
 definitions and invoked on an object.
 These are more appropriate when computations expect references to
 objects that are persistent, making changes to the object over time.
-See <a href="refClass.html">ReferenceClasses</a> and Chapter 9 of the reference for the
+See <a href="../../methods/help/ReferenceClasses.html">ReferenceClasses</a> and Chapter 9 of the reference for the
 choice between these and S4 classes.
 </p>
 
@@ -44,11 +45,11 @@ choice between these and S4 classes.
 <h3>Defining Classes</h3>
 
 <p>All objects in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> belong to a class; ordinary vectors and other basic
-objects are built-in (<a href="BasicClasses.html">builtin-class</a>).
+objects are built-in (<a href="../../methods/help/builtin-class.html">builtin-class</a>).
 A new class is defined in terms of the named <em>slots</em> that is has
 and/or in terms of existing classes that it inherits from, or
 <em>contains</em> (discussed in &lsquo;Class Inheritance&rsquo; below).
-A call to <code><a href="setClass.html">setClass</a>()</code> names a new class and uses the corresponding arguments to
+A call to <code><a href="../../methods/help/setClass.html">setClass</a>()</code> names a new class and uses the corresponding arguments to
 define it.
 </p>
 <p>For example, suppose we want a class of objects to represent a
@@ -76,7 +77,7 @@ the class by:
 the class, <code>g@latitude</code>.
 </p>
 <p>In addition to returning a generator function the call to
-<code><a href="setClass.html">setClass</a>()</code> assigns a definition of the class in a
+<code><a href="../../methods/help/setClass.html">setClass</a>()</code> assigns a definition of the class in a
 special metadata object in the package's namespace.
 When the package is loaded into an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session, the class definition is
 added to a table of known classes.
@@ -110,7 +111,7 @@ the generic.
 <p><code>setMethod("plot", c("Pos", "missing"), function(x, y, ...) {
   plotPos(x, y) })</code>
 </p>
-<p>This method will match a call to <code><a href="../../graphics/html/plot.html">plot</a>()</code> if the first
+<p>This method will match a call to <code><a href="../../graphics/html/plot.default.html">plot</a>()</code> if the first
 argument is from class <code>"Pos"</code> or a subclass of that.
 The second argument must be missing; only a missing argument matches
 that class in the signature.
@@ -123,7 +124,7 @@ of the signature.
 
 <p>A class may inherit all the slots and methods of one or more existing
 classes by specifying the names of the inherited classes in the <code>contains =</code> argument to
-<code><a href="setClass.html">setClass</a>()</code>.
+<code><a href="../../methods/help/setClass.html">setClass</a>()</code>.
 </p>
 <p>To define a class that extends class <code>"Pos"</code> to a class
 <code>"GPS"</code> with a slot for the observation times:
@@ -133,7 +134,7 @@ classes by specifying the names of the inherited classes in the <code>contains =
 <p>The inherited classes may be S4 classes, S3
 classes or basic data types.
 S3 classes need to be identified as such by a call to
-<code><a href="setOldClass.html">setOldClass</a>()</code>; most S3 classes in the base package and
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a>()</code>; most S3 classes in the base package and
 many in the other built-in packages are already declared, as is
 <code>"POSIXt"</code>.
 If it had not been, the application package should contain:
@@ -165,5 +166,5 @@ Chapman &amp; Hall.
 (Chapters 9 and 10.)
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

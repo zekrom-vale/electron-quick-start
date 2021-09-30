@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Object Attributes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for attr {base}"><tr><td>attr {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -54,26 +55,26 @@ specified (or create a new attribute with the value given).
 <p>The extraction function first looks for an exact match to <code>which</code>
 amongst the attributes of <code>x</code>, then (unless <code>exact = TRUE</code>)
 a unique partial match.
-(Setting <code><a href="options.html">options</a>(warnPartialMatchAttr = TRUE)</code> causes
+(Setting <code><a href="../../base/help/options.html">options</a>(warnPartialMatchAttr = TRUE)</code> causes
 partial matches to give warnings.)
 </p>
 <p>The replacement function only uses exact matches.
 </p>
-<p>Note that some attributes (namely <code><a href="class.html">class</a></code>,
-<code><a href="comment.html">comment</a></code>, <code><a href="dim.html">dim</a></code>, <code><a href="dimnames.html">dimnames</a></code>,
-<code><a href="names.html">names</a></code>, <code><a href="row.names.html">row.names</a></code> and
+<p>Note that some attributes (namely <code><a href="../../base/help/class.html">class</a></code>,
+<code><a href="../../base/help/comment.html">comment</a></code>, <code><a href="../../base/help/dim.html">dim</a></code>, <code><a href="../../base/help/dimnames.html">dimnames</a></code>,
+<code><a href="../../base/help/names.html">names</a></code>, <code><a href="../../base/help/row.names.html">row.names</a></code> and
 <code><a href="../../stats/html/tsp.html">tsp</a></code>) are treated specially and have restrictions on
 the values which can be set.  (Note that this is not true of
-<code><a href="levels.html">levels</a></code> which should be set for factors via the
+<code><a href="../../base/help/levels.html">levels</a></code> which should be set for factors via the
 <code>levels</code> replacement function.)
 </p>
 <p>The extractor function allows (and does not match) empty and missing
 values of <code>which</code>: the replacement function does not.
 </p>
-<p><code><a href="NULL.html">NULL</a></code> objects cannot have attributes and attempting to
+<p><code><a href="../../base/help/NULL.html">NULL</a></code> objects cannot have attributes and attempting to
 assign one by <code>attr</code> gives an error.
 </p>
-<p>Both are <a href="Primitive.html">primitive</a> functions.
+<p>Both are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
@@ -94,7 +95,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="attributes.html">attributes</a></code>
+<p><code><a href="../../base/help/attributes.html">attributes</a></code>
 </p>
 
 
@@ -106,5 +107,5 @@ x &lt;- 1:10
 attr(x,"dim") &lt;- c(2, 5)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

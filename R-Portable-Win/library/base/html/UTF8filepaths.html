@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: File Paths not in the Native Encoding</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for UTF8filepaths {base}"><tr><td>UTF8filepaths {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>File Paths not in the Native Encoding</h2>
+
+<h3>Description</h3>
+
+<p>Most modern file systems store file-path components (names of
+directories and files) in a character encoding of wide scope: usually
+UTF-8 on a Unix-alike and UCS-2/UTF-16 on Windows.  However, this was
+not true when <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> was first developed and there are still exceptions
+amongst file systems, e.g. FAT32.
+</p>
+<p>This was not something anticipated by the C and POSIX standards which
+only provide means to access files <em>via</em> file paths encoded in
+the current locale, for example those specified in Latin-1 in a
+Latin-1 locale.
+</p>
+<p>Everything here apart from the specific section on Windows is about
+Unix-alikes.
+</p>
+
+
+<h3>Details</h3>
+
+<p>It is possible to mark character strings (elements of character
+vectors) as being in UTF-8 or Latin-1 (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>).
+This allows file paths not in the native encoding to be
+expressed in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> character vectors but there is almost no way to use
+them unless they can be translated to the native encoding.  That is of
+course not a problem if that is UTF-8, so these details are really only
+relevant to the use of a non-UTF-8 locale (including a C locale) on a
+Unix-alike.
+</p>
+<p>Functions to open a file such as <code><a href="../../base/help/file.html">file</a></code>,
+<code><a href="../../base/help/fifo.html">fifo</a></code>, <code><a href="../../base/help/pipe.html">pipe</a></code>, <code><a href="../../base/help/gzfile.html">gzfile</a></code>,
+<code><a href="../../base/help/bzfile.html">bzfile</a></code>, <code><a href="../../base/help/xzfile.html">xzfile</a></code> and <code><a href="../../base/help/unz.html">unz</a></code> give
+an error for non-native filepaths.  Where functions look at existence
+such as <code>file.exists</code>, <code><a href="../../base/help/dir.exists.html">dir.exists</a></code>,
+<code><a href="../../base/help/unlink.html">unlink</a></code>, <code><a href="../../base/help/file.info.html">file.info</a></code> and
+<code><a href="../../base/help/list.files.html">list.files</a></code>, non-native filepaths are treated as
+non-existent.
+</p>
+<p>Many other functions use <code>file</code> or <code>gzfile</code> to open their
+files.
+</p>
+<p><code><a href="../../base/help/file.path.html">file.path</a></code> allows non-native file paths to be combined,
+marking them as UTF-8 if needed.
+</p>
+<p><code><a href="../../base/help/path.expand.html">path.expand</a></code> only handles paths in the native encoding.  
+</p>
+
+
+<h3>Windows</h3>
+
+<p>Windows provides proprietary entry points to access its file systems,
+and these gained &lsquo;wide&rsquo; versions in Windows NT that allowed
+file paths in UCS-2/UTF-16 to be accessed from any locale.
+</p>
+<p>Some <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> functions use these entry points when file paths are marked
+as Latin-1 or UTF-8 to allow access to paths not in the current
+encoding.  These include
+
+<code><a href="../../base/help/file.html">file</a></code>, <code><a href="../../base/help/file.access.html">file.access</a></code>,
+<code><a href="../../base/help/file.append.html">file.append</a></code>, <code><a href="../../base/help/file.copy.html">file.copy</a></code>,
+<code><a href="../../base/help/file.create.html">file.create</a></code>, <code><a href="../../base/help/file.exists.html">file.exists</a></code>,
+<code><a href="../../base/help/file.info.html">file.info</a></code>, <code><a href="../../base/help/file.link.html">file.link</a></code>,
+<code><a href="../../base/help/file.remove.html">file.remove</a></code>, <code><a href="../../base/help/file.rename.html">file.rename</a></code>,
+<code><a href="../../base/help/file.symlink.html">file.symlink</a></code>
+
+and
+
+<code><a href="../../base/help/dir.create.html">dir.create</a></code>, <code><a href="../../base/help/dir.exists.html">dir.exists</a></code>,
+<code><a href="../../base/help/normalizePath.html">normalizePath</a></code>, <code><a href="../../base/help/path.expand.html">path.expand</a></code>,
+<code><a href="../../base/help/pipe.html">pipe</a></code>, <code><a href="../../base/help/Sys.glob.html">Sys.glob</a></code>,
+<code><a href="../../base/help/Sys.junction.html">Sys.junction</a></code>,
+<code><a href="../../base/help/unlink.html">unlink</a></code>
+
+but not <code><a href="../../base/help/gzfile.html">gzfile</a></code> <code><a href="../../base/help/bzfile.html">bzfile</a></code>,
+<code><a href="../../base/help/xzfile.html">xzfile</a></code> nor <code><a href="../../base/help/unz.html">unz</a></code>.
+</p>
+<p>For functions using <code><a href="../../base/help/gzfile.html">gzfile</a></code> (including
+<code><a href="../../base/help/load.html">load</a></code>, <code><a href="../../base/help/readRDS.html">readRDS</a></code>, <code><a href="../../base/help/read.dcf.html">read.dcf</a></code> and
+<code><a href="../../utils/html/tar.html">tar</a></code>), it is often possible to use a <code><a href="../../base/help/gzcon.html">gzcon</a></code>
+connection wrapping a <code><a href="../../base/help/file.html">file</a></code> connection.
+</p>
+<p>Other notable exceptions are <code><a href="../../base/help/list.files.html">list.files</a></code>,
+<code><a href="../../base/help/list.dirs.html">list.dirs</a></code>, <code><a href="../../base/help/system.html">system</a></code> and file-path inputs for
+graphics devices.
+</p>
+
+
+<h3>Historical comment</h3>
+
+<p>Before <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.0.0, file paths marked as being in Latin-1 or UTF-8 were
+silently translated to the native encoding using escapes such as
+<span class="samp">&lt;e7&gt;</span> or <span class="samp">&lt;U+00e7&gt;</span>.  This created valid file names but
+maybe not those intended.
+</p>
+
+
+<h3>Note</h3>
+
+<p>This document is still a work-in-progress.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

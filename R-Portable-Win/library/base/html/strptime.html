@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Date-time Conversion Functions to and from Character</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for strptime {base}"><tr><td>strptime {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -38,12 +39,12 @@ strptime(x, format, tz = "")
 <td>
 <p>An object to be converted: a character vector for
 <code>strptime</code>, an object which can be converted to
-<code>"<a href="DateTimeClasses.html">POSIXlt</a>"</code> for <code>strftime</code>.</p>
+<code>"<a href="../../base/help/POSIXlt.html">POSIXlt</a>"</code> for <code>strftime</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>tz</code></td>
 <td>
 <p>A character string specifying the time zone to be used for
-the conversion.  System-specific (see <code><a href="as.POSIXlt.html">as.POSIXlt</a></code>), but
+the conversion.  System-specific (see <code><a href="../../base/help/as.POSIXlt.html">as.POSIXlt</a></code>), but
 <code>""</code> is the current time zone, and <code>"GMT"</code> is UTC.
 Invalid values are most commonly treated as UTC, on some platforms with
 a warning.</p>
@@ -54,7 +55,7 @@ a warning.</p>
 methods is
 <code>"%Y-%m-%d %H:%M:%S"</code> if any element has a time
 component which is not midnight, and <code>"%Y-%m-%d"</code>
-otherwise.  If <code><a href="options.html">options</a>("digits.secs")</code> is set, up to
+otherwise.  If <code><a href="../../base/help/options.html">options</a>("digits.secs")</code> is set, up to
 the specified number of digits will be printed for seconds.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
@@ -73,18 +74,18 @@ than using <code>"%Z"</code>.</p>
 <h3>Details</h3>
 
 <p>The <code>format</code> and <code>as.character</code> methods and <code>strftime</code>
-convert objects from the classes <code>"<a href="DateTimeClasses.html">POSIXlt</a>"</code> and
-<code>"<a href="DateTimeClasses.html">POSIXct</a>"</code> to character vectors.
+convert objects from the classes <code>"<a href="../../base/help/POSIXlt.html">POSIXlt</a>"</code> and
+<code>"<a href="../../base/help/POSIXct.html">POSIXct</a>"</code> to character vectors.
 </p>
 <p><code>strptime</code> converts character vectors to class <code>"POSIXlt"</code>:
-its input <code>x</code> is first converted by <code><a href="character.html">as.character</a></code>.
+its input <code>x</code> is first converted by <code><a href="../../base/help/as.character.html">as.character</a></code>.
 Each input string is processed as far as necessary for the format
 specified: any trailing characters are ignored.
 </p>
 <p><code>strftime</code> is a wrapper for <code>format.POSIXlt</code>, and it and
 <code>format.POSIXct</code> first convert to class <code>"POSIXlt"</code> by
-calling <code><a href="as.POSIXlt.html">as.POSIXlt</a></code> (so they also work for class
-<code>"<a href="Dates.html">Date</a>"</code>).  Note that only that conversion depends on the
+calling <code><a href="../../base/help/as.POSIXlt.html">as.POSIXlt</a></code> (so they also work for class
+<code>"<a href="../../base/help/Date.html">Date</a>"</code>).  Note that only that conversion depends on the
 time zone.
 </p>
 <p>The usual vector re-cycling rules are applied to <code>x</code> and
@@ -95,11 +96,11 @@ vectors.
 where appropriate and available.  This affects the names of the days
 and months, the AM/PM indicator (if used) and the separators in output
 formats such as <code>%x</code> and <code>%X</code>, <em>via</em> the setting of
-the <code><a href="locales.html">LC_TIME</a></code> locale category.  The &lsquo;current
+the <code><a href="../../base/help/LC_TIME.html">LC_TIME</a></code> locale category.  The &lsquo;current
 locale&rsquo; of the descriptions might mean the locale in use at the start
 of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session or when these functions are first used.  (For input,
 the locale-specific conversions can be changed by calling
-<code><a href="locales.html">Sys.setlocale</a></code> with category <code>LC_TIME</code> (or
+<code><a href="../../base/help/Sys.setlocale.html">Sys.setlocale</a></code> with category <code>LC_TIME</code> (or
 <code>LC_ALL</code>).  For output, what happens depends on the OS but
 usually works.)
 </p>
@@ -160,7 +161,8 @@ since ISO 8601 allows these.</p>
 </dd>
 <dt><code>%I</code></dt><dd><p>Hours as decimal number (01&ndash;12).</p>
 </dd>
-<dt><code>%j</code></dt><dd><p>Day of year as decimal number (001&ndash;366).</p>
+<dt><code>%j</code></dt><dd><p>Day of year as decimal number (001&ndash;366):  For
+input, 366 is only valid in a leap year.</p>
 </dd>
 <dt><code>%m</code></dt><dd><p>Month as decimal number (01&ndash;12).</p>
 </dd>
@@ -223,14 +225,14 @@ first Monday of the year as day 1 of week 1).  The UK convention.</p>
 </dd>
 <dt><code>%y</code></dt><dd><p>Year without century (00&ndash;99).  On input, values
 00 to 68 are prefixed by 20 and 69 to 99 by 19 &ndash; that is the
-behaviour specified by the 2004 and 2008 POSIX standards, but they do
+behaviour specified by the 2018 POSIX standard, but it does
 also say &lsquo;it is expected that in a future version the
 default century inferred from a 2-digit year will change&rsquo;.</p>
 </dd>
 <dt><code>%Y</code></dt><dd><p>Year with century.  Note that whereas there was no
 zero in the original Gregorian calendar, ISO 8601:2004 defines it
 to be valid (interpreted as 1BC): see
-<a href="https://en.wikipedia.org/wiki/0_(year)">https://en.wikipedia.org/wiki/0_(year)</a>.  Note that the standards
+<a href="https://en.wikipedia.org/wiki/0_(year)">https://en.wikipedia.org/wiki/0_(year)</a>.  However, the standards
 also say that years before 1582 in its calendar should only be used
 with agreement of the parties involved.
 </p>
@@ -292,7 +294,7 @@ the standard interpretation.
 <p>Specific to <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is <code>%OSn</code>, which for output gives the seconds
 truncated to <code>0 &lt;= n &lt;= 6</code> decimal places (and if <code>%OS</code> is
 not followed by a digit, it uses the setting of
-<code><a href="options.html">getOption</a>("digits.secs")</code>, or if that is unset, <code>n =
+<code><a href="../../base/help/getOption.html">getOption</a>("digits.secs")</code>, or if that is unset, <code>n =
   0</code>).  Further, for <code>strptime</code> <code>%OS</code> will input seconds
 including fractional seconds.  Note that <code>%S</code> does not read
 fractional parts on output. 
@@ -315,7 +317,7 @@ longer strings are truncated at 255 or 256 bytes, but this is not
 guaranteed by the C99 standard.)
 </p>
 <p><code>strptime</code> turns character representations into an object of
-class <code>"<a href="DateTimeClasses.html">POSIXlt</a>"</code>.  The time zone is used to set the
+class <code>"<a href="../../base/help/POSIXlt.html">POSIXlt</a>"</code>.  The time zone is used to set the
 <code>isdst</code> component and to set the <code>"tzone"</code> attribute if
 <code>tz != ""</code>.  If the specified time is invalid (for example
 <span class="samp">"2010-02-30 08:00"</span>) all the components of the result are
@@ -353,10 +355,10 @@ padding.
 
 <p>Offsets from GMT (also known as UTC) are part of the conversion
 between timezones and to/from class <code>"POSIXct"</code>, but cause
-difficulties as they often computed incorrectly.
+difficulties as they are often computed incorrectly.
 </p>
 <p>They conventionally have the opposite sign from time-zone
-specifications (see <code><a href="timezones.html">Sys.timezone</a></code>): positive values are
+specifications (see <code><a href="../../base/help/Sys.timezone.html">Sys.timezone</a></code>): positive values are
 East of the meridian.  Although there have been time zones with
 offsets like 00:09:21 (Paris in 1900), and 00:44:30 (Liberia until
 1972), offsets are usually treated as whole numbers of minutes, and
@@ -412,7 +414,7 @@ system-specific but it will probably be ignored.
 occur twice because of transitions to/from &lsquo;daylight saving&rsquo;
 (also known as &lsquo;summer&rsquo;) time.  <code>strptime</code> does not
 validate such times (it does not assume a specific time zone), but
-conversion by <code><a href="as.POSIXlt.html">as.POSIXct</a></code> will do so.  Conversion by
+conversion by <code><a href="../../base/help/as.POSIXct.html">as.POSIXct</a></code> will do so.  Conversion by
 <code>strftime</code> and formatting/printing uses OS facilities and may
 return nonsensical results for non-existent times at DST transitions.
 </p>
@@ -426,11 +428,14 @@ used by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b
 <h3>References</h3>
 
 <p>International Organization for Standardization (2004, 2000, ...)
-<em>ISO 8601.  Data elements and interchange formats &ndash;
-Information interchange &ndash; Representation of dates and times.</em>
+&lsquo;ISO 8601.  Data elements and interchange formats &ndash;
+Information interchange &ndash; Representation of dates and times.&rsquo;,
+slightly updated to International Organization for Standardization (2019)
+&lsquo;ISO 8601-1:2019.  Date and time &ndash; Representations for
+information interchange &ndash; Part 1: Basic rules&rsquo;.
 For links to versions available on-line see (at the time of writing)
 <a href="https://dotat.at/tmp/ISO_8601-2004_E.pdf">https://dotat.at/tmp/ISO_8601-2004_E.pdf</a> and
-<a href="http://www.qsl.net/g1smd/isopdf.htm">http://www.qsl.net/g1smd/isopdf.htm</a>; for information on the
+<a href="https://www.qsl.net/g1smd/isopdf.htm">https://www.qsl.net/g1smd/isopdf.htm</a>; for information on the
 current official version, see <a href="https://www.iso.org/iso/iso8601">https://www.iso.org/iso/iso8601</a>.
 </p>
 <p>The POSIX 1003.1 standard, which is in some respects stricter than ISO 8601.
@@ -439,8 +444,8 @@ current official version, see <a href="https://www.iso.org/iso/iso8601">https://
 
 <h3>See Also</h3>
 
-<p><a href="DateTimeClasses.html">DateTimeClasses</a> for details of the date-time classes;
-<a href="locales.html">locales</a> to query or set a locale.
+<p><a href="../../base/help/DateTimeClasses.html">DateTimeClasses</a> for details of the date-time classes;
+<a href="../../base/help/locales.html">locales</a> to query or set a locale.
 </p>
 <p>Your system's help page on <code>strftime</code> to see how to specify their
 formats.  (On some systems, including Windows, <code>strftime</code> is
@@ -496,5 +501,5 @@ format(seq.Date(as.Date('1978-01-01'), by = 'day', len = 7), "%a")
 format(seq.Date(as.Date('2000-01-01'), by = 'month', len = 12), "%b")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

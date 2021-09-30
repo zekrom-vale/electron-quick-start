@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Subsetting Vectors, Matrices and Data Frames</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for subset {base}"><tr><td>subset {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -83,7 +84,7 @@ matrices and data frames: note that the default for matrices is
 different from that for indexing.
 </p>
 <p>Factors may have empty levels after subsetting; unused levels are
-not automatically removed.  See <code><a href="droplevels.html">droplevels</a></code> for a way to
+not automatically removed.  See <code><a href="../../base/help/droplevels.html">droplevels</a></code> for a way to
 drop all unused levels from a data frame.
 </p>
 
@@ -99,7 +100,7 @@ a vector), rows and columns (for a matrix or data frame), and so on.
 
 <p>This is a convenience function intended for use interactively.  For
 programming it is better to use the standard subsetting functions like
-<code><a href="Extract.html">[</a></code>, and in particular the non-standard evaluation of
+<code><a href="../../base/help/+5B.html">[</a></code>, and in particular the non-standard evaluation of
 argument <code>subset</code> can have unanticipated consequences.
 </p>
 
@@ -111,9 +112,9 @@ argument <code>subset</code> can have unanticipated consequences.
 
 <h3>See Also</h3>
 
-<p><code><a href="Extract.html">[</a></code>, 
-<code><a href="transform.html">transform</a></code>
-<code><a href="droplevels.html">droplevels</a></code>
+<p><code><a href="../../base/help/+5B.html">[</a></code>, 
+<code><a href="../../base/help/transform.html">transform</a></code>
+<code><a href="../../base/help/droplevels.html">droplevels</a></code>
 </p>
 
 
@@ -134,5 +135,5 @@ subset(state.x77, start_with_M, Illiteracy:Murder)
 subset(state.x77, grepl("^M", nm), Illiteracy:Murder)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

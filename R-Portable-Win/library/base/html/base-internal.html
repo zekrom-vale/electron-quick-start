@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Internal Objects in Package 'base'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for base-internal {base}"><tr><td>base-internal {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -63,6 +64,7 @@ lazyLoadDBfetch(key, file, compressed, hook)
 
 .maskedMsg(same, pkg, by)
 
+## Only on Windows:
 .fixupGFortranStdout()
 .fixupGFortranStderr()
 </pre>
@@ -73,18 +75,38 @@ lazyLoadDBfetch(key, file, compressed, hook)
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>object from which to extract elements.</p>
+<p>an object
+</p>
+
+<dl>
+<dt>for <code>.subset*()</code>:</dt><dd><p>from which to extract elements.</p>
+</dd>
+<dt>for <code>.row_names_info()</code>:</dt><dd><p>with a <code>"row.names"</code> attribute, typically a
+data frame.</p>
+</dd>
+<dt>for <code>.gt</code>, <code>.gtn</code>:</dt><dd><p>typically S3- or S4-classed.</p>
+</dd>
+</dl>
+
 </td></tr>
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>The full path to the &lsquo;<span class="file">DESCRIPTION</span>&rsquo; file of a package.</p>
+
+<dl>
+<dt>.getRequiredPackages():</dt><dd><p>The full path to the
+&lsquo;<span class="file">DESCRIPTION</span>&rsquo; file of a package.</p>
+</dd>
+<dt>lazyLoadDBfetch():</dt><dd><p>the filepath to a lazyload database.</p>
+</dd>
+</dl>
+
 </td></tr>
 <tr valign="top"><td><code>lib.loc</code></td>
 <td>
 <p>a character vector describing the location of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 library trees to search through, or <code>NULL</code>.  The default value
 of <code>NULL</code> corresponds to all libraries currently known to
-<code><a href="libPaths.html">.libPaths</a>()</code>.</p>
+<code><a href="../../base/help/.libPaths.html">.libPaths</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>quiet</code></td>
 <td>
@@ -112,11 +134,6 @@ if the package(s) are not found?</p>
 <td>
 <p>name of image file to save or load.</p>
 </td></tr>
-<tr valign="top"><td><code>x</code></td>
-<td>
-<p>an object with a <code>"row.names"</code> attribute, typically a
-data frame.</p>
-</td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
 <p>integer.  Currently <code>type = 0</code> returns the internal
@@ -136,17 +153,13 @@ latter with a negative sign for &lsquo;automatic&rsquo; row names.</p>
 <td>
 <p>the object name in a lazyload database.</p>
 </td></tr>
-<tr valign="top"><td><code>file</code></td>
-<td>
-<p>the filepath to a lazyload database.</p>
-</td></tr>
 <tr valign="top"><td><code>compressed</code></td>
 <td>
 <p>logical: are the values in the database compressed?</p>
 </td></tr>
 <tr valign="top"><td><code>refhook</code></td>
 <td>
-<p>a load hook: see <code><a href="serialize.html">unserialize</a></code>.</p>
+<p>a load hook: see <code><a href="../../base/help/unserialize.html">unserialize</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>seed</code></td>
 <td>
@@ -179,7 +192,7 @@ the default classes.</p>
 </td></tr>
 <tr valign="top"><td><code>units</code></td>
 <td>
-<p>see <code><a href="difftime.html">difftime</a></code>.</p>
+<p>see <code><a href="../../base/help/difftime.html">difftime</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -187,7 +200,7 @@ the default classes.</p>
 </td></tr>
 <tr valign="top"><td><code>FUN</code></td>
 <td>
-<p>function to apply, found via <code><a href="match.fun.html">match.fun</a></code>.</p>
+<p>function to apply, found via <code><a href="../../base/help/match.fun.html">match.fun</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>dots</code></td>
 <td>
@@ -221,7 +234,7 @@ strictly positive length, or all of zero length).</p>
 <h3>Details</h3>
 
 <p>The functions <code>.subset</code> and <code>.subset2</code> are essentially
-equivalent to the <code><a href="Extract.html">[</a></code> and <code><a href="Extract.html">[[</a></code> operators,
+equivalent to the <code><a href="../../base/help/+5B.html">[</a></code> and <code><a href="../../base/help/+5B+5B.html">[[</a></code> operators,
 except that methods dispatch does not take place.  This is to avoid
 expensive unclassing when applying the default method to an object.  They
 should not normally be invoked by end users.  Note that unlike the
@@ -253,7 +266,7 @@ is able to open a connection to save the image.  This is appropriate
 when called from <code>q()</code> and allies, but reinforces the warning
 that it should not be called directly.
 </p>
-<p><code><a href="row.names.html">row.names</a></code> can be stored internally in compact form.
+<p><code><a href="../../base/help/row.names.html">row.names</a></code> can be stored internally in compact form.
 <code>.set_row_names(n)</code> generates that form for automatic row names
 of length <code>n</code>, to be assigned to
 <code>attr(&lt;a data frame&gt;, "row.names")</code>.  <code>.row_names_info</code>
@@ -266,21 +279,21 @@ have had had they been closures.  All the primitives that are internal
 S3 generics have corresponding members of <code>.GenericArgsEnv</code> and
 the remaining non-language-element primitives correspond to
 <code>.ArgsEnv</code>.  See the &lsquo;R Internals&rsquo; manual for further
-details.  They are used by <code><a href="args.html">args</a></code> and
-<code><a href="print.default.html">print.default</a></code> and the QC functions <code><a href="../../tools/html/codoc.html">codoc</a></code>
+details.  They are used by <code><a href="../../base/help/args.html">args</a></code> and
+<code><a href="../../base/help/print.default.html">print.default</a></code> and the QC functions <code><a href="../../tools/html/codoc.html">codoc</a></code>
 and <code><a href="../../tools/html/QC.html">checkS3methods</a></code>.
 </p>
 <p><code>findPackageEnv</code> is invoked by the unserialize code to set a
 saved environment if possible.
 </p>
 <p><code>.TAOCP1997init</code> is the initialization code for the
-<code>"Knuth-TAOCP"</code> <a href="Random.html">RNG</a>.
+<code>"Knuth-TAOCP"</code> <a href="../../base/help/RNG.html">RNG</a>.
 </p>
-<p><code>.gt</code> and <code>.gtn</code> are callbacks from <code><a href="rank.html">rank</a></code> and
-<code><a href="is.unsorted.html">is.unsorted</a></code> used for S3 classed objects.
+<p><code>.gt</code> and <code>.gtn</code> are callbacks from <code><a href="../../base/help/rank.html">rank</a></code> and
+<code><a href="../../base/help/is.unsorted.html">is.unsorted</a></code> used for (S3 or S4) classed objects.
 </p>
-<p><code>.primTrace</code> and <code>.primUntrace</code> are the <a href="Primitive.html">primitive</a>
-functions underlying <code><a href="trace.html">trace</a></code> and <code><a href="trace.html">untrace</a></code>
+<p><code>.primTrace</code> and <code>.primUntrace</code> are the <a href="../../base/help/primitive.html">primitive</a>
+functions underlying <code><a href="../../base/help/trace.html">trace</a></code> and <code><a href="../../base/help/untrace.html">untrace</a></code>
 respectively.
 </p>
 <p><code>.Date</code>, <code>.POSIXct</code>, <code>.POSIXlt</code> and <code>.difftime</code>
@@ -296,13 +309,14 @@ the <span class="pkg">translations</span> package in use is.
 <p><code>.mapply</code> and <code>.detach</code> are &lsquo;bare-bones&rsquo; versions for
 use in other <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> packages.
 </p>
-<p><code>.maskedMsg</code> is a utility called both from <code><a href="attach.html">attach</a>()</code>
-and <code><a href="library.html">library</a>()</code> for consistency to produce the warning message.
+<p><code>.maskedMsg</code> is a utility called both from <code><a href="../../base/help/attach.html">attach</a>()</code>
+and <code><a href="../../base/help/library.html">library</a>()</code> for consistency to produce the warning message.
 </p>
 <p>Objects starting <code>.C_</code> and <code>.F_</code> are references to
 registered C and Fortran entry points.
 </p>
-<p><code>.fixupGFortranStdout</code> and <code>.fixupGFortranStderr</code> are helper functions
+<p><b>Only on Windows</b>:<br />
+<code>.fixupGFortranStdout</code> and <code>.fixupGFortranStderr</code> are helper functions
 to enable standard output and standard error units in <code>gfortran</code> when
 executing external code via <code>system</code> and <code>system2</code>. By default, these
 units are disabled by the Windows profile when running inside RGui.
@@ -317,5 +331,5 @@ return <code>invisible()</code>.
 <p><code>testPlatformEquivalence</code> returns <code>TRUE</code> or <code>FALSE</code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

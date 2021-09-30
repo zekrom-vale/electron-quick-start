@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Piecewise Polynomial Spline Representation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for polySpline {splines}"><tr><td>polySpline {splines}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -55,22 +56,25 @@ derivatives.
 
 <h3>See Also</h3>
 
-<p><code><a href="interpSpline.html">interpSpline</a></code>,
-<code><a href="periodicSpline.html">periodicSpline</a></code>,
-<code><a href="splineKnots.html">splineKnots</a></code>,
-<code><a href="splineOrder.html">splineOrder</a></code>
+<p><code><a href="../../splines/help/interpSpline.html">interpSpline</a></code>,
+<code><a href="../../splines/help/periodicSpline.html">periodicSpline</a></code>,
+<code><a href="../../splines/help/splineKnots.html">splineKnots</a></code>,
+<code><a href="../../splines/help/splineOrder.html">splineOrder</a></code>
 </p>
 
 
 <h3>Examples</h3>
 
 <pre>
+
 require(graphics)
 ispl &lt;- polySpline(interpSpline( weight ~ height,  women, bSpline = TRUE))
+## IGNORE_RDIFF_BEGIN
 print( ispl )   # print the piecewise polynomial representation
+## IGNORE_RDIFF_END
 plot( ispl )    # plots over the range of the knots
 points( women$height, women$weight )
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>splines</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>splines</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

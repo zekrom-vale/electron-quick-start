@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Access to and Manipulation of the Body of a Function</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for body {base}"><tr><td>body {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,9 @@
 
 <h3>Description</h3>
 
-<p>Get or set the body of a function.
+<p>Get or set the <em>body</em> of a function which is basically all of
+the function definition but its formal arguments (<code><a href="../../base/help/formals.html">formals</a></code>),
+see the &lsquo;Details&rsquo;.
 </p>
 
 
@@ -34,7 +37,7 @@ body(fun, envir = environment(fun)) &lt;- value
 </td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
-<p>an object, usually a <a href="is.language.html">language object</a>: see section
+<p>an object, usually a <a href="../../base/help/language+20object.html">language object</a>: see section
 &lsquo;Value&rsquo;.</p>
 </td></tr>
 </table>
@@ -56,23 +59,28 @@ create such a call.
 <h3>Value</h3>
 
 <p><code>body</code> returns the body of the function specified.  This is
-normally a <a href="is.language.html">language object</a>, most often a call to <code>{</code>, but
-it can also be an object (e.g., <code>pi</code>) to be the return value of
-the function.
+normally a <a href="../../base/help/language+20object.html">language object</a>, most often a call to <code>{</code>, but
+it can also be a <code><a href="../../grDevices/html/plotmath.html">symbol</a></code> such as <code>pi</code> or a constant
+(e.g., <code>3</code> or <code>"R"</code>) to be the return value of the function.
 </p>
 <p>The replacement form sets the body of a function to the
 object on the right hand side, and (potentially) resets the
-environment of the function.  If <code>value</code> is of class
-<code>"<a href="expression.html">expression</a>"</code> the first element is used as the body:  any
+<code><a href="../../base/help/environment.html">environment</a></code> of the function, and drops
+<code><a href="../../base/help/attributes.html">attributes</a></code>.  If <code>value</code> is of class
+<code>"<a href="../../base/help/expression.html">expression</a>"</code> the first element is used as the body:  any
 additional elements are ignored, with a warning.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="list.html">alist</a></code>,
-<code><a href="args.html">args</a></code>,
-<code><a href="function.html">function</a></code>.
+<p>The three parts of a (non-primitive) function are its
+<code><a href="../../base/help/formals.html">formals</a></code>, <code>body</code>, and <code><a href="../../base/help/environment.html">environment</a></code>.
+</p>
+<p>Further, see
+<code><a href="../../base/help/alist.html">alist</a></code>,
+<code><a href="../../base/help/args.html">args</a></code>,
+<code><a href="../../base/help/function.html">function</a></code>.
 </p>
 
 
@@ -96,5 +104,5 @@ f(8)
 stopifnot(identical(body(f), substitute({ y &lt;- x^2; return(y) })))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Japanese characters in R</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Japanese {grDevices}"><tr><td>Japanese {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -18,7 +19,7 @@ Japanese characters (Hiragana, Katakana, and Kanji).
 
 <p>Without keyboard support for typing Japanese characters, the only way
 to produce these characters is to use special escape sequences: see
-<code><a href="Hershey.html">Hershey</a></code>.
+<code><a href="../../grDevices/help/Hershey.html">Hershey</a></code>.
 </p>
 <p>For example, the Hiragana character for the sound &quot;ka&quot; is produced
 by <span class="samp">\\#J242b</span> and the Katakana character for this sound is
@@ -38,7 +39,7 @@ sequences for the available Japanese characters.
 
 <h3>See Also</h3>
 
-<p><code><a href="../../utils/html/demo.html">demo</a>(Japanese)</code>, <code><a href="Hershey.html">Hershey</a></code>, <code><a href="../../graphics/html/text.html">text</a></code>
+<p><code><a href="../../utils/html/demo.html">demo</a>(Japanese)</code>, <code><a href="../../grDevices/help/Hershey.html">Hershey</a></code>, <code><a href="../../graphics/html/text.html">text</a></code>
 </p>
 
 
@@ -47,7 +48,7 @@ sequences for the available Japanese characters.
 <pre>
 require(graphics)
 
-plot(1:9, type = "n", axes = FALSE, frame = TRUE, ylab = "",
+plot(1:9, type = "n", axes = FALSE, frame.plot = TRUE, ylab = "",
      main = "example(Japanese)", xlab = "using Hershey fonts")
 par(cex = 3)
 Vf &lt;- c("serif", "plain")
@@ -63,5 +64,5 @@ text(8, 6, "Kanji")
 text(8, 8, "English")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

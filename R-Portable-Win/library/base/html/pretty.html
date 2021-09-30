@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Pretty Breakpoints</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for pretty {base}"><tr><td>pretty {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,7 +33,7 @@ pretty(x, n = 5, min.n = n %/% 3,  shrink.sml = 0.75,
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>an object coercible to numeric by <code><a href="numeric.html">as.numeric</a></code>.</p>
+<p>an object coercible to numeric by <code><a href="../../base/help/as.numeric.html">as.numeric</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>n</code></td>
 <td>
@@ -117,13 +118,13 @@ locations in plots, particularly on the log scale.
 <h3>Examples</h3>
 
 <pre>
-pretty(1:15)          # 0  2  4  6  8 10 12 14 16
-pretty(1:15, h = 2)   # 0  5 10 15
-pretty(1:15, n = 4)   # 0  5 10 15
-pretty(1:15 * 2)      # 0  5 10 15 20 25 30
-pretty(1:20)          # 0  5 10 15 20
-pretty(1:20, n = 2)   # 0 10 20
-pretty(1:20, n = 10)  # 0  2  4 ... 20
+pretty(1:15)                    # 0  2  4  6  8 10 12 14 16
+pretty(1:15, high.u.bias = 2)   # 0  5 10 15
+pretty(1:15, n = 4)             # 0  5 10 15
+pretty(1:15 * 2)                # 0  5 10 15 20 25 30
+pretty(1:20)                    # 0  5 10 15 20
+pretty(1:20, n = 2)             # 0 10 20
+pretty(1:20, n = 10)            # 0  2  4 ... 20
 
 for(k in 5:11) {
   cat("k=", k, ": "); print(diff(range(pretty(100 + c(0, pi*10^-k)))))}
@@ -138,11 +139,11 @@ sapply(    add.names(0:20),   pretty, min.n = 4)
 
 pretty(1.234e100)
 pretty(1001.1001)
-pretty(1001.1001, shrink = 0.2)
+pretty(1001.1001, shrink.sml = 0.2)
 for(k in -7:3)
   cat("shrink=", formatC(2^k, width = 9),":",
       formatC(pretty(1001.1001, shrink.sml = 2^k), width = 6),"\n")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

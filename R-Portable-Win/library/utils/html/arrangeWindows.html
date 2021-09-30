@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Rearrange Windows on MS Windows</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for arrangeWindows {utils}"><tr><td>arrangeWindows {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,7 +38,7 @@ Abbreviations may be used.
 <tr valign="top"><td><code>windows</code></td>
 <td>
 <p>a <code><a href="../../base/html/list.html">list</a></code> of window handles, by default
-produced by <code><a href="getWindowsHandles.html">getWindowsHandles</a>()</code>.</p>
+produced by <code><a href="../../utils/help/getWindowsHandles.html">getWindowsHandles</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>preserve</code></td>
 <td>
@@ -76,16 +77,16 @@ the MDI frame.</p>
 they will apply to all of the windows in the <code>windows</code> list.
 </p>
 <p>By default, <code>windows</code> is set to the result of
-<code><a href="getWindowsHandles.html">getWindowsHandles</a>()</code> (with one exception described
+<code><a href="../../utils/help/getWindowsHandles.html">getWindowsHandles</a>()</code> (with one exception described
 below).  This will select windows belonging to the current <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> process.
 However, if the global environment contains a variable named
 <code>.arrangeWindowsDefaults</code>, it will be used as the argument list
-instead. See the <code><a href="getWindowsHandles.html">getWindowsHandles</a></code> man page for a
+instead. See the <code><a href="../../utils/help/getWindowsHandles.html">getWindowsHandles</a></code> man page for a
 discussion of the optional arguments to that function.
 </p>
 <p>When <code>action = "restore"</code> is used with <code>windows</code> unspecified,
 <code>minimized = TRUE</code> is added to the argument list of
-<code><a href="getWindowsHandles.html">getWindowsHandles</a></code> so that minimized windows will be restored.
+<code><a href="../../utils/help/getWindowsHandles.html">getWindowsHandles</a></code> so that minimized windows will be restored.
 </p>
 <p>In MDI mode, by default tiling and cascading will happen within the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 GUI frame. However, if <code>outer = TRUE</code>, tiling is done on the system
@@ -115,7 +116,7 @@ The list of window handles is returned invisibly.
 
 <h3>See Also</h3>
 
-<p><code><a href="getWindowsHandles.html">getWindowsHandles</a></code>
+<p><code><a href="../../utils/help/getWindowsHandles.html">getWindowsHandles</a></code>
 </p>
 
 
@@ -132,5 +133,5 @@ arrangeWindows("v")
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Sampling Times of Time Series</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for time {stats}"><tr><td>time {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,7 +16,7 @@
 </p>
 <p><code>frequency</code> returns the number of samples per unit time and
 <code>deltat</code> the time interval between observations (see
-<code><a href="ts.html">ts</a></code>).
+<code><a href="../../stats/help/ts.html">ts</a></code>).
 </p>
 
 
@@ -56,8 +57,8 @@ the interval.</p>
 <h3>Details</h3>
 
 <p>These are all generic functions, which will use the
-<code><a href="tsp.html">tsp</a></code> attribute of <code>x</code> if it exists. <code>time</code>
-and <code>cycle</code> have methods for class <code><a href="ts.html">ts</a></code> that coerce
+<code><a href="../../stats/help/tsp.html">tsp</a></code> attribute of <code>x</code> if it exists. <code>time</code>
+and <code>cycle</code> have methods for class <code><a href="../../stats/help/ts.html">ts</a></code> that coerce
 the result to that class.
 </p>
 
@@ -72,8 +73,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="ts.html">ts</a></code>, <code><a href="start.html">start</a></code>, <code><a href="tsp.html">tsp</a></code>,
-<code><a href="window.html">window</a></code>.
+<p><code><a href="../../stats/help/ts.html">ts</a></code>, <code><a href="../../stats/help/start.html">start</a></code>, <code><a href="../../stats/help/tsp.html">tsp</a></code>,
+<code><a href="../../stats/help/window.html">window</a></code>.
 </p>
 <p><code><a href="../../base/html/date.html">date</a></code> for clock time, <code><a href="../../base/html/system.time.html">system.time</a></code>
 for CPU usage.
@@ -90,5 +91,5 @@ cycle(presidents)
 plot(as.vector(time(presidents)), as.vector(presidents), type = "l")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

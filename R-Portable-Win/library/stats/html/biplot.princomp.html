@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Biplot for Principal Components</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for biplot.princomp {stats}"><tr><td>biplot.princomp {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -12,7 +13,7 @@ Biplot for Principal Components
 <h3>Description</h3>
 
 <p>Produces a biplot (in the strict sense) from the output of
-<code><a href="princomp.html">princomp</a></code> or <code><a href="prcomp.html">prcomp</a></code>
+<code><a href="../../stats/help/princomp.html">princomp</a></code> or <code><a href="../../stats/help/prcomp.html">prcomp</a></code>
 </p>
 
 
@@ -47,7 +48,7 @@ is a biplot in the strict sense.
 <p>The variables are scaled by <code>lambda ^ scale</code> and the
 observations are scaled by <code>lambda ^ (1-scale)</code> where
 <code>lambda</code> are the singular values as computed by
-<code><a href="princomp.html">princomp</a></code>. Normally <code>0 &lt;= scale &lt;= 1</code>, and a warning
+<code><a href="../../stats/help/princomp.html">princomp</a></code>. Normally <code>0 &lt;= scale &lt;= 1</code>, and a warning
 will be issued if the specified <code>scale</code> is outside this range.
 </p>
 </td></tr>
@@ -64,7 +65,7 @@ approximate Mahalanobis distance.
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>optional arguments to be passed to
-<code><a href="biplot.html">biplot.default</a></code>.</p>
+<code><a href="../../stats/help/biplot.default.html">biplot.default</a></code>.</p>
 </td></tr>
 </table>
 
@@ -102,8 +103,8 @@ doi: <a href="https://doi.org/10.1002/sim.4780090502">10.1002/sim.4780090502</a>
 
 <h3>See Also</h3>
 
-<p><code><a href="biplot.html">biplot</a></code>,
-<code><a href="princomp.html">princomp</a></code>.
+<p><code><a href="../../stats/help/biplot.html">biplot</a></code>,
+<code><a href="../../stats/help/princomp.html">princomp</a></code>.
 </p>
 
 
@@ -114,5 +115,5 @@ require(graphics)
 biplot(princomp(USArrests))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

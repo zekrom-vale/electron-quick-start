@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot Diagnostics for an lm Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for plot.lm {stats}"><tr><td>plot.lm {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,7 +38,7 @@ plot(x, which = c(1,2,3,5),
      id.n = 3, labels.id = names(residuals(x)), cex.id = 0.75,
      qqline = TRUE, cook.levels = c(0.5, 1.0),
      add.smooth = getOption("add.smooth"),
-     iter.smooth = if(isGlm &amp;&amp; binomialLike) 0 else 3,
+     iter.smooth = if(isGlm) 0 else 3,
      label.pos = c(4,2),
      cex.caption = 1, cex.oma.main = 1.25)
 </pre>
@@ -48,8 +49,8 @@ plot(x, which = c(1,2,3,5),
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p><code>lm</code> object, typically result of <code><a href="lm.html">lm</a></code> or
-<code><a href="glm.html">glm</a></code>.</p>
+<p><code>lm</code> object, typically result of <code><a href="../../stats/help/lm.html">lm</a></code> or
+<code><a href="../../stats/help/glm.html">glm</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>which</code></td>
 <td>
@@ -109,7 +110,7 @@ points will be chosen.  <code>NULL</code> uses observation numbers.</p>
 </td></tr>
 <tr valign="top"><td><code>qqline</code></td>
 <td>
-<p>logical indicating if a <code><a href="qqnorm.html">qqline</a>()</code> should be
+<p>logical indicating if a <code><a href="../../stats/help/qqline.html">qqline</a>()</code> should be
 added to the normal Q-Q plot.</p>
 </td></tr>
 <tr valign="top"><td><code>cook.levels</code></td>
@@ -125,8 +126,10 @@ most plots; see also <code>panel</code> above.</p>
 <td>
 <p>the number of robustness iterations, the argument
 <code>iter</code> in <code><a href="../../graphics/html/panel.smooth.html">panel.smooth</a>()</code>; the default uses no such
-iterations for <code><a href="glm.html">glm</a>(*, family=binomial)</code> fits which is
-particularly desirable for the (predominant) case of binary observations.</p>
+iterations for <code><a href="../../stats/help/glm.html">glm</a></code> fits which is
+particularly desirable for the (predominant) case of binary
+observations, but also for other models where the response
+distribution can be highly skewed.</p>
 </td></tr>
 <tr valign="top"><td><code>label.pos</code></td>
 <td>
@@ -162,21 +165,25 @@ than <i>| E |</i> for Gaussian zero-mean <i>E</i>).
 hypothesis).  They are given as
 <i>R[i] / (s * sqrt(1 - h.ii))</i>
 where <i>h.ii</i> are the diagonal entries of the hat matrix,
-<code><a href="lm.influence.html">influence</a>()$hat</code> (see also <code><a href="influence.measures.html">hat</a></code>), and
+<code><a href="../../stats/help/influence.html">influence</a>()$hat</code> (see also <code><a href="../../stats/help/hat.html">hat</a></code>), and
 where the Residual-Leverage plot uses standardized Pearson residuals
-(<code><a href="glm.summaries.html">residuals.glm</a>(type = "pearson")</code>) for <i>R[i]</i>.
+(<code><a href="../../stats/help/residuals.glm.html">residuals.glm</a>(type = "pearson")</code>) for <i>R[i]</i>.
 </p>
 <p>The Residual-Leverage plot shows contours of equal Cook's distance,
 for values of <code>cook.levels</code> (by default 0.5 and 1) and omits
 cases with leverage one with a warning.  If the leverages are constant
-(as is typically the case in a balanced <code><a href="aov.html">aov</a></code> situation)
+(as is typically the case in a balanced <code><a href="../../stats/help/aov.html">aov</a></code> situation)
 the plot uses factor level combinations instead of the leverages for
 the x-axis.  (The factor levels are ordered by mean fitted value.)
 </p>
 <p>In the Cook's distance vs leverage/(1-leverage) plot, contours of
-standardized residuals (<code><a href="influence.measures.html">rstandard</a>(.)</code>) that are equal in
+standardized residuals (<code><a href="../../stats/help/rstandard.html">rstandard</a>(.)</code>) that are equal in
 magnitude are lines through the origin.  The contour lines are
 labelled with the magnitudes.
+</p>
+<p>Notice that some plots may not make much sense for the <code>glm</code>
+case; e.g., the normal Q-Q plot only makes sense if the distribution
+is approximately normal.
 </p>
 
 
@@ -215,8 +222,8 @@ London: Chapman and Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="termplot.html">termplot</a></code>, <code><a href="lm.influence.html">lm.influence</a></code>,
-<code><a href="influence.measures.html">cooks.distance</a></code>, <code><a href="influence.measures.html">hatvalues</a></code>.
+<p><code><a href="../../stats/help/termplot.html">termplot</a></code>, <code><a href="../../stats/help/lm.influence.html">lm.influence</a></code>,
+<code><a href="../../stats/help/cooks.distance.html">cooks.distance</a></code>, <code><a href="../../stats/help/hatvalues.html">hatvalues</a></code>.
 </p>
 
 
@@ -252,5 +259,5 @@ plot(lm.SR, which = 1:2, sub.caption = "Saving Rates, n=50, p=5")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: References to Source Files and Code</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for srcfile {base}"><tr><td>srcfile {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -13,7 +14,7 @@
 with &ldquo;source references&rdquo; (<code>"srcref"</code>), i.e., references to
 source code.  The resulting data is used for printing and source level
 debugging, and is typically available in interactive <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> sessions,
-namely when <code><a href="options.html">options</a>(keep.source = TRUE)</code>.
+namely when <code><a href="../../base/help/options.html">options</a>(keep.source = TRUE)</code>.
 </p>
 
 
@@ -57,7 +58,7 @@ as.character(x, useSource = TRUE, to = x, ...)
 <tr valign="top"><td><code>Enc</code></td>
 <td>
 <p> The encoding with which to make strings: see the
-<code>encoding</code> argument of <code><a href="parse.html">parse</a></code>.</p>
+<code>encoding</code> argument of <code><a href="../../base/help/parse.html">parse</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>lines</code></td>
 <td>
@@ -114,8 +115,8 @@ of the character range. </p>
 <code>srcfile</code>, which contains the name and directory of a source code
 file, along with its timestamp, for use in source level debugging (not
 yet implemented) and source echoing.  The encoding of the file is
-saved; see <code><a href="connections.html">file</a></code> for a discussion of encodings, and
-<code><a href="iconv.html">iconvlist</a></code> for a list of allowable encodings on your platform.
+saved; see <code><a href="../../base/help/file.html">file</a></code> for a discussion of encodings, and
+<code><a href="../../base/help/iconvlist.html">iconvlist</a></code> for a list of allowable encodings on your platform.
 </p>
 <p>The <code>srcfilecopy</code> function produces an object of the descendant
 class <code>srcfilecopy</code>, which saves the source lines in a character
@@ -150,7 +151,7 @@ will be assumed to match the lines.
 </p>
 <p>Methods are defined for <code>print</code>, <code>summary</code>, <code>open</code>,
 and <code>close</code> for classes <code>srcfile</code> and <code>srcfilecopy</code>.
-The <code>open</code> method opens its internal <code><a href="connections.html">file</a></code> connection at
+The <code>open</code> method opens its internal <code><a href="../../base/help/file.html">file</a></code> connection at
 a particular line; if it was already open, it will be repositioned
 to that line.
 </p>
@@ -175,8 +176,8 @@ display.
 <p>Lists of <code>srcref</code> objects may be attached to expressions as the
 <code>"srcref"</code> attribute.  (The list of <code>srcref</code> objects should be the same
 length as the expression.)  By default, expressions are printed by
-<code><a href="print.default.html">print.default</a></code> using the associated <code>srcref</code>.  To
-see deparsed code instead, call <code><a href="print.html">print</a></code> with argument
+<code><a href="../../base/help/print.default.html">print.default</a></code> using the associated <code>srcref</code>.  To
+see deparsed code instead, call <code><a href="../../base/help/print.html">print</a></code> with argument
 <code>useSource = FALSE</code>.  If a <code>srcref</code> object
 is printed with <code>useSource = FALSE</code>, the <code>&lt;srcref: ...&gt;</code>
 record will be printed.
@@ -222,5 +223,5 @@ ref
 print(ref, useSource = FALSE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

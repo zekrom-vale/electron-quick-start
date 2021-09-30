@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Substrings of a Character Vector</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for substr {base}"><tr><td>substr {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -56,7 +57,7 @@ length of the longest <em>provided</em> none are of zero length.
 <code>""</code> is returned.
 </p>
 <p>For the extraction functions, <code>x</code> or <code>text</code> will be
-converted to a character vector by <code><a href="character.html">as.character</a></code> if it is not
+converted to a character vector by <code><a href="../../base/help/as.character.html">as.character</a></code> if it is not
 already one.
 </p>
 <p>For the replacement functions, if <code>start</code> is larger than the
@@ -68,12 +69,12 @@ portion the length of the string is replaced.
 the answer is <code>NA</code>.
 </p>
 <p>Elements of the result will be have the encoding declared as that of
-the current locale (see <code><a href="Encoding.html">Encoding</a></code>) if the corresponding
+the current locale (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>) if the corresponding
 input had a declared Latin-1 or UTF-8 encoding and the current locale
 is either Latin-1 or UTF-8.
 </p>
 <p>If an input element has declared <code>"bytes"</code> encoding (see
-<code><a href="Encoding.html">Encoding</a></code>, the subsetting is done in units of bytes not
+<code><a href="../../base/help/Encoding.html">Encoding</a></code>, the subsetting is done in units of bytes not
 characters.
 </p>
 
@@ -89,7 +90,7 @@ after coercion, repeated as needed), and other attributes copied from
 <code>x</code> if it is the longest of the arguments).
 </p>
 <p>Elements of <code>x</code> with a declared encoding (see
-<code><a href="Encoding.html">Encoding</a></code>) will be returned with the same encoding.
+<code><a href="../../base/help/Encoding.html">Encoding</a></code>) will be returned with the same encoding.
 </p>
 
 
@@ -98,10 +99,10 @@ after coercion, repeated as needed), and other attributes copied from
 <p>The S4 version of <code>substring&lt;-</code> ignores <code>last</code>; this version
 does not.
 </p>
-<p>These functions are often used with <code><a href="nchar.html">nchar</a></code> to truncate a
+<p>These functions are often used with <code><a href="../../base/help/nchar.html">nchar</a></code> to truncate a
 display.  That does not really work (you want to limit the width, not
 the number of characters, so it would be better to use
-<code><a href="strtrim.html">strtrim</a></code>), but at least make sure you use the default
+<code><a href="../../base/help/strtrim.html">strtrim</a></code>), but at least make sure you use the default
 <code>nchar(type = "c")</code>.
 </p>
 
@@ -116,7 +117,7 @@ Wadsworth &amp; Brooks/Cole.  (<code>substring</code>.)
 
 <h3>See Also</h3>
 
-<p><code><a href="strsplit.html">strsplit</a></code>, <code><a href="paste.html">paste</a></code>, <code><a href="nchar.html">nchar</a></code>.
+<p><code><a href="../../base/help/strsplit.html">strsplit</a></code>, <code><a href="../../base/help/paste.html">paste</a></code>, <code><a href="../../base/help/nchar.html">nchar</a></code>.
 </p>
 
 
@@ -136,5 +137,5 @@ substring(x, 2) &lt;- c("..", "+++")
 x
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

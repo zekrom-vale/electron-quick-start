@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Mauchly's Test of Sphericity</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for mauchly.test {stats}"><tr><td>mauchly.test {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -68,7 +69,7 @@ mauchly.test(object, Sigma = diag(nrow = p),
 be proportional to a given matrix.
 </p>
 <p>This is a generic function with methods for classes <code>"mlm"</code> and
-<code>"<a href="SSD.html">SSD</a>"</code>.
+<code>"<a href="../../stats/help/SSD.html">SSD</a>"</code>.
 </p>
 <p>The basic method is for objects of
 class <code>SSD</code> the method for <code>mlm</code> objects just extracts the
@@ -119,8 +120,8 @@ Statistical Analysis.</em> Wiley.
 
 <h3>See Also</h3>
 
-<p><code><a href="SSD.html">SSD</a></code>, <code><a href="anova.mlm.html">anova.mlm</a></code>,
-<code><a href="rWishart.html">rWishart</a></code>
+<p><code><a href="../../stats/help/SSD.html">SSD</a></code>, <code><a href="../../stats/help/anova.mlm.html">anova.mlm</a></code>,
+<code><a href="../../stats/help/rWishart.html">rWishart</a></code>
 </p>
 
 
@@ -139,5 +140,5 @@ mauchly.test(mlmfit, X = ~ deg + noise, idata = idata)
 mauchly.test(mlmfit, M = ~ deg + noise, X = ~ noise, idata = idata)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

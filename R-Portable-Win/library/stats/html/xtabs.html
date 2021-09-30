@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Cross Tabulation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for xtabs {stats}"><tr><td>xtabs {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,7 +33,7 @@ print(x, na.print = "", ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>formula</code></td>
 <td>
-<p>a <a href="formula.html">formula</a> object with the cross-classifying variables
+<p>a <a href="../../stats/help/formula.html">formula</a> object with the cross-classifying variables
 (separated by <code>+</code>) on the right hand side (or an object which
 can be coerced to a formula).  Interactions are not allowed.  On the
 left hand side, one may optionally give a vector or a matrix of
@@ -43,7 +44,7 @@ data have already been tabulated, see the examples below.</p>
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>an optional matrix or data frame (or similar: see
-<code><a href="model.frame.html">model.frame</a></code>) containing the variables in the
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>) containing the variables in the
 formula <code>formula</code>.  By default the variables are taken from
 <code>environment(formula)</code>.</p>
 </td></tr>
@@ -56,17 +57,17 @@ to be used.</p>
 <td>
 <p>logical specifying if the result should be a
 <em>sparse</em> matrix, i.e., inheriting from
-<code><a href="../../Matrix/html/sparseMatrix-class.html">sparseMatrix</a></code>
+<code><a href="../../Matrix/help/sparseMatrix-class.html">sparseMatrix</a></code>
 Only works for two factors (since there
 are no higher-order sparse array classes yet).
 </p>
 </td></tr>
 <tr valign="top"><td><code>na.action</code></td>
 <td>
-<p>a function which indicates what should happen when
+<p>a <code><a href="../../base/html/function.html">function</a></code> which indicates what should happen when
 the data contain <code><a href="../../base/html/NA.html">NA</a></code>s.  If unspecified, and
-<code>addNA</code> is true, this is set to <code><a href="na.fail.html">na.pass</a></code>.  When it
-is <code>na.pass</code> and <code>formula</code> has a left hand side (with
+<code>addNA</code> is true, this is set to <code><a href="../../stats/help/na.pass.html">na.pass</a></code>.  When it
+is <code><a href="../../stats/help/na.omit.html">na.omit</a></code> and <code>formula</code> has a left hand side (with
 counts), <code><a href="../../base/html/sum.html">sum</a>(*, na.rm = TRUE)</code> is used instead of
 <code>sum(*)</code> for the counts.</p>
 </td></tr>
@@ -74,7 +75,7 @@ counts), <code><a href="../../base/html/sum.html">sum</a>(*, na.rm = TRUE)</code
 <td>
 <p>logical indicating if <code>NA</code>s should get a separate
 level and be counted, using <code><a href="../../base/html/factor.html">addNA</a>(*, ifany=TRUE)</code> and
-setting the default for <code>na.action</code>.</p>
+setting the default for <code>na.action</code> to <code>na.pass</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>exclude</code></td>
 <td>
@@ -112,7 +113,7 @@ instead.</p>
 <p>There is a <code>summary</code> method for contingency table objects created
 by <code>table</code> or <code>xtabs(*, sparse = FALSE)</code>, which gives basic
 information and performs a chi-squared test for independence of
-factors (note that the function <code><a href="chisq.test.html">chisq.test</a></code> currently
+factors (note that the function <code><a href="../../stats/help/chisq.test.html">chisq.test</a></code> currently
 only handles 2-d tables).
 </p>
 <p>If a left hand side is given in <code>formula</code>, its entries are simply
@@ -125,6 +126,10 @@ must be specified explicitly; the default exclusions will not be used.
 <p>In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions before 3.4.0, e.g., when <code>na.action = na.pass</code>,
 sometimes zeroes (<code>0</code>) were returned instead of <code>NA</code>s.
 </p>
+<p>Note that when <code>addNA</code> is false as by default, and <code>na.action</code>
+is not specified (or set to <code>NULL</code>), in effect <code>na.action =
+    getOption("na.action", default=na.omit)</code> is used; see also the examples.
+</p>
 
 
 <h3>Value</h3>
@@ -135,7 +140,7 @@ a contingency table in array representation of S3 class <code>c("xtabs",
 </p>
 <p>When <code>sparse = TRUE</code>, a sparse numeric matrix, specifically an
 object of S4 class 
-<code><a href="../../Matrix/html/dgTMatrix-class.html">dgTMatrix</a></code> from package
+<code><a href="../../Matrix/help/dgTMatrix-class.html">dgTMatrix</a></code> from package
 <a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a>.
 </p>
 
@@ -146,7 +151,7 @@ object of S4 class
 <code><a href="../../base/html/table.html">as.data.frame.table</a></code> which is the inverse operation of
 <code>xtabs</code> (see the <code>DF</code> example below).
 </p>
-<p><code><a href="../../Matrix/html/sparseMatrix-class.html">sparseMatrix</a></code> on sparse
+<p><code><a href="../../Matrix/help/sparseMatrix-class.html">sparseMatrix</a></code> on sparse
 matrices in package <a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a>.
 </p>
 
@@ -173,13 +178,25 @@ xtabs(Freq ~ Gender + Admit, DF)
 summary(xtabs(Freq ~ ., DF))
 
 ## with NA's
-DN &lt;- DF; DN[cbind(6:9, c(1:2,4,1))] &lt;- NA; DN
+DN &lt;- DF; DN[cbind(6:9, c(1:2,4,1))] &lt;- NA
+DN # 'Freq' is missing only for (Rejected, Female, B)
 tools::assertError(# 'na.fail' should fail :
-     xtabs(Freq ~ Gender + Admit, DN, na.action=na.fail))
-xtabs(Freq ~ Gender + Admit, DN)
+     xtabs(Freq ~ Gender + Admit, DN, na.action=na.fail), verbose=TRUE)
+op &lt;- options(na.action = "na.omit") # the "factory" default
+(xtabs(Freq ~ Gender + Admit, DN) -&gt; xtD)
+noC &lt;- function(O) `attr&lt;-`(O, "call", NULL)
+ident_noC &lt;- function(x,y) identical(noC(x), noC(y))
+stopifnot(exprs = {
+  ident_noC(xtD, xtabs(Freq ~ Gender + Admit, DN, na.action = na.omit))
+  ident_noC(xtD, xtabs(Freq ~ Gender + Admit, DN, na.action = NULL))
+})
+
 xtabs(Freq ~ Gender + Admit, DN, na.action = na.pass)
 ## The Female:Rejected combination has NA 'Freq' (and NA prints 'invisibly' as "")
-xtabs(Freq ~ Gender + Admit, DN, addNA = TRUE) # ==&gt; count NAs
+(xtNA &lt;- xtabs(Freq ~ Gender + Admit, DN, addNA = TRUE)) # ==&gt; count NAs
+## show NA's better via  na.print = ".." :
+print(xtNA, na.print= "NA")
+
 
 ## Create a nice display for the warp break data.
 warpbreaks$replicate &lt;- rep_len(1:9, 54)
@@ -203,5 +220,5 @@ if(require("Matrix")) withAutoprint({
 })
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

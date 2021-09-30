@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Transfer Character Strings To and From Connections</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for readChar {base}"><tr><td>readChar {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ writeChar(object, con, nchars = nchar(object, type = "chars"),
 <table summary="R argblock">
 <tr valign="top"><td><code>con</code></td>
 <td>
-<p>A <a href="connections.html">connection</a> object, or a character string naming a file,
+<p>A <a href="../../base/help/connection.html">connection</a> object, or a character string naming a file,
 or a raw vector.</p>
 </td></tr>
 <tr valign="top"><td><code>nchars</code></td>
@@ -42,7 +43,7 @@ must be &gt;= 0 and not <code>NA</code>.</p>
 <td>
 <p>logical: For <code>readChar</code>, should <code>nchars</code> be
 regarded as a number of bytes not characters in a multi-byte
-locale?  For <code>writeChar</code>, see <code><a href="writeLines.html">writeLines</a></code>.</p>
+locale?  For <code>writeChar</code>, see <code><a href="../../base/help/writeLines.html">writeLines</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>object</code></td>
 <td>
@@ -60,15 +61,15 @@ use <code>NULL</code> for no terminator at all.</p>
 
 <h3>Details</h3>
 
-<p>These functions complement <code><a href="readBin.html">readBin</a></code> and
-<code><a href="readBin.html">writeBin</a></code> which read and write C-style zero-terminated
+<p>These functions complement <code><a href="../../base/help/readBin.html">readBin</a></code> and
+<code><a href="../../base/help/writeBin.html">writeBin</a></code> which read and write C-style zero-terminated
 character strings.  They are for strings of known length, and
 can optionally write an end-of-string mark.  They are intended only
 for character strings valid in the current locale.
 </p>
 <p>These functions are intended to be used with binary-mode connections.
 If <code>con</code> is a character string, the functions call
-<code><a href="connections.html">file</a></code> to obtain a binary-mode file connection which is
+<code><a href="../../base/help/file.html">file</a></code> to obtain a binary-mode file connection which is
 opened for the duration of the function call.
 </p>
 <p>If the connection is open it is read/written from its current
@@ -128,8 +129,8 @@ the connection was opened with an <code>encoding</code> argument.
 
 <p>The &lsquo;R Data Import/Export&rsquo; manual.
 </p>
-<p><code><a href="connections.html">connections</a></code>, <code><a href="readLines.html">readLines</a></code>,
-<code><a href="writeLines.html">writeLines</a></code>, <code><a href="readBin.html">readBin</a></code>
+<p><code><a href="../../base/help/connections.html">connections</a></code>, <code><a href="../../base/help/readLines.html">readLines</a></code>,
+<code><a href="../../base/help/writeLines.html">writeLines</a></code>, <code><a href="../../base/help/readBin.html">readBin</a></code>
 </p>
 
 
@@ -152,5 +153,5 @@ close(zz)
 unlink(zzfil)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

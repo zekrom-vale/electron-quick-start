@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Quote Strings for Use in OS Shells</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for shQuote {base}"><tr><td>shQuote {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,14 +60,15 @@ each with single quotes, and the single quotes with double quotes.
 <p>In Windows, command line interpretation is done by the application
 as well as the shell.  It may depend on the compiler used:
 Microsoft's rules for the C run-time are given at 
-<a href="https://msdn.microsoft.com/library/ms880421">https://msdn.microsoft.com/library/ms880421</a>. It may depend on
+<a href="https://docs.microsoft.com/en-us/previous-versions/ms880421(v=msdn.10)">https://docs.microsoft.com/en-us/previous-versions/ms880421(v=msdn.10)</a>.
+It may depend on
 the whim of the programmer of the application: check its
 documentation.  The <code>type = "cmd"</code> quoting surrounds the string
 by double quotes and escapes internal double quotes by a backslash.
 As Windows path names cannot contain double quotes, this makes
 <code>shQuote</code> safe for use with many applications when used with
-<code><a href="system.html">system</a></code> or <code><a href="system2.html">system2</a></code>.  The Windows
-<code>cmd.exe</code> shell (used by default with <code><a href="shell.html">shell</a></code>)
+<code><a href="../../base/help/system.html">system</a></code> or <code><a href="../../base/help/system2.html">system2</a></code>.  The Windows
+<code>cmd.exe</code> shell (used by default with <code><a href="../../base/help/shell.html">shell</a></code>)
 uses <code>type = "cmd2"</code> quoting:  special characters are prefixed
 with <code>"^"</code>.  In some cases, two types of quoting should be
 used:  first for the application, and then <code>type = "cmd2"</code> 
@@ -87,9 +89,9 @@ Third Edition. O'Reilly.  Section 27.12.
 
 <h3>See Also</h3>
 
-<p><a href="Quotes.html">Quotes</a> for quoting <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code.
+<p><a href="../../base/help/Quotes.html">Quotes</a> for quoting <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code.
 </p>
-<p><code><a href="sQuote.html">sQuote</a></code> for quoting English text.
+<p><code><a href="../../base/help/sQuote.html">sQuote</a></code> for quoting English text.
 </p>
 
 
@@ -117,5 +119,5 @@ shell(shQuote(paste("perl -e",
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

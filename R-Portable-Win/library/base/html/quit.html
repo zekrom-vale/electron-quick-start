@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Terminate an R Session</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for quit {base}"><tr><td>quit {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -66,7 +67,7 @@ platform and GUI interface in use.  A typical sequence is to run
 <code>.Last()</code> and <code>.Last.sys()</code> (unless <code>runLast</code> is
 false), to save the workspace if requested (and in most cases also
 to save the session history: see <code><a href="../../utils/html/savehistory.html">savehistory</a></code>), then
-run any finalizers (see <code><a href="reg.finalizer.html">reg.finalizer</a></code>) that have been
+run any finalizers (see <code><a href="../../base/help/reg.finalizer.html">reg.finalizer</a></code>) that have been
 set to be run on exit, close all open graphics devices, remove the
 session temporary directory and print any remaining warnings
 (e.g., from <code>.Last()</code> and device closure).
@@ -99,7 +100,7 @@ the GUI interface.
 it can be replaced later in the session, it cannot safely be used
 programmatically, e.g. by a package.  The other way to set code to be run
 at the end of the session is to use a <em>finalizer</em>: see
-<code><a href="reg.finalizer.html">reg.finalizer</a></code>.
+<code><a href="../../base/help/reg.finalizer.html">reg.finalizer</a></code>.
 </p>
 
 
@@ -121,7 +122,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="Startup.html">.First</a></code> for setting things on startup.
+<p><code><a href="../../base/help/.First.html">.First</a></code> for setting things on startup.
 </p>
 
 
@@ -139,5 +140,5 @@ quit("yes")
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

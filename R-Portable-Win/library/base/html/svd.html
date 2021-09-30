@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Singular Value Decomposition of a Matrix</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for svd {base}"><tr><td>svd {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -42,7 +43,7 @@ This must be between <code>0</code> and <code>p = ncol(x)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>LINPACK</code></td>
 <td>
-<p>logical.  Defunct and ignored.</p>
+<p>logical.  Defunct and an error.</p>
 </td></tr>
 </table>
 
@@ -110,7 +111,7 @@ right vector gives an equivalent decomposition.
 <p>The main functions used are the LAPACK routines <code>DGESDD</code> and
 <code>ZGESDD</code>.
 </p>
-<p>LAPACK is from <a href="http://www.netlib.org/lapack">http://www.netlib.org/lapack</a> and its guide is
+<p>LAPACK is from <a href="https://www.netlib.org/lapack/">https://www.netlib.org/lapack/</a> and its guide is
 listed in the references.
 </p>
 
@@ -120,7 +121,7 @@ listed in the references.
 <p>Anderson. E. and ten others (1999)
 <em>LAPACK Users' Guide</em>. Third Edition. SIAM.<br />
 Available on-line at
-<a href="http://www.netlib.org/lapack/lug/lapack_lug.html">http://www.netlib.org/lapack/lug/lapack_lug.html</a>.
+<a href="https://www.netlib.org/lapack/lug/lapack_lug.html">https://www.netlib.org/lapack/lug/lapack_lug.html</a>.
 </p>
 <p>The <a href="https://en.wikipedia.org/wiki/Singular-value_decomposition">
 &lsquo;Singular-value decomposition&rsquo;</a> Wikipedia article.
@@ -133,7 +134,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="eigen.html">eigen</a></code>, <code><a href="qr.html">qr</a></code>.
+<p><code><a href="../../base/help/eigen.html">eigen</a></code>, <code><a href="../../base/help/qr.html">qr</a></code>.
 </p>
 
 
@@ -148,5 +149,5 @@ s$u %*% D %*% t(s$v) #  X = U D V'
 t(s$u) %*% X %*% s$v #  D = U' X V
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

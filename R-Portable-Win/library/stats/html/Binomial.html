@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Binomial Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Binomial {stats}"><tr><td>Binomial {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -96,7 +97,7 @@ generates random deviates.
 </p>
 <p>The length of the result is determined by <code>n</code> for
 <code>rbinom</code>, and is the maximum of the lengths of the
-numerical arguments for the other functions.  
+numerical arguments for the other functions.
 </p>
 <p>The numerical arguments other than <code>n</code> are recycled to the
 length of the result.  Only the first elements of the logical
@@ -109,10 +110,10 @@ arguments are used.
 <p>For <code>dbinom</code> a saddle-point expansion is used: see
 </p>
 <p>Catherine Loader (2000). <em>Fast and Accurate Computation of
-Binomial Probabilities</em>; available from
-<a href="http://www.herine.net/stat/software/dbinom.html">http://www.herine.net/stat/software/dbinom.html</a>.
+Binomial Probabilities</em>; available as
+<a href="https://www.r-project.org/doc/reports/CLoader-dbinom-2002.pdf">https://www.r-project.org/doc/reports/CLoader-dbinom-2002.pdf</a>
 </p>
-<p><code>pbinom</code> uses <code><a href="Beta.html">pbeta</a></code>.
+<p><code>pbinom</code> uses <code><a href="../../stats/help/pbeta.html">pbeta</a></code>.
 </p>
 <p><code>qbinom</code> uses the Cornish&ndash;Fisher Expansion to include a skewness
 correction to a normal approximation, followed by a search.
@@ -129,9 +130,9 @@ Binomial random variate generation.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for other standard distributions, including
-<code><a href="NegBinomial.html">dnbinom</a></code> for the negative binomial, and
-<code><a href="Poisson.html">dpois</a></code> for the Poisson distribution.
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions, including
+<code><a href="../../stats/help/dnbinom.html">dnbinom</a></code> for the negative binomial, and
+<code><a href="../../stats/help/dpois.html">dpois</a></code> for the Poisson distribution.
 </p>
 
 
@@ -154,5 +155,5 @@ mtext("extended range", adj = 0, line = -1, font = 4)
 mtext("log(dbinom(k))", col = "red", adj = 1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

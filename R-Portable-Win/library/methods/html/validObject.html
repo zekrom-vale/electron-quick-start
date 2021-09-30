@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test the Validity of an Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for validObject {methods}"><tr><td>validObject {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -21,18 +22,18 @@ If argument <code>test</code> is
 than generating an error.
 </p>
 <p>When an object from a class is initialized, the default method for
-<code><a href="new.html">initialize</a>()</code> calls <code>validObject</code>.
+<code><a href="../../methods/help/initialize.html">initialize</a>()</code> calls <code>validObject</code>.
 </p>
 <p>A class definition may have a validity method, set by a call to
 the function <code>setValidity</code>, in the package or environment that
-defines the class (or via the <code>validity</code> argument to <code><a href="setClass.html">setClass</a></code>).  The method
+defines the class (or via the <code>validity</code> argument to <code><a href="../../methods/help/setClass.html">setClass</a></code>).  The method
 should be a function of one object that returns <code>TRUE</code> or a character-string
 description of the non-validity.
 If such a method exists, it will be called from <code>validObject</code>
 and any strings from failure will be included in the result or the
 error message.
 Any validity methods defined for superclasses (from the <code>contains=</code>
-argument to <code><a href="setClass.html">setClass</a></code>), will also be called.
+argument to <code><a href="../../methods/help/setClass.html">setClass</a></code>), will also be called.
 </p>
 
 
@@ -75,7 +76,7 @@ method is to be set.</p>
 <tr valign="top"><td><code>ClassDef</code></td>
 <td>
 <p>a class definition object, as from
-<code><a href="getClass.html">getClassDef</a></code>.</p>
+<code><a href="../../methods/help/getClassDef.html">getClassDef</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
@@ -157,8 +158,8 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="setClass.html">setClass</a></code>;
-class <code><a href="classRepresentation-class.html">classRepresentation</a></code>.
+<p><code><a href="../../methods/help/setClass.html">setClass</a></code>;
+class <code><a href="../../methods/help/classRepresentation-class.html">classRepresentation</a></code>.
 </p>
 
 
@@ -204,5 +205,5 @@ tT  &lt;- new("twoTrack", tr2 = t2)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

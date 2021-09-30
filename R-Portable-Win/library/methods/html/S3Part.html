@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: S4 Classes that Contain S3 Classes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for S3Part {methods}"><tr><td>S3Part {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>A regular (S4) class may contain an S3 class, if that class has been registered (by calling
-<code><a href="setOldClass.html">setOldClass</a></code>).  The functions described here provide
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code>).  The functions described here provide
 information about contained S3 classes.  See the section &lsquo;Functions&rsquo;.
 </p>
 <p>In modern <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, these functions are not
@@ -68,7 +69,7 @@ with the interpretation that it is its own S3 part.
 <code>S3Part</code> will be an S3 object, with all the S4 slots
 removed.  Otherwise, an S4 object will always
 be returned; for example, from the S4 class created by
-<code><a href="setOldClass.html">setOldClass</a></code> as a proxy for an S3 class, rather than
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> as a proxy for an S3 class, rather than
 the underlying S3 object.
 </p>
 </td></tr>
@@ -82,7 +83,7 @@ the slot from <code>object</code>, but an S3 superclass is allowed.
 <tr valign="top"><td><code>classDef</code></td>
 <td>
 <p>a class definition object, as returned by
-<code><a href="getClass.html">getClass</a></code>.
+<code><a href="../../methods/help/getClass.html">getClass</a></code>.
 </p>
 <p><em>The remaining arguments apply only to the replacement versions,
 which are not recommended.</em>
@@ -108,7 +109,7 @@ a proxy for <code>class(x)</code> in S3 method dispatch.
 <h3>Functions</h3>
 
 <p><code>S3Part</code>:  Returns an object from the S3 class that appeared
-in the <code>contains=</code> argument to <code><a href="setClass.html">setClass</a></code>.
+in the <code>contains=</code> argument to <code><a href="../../methods/help/setClass.html">setClass</a></code>.
 </p>
 <p>If called with <code>strictS3 = TRUE</code>, <code>S3Part()</code> constructs the underlying
 S3 object by eliminating
@@ -138,12 +139,12 @@ empty list for any other object.
 <p>The function <code>slotsFromS3()</code> is a generic function used
 internally to access the slots associated with the S3 part of the
 object.  Methods for this function are created automatically when
-<code><a href="setOldClass.html">setOldClass</a></code> is called with the <code>S4Class</code>
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> is called with the <code>S4Class</code>
 argument.  Usually, there is only one S3 slot, containing the S3
 class, but the <code>S4Class</code> argument may provide additional slots,
 in the case that the S3 class has some guaranteed attributes that
 can be used as formal S4 slots.  See the corresponding section in
-the documentation of <code><a href="setOldClass.html">setOldClass</a></code>.
+the documentation of <code><a href="../../methods/help/setOldClass.html">setOldClass</a></code>.
 </p>
 
 
@@ -167,7 +168,7 @@ nearly always a vector type (e.g., <code>"list"</code> for <code>"lm"</code>),
 but the data part will not have a formal definition.
 </p>
 <p>Registering an S3 class by a call to
-<code><a href="setOldClass.html">setOldClass</a></code> creates a class of the same name with a slot <code>".S3Class"</code> to hold
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> creates a class of the same name with a slot <code>".S3Class"</code> to hold
 the corresponding S3 vector of class strings.
 New S4 classes that extend such
 classes also have the same slot, set to the S3 class of the
@@ -221,7 +222,7 @@ conversion is usually the safest way.
 the object to create an object from the S4 definition of
 <code>class(object)</code>. This is a general mechanism to create
 partially defined version of S4 objects via S3 computations  (not
-much different from invoking <code><a href="new.html">new</a></code> with corresponding
+much different from invoking <code><a href="../../methods/help/new.html">new</a></code> with corresponding
 arguments, but usable in this form even if the S4 object has an
 initialize method with different arguments).
 </p>
@@ -238,7 +239,7 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-  <p><code><a href="setOldClass.html">setOldClass</a></code> </p>
+  <p><code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -274,5 +275,5 @@ xfit@.S3Class # c("mlm", lm")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

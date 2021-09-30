@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: A PicTeX Graphics Driver</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for pictex {grDevices}"><tr><td>pictex {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,7 +29,10 @@ pictex(file = "Rplots.tex", width = 5, height = 4, debug = FALSE,
 <table summary="R argblock">
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>the file where output will appear.</p>
+<p>the file path where output will appear.
+Tilde expansion (see <code><a href="../../base/html/path.expand.html">path.expand</a></code>) is done. An input with
+a marked encoding is converted to the native encoding or an error is given.
+</p>
 </td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
@@ -57,7 +61,7 @@ pictex(file = "Rplots.tex", width = 5, height = 4, debug = FALSE,
 
 <p>This driver is much more basic than the other graphics drivers
 included in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.  It does not have any font metric information, so the
-use of <code><a href="plotmath.html">plotmath</a></code> is not supported.
+use of <code><a href="../../grDevices/help/plotmath.html">plotmath</a></code> is not supported.
 </p>
 <p>Line widths are ignored except when setting the spacing of line textures.
 <code>pch = "."</code> corresponds to a square of side 1pt.
@@ -76,7 +80,7 @@ quoted as they would be when entering TeX.
 <h3>Conventions</h3>
 
 <p>This section describes the implementation of the conventions for
-graphics devices set out in the &ldquo;R Internals Manual&rdquo;.
+graphics devices set out in the &lsquo;R Internals&rsquo; manual.
 </p>
 
 <ul>
@@ -127,7 +131,7 @@ Reading, MA: Addison-Wesley.
 
 <h3>See Also</h3>
 
-<p><code><a href="postscript.html">postscript</a></code>, <code><a href="pdf.html">pdf</a></code>, <code><a href="Devices.html">Devices</a></code>.
+<p><code><a href="../../grDevices/help/postscript.html">postscript</a></code>, <code><a href="../../grDevices/help/pdf.html">pdf</a></code>, <code><a href="../../grDevices/help/Devices.html">Devices</a></code>.
 </p>
 <p>The <code>tikzDevice</code> in the CRAN package of that name for more modern
 TeX-based graphics (<a href="http://pgf.sourceforge.net/">http://pgf.sourceforge.net/</a>, although
@@ -166,5 +170,5 @@ unlink("Rplots.tex")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Screeplots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for screeplot {stats}"><tr><td>screeplot {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -21,7 +22,7 @@ principal component. This is also the <code>plot</code> method for classes
 ## Default S3 method:
 screeplot(x, npcs = min(10, length(x$sdev)),
           type = c("barplot", "lines"),
-          main = deparse(substitute(x)), ...)
+          main = deparse1(substitute(x)), ...)
 </pre>
 
 
@@ -31,7 +32,7 @@ screeplot(x, npcs = min(10, length(x$sdev)),
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>an object containing a <code>sdev</code> component, such as that
-returned by <code><a href="princomp.html">princomp</a>()</code> and <code><a href="prcomp.html">prcomp</a>()</code>.</p>
+returned by <code><a href="../../stats/help/princomp.html">princomp</a>()</code> and <code><a href="../../stats/help/prcomp.html">prcomp</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>npcs</code></td>
 <td>
@@ -60,7 +61,7 @@ returned by <code><a href="princomp.html">princomp</a>()</code> and <code><a hre
 
 <h3>See Also</h3>
 
-<p><code><a href="princomp.html">princomp</a></code> and <code><a href="prcomp.html">prcomp</a></code>.
+<p><code><a href="../../stats/help/princomp.html">princomp</a></code> and <code><a href="../../stats/help/prcomp.html">prcomp</a></code>.
 </p>
 
 
@@ -79,5 +80,5 @@ screeplot(fit)
 screeplot(fit, npcs = 24, type = "lines")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

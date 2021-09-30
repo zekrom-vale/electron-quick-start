@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Confidence Intervals for Model Parameters</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for confint {stats}"><tr><td>confint {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>Computes confidence intervals for one or more parameters in a fitted
 model.  There is a default and a method for objects inheriting from class
-<code>"<a href="lm.html">lm</a>"</code>.
+<code>"<a href="../../stats/help/lm.html">lm</a>"</code>.
 </p>
 
 
@@ -49,8 +50,8 @@ names.  If missing, all parameters are considered.</p>
 <h3>Details</h3>
 
 <p><code>confint</code> is a generic function.  The default method assumes
-normality, and needs suitable <code><a href="coef.html">coef</a></code> and
-<code><a href="vcov.html">vcov</a></code> methods to be available.  The default method can be
+normality, and needs suitable <code><a href="../../stats/help/coef.html">coef</a></code> and
+<code><a href="../../stats/help/vcov.html">vcov</a></code> methods to be available.  The default method can be
 called directly for comparison with other methods.
 </p>
 <p>For objects of class <code>"lm"</code> the direct formulae based on <i>t</i>
@@ -74,8 +75,8 @@ limits for each parameter. These will be labelled as (1-level)/2 and
 
 <h3>See Also</h3>
 
-<p><code><a href="../../MASS/html/confint.html">confint.glm</a></code> and
-<code><a href="../../MASS/html/confint.html">confint.nls</a></code> in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>.
+<p><code><a href="../../MASS/help/confint.html">confint.glm</a></code> and
+<code><a href="../../MASS/help/confint.html">confint.nls</a></code> in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>.
 </p>
 
 
@@ -94,5 +95,5 @@ confint(glm.D93) # needs MASS to be installed
 confint.default(glm.D93)  # based on asymptotic normality
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

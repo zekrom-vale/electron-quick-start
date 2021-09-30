@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Isotonic / Monotone Regression</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for isoreg {stats}"><tr><td>isoreg {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -41,7 +42,7 @@ plotting structure can be specified: see <code><a href="../../grDevices/html/xy.
 linear and the result is <i>m'(x)</i>, a step function with level
 changes at locations where the convex <i>m(x)</i> touches the
 cumulative data polygon and changes slope.<br />
-<code><a href="stepfun.html">as.stepfun</a>()</code> returns a <code><a href="stepfun.html">stepfun</a></code>
+<code><a href="../../stats/help/as.stepfun.html">as.stepfun</a>()</code> returns a <code><a href="../../stats/help/stepfun.html">stepfun</a></code>
 object which can be more parsimonious.
 </p>
 
@@ -110,8 +111,8 @@ solve the corresponding weighted least squares problem.<br />
 
 <h3>See Also</h3>
 
-<p>the plotting method <code><a href="plot.isoreg.html">plot.isoreg</a></code> with more examples;
-<code><a href="../../MASS/html/isoMDS.html">isoMDS</a>()</code> from the <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> package internally
+<p>the plotting method <code><a href="../../stats/help/plot.isoreg.html">plot.isoreg</a></code> with more examples;
+<code><a href="../../MASS/help/isoMDS.html">isoMDS</a>()</code> from the <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> package internally
 uses isotonic regression.
 </p>
 
@@ -142,5 +143,5 @@ stopifnot(all.equal(with(m, yf[iKnots]),
                     as.vector(tapply(y, x., mean))))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

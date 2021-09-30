@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Return the Value of a Named Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for get {base}"><tr><td>get {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,7 +34,7 @@ dynGet(x, ifnotfound = , minframe = 1L, inherits = FALSE)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>For <code>get</code>, an object name (given as a character
-string).<br />
+string or a symbol).<br />
 For <code>mget</code>, a character vector of object names.
 </p>
 </td></tr>
@@ -55,11 +56,11 @@ searched?</p>
 </td></tr>
 <tr valign="top"><td><code>ifnotfound</code></td>
 <td>
-<p>For <code>mget</code>, a <code><a href="list.html">list</a></code> of values to
+<p>For <code>mget</code>, a <code><a href="../../base/help/list.html">list</a></code> of values to
 be used if the item is not found: it will be coerced to a list if
 necessary.<br />
 For <code>dynGet</code> any <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object, e.g., a call to
-<code><a href="stop.html">stop</a>()</code>.</p>
+<code><a href="../../base/help/stop.html">stop</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>minframe</code></td>
 <td>
@@ -73,9 +74,9 @@ into.</p>
 
 <p>The <code>pos</code> argument can specify the environment in which to look
 for the object in any of several ways: as a positive integer (the
-position in the <code><a href="search.html">search</a></code> list); as the character string
+position in the <code><a href="../../base/help/search.html">search</a></code> list); as the character string
 name of an element in the search list; or as an
-<code><a href="environment.html">environment</a></code> (including using <code><a href="sys.parent.html">sys.frame</a></code>
+<code><a href="../../base/help/environment.html">environment</a></code> (including using <code><a href="../../base/help/sys.frame.html">sys.frame</a></code>
 to access the currently active function calls).  The default of
 <code>-1</code> indicates the current environment of the call to
 <code>get</code>. The <code>envir</code> argument is an alternative way to
@@ -85,13 +86,13 @@ specify an environment.
 value bound to it in the specified environment.  If <code>inherits</code> is
 <code>TRUE</code> and a value is not found for <code>x</code> in the specified
 environment, the enclosing frames of the environment are searched
-until the name <code>x</code> is encountered.  See <code><a href="environment.html">environment</a></code>
+until the name <code>x</code> is encountered.  See <code><a href="../../base/help/environment.html">environment</a></code>
 and the &lsquo;R Language Definition&rsquo; manual for details about the
 structure of environments and their enclosures.
 </p>
 <p>If <code>mode</code> is specified then only objects of that type are sought.
-<code>mode</code> here is a mixture of the meanings of <code><a href="typeof.html">typeof</a></code>
-and <code><a href="mode.html">mode</a></code>: <code>"function"</code> covers primitive functions
+<code>mode</code> here is a mixture of the meanings of <code><a href="../../base/help/typeof.html">typeof</a></code>
+and <code><a href="../../base/help/mode.html">mode</a></code>: <code>"function"</code> covers primitive functions
 and operators, <code>"numeric"</code>, <code>"integer"</code> and <code>"double"</code>
 all refer to any numeric type, <code>"symbol"</code> and <code>"name"</code> are
 equivalent <em>but</em> <code>"language"</code> must be used (and not
@@ -106,7 +107,7 @@ item being requested.
 </p>
 <p><code>dynGet()</code> is somewhat experimental and to be used <em>inside</em>
 another function.  It looks for an object in the callers, i.e.,
-the <code><a href="sys.parent.html">sys.frame</a>()</code>s of the function.  Use with caution.
+the <code><a href="../../base/help/sys.frame.html">sys.frame</a>()</code>s of the function.  Use with caution.
 </p>
 
 
@@ -122,7 +123,7 @@ the <code><a href="sys.parent.html">sys.frame</a>()</code>s of the function.  Us
 <h3>Note</h3>
 
 <p>The reverse (or &ldquo;inverse&rdquo;) of <code>a &lt;- get(nam)</code> is
-<code><a href="assign.html">assign</a>(nam, a)</code>, assigning <code>a</code> to name <code>nam</code>.
+<code><a href="../../base/help/assign.html">assign</a>(nam, a)</code>, assigning <code>a</code> to name <code>nam</code>.
 </p>
 <p><code>inherits = TRUE</code> is the default for <code>get</code> in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 but not for S where it had a different meaning.
@@ -139,15 +140,15 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="exists.html">exists</a></code> for checking whether an object exists;
-<code><a href="exists.html">get0</a></code> for an efficient way of both checking existence and
+<p><code><a href="../../base/help/exists.html">exists</a></code> for checking whether an object exists;
+<code><a href="../../base/help/get0.html">get0</a></code> for an efficient way of both checking existence and
 getting an object.
 </p>
-<p><code><a href="assign.html">assign</a></code>, the inverse of <code>get()</code>, see above.
+<p><code><a href="../../base/help/assign.html">assign</a></code>, the inverse of <code>get()</code>, see above.
 </p>
-<p>Use <code><a href="../../utils/html/getAnywhere.html">getAnywhere</a></code> for searching for an object
+<p>Use <code><a href="../../utils/help/getAnywhere.html">getAnywhere</a></code> for searching for an object
 anywhere, including in other namespaces, and
-<code><a href="../../utils/html/getFromNamespace.html">getFromNamespace</a></code> to find an object in a specific
+<code><a href="../../utils/help/getFromNamespace.html">getFromNamespace</a></code> to find an object in a specific
 namespace.
 </p>
 
@@ -162,5 +163,5 @@ e1 &lt;- new.env()
 mget(letters, e1, ifnotfound = as.list(LETTERS))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

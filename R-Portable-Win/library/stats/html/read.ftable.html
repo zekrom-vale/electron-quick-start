@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Manipulate Flat Contingency Tables</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for read.ftable {stats}"><tr><td>read.ftable {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,9 @@
 
 <h3>Description</h3>
 
-<p>Read, write and coerce &lsquo;flat&rsquo; contingency tables.</p>
+<p>Read, write and coerce &lsquo;flat&rsquo; (contingency) tables, aka
+<code>ftable</code>s.
+</p>
 
 
 <h3>Usage</h3>
@@ -23,9 +26,11 @@ write.ftable(x, file = "", quote = TRUE, append = FALSE,
 
 ## S3 method for class 'ftable'
 format(x, quote = TRUE, digits = getOption("digits"),
-                        method = c("non.compact", "row.compact",
-                                  "col.compact", "compact"),
-                        lsep = " | ", ...)
+       method = c("non.compact", "row.compact", "col.compact", "compact"),
+       lsep = " | ",
+       justify = c("left", "right"),
+       ...)
+
 ## S3 method for class 'ftable'
 print(x, digits = getOption("digits"), ...)
 </pre>
@@ -36,7 +41,7 @@ print(x, digits = getOption("digits"), ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>either a character string naming a file or a connection
+<p>either a character string naming a file or a <code><a href="../../base/html/connections.html">connection</a></code>
 which the data are to be read from or written to.  <code>""</code>
 indicates input from the console for reading and output to the
 console for writing.</p>
@@ -113,6 +118,12 @@ separated by the string <code>lsep</code>.</p>
 <p>only for <code>method = "compact"</code>, the separation string
 for row and column labels.</p>
 </td></tr>
+<tr valign="top"><td><code>justify</code></td>
+<td>
+<p><code><a href="../../base/html/character.html">character</a></code> vector of length (one or) two,
+specifying how string justification should happen in <code>format(..)</code>,
+first for the labels, then the table entries.</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>further arguments to be passed to or
@@ -140,7 +151,7 @@ respectively.  See the examples below.
 display of row (and maybe also column) labels.  If the full grid of
 levels of the row variables is given, one should instead use
 <code><a href="../../utils/html/read.table.html">read.table</a></code> to read in the data, and create the
-contingency table from this using <code><a href="xtabs.html">xtabs</a></code>.
+contingency table from this using <code><a href="../../stats/help/xtabs.html">xtabs</a></code>.
 </p>
 <p><code>write.ftable</code> writes a flat table to a file, which is useful for
 generating &lsquo;pretty&rsquo; ASCII representations of contingency
@@ -159,7 +170,7 @@ New York: Wiley.
 
 <h3>See Also</h3>
 
-<p><code><a href="ftable.html">ftable</a></code> for more information on flat contingency tables.
+<p><code><a href="../../stats/help/ftable.html">ftable</a></code> for more information on flat contingency tables.
 </p>
 
 
@@ -198,12 +209,17 @@ ft
 unlink(file)
 
 ft22 &lt;- ftable(Titanic, row.vars = 2:1, col.vars = 4:3)
-write.ftable(ft22, quote = FALSE)
-write.ftable(ft22, quote = FALSE, method="row.compact")
-write.ftable(ft22, quote = FALSE, method="col.compact")
-write.ftable(ft22, quote = FALSE, method="compact")
+write.ftable(ft22, quote = FALSE) # is the same as
+print(ft22)#method="non.compact" is default
+print(ft22, method="row.compact")
+print(ft22, method="col.compact")
+print(ft22, method="compact")
+
+## using 'justify' and 'quote' :
+format(ftable(wool + tension ~ breaks, warpbreaks),
+       justify = "none", quote = FALSE)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

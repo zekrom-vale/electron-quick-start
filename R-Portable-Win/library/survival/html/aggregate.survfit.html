@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Average survival curves</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for aggregate.survfit {survival}"><tr><td>aggregate.survfit {survival}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Average survival curves</h2>
+
+<h3>Description</h3>
+
+<p>For a survfit object containing multiple curves, create average curves
+over a grouping.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'survfit'
+aggregate(x, by = NULL, FUN = mean, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a <code>survfit</code> object which has a data dimension.</p>
+</td></tr>
+<tr valign="top"><td><code>by</code></td>
+<td>
+<p>an optional list or vector of grouping elements, each as
+long as <code>dim(x)['data']</code>. </p>
+</td></tr>
+<tr valign="top"><td><code>FUN</code></td>
+<td>
+<p>a function to compute the summary statistic of interest. </p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>optional further arguments to FUN.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The primary use of this is to take an average over multiple survival
+curves that were created from a modeling function.  That is, a
+marginal estimate of the survival.
+It is primarily used to average over multiple predicted curves from a
+Cox model.
+</p>
+
+
+<h3>Value</h3>
+
+<p>a <code>survfit</code> object of lower dimension.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../survival/help/survfit.html">survfit</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+cfit &lt;- coxph(Surv(futime, death) ~ sex + age*hgb, data=mgus2)
+# marginal effect of sex, after adjusting for the others
+dummy &lt;- rbind(mgus2, mgus2)
+dummy$sex &lt;- rep(c("F", "M"), each=nrow(mgus2)) # population data set
+dummy &lt;- na.omit(dummy)   # don't count missing hgb in our "population
+csurv &lt;- survfit(cfit, newdata=dummy)
+dim(csurv)  # 2 * 1384 survival curves
+csurv2 &lt;- aggregate(csurv, dummy$sex)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>survival</em> version 3.2-11 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

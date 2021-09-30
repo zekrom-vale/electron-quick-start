@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The (non-central) Chi-Squared Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Chisquare {stats}"><tr><td>Chisquare {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -69,7 +70,10 @@ degrees of freedom has density
 </p>
 <p style="text-align: center;"><i>f_n(x) = 1 / (2^(n/2) &Gamma;(n/2))  x^(n/2-1) e^(-x/2)</i></p>
 
-<p>for <i>x &gt; 0</i>.  The mean and variance are <i>n</i> and <i>2n</i>.
+<p>for <i>x &gt; 0</i>, where <i>f_0(x) := \lim_{n \to 0} f_n(x) =
+  &delta;_0(x)</i>, a point mass at zero, is not a density function proper, but
+a &ldquo;<i>&delta;</i> distribution&rdquo;.<br />
+The mean and variance are <i>n</i> and <i>2n</i>.
 </p>
 <p>The non-central chi-squared distribution with <code>df</code><i>= n</i>
 degrees of freedom and non-centrality parameter <code>ncp</code>
@@ -95,7 +99,7 @@ a continuous part, and <code>dchisq()</code> is <em>not</em> a density with
 respect to that mixture measure but rather the limit of the density
 for <i>df -&gt; 0</i>.
 </p>
-<p>Note that <code>ncp</code> values larger than about 1e5 may give inaccurate
+<p>Note that <code>ncp</code> values larger than about 1e5 (and even smaller)  may give inaccurate
 results with many warnings for <code>pchisq</code> and <code>qchisq</code>.
 </p>
 
@@ -136,7 +140,7 @@ especially in the tails, for large values.
 <p>The central cases are computed via the gamma distribution.
 </p>
 <p>The non-central <code>dchisq</code> and <code>rchisq</code> are computed as a
-Poisson mixture central of chi-squares (Johnson <em>et al</em>, 1995, p.436).
+Poisson mixture of central chi-squares (Johnson <em>et al</em>, 1995, p.436).
 </p>
 <p>The non-central <code>pchisq</code> is for <code>ncp &lt; 80</code> computed from
 the Poisson mixture of central chi-squares and for larger <code>ncp</code>
@@ -168,11 +172,15 @@ and 29 (volume 2). Wiley, New York.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for other standard distributions.
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions.
 </p>
 <p>A central chi-squared distribution with <i>n</i> degrees of freedom
 is the same as a Gamma distribution with <code>shape</code> <i>a = n/2</i> and <code>scale</code> <i>s = 2</i>.  Hence, see
-<code><a href="GammaDist.html">dgamma</a></code> for the Gamma distribution.
+<code><a href="../../stats/help/dgamma.html">dgamma</a></code> for the Gamma distribution.
+</p>
+<p>The central chi-squared distribution with 2 d.f. is identical to the
+exponential distribution with rate 1/2: <i>&chi;^2_2 = Exp(1/2)</i>, see
+<code><a href="../../stats/help/dexp.html">dexp</a></code>.
 </p>
 
 
@@ -218,5 +226,5 @@ stopifnot(all.equal(p00, exp(-lam/2)),
           all.equal(p.0, exp(-lam/2)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

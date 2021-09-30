@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add Text to a Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for text {graphics}"><tr><td>text {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -78,18 +79,18 @@ style.  Ignored if <code>labels</code> is an expression.</p>
 <tr valign="top"><td><code>cex</code></td>
 <td>
 <p>numeric <b>c</b>haracter <b>ex</b>pansion factor; multiplied
-by <code><a href="par.html">par</a>("cex")</code> yields the final character size.
+by <code><a href="../../graphics/help/par.html">par</a>("cex")</code> yields the final character size.
 <code>NULL</code> and <code>NA</code> are equivalent to <code>1.0</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>col, font</code></td>
 <td>
 <p>the color and (if <code>vfont = NULL</code>) font to be
 used, possibly vectors.  These default to the values of the global
-<a href="par.html">graphical parameters</a> in <code><a href="par.html">par</a>()</code>.</p>
+<a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> in <code><a href="../../graphics/help/par.html">par</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>further <a href="par.html">graphical parameters</a> (from <code><a href="par.html">par</a></code>),
+<p>further <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> (from <code><a href="../../graphics/help/par.html">par</a></code>),
 such as <code>srt</code>, <code>family</code> and <code>xpd</code>.</p>
 </td></tr>
 </table>
@@ -122,8 +123,8 @@ Using <code>NA</code> for strings centers them, including descenders.
 with values returned by <code>identify</code> to recreate an interactively
 labelled plot.
 </p>
-<p>Text can be rotated by using <a href="par.html">graphical parameters</a> <code>srt</code>
-(see <code><a href="par.html">par</a></code>).  When <code>adj</code> is specified, a non-zero
+<p>Text can be rotated by using <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> <code>srt</code>
+(see <code><a href="../../graphics/help/par.html">par</a></code>).  When <code>adj</code> is specified, a non-zero
 <code>srt</code> rotates the label about <code>(x, y)</code>.  If <code>pos</code> is
 specified, <code>srt</code> rotates the text about the point on its bounding
 box which is closest to <code>(x, y)</code>: top center for <code>pos = 1</code>,
@@ -179,8 +180,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.formula.html">text.formula</a></code> for the formula method;
-<code><a href="mtext.html">mtext</a></code>, <code><a href="title.html">title</a></code>,
+<p><code><a href="../../graphics/help/text.formula.html">text.formula</a></code> for the formula method;
+<code><a href="../../graphics/help/mtext.html">mtext</a></code>, <code><a href="../../graphics/help/title.html">title</a></code>,
 <code><a href="../../grDevices/html/Hershey.html">Hershey</a></code> for details on Hershey vector fonts,
 <code><a href="../../grDevices/html/plotmath.html">plotmath</a></code> for details and more examples on
 mathematical annotation.
@@ -215,5 +216,5 @@ text(5, 9.8,
      "Jetz no chli züritüütsch: (noch ein bißchen Zürcher deutsch)")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

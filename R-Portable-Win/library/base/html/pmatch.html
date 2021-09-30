@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Partial String Matching</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for pmatch {base}"><tr><td>pmatch {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,12 +28,12 @@ pmatch(x, table, nomatch = NA_integer_, duplicates.ok = FALSE)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>the values to be matched: converted to a character vector by
-<code><a href="character.html">as.character</a></code>.  <a href="LongVectors.html">Long vectors</a> are supported.</p>
+<code><a href="../../base/help/as.character.html">as.character</a></code>.  <a href="../../base/help/Long+20vectors.html">Long vectors</a> are supported.</p>
 </td></tr>
 <tr valign="top"><td><code>table</code></td>
 <td>
 <p>the values to be matched against: converted to a character
-vector.  <a href="LongVectors.html">Long vectors</a> are not supported.</p>
+vector.  <a href="../../base/help/Long+20vectors.html">Long vectors</a> are not supported.</p>
 </td></tr>
 <tr valign="top"><td><code>nomatch</code></td>
 <td>
@@ -67,7 +68,7 @@ matching, except for the consideration of empty strings (which in
 argument matching are matched after exact and partial matching to any
 remaining arguments).
 </p>
-<p><code><a href="charmatch.html">charmatch</a></code> is similar to <code>pmatch</code> with
+<p><code><a href="../../base/help/charmatch.html">charmatch</a></code> is similar to <code>pmatch</code> with
 <code>duplicates.ok</code> true, the differences being that it
 differentiates between no match and an ambiguous partial match,  it
 does match empty strings, and it does not allow multiple exact matches.
@@ -99,11 +100,11 @@ Springer.
 
 <h3>See Also</h3>
 
-<p><code><a href="match.html">match</a></code>, <code><a href="charmatch.html">charmatch</a></code> and
-<code><a href="match.arg.html">match.arg</a></code>, <code><a href="match.fun.html">match.fun</a></code>,
-<code><a href="match.call.html">match.call</a></code>, for function argument matching etc.,
-<code><a href="startsWith.html">startsWith</a></code> for particular checking of initial matches;
-<code><a href="grep.html">grep</a></code> etc for more general (regexp) matching of strings.
+<p><code><a href="../../base/help/match.html">match</a></code>, <code><a href="../../base/help/charmatch.html">charmatch</a></code> and
+<code><a href="../../base/help/match.arg.html">match.arg</a></code>, <code><a href="../../base/help/match.fun.html">match.fun</a></code>,
+<code><a href="../../base/help/match.call.html">match.call</a></code>, for function argument matching etc.,
+<code><a href="../../base/help/startsWith.html">startsWith</a></code> for particular checking of initial matches;
+<code><a href="../../base/help/grep.html">grep</a></code> etc for more general (regexp) matching of strings.
 </p>
 
 
@@ -114,11 +115,11 @@ pmatch("", "")                             # returns NA
 pmatch("m",   c("mean", "median", "mode")) # returns NA
 pmatch("med", c("mean", "median", "mode")) # returns 2
 
-pmatch(c("", "ab", "ab"), c("abc", "ab"), dup = FALSE)
-pmatch(c("", "ab", "ab"), c("abc", "ab"), dup = TRUE)
+pmatch(c("", "ab", "ab"), c("abc", "ab"), duplicates.ok = FALSE)
+pmatch(c("", "ab", "ab"), c("abc", "ab"), duplicates.ok = TRUE)
 ## compare
 charmatch(c("", "ab", "ab"), c("abc", "ab"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

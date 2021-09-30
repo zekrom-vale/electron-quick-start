@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Display Connections</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for showConnections {base}"><tr><td>showConnections {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Display aspects of <a href="connections.html">connections</a>.
+<p>Display aspects of <a href="../../base/help/connections.html">connections</a>.
 </p>
 
 
@@ -58,10 +59,10 @@ respectively (and not necessarily to file streams).  They are text-mode
 connections of class <code>"terminal"</code> which cannot be opened or
 closed, and are read-only, write-only and write-only respectively.
 The <code>stdout()</code> and <code>stderr()</code> connections can be
-re-directed by <code><a href="sink.html">sink</a></code> (and in some circumstances the
+re-directed by <code><a href="../../base/help/sink.html">sink</a></code> (and in some circumstances the
 output from <code>stdout()</code> can be split: see the help page).
 </p>
-<p>The encoding for <code><a href="showConnections.html">stdin</a>()</code> when redirected can
+<p>The encoding for <code><a href="../../base/help/stdin.html">stdin</a>()</code> when redirected can
 be set by the command-line flag <span class="option">--encoding</span>.
 </p>
 <p><code>nullfile()</code> returns filename of the null device (<code>"/dev/null"</code>
@@ -73,10 +74,10 @@ will take a row number from the table and return a connection object
 for that connection, which can be used to close the connection,
 for example.  However, if there is no <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> level object referring to the
 connection it will be closed automatically at the next garbage
-collection (except for <code><a href="gzcon.html">gzcon</a></code> connections).
+collection (except for <code><a href="../../base/help/gzcon.html">gzcon</a></code> connections).
 </p>
 <p><code>closeAllConnections</code> closes (and destroys) all user
-connections, restoring all <code><a href="sink.html">sink</a></code> diversions as it does
+connections, restoring all <code><a href="../../base/help/sink.html">sink</a></code> diversions as it does
 so.
 </p>
 <p><code>isatty</code> returns true if the connection is one of the class
@@ -105,7 +106,7 @@ a row for each connection, by default only for open non-standard connections.
 (which may not have an active &lsquo;<span class="file">stdin</span>&rsquo;, and if they do it may not
 be connected to console input), and also in embedded applications.
 If you want access to the C-level file stream &lsquo;<span class="file">stdin</span>&rsquo;, use
-<code><a href="connections.html">file</a>("stdin")</code>.
+<code><a href="../../base/help/file.html">file</a>("stdin")</code>.
 </p>
 <p>When <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is reading a script from a file, the <em>file</em> is the
 &lsquo;console&rsquo;: this is traditional usage to allow in-line data (see
@@ -115,7 +116,7 @@ If you want access to the C-level file stream &lsquo;<span class="file">stdin</s
 
 <h3>See Also</h3>
 
-<p><code><a href="connections.html">connections</a></code></p>
+<p><code><a href="../../base/help/connections.html">connections</a></code></p>
 
 
 <h3>Examples</h3>
@@ -135,5 +136,5 @@ mycon &lt;- getConnection(3)
 c(isatty(stdin()), isatty(stdout()), isatty(stderr()))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

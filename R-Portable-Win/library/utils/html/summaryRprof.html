@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Summarise Output of R Sampling Profiler</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for summaryRprof {utils}"><tr><td>summaryRprof {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Summarise the output of the <code><a href="Rprof.html">Rprof</a></code> function to show the
+<p>Summarise the output of the <code><a href="../../utils/help/Rprof.html">Rprof</a></code> function to show the
 amount of time used by different <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> functions.
 </p>
 
@@ -68,7 +69,7 @@ for memory summaries.</p>
 
 <h3>Details</h3>
 
-<p>This function provides the analysis code for <code><a href="Rprof.html">Rprof</a></code> files
+<p>This function provides the analysis code for <code><a href="../../utils/help/Rprof.html">Rprof</a></code> files
 used by <code>R CMD Rprof</code>.
 </p>
 <p>As the profiling output file could be larger than available memory, it
@@ -129,7 +130,7 @@ by function. Memory usage is in bytes.
 <h3>Memory profiling</h3>
 
 <p>Options other than <code>memory = "none"</code> apply only to files produced
-by <code><a href="Rprof.html">Rprof</a>(memory.profiling =  TRUE)</code>.
+by <code><a href="../../utils/help/Rprof.html">Rprof</a>(memory.profiling =  TRUE)</code>.
 </p>
 <p>When called with <code>memory.profiling = TRUE</code>, the profiler writes
 information on three aspects of memory use: vector memory in small
@@ -178,16 +179,16 @@ names in a combined display.
 
 <h3>See Also</h3>
 
-<p>The chapter on &ldquo;Tidying and profiling R code&rdquo; in
-&ldquo;Writing <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> Extensions&rdquo; (see the &lsquo;<span class="file">doc/manual</span>&rsquo; subdirectory
+<p>The chapter on &lsquo;Tidying and profiling R code&rsquo; in
+&lsquo;Writing R Extensions&rsquo; (see the &lsquo;<span class="file">doc/manual</span>&rsquo; subdirectory
 of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> source tree).
 </p>
-<p><code><a href="Rprof.html">Rprof</a></code>
+<p><code><a href="../../utils/help/Rprof.html">Rprof</a></code>
 </p>
 <p><code><a href="../../base/html/tracemem.html">tracemem</a></code> traces copying of an object via the C function
 <code>duplicate</code>.
 </p>
-<p><code><a href="Rprofmem.html">Rprofmem</a></code> is a non-sampling memory-use profiler.
+<p><code><a href="../../utils/help/Rprofmem.html">Rprofmem</a></code> is a non-sampling memory-use profiler.
 </p>
 <p><a href="https://developer.r-project.org/memory-profiling.html">https://developer.r-project.org/memory-profiling.html</a>
 </p>
@@ -207,5 +208,5 @@ unlink(tmp)
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

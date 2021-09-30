@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Loading and Unloading Name Spaces</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ns-load {base}"><tr><td>ns-load {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -75,12 +76,12 @@ with components <code>op</code> and <code>version</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>name</code></td>
 <td>
-<p>string or &lsquo;name&rsquo;, see <code><a href="name.html">as.symbol</a></code>,
+<p>string or &lsquo;name&rsquo;, see <code><a href="../../base/help/as.symbol.html">as.symbol</a></code>,
 of a package, e.g., <code>"stats"</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>exclude, include.only</code></td>
 <td>
-<p>character vectors; see <code><a href="library.html">library</a></code>.</p>
+<p>character vectors; see <code><a href="../../base/help/library.html">library</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -92,32 +93,32 @@ of a package, e.g., <code>"stats"</code>.</p>
 <h3>Details</h3>
 
 <p>The functions <code>loadNamespace</code> and <code>attachNamespace</code> are
-usually called implicitly when <code><a href="library.html">library</a></code> is used to load a name
+usually called implicitly when <code><a href="../../base/help/library.html">library</a></code> is used to load a name
 space and any imports needed.  However it may be useful at times to
 call these functions directly.
 </p>
 <p><code>loadNamespace</code> loads the specified name space and registers it in
 an internal data base.  A request to load a name space when one of that
 name is already loaded has no effect.  The arguments have the same
-meaning as the corresponding arguments to <code><a href="library.html">library</a></code>, whose
+meaning as the corresponding arguments to <code><a href="../../base/help/library.html">library</a></code>, whose
 help page explains the details of how a particular installed package
 comes to be chosen.  After loading, <code>loadNamespace</code> looks for a
-hook function named <code><a href="ns-hooks.html">.onLoad</a></code> as an internal variable in
+hook function named <code><a href="../../base/help/.onLoad.html">.onLoad</a></code> as an internal variable in
 the name space (it should not be exported).  Partial loading is used
 to support installation with lazy-loading.
 </p>
 <p>Optionally the package licence is checked during loading: see section
-&lsquo;Licenses&rsquo; in the help for <code><a href="library.html">library</a></code>.
+&lsquo;Licenses&rsquo; in the help for <code><a href="../../base/help/library.html">library</a></code>.
 </p>
 <p><code>loadNamespace</code> does not attach the name space it loads to the
 search path.  <code>attachNamespace</code> can be used to attach a frame
 containing the exported values of a name space to the search path (but
-this is almost always done <em>via</em> <code><a href="library.html">library</a></code>).  The
-hook function <code><a href="ns-hooks.html">.onAttach</a></code> is run after the name space
+this is almost always done <em>via</em> <code><a href="../../base/help/library.html">library</a></code>).  The
+hook function <code><a href="../../base/help/.onAttach.html">.onAttach</a></code> is run after the name space
 exports are attached.
 </p>
 <p><code>requireNamespace</code> is a wrapper for <code>loadNamespace</code>
-analogous to <code><a href="library.html">require</a></code> that returns a logical value.
+analogous to <code><a href="../../base/help/require.html">require</a></code> that returns a logical value.
 </p>
 <p><code>loadedNamespaces</code> returns a character vector of the names of
 the loaded name spaces.
@@ -127,14 +128,14 @@ the loaded name spaces.
 </p>
 <p><code>unloadNamespace</code> can be used to attempt to force a name space to
 be unloaded.  If the name space is attached, it is first
-<code><a href="detach.html">detach</a></code>ed, thereby running a <code><a href="ns-hooks.html">.onDetach</a></code> or
+<code><a href="../../base/help/detach.html">detach</a></code>ed, thereby running a <code><a href="../../base/help/.onDetach.html">.onDetach</a></code> or
 <code>.Last.lib</code> function in the name space if one is exported.  An
 error is signaled and the name space is not unloaded if the name space
 is imported by other loaded name spaces.  If defined, a hook function
-<code><a href="ns-hooks.html">.onUnload</a></code> is run before removing the name space from the
+<code><a href="../../base/help/.onUnload.html">.onUnload</a></code> is run before removing the name space from the
 internal registry.
 </p>
-<p>See the comments in the help for <code><a href="detach.html">detach</a></code> about some
+<p>See the comments in the help for <code><a href="../../base/help/detach.html">detach</a></code> about some
 issues with unloading and reloading name spaces.
 </p>
 
@@ -150,9 +151,27 @@ already loaded or the one the function causes to be loaded.
 <p><code>requireNamespace</code> returns <code>TRUE</code> if it succeeds or
 <code>FALSE</code>.
 </p>
-<p><code>loadedNamespaces</code> returns a <code><a href="character.html">character</a></code> vector.
+<p><code>loadedNamespaces</code> returns a <code><a href="../../base/help/character.html">character</a></code> vector.
 </p>
 <p><code>unloadNamespace</code> returns <code>NULL</code>, invisibly.
+</p>
+
+
+<h3>Tracing</h3>
+
+<p>As from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.1.0 the operation of <code>loadNamespace</code> can be traced,
+which can help track down the causes of unexpected messages (including
+which package(s) they come from since <code>loadNamespace</code> is called in
+many ways including from itself and by <code>::</code> and can be called by
+<code>load</code>). Setting the environment variable
+<span class="env">_R_TRACE_LOADNAMESPACE_</span> to a numerical value will generate
+additional messages on progress.  Non-zero values,
+e.g. <code>1</code>, report which namespace is being loaded and when
+loading completes: values <code>2</code> to <code>4</code> report in increasing
+detail.  Negative values are reserved for tracing specific features and
+their current meanings are documented in source-code comments.
+</p>
+<p>Loading standard packages is never traced.
 </p>
 
 
@@ -169,9 +188,9 @@ already loaded or the one the function causes to be loaded.
 
 <h3>See Also</h3>
 
-<p><code><a href="ns-reflect.html">getNamespace</a></code>, <code><a href="ns-internal.html">asNamespace</a></code>,
-<code><a href="ns-topenv.html">topenv</a></code>, <code><a href="ns-hooks.html">.onLoad</a></code> (etc);
-further <code><a href="environment.html">environment</a></code>.
+<p><code><a href="../../base/help/getNamespace.html">getNamespace</a></code>, <code><a href="../../base/help/asNamespace.html">asNamespace</a></code>,
+<code><a href="../../base/help/topenv.html">topenv</a></code>, <code><a href="../../base/help/.onLoad.html">.onLoad</a></code> (etc);
+further <code><a href="../../base/help/environment.html">environment</a></code>.
 </p>
 
 
@@ -195,5 +214,5 @@ stopifnot( ! isNamespaceLoaded("splines"))
 if (hasS) loadNamespace("splines") # (restoring previous state)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Model Formulae</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for formula {stats}"><tr><td>formula {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -56,7 +57,7 @@ as well.</p>
 
 <h3>Details</h3>
 
-<p>The models fit by, e.g., the <code><a href="lm.html">lm</a></code> and <code><a href="glm.html">glm</a></code> functions
+<p>The models fit by, e.g., the <code><a href="../../stats/help/lm.html">lm</a></code> and <code><a href="../../stats/help/glm.html">glm</a></code> functions
 are specified in a compact symbolic form.
 The <code>~</code> operator is basic in the formation of such models.
 An expression of the form <code>y ~ model</code> is interpreted
@@ -105,16 +106,16 @@ formulae, although there is no guarantee that all code using formulae
 will accept such non-syntactic names.
 </p>
 <p>Most model-fitting functions accept formulae with right-hand-side
-including the function <code><a href="offset.html">offset</a></code> to indicate terms with a
+including the function <code><a href="../../stats/help/offset.html">offset</a></code> to indicate terms with a
 fixed coefficient of one.  Some functions accept other
 &lsquo;specials&rsquo; such as <code>strata</code> or <code>cluster</code> (see the
-<code>specials</code> argument of <code><a href="terms.formula.html">terms.formula</a>)</code>.
+<code>specials</code> argument of <code><a href="../../stats/help/terms.formula.html">terms.formula</a>)</code>.
 </p>
 <p>There are two special interpretations of <code>.</code> in a formula.  The
 usual one is in the context of a <code>data</code> argument of model
 fitting functions and means &lsquo;all columns not otherwise in the
-formula&rsquo;: see <code><a href="terms.formula.html">terms.formula</a></code>.  In the context of
-<code><a href="update.formula.html">update.formula</a></code>, <b>only</b>, it means &lsquo;what was
+formula&rsquo;: see <code><a href="../../stats/help/terms.formula.html">terms.formula</a></code>.  In the context of
+<code><a href="../../stats/help/update.formula.html">update.formula</a></code>, <b>only</b>, it means &lsquo;what was
 previously in this part of the formula&rsquo;.
 </p>
 <p>When <code>formula</code> is called on a fitted model object, either a
@@ -126,7 +127,7 @@ its value) and finally a <code>"formula"</code> attribute.
 </p>
 <p>There is a <code>formula</code> method for data frames.  When there's
 <code>"terms"</code> attribute with a formula, e.g., for a
-<code><a href="model.frame.html">model.frame</a>()</code>, that formula is returned.  If you'd like the
+<code><a href="../../stats/help/model.frame.html">model.frame</a>()</code>, that formula is returned.  If you'd like the
 previous (<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> <i>&lt;=</i> 3.5.x) behavior, use the auxiliary
 <code>DF2formula()</code> which does not consider a <code>"terms"</code> attribute.
 Otherwise, if
@@ -148,13 +149,32 @@ which contains a symbolic model formula.
 
 <p>A formula object has an associated environment, and
 this environment (rather than the parent
-environment) is used by <code><a href="model.frame.html">model.frame</a></code> to evaluate variables
+environment) is used by <code><a href="../../stats/help/model.frame.html">model.frame</a></code> to evaluate variables
 that are not found in the supplied <code>data</code> argument.
 </p>
 <p>Formulas created with the <code>~</code> operator use the
 environment in which they were created.  Formulas created with
 <code>as.formula</code> will use the <code>env</code> argument for their
 environment.
+</p>
+
+
+<h3>Note</h3>
+
+<p>In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions up to 3.6.0, <code><a href="../../base/html/character.html">character</a></code> <code>x</code> of length
+more than one were parsed as separate lines of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code and the first
+complete expression was evaluated into a formula when possible.  This
+silently truncates such vectors of characters inefficiently and to some
+extent inconsistently as this behaviour had been undocumented.  For this
+reason, such use has been deprecated.  If you must work via character
+<code>x</code>, do use a string, i.e., a character vector of length one.
+</p>
+<p>E.g., <code>eval(call("~", quote(foo + bar)))</code> has been an order of magnitude
+more efficient 
+than <code>formula(c("~", "foo + bar"))</code>.
+</p>
+<p>Further, character &ldquo;expressions&rdquo; needing an <code><a href="../../base/html/eval.html">eval</a>()</code>
+to return a formula are now deprecated.
 </p>
 
 
@@ -169,10 +189,10 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="../../base/html/AsIs.html">I</a></code>, <code><a href="offset.html">offset</a></code>.
+<p><code><a href="../../base/html/AsIs.html">I</a></code>, <code><a href="../../stats/help/offset.html">offset</a></code>.
 </p>
-<p>For formula manipulation: <code><a href="terms.html">terms</a></code>, and <code><a href="../../base/html/allnames.html">all.vars</a></code>;
-for typical use: <code><a href="lm.html">lm</a></code>, <code><a href="glm.html">glm</a></code>, and
+<p>For formula manipulation: <code><a href="../../stats/help/terms.html">terms</a></code>, and <code><a href="../../base/html/allnames.html">all.vars</a></code>;
+for typical use: <code><a href="../../stats/help/lm.html">lm</a></code>, <code><a href="../../stats/help/glm.html">glm</a></code>, and
 <code><a href="../../graphics/html/coplot.html">coplot</a></code>.
 </p>
 
@@ -195,5 +215,5 @@ xnam &lt;- paste0("x", 1:25)
 (fmla &lt;- as.formula(paste("y ~ ", paste(xnam, collapse= "+"))))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

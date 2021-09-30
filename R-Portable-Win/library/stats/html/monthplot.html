@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot a Seasonal or other Subseries from a Time Series</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for monthplot {stats}"><tr><td>monthplot {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -30,11 +31,11 @@ monthplot(x, labels = NULL, ylab = choice, choice = "sea", ...)
 
 ## S3 method for class 'ts'
 monthplot(x, labels = NULL, times = time(x), phase = cycle(x),
-             ylab = deparse(substitute(x)), ...)
+             ylab = deparse1(substitute(x)), ...)
 
 ## Default S3 method:
 monthplot(x, labels = 1L:12L,
-          ylab = deparse(substitute(x)),
+          ylab = deparse1(substitute(x)),
           times = seq_along(x),
           phase = (times - 1L)%%length(labels) + 1L, base = mean,
           axes = TRUE, type = c("l", "h"), box = TRUE,
@@ -112,8 +113,8 @@ segments used for the reference lines.</p>
 <h3>Details</h3>
 
 <p>These functions extract subseries from a time series and plot them
-all in one frame.  The <code><a href="ts.html">ts</a></code>, <code><a href="stl.html">stl</a></code>, and
-<code><a href="StructTS.html">StructTS</a></code> methods use the internally recorded frequency and
+all in one frame.  The <code><a href="../../stats/help/ts.html">ts</a></code>, <code><a href="../../stats/help/stl.html">stl</a></code>, and
+<code><a href="../../stats/help/StructTS.html">StructTS</a></code> methods use the internally recorded frequency and
 start and finish times to set the scale and the seasons.  The default
 method assumes observations come in groups of 12 (though this can be
 changed).
@@ -149,7 +150,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="ts.html">ts</a></code>, <code><a href="stl.html">stl</a></code>, <code><a href="StructTS.html">StructTS</a></code>
+<p><code><a href="../../stats/help/ts.html">ts</a></code>, <code><a href="../../stats/help/stl.html">stl</a></code>, <code><a href="../../stats/help/StructTS.html">StructTS</a></code>
 </p>
 
 
@@ -175,5 +176,5 @@ monthplot(co2, phase = quarter)
 ## see also JohnsonJohnson
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

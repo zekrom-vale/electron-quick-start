@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Null Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for NULL {base}"><tr><td>NULL {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p><code>NULL</code> represents the null object in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>: it is a <a href="Reserved.html">reserved</a>
+<p><code>NULL</code> represents the null object in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>: it is a <a href="../../base/help/reserved.html">reserved</a>
 word.  <code>NULL</code> is often returned by expressions and functions
 whose value is undefined.
 </p>
@@ -40,20 +41,20 @@ is.null(x)
 
 <h3>Details</h3>
 
-<p><code>NULL</code> can be indexed (see <a href="Extract.html">Extract</a>) in just about any
+<p><code>NULL</code> can be indexed (see <a href="../../base/help/Extract.html">Extract</a>) in just about any
 syntactically legal way: whether it makes sense or not, the result is
 always <code>NULL</code>.  Objects with value <code>NULL</code> can be changed by
 replacement operators and will be coerced to the type of the
 right-hand side.
 </p>
-<p><code>NULL</code> is also used as the empty <a href="list.html">pairlist</a>: see the
+<p><code>NULL</code> is also used as the empty <a href="../../base/help/pairlist.html">pairlist</a>: see the
 examples. Because pairlists are often promoted to lists, you may
 encounter <code>NULL</code> being promoted to an empty list.
 </p>
 <p>Objects with value <code>NULL</code> cannot have attributes as there is only
 one null object: attempts to assign them are either an error
-(<code><a href="attr.html">attr</a></code>) or promote the object to an empty list with
-attribute(s) (<code><a href="attributes.html">attributes</a></code> and <code><a href="structure.html">structure</a></code>).
+(<code><a href="../../base/help/attr.html">attr</a></code>) or promote the object to an empty list with
+attribute(s) (<code><a href="../../base/help/attributes.html">attributes</a></code> and <code><a href="../../base/help/structure.html">structure</a></code>).
 </p>
 
 
@@ -68,7 +69,7 @@ is <code>NULL</code> and <code>FALSE</code> otherwise.
 
 <h3>Note</h3>
 
-<p><code>is.null</code> is a <a href="Primitive.html">primitive</a> function.
+<p><code>is.null</code> is a <a href="../../base/help/primitive.html">primitive</a> function.
 </p>
 
 
@@ -90,5 +91,5 @@ is.null(logical(0)) # FALSE
 as.null(list(a = 1, b = "c"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Execute a Function Call</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for do.call {base}"><tr><td>do.call {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -53,11 +54,11 @@ the arguments are symbols or quoted expressions.</p>
 <p>If <code>quote</code> is <code>FALSE</code>, the default, then the arguments are
 evaluated (in the calling environment, not in <code>envir</code>).  If
 <code>quote</code> is <code>TRUE</code> then each argument is quoted (see
-<code><a href="substitute.html">quote</a></code>) so that the effect of argument evaluation is to
+<code><a href="../../base/help/quote.html">quote</a></code>) so that the effect of argument evaluation is to
 remove the quotes &ndash; leaving the original arguments unevaluated when the
 call is constructed.
 </p>
-<p>The behavior of some functions, such as <code><a href="substitute.html">substitute</a></code>,
+<p>The behavior of some functions, such as <code><a href="../../base/help/substitute.html">substitute</a></code>,
 will not be the same for functions evaluated using <code>do.call</code> as
 if they were evaluated from the interpreter.  The precise semantics
 are currently undefined and subject to change.
@@ -87,14 +88,14 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="call.html">call</a></code> which creates an unevaluated call.
+<p><code><a href="../../base/help/call.html">call</a></code> which creates an unevaluated call.
 </p>
 
 
 <h3>Examples</h3>
 
 <pre>
-do.call("complex", list(imag = 1:3))
+do.call("complex", list(imaginary = 1:3))
 
 ## if we already have a list (e.g., a data frame)
 ## we need c() to add further arguments
@@ -113,9 +114,9 @@ f &lt;- function(x) print(x)
 f(A)                                      # 2
 do.call("f", list(A))                     # 2
 do.call("f", list(A), envir = env)        # 4
-do.call(f, list(A), envir = env)          # 2
+do.call( f,  list(A), envir = env)        # 2
 do.call("f", list(quote(A)), envir = env) # 100
-do.call(f, list(quote(A)), envir = env)   # 10
+do.call( f,  list(quote(A)), envir = env) # 10
 do.call("f", list(as.name("A")), envir = env) # 100
 
 eval(call("f", A))                      # 2
@@ -124,5 +125,5 @@ eval(call("f", A), envir = env)         # 4
 eval(call("f", quote(A)), envir = env)  # 100
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

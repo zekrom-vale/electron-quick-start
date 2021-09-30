@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Relational Operators</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Comparison {base}"><tr><td>Comparison {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -40,12 +41,12 @@ methods have been written.</p>
 
 <p>The binary comparison operators are generic functions: methods can be
 written for them individually or via the
-<code><a href="groupGeneric.html">Ops</a></code> group generic function.  (See
-<code><a href="groupGeneric.html">Ops</a></code> for how dispatch is computed.)
+<code><a href="../../base/help/S3groupGeneric.html">Ops</a></code> group generic function.  (See
+<code><a href="../../base/help/S3groupGeneric.html">Ops</a></code> for how dispatch is computed.)
 </p>
 <p>Comparison of strings in character vectors is lexicographic within the
 strings using the collating sequence of the locale in use: see
-<code><a href="locales.html">locales</a></code>.  The collating sequence of locales such as
+<code><a href="../../base/help/locales.html">locales</a></code>.  The collating sequence of locales such as
 <span class="samp">en_US</span> is normally different from <span class="samp">C</span> (which should use
 ASCII) and can be surprising.  Beware of making <em>any</em> assumptions
 about the collation order: e.g. in Estonian <code>Z</code> comes between
@@ -60,7 +61,7 @@ character sets).  Collation of non-letters (spaces, punctuation signs,
 hyphens, fractions and so on) is even more problematic.
 </p>
 <p>Character strings can be compared  with different marked encodings
-(see <code><a href="Encoding.html">Encoding</a></code>): they are translated to UTF-8 before
+(see <code><a href="../../base/help/Encoding.html">Encoding</a></code>): they are translated to UTF-8 before
 comparison.
 </p>
 <p>Raw vectors should not really be considered to have an order, but the
@@ -75,7 +76,7 @@ one that can be coerced to the correct type.
 coerced to the type of the other, the (decreasing) order of precedence
 being character, complex, numeric, integer, logical and raw.
 </p>
-<p>Missing values (<code><a href="NA.html">NA</a></code>) and <code><a href="is.finite.html">NaN</a></code> values are
+<p>Missing values (<code><a href="../../base/help/NA.html">NA</a></code>) and <code><a href="../../base/help/NaN.html">NaN</a></code> values are
 regarded as non-comparable even to themselves, so comparisons
 involving them will always result in <code>NA</code>.  Missing values can
 also result when character strings are compared and one is not valid
@@ -111,18 +112,18 @@ group generic (or the <code>Ops</code> group generic), with arguments
 <p>Do not use <code>==</code> and <code>!=</code> for tests, such as in <code>if</code>
 expressions, where you must get a single <code>TRUE</code> or
 <code>FALSE</code>.  Unless you are absolutely sure that nothing unusual
-can happen, you should use the <code><a href="identical.html">identical</a></code> function
+can happen, you should use the <code><a href="../../base/help/identical.html">identical</a></code> function
 instead.
 </p>
 <p>For numerical and complex values, remember <code>==</code> and <code>!=</code> do
 not allow for the finite representation of fractions, nor for rounding
-error.  Using <code><a href="all.equal.html">all.equal</a></code> with <code>identical</code> is almost
-always preferable.  See the examples.  (This also applies to the other
-comparison operators.)
+error.  Using <code><a href="../../base/help/all.equal.html">all.equal</a></code> with <code>identical</code> or
+<code><a href="../../base/help/isTRUE.html">isTRUE</a></code> is almost always preferable; see the examples.
+(This also applies to the other comparison operators.)
 </p>
 <p>These operators are sometimes called as functions as
 e.g. <code>`&lt;`(x, y)</code>: see the description of how
-argument-matching is done in <code><a href="Ops.html">Ops</a></code>.
+argument-matching is done in <code><a href="../help/groupGeneric.html">Ops</a></code>.
 </p>
 
 
@@ -136,7 +137,7 @@ Wadsworth &amp; Brooks/Cole.
 introduction see
 <a href="https://en.wikipedia.org/wiki/Collating_sequence">https://en.wikipedia.org/wiki/Collating_sequence</a>.  The
 <em>Unicode Collation Algorithm</em>
-(<a href="http://unicode.org/reports/tr10/">http://unicode.org/reports/tr10/</a>) is likely to be increasingly
+(<a href="https://unicode.org/reports/tr10/">https://unicode.org/reports/tr10/</a>) is likely to be increasingly
 influential.  Where available <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> by default makes use of ICU
 (<a href="http://site.icu-project.org/">http://site.icu-project.org/</a>) for collation (except in a C
 locale).
@@ -145,12 +146,15 @@ locale).
 
 <h3>See Also</h3>
 
-<p><code><a href="factor.html">factor</a></code> for the behaviour with factor arguments.
+<p><code><a href="../../base/help/Logic.html">Logic</a></code> on how to <em>combine</em> results of comparisons,
+i.e., logical vectors.
 </p>
-<p><code><a href="Syntax.html">Syntax</a></code> for operator precedence.
+<p><code><a href="../../base/help/factor.html">factor</a></code> for the behaviour with factor arguments.
 </p>
-<p><code><a href="capabilities.html">capabilities</a></code> for whether ICU is available, and
-<code><a href="icuSetCollate.html">icuSetCollate</a></code> to tune the string collation algorithm
+<p><code><a href="../../base/help/Syntax.html">Syntax</a></code> for operator precedence.
+</p>
+<p><code><a href="../../base/help/capabilities.html">capabilities</a></code> for whether ICU is available, and
+<code><a href="../../base/help/icuSetCollate.html">icuSetCollate</a></code> to tune the string collation algorithm
 when it is.
 </p>
 
@@ -164,8 +168,8 @@ x[x &gt; 0]
 
 x1 &lt;- 0.5 - 0.3
 x2 &lt;- 0.3 - 0.1
-x1 == x2                           # FALSE on most machines
-identical(all.equal(x1, x2), TRUE) # TRUE everywhere
+x1 == x2                   # FALSE on most machines
+isTRUE(all.equal(x1, x2))  # TRUE everywhere
 
 
 # range of most 8-bit charsets, as well as of Latin-1 in Unicode
@@ -179,5 +183,5 @@ writeLines(strwrap(paste(x, collapse=" "), width = 60))
 writeLines(strwrap(paste(sort(x), collapse=" "), width = 60))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

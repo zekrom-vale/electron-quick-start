@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Logical Operators</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Logic {base}"><tr><td>Logic {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,9 +34,9 @@ isFALSE(x)
 <table summary="R argblock">
 <tr valign="top"><td><code>x, y</code></td>
 <td>
-<p><code><a href="raw.html">raw</a></code>, <code><a href="logical.html">logical</a></code> or &lsquo;number-like&rsquo; vectors (i.e., of
-types <code><a href="double.html">double</a></code> (class <code><a href="numeric.html">numeric</a></code>),
-<code><a href="integer.html">integer</a></code> and <code><a href="complex.html">complex</a></code>), or objects for
+<p><code><a href="../../base/help/raw.html">raw</a></code>, <code><a href="../../base/help/logical.html">logical</a></code> or &lsquo;number-like&rsquo; vectors (i.e., of
+types <code><a href="../../base/help/double.html">double</a></code> (class <code><a href="../../base/help/numeric.html">numeric</a></code>),
+<code><a href="../../base/help/integer.html">integer</a></code> and <code><a href="../../base/help/complex.html">complex</a></code>), or objects for
 which methods have been written.</p>
 </td></tr>
 </table>
@@ -51,7 +52,7 @@ comparisons in much the same way as arithmetic operators.  The longer
 form evaluates left to right examining only the first element of each
 vector.  Evaluation proceeds only until the result is determined.  The
 longer form is appropriate for programming control-flow and typically
-preferred in <code><a href="Control.html">if</a></code> clauses.
+preferred in <code><a href="../../base/help/if.html">if</a></code> clauses.
 </p>
 <p><code>xor</code> indicates elementwise exclusive OR.
 </p>
@@ -59,7 +60,7 @@ preferred in <code><a href="Control.html">if</a></code> clauses.
 <code>{ is.logical(x) &amp;&amp; length(x) == 1 &amp;&amp; !is.na(x) &amp;&amp; x }</code>;
 <code>isFALSE()</code> is defined analogously.  Consequently,
 <code>if(isTRUE(cond))</code> may be preferable to <code>if(cond)</code> because
-of <code><a href="NA.html">NA</a></code>s.<br />
+of <code><a href="../../base/help/NA.html">NA</a></code>s.<br />
 In earlier <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions, <code>isTRUE &lt;- function(x) identical(x, TRUE)</code>,
 had the drawback to be false e.g., for <code>x &lt;- c(val = TRUE)</code>.
 </p>
@@ -71,17 +72,17 @@ the 1s-complement).
 </p>
 <p>The operators <code>!</code>, <code>&amp;</code> and <code>|</code> are generic functions:
 methods can be written for them individually or via the
-<code><a href="groupGeneric.html">Ops</a></code> (or S4 <code>Logic</code>, see below)
-group generic function.  (See <code><a href="groupGeneric.html">Ops</a></code> for
+<code><a href="../../base/help/S3groupGeneric.html">Ops</a></code> (or S4 <code>Logic</code>, see below)
+group generic function.  (See <code><a href="../../base/help/S3groupGeneric.html">Ops</a></code> for
 how dispatch is computed.)
 </p>
-<p><code><a href="NA.html">NA</a></code> is a valid logical object.  Where a component of
+<p><code><a href="../../base/help/NA.html">NA</a></code> is a valid logical object.  Where a component of
 <code>x</code> or <code>y</code> is <code>NA</code>, the result will be <code>NA</code> if the
 outcome is ambiguous.  In other words <code>NA &amp; TRUE</code> evaluates to
 <code>NA</code>, but <code>NA &amp; FALSE</code> evaluates to <code>FALSE</code>.  See the
 examples below.
 </p>
-<p>See <a href="Syntax.html">Syntax</a> for the precedence of these operators: unlike many
+<p>See <a href="../../base/help/Syntax.html">Syntax</a> for the precedence of these operators: unlike many
 other languages (including S) the AND and OR operators do not have the
 same precedence (the AND operators have higher precedence than the OR
 operators).
@@ -97,7 +98,7 @@ and all other attributes (including class) if no coercion is done.
 <p>For <code>|</code>, <code>&amp;</code> and <code>xor</code> a logical or raw vector.  If
 involving a zero-length vector the result has length zero.  Otherwise,
 the elements of shorter vectors are recycled as necessary (with a
-<code><a href="warning.html">warning</a></code> when they are recycled only <em>fractionally</em>).
+<code><a href="../../base/help/warning.html">warning</a></code> when they are recycled only <em>fractionally</em>).
 The rules for determining the attributes of the result are rather
 complicated.  Most attributes are taken from the longer argument, the
 first if they are of the same length.  Names will be copied from the
@@ -124,7 +125,7 @@ hence methods need argument names <code>e1, e2</code>).
 
 <p>The elementwise operators are sometimes called as functions as
 e.g. <code>`&amp;`(x, y)</code>: see the description of how
-argument-matching is done in <code><a href="Ops.html">Ops</a></code>.
+argument-matching is done in <code><a href="../help/groupGeneric.html">Ops</a></code>.
 </p>
 
 
@@ -138,14 +139,14 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="logical.html">TRUE</a></code> or <code><a href="logical.html">logical</a></code>.
+<p><code><a href="../../base/help/TRUE.html">TRUE</a></code> or <code><a href="../../base/help/logical.html">logical</a></code>.
 </p>
-<p><code><a href="any.html">any</a></code> and <code><a href="all.html">all</a></code> for OR and AND on many scalar
+<p><code><a href="../../base/help/any.html">any</a></code> and <code><a href="../../base/help/all.html">all</a></code> for OR and AND on many scalar
 arguments.
 </p>
-<p><code><a href="Syntax.html">Syntax</a></code> for operator precedence.
+<p><code><a href="../../base/help/Syntax.html">Syntax</a></code> for operator precedence.
 </p>
-<p><code><a href="bitwise.html">bitwAnd</a></code> for bitwise versions for integer vectors.
+<p><code><a href="../../base/help/bitwAnd.html">bitwAnd</a></code> for bitwise versions for integer vectors.
 </p>
 
 
@@ -164,5 +165,5 @@ outer(x, x, "&amp;") ## AND table
 outer(x, x, "|") ## OR  table
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

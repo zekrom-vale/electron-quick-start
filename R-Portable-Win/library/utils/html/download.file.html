@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Download File from the Internet</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for download.file {utils}"><tr><td>download.file {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -34,9 +35,9 @@ downloaded.</p>
 </td></tr>
 <tr valign="top"><td><code>destfile</code></td>
 <td>
-<p>a character string (or vector, see <code>url</code>) with
-the name where the downloaded file is saved.  Tilde-expansion is
-performed.</p>
+<p>a character string (or vector, see the <code>url</code>
+argument) with the file path where the downloaded file is to be
+saved.  Tilde-expansion is performed.</p>
 </td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
@@ -90,8 +91,10 @@ header, coming from the <code>HTTPUserAgent</code> option (see
 <p>The function <code>download.file</code> can be used to download a single
 file as described by <code>url</code> from the internet and store it in
 <code>destfile</code>.
-The <code>url</code> must start with a scheme such as
-<span class="samp">http://</span>, <span class="samp">https://</span>, <span class="samp">ftp://</span> or <span class="samp">file://</span>.
+</p>
+<p>The <code>url</code> must start with a scheme such as <span class="samp">http://</span>,
+<span class="samp">https://</span>, <span class="samp">ftp://</span> or <span class="samp">file://</span>.  Which methods
+support which schemes varies by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version.
 </p>
 <p>If <code>method = "auto"</code> is chosen (the default), the behavior
 depends on the platform:
@@ -100,18 +103,19 @@ depends on the platform:
 <ul>
 <li><p> On a Unix-alike method <code>"libcurl"</code> is used except
 <code>"internal"</code> for <span class="samp">file://</span> URLs, where <code>"libcurl"</code>
-uses the library of that name (<a href="http://curl.haxx.se/libcurl/">http://curl.haxx.se/libcurl/</a>).
+uses the library of that name (<a href="https://curl.se/libcurl/">https://curl.se/libcurl/</a>).
 </p>
 </li>
 <li><p> On Windows the <code>"wininet"</code> method is used apart from for
-<span class="samp">ftps://</span> URLs where <code>"libcurl"</code> is tried.  The
-<code>"wininet"</code> method uses the WinINet functions (part of the OS).
+<span class="samp">ftp://</span> and <span class="samp">ftps://</span> URLs where <code>"libcurl"</code> is
+tried.  The <code>"wininet"</code> method uses the WinINet functions (part
+of the OS).  However, it is deprecated for <span class="samp">http://</span> and
+<span class="samp">https://</span> URLs in favour of <code>"libcurl"</code>.
 
 </p>
 <p>Support for method <code>"libcurl"</code> is optional on Windows: use
 <code><a href="../../base/html/capabilities.html">capabilities</a>("libcurl")</code> to see if it is supported on
-your build.  It uses an external library of that name
-(<a href="http://curl.haxx.se/libcurl/">http://curl.haxx.se/libcurl/</a>) against which <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> can be compiled.
+your build (it is on <acronym><span class="acronym">CRAN</span></acronym> builds).
 </p>
 </li></ul>
 
@@ -132,7 +136,7 @@ complete: this may make a GUI unresponsive.
 <p><code>cacheOK = FALSE</code> is useful for <span class="samp">http://</span> and
 <span class="samp">https://</span> URLs: it will attempt to get a copy directly from the
 site rather than from an intermediate cache.  It is used by
-<code><a href="available.packages.html">available.packages</a></code>.
+<code><a href="../../utils/help/available.packages.html">available.packages</a></code>.
 </p>
 <p>The <code>"libcurl"</code> and <code>"wget"</code> methods follow <span class="samp">http://</span>
 and <span class="samp">https://</span> redirections to any scheme they support: the
@@ -148,21 +152,34 @@ quote the endpoint of redirections.)
 <code>"internal"</code> method but are supported by the <code>"libcurl"</code>
 method and the <code>"wininet"</code> method on Windows.
 </p>
+<p>Support for <span class="samp">ftp://</span> URLs in the <code>"internal"</code> method was
+deprecated in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.1.1.
+</p>
 <p>See <code><a href="../../base/html/connections.html">url</a></code> for how <span class="samp">file://</span> URLs are interpreted,
 especially on Windows.  The <code>"internal"</code> and <code>"wininet"</code>
-methods do not percent-decode <span class="samp">file://</span> URLs, but the
-<code>"libcurl"</code> and <code>"curl"</code> methods do: method <code>"wget"</code>
-does not support them.
+methods do not percent-decode, but the <code>"libcurl"</code> and
+<code>"curl"</code> methods do: method <code>"wget"</code> does not support them.
 </p>
 <p>Most methods do not percent-encode special characters such as spaces
-in URLs (see <code><a href="URLencode.html">URLencode</a></code>), but it seems the
+in URLs (see <code><a href="../../utils/help/URLencode.html">URLencode</a></code>), but it seems the
 <code>"wininet"</code> method does.
 </p>
 <p>The remaining details apply to the <code>"internal"</code>, <code>"wininet"</code>
 and <code>"libcurl"</code> methods only.
 </p>
 <p>The timeout for many parts of the transfer can be set by the option
-<code>timeout</code> which defaults to 60 seconds.
+<code>timeout</code> which defaults to 60 seconds.  This is often
+insufficient for downloads of large files (50MB or more) and
+so should be increased when <code>download.file</code> is used in packages
+to do so.  Note that the user can set the default timeout by the
+environment variable <span class="env">R_DEFAULT_INTERNET_TIMEOUT</span> in recent
+versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, so to ensure that this is not decreased packages should
+use something like
+</p>
+<pre>
+    options(timeout = max(300, getOption("timeout")))
+  </pre>
+<p>(It is unrealistic to require download times of less than 1s/MB.)
 </p>
 <p>The level of detail provided during transfer can be set by the
 <code>quiet</code> argument and the <code>internet.info</code> option: the details
@@ -173,7 +190,7 @@ serious messages, and 3 or more suppresses all messages.  For the
 <code>"libcurl"</code> method values of the option less than 2 give verbose
 output.
 </p>
-<p>A progress bar tracks the transfer platform specifically:
+<p>A progress bar tracks the transfer platform-specifically:
 </p>
 
 <dl>
@@ -184,7 +201,7 @@ is exceeded.  (In non-interactive use this uses a text version.  If the
 file length is known, an equals sign represents 2% of the transfer
 completed: otherwise a dot represents 10Kb.)</p>
 </dd>
-<dt>On a unix-alike</dt><dd><p>If the file length is known, an
+<dt>On a Unix-alike</dt><dd><p>If the file length is known, an
 equals sign represents 2% of the transfer completed: otherwise a dot
 represents 10Kb.</p>
 </dd>
@@ -196,10 +213,10 @@ between text and binary files and for text transfers changes <code>\n</code>
 line endings to <code>\r\n</code> (aka &lsquo;<span class="file">CRLF</span>&rsquo;).
 </p>
 <p>On Windows, if <code>mode</code> is not supplied (<code><a href="../../base/html/missing.html">missing</a>()</code>)
-and <code>url</code> ends in one of
-<code>.gz</code>, <code>.bz2</code>, <code>.xz</code>, <code>.tgz</code>, <code>.zip</code>,
-<code>.rda</code>, <code>.rds</code> or <code>.RData</code>, <code>mode = "wb"</code> is set
-such that a binary transfer is done to help unwary users.
+and <code>url</code> ends in one of <code>.gz</code>, <code>.bz2</code>, <code>.xz</code>,
+<code>.tgz</code>, <code>.zip</code>, <code>.jar</code>, <code>.rda</code>, <code>.rds</code> or
+<code>.RData</code>, <code>mode = "wb"</code> is set so that a binary transfer
+is done to help unwary users.
 </p>
 <p>Code written to download binary files must use <code>mode = "wb"</code> (or
 <code>"ab"</code>), but the problems incurred by a text transfer will only
@@ -226,7 +243,7 @@ appending when the file should be unchanged.
 
 <p>For the Windows-only method <code>"wininet"</code>, the &lsquo;Internet
 Options&rsquo; of the system are used to choose proxies and so on; these are
-set in the Control Panel and are those used for Internet Explorer.
+set in the Control Panel and are those used for system browsers.
 </p>
 <p>The next two paragraphs apply to the internal code only.
 </p>
@@ -262,7 +279,7 @@ further prompt per download.
 <span class="env">no_proxy</span>, <span class="env">http_proxy</span> and <span class="env">ftp_proxy</span>, and for the last
 two a contents of <code>[user:password@]machine[:port]</code> where the
 parts in brackets are optional.  See
-<a href="http://curl.haxx.se/libcurl/c/libcurl-tutorial.html">http://curl.haxx.se/libcurl/c/libcurl-tutorial.html</a> for details.
+<a href="https://curl.se/libcurl/c/libcurl-tutorial.html">https://curl.se/libcurl/c/libcurl-tutorial.html</a> for details.
 </p>
 
 
@@ -272,7 +289,7 @@ parts in brackets are optional.  See
 try to verify the site certificates.  This is usually done using the CA
 root certificates installed by the OS (although we have seen instances
 in which these got removed rather than updated). For further information
-see <a href="http://curl.haxx.se/docs/sslcerts.html">http://curl.haxx.se/docs/sslcerts.html</a>.
+see <a href="https://curl.se/docs/sslcerts.html">https://curl.se/docs/sslcerts.html</a>.
 </p>
 <p>This is an issue for <code>method = "libcurl"</code> on Windows, where the
 OS does not provide a suitable CA certificate bundle, so by default on
@@ -284,7 +301,7 @@ installation of <span style="font-family: Courier New, Courier; color: #666666;"
 &lsquo;<span class="file"><var>R_HOME</var>/etc/curl-ca-bundle.crt</span>&rsquo; and sets
 <span class="env">CURL_CA_BUNDLE</span> to point to it if that environment variable is not
 already set.)  For an updated certificate bundle, see
-<a href="http://curl.haxx.se/docs/sslcerts.html">http://curl.haxx.se/docs/sslcerts.html</a>.
+<a href="https://curl.se/docs/sslcerts.html">https://curl.se/docs/sslcerts.html</a>.
 Currently one can download a copy from
 <a href="https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt">https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt</a>
 and set <span class="env">CURL_CA_BUNDLE</span> to the full path to the downloaded file.
@@ -302,9 +319,8 @@ either their own or the system ones).
 number of variants.  One distinction is between &lsquo;active&rsquo; and
 &lsquo;(extended) passive&rsquo; modes: which is used is chosen by the
 client.  The <code>"internal"</code> and <code>"libcurl"</code> methods use passive
-mode, and that is almost universally used by browsers.  Prior to <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-3.2.3 the <code>"wininet"</code> method used active mode: nowadays it first
-tries passive and then active.
+mode, and that is almost universally used by browsers.  The
+<code>"wininet"</code> method first tries passive and then active.
 </p>
 
 
@@ -317,8 +333,7 @@ and should do so in a package or script.
 </p>
 <p>If you use <code>download.file</code> in a package or script, you must check
 the return value, since it is possible that the download will fail
-with a non-zero status but not an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> error. (This was more likely
-prior to <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.4.0.)
+with a non-zero status but not an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> error.
 </p>
 <p>The supported <code>method</code>s do change: method <code>libcurl</code> was
 introduced in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.2.0 and is still optional on Windows &ndash; use
@@ -340,11 +355,11 @@ the <code>"libcurl"</code> or <code>"wininet"</code> methods.
 user/password authentication if proper values are stored in the
 configuration file for <code>wget</code>.
 </p>
-<p><code>wget</code> (<a href="http://www.gnu.org/software/wget/">http://www.gnu.org/software/wget/</a>) is commonly
+<p><code>wget</code> (<a href="https://www.gnu.org/software/wget/">https://www.gnu.org/software/wget/</a>) is commonly
 installed on Unix-alikes (but not macOS).  Windows binaries are
 available from Cygwin, gnuwin32 and elsewhere.
 </p>
-<p><code>curl</code> (<a href="http://curl.haxx.se/">http://curl.haxx.se/</a>) is installed on macOS and
+<p><code>curl</code> (<a href="https://curl.se/">https://curl.se/</a>) is installed on macOS and
 commonly on Unix-alikes.  Windows binaries are available at that URL.
 </p>
 
@@ -356,12 +371,12 @@ and <code>internet.info</code> options used by some of the methods.
 </p>
 <p><code><a href="../../base/html/connections.html">url</a></code> for a finer-grained way to read data from URLs.
 </p>
-<p><code><a href="url.show.html">url.show</a></code>, <code><a href="available.packages.html">available.packages</a></code>,
-<code><a href="download.packages.html">download.packages</a></code> for applications.
+<p><code><a href="../../utils/help/url.show.html">url.show</a></code>, <code><a href="../../utils/help/available.packages.html">available.packages</a></code>,
+<code><a href="../../utils/help/download.packages.html">download.packages</a></code> for applications.
 </p>
-<p>Contributed package <a href="https://CRAN.R-project.org/package=RCurl"><span class="pkg">RCurl</span></a> provides more comprehensive
-facilities to download from URLs.
+<p>Contributed packages <a href="https://CRAN.R-project.org/package=RCurl"><span class="pkg">RCurl</span></a> and <a href="https://CRAN.R-project.org/package=curl"><span class="pkg">curl</span></a> provide more
+comprehensive facilities to download from URLs.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

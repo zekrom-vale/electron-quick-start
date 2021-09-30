@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Matrices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for matrix {base}"><tr><td>matrix {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,8 +38,8 @@ is.matrix(x)
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>an optional data vector (including a list or
-<code><a href="expression.html">expression</a></code> vector).  Non-atomic classed <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects are
-coerced by <code><a href="vector.html">as.vector</a></code> and all attributes discarded.</p>
+<code><a href="../../base/help/expression.html">expression</a></code> vector).  Non-atomic classed <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects are
+coerced by <code><a href="../../base/help/as.vector.html">as.vector</a></code> and all attributes discarded.</p>
 </td></tr>
 <tr valign="top"><td><code>nrow</code></td>
 <td>
@@ -55,7 +56,7 @@ filled by columns, otherwise the matrix is filled by rows.</p>
 </td></tr>
 <tr valign="top"><td><code>dimnames</code></td>
 <td>
-<p>A <code><a href="dimnames.html">dimnames</a></code> attribute for the matrix:
+<p>A <code><a href="../../base/help/dimnames.html">dimnames</a></code> attribute for the matrix:
 <code>NULL</code> or a <code>list</code> of length 2 giving the row and column
 names respectively.  An empty list is treated as <code>NULL</code>, and a
 list of length one as row names.  The list can be named, and the
@@ -73,7 +74,7 @@ list names will be used as names for the dimensions.</p>
 <td>
 <p>logical indicating if the resulting matrix
 should have character (rather than <code>NULL</code>)
-<code><a href="colnames.html">rownames</a></code>.  The default, <code>NA</code>, uses <code>NULL</code>
+<code><a href="../../base/help/rownames.html">rownames</a></code>.  The default, <code>NA</code>, uses <code>NULL</code>
 rownames if the data frame has &lsquo;automatic&rsquo; row.names or for a
 zero-row data frame.</p>
 </td></tr>
@@ -92,15 +93,15 @@ length zero, <code>NA</code> of an appropriate type is used for atomic
 vectors (<code>0</code> for raw vectors) and <code>NULL</code> for lists.
 </p>
 <p><code>is.matrix</code> returns <code>TRUE</code> if <code>x</code> is a vector and has a
-<code>"<a href="dim.html">dim</a>"</code> attribute of length 2 and <code>FALSE</code> otherwise.
-Note that a <code><a href="data.frame.html">data.frame</a></code> is <strong>not</strong> a matrix by this
+<code>"<a href="../../base/help/dim.html">dim</a>"</code> attribute of length 2 and <code>FALSE</code> otherwise.
+Note that a <code><a href="../../base/help/data.frame.html">data.frame</a></code> is <strong>not</strong> a matrix by this
 test.  The function is generic: you can write methods to handle
-specific classes of objects, see <a href="InternalMethods.html">InternalMethods</a>.
+specific classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.
 </p>
 <p><code>as.matrix</code> is a generic function.  The method for data frames
 will return a character matrix if there is only atomic columns and any
-non-(numeric/logical/complex) column, applying <code><a href="vector.html">as.vector</a></code>
-to factors and <code><a href="format.html">format</a></code> to other non-character columns.
+non-(numeric/logical/complex) column, applying <code><a href="../../base/help/as.vector.html">as.vector</a></code>
+to factors and <code><a href="../../base/help/format.html">format</a></code> to other non-character columns.
 Otherwise, the usual coercion hierarchy (logical &lt; integer &lt; double &lt;
 complex) will be used, e.g., all-logical data frames will be coerced
 to a logical matrix, mixed logical-integer will give a integer matrix,
@@ -112,7 +113,7 @@ hence e.g. coerces factors to character vectors.
 <p>When coercing a vector, it produces a one-column matrix, and
 promotes the names (if any) of the vector to the rownames of the matrix.
 </p>
-<p><code>is.matrix</code> is a <a href="Primitive.html">primitive</a> function.
+<p><code>is.matrix</code> is a <a href="../../base/help/primitive.html">primitive</a> function.
 </p>
 <p>The <code>print</code> method for a matrix gives a rectangular layout with
 dimnames or indices.  For a list matrix, the entries of length not
@@ -128,7 +129,9 @@ and length.
 <pre>  dim(x) &lt;- c(nx, ny)
   dimnames(x) &lt;- list(row_names, col_names)
 </pre>
-<p>will avoid duplicating <code>x</code>.
+<p>will avoid duplicating <code>x</code> <em>and</em> preserve
+<code><a href="../../base/help/class.html">class</a>(x)</code> which may be useful, e.g.,
+for <code><a href="../../base/help/Date.html">Date</a></code> objects.
 </p>
 
 
@@ -142,10 +145,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="data.matrix.html">data.matrix</a></code>, which attempts to convert to a numeric
+<p><code><a href="../../base/help/data.matrix.html">data.matrix</a></code>, which attempts to convert to a numeric
 matrix.
 </p>
-<p>A matrix is the special case of a two-dimensional <code><a href="array.html">array</a></code>.
+<p>A matrix is the special case of a two-dimensional <code><a href="../../base/help/array.html">array</a></code>.
+Since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.0.0, <code><a href="../../base/help/inherits.html">inherits</a>(m, "array")</code> is true for a
+<code>matrix</code> <code>m</code>.
 </p>
 
 
@@ -164,5 +169,5 @@ mdat &lt;- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
 mdat
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

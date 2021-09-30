@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Kruskal-Wallis Rank Sum Test</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for kruskal.test {stats}"><tr><td>kruskal.test {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -50,7 +51,7 @@ factor of the corresponding groups.</p>
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>an optional matrix or data frame (or similar: see
-<code><a href="model.frame.html">model.frame</a></code>) containing the variables in the
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>) containing the variables in the
 formula <code>formula</code>.  By default the variables are taken from
 <code>environment(formula)</code>.</p>
 </td></tr>
@@ -131,13 +132,13 @@ Pages 115&ndash;120.
 
 <h3>See Also</h3>
 
-<p>The Wilcoxon rank sum test (<code><a href="wilcox.test.html">wilcox.test</a></code>) as the special
+<p>The Wilcoxon rank sum test (<code><a href="../../stats/help/wilcox.test.html">wilcox.test</a></code>) as the special
 case for two samples;
-<code><a href="lm.html">lm</a></code> together with <code><a href="anova.html">anova</a></code> for performing
+<code><a href="../../stats/help/lm.html">lm</a></code> together with <code><a href="../../stats/help/anova.html">anova</a></code> for performing
 one-way location analysis under normality assumptions; with Student's
-t test (<code><a href="t.test.html">t.test</a></code>) as the special case for two samples.
+t test (<code><a href="../../stats/help/t.test.html">t.test</a></code>) as the special case for two samples.
 </p>
-<p><code><a href="../../coin/html/LocationTests.html">wilcox_test</a></code> in package
+<p><code><a href="../../coin/help/LocationTests.html">wilcox_test</a></code> in package
 <a href="https://CRAN.R-project.org/package=coin"><span class="pkg">coin</span></a> for exact, asymptotic and Monte Carlo
 <em>conditional</em> p-values, including in the presence of ties.
 </p>
@@ -168,5 +169,5 @@ boxplot(Ozone ~ Month, data = airquality)
 kruskal.test(Ozone ~ Month, data = airquality)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

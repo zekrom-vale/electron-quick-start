@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add Legends to Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for legend {graphics}"><tr><td>legend {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>This function can be used to add legends to plots.  Note that a call
-to the function <code><a href="locator.html">locator</a>(1)</code> can be used in place of the <code>x</code>
+to the function <code><a href="../../graphics/help/locator.html">locator</a>(1)</code> can be used in place of the <code>x</code>
 and <code>y</code> arguments.
 </p>
 
@@ -71,7 +72,7 @@ legend.  One of these two <em>must</em> be specified for line drawing.</p>
 <td>
 <p>the plotting symbols appearing in the legend, as
 numeric vector or a vector of 1-character strings (see
-<code><a href="points.html">points</a></code>). Unlike <code>points</code>, this can all be
+<code><a href="../../graphics/help/points.html">points</a></code>). Unlike <code>points</code>, this can all be
 specified as a single multi-character string.  <em>Must</em> be
 specified for symbol drawing.</p>
 </td></tr>
@@ -102,7 +103,7 @@ the legend box (if <code>bty = "o"</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>pt.bg</code></td>
 <td>
-<p>the background color for the <code><a href="points.html">points</a></code>,
+<p>the background color for the <code><a href="../../graphics/help/points.html">points</a></code>,
 corresponding to its argument <code>bg</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>cex</code></td>
@@ -149,7 +150,7 @@ text.  Useful for y-adjustment when <code>labels</code> are
 <p>the width of the legend text in x (<code>"user"</code>)
 coordinates.  (Should be a single positive number even for a reversed
 x axis.)  Defaults to the proper value computed by
-<code><a href="strwidth.html">strwidth</a>(legend)</code>.</p>
+<code><a href="../../graphics/help/strwidth.html">strwidth</a>(legend)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>text.col</code></td>
 <td>
@@ -157,7 +158,7 @@ x axis.)  Defaults to the proper value computed by
 </td></tr>
 <tr valign="top"><td><code>text.font</code></td>
 <td>
-<p>the font used for the legend text, see <code><a href="text.html">text</a></code>.</p>
+<p>the font used for the legend text, see <code><a href="../../graphics/help/text.html">text</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>merge</code></td>
 <td>
@@ -198,7 +199,7 @@ plot region when legend is placed by keyword.</p>
 </td></tr>
 <tr valign="top"><td><code>xpd</code></td>
 <td>
-<p>if supplied, a value of the <a href="par.html">graphical parameter</a> <code>xpd</code>
+<p>if supplied, a value of the <a href="../../graphics/help/graphical+20parameter.html">graphical parameter</a> <code>xpd</code>
 to be used while the legend is being drawn.</p>
 </td></tr>
 <tr valign="top"><td><code>title.col</code></td>
@@ -208,7 +209,7 @@ to be used while the legend is being drawn.</p>
 <tr valign="top"><td><code>title.adj</code></td>
 <td>
 <p>horizontal adjustment for <code>title</code>: see the help
-for <code><a href="par.html">par</a>("adj")</code>.</p>
+for <code><a href="../../graphics/help/par.html">par</a>("adj")</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>seg.len</code></td>
 <td>
@@ -309,8 +310,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.html">plot</a></code>, <code><a href="barplot.html">barplot</a></code> which uses <code>legend()</code>, and
-<code><a href="text.html">text</a></code> for more examples of math expressions.
+<p><code><a href="../../graphics/help/plot.html">plot</a></code>, <code><a href="../../graphics/help/barplot.html">barplot</a></code> which uses <code>legend()</code>, and
+<code><a href="../../graphics/help/text.html">text</a></code> for more examples of math expressions.
 </p>
 
 
@@ -332,7 +333,7 @@ for (i in seq(cexv)) {
 legend(6,1, leg.txt, pch = "sSvV", col = c(1, 3), cex = 1+(-1:2)/8)
 
 ## 'merge = TRUE' for merging lines &amp; points:
-x &lt;- seq(-pi, pi, len = 65)
+x &lt;- seq(-pi, pi, length.out = 65)
 plot(x, sin(x), type = "l", ylim = c(-1.2, 1.8), col = 3, lty = 2)
 points(x, cos(x), pch = 3, col = 4)
 lines(x, tan(x), type = "b", lty = 1, pch = 4, col = 6)
@@ -372,7 +373,7 @@ for(ll in c("","x","y","xy")) {
 par(mfrow = c(1,1))
 
 ##-- Math expressions:  ------------------------------
-x &lt;- seq(-pi, pi, len = 65)
+x &lt;- seq(-pi, pi, length.out = 65)
 plot(x, sin(x), type = "l", col = 2, xlab = expression(phi),
      ylab = expression(f(phi)))
 abline(h = -1:1, v = pi/2*(-6:6), col = "gray90")
@@ -442,5 +443,5 @@ for(i in 1:4) {
 par(op)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

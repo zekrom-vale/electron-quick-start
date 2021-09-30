@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract or Replace Parts of a Data Frame</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Extract.data.frame {base}"><tr><td>Extract.data.frame {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -41,14 +42,14 @@ x$name &lt;- value
 <td>
 <p>elements to extract or replace.  For <code>[</code> and
 <code>[[</code>, these are <code>numeric</code> or <code>character</code> or, for
-<code>[</code> only, empty.  Numeric values are coerced to integer as if
-by <code><a href="integer.html">as.integer</a></code>.  For replacement by <code>[</code>, a logical
+<code>[</code> only, empty or <code>logical</code>.  Numeric values are coerced to integer as if
+by <code><a href="../../base/help/as.integer.html">as.integer</a></code>.  For replacement by <code>[</code>, a logical
 matrix is allowed.</p>
 </td></tr>
 <tr valign="top"><td><code>name</code></td>
 <td>
 
-<p>A literal character string or a <a href="name.html">name</a> (possibly <a href="Quotes.html">backtick</a>
+<p>A literal character string or a <a href="../../base/help/name.html">name</a> (possibly <a href="../../base/help/backtick.html">backtick</a>
 quoted).</p>
 </td></tr>
 <tr valign="top"><td><code>drop</code></td>
@@ -66,7 +67,7 @@ column is selected.</p>
 </td></tr>
 <tr valign="top"><td><code>exact</code></td>
 <td>
-<p>logical: see <code><a href="Extract.html">[</a></code>, and applies to column names.</p>
+<p>logical: see <code><a href="../../base/help/+5B.html">[</a></code>, and applies to column names.</p>
 </td></tr>
 </table>
 
@@ -81,7 +82,7 @@ this usage a <code>drop</code> argument is ignored, with a warning.
 <p>There is no <code>data.frame</code> method for <code>$</code>, so <code>x$name</code>
 uses the default method which treats <code>x</code> as a list (with partial
 matching of column names if the match is unique, see
-<code><a href="Extract.html">Extract</a></code>).  The replacement method (for <code>$</code>) checks
+<code><a href="../../base/help/Extract.html">Extract</a></code>).  The replacement method (for <code>$</code>) checks
 <code>value</code> for the correct number of rows, and replicates it if necessary.
 </p>
 <p>When <code>[</code> and <code>[[</code> are used with two indices (<code>x[i, j]</code>
@@ -93,7 +94,7 @@ corresponding <code>[</code> method, see the examples section.
 </p>
 <p>If <code>[</code> returns a data frame it will have unique (and non-missing)
 row names, if necessary transforming the row names using
-<code><a href="make.unique.html">make.unique</a></code>.  Similarly, if columns are selected column
+<code><a href="../../base/help/make.unique.html">make.unique</a></code>.  Similarly, if columns are selected column
 names will be transformed to be unique if necessary (e.g., if columns
 are selected more than once, or if more than one column of a given
 name is selected if the data frame has duplicate column names).
@@ -128,7 +129,7 @@ coercions possibly taking place.
 names.  By default neither partially match column names, but <code>[[</code>
 will if <code>exact = FALSE</code> (and with a warning if <code>exact =
   NA</code>).  If you want to exact matching on row names use
-<code><a href="match.html">match</a></code>, as in the examples.
+<code><a href="../../base/help/match.html">match</a></code>, as in the examples.
 </p>
 
 
@@ -159,7 +160,7 @@ is a guide only.
 </p>
 <p>When <code>[</code> and <code>[[</code> are used to add or replace a whole column,
 no coercion takes place but <code>value</code> will be
-replicated (by calling the generic function <code><a href="rep.html">rep</a></code>) to the
+replicated (by calling the generic function <code><a href="../../base/help/rep.html">rep</a></code>) to the
 right length if an exact number of repeats can be used.
 </p>
 <p>When <code>[</code> is used with a logical matrix, each value is coerced to
@@ -170,7 +171,7 @@ column will be coerced as necessary to accommodate the value.
 </p>
 <p>Note that when the replacement value is an array (including a matrix)
 it is <em>not</em> treated as a series of columns (as
-<code><a href="data.frame.html">data.frame</a></code> and <code><a href="as.data.frame.html">as.data.frame</a></code> do) but
+<code><a href="../../base/help/data.frame.html">data.frame</a></code> and <code><a href="../../base/help/as.data.frame.html">as.data.frame</a></code> do) but
 inserted as a single column.
 </p>
 
@@ -189,8 +190,8 @@ description here.
 
 <h3>See Also</h3>
 
-<p><code><a href="subset.html">subset</a></code> which is often easier for extraction,
-<code><a href="data.frame.html">data.frame</a></code>, <code><a href="Extract.html">Extract</a></code>.
+<p><code><a href="../../base/help/subset.html">subset</a></code> which is often easier for extraction,
+<code><a href="../../base/help/data.frame.html">data.frame</a></code>, <code><a href="../../base/help/Extract.html">Extract</a></code>.
 </p>
 
 
@@ -216,7 +217,8 @@ sw[match("C", row.names(sw)), ] # no exact match
 try(sw[, "Ferti"]) # column names must match exactly
 
 
-swiss[ c(1, 1:2), ]   # duplicate row, unique row names are created
+sw[sw$Fertility &gt; 90,] # logical indexing, see also ?subset
+sw[c(1, 1:2), ]        # duplicate row, unique row names are created
 
 sw[sw &lt;= 6] &lt;- 6  # logical matrix indexing
 sw
@@ -262,5 +264,5 @@ str(d[2:4, -1]) # 'u' keeps its "unit"
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

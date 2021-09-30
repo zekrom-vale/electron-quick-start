@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Description of the Methods Defined for a Generic Function</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for findMethods {methods}"><tr><td>findMethods {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -21,7 +22,7 @@ specified <code>classes</code> in the method signature if that argument is
 supplied.
 </p>
 <p>To see the actual table (an <code><a href="../../base/html/environment.html">environment</a></code>) used
-for methods dispatch, call <code><a href="MethodSupport.html">getMethodsForDispatch</a></code>.
+for methods dispatch, call <code><a href="../../methods/help/getMethodsForDispatch.html">getMethodsForDispatch</a></code>.
 The names of the list returned by <code>findMethods</code> are the names of
 the objects in the table.
 </p>
@@ -54,7 +55,7 @@ findMethodSignatures(..., target = TRUE, methods = )
 
 hasMethods(f, where, package)
 
-## Deprecated in 2010 and defunct in 2015 for \code{table = FALSE}:
+## Deprecated in 2010 and defunct in 2015 for 'table = FALSE':
 getMethods(f, where, table = FALSE)
 </pre>
 
@@ -202,17 +203,17 @@ names as noted are the class names separated by <code>"#"</code> .</p>
 
 <h3>Extends</h3>
 
-<p>Class <code>"<a href="BasicClasses.html">namedList</a>"</code>, directly.
+<p>Class <code>"<a href="../../methods/help/namedList-class.html">namedList</a>"</code>, directly.
 </p>
-<p>Class <code>"<a href="BasicClasses.html">list</a>"</code>, by class <code>"namedList"</code>, distance 2.
+<p>Class <code>"<a href="../../methods/help/list-class.html">list</a>"</code>, by class <code>"namedList"</code>, distance 2.
 </p>
-<p>Class <code>"<a href="BasicClasses.html">vector</a>"</code>, by class <code>"namedList"</code>, distance 3.
+<p>Class <code>"<a href="../../methods/help/vector-class.html">vector</a>"</code>, by class <code>"namedList"</code>, distance 3.
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="showMethods.html">showMethods</a></code>, <code><a href="getMethod.html">selectMethod</a></code>, <a href="Methods_Details.html">Methods_Details</a> </p>
+ <p><code><a href="../../methods/help/showMethods.html">showMethods</a></code>, <code><a href="../../methods/help/selectMethod.html">selectMethod</a></code>, <a href="../../methods/help/Methods_Details.html">Methods_Details</a> </p>
 
 
 <h3>Examples</h3>
@@ -222,5 +223,5 @@ mm &lt;-  findMethods("Ops")
 findMethodSignatures(methods = mm)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

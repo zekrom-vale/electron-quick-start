@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Object Attribute Lists</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for attributes {base}"><tr><td>attributes {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -34,7 +35,7 @@ mostattributes(x) &lt;- value
 </td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
-<p>an appropriate named <code><a href="list.html">list</a></code> of attributes, or
+<p>an appropriate named <code><a href="../../base/help/list.html">list</a></code> of attributes, or
 <code>NULL</code>.</p>
 </td></tr>
 </table>
@@ -42,21 +43,21 @@ mostattributes(x) &lt;- value
 
 <h3>Details</h3>
 
-<p>Unlike <code><a href="attr.html">attr</a></code> it is not an error to set attributes on a
+<p>Unlike <code><a href="../../base/help/attr.html">attr</a></code> it is not an error to set attributes on a
 <code>NULL</code> object: it will first be coerced to an empty list.
 </p>
-<p>Note that some attributes (namely <code><a href="class.html">class</a></code>,
-<code><a href="comment.html">comment</a></code>, <code><a href="dim.html">dim</a></code>, <code><a href="dimnames.html">dimnames</a></code>,
-<code><a href="names.html">names</a></code>, <code><a href="row.names.html">row.names</a></code> and
+<p>Note that some attributes (namely <code><a href="../../base/help/class.html">class</a></code>,
+<code><a href="../../base/help/comment.html">comment</a></code>, <code><a href="../../base/help/dim.html">dim</a></code>, <code><a href="../../base/help/dimnames.html">dimnames</a></code>,
+<code><a href="../../base/help/names.html">names</a></code>, <code><a href="../../base/help/row.names.html">row.names</a></code> and
 <code><a href="../../stats/html/tsp.html">tsp</a></code>) are treated specially and have restrictions on
 the values which can be set.  (Note that this is not true of
-<code><a href="levels.html">levels</a></code> which should be set for factors via the
+<code><a href="../../base/help/levels.html">levels</a></code> which should be set for factors via the
 <code>levels</code> replacement function.)
 </p>
 <p>Attributes are not stored internally as a list and should be thought
 of as a set and not a vector, i.e, the <em>order</em> of the elements of
 <code>attributes()</code> does not matter.  This is also reflected by
-<code><a href="identical.html">identical</a>()</code>'s behaviour with the default argument
+<code><a href="../../base/help/identical.html">identical</a>()</code>'s behaviour with the default argument
 <code>attrib.as.set = TRUE</code>.  Attributes must have unique names (and
 <code>NA</code> is taken as <code>"NA"</code>, not a missing value).
 </p>
@@ -66,22 +67,22 @@ given: this ensures that setting a <code>dim</code> attribute always precedes
 the <code>dimnames</code> attribute.
 </p>
 <p>The <code>mostattributes</code> assignment takes special care for the
-<code><a href="dim.html">dim</a></code>, <code><a href="names.html">names</a></code> and <code><a href="dimnames.html">dimnames</a></code>
+<code><a href="../../base/help/dim.html">dim</a></code>, <code><a href="../../base/help/names.html">names</a></code> and <code><a href="../../base/help/dimnames.html">dimnames</a></code>
 attributes, and assigns them only when known to be valid whereas an
 <code>attributes</code> assignment would give an error if any are not.  It
 is principally intended for arrays, and should be used with care on
 classed objects.  For example, it does not check that
-<code><a href="row.names.html">row.names</a></code> are assigned correctly for data frames.
+<code><a href="../../base/help/row.names.html">row.names</a></code> are assigned correctly for data frames.
 </p>
 <p>The names of a pairlist are not stored as attributes, but are reported
 as if they were (and can be set by the replacement form of
 <code>attributes</code>).
 </p>
-<p><code><a href="NULL.html">NULL</a></code> objects cannot have attributes and attempts to
+<p><code><a href="../../base/help/NULL.html">NULL</a></code> objects cannot have attributes and attempts to
 assign them will promote the object to an empty list.
 </p>
 <p>Both assignment and replacement forms of <code>attributes</code> are
-<a href="Primitive.html">primitive</a> functions.
+<a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
@@ -95,7 +96,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="attr.html">attr</a></code>,  <code><a href="structure.html">structure</a></code>.
+<p><code><a href="../../base/help/attr.html">attr</a></code>,  <code><a href="../../base/help/structure.html">structure</a></code>.
 </p>
 
 
@@ -114,5 +115,5 @@ mostattributes(x) &lt;- list(mycomment = "really special", dim = 3:2,
 x # dim(), but not {dim}names
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

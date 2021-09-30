@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fisher's Exact Test for Count Data</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for fisher.test {stats}"><tr><td>fisher.test {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -119,7 +120,7 @@ distribution. Otherwise, computations are based on a C version of the
 FORTRAN subroutine FEXACT which implements the network developed by
 Mehta and Patel (1983, 1986) and improved by Clarkson, Fan and Joe (1993).
 The FORTRAN code can be obtained from
-<a href="http://www.netlib.org/toms/643">http://www.netlib.org/toms/643</a>.  Note this fails (with an error
+<a href="https://www.netlib.org/toms/643">https://www.netlib.org/toms/643</a>.  Note this fails (with an error
 message) when the entries of the table are too large.  (It transposes
 the table if necessary so it has no more rows than columns.  One
 constraint is that the product of the row marginals be less than
@@ -271,7 +272,7 @@ doi: <a href="https://doi.org/10.2307/2346669">10.2307/2346669</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="chisq.test.html">chisq.test</a></code>
+<p><code><a href="../../stats/help/chisq.test.html">chisq.test</a></code>
 </p>
 <p><code>fisher.exact</code> in package <a href="https://CRAN.R-project.org/package=exact2x2"><span class="pkg">exact2x2</span></a> for alternative
 interpretations of two-sided tests and confidence intervals for
@@ -327,5 +328,5 @@ fisher.test(MP6)
 fisher.test(MP6, hybrid=TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

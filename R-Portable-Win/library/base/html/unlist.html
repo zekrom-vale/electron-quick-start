@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Flatten Lists</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for unlist {base}"><tr><td>unlist {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -44,7 +45,7 @@ components of <code>x</code>?</p>
 <h3>Details</h3>
 
 <p><code>unlist</code> is generic: you can write methods to handle
-specific classes of objects, see <a href="InternalMethods.html">InternalMethods</a>,
+specific classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>,
 and note, e.g., <code><a href="../../utils/html/relist.html">relist</a></code> with the <code>unlist</code> method
 for <code>relistable</code> objects.
 </p>
@@ -52,7 +53,7 @@ for <code>relistable</code> objects.
 first level items in <code>x</code>.
 </p>
 <p>Factors are treated specially.  If all non-list elements of <code>x</code>
-are <code><a href="factor.html">factor</a></code> (or ordered factor) objects then the result
+are <code><a href="../../base/help/factor.html">factor</a></code> (or ordered factor) objects then the result
 will be a factor with
 levels the union of the level sets of the elements, in the order the
 levels occur in the level sets of the elements (which means that if
@@ -105,7 +106,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="c.html">c</a></code>, <code><a href="list.html">as.list</a></code>, <code><a href="../../utils/html/relist.html">relist</a></code>.
+<p><code><a href="../../base/help/c.html">c</a></code>, <code><a href="../../base/help/as.list.html">as.list</a></code>, <code><a href="../../utils/html/relist.html">relist</a></code>.
 </p>
 
 
@@ -130,5 +131,5 @@ for(x in ll)
   stopifnot(identical(x, unlist(x)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

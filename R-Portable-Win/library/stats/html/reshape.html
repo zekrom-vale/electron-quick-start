@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Reshape Grouped Data</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for reshape {stats}"><tr><td>reshape {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,10 +10,10 @@
 
 <h3>Description</h3>
 
-<p>This function reshapes a data frame between &lsquo;wide&rsquo; format with
-repeated measurements in separate columns of the same record and
-&lsquo;long&rsquo; format with the repeated measurements in separate
-records.
+<p>This function reshapes a data frame between &lsquo;wide&rsquo; format (with
+repeated measurements in separate columns of the same row) and
+&lsquo;long&rsquo; format (with the repeated measurements in separate
+rows).
 </p>
 
 
@@ -30,6 +31,29 @@ reshape(data, varying = NULL, v.names = NULL, timevar = "time",
             list(regexp = sep, include = FALSE, fixed = TRUE)}
         )
 
+### Typical usage for converting from long to wide format:
+
+# reshape(data, direction = "wide",
+#         idvar = "___", timevar = "___", # mandatory
+#         v.names = c(___),    # time-varying variables
+#         varying = list(___)) # auto-generated if missing
+
+### Typical usage for converting from wide to long format:
+
+### If names of wide-format variables are in a 'nice' format
+
+# reshape(data, direction = "long",
+#         varying = c(___), # vector 
+#         sep)              # to help guess 'v.names' and 'times'
+
+### To specify long-format variable names explicitly
+
+# reshape(data, direction = "long",
+#         varying = ___,  # list / matrix / vector (use with care)
+#         v.names = ___,  # vector of variable names in long format
+#         timevar, times, # name / values of constructed time variable
+#         idvar, ids)     # name / values of constructed id variable
+
 </pre>
 
 
@@ -46,9 +70,10 @@ reshape(data, varying = NULL, v.names = NULL, timevar = "time",
 correspond to single variables in long format
 (&lsquo;time-varying&rsquo;).  This is canonically a list of vectors of
 variable names, but it can optionally be a matrix of names, or a
-single vector of names.  In each case, the names can be replaced by
-indices which are interpreted as referring to <code>names(data)</code>.
-See &lsquo;Details&rsquo; for more details and options.</p>
+single vector of names.  In each case, when <code>direction =
+    "long"</code>, the names can be replaced by indices which are interpreted
+as referring to <code>names(data)</code>.  See &lsquo;Details&rsquo; for more
+details and options.</p>
 </td></tr>
 <tr valign="top"><td><code>v.names</code></td>
 <td>
@@ -112,44 +137,101 @@ extended interface to variable name splitting.  See &lsquo;Details&rsquo;.</p>
 
 <h3>Details</h3>
 
-<p>The arguments to this function are described in terms of longitudinal
-data, as that is the application motivating the functions.  A
-&lsquo;wide&rsquo; longitudinal dataset will have one record for each
-individual with some time-constant variables that occupy single
-columns and some time-varying variables that occupy a column for each
-time point.  In &lsquo;long&rsquo; format there will be multiple records
-for each individual, with some variables being constant across these
-records and others varying across the records.  A &lsquo;long&rsquo; format
-dataset also needs a &lsquo;time&rsquo; variable identifying which time
-point each record comes from and an &lsquo;id&rsquo; variable showing which
-records refer to the same person.
+<p>Although <code>reshape()</code> can be used in a variety of contexts, the
+motivating application is data from longitudinal studies, and the
+arguments of this function are named and described in those terms. A
+longitudinal study is characterized by repeated measurements of the
+same variable(s), e.g., height and weight, on each unit being studied
+(e.g., individual persons) at different time points (which are assumed
+to be the same for all units). These variables are called time-varying
+variables. The study may include other variables that are measured
+only once for each unit and do not vary with time (e.g., gender and
+race); these are called time-constant variables.
 </p>
-<p>If the data frame resulted from a previous <code>reshape</code> then the
-operation can be reversed simply by <code>reshape(a)</code>.  The
-<code>direction</code> argument is optional and the other arguments are
-stored as attributes on the data frame.
+<p>A &lsquo;wide&rsquo; format representation of a longitudinal dataset will
+have one record (row) for each unit, typically with some time-constant
+variables that occupy single columns, and some time-varying variables
+that occupy multiple columns (one column for each time point).  A
+&lsquo;long&rsquo; format representation of the same dataset will have
+multiple records (rows) for each individual, with the time-constant
+variables being constant across these records and the time-varying
+variables varying across the records.  The &lsquo;long&rsquo; format
+dataset will have two additional variables: a &lsquo;time&rsquo; variable
+identifying which time point each record comes from, and an
+&lsquo;id&rsquo; variable showing which records refer to the same unit.
 </p>
-<p>If <code>direction = "wide"</code> and no <code>varying</code> or <code>v.names</code>
-arguments are supplied it is assumed that all variables except
-<code>idvar</code> and <code>timevar</code> are time-varying.  They are all
-expanded into multiple variables in wide format.
+<p>The type of conversion (long to wide or wide to long) is determined by
+the <code>direction</code> argument, which is mandatory unless the
+<code>data</code> argument is the result of a previous call to
+<code>reshape</code>.  In that case, the operation can be reversed simply
+using <code>reshape(data)</code> (the other arguments are stored as
+attributes on the data frame).
 </p>
-<p>If <code>direction = "long"</code> the <code>varying</code> argument can be a vector
-of column names (or a corresponding index).  The function will attempt
-to guess the <code>v.names</code> and <code>times</code> from these names.  The
-default is variable names like <code>x.1</code>, <code>x.2</code>, where
-<code>sep = "."</code> specifies to split at the dot and drop it from the
-name.  To have alphabetic followed by numeric times use <code>sep = ""</code>.
+<p>Conversion from long to wide format with <code>direction = "wide"</code> is
+the simpler operation, and is mainly useful in the context of
+multivariate analysis where data is often expected as a wide-format
+matrix. In this case, the time variable <code>timevar</code> and id variable
+<code>idvar</code> must be specified. All other variables are assumed to be
+time-varying, unless the time-varying variables are explicitly
+specified via the <code>v.names</code> argument.  A warning is issued if
+time-constant variables are not actually constant.
 </p>
-<p>Variable name splitting as described above is only attempted in the
-case where <code>varying</code> is an atomic vector, if it is a list or a
-matrix, <code>v.names</code> and <code>times</code> will generally need to be
-specified, although they will default to, respectively, the first
-variable name in each set, and sequential times.
+<p>Each time-varying variable is expanded into multiple variables in the
+wide format.  The names of these expanded variables are generated
+automatically, unless they are specified as the <code>varying</code>
+argument in the form of a list (or matrix) with one component (or row)
+for each time-varying variable. If <code>varying</code> is a vector of
+names, it is implicitly converted into a matrix, with one row for each
+time-varying variable. Use this option with care if there are multiple
+time-varying variables, as the ordering (by column, the default in the
+<code><a href="../../base/html/matrix.html">matrix</a></code> constructor) may be unintuitive, whereas the
+explicit list or matrix form is unambiguous.
 </p>
-<p>Also, guessing is not attempted if <code>v.names</code> is given
-explicitly.  Notice that the order of variables in <code>varying</code> is
-like <code>x.1</code>,<code>y.1</code>,<code>x.2</code>,<code>y.2</code>.
+
+
+
+<p>Conversion from wide to long with <code>direction = "long"</code> is the
+more common operation as most (univariate) statistical modeling
+functions expect data in the long format. In the simpler case where
+there is only one time-varying variable, the corresponding columns in
+the wide format input can be specified as the <code>varying</code> argument,
+which can be either a vector of column names or the corresponding
+column indices. The name of the corresponding variable in the long
+format output combining these columns can be optionally specified as
+the <code>v.names</code> argument, and the name of the time variables as the
+<code>timevar</code> argument. The values to use as the time values
+corresponding to the different columns in the wide format can be
+specified as the <code>times</code> argument.  If <code>v.names</code> is
+unspecified, the function will attempt to guess <code>v.names</code> and
+<code>times</code> from <code>varying</code> (an explicitly specified <code>times</code>
+argument is unused in that case).  The default expects variable names
+like <code>x.1</code>, <code>x.2</code>, where <code>sep = "."</code>  specifies to
+split at the dot and drop it from the name.  To have alphabetic
+followed by numeric times use <code>sep = ""</code>.
+</p>
+<p>Multiple time-varying variables can be specified in two ways, either
+with <code>varying</code> as an atomic vector as above, or as a list (or a
+matrix). The first form is useful (and mandatory) if the automatic
+variable name splitting as described above is used; this requires the
+names of all time-varying variables to be suitably formatted in the
+same manner, and <code>v.names</code> to be unspecified. If <code>varying</code>
+is a list (with one component for each time-varying variable) or a
+matrix (one row for each time-varying variable), variable name
+splitting is not attempted, and <code>v.names</code> and <code>times</code> will
+generally need to be specified, although they will default to,
+respectively, the first variable name in each set, and sequential
+times.
+</p>
+<p>Also, guessing is not attempted if <code>v.names</code> is given explicitly,
+even if <code>varying</code> is an atomic vector. In that case, the number
+of time-varying variables is taken to be the length of <code>v.names</code>,
+and <code>varying</code> is implicitly converted into a matrix, with one row
+for each time-varying variable. As in the case of long to wide
+conversion, the matrix is filled up by column, so careful attention needs
+to be paid to the order of variable names (or indices) in
+<code>varying</code>, which is taken to be like <code>x.1</code>, <code>y.1</code>,
+<code>x.2</code>, <code>y.2</code> (i.e., variables corresponding to the same time
+point need to be grouped together).
 </p>
 <p>The <code>split</code> argument should not usually be necessary.  The
 <code>split$regexp</code> component is passed to either
@@ -172,18 +254,27 @@ back to the original form.
 <h3>See Also</h3>
 
 <p><code><a href="../../utils/html/stack.html">stack</a></code>, <code><a href="../../base/html/aperm.html">aperm</a></code>;
-<code><a href="../../utils/html/relist.html">relist</a></code> for reshaping the result of <code><a href="../../base/html/unlist.html">unlist</a></code>.
+<code><a href="../../utils/html/relist.html">relist</a></code> for reshaping the result of
+<code><a href="../../base/html/unlist.html">unlist</a></code>. <code><a href="../../stats/help/xtabs.html">xtabs</a></code> and
+<code><a href="../../base/html/table.html">as.data.frame.table</a></code> for creating contingency tables and
+converting them back to data frames.
 </p>
 
 
 <h3>Examples</h3>
 
 <pre>
-summary(Indometh)
-wide &lt;- reshape(Indometh, v.names = "conc", idvar = "Subject",
-                timevar = "time", direction = "wide")
+summary(Indometh) # data in long format
+
+## long to wide (direction = "wide") requires idvar and timevar at a minimum
+reshape(Indometh, direction = "wide", idvar = "Subject", timevar = "time")
+
+## can also explicitly specify name of combined variable
+wide &lt;- reshape(Indometh, direction = "wide", idvar = "Subject",
+                timevar = "time", v.names = "conc", sep= "_")
 wide
 
+## reverse transformation
 reshape(wide, direction = "long")
 reshape(wide, idvar = "Subject", varying = list(2:12),
         v.names = "conc", direction = "long")
@@ -222,12 +313,12 @@ reshape(long, direction = "wide", new.row.names = unique(long$state))
 ## multiple id variables
 df3 &lt;- data.frame(school = rep(1:3, each = 4), class = rep(9:10, 6),
                   time = rep(c(1,1,2,2), 3), score = rnorm(12))
-wide &lt;- reshape(df3, idvar = c("school","class"), direction = "wide")
+wide &lt;- reshape(df3, idvar = c("school", "class"), direction = "wide")
 wide
 ## transform back
 reshape(wide)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

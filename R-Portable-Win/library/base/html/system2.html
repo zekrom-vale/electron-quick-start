@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Invoke a System Command</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for system2 {base}"><tr><td>system2 {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -91,10 +92,10 @@ command window should be visible on the screen.</p>
 
 <h3>Details</h3>
 
-<p>Unlike <code><a href="system.html">system</a></code>, <code>command</code> is always quoted by
-<code><a href="shQuote.html">shQuote</a></code>, so it must be a single command without arguments.
+<p>Unlike <code><a href="../../base/help/system.html">system</a></code>, <code>command</code> is always quoted by
+<code><a href="../../base/help/shQuote.html">shQuote</a></code>, so it must be a single command without arguments.
 </p>
-<p>For details of how <code>command</code> is found see <code><a href="system.html">system</a></code>.
+<p>For details of how <code>command</code> is found see <code><a href="../../base/help/system.html">system</a></code>.
 </p>
 <p>On Windows, <code>env</code> is only supported for commands such as
 <code>R</code> and <code>make</code> which accept environment variables on
@@ -127,7 +128,7 @@ in the attribute <code>"status"</code> of the result: an attribute
 <code>"errmsg"</code> may also be available.
 </p>
 <p>In other cases, the return value is an error code (<code>0</code> for
-success), given the <a href="invisible.html">invisible</a> attribute (so needs to be printed
+success), given the <a href="../../base/help/invisible.html">invisible</a> attribute (so needs to be printed
 explicitly).  If the command could not be run for any reason, the
 value is <code>127</code> and a warning is issued (as from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.5.0).
 Otherwise if <code>wait = TRUE</code> the value is the exit status returned
@@ -145,7 +146,7 @@ conventional success value).
 <h3>Note</h3>
 
 <p><code>system2</code> is a more portable and flexible interface than
-<code><a href="system.html">system</a></code>.  It allows redirection of output without needing
+<code><a href="../../base/help/system.html">system</a></code>.  It allows redirection of output without needing
 to invoke a shell on Windows, a portable way to set environment
 variables for the execution of <code>command</code>, and finer control over
 the redirection of <code>stdout</code> and <code>stderr</code>.  Conversely,
@@ -161,10 +162,10 @@ the OS.
 
 <h3>See Also</h3>
 
-<p><code><a href="system.html">system</a></code>.
+<p><code><a href="../../base/help/system.html">system</a></code>.
 </p>
-<p><code><a href="shell.html">shell</a></code> and <code><a href="shell.exec.html">shell.exec</a></code>.
+<p><code><a href="../../base/help/shell.html">shell</a></code> and <code><a href="../../base/help/shell.exec.html">shell.exec</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Write Text into the Margins of a Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for mtext {graphics}"><tr><td>mtext {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -90,7 +91,7 @@ default) mean use <code>par("font")</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Further graphical parameters (see <code><a href="par.html">par</a></code>),
+<p>Further graphical parameters (see <code><a href="../../graphics/help/par.html">par</a></code>),
 including <code>family</code>, <code>las</code> and <code>xpd</code>. (The latter
 defaults to the figure region unless <code>outer = TRUE</code>, otherwise
 the device region.  It can only be increased.)</p>
@@ -108,7 +109,7 @@ region(s) &mdash; <span style="font-family: Courier New, Courier; color: #666666
 place to plot as many strings as the longest of the vector arguments.
 </p>
 <p>Note that a vector <code>adj</code> has a different meaning from
-<code><a href="text.html">text</a></code>.  <code>adj = 0.5</code> will centre the string, but for
+<code><a href="../../graphics/help/text.html">text</a></code>.  <code>adj = 0.5</code> will centre the string, but for
 <code>outer = TRUE</code> on the device region rather than the plot region.
 </p>
 <p>Parameter <code>las</code> will determine the orientation of the string(s).
@@ -122,7 +123,7 @@ line.  (Note that this differs from S, which uses <code>srt</code> if
 <code>adj</code> determines the justification of the string <em>and</em> the
 position along the axis unless <code>at</code> is specified.
 </p>
-<p>Graphics parameter <code>"ylbias"</code> (see <code><a href="par.html">par</a></code>) determines
+<p>Graphics parameter <code>"ylbias"</code> (see <code><a href="../../graphics/help/par.html">par</a></code>) determines
 how the text baseline is placed relative to the nominal line.
 </p>
 
@@ -142,8 +143,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="title.html">title</a></code>, <code><a href="text.html">text</a></code>, <code><a href="plot.html">plot</a></code>,
-<code><a href="par.html">par</a></code>;
+<p><code><a href="../../graphics/help/title.html">title</a></code>, <code><a href="../../graphics/help/text.html">text</a></code>, <code><a href="../../graphics/help/plot.html">plot</a></code>,
+<code><a href="../../graphics/help/par.html">par</a></code>;
 <code><a href="../../grDevices/html/plotmath.html">plotmath</a></code> for details on mathematical annotation.
 </p>
 
@@ -164,5 +165,5 @@ plot(1:10, exp(1:10), log = "y", main = "log =\"y\"", xlab = "xlab")
 for(s in 1:4) mtext(paste("mtext(...,side=", s ,")"), side = s)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

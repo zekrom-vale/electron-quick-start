@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Levels Attributes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for levels {base}"><tr><td>levels {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ rename the levels.</p>
 
 <p>Both the extractor and replacement forms are generic and new methods
 can be written for them.  The most important method for the replacement
-function is that for <code><a href="factor.html">factor</a></code>s.
+function is that for <code><a href="../../base/help/factor.html">factor</a></code>s.
 </p>
 <p>For the factor replacement method, a <code>NA</code> in <code>value</code>
 causes that level to be removed from the levels and the elements
@@ -55,7 +56,7 @@ formerly with that level to be replaced by <code>NA</code>.
 <code>levels(x) &lt;- value</code> is not the same as (and is preferred to)
 <code>attr(x, "levels") &lt;- value</code>.
 </p>
-<p>The replacement function is <a href="Primitive.html">primitive</a>.
+<p>The replacement function is <a href="../../base/help/primitive.html">primitive</a>.
 </p>
 
 
@@ -69,7 +70,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="nlevels.html">nlevels</a></code>, <code><a href="../../stats/html/relevel.html">relevel</a></code>, <code><a href="../../stats/html/reorder.factor.html">reorder</a></code>.
+<p><code><a href="../../base/help/nlevels.html">nlevels</a></code>, <code><a href="../../stats/html/relevel.html">relevel</a></code>, <code><a href="../../stats/html/reorder.factor.html">reorder</a></code>.
 </p>
 
 
@@ -110,5 +111,5 @@ levels(f) &lt;- list(C = "C", A = "a", B = "b")
 f
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

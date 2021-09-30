@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Kolmogorov-Smirnov Tests</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ks.test {stats}"><tr><td>ks.test {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -46,7 +47,7 @@ string) by <code>y</code>.</p>
 <p>indicates the alternative hypothesis and must be
 one of <code>"two.sided"</code> (default), <code>"less"</code>, or
 <code>"greater"</code>.  You can specify just the initial letter of the
-value, but the argument name must be give in full.
+value, but the argument name must be given in full.
 See &lsquo;Details&rsquo; for the meanings of the possible values.</p>
 </td></tr>
 <tr valign="top"><td><code>exact</code></td>
@@ -91,8 +92,8 @@ with the statistic in the <code>"greater"</code> alternative being
 Thus in the two-sample case <code>alternative = "greater"</code> includes
 distributions for which <code>x</code> is stochastically <em>smaller</em> than
 <code>y</code> (the CDF of <code>x</code> lies above and hence to the left of that
-for <code>y</code>), in contrast to <code><a href="t.test.html">t.test</a></code> or
-<code><a href="wilcox.test.html">wilcox.test</a></code>.
+for <code>y</code>), in contrast to <code><a href="../../stats/help/t.test.html">t.test</a></code> or
+<code><a href="../../stats/help/wilcox.test.html">wilcox.test</a></code>.
 </p>
 <p>Exact p-values are not available for the two-sample case if one-sided
 or in the presence of ties.  If <code>exact = NULL</code> (the default), an
@@ -178,7 +179,7 @@ doi: <a href="https://doi.org/10.18637/jss.v008.i18">10.18637/jss.v008.i18</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="shapiro.test.html">shapiro.test</a></code> which performs the Shapiro-Wilk test for
+<p><code><a href="../../stats/help/shapiro.test.html">shapiro.test</a></code> which performs the Shapiro-Wilk test for
 normality.
 </p>
 
@@ -206,5 +207,5 @@ wilcox.test(x, x2, alternative = "g")
 ks.test(x, x2, alternative = "l")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

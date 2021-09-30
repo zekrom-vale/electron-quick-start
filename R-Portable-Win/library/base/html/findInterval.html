@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Find Interval Numbers or Indices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for findInterval {base}"><tr><td>findInterval {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -84,12 +85,13 @@ values in the last interval.
 </p>
 <p><code>left.open = TRUE</code> is occasionally useful, e.g., for survival data.
 For (anti-)symmetry reasons, it is equivalent to using
-&ldquo;mirrored&rdquo; data, i.e., the following is always true: </p>
+&ldquo;mirrored&rdquo; data, i.e., the following is always true:
+</p>
 <pre>
     identical(
           findInterval( x,  v,      left.open= TRUE, ...) ,
       N - findInterval(-x, -v[N:1], left.open=FALSE, ...) )
-    </pre>
+  </pre>
 <p>where <code>N &lt;- length(vec)</code> as above.
 </p>
 
@@ -99,8 +101,8 @@ For (anti-)symmetry reasons, it is equivalent to using
 <p>vector of length <code>length(x)</code> with values in <code>0:N</code> (and
 <code>NA</code>) where <code>N &lt;- length(vec)</code>, or values coerced to
 <code>1:(N-1)</code> if and only if <code>all.inside = TRUE</code> (equivalently coercing all
-x values <em>inside</em> the intervals).  Note that <code><a href="NA.html">NA</a></code>s are
-propagated from <code>x</code>, and <code><a href="is.finite.html">Inf</a></code> values are allowed in
+x values <em>inside</em> the intervals).  Note that <code><a href="../../base/help/NA.html">NA</a></code>s are
+propagated from <code>x</code>, and <code><a href="../../base/help/Inf.html">Inf</a></code> values are allowed in
 both <code>x</code> and <code>vec</code>.
 </p>
 
@@ -128,7 +130,7 @@ cbind(x, findInterval(x, v))
 
 N &lt;- 100
 X &lt;- sort(round(stats::rt(N, df = 2), 2))
-tt &lt;- c(-100, seq(-2, 2, len = 201), +100)
+tt &lt;- c(-100, seq(-2, 2, length.out = 201), +100)
 it &lt;- findInterval(tt, X)
 tt[it &lt; 1 | it &gt;= N] # only first and last are outside range(X)
 
@@ -139,5 +141,5 @@ stopifnot(identical(
               N - findInterval(-x, -v[N:1])))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

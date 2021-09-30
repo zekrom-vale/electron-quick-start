@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Running Time of R</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for proc.time {base}"><tr><td>proc.time {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -57,7 +58,7 @@ times are rounded down to milliseconds.  On modern systems they will
 be that accurate, but on older systems they might be accurate to 1/100
 or 1/60 sec.  They are typically available to 10ms on Windows.
 </p>
-<p>This is a <a href="Primitive.html">primitive</a> function.
+<p>This is a <a href="../../base/help/primitive.html">primitive</a> function.
 </p>
 
 
@@ -71,9 +72,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="system.time.html">system.time</a></code> for timing an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expression,
-<code><a href="gc.time.html">gc.time</a></code> for how much of the time was spent in garbage
+<p><code><a href="../../base/help/system.time.html">system.time</a></code> for timing an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expression,
+<code><a href="../../base/help/gc.time.html">gc.time</a></code> for how much of the time was spent in garbage
 collection.
+</p>
+<p><code><a href="../../base/help/setTimeLimit.html">setTimeLimit</a></code> to <em>limit</em> the CPU or elapsed time for
+the session or an expression.
 </p>
 
 
@@ -86,5 +90,5 @@ for (i in 1:50) mad(stats::runif(500))
 proc.time() - ptm
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

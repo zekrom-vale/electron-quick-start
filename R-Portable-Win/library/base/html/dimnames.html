@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Dimnames of an Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dimnames {base}"><tr><td>dimnames {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -42,7 +43,7 @@ symbols and digits in the constructed dimnames.</p>
 </td></tr>
 <tr valign="top"><td><code>base</code></td>
 <td>
-<p>a non-empty <code><a href="list.html">list</a></code> of character vectors.  The
+<p>a non-empty <code><a href="../../base/help/list.html">list</a></code> of character vectors.  The
 list components are used in turn (and recycled when needed) to
 construct replacements for empty dimnames components.  See also the
 examples.</p>
@@ -50,7 +51,7 @@ examples.</p>
 <tr valign="top"><td><code>unique</code></td>
 <td>
 <p>logical indicating that the dimnames constructed are
-unique within each dimension in the sense of <code><a href="make.unique.html">make.unique</a></code>.</p>
+unique within each dimension in the sense of <code><a href="../../base/help/make.unique.html">make.unique</a></code>.</p>
 </td></tr>
 </table>
 
@@ -59,9 +60,9 @@ unique within each dimension in the sense of <code><a href="make.unique.html">ma
 
 <p>The functions <code>dimnames</code> and <code>dimnames&lt;-</code> are generic.
 </p>
-<p>For an <code><a href="array.html">array</a></code> (and hence in particular, for a
-<code><a href="matrix.html">matrix</a></code>), they retrieve or set the <code>dimnames</code>
-attribute (see <a href="attributes.html">attributes</a>) of the object.  A list
+<p>For an <code><a href="../../base/help/array.html">array</a></code> (and hence in particular, for a
+<code><a href="../../base/help/matrix.html">matrix</a></code>), they retrieve or set the <code>dimnames</code>
+attribute (see <a href="../../base/help/attributes.html">attributes</a>) of the object.  A list
 <code>value</code> can have names, and these will be used to label the
 dimensions of the array where appropriate.
 </p>
@@ -73,19 +74,19 @@ is a list shorter than the number of dimensions, it is extended with
 <code>NULL</code>s to the needed length.
 </p>
 <p>Both have methods for data frames.  The dimnames of a data frame are
-its <code><a href="row.names.html">row.names</a></code> and its <code><a href="names.html">names</a></code>.  For the
+its <code><a href="../../base/help/row.names.html">row.names</a></code> and its <code><a href="../../base/help/names.html">names</a></code>.  For the
 replacement method each component of <code>value</code> will be coerced by
-<code><a href="character.html">as.character</a></code>.
+<code><a href="../../base/help/as.character.html">as.character</a></code>.
 </p>
-<p>For a 1D matrix the <code><a href="names.html">names</a></code> are the same thing as the
+<p>For a 1D matrix the <code><a href="../../base/help/names.html">names</a></code> are the same thing as the
 (only) component of the <code>dimnames</code>.
 </p>
-<p>Both are <a href="Primitive.html">primitive</a> functions.
+<p>Both are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 <p><code>provideDimnames(x)</code> provides <code>dimnames</code> where
-&ldquo;missing&rdquo;, such that its result has <code><a href="character.html">character</a></code>
+&ldquo;missing&rdquo;, such that its result has <code><a href="../../base/help/character.html">character</a></code>
 dimnames for each component.  If <code>unique</code> is true as by default,
-they are unique within each component via <code><a href="make.unique.html">make.unique</a>(*,
+they are unique within each component via <code><a href="../../base/help/make.unique.html">make.unique</a>(*,
     sep=sep)</code>.
 </p>
 
@@ -114,7 +115,7 @@ correct length.
 <p>Setting components of the dimnames, e.g.,
 <code>dimnames(A)[[1]] &lt;- value</code> is a common paradigm, but note that
 it will not work if the value assigned is <code>NULL</code>.  Use
-<code><a href="colnames.html">rownames</a></code> instead, or (as it does) manipulate the whole
+<code><a href="../../base/help/rownames.html">rownames</a></code> instead, or (as it does) manipulate the whole
 dimnames list.
 </p>
 
@@ -129,8 +130,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="colnames.html">rownames</a></code>, <code><a href="colnames.html">colnames</a></code>;
-<code><a href="array.html">array</a></code>, <code><a href="matrix.html">matrix</a></code>, <code><a href="data.frame.html">data.frame</a></code>.
+<p><code><a href="../../base/help/rownames.html">rownames</a></code>, <code><a href="../../base/help/colnames.html">colnames</a></code>;
+<code><a href="../../base/help/array.html">array</a></code>, <code><a href="../../base/help/matrix.html">matrix</a></code>, <code><a href="../../base/help/data.frame.html">data.frame</a></code>.
 </p>
 
 
@@ -153,5 +154,5 @@ strd(provideDimnames(A, base= list(c("AA","BB")))) # recycling on both levels
 provideDimnames(rbind(1, 2:3), base = list(""), unique=FALSE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

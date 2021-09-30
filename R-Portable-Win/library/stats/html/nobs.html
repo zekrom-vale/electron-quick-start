@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract the Number of Observations from a Fit.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for nobs {stats}"><tr><td>nobs {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -12,7 +13,7 @@ Extract the Number of Observations from a Fit.
 <h3>Description</h3>
 
 <p>Extract the number of &lsquo;observations&rsquo; from a model fit.  This is
-principally intended to be used in computing BIC (see <code><a href="AIC.html">AIC</a></code>).
+principally intended to be used in computing BIC (see <code><a href="../../stats/help/AIC.html">AIC</a></code>).
 </p>
 
 
@@ -49,14 +50,14 @@ guess the value?</p>
 
 <p>This is a generic function, with an S4 generic in package <span class="pkg">stats4</span>.
 There are methods in this package for objects of classes
-<code>"<a href="lm.html">lm</a>"</code>, <code>"<a href="glm.html">glm</a>"</code>, <code>"<a href="nls.html">nls</a>"</code> and
-<code>"<a href="logLik.html">logLik</a>"</code>, as well as a default method (which throws an
+<code>"<a href="../../stats/help/lm.html">lm</a>"</code>, <code>"<a href="../../stats/help/glm.html">glm</a>"</code>, <code>"<a href="../../stats/help/nls.html">nls</a>"</code> and
+<code>"<a href="../../stats/help/logLik.html">logLik</a>"</code>, as well as a default method (which throws an
 error, unless <code>use.fallback = TRUE</code> when it looks for
 <code>weights</code> and <code>residuals</code> components &ndash; use with care!).
 </p>
 <p>The main usage is in determining the appropriate penalty for BIC, but
 <code>nobs</code> is also used by the stepwise fitting methods
-<code><a href="step.html">step</a></code>, <code><a href="add1.html">add1</a></code> and <code><a href="add1.html">drop1</a></code> as a
+<code><a href="../../stats/help/step.html">step</a></code>, <code><a href="../../stats/help/add1.html">add1</a></code> and <code><a href="../../stats/help/drop1.html">drop1</a></code> as a
 quick check that different fits have been fitted to the same set of
 data (and not, say, that further rows have been dropped because of NAs
 in the new predictors).
@@ -74,8 +75,8 @@ weight are not included.
 
 <h3>See Also</h3>
 
-<p><code><a href="AIC.html">AIC</a></code>.
+<p><code><a href="../../stats/help/AIC.html">AIC</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

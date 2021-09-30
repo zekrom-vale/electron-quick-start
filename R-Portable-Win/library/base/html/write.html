@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Write Data to a File</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for write {base}"><tr><td>write {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,11 +34,11 @@ write(x, file = "data",
 </td></tr>
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>a <code><a href="connections.html">connection</a></code>, or a character string naming
+<p>a <code><a href="../../base/help/connection.html">connection</a></code>, or a character string naming
 the file to write to.  If <code>""</code>, print to the standard output
 connection.
 </p>
-<p>When <code><a href="Platform.html">.Platform</a>$OS.type != "windows"</code>, and it
+<p>When <code><a href="../../base/help/.Platform.html">.Platform</a>$OS.type != "windows"</code>, and it
 is <code>"|cmd"</code>, the output is piped to the command given
 by &lsquo;<span class="file">cmd</span>&rsquo;.
 </p>
@@ -69,12 +70,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code>write</code> is a wrapper for <code><a href="cat.html">cat</a></code>, which gives further
+<p><code>write</code> is a wrapper for <code><a href="../../base/help/cat.html">cat</a></code>, which gives further
 details on the format used.
 </p>
-<p><code><a href="save.html">save</a></code> for writing any <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects,
+<p><code><a href="../../base/help/save.html">save</a></code> for writing any <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects,
 <code><a href="../../utils/html/write.table.html">write.table</a></code> for data frames,
-and <code><a href="scan.html">scan</a></code> for reading data.
+and <code><a href="../../base/help/scan.html">scan</a></code> for reading data.
 </p>
 
 
@@ -96,5 +97,5 @@ unlink(fil) # tidy up
 write(x, "", sep = "\t")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

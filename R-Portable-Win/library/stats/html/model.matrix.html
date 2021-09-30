@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Construct Design Matrices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for model.matrix {stats}"><tr><td>model.matrix {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,11 +33,11 @@ model.matrix(object, data = environment(object),
 <tr valign="top"><td><code>object</code></td>
 <td>
 <p>an object of an appropriate class.  For the default
-method, a model <a href="formula.html">formula</a> or a <code><a href="terms.html">terms</a></code> object.</p>
+method, a model <a href="../../stats/help/formula.html">formula</a> or a <code><a href="../../stats/help/terms.html">terms</a></code> object.</p>
 </td></tr>
 <tr valign="top"><td><code>data</code></td>
 <td>
-<p>a data frame created with <code><a href="model.frame.html">model.frame</a></code>.  If
+<p>a data frame created with <code><a href="../../stats/help/model.frame.html">model.frame</a></code>.  If
 another sort of object, <code>model.frame</code> is called first.</p>
 </td></tr>
 <tr valign="top"><td><code>contrasts.arg</code></td>
@@ -44,13 +45,13 @@ another sort of object, <code>model.frame</code> is called first.</p>
 <p>a list, whose entries are values (numeric
 matrices, <code><a href="../../base/html/function.html">function</a></code>s or character strings naming
 functions) to be used
-as replacement values for the <code><a href="contrasts.html">contrasts</a></code>
+as replacement values for the <code><a href="../../stats/help/contrasts.html">contrasts</a></code>
 replacement function and whose names are the names of
 columns of <code>data</code> containing <code><a href="../../base/html/factor.html">factor</a></code>s.</p>
 </td></tr>
 <tr valign="top"><td><code>xlev</code></td>
 <td>
-<p>to be used as argument of <code><a href="model.frame.html">model.frame</a></code> if
+<p>to be used as argument of <code><a href="../../stats/help/model.frame.html">model.frame</a></code> if
 <code>data</code> is such that <code>model.frame</code> is called.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
@@ -74,7 +75,7 @@ formula must be logical, integer, numeric or factor.
 </p>
 <p>If <code>contrasts.arg</code> is specified for a factor it overrides the
 default factor coding for that variable and any <code>"contrasts"</code>
-attribute set by <code><a href="zC.html">C</a></code> or <code><a href="contrasts.html">contrasts</a></code>.
+attribute set by <code><a href="../../stats/help/C.html">C</a></code> or <code><a href="../../stats/help/contrasts.html">contrasts</a></code>.
 Whereas invalid <code>contrasts.arg</code>s have been ignored always, they are
 warned about since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 3.6.0.
 </p>
@@ -120,10 +121,10 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="model.frame.html">model.frame</a></code>, <code><a href="model.extract.html">model.extract</a></code>,
-<code><a href="terms.html">terms</a></code>
+<p><code><a href="../../stats/help/model.frame.html">model.frame</a></code>, <code><a href="../../stats/help/model.extract.html">model.extract</a></code>,
+<code><a href="../../stats/help/terms.html">terms</a></code>
 </p>
-<p><code><a href="../../Matrix/html/sparse.model.matrix.html">sparse.model.matrix</a></code> from package
+<p><code><a href="../../Matrix/help/sparse.model.matrix.html">sparse.model.matrix</a></code> from package
 <a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a> for creating <em>sparse</em> model matrices, which may
 be more efficient in large dimensions.
 </p>
@@ -139,9 +140,9 @@ mat &lt;- model.matrix(ff, m)
 dd &lt;- data.frame(a = gl(3,4), b = gl(4,1,12)) # balanced 2-way
 options("contrasts") # typically 'treatment' (for unordered factors)
 model.matrix(~ a + b, dd)
-model.matrix(~ a + b, dd, contrasts = list(a = "contr.sum"))
-model.matrix(~ a + b, dd, contrasts = list(a = "contr.sum", b = contr.poly))
-m.orth &lt;- model.matrix(~a+b, dd, contrasts = list(a = "contr.helmert"))
+model.matrix(~ a + b, dd, contrasts.arg = list(a = "contr.sum"))
+model.matrix(~ a + b, dd, contrasts.arg = list(a = "contr.sum", b = contr.poly))
+m.orth &lt;- model.matrix(~a+b, dd, contrasts.arg = list(a = "contr.helmert"))
 crossprod(m.orth) # m.orth is  ALMOST  orthogonal
 # invalid contrasts.. ignored with a warning:
 stopifnot(identical(
@@ -149,5 +150,5 @@ stopifnot(identical(
    model.matrix(~ a + b, dd, contrasts.arg = "contr.FOO")))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

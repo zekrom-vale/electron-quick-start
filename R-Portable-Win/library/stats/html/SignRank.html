@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Distribution of the Wilcoxon Signed Rank Statistic</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for SignRank {stats}"><tr><td>SignRank {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -98,11 +99,11 @@ arguments are used.
 
 <h3>See Also</h3>
 
-<p><code><a href="wilcox.test.html">wilcox.test</a></code> to calculate the statistic from data, find p
+<p><code><a href="../../stats/help/wilcox.test.html">wilcox.test</a></code> to calculate the statistic from data, find p
 values and so on.
 </p>
-<p><a href="Distributions.html">Distributions</a> for standard distributions, including
-<code><a href="Wilcoxon.html">dwilcox</a></code> for the distribution of <em>two-sample</em>
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for standard distributions, including
+<code><a href="../../stats/help/dwilcox.html">dwilcox</a></code> for the distribution of <em>two-sample</em>
 Wilcoxon rank sum statistic.
 </p>
 
@@ -114,12 +115,12 @@ require(graphics)
 
 par(mfrow = c(2,2))
 for(n in c(4:5,10,40)) {
-  x &lt;- seq(0, n*(n+1)/2, length = 501)
+  x &lt;- seq(0, n*(n+1)/2, length.out = 501)
   plot(x, dsignrank(x, n = n), type = "l",
        main = paste0("dsignrank(x, n = ", n, ")"))
 }
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

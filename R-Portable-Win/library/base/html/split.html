@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Divide into Groups and Reassemble</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for split {base}"><tr><td>split {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,9 +38,15 @@ unsplit(value, f, drop = FALSE)
 </td></tr>
 <tr valign="top"><td><code>f</code></td>
 <td>
-<p>a &lsquo;factor&rsquo; in the sense that <code><a href="factor.html">as.factor</a>(f)</code>
+<p>a &lsquo;factor&rsquo; in the sense that <code><a href="../../base/help/as.factor.html">as.factor</a>(f)</code>
 defines the grouping, or a list of such factors in which case their
-interaction is used for the grouping.</p>
+interaction is used for the grouping. If <code>x</code> is a data frame,
+<code>f</code> can also be a formula of the form <code> ~ g</code> to split by
+the variable <code>g</code>, or more generally of the form <code> ~ g1 +
+      ... + gk</code> to split by the interaction of the variables
+<code>g1</code>, ..., <code>gk</code>, where these variables are evaluated in
+the data frame <code>x</code> using the usual non-standard evaluation
+rules.</p>
 </td></tr>
 <tr valign="top"><td><code>drop</code></td>
 <td>
@@ -53,12 +60,12 @@ splitting of <code>x</code>. Recycling applies if the lengths do not match.</p>
 </td></tr>
 <tr valign="top"><td><code>sep</code></td>
 <td>
-<p>character string, passed to <code><a href="interaction.html">interaction</a></code> in the
-case where <code>f</code> is a <code><a href="list.html">list</a></code>.</p>
+<p>character string, passed to <code><a href="../../base/help/interaction.html">interaction</a></code> in the
+case where <code>f</code> is a <code><a href="../../base/help/list.html">list</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>lex.order</code></td>
 <td>
-<p>logical, passed to <code><a href="interaction.html">interaction</a></code> when
+<p>logical, passed to <code><a href="../../base/help/interaction.html">interaction</a></code> when
 <code>f</code> is a list.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
@@ -87,10 +94,10 @@ a multiple of the length of <code>f</code> a warning is printed.
 <p>Any missing values in <code>f</code> are dropped together with the
 corresponding values of <code>x</code>.
 </p>
-<p>The default method calls <code><a href="interaction.html">interaction</a></code> when <code>f</code> is a
-<code><a href="list.html">list</a></code>.  If the levels of the factors contain <span class="samp">.</span>
+<p>The default method calls <code><a href="../../base/help/interaction.html">interaction</a></code> when <code>f</code> is a
+<code><a href="../../base/help/list.html">list</a></code>.  If the levels of the factors contain <span class="samp">.</span>
 the factors may not be split as expected, unless <code>sep</code> is set to
-string not present in the factor <code><a href="levels.html">levels</a></code>.
+string not present in the factor <code><a href="../../base/help/levels.html">levels</a></code>.
 </p>
 
 
@@ -117,9 +124,9 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="cut.html">cut</a></code> to categorize numeric values.
+<p><code><a href="../../base/help/cut.html">cut</a></code> to categorize numeric values.
 </p>
-<p><code><a href="strsplit.html">strsplit</a></code> to split strings.
+<p><code><a href="../../base/help/strsplit.html">strsplit</a></code> to split strings.
 </p>
 
 
@@ -154,6 +161,10 @@ tapply(zz, g, sd)
 
 g &lt;- airquality$Month
 l &lt;- split(airquality, g)
+
+## Alternative using a formula
+identical(l, split(airquality, ~ Month))
+
 l &lt;- lapply(l, transform, Oz.Z = scale(Ozone))
 aq2 &lt;- unsplit(l, g)
 head(aq2)
@@ -167,5 +178,5 @@ split(ma, col(ma))
 split(1:10, 1:2)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

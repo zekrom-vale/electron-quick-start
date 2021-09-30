@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Send R Output to a File</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sink {base}"><tr><td>sink {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,7 +34,7 @@ sink.number(type = c("output", "message"))
 <table summary="R argblock">
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>a writable <a href="connections.html">connection</a> or a character string naming the
+<p>a writable <a href="../../base/help/connection.html">connection</a> or a character string naming the
 file to write to, or <code>NULL</code> to stop sink-ing.</p>
 </td></tr>
 <tr valign="top"><td><code>append</code></td>
@@ -62,11 +63,11 @@ to finish such a diversion, see below!).  If <code>file</code> is a
 character string, a file connection with that name will be established
 for the duration of the diversion.
 </p>
-<p>Normal <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> output (to connection <code><a href="showConnections.html">stdout</a></code>) is diverted by
+<p>Normal <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> output (to connection <code><a href="../../base/help/stdout.html">stdout</a></code>) is diverted by
 the default <code>type = "output"</code>.  Only prompts and (most)
 messages continue to appear on the console.  Messages sent to
-<code><a href="showConnections.html">stderr</a>()</code> (including those from <code><a href="message.html">message</a></code>,
-<code><a href="warning.html">warning</a></code> and <code><a href="stop.html">stop</a></code>) can be diverted by
+<code><a href="../../base/help/stderr.html">stderr</a>()</code> (including those from <code><a href="../../base/help/message.html">message</a></code>,
+<code><a href="../../base/help/warning.html">warning</a></code> and <code><a href="../../base/help/stop.html">stop</a></code>) can be diverted by
 <code>sink(type = "message")</code> (see below).
 </p>
 <p><code>sink()</code> or <code>sink(file = NULL)</code> ends the last diversion (of
@@ -79,8 +80,8 @@ one).  The stack is of up to 21 connections (20 diversions).
 diversions.
 </p>
 <p><code>split = TRUE</code> only splits <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> output (via <code>Rvprintf</code>) and
-the default output from <code><a href="writeLines.html">writeLines</a></code>: it does not split
-all output that might be sent to <code><a href="showConnections.html">stdout</a>()</code>.
+the default output from <code><a href="../../base/help/writeLines.html">writeLines</a></code>: it does not split
+all output that might be sent to <code><a href="../../base/help/stdout.html">stdout</a>()</code>.
 </p>
 <p>Sink-ing the messages stream should be done only with great care.
 For that stream <code>file</code> must be an already open connection, and
@@ -89,7 +90,7 @@ there is no stack of connections.
 <p>If <code>file</code> is a character string, the file will be opened using
 the current encoding.  If you want a different encoding (e.g., to
 represent strings which have been stored in UTF-8), use a
-<code><a href="connections.html">file</a></code> connection &mdash; but some ways to produce <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> output
+<code><a href="../../base/help/file.html">file</a></code> connection &mdash; but some ways to produce <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> output
 will already have converted such strings to the current encoding.
 </p>
 
@@ -153,5 +154,5 @@ sink()
 file.show("all.Rout")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

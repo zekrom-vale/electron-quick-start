@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extracting the Model Frame from a Formula or Fit</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for model.frame {stats}"><tr><td>model.frame {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,7 +44,7 @@ get_all_vars(formula, data, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>formula</code></td>
 <td>
-<p>a model <code><a href="formula.html">formula</a></code> or <code><a href="terms.html">terms</a></code>
+<p>a model <code><a href="../../stats/help/formula.html">formula</a></code> or <code><a href="../../stats/help/terms.html">terms</a></code>
 object or an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object.</p>
 </td></tr>
 <tr valign="top"><td><code>data</code></td>
@@ -65,8 +66,8 @@ supplied, a data frame made up of the variables used in <code>formula</code>.</p
 <p>how <code>NA</code>s are treated.  The default is first,
 any <code>na.action</code> attribute of <code>data</code>, second
 a <code>na.action</code> setting of <code><a href="../../base/html/options.html">options</a></code>, and third
-<code><a href="na.fail.html">na.fail</a></code> if that is unset.  The &lsquo;factory-fresh&rsquo;
-default is <code><a href="na.fail.html">na.omit</a></code>.  Another possible value is <code>NULL</code>.</p>
+<code><a href="../../stats/help/na.fail.html">na.fail</a></code> if that is unset.  The &lsquo;factory-fresh&rsquo;
+default is <code><a href="../../stats/help/na.omit.html">na.omit</a></code>.  Another possible value is <code>NULL</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>drop.unused.levels</code></td>
 <td>
@@ -102,7 +103,7 @@ used when fitting the model (if any, often selected by argument
 <code>model = TRUE</code>) or pass the call used when fitting on to the
 default method.  The default method itself can cope with rather
 standard model objects such as those of class
-<code>"<a href="../../MASS/html/lqs.html">lqs</a>"</code> from package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> if no other
+<code>"<a href="../../MASS/help/lqs.html">lqs</a>"</code> from package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> if no other
 arguments are supplied.
 </p>
 <p>The rest of this section applies only to the default method.
@@ -120,7 +121,7 @@ rownames if it is a matrix), if there is one.
 </p>
 <p>All the variables in <code>formula</code>, <code>subset</code> and in <code>...</code>
 are looked for first in <code>data</code> and then in the environment of
-<code>formula</code> (see the help for <code><a href="formula.html">formula</a>()</code> for further
+<code>formula</code> (see the help for <code><a href="../../stats/help/formula.html">formula</a>()</code> for further
 details) and collected into a data frame.  Then the <code>subset</code>
 expression is evaluated, and it is used as a row index to the data
 frame.  Then the <code>na.action</code> function is applied to the data frame
@@ -155,10 +156,10 @@ not those resulting from function calls in <code>formula</code>.
 <p>A <code><a href="../../base/html/data.frame.html">data.frame</a></code> containing the variables used in
 <code>formula</code> plus those specified in <code>...</code>.  It will have
 additional attributes, including <code>"terms"</code> for an object of class
-<code>"<a href="terms.object.html">terms</a>"</code> derived from <code>formula</code>,
+<code>"<a href="../../stats/help/terms.object.html">terms</a>"</code> derived from <code>formula</code>,
 and possibly <code>"na.action"</code> giving information on the handling of
 <code>NA</code>s (which will not be present if no special handling was done,
-e.g. by <code><a href="na.fail.html">na.pass</a></code>).
+e.g. by <code><a href="../../stats/help/na.pass.html">na.pass</a></code>).
 </p>
 
 
@@ -173,9 +174,9 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="model.matrix.html">model.matrix</a></code> for the &lsquo;design matrix&rsquo;,
-<code><a href="formula.html">formula</a></code> for formulas  and
-<code><a href="expand.model.frame.html">expand.model.frame</a></code> for model.frame manipulation.
+<p><code><a href="../../stats/help/model.matrix.html">model.matrix</a></code> for the &lsquo;design matrix&rsquo;,
+<code><a href="../../stats/help/formula.html">formula</a></code> for formulas  and
+<code><a href="../../stats/help/expand.model.frame.html">expand.model.frame</a></code> for model.frame manipulation.
 </p>
 
 
@@ -191,5 +192,5 @@ stopifnot(is.data.frame(ncars),
           ncol(ncars) == ncol(cars) + 1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

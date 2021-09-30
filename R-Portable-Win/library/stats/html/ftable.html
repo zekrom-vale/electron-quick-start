@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Flat Contingency Tables</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ftable {stats}"><tr><td>ftable {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -88,7 +89,7 @@ the other variables are summed out.
 additional arguments will be passed to <code>table</code> to control how
 the variable names are displayed; see the last example below.
 </p>
-<p>Function <code><a href="ftable.formula.html">ftable.formula</a></code> provides a formula method for
+<p>Function <code><a href="../../stats/help/ftable.formula.html">ftable.formula</a></code> provides a formula method for
 creating flat contingency tables.
 </p>
 <p>There are methods for <code><a href="../../base/html/table.html">as.table</a></code>, <code><a href="../../base/html/matrix.html">as.matrix</a></code>
@@ -107,12 +108,12 @@ stored as attributes <code>"row.vars"</code> and <code>"col.vars"</code>.
 
 <h3>See Also</h3>
 
-<p><code><a href="ftable.formula.html">ftable.formula</a></code> for the formula interface (which allows a
+<p><code><a href="../../stats/help/ftable.formula.html">ftable.formula</a></code> for the formula interface (which allows a
 <code>data = .</code> argument);
-<code><a href="read.ftable.html">read.ftable</a></code> for information on reading, writing and
+<code><a href="../../stats/help/read.ftable.html">read.ftable</a></code> for information on reading, writing and
 coercing flat contingency tables;
 <code><a href="../../base/html/table.html">table</a></code> for ordinary cross-tabulation;
-<code><a href="xtabs.html">xtabs</a></code> for formula-based cross-tabulation.
+<code><a href="../../stats/help/xtabs.html">xtabs</a></code> for formula-based cross-tabulation.
 </p>
 
 
@@ -134,5 +135,5 @@ ftable(mtcars$cyl, mtcars$vs, mtcars$am, mtcars$gear, row.vars = c(2, 4),
        dnn = c("Cylinders", "V/S", "Transmission", "Gears"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

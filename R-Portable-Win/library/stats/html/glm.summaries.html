@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Accessing Generalized Linear Model Fits</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for glm.summaries {stats}"><tr><td>glm.summaries {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,7 +33,7 @@ residuals(object, type = c("deviance", "pearson", "working",
 <tr valign="top"><td><code>object</code></td>
 <td>
 <p>an object of class <code>glm</code>, typically the result of
-a call to <code><a href="glm.html">glm</a></code>.</p>
+a call to <code><a href="../../stats/help/glm.html">glm</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
@@ -60,7 +61,7 @@ column formed by omitting a term from the model.
 fit is determined by the <code>na.action</code> argument of that fit.
 If <code>na.action = na.omit</code> omitted cases will not appear in the
 residuals, whereas if <code>na.action = na.exclude</code> they will appear,
-with residual value <code>NA</code>.  See also <code><a href="nafns.html">naresid</a></code>.
+with residual value <code>NA</code>.  See also <code><a href="../../stats/help/naresid.html">naresid</a></code>.
 </p>
 <p>For fits done with <code>y = FALSE</code> the response values are computed
 from other components.
@@ -87,17 +88,17 @@ London: Chapman and Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="glm.html">glm</a></code> for computing <code>glm.obj</code>, <code><a href="anova.glm.html">anova.glm</a></code>;
-the corresponding <em>generic</em> functions, <code><a href="summary.glm.html">summary.glm</a></code>,
-<code><a href="coef.html">coef</a></code>, <code><a href="deviance.html">deviance</a></code>,
-<code><a href="df.residual.html">df.residual</a></code>,
-<code><a href="effects.html">effects</a></code>, <code><a href="fitted.values.html">fitted</a></code>,
-<code><a href="residuals.html">residuals</a></code>.
+<p><code><a href="../../stats/help/glm.html">glm</a></code> for computing <code>glm.obj</code>, <code><a href="../../stats/help/anova.glm.html">anova.glm</a></code>;
+the corresponding <em>generic</em> functions, <code><a href="../../stats/help/summary.glm.html">summary.glm</a></code>,
+<code><a href="../../stats/help/coef.html">coef</a></code>, <code><a href="../../stats/help/deviance.html">deviance</a></code>,
+<code><a href="../../stats/help/df.residual.html">df.residual</a></code>,
+<code><a href="../../stats/help/effects.html">effects</a></code>, <code><a href="../../stats/help/fitted.html">fitted</a></code>,
+<code><a href="../../stats/help/residuals.html">residuals</a></code>.
 </p>
-<p><a href="influence.measures.html">influence.measures</a> for deletion diagnostics, including
-standardized (<code><a href="influence.measures.html">rstandard</a></code>)
-and studentized (<code><a href="influence.measures.html">rstudent</a></code>) residuals.
+<p><a href="../../stats/help/influence.measures.html">influence.measures</a> for deletion diagnostics, including
+standardized (<code><a href="../../stats/help/rstandard.html">rstandard</a></code>)
+and studentized (<code><a href="../../stats/help/rstudent.html">rstudent</a></code>) residuals.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

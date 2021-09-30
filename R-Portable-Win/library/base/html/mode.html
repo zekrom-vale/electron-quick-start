@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The (Storage) Mode of an Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for mode {base}"><tr><td>mode {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,8 @@
 
 <h3>Description</h3>
 
-<p>Get or set the type or storage mode of an object.
+<p>Get or set the &lsquo;mode&rsquo; (a kind of &lsquo;type&rsquo;), or the storage
+mode of an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object.
 </p>
 
 
@@ -42,7 +44,7 @@ storage.mode(x) &lt;- value
 
 <p>Both <code>mode</code> and <code>storage.mode</code> return a character string
 giving the (storage) mode of the object &mdash; often the same &mdash; both
-relying on the output of <code><a href="typeof.html">typeof</a>(x)</code>, see the example
+relying on the output of <code><a href="../../base/help/typeof.html">typeof</a>(x)</code>, see the example
 below.
 </p>
 <p><code>mode(x) &lt;- "newmode"</code> changes the <code>mode</code> of object <code>x</code> to
@@ -53,9 +55,9 @@ below.
 <code>"name"</code>, <code>"symbol"</code> and <code>"function"</code>.  Attributes are
 preserved (but see below).
 </p>
-<p><code>storage.mode(x) &lt;- "newmode"</code> is a more efficient <a href="Primitive.html">primitive</a>
+<p><code>storage.mode(x) &lt;- "newmode"</code> is a more efficient <a href="../../base/help/primitive.html">primitive</a>
 version of <code>mode&lt;-</code>, which works for <code>"newmode"</code> which is
-one of the internal types (see <code><a href="typeof.html">typeof</a></code>), but not for
+one of the internal types (see <code><a href="../../base/help/typeof.html">typeof</a></code>), but not for
 <code>"single"</code>.  Attributes are preserved.
 </p>
 <p>As storage mode <code>"single"</code> is only a pseudo-mode in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, it will
@@ -66,14 +68,14 @@ which sets the real mode to <code>"double"</code> and the <code>"Csingle"</code>
 attribute to <code>TRUE</code>.  Setting any other mode will remove this
 attribute.
 </p>
-<p>Note (in the examples below) that some <code><a href="call.html">call</a></code>s have mode
+<p>Note (in the examples below) that some <code><a href="../../base/help/call.html">call</a></code>s have mode
 <code>"("</code> which is S compatible.
 </p>
 
 
 <h3>Mode names</h3>
 
-<p>Modes have the same set of names as types (see <code><a href="typeof.html">typeof</a></code>)
+<p>Modes have the same set of names as types (see <code><a href="../../base/help/typeof.html">typeof</a></code>)
 except that
 </p>
 
@@ -82,7 +84,7 @@ except that
 returned as <code>"numeric"</code>.
 </p>
 </li>
-<li><p> types <code>"special"</code> and <code>"builtin"</code> are returned as
+<li><p> types <code>"special"</code>, <code>"builtin"</code> and <code>"closure"</code> are returned as
 <code>"function"</code>.
 </p>
 </li>
@@ -105,8 +107,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="typeof.html">typeof</a></code> for the R-internal &lsquo;mode&rsquo;,
-<code><a href="../../utils/html/type.convert.html">type.convert</a></code>, <code><a href="attributes.html">attributes</a></code>.
+<p><code><a href="../../base/help/typeof.html">typeof</a></code> for the R-internal &lsquo;mode&rsquo; or &lsquo;type&rsquo;,
+<code><a href="../../utils/help/type.convert.html">type.convert</a></code>, <code><a href="../../base/help/attributes.html">attributes</a></code>.
 </p>
 
 
@@ -121,7 +123,7 @@ cex3 &lt;- c("NULL", "1", "1:1", "1i", "list(1)", "data.frame(x = 1)",
   "pairlist(pi)", "c", "lm", "formals(lm)[[1]]",  "formals(lm)[[2]]",
   "y ~ x","expression((1))[[1]]", "(y ~ x)[[1]]",
   "expression(x &lt;- pi)[[1]][[1]]")
-lex3 &lt;- sapply(cex3, function(x) eval(parse(text = x)))
+lex3 &lt;- sapply(cex3, function(x) eval(str2lang(x)))
 mex3 &lt;- t(sapply(lex3,
                  function(x) c(typeof(x), storage.mode(x), mode(x))))
 dimnames(mex3) &lt;- list(cex3, c("typeof(.)","storage.mode(.)","mode(.)"))
@@ -133,5 +135,5 @@ storage.mode(pi)
 rm(pi)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

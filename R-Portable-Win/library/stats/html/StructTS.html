@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fit Structural Time Series</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for StructTS {stats}"><tr><td>StructTS {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -48,7 +49,7 @@ variances to zero.</p>
 <tr valign="top"><td><code>optim.control</code></td>
 <td>
 <p>List of control parameters for
-<code><a href="optim.html">optim</a></code>.  Method <code>"L-BFGS-B"</code> is used.</p>
+<code><a href="../../stats/help/optim.html">optim</a></code>.  Method <code>"L-BFGS-B"</code> is used.</p>
 </td></tr>
 </table>
 
@@ -116,7 +117,7 @@ sometimes known as the &lsquo;dummy variable&rsquo; version of the BSM.)
 <td>
 <p>the maximized log-likelihood.  Note that as all these
 models are non-stationary this includes a diffuse prior for some
-observations and hence is not comparable to <code><a href="arima.html">arima</a></code>
+observations and hence is not comparable to <code><a href="../../stats/help/arima.html">arima</a></code>
 nor different types of structural models.</p>
 </td></tr>
 <tr valign="top"><td><code>loglik0</code></td>
@@ -148,12 +149,12 @@ at time <i>t</i> and not at the end of the series).</p>
 </td></tr>
 <tr valign="top"><td><code>code</code></td>
 <td>
-<p>the <code>convergence</code> code returned by <code><a href="optim.html">optim</a></code>.</p>
+<p>the <code>convergence</code> code returned by <code><a href="../../stats/help/optim.html">optim</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>model, model0</code></td>
 <td>
 <p>Lists representing the Kalman Filter used in the
-fitting.  See <code><a href="KalmanLike.html">KalmanLike</a></code>.  <code>model0</code> is the
+fitting.  See <code><a href="../../stats/help/KalmanLike.html">KalmanLike</a></code>.  <code>model0</code> is the
 initial state of the filter, <code>model</code> its final state.</p>
 </td></tr>
 <tr valign="top"><td><code>xtsp</code></td>
@@ -195,8 +196,8 @@ Cambridge University Press.
 
 <h3>See Also</h3>
 
-<p><code><a href="KalmanLike.html">KalmanLike</a></code>, <code><a href="tsSmooth.html">tsSmooth</a></code>;
-<code><a href="stl.html">stl</a></code> for different kind of (seasonal) decomposition.
+<p><code><a href="../../stats/help/KalmanLike.html">KalmanLike</a></code>, <code><a href="../../stats/help/tsSmooth.html">tsSmooth</a></code>;
+<code><a href="../../stats/help/stl.html">stl</a></code> for different kind of (seasonal) decomposition.
 </p>
 
 
@@ -222,5 +223,5 @@ StructTS(log10(UKgas), type = "BSM", fixed = c(0.1,0.001,NA,NA),
          optim.control = list(trace = TRUE))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Express File Paths in Canonical Form</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for normalizePath {base}"><tr><td>normalizePath {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -44,7 +45,7 @@ cannot be determined; if <code>NA</code> then a warning.</p>
 
 <h3>Details</h3>
 
-<p>Tilde-expansion (see <code><a href="path.expand.html">path.expand</a></code>) is first done on
+<p>Tilde-expansion (see <code><a href="../../base/help/path.expand.html">path.expand</a></code>) is first done on
 <code>paths</code>.
 </p>
 <p>Where the Unix-alike platform supports it attempts to turn paths into
@@ -56,10 +57,19 @@ not be canonical.  Even where <code>realpath</code> is used the canonical
 path need not be unique, for example <em>via</em> hard links or
 multiple mounts.
 </p>
-<p>On Windows it converts relative paths to absolute paths, converts
-short names for path elements to long names and ensures the separator
-is that specified by <code>winslash</code>.  It will match paths
-case-insensitively and return the canonical case.
+<p>On Windows it converts relative paths to absolute paths, resolves symbolic
+links, converts short names for path elements to long names and ensures the
+separator is that specified by <code>winslash</code>.  It will match each path
+element case-insensitively or case-sensitively as during the usual name
+lookup and return the canonical case. It relies on Windows API function
+<code>GetFinalPathNameByHandle</code> and in case of an error (such as
+insufficient permissions) it currently falls back to the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.6 (and
+older) implementation, which relies on <code>GetFullPathName</code> and
+<code>GetLongPathName</code> with limitations described in the Notes section.
+An attempt is made not to introduce UNC paths in presence of mapped drives
+or symbolic links: if <code>GetFinalPathNameByHandle</code> returns a UNC path,
+but <code>GetLongPathName</code> returns a path starting with a drive letter, R
+falls back to the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.6 (and older) implementation.
 UTF-8-encoded paths not valid in the current locale can be used.
 </p>
 <p><code>mustWork = FALSE</code> is useful for expressing paths for use in
@@ -109,7 +119,10 @@ length of a file path.
 on macOS absolute paths such as &lsquo;<span class="file">/tmp</span>&rsquo; and &lsquo;<span class="file">/var</span>&rsquo; are
 symbolic links. On Linux, a path produced by bash process substitution is
 a symbolic link (such as &lsquo;<span class="file">/proc/fd/63</span>&rsquo;) to a pipe and there is no
-canonical form of such path.
+canonical form of such path. In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.6 and older on Windows, symlinks will
+not be resolved and the long names for path elements will be returned with
+the case in which they are in <code>path</code>, which may not be canonical in
+case-insensitive folders.
 </p>
 
 
@@ -125,5 +138,5 @@ canonical form of such path.
 cat(normalizePath(c(R.home(), tempdir())), sep = "\n")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

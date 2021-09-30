@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Printing Data Frames</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for print.data.frame {base}"><tr><td>print.data.frame {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -31,12 +32,12 @@ print(x, ..., digits = NULL,
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>optional arguments to <code>print</code> or <code>plot</code> methods.</p>
+<p>optional arguments to <code>print</code> methods.</p>
 </td></tr>
 <tr valign="top"><td><code>digits</code></td>
 <td>
 <p>the minimum number of significant digits to be used: see
-<code><a href="print.default.html">print.default</a></code>.</p>
+<code><a href="../../base/help/print.default.html">print.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>quote</code></td>
 <td>
@@ -57,14 +58,14 @@ what) row names should be printed.</p>
 <td>
 <p>numeric or <code>NULL</code>, specifying the maximal number of
 entries to be printed.  By default, when <code>NULL</code>,
-<code><a href="options.html">getOption</a>("max.print")</code> used.</p>
+<code><a href="../../base/help/getOption.html">getOption</a>("max.print")</code> used.</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>This calls <code><a href="format.html">format</a></code> which formats the data frame
+<p>This calls <code><a href="../../base/help/format.html">format</a></code> which formats the data frame
 column-by-column, then converts to a character matrix and dispatches
 to the <code>print</code> method for matrices.
 </p>
@@ -75,7 +76,7 @@ nor the column names.
 
 <h3>See Also</h3>
 
-<p><code><a href="data.frame.html">data.frame</a></code>.
+<p><code><a href="../../base/help/data.frame.html">data.frame</a></code>.
 </p>
 
 
@@ -88,5 +89,5 @@ print(dd, quote = TRUE, row.names = FALSE)
      # suppresses row.names and quotes all entries
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

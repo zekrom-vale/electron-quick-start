@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Rd Converters</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Rd2HTML {tools}"><tr><td>Rd2HTML {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>These functions take the output of the <code><a href="parse_Rd.html">parse_Rd</a></code> function
-and produce a help page from it.  As they are mainly
+<p>These functions take the output of <code><a href="../../tools/help/parse_Rd.html">parse_Rd</a>()</code>, an
+<code>Rd</code> object, and produce a help page from it.  As they are mainly
 intended for internal use, their interfaces are subject to change.
 </p>
 
@@ -47,7 +48,9 @@ Rd2ex(Rd, out = "", defines = .Platform$OS.type,
 </td></tr>
 <tr valign="top"><td><code>out</code></td>
 <td>
-<p> a filename or connection object to which to write the output. </p>
+<p>a filename or connection object to which to write the
+output.  The default <code>out = ""</code> is equivalent to
+<code>out = <a href="../../base/html/showConnections.html">stdout</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>package</code></td>
 <td>
@@ -90,16 +93,16 @@ of the HTML output page.</p>
 <tr valign="top"><td><code>Links, Links2</code></td>
 <td>
 <p><code>NULL</code> or a named (by topics) character vector of
-links, as returned by <code><a href="HTMLlinks.html">findHTMLlinks</a></code>.</p>
+links, as returned by <code><a href="../../tools/help/findHTMLlinks.html">findHTMLlinks</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>options</code></td>
 <td>
 <p>An optional named list of options to pass to
-<code><a href="Rd2txt_options.html">Rd2txt_options</a></code>.</p>
+<code><a href="../../tools/help/Rd2txt_options.html">Rd2txt_options</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p> additional parameters to pass to <code><a href="parse_Rd.html">parse_Rd</a></code> when
+<p> additional parameters to pass to <code><a href="../../tools/help/parse_Rd.html">parse_Rd</a></code> when
 <code>Rd</code> is a filename. </p>
 </td></tr>
 <tr valign="top"><td><code>writeEncoding</code></td>
@@ -127,19 +130,16 @@ out?</p>
 <code><a href="../../utils/html/example.html">example</a></code> and <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> utilities.
 </p>
 <p>Each of the functions accepts a filename for an Rd file, and
-will use <code><a href="parse_Rd.html">parse_Rd</a></code> to parse it before applying the
+will use <code><a href="../../tools/help/parse_Rd.html">parse_Rd</a></code> to parse it before applying the
 conversions or checks.
 </p>
 <p>The difference between arguments <code>Link</code> and <code>Link2</code> is that
 links are looked in them in turn, so lazy-evaluation can be used to
 only do a second-level search for links if required.
 </p>
-<p>Note that the default for <code>Rd2latex</code> is to output ASCII,
-including using the second option of <code style="white-space: pre;">\enc</code> markup.  This was
-chosen because use of UTF-8 in LaTeX requires version
-&lsquo;2005/12/01&rsquo; or later, and even with that version the coverage
-of UTF-8 glyphs is not extensive (and not even as complete as
-Latin-1).
+<p>Before <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.6.0, the default for <code>Rd2latex</code> was <code>outputEncoding = "ASCII"</code>,
+including using the second option of <code style="white-space: pre;">\enc</code> markup, because LaTeX
+versions did not provide enough coverage of UTF-8 glyphs for a long time.
 </p>
 <p><code>Rd2txt</code> will format text paragraphs to a width determined by
 <code>width</code>, with appropriate margins.  The default is to be close to
@@ -152,9 +152,9 @@ the current locale uses a single-byte encoding (except C).
 usually double-width, which looks wrong with English text.)
 </p>
 <p>Various aspects of formatting by <code>Rd2txt</code> are controlled by the
-<code>options</code> argument, documented with the <code><a href="Rd2txt_options.html">Rd2txt_options</a></code>
-function. Changes made using <code>options</code> are temporary, those
-made with <code><a href="Rd2txt_options.html">Rd2txt_options</a></code> are persistent.
+<code>options</code> argument, documented with the <code><a href="../../tools/help/Rd2txt_options.html">Rd2txt_options</a></code>
+function.  Changes made using <code>options</code> are temporary, those
+made with <code><a href="../../tools/help/Rd2txt_options.html">Rd2txt_options</a></code> are persistent.
 </p>
 <p>When <code>fragment = TRUE</code>, the <code>Rd</code> file will be rendered
 with no processing of <code style="white-space: pre;">\Sexpr</code> elements or conditional defines
@@ -207,15 +207,15 @@ page is converted to a readable format).
 
 <ol>
 <li><p> built on
-2019-07-05 at 09:07:28,
+2021-08-10 at 09:02:44,
 </p>
 </li>
 <li><p> installed on
-2019-07-05 at 09:07:28, and
+2021-08-10 at 09:02:44, and
 </p>
 </li>
 <li><p> rendered on
-2019-07-05 at 09:07:48.
+2021-08-10 at 09:03:06.
 </p>
 </li></ol>
 
@@ -234,8 +234,8 @@ page is converted to a readable format).
 
 <h3>See Also</h3>
 
-<p><code><a href="parse_Rd.html">parse_Rd</a></code>, <code><a href="checkRd.html">checkRd</a></code>,
-<code><a href="HTMLlinks.html">findHTMLlinks</a></code>, <code><a href="Rd2txt_options.html">Rd2txt_options</a></code>.
+<p><code><a href="../../tools/help/parse_Rd.html">parse_Rd</a></code>, <code><a href="../../tools/help/checkRd.html">checkRd</a></code>,
+<code><a href="../../tools/help/findHTMLlinks.html">findHTMLlinks</a></code>, <code><a href="../../tools/help/Rd2txt_options.html">Rd2txt_options</a></code>.
 </p>
 
 
@@ -260,5 +260,5 @@ checkRd(Rd) # A stricter test than Rd2HTML uses
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

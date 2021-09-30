@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Apply Functions Over Array Margins</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for apply {base}"><tr><td>apply {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -17,7 +18,7 @@ function to margins of an array or matrix.
 <h3>Usage</h3>
 
 <pre>
-apply(X, MARGIN, FUN, ...)
+apply(X, MARGIN, FUN, ..., simplify = TRUE)
 </pre>
 
 
@@ -46,17 +47,22 @@ function name must be backquoted or quoted.</p>
 <td>
 <p>optional arguments to <code>FUN</code>.</p>
 </td></tr>
+<tr valign="top"><td><code>simplify</code></td>
+<td>
+<p>a logical indicating whether results should be
+simplified if possible.</p>
+</td></tr>
 </table>
 
 
 <h3>Details</h3>
 
 <p>If <code>X</code> is not an array but an object of a class with a non-null
-<code><a href="dim.html">dim</a></code> value (such as a data frame), <code>apply</code> attempts
+<code><a href="../../base/help/dim.html">dim</a></code> value (such as a data frame), <code>apply</code> attempts
 to coerce it to an array via <code>as.matrix</code> if it is two-dimensional
 (e.g., a data frame) or via <code>as.array</code>.
 </p>
-<p><code>FUN</code> is found by a call to <code><a href="match.fun.html">match.fun</a></code> and typically
+<p><code>FUN</code> is found by a call to <code><a href="../../base/help/match.fun.html">match.fun</a></code> and typically
 is either a function or a symbol (e.g., a backquoted name) or a
 character string specifying a function to be searched for from the
 environment of the call to <code>apply</code>.
@@ -74,7 +80,9 @@ through <code>...</code>.
 
 <h3>Value</h3>
 
-<p>If each call to <code>FUN</code> returns a vector of length <code>n</code>, then
+<p>If each call to <code>FUN</code> returns a vector of length <code>n</code>,
+and <code>simplify</code> is <code>TRUE</code>, 
+then
 <code>apply</code> returns an array of dimension <code>c(n, dim(X)[MARGIN])</code>
 if <code>n &gt; 1</code>.  If <code>n</code> equals <code>1</code>, <code>apply</code> returns a
 vector if <code>MARGIN</code> has length 1 and an array of dimension
@@ -83,10 +91,11 @@ If <code>n</code> is <code>0</code>, the result has length 0 but not necessarily
 the &lsquo;correct&rsquo; dimension.
 </p>
 <p>If the calls to <code>FUN</code> return vectors of different lengths,
+or if <code>simplify</code> is <code>FALSE</code>,
 <code>apply</code> returns a list of length <code>prod(dim(X)[MARGIN])</code> with
 <code>dim</code> set to <code>MARGIN</code> if this has length greater than one.
 </p>
-<p>In all cases the result is coerced by <code><a href="vector.html">as.vector</a></code> to one
+<p>In all cases the result is coerced by <code><a href="../../base/help/as.vector.html">as.vector</a></code> to one
 of the basic vector types before the dimensions are set, so that (for
 example) factor results will be coerced to a character array.
 </p>
@@ -102,9 +111,9 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="lapply.html">lapply</a></code> and there, <code><a href="lapply.html">simplify2array</a></code>;
-<code><a href="tapply.html">tapply</a></code>, and convenience functions
-<code><a href="sweep.html">sweep</a></code> and <code><a href="../../stats/html/aggregate.html">aggregate</a></code>.
+<p><code><a href="../../base/help/lapply.html">lapply</a></code> and there, <code><a href="../../base/help/simplify2array.html">simplify2array</a></code>;
+<code><a href="../../base/help/tapply.html">tapply</a></code>, and convenience functions
+<code><a href="../../base/help/sweep.html">sweep</a></code> and <code><a href="../../stats/html/aggregate.html">aggregate</a></code>.
 </p>
 
 
@@ -153,5 +162,5 @@ apply(z, 3, function(x) seq_len(max(x)))
 # a list without a dim attribute
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

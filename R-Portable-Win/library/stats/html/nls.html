@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Nonlinear Least Squares</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for nls {stats}"><tr><td>nls {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,7 +29,7 @@ nls(formula, data, start, control, algorithm,
 <table summary="R argblock">
 <tr valign="top"><td><code>formula</code></td>
 <td>
-<p>a nonlinear model <a href="formula.html">formula</a> including variables and
+<p>a nonlinear model <a href="../../stats/help/formula.html">formula</a> including variables and
 parameters.  Will be coerced to a formula if necessary.</p>
 </td></tr>
 <tr valign="top"><td><code>data</code></td>
@@ -41,14 +42,14 @@ environment, but not a matrix.</p>
 <td>
 <p>a named list or named numeric vector of starting
 estimates.  When <code>start</code> is missing (and <code>formula</code> is not
-a self-starting model, see <code><a href="selfStart.html">selfStart</a></code>), a very cheap
+a self-starting model, see <code><a href="../../stats/help/selfStart.html">selfStart</a></code>), a very cheap
 guess for <code>start</code> is tried (if <code>algorithm != "plinear"</code>).
 </p>
 </td></tr>
 <tr valign="top"><td><code>control</code></td>
 <td>
-<p>an optional list of control settings.  See
-<code><a href="nls.control.html">nls.control</a></code> for the names of the settable control
+<p>an optional <code><a href="../../base/html/list.html">list</a></code> of control settings.  See
+<code><a href="../../stats/help/nls.control.html">nls.control</a></code> for the names of the settable control
 values and their effect.</p>
 </td></tr>
 <tr valign="top"><td><code>algorithm</code></td>
@@ -64,8 +65,10 @@ references.  Can be abbreviated.</p>
 <td>
 <p>logical value indicating if a trace of the iteration
 progress should be printed.  Default is <code>FALSE</code>.  If
-<code>TRUE</code> the residual (weighted) sum-of-squares and the
-parameter values are printed at the conclusion of each iteration.
+<code>TRUE</code> the residual (weighted) sum-of-squares, the convergence
+criterion and the parameter values are printed at the conclusion of
+each iteration.  Note that <code><a href="../../base/html/format.html">format</a>()</code> is used, so these
+mostly depend on <code><a href="../../base/html/options.html">getOption</a>("digits")</code>.
 When the <code>"plinear"</code> algorithm is used, the conditional
 estimates of the linear parameters are printed after the nonlinear
 parameters.  When the <code>"port"</code> algorithm is used the
@@ -87,8 +90,8 @@ present, the objective function is weighted least squares.</p>
 <p>a function which indicates what should happen
 when the data contain <code>NA</code>s.  The default is set by
 the <code>na.action</code> setting of <code><a href="../../base/html/options.html">options</a></code>, and is
-<code><a href="na.fail.html">na.fail</a></code> if that is unset.  The &lsquo;factory-fresh&rsquo;
-default is <code><a href="na.fail.html">na.omit</a></code>.  Value <code><a href="na.fail.html">na.exclude</a></code>
+<code><a href="../../stats/help/na.fail.html">na.fail</a></code> if that is unset.  The &lsquo;factory-fresh&rsquo;
+default is <code><a href="../../stats/help/na.omit.html">na.omit</a></code>.  Value <code><a href="../../stats/help/na.exclude.html">na.exclude</a></code>
 can be useful.</p>
 </td></tr>
 <tr valign="top"><td><code>model</code></td>
@@ -114,12 +117,12 @@ for other algorithms.</p>
 <h3>Details</h3>
 
 <p>An <code>nls</code> object is a type of fitted model object.  It has methods
-for the generic functions <code><a href="anova.html">anova</a></code>, <code><a href="coef.html">coef</a></code>,
-<code><a href="confint.html">confint</a></code>, <code><a href="deviance.html">deviance</a></code>,
-<code><a href="df.residual.html">df.residual</a></code>, <code><a href="fitted.values.html">fitted</a></code>,
-<code><a href="formula.html">formula</a></code>, <code><a href="logLik.html">logLik</a></code>, <code><a href="predict.html">predict</a></code>,
-<code><a href="../../base/html/print.html">print</a></code>, <code><a href="profile.html">profile</a></code>, <code><a href="residuals.html">residuals</a></code>,
-<code><a href="../../base/html/summary.html">summary</a></code>, <code><a href="vcov.html">vcov</a></code> and <code><a href="weights.html">weights</a></code>.
+for the generic functions <code><a href="../../stats/help/anova.html">anova</a></code>, <code><a href="../../stats/help/coef.html">coef</a></code>,
+<code><a href="../../stats/help/confint.html">confint</a></code>, <code><a href="../../stats/help/deviance.html">deviance</a></code>,
+<code><a href="../../stats/help/df.residual.html">df.residual</a></code>, <code><a href="../../stats/help/fitted.html">fitted</a></code>,
+<code><a href="../../stats/help/formula.html">formula</a></code>, <code><a href="../../stats/help/logLik.html">logLik</a></code>, <code><a href="../../stats/help/predict.html">predict</a></code>,
+<code><a href="../../base/html/print.html">print</a></code>, <code><a href="../../stats/help/profile.html">profile</a></code>, <code><a href="../../stats/help/residuals.html">residuals</a></code>,
+<code><a href="../../base/html/summary.html">summary</a></code>, <code><a href="../../stats/help/vcov.html">vcov</a></code> and <code><a href="../../stats/help/weights.html">weights</a></code>.
 </p>
 <p>Variables in <code>formula</code> (and <code>weights</code> if not missing) are
 looked for first in <code>data</code>, then the environment of
@@ -131,7 +134,7 @@ looked for first in <code>data</code>, then the environment of
 all the variables in the formula taken from <code>data</code> are of the
 same length: other cases give a warning.
 </p>
-<p>Note that the <code><a href="anova.html">anova</a></code> method does not check that the
+<p>Note that the <code><a href="../../stats/help/anova.html">anova</a></code> method does not check that the
 models are nested: this cannot easily be done automatically, so use
 with care.
 </p>
@@ -149,8 +152,8 @@ with care.
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>the expression that was passed to <code>nls</code> as the data
-argument.  The actual data values are present in the environment of
-the <code>m</code> component.</p>
+argument.  The actual data values are present in the <code><a href="../../base/html/environment.html">environment</a></code> of
+the <code>m</code> components, e.g., <code>environment(m$conv)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>call</code></td>
 <td>
@@ -198,7 +201,8 @@ a convergence code (<code>0</code> for convergence) and message.
 
 <h3>Warning</h3>
 
-<p><b>Do not use <code>nls</code> on artificial &quot;zero-residual&quot; data.</b>
+<p><b>The default settings of <code>nls</code> generally fail on artificial
+&ldquo;zero-residual&rdquo; data problems.</b>
 </p>
 <p>The <code>nls</code> function uses a relative-offset convergence criterion
 that compares the numerical imprecision at the current parameter
@@ -210,9 +214,11 @@ the form </p>
 </p>
 <p style="text-align: center;"><i>y = f(x, &theta;)</i></p>
 <p> because the criterion amounts to
-comparing two components of the round-off error.  If you wish to test
-<code>nls</code> on artificial data please add a noise component, as shown
-in the example below.
+comparing two components of the round-off error.
+To avoid a zero-divide in computing the convergence testing value, a
+positive constant <code>scaleOffset</code> should be added to the denominator
+sum-of-squares; it is set in <code>control</code>, as in the example below;
+this does not yet apply to <code>algorithm = "port"</code>.
 </p>
 <p>The <code>algorithm = "port"</code> code appears unfinished, and does
 not even check that the starting value is within the bounds.
@@ -223,7 +229,7 @@ Use with caution, especially where bounds are supplied.
 <h3>Note</h3>
 
 <p>Setting <code>warnOnly = TRUE</code> in the <code>control</code>
-argument (see <code><a href="nls.control.html">nls.control</a></code>) returns a non-converged
+argument (see <code><a href="../../stats/help/nls.control.html">nls.control</a></code>) returns a non-converged
 object (since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 2.5.0) which might be useful for further
 convergence analysis, <em>but <b>not</b> for inference</em>.
 </p>
@@ -247,18 +253,18 @@ Wiley
 Chapter 10 of <em>Statistical Models in S</em>
 eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 </p>
-<p><a href="http://www.netlib.org/port/">http://www.netlib.org/port/</a> for the Port library
+<p><a href="https://www.netlib.org/port/">https://www.netlib.org/port/</a> for the Port library
 documentation.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="summary.nls.html">summary.nls</a></code>, <code><a href="predict.nls.html">predict.nls</a></code>,
-<code><a href="profile.nls.html">profile.nls</a></code>.
+<p><code><a href="../../stats/help/summary.nls.html">summary.nls</a></code>, <code><a href="../../stats/help/predict.nls.html">predict.nls</a></code>,
+<code><a href="../../stats/help/profile.nls.html">profile.nls</a></code>.
 </p>
 <p>Self starting models (with &lsquo;automatic initial values&rsquo;):
-<code><a href="selfStart.html">selfStart</a></code>.
+<code><a href="../../stats/help/selfStart.html">selfStart</a></code>.
 </p>
 
 
@@ -365,13 +371,18 @@ rbind(coef(Pur.wt), coef(Pur.wt1), coef(Pur.wt.grad))
 ## without noise.
 x &lt;- 1:10
 y &lt;- 2*x + 3                            # perfect fit
-yeps &lt;- y + rnorm(length(y), sd = 0.01) # added noise
-nls(yeps ~ a + b*x, start = list(a = 0.12345, b = 0.54321))
 ## terminates in an error, because convergence cannot be confirmed:
 try(nls(y ~ a + b*x, start = list(a = 0.12345, b = 0.54321)))
+## adjusting the convergence test by adding 'scaleOffset' to its denominator RSS:
+nls(y ~ a + b*x, start = list(a = 0.12345, b = 0.54321),
+    control = list(scaleOffset = 1, printEval=TRUE))
+## Alternatively jittering the "too exact" values, slightly:
+set.seed(27)
+yeps &lt;- y + rnorm(length(y), sd = 0.01) # added noise
+nls(yeps ~ a + b*x, start = list(a = 0.12345, b = 0.54321))
+
 
 ## the nls() internal cheap guess for starting values can be sufficient:
-
 x &lt;- -(1:100)/10
 y &lt;- 100 + 10 * exp(x / 2) + rnorm(x)/10
 nlmod &lt;- nls(y ~  Const + A * exp(B * x))
@@ -380,28 +391,32 @@ plot(x,y, main = "nls(*), data, true function and fit, n=100")
 curve(100 + 10 * exp(x / 2), col = 4, add = TRUE)
 lines(x, predict(nlmod), col = 2)
 
-
+## Here, requiring close convergence, you need to use more accurate numerical
+##  differentiation; this gives Error: "step factor .. reduced below 'minFactor' .."
+options(digits = 10) # more accuracy for 'trace'
+## IGNORE_RDIFF_BEGIN
+try(nlm1 &lt;- update(nlmod, control = list(tol = 1e-7))) # where central diff. work here:
+   (nlm2 &lt;- update(nlmod, control = list(tol = 8e-8, nDcentral=TRUE), trace=TRUE))
+## --&gt; convergence tolerance  4.997e-8 (in 11 iter.)
+## IGNORE_RDIFF_END
 
 ## The muscle dataset in MASS is from an experiment on muscle
 ## contraction on 21 animals.  The observed variables are Strip
 ## (identifier of muscle), Conc (Cacl concentration) and Length
 ## (resulting length of muscle section).
-utils::data(muscle, package = "MASS")
-
+## IGNORE_RDIFF_BEGIN
+if(requireNamespace("MASS", quietly = TRUE)) withAutoprint({
 ## The non linear model considered is
 ##       Length = alpha + beta*exp(-Conc/theta) + error
 ## where theta is constant but alpha and beta may vary with Strip.
 
-with(muscle, table(Strip)) # 2, 3 or 4 obs per strip
+with(MASS::muscle, table(Strip)) # 2, 3 or 4 obs per strip
 
 ## We first use the plinear algorithm to fit an overall model,
 ## ignoring that alpha and beta might vary with Strip.
-
-## IGNORE_RDIFF_BEGIN
-musc.1 &lt;- nls(Length ~ cbind(1, exp(-Conc/th)), muscle,
+musc.1 &lt;- nls(Length ~ cbind(1, exp(-Conc/th)), MASS::muscle,
               start = list(th = 1), algorithm = "plinear")
 summary(musc.1)
-## IGNORE_RDIFF_END
 
 ## Then we use nls' indexing feature for parameters in non-linear
 ## models to use the conventional algorithm to fit a model in which
@@ -410,14 +425,13 @@ summary(musc.1)
 ## Note that with indexed parameters, the starting values must be
 ## given in a list (with names):
 b &lt;- coef(musc.1)
-musc.2 &lt;- nls(Length ~ a[Strip] + b[Strip]*exp(-Conc/th), muscle,
+musc.2 &lt;- nls(Length ~ a[Strip] + b[Strip]*exp(-Conc/th), MASS::muscle,
               start = list(a = rep(b[2], 21), b = rep(b[3], 21), th = b[1]))
-## IGNORE_RDIFF_BEGIN
 summary(musc.2)
+})
 ## IGNORE_RDIFF_END
-
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

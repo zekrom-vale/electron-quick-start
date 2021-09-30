@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Inverse from Choleski (or QR) Decomposition</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for chol2inv {base}"><tr><td>chol2inv {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,7 +38,7 @@ Choleski decomposition.</p>
 </td></tr>
 <tr valign="top"><td><code>LINPACK</code></td>
 <td>
-<p>logical.  Defunct and ignored (with a warning for true value).</p>
+<p>logical.  Defunct and gives an error.</p>
 </td></tr>
 </table>
 
@@ -55,7 +56,7 @@ detailed study of the FORTRAN code.
 <h3>Source</h3>
 
 <p>This is an interface to the LAPACK routine <code>DPOTRI</code>.
-LAPACK is from <a href="http://www.netlib.org/lapack">http://www.netlib.org/lapack</a> and its guide is listed
+LAPACK is from <a href="https://www.netlib.org/lapack/">https://www.netlib.org/lapack/</a> and its guide is listed
 in the references.
 </p>
 
@@ -66,7 +67,7 @@ in the references.
 <em>LAPACK Users' Guide</em>. Third Edition.
 SIAM.
 Available on-line at
-<a href="http://www.netlib.org/lapack/lug/lapack_lug.html">http://www.netlib.org/lapack/lug/lapack_lug.html</a>.
+<a href="https://www.netlib.org/lapack/lug/lapack_lug.html">https://www.netlib.org/lapack/lug/lapack_lug.html</a>.
 </p>
 <p>Dongarra, J. J., Bunch, J. R., Moler, C. B. and Stewart, G. W. (1978)
 <em>LINPACK Users Guide</em>.
@@ -76,7 +77,7 @@ Philadelphia: SIAM Publications.
 
 <h3>See Also</h3>
 
-<p><code><a href="chol.html">chol</a></code>, <code><a href="solve.html">solve</a></code>.
+<p><code><a href="../../base/help/chol.html">chol</a></code>, <code><a href="../../base/help/solve.html">solve</a></code>.
 </p>
 
 
@@ -87,5 +88,5 @@ cma &lt;- chol(ma  &lt;- cbind(1, 1:3, c(1,3,7)))
 ma %*% chol2inv(cma)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

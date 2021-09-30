@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Find Reverse Dependencies</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dependsOnPkgs {tools}"><tr><td>dependsOnPkgs {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -18,7 +19,7 @@ which depend on this one, and (optionally) so on recursively.
 
 <pre>
 dependsOnPkgs(pkgs,
-              dependencies = c("Depends", "Imports", "LinkingTo"),
+              dependencies = "strong",
               recursive = TRUE, lib.loc = NULL,
               installed =
               utils::installed.packages(lib.loc, fields = "Enhances"))
@@ -37,8 +38,11 @@ dependsOnPkgs(pkgs,
 <p>a character vector listing the types of
 dependencies, a subset of
 <code>c("Depends", "Imports", "LinkingTo", "Suggests", "Enhances")</code>.
-Character string <code>"all"</code> is shorthand for that vector, and
-<code>"most"</code> currently shorthand for these apart from <code>"Enhances"</code>.</p>
+Character string <code>"all"</code> is shorthand for that vector,
+character string <code>"most"</code> for the same vector without
+<code>"Enhances"</code>,
+character string <code>"strong"</code> (default) for the first three
+elements of that vector.</p>
 </td></tr>
 <tr valign="top"><td><code>recursive</code></td>
 <td>
@@ -64,13 +68,21 @@ for all known trees (see <code><a href="../../base/html/libPaths.html">.libPaths
 </p>
 
 
+<h3>See Also</h3>
+
+<p><code><a href="../../tools/help/package_dependencies.html">package_dependencies</a>()</code> to get the regular
+(&ldquo;forward&rdquo;) dependencies of a package.
+</p>
+
+
 <h3>Examples</h3>
 
 <pre>
+
 ## there are few dependencies in a vanilla R installation:
 ## lattice may not be installed
 dependsOnPkgs("lattice")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

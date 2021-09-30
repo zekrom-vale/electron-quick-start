@@ -10,6 +10,7 @@ depth                   Determine the number of levels in an object.
 deviceLoc               Convert Viewport Location to Device Location
 drawDetails             Customising grid Drawing
 editDetails             Customising grid Editing
+editViewport            Modify a Viewport
 explode                 Explode a path into its components.
 gEdit                   Create and Apply Edit Objects
 gPath                   Concatenate Grob Names
@@ -71,6 +72,7 @@ grobX                   Create a Unit Describing a Grob Boundary
                         Location
 legendGrob              Constructing a Legend Grob
 makeContent             Customised grid Grobs
+patterns                Define Gradient and Pattern Fills
 plotViewport            Create a Viewport with a Standard Plot Layout
 pushViewport            Maintaining and Navigating the Grid Viewport
                         Tree
@@ -86,6 +88,7 @@ unit.c                  Combine Unit Objects
 unit.length             Length of a Unit Object
 unit.pmin               Parallel Unit Minima and Maxima
 unit.rep                Replicate Elements of Unit Objects
+unitType                Return the Units of a Unit Object
 valid.just              Validate a Justification
 validDetails            Customising grid grob Validation
 viewport                Create a Grid Viewport

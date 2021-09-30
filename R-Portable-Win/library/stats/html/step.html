@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Choose a model by AIC in a Stepwise Algorithm</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for step {stats}"><tr><td>step {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -48,9 +49,9 @@ details for how to specify the formulae and how they are used.
 <td>
 
 <p>used in the definition of the AIC statistic for selecting the models,
-currently only for <code><a href="lm.html">lm</a></code>, <code><a href="aov.html">aov</a></code> and
-<code><a href="glm.html">glm</a></code> models.  The default value, <code>0</code>, indicates
-the scale should be estimated: see <code><a href="extractAIC.html">extractAIC</a></code>.
+currently only for <code><a href="../../stats/help/lm.html">lm</a></code>, <code><a href="../../stats/help/aov.html">aov</a></code> and
+<code><a href="../../stats/help/glm.html">glm</a></code> models.  The default value, <code>0</code>, indicates
+the scale should be estimated: see <code><a href="../../stats/help/extractAIC.html">extractAIC</a></code>.
 </p>
 </td></tr>
 <tr valign="top"><td><code>direction</code></td>
@@ -97,7 +98,7 @@ referred to as BIC or SBC.
 <tr valign="top"><td><code>...</code></td>
 <td>
 
-<p>any additional arguments to <code><a href="extractAIC.html">extractAIC</a></code>.
+<p>any additional arguments to <code><a href="../../stats/help/extractAIC.html">extractAIC</a></code>.
 </p>
 </td></tr>
 </table>
@@ -105,9 +106,9 @@ referred to as BIC or SBC.
 
 <h3>Details</h3>
 
-<p><code>step</code> uses <code><a href="add1.html">add1</a></code> and <code><a href="add1.html">drop1</a></code>
+<p><code>step</code> uses <code><a href="../../stats/help/add1.html">add1</a></code> and <code><a href="../../stats/help/drop1.html">drop1</a></code>
 repeatedly; it will work for any method for which they work, and that
-is determined by having a valid method for <code><a href="extractAIC.html">extractAIC</a></code>.
+is determined by having a valid method for <code><a href="../../stats/help/extractAIC.html">extractAIC</a></code>.
 When the additive constant can be chosen so that AIC is equal to
 Mallows' <i>Cp</i>, this is done and the tables are labelled
 appropriately.
@@ -121,15 +122,15 @@ empty.  If <code>scope</code> is missing, the initial model is used as the
 <code>upper</code> model.
 </p>
 <p>Models specified by <code>scope</code> can be templates to update
-<code>object</code> as used by <code><a href="update.formula.html">update.formula</a></code>.  So using
+<code>object</code> as used by <code><a href="../../stats/help/update.formula.html">update.formula</a></code>.  So using
 <code>.</code> in a <code>scope</code> formula means &lsquo;what is
 already there&rsquo;, with <code>.^2</code> indicating all interactions of
 existing terms.
 </p>
-<p>There is a potential problem in using <code><a href="glm.html">glm</a></code> fits with a
+<p>There is a potential problem in using <code><a href="../../stats/help/glm.html">glm</a></code> fits with a
 variable <code>scale</code>, as in that case the deviance is not simply
 related to the maximized log-likelihood.  The <code>"glm"</code> method for
-function <code><a href="extractAIC.html">extractAIC</a></code> makes the
+function <code><a href="../../stats/help/extractAIC.html">extractAIC</a></code> makes the
 appropriate adjustment for a <code>gaussian</code> family, but may need to be
 amended for other cases.  (The <code>binomial</code> and <code>poisson</code>
 families have fixed <code>scale</code> by default and do not correspond
@@ -158,7 +159,7 @@ may be a problem if there are missing values and <span style="font-family: Couri
 <code>na.action = na.omit</code> is used.  We suggest you remove the
 missing values first.
 </p>
-<p>Calls to the function <code><a href="nobs.html">nobs</a></code> are used to check that the
+<p>Calls to the function <code><a href="../../stats/help/nobs.html">nobs</a></code> are used to check that the
 number of observations involved in the fitting process remains unchanged.
 </p>
 
@@ -168,7 +169,7 @@ number of observations involved in the fitting process remains unchanged.
 <p>This function differs considerably from the function in S, which uses a
 number of approximations and does not in general compute the correct AIC.
 </p>
-<p>This is a minimal implementation.  Use <code><a href="../../MASS/html/stepAIC.html">stepAIC</a></code>
+<p>This is a minimal implementation.  Use <code><a href="../../MASS/help/stepAIC.html">stepAIC</a></code>
 in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> for a wider range of object classes.
 </p>
 
@@ -176,7 +177,7 @@ in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">M
 <h3>Author(s)</h3>
 
 <p>B. D. Ripley: <code>step</code> is a slightly simplified version of
-<code><a href="../../MASS/html/stepAIC.html">stepAIC</a></code> in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> (Venables &amp;
+<code><a href="../../MASS/help/stepAIC.html">stepAIC</a></code> in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a> (Venables &amp;
 Ripley, 2002 and earlier editions).
 </p>
 <p>The idea of a <code>step</code> function follows that described in Hastie &amp;
@@ -199,8 +200,8 @@ New York: Springer (4th ed).
 
 <h3>See Also</h3>
 
-<p><code><a href="../../MASS/html/stepAIC.html">stepAIC</a></code> in <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>, <code><a href="add1.html">add1</a></code>,
-<code><a href="add1.html">drop1</a></code>
+<p><code><a href="../../MASS/help/stepAIC.html">stepAIC</a></code> in <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>, <code><a href="../../stats/help/add1.html">add1</a></code>,
+<code><a href="../../stats/help/drop1.html">drop1</a></code>
 </p>
 
 
@@ -217,5 +218,5 @@ summary(slm1)
 slm1$anova
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

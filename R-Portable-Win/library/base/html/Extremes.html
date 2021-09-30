@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Maxima and Minima</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Extremes {base}"><tr><td>Extremes {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -51,8 +52,8 @@ removed.</p>
 <h3>Details</h3>
 
 <p><code>max</code> and <code>min</code> return the maximum or minimum of <em>all</em>
-the  values present in their arguments, as <code><a href="integer.html">integer</a></code> if
-all are <code>logical</code> or <code>integer</code>, as <code><a href="double.html">double</a></code> if
+the  values present in their arguments, as <code><a href="../../base/help/integer.html">integer</a></code> if
+all are <code>logical</code> or <code>integer</code>, as <code><a href="../../base/help/double.html">double</a></code> if
 all are numeric, and character otherwise.
 </p>
 <p>If <code>na.rm</code> is <code>FALSE</code> an <code>NA</code> value in any of the
@@ -75,8 +76,8 @@ the maximum (minimum) of the first elements of all the arguments, the
 second element of the result is the maximum (minimum) of the second
 elements of all the arguments and so on.  Shorter inputs (of non-zero
 length) are recycled if necessary.  Attributes (see
-<code><a href="attributes.html">attributes</a></code>: such as <code><a href="names.html">names</a></code> or
-<code><a href="dim.html">dim</a></code>) are copied from the first argument (if applicable,
+<code><a href="../../base/help/attributes.html">attributes</a></code>: such as <code><a href="../../base/help/names.html">names</a></code> or
+<code><a href="../../base/help/dim.html">dim</a></code>) are copied from the first argument (if applicable,
 e.g., <em>not</em> for an <code>S4</code> object).
 </p>
 <p><code>pmax.int</code> and <code>pmin.int</code> are faster internal versions only
@@ -86,7 +87,7 @@ complex vectors since these have no ordering.)
 </p>
 <p><code>max</code> and <code>min</code> are generic functions: methods can be
 defined for them individually or via the
-<code><a href="groupGeneric.html">Summary</a></code> group generic.  For this to
+<code><a href="../../base/help/S3groupGeneric.html">Summary</a></code> group generic.  For this to
 work properly, the arguments <code>...</code> should be unnamed, and
 dispatch is on the first argument.
 </p>
@@ -98,7 +99,7 @@ Note that <code>max(NA, Inf) == NA</code> even though the maximum would be
 </p>
 <p>Character versions are sorted lexicographically, and this depends on
 the collating sequence of the locale in use: the help for
-&lsquo;<a href="Comparison.html">Comparison</a>&rsquo; gives details.  The max/min of an empty
+&lsquo;<a href="../../base/help/Comparison.html">Comparison</a>&rsquo; gives details.  The max/min of an empty
 character vector is defined to be character <code>NA</code>.  (One could
 argue that as <code>""</code> is the smallest character element, the maximum
 should be <code>""</code>, but there is no obvious candidate for the
@@ -151,8 +152,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="range.html">range</a></code> (<em>both</em> min and max) and
-<code><a href="which.min.html">which.min</a></code> (<code>which.max</code>) for the <em>arg min</em>,
+<p><code><a href="../../base/help/range.html">range</a></code> (<em>both</em> min and max) and
+<code><a href="../../base/help/which.min.html">which.min</a></code> (<code>which.max</code>) for the <em>arg min</em>,
 i.e., the location where an extreme value occurs.
 </p>
 <p>&lsquo;<a href="../../grDevices/html/plotmath.html">plotmath</a>&rsquo; for the use of <code>min</code> in plot annotation.
@@ -183,5 +184,5 @@ stopifnot(identical(D,  cut01(D) ),
           identical(n0, pmax(n0, 4)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

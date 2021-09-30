@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: F Test to Compare Two Variances</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for var.test {stats}"><tr><td>var.test {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -63,7 +64,7 @@ with two levels giving the corresponding groups.</p>
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>an optional matrix or data frame (or similar: see
-<code><a href="model.frame.html">model.frame</a></code>) containing the variables in the
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>) containing the variables in the
 formula <code>formula</code>.  By default the variables are taken from
 <code>environment(formula)</code>.</p>
 </td></tr>
@@ -145,9 +146,9 @@ hypothesis.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="bartlett.test.html">bartlett.test</a></code> for testing homogeneity of variances in
+<p><code><a href="../../stats/help/bartlett.test.html">bartlett.test</a></code> for testing homogeneity of variances in
 more than two samples from normal distributions;
-<code><a href="ansari.test.html">ansari.test</a></code> and <code><a href="mood.test.html">mood.test</a></code> for two rank
+<code><a href="../../stats/help/ansari.test.html">ansari.test</a></code> and <code><a href="../../stats/help/mood.test.html">mood.test</a></code> for two rank
 based (nonparametric) two-sample tests for difference in scale.
 </p>
 
@@ -161,5 +162,5 @@ var.test(x, y)                  # Do x and y have the same variance?
 var.test(lm(x ~ 1), lm(y ~ 1))  # The same.
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

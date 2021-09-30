@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Foreign Function Interface</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dyn.load {base}"><tr><td>dyn.load {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -69,8 +70,8 @@ the DLL given by this argument (plus the conventional extension,
 &lsquo;<span class="file">.so</span>&rsquo;, &lsquo;<span class="file">.sl</span>&rsquo;, &lsquo;<span class="file">.dll</span>&rsquo;, ...).  This is intended to
 add safety for packages, which can ensure by using this argument
 that no other package can override their external symbols.  This is
-used in the same way as in <code><a href="Foreign.html">.C</a></code>, <code><a href="CallExternal.html">.Call</a></code>,
-<code><a href="Foreign.html">.Fortran</a></code> and <code><a href="CallExternal.html">.External</a></code> functions.</p>
+used in the same way as in <code><a href="../../base/help/.C.html">.C</a></code>, <code><a href="../../base/help/.Call.html">.Call</a></code>,
+<code><a href="../../base/help/.Fortran.html">.Fortran</a></code> and <code><a href="../../base/help/.External.html">.External</a></code> functions.</p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
@@ -112,7 +113,7 @@ some exceptions.  <code>dyn.load</code> detects such changes,
 and restores R's control word to its default value of hex 8001F.
 This may cause the DLL to malfunction; if so, it should be rewritten
 to save and restore the control word itself.  If <code>warn.FPU</code>
-is set to <code>TRUE</code> using the <code><a href="options.html">options</a></code> function,
+is set to <code>TRUE</code> using the <code><a href="../../base/help/options.html">options</a></code> function,
 a warning will be printed.  (If the warning says
 that the control word was changed from some other value than 8001F,
 please report the circumstances to the Windows maintainers:
@@ -127,7 +128,7 @@ the specified DLL to the executing <span style="font-family: Courier New, Courie
 <code>.Call</code>, <code>.Fortran</code> and <code>.External</code> can then be used to
 execute compiled C functions or Fortran subroutines contained in the
 library.  The return value of <code>dyn.load</code> is an object of class
-<code>DLLInfo</code>.  See <code><a href="getLoadedDLLs.html">getLoadedDLLs</a></code> for information about
+<code>DLLInfo</code>.  See <code><a href="../../base/help/getLoadedDLLs.html">getLoadedDLLs</a></code> for information about
 this class.
 </p>
 <p>The function <code>dyn.unload</code> unlinks the DLL.  Note that unloading a
@@ -141,7 +142,7 @@ searchable</em> and hence available for use as a character string value
 for argument <code>.NAME</code> in <code>.C</code> or <code>.Fortran</code> or
 <code>.Call</code> or <code>.External</code>.  It will succeed if any one of the
 four calling functions would succeed in using the entry point unless
-<code>type</code> is specified.  (See <code><a href="Foreign.html">.Fortran</a></code> for how Fortran
+<code>type</code> is specified.  (See <code><a href="../../base/help/.Fortran.html">.Fortran</a></code> for how Fortran
 symbols are mapped.)  Note that symbols in base packages are not
 searchable, and other packages can be so marked.
 </p>
@@ -175,7 +176,7 @@ variable <span class="env">PATH</span>.
 
 <p>Packages often want to supply dependent DLLs in their &lsquo;<span class="file">libs</span>&rsquo;
 directory, and do this by setting the <span class="env">PATH</span> variable
-(<code><a href="library.dynam.html">library.dynam</a></code> does that automatically in recent
+(<code><a href="../../base/help/library.dynam.html">library.dynam</a></code> does that automatically in recent
 versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>), but the DLL search order means that DLLs in the
 launch directory and in system directories will be preferred.  On
 Windows XP SP1 and later there is a way to modify the search order.
@@ -188,10 +189,10 @@ only one directory can be inserted in this way.)
 <p>Users have been confused by messages like
 </p>
 <pre>
- error: unable to load shared object
- '.../library/rJava/libs/x64/rJava.dll':
- LoadLibrary failure:  The specified module could not be found.
-</pre>
+    error: unable to load shared object
+    '.../library/rJava/libs/x64/rJava.dll':
+    LoadLibrary failure:  The specified module could not be found.
+  </pre>
 <p>The final line is a Windows (not <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>) diagnostic: the &lsquo;module&rsquo;
 that could not be found is not &lsquo;<span class="file">rJava.dll</span>&rsquo; but something else
 Windows is looking for (here most likely Java DLLs): if you are lucky
@@ -202,7 +203,7 @@ there will be a dialog box with more details.
 <h3>Warning</h3>
 
 <p>Do not use <code>dyn.unload</code> on a DLL loaded by
-<code><a href="library.dynam.html">library.dynam</a></code>: use <code><a href="library.dynam.html">library.dynam.unload</a></code>.
+<code><a href="../../base/help/library.dynam.html">library.dynam</a></code>: use <code><a href="../../base/help/library.dynam.unload.html">library.dynam.unload</a></code>.
 This is needed for system housekeeping.
 </p>
 
@@ -255,15 +256,15 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="library.dynam.html">library.dynam</a></code> to be used inside a package's
-<code><a href="ns-hooks.html">.onLoad</a></code> initialization.
+<p><code><a href="../../base/help/library.dynam.html">library.dynam</a></code> to be used inside a package's
+<code><a href="../../base/help/.onLoad.html">.onLoad</a></code> initialization.
 </p>
 <p><code><a href="../../utils/html/SHLIB.html">SHLIB</a></code> for how to create suitable DLLs.
 </p>
-<p><code><a href="Foreign.html">.C</a></code>,
-<code><a href="Foreign.html">.Fortran</a></code>,
-<code><a href="CallExternal.html">.External</a></code>,
-<code><a href="CallExternal.html">.Call</a></code>.
+<p><code><a href="../../base/help/.C.html">.C</a></code>,
+<code><a href="../../base/help/.Fortran.html">.Fortran</a></code>,
+<code><a href="../../base/help/.External.html">.External</a></code>,
+<code><a href="../../base/help/.Call.html">.Call</a></code>.
 </p>
 
 
@@ -276,5 +277,5 @@ is.loaded("supsmu", "stats", "Fortran")
 is.loaded("PDF", type = "External") # pdf() device in grDevices
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

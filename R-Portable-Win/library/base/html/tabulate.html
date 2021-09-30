@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Tabulation for Vectors</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for tabulate {base}"><tr><td>tabulate {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,7 +28,7 @@ tabulate(bin, nbins = max(1, bin, na.rm = TRUE))
 <tr valign="top"><td><code>bin</code></td>
 <td>
 <p>a numeric vector (of positive integers), or a factor.
-<a href="LongVectors.html">Long vectors</a> are supported.</p>
+<a href="../../base/help/Long+20vectors.html">Long vectors</a> are supported.</p>
 </td></tr>
 <tr valign="top"><td><code>nbins</code></td>
 <td>
@@ -38,19 +39,19 @@ tabulate(bin, nbins = max(1, bin, na.rm = TRUE))
 
 <h3>Details</h3>
 
-<p><code>tabulate</code> is the workhorse for the <code><a href="table.html">table</a></code> function.
+<p><code>tabulate</code> is the workhorse for the <code><a href="../../base/help/table.html">table</a></code> function.
 </p>
 <p>If <code>bin</code> is a factor, its internal integer representation
 is tabulated.
 </p>
 <p>If the elements of <code>bin</code> are numeric but not integers,
-they are truncated by <code><a href="integer.html">as.integer</a></code>.
+they are truncated by <code><a href="../../base/help/as.integer.html">as.integer</a></code>.
 </p>
 
 
 <h3>Value</h3>
 
-<p>An integer valued <code><a href="integer.html">integer</a></code> or <code><a href="double.html">double</a></code> vector
+<p>An integer valued <code><a href="../../base/help/integer.html">integer</a></code> or <code><a href="../../base/help/double.html">double</a></code> vector
 (without names).  There is a bin for each of the values <code>1,
   ..., nbins</code>; values outside that range and <code>NA</code>s are (silently)
 ignored.
@@ -64,7 +65,7 @@ value is of type double for such long <code>bin</code> vectors.
 
 <h3>See Also</h3>
 
-<p><code><a href="table.html">table</a></code>, <code><a href="factor.html">factor</a></code>.
+<p><code><a href="../../base/help/table.html">table</a></code>, <code><a href="../../base/help/factor.html">factor</a></code>.
 </p>
 
 
@@ -78,5 +79,5 @@ tabulate(c(-2,0,2,3,3,5), nbins = 3)
 tabulate(factor(letters[1:10]))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Remove Objects from a Specified Environment</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for remove {base}"><tr><td>remove {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -54,7 +55,7 @@ current environment.  See &lsquo;details&rsquo; for other possibilities.</p>
 </td></tr>
 <tr valign="top"><td><code>envir</code></td>
 <td>
-<p>the <code><a href="environment.html">environment</a></code> to use.  See &lsquo;details&rsquo;.</p>
+<p>the <code><a href="../../base/help/environment.html">environment</a></code> to use.  See &lsquo;details&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>inherits</code></td>
 <td>
@@ -68,16 +69,16 @@ inspected?</p>
 
 <p>The <code>pos</code> argument can specify the  environment from which to remove
 the objects in any of several ways:
-as an integer (the position in the <code><a href="search.html">search</a></code> list); as
+as an integer (the position in the <code><a href="../../base/help/search.html">search</a></code> list); as
 the character string name of an element in the search list; or as an
-<code><a href="environment.html">environment</a></code> (including using <code><a href="sys.parent.html">sys.frame</a></code> to
+<code><a href="../../base/help/environment.html">environment</a></code> (including using <code><a href="../../base/help/sys.frame.html">sys.frame</a></code> to
 access the currently active function calls).
 The <code>envir</code> argument is an alternative way to specify an
 environment, but is primarily there for back compatibility.
 </p>
 <p>It is not allowed to remove variables from the base environment and
 base namespace, nor from any environment which is locked (see
-<code><a href="bindenv.html">lockEnvironment</a></code>).
+<code><a href="../../base/help/lockEnvironment.html">lockEnvironment</a></code>).
 </p>
 <p>Earlier versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> incorrectly claimed that supplying a character
 vector in <code>...</code> removed the objects named in the character
@@ -96,7 +97,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="ls.html">ls</a></code>, <code><a href="ls.html">objects</a></code>
+<p><code><a href="../../base/help/ls.html">ls</a></code>, <code><a href="../../base/help/objects.html">objects</a></code>
 </p>
 
 
@@ -114,5 +115,5 @@ rm(list = ls())
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

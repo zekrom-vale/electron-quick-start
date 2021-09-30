@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: R/LaTeX Driver for Sweave</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for RweaveLatex {utils}"><tr><td>RweaveLatex {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>A driver for <code><a href="Sweave.html">Sweave</a></code> that translates <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code chunks in
+<p>A driver for <code><a href="../../utils/help/Sweave.html">Sweave</a></code> that translates <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code chunks in
 LaTeX files by &ldquo;running them&rdquo;, i.e., <code><a href="../../base/html/parse.html">parse</a>()</code> and
 <code><a href="../../base/html/eval.html">eval</a>()</code> each.
 </p>
@@ -31,7 +32,7 @@ RweaveLatexSetup(file, syntax, output = NULL, quiet = FALSE,
 <tr valign="top"><td><code>file</code></td>
 <td>
 <p>Name of Sweave source file.  See the description of the
-corresponding argument of <code><a href="Sweave.html">Sweave</a></code>.</p>
+corresponding argument of <code><a href="../../utils/help/Sweave.html">Sweave</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>syntax</code></td>
 <td>
@@ -149,7 +150,7 @@ produced by <code>Sweave</code>, and their order in the
 
 <p><code>RweaveLatex</code> supports the following options for code chunks (the
 values in parentheses show the default values).  Character string
-values should be quoted when passed from <code><a href="Sweave.html">Sweave</a></code> through
+values should be quoted when passed from <code><a href="../../utils/help/Sweave.html">Sweave</a></code> through
 <code>...</code> but not when use in the header of a code chunk.
 </p>
 
@@ -281,7 +282,7 @@ the document. For unknown options, their type is set at first use.
 <code>fig</code> and <code>eval</code> true, the following call is made
 </p>
 <pre>  get(options$grdevice, envir = .GlobalEnv)(name=, width=,
-                                              height=, options)
+                                            height=, options)
 </pre>
 <p>which should open a graphics device.  The chunk's code is then
 evaluated and <code><a href="../../grDevices/html/dev.html">dev.off</a></code> is called.  Normally a function of
@@ -341,8 +342,8 @@ in the workspace.  Then all code chunks specified with
 <p>&lsquo;<a href="../doc/Sweave.pdf">Sweave User Manual</a>&rsquo;, a vignette in
 the <span class="pkg">utils</span> package.
 </p>
-<p><code><a href="Sweave.html">Sweave</a></code>, <code><a href="Rtangle.html">Rtangle</a></code>
+<p><code><a href="../../utils/help/Sweave.html">Sweave</a></code>, <code><a href="../../utils/help/Rtangle.html">Rtangle</a></code>
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

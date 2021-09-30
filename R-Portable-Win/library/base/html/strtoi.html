@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert Strings to Integers</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for strtoi {base}"><tr><td>strtoi {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -25,7 +26,7 @@ function <code>strtol</code>, or choose a suitable base following the C rules.
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>a character vector, or something coercible to this by
-<code><a href="character.html">as.character</a></code>.</p>
+<code><a href="../../base/help/as.character.html">as.character</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>base</code></td>
 <td>
@@ -56,13 +57,13 @@ followed by <code>x</code> or <code>X</code>) and hexadecimal constants (prefix
 
 <p>An integer vector of the same length as <code>x</code>.  Values which cannot
 be interpreted as integers or would overflow are returned as
-<code><a href="NA.html">NA_integer_</a></code>.
+<code><a href="../../base/help/NA_integer_.html">NA_integer_</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p>For decimal strings <code><a href="integer.html">as.integer</a></code> is equally useful.
+<p>For decimal strings <code><a href="../../base/help/as.integer.html">as.integer</a></code> is equally useful.
 </p>
 
 
@@ -74,5 +75,5 @@ strtoi(c("ffff", "FFFF"), 16L)
 strtoi(c("177", "377"), 8L)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

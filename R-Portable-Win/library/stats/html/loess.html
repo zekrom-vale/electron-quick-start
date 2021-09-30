@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Local Polynomial Regression Fitting</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for loess {stats}"><tr><td>loess {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -31,7 +32,7 @@ loess(formula, data, weights, subset, na.action, model = FALSE,
 <table summary="R argblock">
 <tr valign="top"><td><code>formula</code></td>
 <td>
-<p>a <a href="formula.html">formula</a> specifying the numeric response and
+<p>a <a href="../../stats/help/formula.html">formula</a> specifying the numeric response and
 one to four numeric predictors (best specified via an interaction,
 but can also be specified additively).  Will be coerced to a formula
 if necessary.</p>
@@ -110,7 +111,7 @@ biweight function.  Can be abbreviated.</p>
 </td></tr>
 <tr valign="top"><td><code>control</code></td>
 <td>
-<p>control parameters: see <code><a href="loess.control.html">loess.control</a></code>.</p>
+<p>control parameters: see <code><a href="../../stats/help/loess.control.html">loess.control</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -140,7 +141,7 @@ procedure with Tukey's biweight are used.  Be aware that as the initial
 value is the least-squares fit, this need not be a very resistant fit.
 </p>
 <p>It can be important to tune the control list to achieve acceptable
-speed.  See <code><a href="loess.control.html">loess.control</a></code> for details.
+speed.  See <code><a href="../../stats/help/loess.control.html">loess.control</a></code> for details.
 </p>
 
 
@@ -176,7 +177,7 @@ Grosse and Shyu.
 
 <p>The 1998 version of <code>cloess</code> package of Cleveland,
 Grosse and Shyu.  A later version is available as <code>dloess</code> at
-<a href="http://www.netlib.org/a">http://www.netlib.org/a</a>.
+<a href="https://www.netlib.org/a/">https://www.netlib.org/a/</a>.
 </p>
 
 
@@ -190,10 +191,10 @@ and T.J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="loess.control.html">loess.control</a></code>,
-<code><a href="predict.loess.html">predict.loess</a></code>.
+<p><code><a href="../../stats/help/loess.control.html">loess.control</a></code>,
+<code><a href="../../stats/help/predict.loess.html">predict.loess</a></code>.
 </p>
-<p><code><a href="lowess.html">lowess</a></code>, the ancestor of <code>loess</code> (with
+<p><code><a href="../../stats/help/lowess.html">lowess</a></code>, the ancestor of <code>loess</code> (with
 different defaults!).
 </p>
 
@@ -209,5 +210,5 @@ cars.lo2 &lt;- loess(dist ~ speed, cars,
 predict(cars.lo2, data.frame(speed = seq(5, 30, 1)), se = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

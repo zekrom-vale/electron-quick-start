@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Environment Browser</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for browser {base}"><tr><td>browser {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,8 +36,9 @@ invoked.</p>
 </td></tr>
 <tr valign="top"><td><code>expr</code></td>
 <td>
-<p>An expression, which if it evaluates to <code>TRUE</code> the
-debugger will invoked, otherwise control is returned directly.</p>
+<p>a &ldquo;condition&rdquo;.  By default, and whenever not false
+after being coerced to <code><a href="../../base/help/logical.html">logical</a></code>, the
+debugger will be invoked, otherwise control is returned directly.</p>
 </td></tr>
 <tr valign="top"><td><code>skipCalls</code></td>
 <td>
@@ -56,13 +58,14 @@ current expression and allows access to the <span style="font-family: Courier Ne
 allow helper programs (e.g., external debuggers) to insert specific
 values here, so that the specific call to browser (perhaps its location
 in a source file) can be identified and special processing can be
-achieved.  The values can be retrieved by calling <code><a href="browserText.html">browserText</a></code>
-and <code><a href="browserText.html">browserCondition</a></code>.
+achieved.  The values can be retrieved by calling <code><a href="../../base/help/browserText.html">browserText</a></code>
+and <code><a href="../../base/help/browserCondition.html">browserCondition</a></code>.
 </p>
 <p>The purpose of the <code>expr</code> argument is to allow for the illusion
 of conditional debugging. It is an illusion, because execution is
 always paused at the call to browser, but control is only passed
-to the evaluator described below if <code>expr</code> evaluates to <code>TRUE</code>.
+to the evaluator described below if <code>expr</code> is not <code>FALSE</code> after
+coercion to logical.
 In most cases it is going to be more efficient to use an <code>if</code>
 statement in the calling program, but in some cases using this argument
 will be simpler.
@@ -107,7 +110,7 @@ return to the top-level prompt.</p>
 
 <p>Leading and trailing whitespace is ignored, except for an empty line.
 Handling of empty lines depends on the <code>"browserNLdisabled"</code> 
-<a href="options.html">option</a>; if it is <code>TRUE</code>, empty lines are ignored.  
+<a href="../../base/help/options.html">option</a>; if it is <code>TRUE</code>, empty lines are ignored.  
 If not, an empty line is the same as <code>n</code> (or <code>s</code>, if it was used 
 most recently).
 </p>
@@ -119,11 +122,11 @@ to look at an object with a name such as <code>n</code>, print it
 explicitly, or use autoprint via <code>(n)</code>.
 </p>
 <p>The number of lines printed for the deparsed call can be limited by
-setting <code><a href="options.html">options</a>(deparse.max.lines)</code>.
+setting <code><a href="../../base/help/options.html">options</a>(deparse.max.lines)</code>.
 </p>
 <p>The browser prompt is of the form <code>Browse[<var>n</var>]&gt;</code>: here
 <code>var{n}</code> indicates the &lsquo;browser level&rsquo;.  The browser can
-be called when browsing (and often is when <code><a href="debug.html">debug</a></code> is in
+be called when browsing (and often is when <code><a href="../../base/help/debug.html">debug</a></code> is in
 use), and each recursive call increases the number.  (The actual
 number is the number of &lsquo;contexts&rsquo; on the context stack: this
 is usually <code>2</code> for the outer level of browsing and <code>1</code> when
@@ -148,10 +151,10 @@ Springer.
 
 <h3>See Also</h3>
 
-<p><code><a href="debug.html">debug</a></code>, and
-<code><a href="traceback.html">traceback</a></code> for the stack on error.
-<code><a href="browserText.html">browserText</a></code> for how to retrieve the text and condition.
+<p><code><a href="../../base/help/debug.html">debug</a></code>, and
+<code><a href="../../base/help/traceback.html">traceback</a></code> for the stack on error.
+<code><a href="../../base/help/browserText.html">browserText</a></code> for how to retrieve the text and condition.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

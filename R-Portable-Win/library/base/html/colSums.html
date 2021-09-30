@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Form Row and Column Sums and Means</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for colSums {base}"><tr><td>colSums {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -60,7 +61,7 @@ dimensions <code>1:dims</code>.</p>
 
 <h3>Details</h3>
 
-<p>These functions are equivalent to use of <code><a href="apply.html">apply</a></code> with
+<p>These functions are equivalent to use of <code><a href="../../base/help/apply.html">apply</a></code> with
 <code>FUN = mean</code> or <code>FUN = sum</code> with appropriate margins, but
 are a lot faster.  As they are written for speed, they blur over some
 of the subtleties of <code>NaN</code> and <code>NA</code>.  If <code>na.rm =
@@ -90,14 +91,14 @@ array.
 <p>If there are no values in a range to be summed over (after removing
 missing values with <code>na.rm = TRUE</code>), that
 component of the output is set to <code>0</code> (<code>*Sums</code>) or <code>NaN</code>
-(<code>*Means</code>), consistent with <code><a href="sum.html">sum</a></code> and
-<code><a href="mean.html">mean</a></code>.
+(<code>*Means</code>), consistent with <code><a href="../../base/help/sum.html">sum</a></code> and
+<code><a href="../../base/help/mean.html">mean</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="apply.html">apply</a></code>, <code><a href="rowsum.html">rowsum</a></code>
+<p><code><a href="../../base/help/apply.html">apply</a></code>, <code><a href="../../base/help/rowsum.html">rowsum</a></code>
 </p>
 
 
@@ -132,5 +133,5 @@ rowSums(x, na.rm = TRUE); colSums(x, na.rm = TRUE)
 rowMeans(x, na.rm = TRUE); colMeans(x, na.rm = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

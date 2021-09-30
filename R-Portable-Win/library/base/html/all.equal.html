@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test if Two Objects are (Nearly) Equal</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for all.equal {base}"><tr><td>all.equal {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ and <code>y</code> testing &lsquo;near equality&rsquo;.  If they are different,
 comparison is still made to some extent, and a report of the
 differences is returned.    Do not use <code>all.equal</code> directly in
 <code>if</code> expressions&mdash;either use <code>isTRUE(all.equal(....))</code> or
-<code><a href="identical.html">identical</a></code> if appropriate.
+<code><a href="../../base/help/identical.html">identical</a></code> if appropriate.
 </p>
 
 
@@ -35,10 +36,15 @@ all.equal(target, current, ...,
           check.attributes = TRUE, use.names = TRUE)
 
 ## S3 method for class 'environment'
-all.equal(target, current, all.names=TRUE, ...)
+all.equal(target, current, all.names = TRUE,
+          evaluate = TRUE, ...)
+
+## S3 method for class 'function'
+all.equal(target, current, check.environment=TRUE, ...)
 
 ## S3 method for class 'POSIXt'
-all.equal(target, current, ..., tolerance = 1e-3, scale)
+all.equal(target, current, ..., tolerance = 1e-3, scale,
+          check.tzone = TRUE)
 
 
 attr.all.equal(target, current, ...,
@@ -83,32 +89,51 @@ differ in a few places; see the extensive example.</p>
 </td></tr>
 <tr valign="top"><td><code>formatFUN</code></td>
 <td>
-<p>a <code><a href="function.html">function</a></code> of two arguments,
+<p>a <code><a href="../../base/help/function.html">function</a></code> of two arguments,
 <code>err</code>, the relative, absolute or scaled error, and
 <code>what</code>, a character string indicating the <em>kind</em> of error;
-maybe used, e.g., to format relative and absolute errors differently.</p>
+may be used, e.g., to format relative and absolute errors differently.</p>
 </td></tr>
 <tr valign="top"><td><code>check.attributes</code></td>
 <td>
 <p>logical indicating if the
-<code><a href="attributes.html">attributes</a></code> of <code>target</code> and <code>current</code>
+<code><a href="../../base/help/attributes.html">attributes</a></code> of <code>target</code> and <code>current</code>
 (other than the names) should be compared.</p>
 </td></tr>
 <tr valign="top"><td><code>use.names</code></td>
 <td>
-<p>logical indicating if <code><a href="list.html">list</a></code> comparison
+<p>logical indicating if <code><a href="../../base/help/list.html">list</a></code> comparison
 should report differing components by name (if matching) instead of
 integer index.  Note that this comes after <code>...</code> and so must
 be specified by its full name.</p>
 </td></tr>
 <tr valign="top"><td><code>all.names</code></td>
 <td>
-<p>logical passed to <code><a href="ls.html">ls</a></code> indicating if
+<p>logical passed to <code><a href="../../base/help/ls.html">ls</a></code> indicating if
 &ldquo;hidden&rdquo; objects should also be considered in the environments.</p>
+</td></tr>
+<tr valign="top"><td><code>evaluate</code></td>
+<td>
+<p>for the <code>environment</code> method: <code><a href="../../base/help/logical.html">logical</a></code> indicating if
+&ldquo;promises should be forced&rdquo;, i.e., typically formal function arguments
+be evaluated for comparison.  If false, only the <code><a href="../../base/help/names.html">names</a></code> of
+the objects in the two environments are checked for equality.</p>
+</td></tr>
+<tr valign="top"><td><code>check.environment</code></td>
+<td>
+<p>logical requiring that the
+<code><a href="../../base/help/environment.html">environment</a>()</code>s of functions should be compared, too.
+You may need to set <code>check.environment=FALSE</code> in unexpected
+cases, such as when comparing two <code><a href="../../stats/html/nls.html">nls</a>()</code> fits.</p>
+</td></tr>
+<tr valign="top"><td><code>check.tzone</code></td>
+<td>
+<p>logical indicating if the <code>"tzone"</code> attributes
+of <code>target</code> and <code>current</code> should be compared.</p>
 </td></tr>
 <tr valign="top"><td><code>check.names</code></td>
 <td>
-<p>logical indicating if the <code><a href="names.html">names</a>(.)</code>
+<p>logical indicating if the <code><a href="../../base/help/names.html">names</a>(.)</code>
 of <code>target</code> and <code>current</code> should be compared.</p>
 </td></tr>
 </table>
@@ -135,31 +160,34 @@ numerical vectors is computed.  If this is smaller than
 otherwise relative differences scaled by the mean absolute
 <code>target</code> value.
 Note that these comparisons are computed only for those vector elements
-where <code>target</code> is not <code><a href="NA.html">NA</a></code> and differs from <code>current</code>.
+where <code>target</code> is not <code><a href="../../base/help/NA.html">NA</a></code> and differs from <code>current</code>.
 If <code>countEQ</code> is true, the equal and <code>NA</code> cases are
 <em>counted</em> in determining &ldquo;sample&rdquo; size.
 </p>
 <p>If <code>scale</code> is numeric (and positive), absolute comparisons are
 made after scaling (dividing) by <code>scale</code>.
 </p>
-<p>For complex <code>target</code>, the modulus (<code><a href="complex.html">Mod</a></code>) of the
+<p>For complex <code>target</code>, the modulus (<code><a href="../../base/help/Mod.html">Mod</a></code>) of the
 difference is used: <code>all.equal.numeric</code> is called so arguments
 <code>tolerance</code> and <code>scale</code> are available.
 </p>
-<p>The <code><a href="list.html">list</a></code> method compares components of
+<p>The <code><a href="../../base/help/list.html">list</a></code> method compares components of
 <code>target</code> and <code>current</code> recursively, passing all other
 arguments, as long as both are &ldquo;list-like&rdquo;, i.e., fulfill
-either <code><a href="vector.html">is.vector</a></code> or <code><a href="list.html">is.list</a></code>.
+either <code><a href="../../base/help/is.vector.html">is.vector</a></code> or <code><a href="../../base/help/is.list.html">is.list</a></code>.
 </p>
-<p>The <code><a href="environment.html">environment</a></code> method works via the <code>list</code> method,
+<p>The <code><a href="../../base/help/environment.html">environment</a></code> method works via the <code>list</code> method,
 and is also used for reference classes (unless a specific
 <code>all.equal</code> method is defined).
 </p>
-<p>The methods for the date-time classes by default allow a tolerance of
-<code>tolerance = 0.001</code> seconds, and ignore <code>scale</code>.
+<p>The method for date-time objects uses <code>all.equal.numeric</code> to
+compare times (in <code>"<a href="../../base/help/POSIXct.html">POSIXct</a>"</code> representation) with a
+default <code>tolerance</code> of 0.001 seconds, ignoring <code>scale</code>.
+A time zone mismatch between <code>target</code> and <code>current</code> is
+reported unless <code>check.tzone = FALSE</code>.
 </p>
 <p><code>attr.all.equal</code> is used for comparing
-<code><a href="attributes.html">attributes</a></code>, returning <code>NULL</code> or a
+<code><a href="../../base/help/attributes.html">attributes</a></code>, returning <code>NULL</code> or a
 <code>character</code> vector.
 </p>
 
@@ -167,7 +195,7 @@ and is also used for reference classes (unless a specific
 <h3>Value</h3>
 
 <p>Either <code>TRUE</code> (<code>NULL</code> for <code>attr.all.equal</code>) or a vector
-of <code><a href="mode.html">mode</a></code> <code>"character"</code> describing the differences
+of <code><a href="../../base/help/mode.html">mode</a></code> <code>"character"</code> describing the differences
 between <code>target</code> and <code>current</code>.
 </p>
 
@@ -182,8 +210,8 @@ Springer (for <code>=</code>).
 
 <h3>See Also</h3>
 
-<p><code><a href="identical.html">identical</a></code>, <code><a href="Logic.html">isTRUE</a></code>, <code><a href="Comparison.html">==</a></code>, and
-<code><a href="all.html">all</a></code> for exact equality testing.
+<p><code><a href="../../base/help/identical.html">identical</a></code>, <code><a href="../../base/help/isTRUE.html">isTRUE</a></code>, <code><a href="../../base/help/+3D+3D.html">==</a></code>, and
+<code><a href="../../base/help/all.html">all</a></code> for exact equality testing.
 </p>
 
 
@@ -222,7 +250,18 @@ mtext(paste("mean(all.equal(x1, x2*(1 + eps_k))) {100 x} Mean rel.diff.=",
 ## With argument  countEQ=TRUE, get "the same" (w/o need for jittering):
 mtext(paste("all.equal(x1,x2, countEQ=TRUE) :",
           signif(all.eqNum(x1,x2, countEQ=TRUE), 3)), line= -6, col=2)
+
+## comparison of date-time objects
+now &lt;- Sys.time()
+stopifnot(
+all.equal(now, now + 1e-4)  # TRUE (default tolerance = 0.001 seconds)
+)
+all.equal(now, now + 0.2)
+all.equal(now, as.POSIXlt(now, "UTC"))
+stopifnot(
+all.equal(now, as.POSIXlt(now, "UTC"), check.tzone = FALSE)  # TRUE
+)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

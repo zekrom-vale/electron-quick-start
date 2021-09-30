@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Reverse Elements</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rev {base}"><tr><td>rev {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,7 +16,7 @@ function with a default method for vectors and one for
 </p>
 <p>Note that this is no longer needed (nor efficient) for obtaining
 vectors sorted into descending order, since that is now rather more
-directly achievable by <code><a href="sort.html">sort</a>(x, decreasing = TRUE)</code>.
+directly achievable by <code><a href="../../base/help/sort.html">sort</a>(x, decreasing = TRUE)</code>.
 </p>
 
 
@@ -46,7 +47,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="seq.html">seq</a></code>, <code><a href="sort.html">sort</a></code>.</p>
+<p><code><a href="../../base/help/seq.html">seq</a></code>, <code><a href="../../base/help/sort.html">sort</a></code>.</p>
 
 
 <h3>Examples</h3>
@@ -58,5 +59,5 @@ stopifnot(sort(x, decreasing = TRUE) == rev(sort(x)))
 stopifnot(rev(1:7) == 7:1)  #- don't need 'rev' here
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

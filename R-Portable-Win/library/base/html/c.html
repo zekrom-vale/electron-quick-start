@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Combine Values into a Vector or List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for c {base}"><tr><td>c {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,7 +34,9 @@ c(..., recursive = FALSE, use.names = TRUE)
 <table summary="R argblock">
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>objects to be concatenated.</p>
+<p>objects to be concatenated.  All <code><a href="../../base/help/NULL.html">NULL</a></code> entries
+are dropped before method dispatch unless at the very beginning of the
+argument list.</p>
 </td></tr>
 <tr valign="top"><td><code>recursive</code></td>
 <td>
@@ -43,7 +46,7 @@ their elements into a vector.</p>
 </td></tr>
 <tr valign="top"><td><code>use.names</code></td>
 <td>
-<p>logical indicating if <code><a href="names.html">names</a></code> should be
+<p>logical indicating if <code><a href="../../base/help/names.html">names</a></code> should be
 preserved.</p>
 </td></tr>
 </table>
@@ -54,23 +57,21 @@ preserved.</p>
 <p>The output type is determined from the highest type of the components
 in the hierarchy NULL &lt; raw &lt; logical &lt; integer &lt; double &lt; complex &lt; character
 &lt; list &lt; expression.  Pairlists are treated as lists, whereas non-vector
-components (such names and calls) are treated as one-element lists
+components (such as <code><a href="../../base/help/name.html">name</a></code>s / <code>symbol</code>s and <code><a href="../../base/help/call.html">call</a></code>s)
+are treated as one-element <code><a href="../../base/help/list.html">list</a></code>s
 which cannot be unlisted even if <code>recursive = TRUE</code>.
 </p>
-
-<p>Note that <code><a href="factor.html">factor</a></code>s are treated only via their
-internal <code><a href="integer.html">integer</a></code> codes; one proposal has been to use
-</p>
-<pre>   c.factor &lt;- function(..., recursive=TRUE) unlist(list(...), recursive=recursive)</pre>
-<p>if factor concatenation by <code>c()</code> should give a <code><a href="factor.html">factor</a></code>.
+<p>Note that in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &lt; 4.1.0, <code><a href="../../base/help/factor.html">factor</a></code>s were treated only via
+their internal <code><a href="../../base/help/integer.html">integer</a></code> codes: now there is
+<code><a href="../../base/help/c.factor.html">c.factor</a></code> method which combines factors into a factor.
 </p>
 <p><code>c</code> is sometimes used for its side effect of removing attributes
-except names, for example to turn an array into a vector.
+except names, for example to turn an <code><a href="../../base/help/array.html">array</a></code> into a vector.
 <code>as.vector</code> is a more intuitive way to do this, but also drops
 names.  Note that methods other than the default are not required
 to do this (and they will almost certainly preserve a class attribute).
 </p>
-<p>This is a <a href="Primitive.html">primitive</a> function.
+<p>This is a <a href="../../base/help/primitive.html">primitive</a> function.
 </p>
 
 
@@ -98,7 +99,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="unlist.html">unlist</a></code> and <code><a href="vector.html">as.vector</a></code> to produce
+<p><code><a href="../../base/help/unlist.html">unlist</a></code> and <code><a href="../../base/help/as.vector.html">as.vector</a></code> to produce
 attribute-free vectors.
 </p>
 
@@ -133,5 +134,5 @@ c(options(), recursive = TRUE)
 c(list(A = c(B = 1, C = 2), B = c(E = 7)), recursive = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Warn About Extraneous Arguments in the &quot;...&quot; of Its Caller</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for chkDots {base}"><tr><td>chkDots {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,7 +34,7 @@ chkDots(..., which.call = -1, allowed = character(0))
 </td></tr>
 <tr valign="top"><td><code>which.call</code></td>
 <td>
-<p>passed to <code><a href="sys.parent.html">sys.call</a>()</code>.  A caller may
+<p>passed to <code><a href="../../base/help/sys.call.html">sys.call</a>()</code>.  A caller may
 use -2 if the message should mention <em>its</em> caller.</p>
 </td></tr>
 <tr valign="top"><td><code>allowed</code></td>
@@ -52,7 +53,7 @@ warned about.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="warning.html">warning</a></code>,  <code><a href="dots.html">...</a></code>.
+<p><code><a href="../../base/help/warning.html">warning</a></code>,  <code><a href="../../base/help/....html">...</a></code>.
 </p>
 
 
@@ -68,5 +69,5 @@ density.f &lt;- function(x, ...) NextMethod("density")
 x &lt;- density(structure(rnorm(10), class="f"), bar=TRUE, baz=TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add Arrows to a Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for arrows {graphics}"><tr><td>arrows {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -50,14 +51,14 @@ drawn.</p>
 </td></tr>
 <tr valign="top"><td><code>col, lty, lwd</code></td>
 <td>
-<p><a href="par.html">graphical parameters</a>, possible vectors.
+<p><a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a>, possible vectors.
 <code>NA</code> values in <code>col</code> cause the arrow to be omitted.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p><a href="par.html">graphical parameters</a> such as <code>xpd</code> and the line
+<p><a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> such as <code>xpd</code> and the line
 characteristics <code>lend</code>, <code>ljoin</code> and <code>lmitre</code>:
-see <code><a href="par.html">par</a></code>.</p>
+see <code><a href="../../graphics/help/par.html">par</a></code>.</p>
 </td></tr>
 </table>
 
@@ -73,7 +74,7 @@ will be recycled to the length of the longest.
 <code>code = 3</code> a head is drawn at both ends of the arrow.  Unless
 <code>length = 0</code>, when no head is drawn.
 </p>
-<p>The <a href="par.html">graphical parameters</a> <code>col</code>, <code>lty</code> and <code>lwd</code>
+<p>The <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> <code>col</code>, <code>lty</code> and <code>lwd</code>
 can be vectors of length greater than one and will be recycled if
 necessary.
 </p>
@@ -101,7 +102,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="segments.html">segments</a></code> to draw segments.
+<p><code><a href="../../graphics/help/segments.html">segments</a></code> to draw segments.
 </p>
 
 
@@ -118,5 +119,5 @@ s &lt;- s[-length(s)]
 segments(x[s], y[s], x[s+2], y[s+2], col = "pink")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

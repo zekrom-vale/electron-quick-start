@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The QR Decomposition of a Matrix</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for qr {base}"><tr><td>qr {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -94,15 +95,15 @@ fitting <code>y</code> to the matrix with QR decomposition <code>qr</code>.
 <p>All the above functions keep <code>dimnames</code> (and <code>names</code>) of
 <code>x</code> and <code>y</code> if there are any.
 </p>
-<p><code>solve.qr</code> is the method for <code><a href="solve.html">solve</a></code> for <code>qr</code> objects.
+<p><code>solve.qr</code> is the method for <code><a href="../../base/help/solve.html">solve</a></code> for <code>qr</code> objects.
 <code>qr.solve</code> solves systems of equations via the QR decomposition:
 if <code>a</code> is a QR decomposition it is the same as <code>solve.qr</code>,
 but if <code>a</code> is a rectangular matrix the QR decomposition is
 computed first.  Either will handle over- and under-determined
 systems, providing a least-squares fit if appropriate.
 </p>
-<p><code>is.qr</code> returns <code>TRUE</code> if <code>x</code> is a <code><a href="list.html">list</a></code>
-and <code><a href="class.html">inherits</a></code> from <code>"qr"</code>.
+<p><code>is.qr</code> returns <code>TRUE</code> if <code>x</code> is a <code><a href="../../base/help/list.html">list</a></code>
+and <code><a href="../../base/help/inherits.html">inherits</a></code> from <code>"qr"</code>.
 </p>
 <p>It is not possible to coerce objects to mode <code>"qr"</code>.  Objects
 either are QR decompositions or they are not.
@@ -170,7 +171,7 @@ way.
 
 <p>To compute the determinant of a matrix (do you <em>really</em> need it?),
 the QR decomposition is much more efficient than using Eigen values
-(<code><a href="eigen.html">eigen</a></code>).  See <code><a href="det.html">det</a></code>.
+(<code><a href="../../base/help/eigen.html">eigen</a></code>).  See <code><a href="../../base/help/det.html">det</a></code>.
 </p>
 <p>Using LAPACK (including in the complex case) uses column pivoting and
 does not attempt to detect rank-deficient matrices.
@@ -184,8 +185,8 @@ does not attempt to detect rank-deficient matrices.
 routines <code>DGEQP3</code> and <code>ZGEQP3</code>.  Further LINPACK and LAPACK
 routines are used for <code>qr.coef</code>, <code>qr.qy</code> and <code>qr.aty</code>.
 </p>
-<p>LAPACK and LINPACK are from <a href="http://www.netlib.org/lapack">http://www.netlib.org/lapack</a> and
-<a href="http://www.netlib.org/linpack">http://www.netlib.org/linpack</a> and their guides are listed
+<p>LAPACK and LINPACK are from <a href="https://www.netlib.org/lapack/">https://www.netlib.org/lapack/</a> and
+<a href="https://www.netlib.org/linpack/">https://www.netlib.org/linpack/</a> and their guides are listed
 in the references.
 </p>
 
@@ -195,7 +196,7 @@ in the references.
 <p>Anderson. E. and ten others (1999)
 <em>LAPACK Users' Guide</em>. Third Edition. SIAM.<br />
 Available on-line at
-<a href="http://www.netlib.org/lapack/lug/lapack_lug.html">http://www.netlib.org/lapack/lug/lapack_lug.html</a>.
+<a href="https://www.netlib.org/lapack/lug/lapack_lug.html">https://www.netlib.org/lapack/lug/lapack_lug.html</a>.
 </p>
 <p>Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988)
 <em>The New S Language</em>.
@@ -208,12 +209,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="qraux.html">qr.Q</a></code>,  <code><a href="qraux.html">qr.R</a></code>,  <code><a href="qraux.html">qr.X</a></code> for
+<p><code><a href="../../base/help/qr.Q.html">qr.Q</a></code>,  <code><a href="../../base/help/qr.R.html">qr.R</a></code>,  <code><a href="../../base/help/qr.X.html">qr.X</a></code> for
 reconstruction of the matrices.
 <code><a href="../../stats/html/lmfit.html">lm.fit</a></code>,  <code><a href="../../stats/html/lsfit.html">lsfit</a></code>,
-<code><a href="eigen.html">eigen</a></code>, <code><a href="svd.html">svd</a></code>.
+<code><a href="../../base/help/eigen.html">eigen</a></code>, <code><a href="../../base/help/svd.html">svd</a></code>.
 </p>
-<p><code><a href="det.html">det</a></code> (using <code>qr</code>) to compute the determinant of a matrix.
+<p><code><a href="../../base/help/det.html">det</a></code> (using <code>qr</code>) to compute the determinant of a matrix.
 </p>
 
 
@@ -248,5 +249,5 @@ solve(qr(A, LAPACK = TRUE), b)
 # solutions will have one zero, not necessarily the same one
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

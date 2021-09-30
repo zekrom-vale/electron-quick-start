@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Loading/Attaching and Listing of Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for library {base}"><tr><td>library {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -39,7 +40,7 @@ conflictRules(pkg, mask.ok = NULL, exclude = NULL)
 <table summary="R argblock">
 <tr valign="top"><td><code>package, help</code></td>
 <td>
-<p>the name of a package, given as a <a href="name.html">name</a> or
+<p>the name of a package, given as a <a href="../../base/help/name.html">name</a> or
 literal character string, or a character string, depending on
 whether <code>character.only</code> is <code>FALSE</code> (default) or
 <code>TRUE</code>.</p>
@@ -48,14 +49,14 @@ whether <code>character.only</code> is <code>FALSE</code> (default) or
 <td>
 <p>the position on the search list at which to attach the
 loaded namespace.  Can also be the name of a position on the current
-search list as given by <code><a href="search.html">search</a>()</code>.</p>
+search list as given by <code><a href="../../base/help/search.html">search</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>lib.loc</code></td>
 <td>
 <p>a character vector describing the location of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 library trees to search through, or <code>NULL</code>.  The default value
 of <code>NULL</code> corresponds to all libraries currently known to
-<code><a href="libPaths.html">.libPaths</a>()</code>.
+<code><a href="../../base/help/.libPaths.html">.libPaths</a>()</code>.
 Non-existent library trees are silently ignored.</p>
 </td></tr>
 <tr valign="top"><td><code>character.only</code></td>
@@ -71,7 +72,7 @@ Non-existent library trees are silently ignored.</p>
 <tr valign="top"><td><code>warn.conflicts</code></td>
 <td>
 <p>logical.  If <code>TRUE</code>, warnings are
-printed about <code><a href="conflicts.html">conflicts</a></code> from attaching the new
+printed about <code><a href="../../base/help/conflicts.html">conflicts</a></code> from attaching the new
 package.  A conflict is a function masking a function,
 or a non-function masking a non-function. The default is <code>TRUE</code>
 unless specified as <code>FALSE</code> in the <code>conflicts.policy</code> option.
@@ -122,13 +123,13 @@ functions; it returns <code>FALSE</code> and gives a warning (rather than an
 error as <code>library()</code> does by default) if the package does not
 exist.  Both functions check and update the list of currently attached
 packages and do not reload a namespace which is already loaded.  (If
-you want to reload such a package, call <code><a href="detach.html">detach</a>(unload =
-  TRUE)</code> or <code><a href="ns-load.html">unloadNamespace</a></code> first.)  If you want to load a
+you want to reload such a package, call <code><a href="../../base/help/detach.html">detach</a>(unload =
+  TRUE)</code> or <code><a href="../../base/help/unloadNamespace.html">unloadNamespace</a></code> first.)  If you want to load a
 package without attaching it on the search list, see
-<code><a href="ns-load.html">requireNamespace</a></code>.
+<code><a href="../../base/help/requireNamespace.html">requireNamespace</a></code>.
 </p>
 <p>To suppress messages during the loading of packages use
-<code><a href="message.html">suppressPackageStartupMessages</a></code>: this will suppress all
+<code><a href="../../base/help/suppressPackageStartupMessages.html">suppressPackageStartupMessages</a></code>: this will suppress all
 messages from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> itself but not necessarily all those from package
 authors.
 </p>
@@ -209,7 +210,7 @@ attached by default.</p>
 
 <p>Some packages have restrictive licenses, and there is a mechanism to
 allow users to be aware of such licenses.  If
-<code><a href="options.html">getOption</a>("checkPackageLicense") == TRUE</code>, then at first
+<code><a href="../../base/help/getOption.html">getOption</a>("checkPackageLicense") == TRUE</code>, then at first
 use of a package with a not-known-to-be-FOSS (see below) license the
 user is asked to view and accept the license: a list of accepted
 licenses is stored in file &lsquo;<span class="file">~/.R/licensed</span>&rsquo;.  In a non-interactive
@@ -279,18 +280,18 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="libPaths.html">.libPaths</a></code>, <code><a href="zpackages.html">.packages</a></code>.
+<p><code><a href="../../base/help/.libPaths.html">.libPaths</a></code>, <code><a href="../../base/help/.packages.html">.packages</a></code>.
 </p>
-<p><code><a href="attach.html">attach</a></code>, <code><a href="detach.html">detach</a></code>, <code><a href="search.html">search</a></code>,
-<code><a href="ls.html">objects</a></code>, <code><a href="autoload.html">autoload</a></code>,
-<code><a href="ns-load.html">requireNamespace</a></code>,
-<code><a href="library.dynam.html">library.dynam</a></code>, <code><a href="../../utils/html/data.html">data</a></code>,
+<p><code><a href="../../base/help/attach.html">attach</a></code>, <code><a href="../../base/help/detach.html">detach</a></code>, <code><a href="../../base/help/search.html">search</a></code>,
+<code><a href="../../base/help/objects.html">objects</a></code>, <code><a href="../../base/help/autoload.html">autoload</a></code>,
+<code><a href="../../base/help/requireNamespace.html">requireNamespace</a></code>,
+<code><a href="../../base/help/library.dynam.html">library.dynam</a></code>, <code><a href="../../utils/html/data.html">data</a></code>,
 <code><a href="../../utils/html/install.packages.html">install.packages</a></code> and
 <code><a href="../../utils/html/installed.packages.html">installed.packages</a></code>;
 <code><a href="../../utils/html/INSTALL.html">INSTALL</a></code>, <code><a href="../../utils/html/REMOVE.html">REMOVE</a></code>.
 </p>
 <p>The initial set of packages attached is set by
-<code><a href="options.html">options</a>(defaultPackages=)</code>: see also <code><a href="Startup.html">Startup</a></code>.
+<code><a href="../../base/help/options.html">options</a>(defaultPackages=)</code>: see also <code><a href="../../base/help/Startup.html">Startup</a></code>.
 </p>
 
 
@@ -320,5 +321,5 @@ library(mypkg, pos = "package:base")
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

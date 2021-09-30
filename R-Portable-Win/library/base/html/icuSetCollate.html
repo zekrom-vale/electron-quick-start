@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Setup Collation by ICU</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for icuSetCollate {base}"><tr><td>icuSetCollate {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -109,7 +110,7 @@ unless environment variable <span class="env">LC_ALL</span> is set to 'C' (or un
 </dd>
 <dt><code>""</code>, <code>"root"</code>:</dt><dd>
 <p>the &lsquo;root&rsquo; collation: see
-<a href="http://www.unicode.org/reports/tr35/tr35-collation.html#Root_Collation">http://www.unicode.org/reports/tr35/tr35-collation.html#Root_Collation</a>.
+<a href="https://www.unicode.org/reports/tr35/tr35-collation.html#Root_Collation">https://www.unicode.org/reports/tr35/tr35-collation.html#Root_Collation</a>.
 </p>
 </dd>
 </dl>
@@ -143,7 +144,7 @@ interaction with other ways of setting the collation order,
 </p>
 <p>All customizations are reset to the default for the locale if
 <code>locale</code> is specified: the collation engine is reset if the
-OS collation locate category is changed by <code><a href="locales.html">Sys.setlocale</a></code>.
+OS collation locate category is changed by <code><a href="../../base/help/Sys.setlocale.html">Sys.setlocale</a></code>.
 </p>
 
 
@@ -175,10 +176,10 @@ system default ignoring environment variables such as <span class="env">LC_COLLA
 
 <h3>See Also</h3>
 
-<p><a href="Comparison.html">Comparison</a>, <code><a href="sort.html">sort</a></code>.
+<p><a href="../../base/help/Comparison.html">Comparison</a>, <code><a href="../../base/help/sort.html">sort</a></code>.
 </p>
-<p><code><a href="capabilities.html">capabilities</a></code> for whether ICU is available;
-<code><a href="extSoftVersion.html">extSoftVersion</a></code> for its version.
+<p><code><a href="../../base/help/capabilities.html">capabilities</a></code> for whether ICU is available;
+<code><a href="../../base/help/extSoftVersion.html">extSoftVersion</a></code> for its version.
 </p>
 <p>The ICU user guide chapter on collation
 (<a href="http://userguide.icu-project.org/collation">http://userguide.icu-project.org/collation</a>).
@@ -190,21 +191,21 @@ system default ignoring environment variables such as <span class="env">LC_COLLA
 <pre>
 ## These examples depend on having ICU available, and on the locale.
 ## As we don't know the current settings, we can only reset to the default.
-if(capabilities("ICU")) {
-    print(icuGetCollate())
-    print(icuGetCollate("valid"))
+if(capabilities("ICU")) withAutoprint({
+    icuGetCollate()
+    icuGetCollate("valid")
     x &lt;- c("Aarhus", "aarhus", "safe", "test", "Zoo")
-    print(sort(x))
-    icuSetCollate(case_first = "upper"); print(sort(x))
-    icuSetCollate(case_first = "lower"); print(sort(x))
+    sort(x)
+    icuSetCollate(case_first = "upper"); sort(x)
+    icuSetCollate(case_first = "lower"); sort(x)
 
     ## Danish collates upper-case-first and with 'aa' as a single letter
-    icuSetCollate(locale = "da_DK", case_first = "default"); print(sort(x)) 
+    icuSetCollate(locale = "da_DK", case_first = "default"); sort(x) 
     ## Estonian collates Z between S and T
-    icuSetCollate(locale = "et_EE"); print(sort(x))
-    icuSetCollate(locale = "default"); print(icuGetCollate("valid"))
-}
+    icuSetCollate(locale = "et_EE"); sort(x)
+    icuSetCollate(locale = "default"); icuGetCollate("valid")
+})
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create and Save a Method</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for setMethod {methods}"><tr><td>setMethod {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,7 +36,7 @@ setMethod(f, signature=character(), definition,
 </td></tr>
 <tr valign="top"><td><code>signature</code></td>
 <td>
-<p> The classes required for some of the arguments. Most applications just require one or two character strings matching the first argument(s) in the signature. More complicated cases follow R's rule for argument matching. See the details below; however, if the signature is not trivial, you should use <code><a href="method.skeleton.html">method.skeleton</a></code> to generate a valid call to <code>setMethod</code>.</p>
+<p> The classes required for some of the arguments. Most applications just require one or two character strings matching the first argument(s) in the signature. More complicated cases follow R's rule for argument matching. See the details below; however, if the signature is not trivial, you should use <code><a href="../../methods/help/method.skeleton.html">method.skeleton</a></code> to generate a valid call to <code>setMethod</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>definition</code></td>
 <td>
@@ -113,7 +114,7 @@ arguments to match.
 </p>
 <p>The most common examples arise with binary operators.  Methods may be
 defined for individual operators, for special groups of operators such as
-<code><a href="S4groupGeneric.html">Arith</a></code> or for group <code><a href="S4groupGeneric.html">Ops</a></code>.
+<code><a href="../../methods/help/Arith.html">Arith</a></code> or for group <code><a href="../../methods/help/Ops.html">Ops</a></code>.
 </p>
 
 
@@ -142,7 +143,7 @@ Keep in mind that this does <em>not</em> conflict with the function as
 it was originally defined in another package; on the contrary, it's
 designed to ensure that the function in the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session dispatches
 methods correctly for your classes and continues to behave as expected
-when no specific methods apply.  See <a href="Methods_Details.html">Methods_Details</a> for the actual mechanism.
+when no specific methods apply.  See <a href="../../methods/help/Methods_Details.html">Methods_Details</a> for the actual mechanism.
 </p>
 
 
@@ -172,7 +173,7 @@ have <code>"base"</code> as the package name, although none of them is an
 S4 generic on that package.
 These include most of the base functions that are primitives, rather than
 true functions; see the section on primitive functions in the
-documentation for <code><a href="setGeneric.html">setGeneric</a></code> for details.
+documentation for <code><a href="../../methods/help/setGeneric.html">setGeneric</a></code> for details.
 </p>
 <p>Multiple packages can have methods for the same generic function; that
 is, for the same combination of generic function name and package
@@ -193,7 +194,7 @@ corresponds implicitly to class <code>"ANY"</code>, not to
 <code>"missing"</code>.  See the example below.  Old-style (&lsquo;S3&rsquo;)
 classes can also be used, if you need compatibility with these, but
 you should definitely declare these classes by calling
-<code><a href="setOldClass.html">setOldClass</a></code> if you want S3-style inheritance to work.
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code> if you want S3-style inheritance to work.
 </p>
 <p>Method definitions can
 have default expressions for arguments, but only if
@@ -238,7 +239,7 @@ All inherited methods chosen are stored in another table, so that
 the inheritance calculations only need to be done once per session
 per sequence of actual classes.
 See
-<a href="Methods_Details.html">Methods_Details</a> and Section 10.7 of the reference for more details.
+<a href="../../methods/help/Methods_Details.html">Methods_Details</a> and Section 10.7 of the reference for more details.
 </p>
 
 
@@ -253,15 +254,15 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><a href="Methods_for_Nongenerics.html">Methods_for_Nongenerics</a> discusses method definition for
+<p><a href="../../methods/help/Methods_for_Nongenerics.html">Methods_for_Nongenerics</a> discusses method definition for
 functions that are not generic functions in their original package;
-<a href="Methods_for_S3.html">Methods_for_S3</a> discusses the integration of formal methods with the
+<a href="../../methods/help/Methods_for_S3.html">Methods_for_S3</a> discusses the integration of formal methods with the
 older S3 methods.
 </p>
-<p><code><a href="method.skeleton.html">method.skeleton</a></code>, which is the recommended way to generate a skeleton of the call to <code>setMethod</code>, with the correct formal arguments and other details.
+<p><code><a href="../../methods/help/method.skeleton.html">method.skeleton</a></code>, which is the recommended way to generate a skeleton of the call to <code>setMethod</code>, with the correct formal arguments and other details.
 </p>
-<p><a href="Methods_Details.html">Methods_Details</a> and the links there for a general discussion, <code><a href="dotsMethods.html">dotsMethods</a></code> for methods that dispatch on
-&ldquo;...&rdquo;, and <code><a href="setGeneric.html">setGeneric</a></code> for generic functions.
+<p><a href="../../methods/help/Methods_Details.html">Methods_Details</a> and the links there for a general discussion, <code><a href="../../methods/help/dotsMethods.html">dotsMethods</a></code> for methods that dispatch on
+&ldquo;...&rdquo;, and <code><a href="../../methods/help/setGeneric.html">setGeneric</a></code> for generic functions.
 </p>
 
 
@@ -362,5 +363,5 @@ all(tc1 == tc1)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

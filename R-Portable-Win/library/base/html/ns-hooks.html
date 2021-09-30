@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Hooks for Namespace Events</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ns-hooks {base}"><tr><td>ns-hooks {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -46,23 +47,23 @@ the package defining the namespace was found.</p>
 
 <h3>Details</h3>
 
-<p>After loading, <code><a href="ns-load.html">loadNamespace</a></code> looks for a hook function
+<p>After loading, <code><a href="../../base/help/loadNamespace.html">loadNamespace</a></code> looks for a hook function
 named <code>.onLoad</code> and calls it (with two unnamed arguments) before
 sealing the namespace and processing exports.
 </p>
-<p>When the package is attached (via <code><a href="library.html">library</a></code> or
-<code><a href="ns-load.html">attachNamespace</a></code>), the hook function <code>.onAttach</code> is
+<p>When the package is attached (via <code><a href="../../base/help/library.html">library</a></code> or
+<code><a href="../../base/help/attachNamespace.html">attachNamespace</a></code>), the hook function <code>.onAttach</code> is
 looked for and if found is called (with two unnamed arguments) before
 the package environment is sealed.
 </p>
 <p>If a function <code>.onDetach</code> is in the namespace or <code>.Last.lib</code>
 is exported from the package, it will be called (with a single
-argument) when the package is <code><a href="detach.html">detach</a></code>ed.  Beware that it
+argument) when the package is <code><a href="../../base/help/detach.html">detach</a></code>ed.  Beware that it
 might be called if <code>.onAttach</code> has failed, so it should be
-written defensively.  (It is called within <code><a href="conditions.html">tryCatch</a></code>, so
+written defensively.  (It is called within <code><a href="../../base/help/tryCatch.html">tryCatch</a></code>, so
 errors will not stop the package being detached.)
 </p>
-<p>If a namespace is unloaded (via <code><a href="ns-load.html">unloadNamespace</a></code>), a hook
+<p>If a namespace is unloaded (via <code><a href="../../base/help/unloadNamespace.html">unloadNamespace</a></code>), a hook
 function <code>.onUnload</code> is run (with a single argument) before final
 unloading.
 </p>
@@ -78,7 +79,7 @@ and should not be exported (whereas <code>.Last.lib</code> should be).
 </p>
 <p>Note that packages are not detached nor namespaces unloaded at the end
 of an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session unless the user arranges to do so (e.g., <em>via</em>
-<code><a href="quit.html">.Last</a></code>).
+<code><a href="../../base/help/.Last.html">.Last</a></code>).
 </p>
 <p>Anything needed for the functioning of the namespace should be
 handled at load/unload times by the <code>.onLoad</code> and
@@ -95,7 +96,7 @@ or need to be run after the package environment has been created.
 
 <p>Loading a namespace should where possible be silent, with startup
 messages given by <code>.onAttach</code>.  These messages (and any essential
-ones from <code>.onLoad</code>) should use <code><a href="message.html">packageStartupMessage</a></code>
+ones from <code>.onLoad</code>) should use <code><a href="../../base/help/packageStartupMessage.html">packageStartupMessage</a></code>
 so they can be silenced where they would be a distraction.
 </p>
 <p>There should be no calls to <code>library</code> nor <code>require</code> in these
@@ -118,23 +119,23 @@ before 2.14.2 if package installation is going on in parallel.  See
 its help page for alternatives.
 </p>
 <p>Compiled code should be loaded (e.g., <em>via</em>
-<code><a href="library.dynam.html">library.dynam</a></code>) in <code>.onLoad</code> or a <code>useDynLib</code>
+<code><a href="../../base/help/library.dynam.html">library.dynam</a></code>) in <code>.onLoad</code> or a <code>useDynLib</code>
 directive in the &lsquo;<span class="file">NAMESPACE</span>&rsquo; file, and not in <code>.onAttach</code>.
 Similarly, compiled code should not be unloaded (e.g., <em>via</em>
-<code><a href="library.dynam.html">library.dynam.unload</a></code>) in <code>.Last.lib</code> nor
+<code><a href="../../base/help/library.dynam.unload.html">library.dynam.unload</a></code>) in <code>.Last.lib</code> nor
 <code>.onDetach</code>, only in <code>.onUnload</code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="userhooks.html">setHook</a></code> shows how users can set hooks on the same events, and
+<p><code><a href="../../base/help/setHook.html">setHook</a></code> shows how users can set hooks on the same events, and
 lists the sequence of events involving all of the hooks.
 </p>
-<p><code><a href="reg.finalizer.html">reg.finalizer</a></code> for hooks to be run at the end of a session.
+<p><code><a href="../../base/help/reg.finalizer.html">reg.finalizer</a></code> for hooks to be run at the end of a session.
 </p>
-<p><code><a href="ns-load.html">loadNamespace</a></code> for more about namespaces.
+<p><code><a href="../../base/help/loadNamespace.html">loadNamespace</a></code> for more about namespaces.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

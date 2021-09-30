@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Vectors</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for vector {base}"><tr><td>vector {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -39,7 +40,7 @@ is.vector(x, mode = "any")
 <p>character string naming an atomic mode or
 <code>"list"</code> or <code>"expression"</code> or (except for <code>vector</code>)
 <code>"any"</code>.  Currently, <code>is.vector()</code> allows any type (see
-<code><a href="typeof.html">typeof</a></code>) for <code>mode</code>, and when mode is not
+<code><a href="../../base/help/typeof.html">typeof</a></code>) for <code>mode</code>, and when mode is not
 <code>"any"</code>, <code>is.vector(x, mode)</code> is almost the same as
 <code>typeof(x) == mode</code>.</p>
 </td></tr></table>
@@ -47,8 +48,8 @@ is.vector(x, mode = "any")
 <table summary="R argblock">
 <tr valign="top"><td><code>length</code></td>
 <td>
-<p>a non-negative integer specifying the desired length.
-For a long vector, i.e., <code>length &gt; .Machine$integer.max</code>, it
+<p>a non-negative integer specifying the desired length.  For
+a <a href="../../base/help/long+20vector.html">long vector</a>, i.e., <code>length &gt; .Machine$integer.max</code>, it
 has to be of type <code>"double"</code>.  Supplying an argument of length
 other than one is an error.</p>
 </td></tr>
@@ -66,7 +67,7 @@ other than one is an error.</p>
 <code>"character"</code> and <code>"raw"</code>.
 </p>
 <p>If <code>mode = "any"</code>, <code>is.vector</code> may return <code>TRUE</code> for
-the atomic modes, <code><a href="list.html">list</a></code> and <code><a href="expression.html">expression</a></code>.
+the atomic modes, <code><a href="../../base/help/list.html">list</a></code> and <code><a href="../../base/help/expression.html">expression</a></code>.
 For any <code>mode</code>, it will return <code>FALSE</code> if <code>x</code> has any
 attributes except names.  (This is incompatible with S.)  On the other
 hand, <code>as.vector</code> removes <em>all</em> attributes including names
@@ -141,8 +142,8 @@ vector.
 </p>
 <p>Non-vector <code>mode</code>s <code>"symbol"</code> (synonym <code>"name"</code>) and
 <code>"pairlist"</code> are accepted but have long been undocumented: they
-are used to implement <code><a href="name.html">as.name</a></code> and
-<code><a href="list.html">as.pairlist</a></code>, and those functions should preferably be
+are used to implement <code><a href="../../base/help/as.name.html">as.name</a></code> and
+<code><a href="../../base/help/as.pairlist.html">as.pairlist</a></code>, and those functions should preferably be
 used directly.  None of the description here applies to those
 <code>mode</code>s: see the help for the preferred forms.
 </p>
@@ -158,7 +159,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="c.html">c</a></code>, <code><a href="numeric.html">is.numeric</a></code>, <code><a href="list.html">is.list</a></code>, etc.
+<p><code><a href="../../base/help/c.html">c</a></code>, <code><a href="../../base/help/is.numeric.html">is.numeric</a></code>, <code><a href="../../base/help/is.list.html">is.list</a></code>, etc.
 </p>
 
 
@@ -183,5 +184,5 @@ is.list(df)
 is.vector(list(), mode = "list")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: 1-D Scatter Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for stripchart {graphics}"><tr><td>stripchart {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p><code>stripchart</code> produces one dimensional scatter plots (or dot
 plots) of the given data.  These plots are a good alternative to
-<code><a href="boxplot.html">boxplot</a></code>s when sample sizes are small.
+<code><a href="../../graphics/help/boxplot.html">boxplot</a></code>s when sample sizes are small.
 </p>
 
 
@@ -68,8 +69,8 @@ values in either the response or the group.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional parameters passed to the default method, or by
-it to <code><a href="plot.window.html">plot.window</a></code>, <code><a href="points.html">points</a></code>,
-<code><a href="axis.html">axis</a></code> and <code><a href="title.html">title</a></code> to control the appearance
+it to <code><a href="../../graphics/help/plot.window.html">plot.window</a></code>, <code><a href="../../graphics/help/points.html">points</a></code>,
+<code><a href="../../graphics/help/axis.html">axis</a></code> and <code><a href="../../graphics/help/title.html">title</a></code> to control the appearance
 of the plot.</p>
 </td></tr> 
 <tr valign="top"><td><code>method</code></td>
@@ -112,7 +113,7 @@ defaults to <code>1:n</code> where <code>n</code> is the number of boxes.</p>
 </td></tr>
 <tr valign="top"><td><code>ylab, xlab</code></td>
 <td>
-<p>labels: see <code><a href="title.html">title</a></code>.</p>
+<p>labels: see <code><a href="../../graphics/help/title.html">title</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>dlab, glab</code></td>
 <td>
@@ -120,20 +121,20 @@ defaults to <code>1:n</code> where <code>n</code> is the number of boxes.</p>
 </td></tr>
 <tr valign="top"><td><code>xlim, ylim</code></td>
 <td>
-<p>plot limits: see <code><a href="plot.window.html">plot.window</a></code>.</p>
+<p>plot limits: see <code><a href="../../graphics/help/plot.window.html">plot.window</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>log</code></td>
 <td>
 <p>on which axes to use a log scale:  see
-<code><a href="plot.default.html">plot.default</a></code></p>
+<code><a href="../../graphics/help/plot.default.html">plot.default</a></code></p>
 </td></tr>
 <tr valign="top"><td><code>pch, col, cex</code></td>
 <td>
-<p>Graphical parameters: see <code><a href="par.html">par</a></code>.</p>
+<p>Graphical parameters: see <code><a href="../../graphics/help/par.html">par</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>axes, frame.plot</code></td>
 <td>
-<p>Axis control:  see <code><a href="plot.default.html">plot.default</a></code>.</p>
+<p>Axis control:  see <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.</p>
 </td></tr>
 </table>
 
@@ -171,5 +172,5 @@ stripchart(decrease ~ treatment, at = c(1:8)^2,
     vertical = TRUE, log = "y", data = OrchardSprays)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

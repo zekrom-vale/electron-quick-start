@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fourfold Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for fourfoldplot {graphics}"><tr><td>fourfoldplot {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -119,13 +120,13 @@ for the individual odds ratios are not adjusted for multiple testing.
 <p>Friendly, M. (1994).
 A fourfold display for 2 by 2 by <i>k</i> tables.
 Technical Report 217, York University, Psychology Department.
-<a href="http://www.math.yorku.ca/SCS/Papers/4fold/4fold.ps.gz">http://www.math.yorku.ca/SCS/Papers/4fold/4fold.ps.gz</a>
+<a href="http://datavis.ca/papers/4fold/4fold.pdf">http://datavis.ca/papers/4fold/4fold.pdf</a>
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="mosaicplot.html">mosaicplot</a></code>
+<p><code><a href="../../graphics/help/mosaicplot.html">mosaicplot</a></code>
 </p>
 
 
@@ -142,7 +143,7 @@ stats::ftable(x)
 ## frequencies standardized to equate the margins for admission
 ## and sex.
 ## Figure 1 in Friendly (1994).
-fourfoldplot(margin.table(x, c(1, 2)))
+fourfoldplot(marginSums(x, c(1, 2)))
 
 ## Fourfold display of x, with frequencies in each table
 ## standardized to equate the margins for admission and sex.
@@ -156,5 +157,5 @@ fourfoldplot(x)
 fourfoldplot(x, margin = 2)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

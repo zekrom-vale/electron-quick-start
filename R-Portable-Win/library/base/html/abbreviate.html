@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Abbreviate Strings</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for abbreviate {base}"><tr><td>abbreviate {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -30,7 +31,7 @@ abbreviate(names.arg, minlength = 4, use.classes = TRUE,
 <tr valign="top"><td><code>names.arg</code></td>
 <td>
 <p>a character vector of names to be abbreviated, or an
-object to be coerced to a character vector by <code><a href="character.html">as.character</a></code>.</p>
+object to be coerced to a character vector by <code><a href="../../base/help/as.character.html">as.character</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>minlength</code></td>
 <td>
@@ -99,11 +100,11 @@ are found for those elements only.  This process is repeated until all
 unique elements of <code>names.arg</code> have unique abbreviations.
 </p>
 <p>If <code>names</code> is true, the character version of <code>names.arg</code> is
-attached to the returned value as a <code><a href="names.html">names</a></code> attribute: no
+attached to the returned value as a <code><a href="../../base/help/names.html">names</a></code> attribute: no
 other attributes are retained.
 </p>
 <p>If a input element contains non-ASCII characters, the corresponding
-value will be in UTF-8 and marked as such (see <code><a href="Encoding.html">Encoding</a></code>).
+value will be in UTF-8 and marked as such (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>).
 </p>
 
 
@@ -112,7 +113,10 @@ value will be in UTF-8 and marked as such (see <code><a href="Encoding.html">Enc
 <p>If <code>use.classes</code> is true (the default), this is really only
 suitable for English, and prior to <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.3.0 did not work correctly
 with non-ASCII characters in multibyte locales.  It will warn if used
-with non-ASCII characters (and required to reduce the length).
+with non-ASCII characters (and required to reduce the length).  It is
+unlikely to work well with inputs not in the Unicode Basic Multilingual
+Plane nor on (rare) platforms where wide characters are not encoded in
+Unicode.
 </p>
 <p>As from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.3.0 the concept of &lsquo;vowel&rsquo; is extended from
 English vowels by including characters which are accented versions of
@@ -124,7 +128,7 @@ Welsh) with other vowels.
 
 <h3>See Also</h3>
 
-<p><code><a href="substr.html">substr</a></code>.
+<p><code><a href="../../base/help/substr.html">substr</a></code>.
 </p>
 
 
@@ -153,5 +157,5 @@ table(nchar(st.ab2))
 cbind(st.abb, st.ab2)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

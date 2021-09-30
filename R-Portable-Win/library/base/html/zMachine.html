@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Numerical Characteristics of the Machine</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for .Machine {base}"><tr><td>.Machine {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,8 +27,9 @@ double or integer and the machine's precision.
 
 <p>The algorithm is based on Cody's (1988) subroutine MACHAR.  As all
 current implementations of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> use 32-bit integers and use IEC 60559
-floating-point (double precision) arithmetic, all but three of the
-last four values are the same for almost all <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> builds. 
+floating-point (double precision) arithmetic, the <code>"integer"</code> and
+<code>"double"</code> related values are the same for almost all <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> builds.
+
 </p>
 <p>Note that on most platforms smaller positive values than
 <code>.Machine$double.xmin</code> can occur.  On a typical <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> platform the
@@ -168,25 +170,50 @@ disabled when <span style="font-family: Courier New, Courier; color: #666666;"><
 type.  Will be <code>4</code> on 32-bit builds and <code>8</code> on 64-bit
 builds of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.</p>
 </td></tr>
+<tr valign="top"><td><code>longdouble.eps, longdouble.neg.eps, longdouble.digits, ...</code></td>
+<td>
+<p>when
+<code><a href="../../base/help/capabilities.html">capabilities</a>("long.double")</code> is true, there are 10 such
+<code>"longdouble.&lt;kind&gt;"</code> values, specifying the <code>long double</code>
+property corresponding to its <code>"double.*"</code> counterpart, above, see
+also &lsquo;Note&rsquo;.</p>
+</td></tr>
 </table>
 
 
 <h3>Note</h3>
 
+<p>In the (typical) case where <code><a href="../../base/help/capabilities.html">capabilities</a>("long.double")</code> is
+true, <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> uses the <code>long double</code> C type in quite a few places internally
+for accumulators in e.g. <code><a href="../../base/help/sum.html">sum</a></code>, reading non-integer
+numeric constants into (binary) double precision numbers, or arithmetic
+such as <code>x %% y</code>; also, <code>long double</code> can be read by
+<code><a href="../../base/help/readBin.html">readBin</a></code>.
+<br />
+For this reason, in that case, <code>.Machine</code> contains ten further components,
+<code>longdouble.eps</code>, <code>*.neg.eps</code>, <code>*.digits</code>, <code>*.rounding</code>
+<code>*.guard</code>, <code>*.ulp.digits</code>, <code>*.neg.ulp.digits</code>,
+<code>*.exponent</code>, <code>*.min.exp</code>, and <code>*.max.exp</code>, computed
+entirely analogously to their <code>double.*</code> counterparts, see there.
+</p>
 <p><code>sizeof.longdouble</code> only tells you the amount of storage
-allocated for a long double (which are normally used internally by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> for
-accumulators in e.g. <code><a href="sum.html">sum</a></code>, and can be read by
-<code><a href="readBin.html">readBin</a></code>).  Often what is stored is the 80-bit extended
+allocated for a long double.  Often what is stored is the 80-bit extended
 double type of IEC 60559, padded to the double alignment used on the
 platform &mdash; this seems to be the case for the common <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> platforms
 using ix86 and x86_64 chips.
+</p>
+<p>Note that it is legal for a platform to have a <code>long double</code> C
+type which is identical to the <code>double</code> type &mdash; this happens on
+ARM cpus.  In that case <code><a href="../../base/help/capabilities.html">capabilities</a>("long.double")</code> will
+be false but <code>.Machine</code> may contain <code>"longdouble.&lt;kind&gt;"</code>
+elements.
 </p>
 
 
 <h3>Source</h3>
 
 <p>Uses a C translation of Fortran code in the reference, modified by the
-R Core Team to defeat over-optimization in recent compilers.
+R Core Team to defeat over-optimization in modern compilers.
 </p>
 
 
@@ -201,7 +228,7 @@ doi: <a href="https://doi.org/10.1145/50063.51907">10.1145/50063.51907</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="Platform.html">.Platform</a></code> for details of the platform.
+<p><code><a href="../../base/help/.Platform.html">.Platform</a></code> for details of the platform.
 </p>
 
 
@@ -213,5 +240,5 @@ doi: <a href="https://doi.org/10.1145/50063.51907">10.1145/50063.51907</a>.
 noquote(unlist(format(.Machine)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Tools for Managing Generic Functions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for GenericFunctions {methods}"><tr><td>GenericFunctions {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,7 +60,7 @@ signature is a named or unnamed vector of character strings.  If
 named, the names must be formal argument names for the generic
 function.  Signatures are matched to the arguments specified in
 the signature slot of the generic function (see the Details
-section of the <code><a href="setMethod.html">setMethod</a></code> documentation).
+section of the <code><a href="../../methods/help/setMethod.html">setMethod</a></code> documentation).
 </p>
 <p>The <code>signature</code> argument to <code>dumpMethods</code> is ignored (it
 was used internally in previous implementations).</p>
@@ -130,14 +131,14 @@ from a function definition.  If it is <code>TRUE</code> then the name of
 the generic is returned, or <code>FALSE</code> if this is not a generic
 function definition.
 </p>
-<p>The behavior of <code>isGeneric</code> and <code><a href="RMethodUtils.html">getGeneric</a></code> for
+<p>The behavior of <code>isGeneric</code> and <code><a href="../../methods/help/getGeneric.html">getGeneric</a></code> for
 primitive functions is slightly different.  These functions don't
 exist as formal function objects (for efficiency and historical
 reasons), regardless of whether methods have been defined for
 them.  A call to <code>isGeneric</code> tells you whether methods have
 been defined for this primitive function, anywhere in the current
 search list, or in the specified position <code>where</code>.  In
-contrast, a call to <code><a href="RMethodUtils.html">getGeneric</a></code> will return what the
+contrast, a call to <code><a href="../../methods/help/getGeneric.html">getGeneric</a></code> will return what the
 generic for that function would be, even if no methods have been
 currently defined for it.
 </p>
@@ -283,10 +284,10 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="getMethod.html">getMethod</a></code> (also for <code>selectMethod</code>),
-<code><a href="setGeneric.html">setGeneric</a></code>,
-<code><a href="setClass.html">setClass</a></code>,
-<code><a href="showMethods.html">showMethods</a></code>
+<p><code><a href="../../methods/help/getMethod.html">getMethod</a></code> (also for <code>selectMethod</code>),
+<code><a href="../../methods/help/setGeneric.html">setGeneric</a></code>,
+<code><a href="../../methods/help/setClass.html">setClass</a></code>,
+<code><a href="../../methods/help/showMethods.html">showMethods</a></code>
 </p>
 
 
@@ -346,5 +347,5 @@ stopifnot(is(getMethod("plot", "A"), "MethodDefinition"),
           is(getMethod("plot", "B"), "MethodDefinition"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Find Names of R System Files</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for system.file {base}"><tr><td>system.file {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -51,17 +52,17 @@ are no matching files.</p>
 <h3>Details</h3>
 
 <p>This checks the existence of the specified files with
-<code><a href="files.html">file.exists</a></code>.  So file paths are only returned if there
+<code><a href="../../base/help/file.exists.html">file.exists</a></code>.  So file paths are only returned if there
 are sufficient permissions to establish their existence.
 </p>
 <p>The unnamed arguments in <code>...</code> are usually character strings, but
 if character vectors they are recycled to the same length.
 </p>
-<p>This uses <code><a href="find.package.html">find.package</a></code> to find the package, and hence
+<p>This uses <code><a href="../../base/help/find.package.html">find.package</a></code> to find the package, and hence
 with the default <code>lib.loc = NULL</code> looks first for attached
-packages then in each library listed in <code><a href="libPaths.html">.libPaths</a>()</code>.
+packages then in each library listed in <code><a href="../../base/help/.libPaths.html">.libPaths</a>()</code>.
 Note that if a namespace is loaded but the package is not attached,
-this will look only on <code><a href="libPaths.html">.libPaths</a>()</code>.
+this will look only on <code><a href="../../base/help/.libPaths.html">.libPaths</a>()</code>.
 </p>
 
 
@@ -80,10 +81,10 @@ matched (unless <code>mustWork = TRUE</code>).
 
 <h3>See Also</h3>
 
-<p><code><a href="Rhome.html">R.home</a></code> for the root directory of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-installation, <code><a href="list.files.html">list.files</a></code>.
+<p><code><a href="../../base/help/R.home.html">R.home</a></code> for the root directory of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+installation, <code><a href="../../base/help/list.files.html">list.files</a></code>.
 </p>
-<p><code><a href="Sys.glob.html">Sys.glob</a></code> to find paths via wildcards.
+<p><code><a href="../../base/help/Sys.glob.html">Sys.glob</a></code> to find paths via wildcards.
 </p>
 
 
@@ -96,5 +97,5 @@ system.file("INDEX")
 system.file("help", "AnIndex", package = "splines")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

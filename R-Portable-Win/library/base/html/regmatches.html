@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract or Replace Matched Substrings</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for regmatches {base}"><tr><td>regmatches {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,8 +11,8 @@
 <h3>Description</h3>
 
 <p>Extract or replace matched substrings from match data obtained by
-<code><a href="grep.html">regexpr</a></code>, <code><a href="grep.html">gregexpr</a></code> or
-<code><a href="grep.html">regexec</a></code>.
+<code><a href="../../base/help/regexpr.html">regexpr</a></code>, <code><a href="../../base/help/gregexpr.html">gregexpr</a></code>,
+<code><a href="../../base/help/regexec.html">regexec</a></code> or <code><a href="../../base/help/gregexec.html">gregexec</a></code>.
 </p>
 
 
@@ -51,13 +52,13 @@ matched or non-matched substrings (see <code>Details</code>).</p>
 
 <p>If <code>invert</code> is <code>FALSE</code> (default), <code>regmatches</code> extracts
 the matched substrings as specified by the match data.  For vector
-match data (as obtained from <code><a href="grep.html">regexpr</a></code>), empty matches are
+match data (as obtained from <code><a href="../../base/help/regexpr.html">regexpr</a></code>), empty matches are
 dropped; for list match data, empty matches give empty components
 (zero-length character vectors).
 </p>
 <p>If <code>invert</code> is <code>TRUE</code>, <code>regmatches</code> extracts the
 non-matched substrings, i.e., the strings are split according to the
-matches similar to <code><a href="strsplit.html">strsplit</a></code> (for vector match data, at
+matches similar to <code><a href="../../base/help/strsplit.html">strsplit</a></code> (for vector match data, at
 most a single split is performed).
 </p>
 <p>If <code>invert</code> is <code>NA</code>, <code>regmatches</code> extracts both
@@ -124,7 +125,46 @@ s
 m &lt;- gregexpr(", *", s)
 ## And finally extract the non-matched parts.
 regmatches(x, m, invert = TRUE)
+
+## regexec() and gregexec() return overlapping ranges because the
+## first match is the full match.  This conflicts with regmatches()&lt;-
+## and regmatches(..., invert=TRUE).  We can work-around by dropping
+## the first match.
+drop_first &lt;- function(x) {
+    if(!anyNA(x) &amp;&amp; all(x &gt; 0)) {
+        ml &lt;- attr(x, 'match.length')
+        if(is.matrix(x)) x &lt;- x[-1,] else x &lt;- x[-1]
+        attr(x, 'match.length') &lt;- if(is.matrix(ml)) ml[-1,] else ml[-1]
+    }
+    x
+}
+m &lt;- gregexec("(\\w+) \\(((?:\\w+(?:, )?)+)\\)", x)
+regmatches(x, m)
+try(regmatches(x, m, invert=TRUE))
+regmatches(x, lapply(m, drop_first))
+## invert=TRUE loses matrix structure because we are retrieving what
+## is in between every sub-match
+regmatches(x, lapply(m, drop_first), invert=TRUE)
+y &lt;- z &lt;- x
+## Notice **list**(...) on the RHS
+regmatches(y, lapply(m, drop_first)) &lt;- list(c("&lt;NAME&gt;", "&lt;HOBBY-LIST&gt;"))
+y
+regmatches(z, lapply(m, drop_first), invert=TRUE) &lt;-
+    list(sprintf("&lt;%d&gt;", 1:5))
+z
+
+## With `perl = TRUE` and `invert = FALSE` capture group names
+## are preserved.  Collect functions and arguments in calls:
+NEWS &lt;- head(readLines(file.path(R.home(), 'doc', 'NEWS.2')), 100)
+m &lt;- gregexec("(?&lt;fun&gt;\\w+)\\((?&lt;args&gt;[^)]*)\\)", NEWS, perl = TRUE)
+y &lt;- regmatches(NEWS, m)
+y[[16]]
+## Make tabular, adding original line numbers
+mdat &lt;- as.data.frame(t(do.call(cbind, y)))
+mdat &lt;- cbind(mdat, line=rep(seq_along(y), lengths(y) / ncol(mdat)))
+head(mdat)
+NEWS[head(mdat[['line']])]
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

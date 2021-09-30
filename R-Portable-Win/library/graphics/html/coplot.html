@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Conditioning Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for coplot {graphics}"><tr><td>coplot {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -176,9 +177,9 @@ within a given coordinate system: thus <code>plot</code> and <code>boxplot</code
 are not panel functions.
 </p>
 <p>The rendering of arguments <code>xlab</code> and
-<code>ylab</code> is not controlled by <code><a href="par.html">par</a></code> arguments
+<code>ylab</code> is not controlled by <code><a href="../../graphics/help/par.html">par</a></code> arguments
 <code>cex.lab</code> and <code>font.lab</code> even though they are plotted by
-<code><a href="mtext.html">mtext</a></code> rather than <code><a href="title.html">title</a></code>.
+<code><a href="../../graphics/help/mtext.html">mtext</a></code> rather than <code><a href="../../graphics/help/title.html">title</a></code>.
 </p>
 
 
@@ -203,9 +204,9 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="pairs.html">pairs</a></code>,
-<code><a href="panel.smooth.html">panel.smooth</a></code>,
-<code><a href="points.html">points</a></code>.
+<p><code><a href="../../graphics/help/pairs.html">pairs</a></code>,
+<code><a href="../../graphics/help/panel.smooth.html">panel.smooth</a></code>,
+<code><a href="../../graphics/help/points.html">points</a></code>.
 </p>
 
 
@@ -215,7 +216,7 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 ## Tonga Trench Earthquakes
 coplot(lat ~ long | depth, data = quakes)
 given.depth &lt;- co.intervals(quakes$depth, number = 4, overlap = .1)
-coplot(lat ~ long | depth, data = quakes, given.v = given.depth, rows = 1)
+coplot(lat ~ long | depth, data = quakes, given.values = given.depth, rows = 1)
 
 ## Conditioning on 2 variables:
 ll.dm &lt;- lat ~ long | depth * mag
@@ -225,7 +226,7 @@ coplot(ll.dm, data = quakes, number = c(3, 7),
        overlap = c(-.5, .1)) # negative overlap DROPS values
 
 ## given two factors
-Index &lt;- seq(length = nrow(warpbreaks)) # to get nicer default labels
+Index &lt;- seq_len(nrow(warpbreaks)) # to get nicer default labels
 coplot(breaks ~ Index | wool * tension, data = warpbreaks,
        show.given = 0:1)
 coplot(breaks ~ Index | wool * tension, data = warpbreaks,
@@ -242,5 +243,5 @@ coplot(Life.Exp ~ state.region | Income * state.division,
 })
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

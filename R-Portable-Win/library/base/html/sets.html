@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set Operations</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sets {base}"><tr><td>sets {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -41,7 +42,7 @@ of items (conceptually) with no duplicated values.</p>
 
 <p>Each of <code>union</code>, <code>intersect</code>, <code>setdiff</code> and
 <code>setequal</code> will discard any duplicated values in the arguments,
-and they apply <code><a href="vector.html">as.vector</a></code> to their arguments (and so
+and they apply <code><a href="../../base/help/as.vector.html">as.vector</a></code> to their arguments (and so
 in particular coerce factors to character vectors).
 </p>
 <p><code>is.element(x, y)</code> is identical to <code>x %in% y</code>.
@@ -50,7 +51,7 @@ in particular coerce factors to character vectors).
 
 <h3>Value</h3>
 
-<p>A vector of the same <code><a href="mode.html">mode</a></code> as <code>x</code> or <code>y</code> for
+<p>A vector of the same <code><a href="../../base/help/mode.html">mode</a></code> as <code>x</code> or <code>y</code> for
 <code>setdiff</code> and <code>intersect</code>, respectively, and
 of a common mode for <code>union</code>.
 </p>
@@ -61,7 +62,7 @@ length as <code>x</code> for <code>is.element</code>.
 
 <h3>See Also</h3>
 
-<p><code><a href="match.html">%in%</a></code>
+<p><code><a href="../../base/help/+25in+25.html">%in%</a></code>
 </p>
 <p>&lsquo;<a href="../../grDevices/html/plotmath.html">plotmath</a>&rsquo; for the use of <code>union</code> and
 <code>intersect</code> in plot annotation.
@@ -87,5 +88,5 @@ is.element(x, y) # length 10
 is.element(y, x) # length  8
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

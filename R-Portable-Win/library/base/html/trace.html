@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Interactive Tracing and Debugging of Calls to a Function or...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for trace {base}"><tr><td>trace {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>A call to <code>trace</code> allows you to insert debugging code (e.g., a
-call to <code><a href="browser.html">browser</a></code> or <code><a href="../../utils/html/recover.html">recover</a></code>) at chosen
+call to <code><a href="../../base/help/browser.html">browser</a></code> or <code><a href="../../utils/html/recover.html">recover</a></code>) at chosen
 places in any function.  A call to <code>untrace</code> cancels the tracing.
 Specified methods can be traced the same way, without tracing all
 calls to the generic function.  Trace code (<code>tracer</code>) can be any
@@ -37,7 +38,7 @@ returnValue(default = NULL)
 <table summary="R argblock">
 <tr valign="top"><td><code>what</code></td>
 <td>
-<p>the name, possibly <code><a href="substitute.html">quote</a>()</code>d, of a function
+<p>the name, possibly <code><a href="../../base/help/quote.html">quote</a>()</code>d, of a function
 to be traced or untraced.  For <code>untrace</code> or for <code>trace</code>
 with more than one argument, more than one name can be given in the
 quoted form, and the same action will be applied to each one.  For
@@ -46,7 +47,7 @@ quoted form, and the same action will be applied to each one.  For
 </td></tr>
 <tr valign="top"><td><code>tracer</code></td>
 <td>
-<p>either a <a href="function.html">function</a> or an unevaluated expression.  The
+<p>either a <a href="../../base/help/function.html">function</a> or an unevaluated expression.  The
 function will be called or the expression will be evaluated either
 at the beginning of the call, or before those steps in the call
 specified by the argument <code>at</code>.
@@ -54,7 +55,7 @@ See the details section.</p>
 </td></tr>
 <tr valign="top"><td><code>exit</code></td>
 <td>
-<p>either a <code><a href="function.html">function</a></code> or an unevaluated expression.  The
+<p>either a <code><a href="../../base/help/function.html">function</a></code> or an unevaluated expression.  The
 function will be called or the expression will be evaluated on
 exiting the function.
 See the details section.</p>
@@ -154,14 +155,18 @@ A call to <code>untrace</code> re-assigns this version.
 <p>If the argument <code>tracer</code> or <code>exit</code> is the name of a
 function, the tracing expression will be a call to that function, with
 no arguments.  This is the easiest and most common case, with the
-functions <code><a href="browser.html">browser</a></code> and <code><a href="../../utils/html/recover.html">recover</a></code> the
+functions <code><a href="../../base/help/browser.html">browser</a></code> and <code><a href="../../utils/html/recover.html">recover</a></code> the
 likeliest candidates; the former browses in the frame of the function
 being traced, and the latter allows browsing in any of the currently
-active calls.
+active calls. The arguments <code>tracer</code> and <code>exit</code> are evaluated to
+see whether they are functions, but only their names are used in the
+tracing expressions.  The lookup is done again when the traced function
+executes, so it may not be <code>tracer</code> or <code>exit</code> that will be called
+while tracing.
 </p>
 <p>The <code>tracer</code> or <code>exit</code> argument can also be an unevaluated
-expression (such as returned by a call to <code><a href="substitute.html">quote</a></code> or
-<code><a href="substitute.html">substitute</a></code>).  This expression itself is inserted in the
+expression (such as returned by a call to <code><a href="../../base/help/quote.html">quote</a></code> or
+<code><a href="../../base/help/substitute.html">substitute</a></code>).  This expression itself is inserted in the
 traced function, so it will typically involve arguments or local
 objects in the traced function.  An expression of this form is useful
 if you only want to interact when certain conditions apply (and in
@@ -186,7 +191,7 @@ of the function.  See the example below.
 <p>Using <code><a href="../../utils/html/findLineNum.html">setBreakpoint</a></code> (from package <span class="pkg">utils</span>) may be an
 alternative, calling <code>trace(...., at, ...)</code>.
 </p>
-<p>The <code>exit</code> argument is called during <code><a href="on.exit.html">on.exit</a></code>
+<p>The <code>exit</code> argument is called during <code><a href="../../base/help/on.exit.html">on.exit</a></code>
 processing.  In an <code>on.exit</code> expression, the experimental <code>returnValue()</code>
 function may be called to obtain the value about to be returned by
 the function. Calling this function in other circumstances will give
@@ -269,8 +274,8 @@ other circumstances is undefined.
 <h3>Note</h3>
 
 <p>Using <code>trace()</code> is conceptually a generalization of
-<code><a href="debug.html">debug</a></code>, implemented differently.  Namely by calling
-<code><a href="browser.html">browser</a></code> via its <code>tracer</code> or <code>exit</code> argument.
+<code><a href="../../base/help/debug.html">debug</a></code>, implemented differently.  Namely by calling
+<code><a href="../../base/help/browser.html">browser</a></code> via its <code>tracer</code> or <code>exit</code> argument.
 
 
 </p>
@@ -281,7 +286,7 @@ versions of the traced functions).
 </p>
 <p>If methods dispatch is not currently on, <code>trace</code> will load the
 methods namespace, but will not put the methods package on the
-<code><a href="search.html">search</a></code> list.
+<code><a href="../../base/help/search.html">search</a></code> list.
 </p>
 
 
@@ -295,9 +300,9 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="browser.html">browser</a></code> and <code><a href="../../utils/html/recover.html">recover</a></code>, the likeliest
+<p><code><a href="../../base/help/browser.html">browser</a></code> and <code><a href="../../utils/html/recover.html">recover</a></code>, the likeliest
 tracing functions;
-also, <code><a href="substitute.html">quote</a></code> and <code><a href="substitute.html">substitute</a></code> for
+also, <code><a href="../../base/help/quote.html">quote</a></code> and <code><a href="../../base/help/substitute.html">substitute</a></code> for
 constructing general expressions.
 </p>
 
@@ -398,5 +403,5 @@ trace(lm, exit = recover, where = asNamespace("nlme"))
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

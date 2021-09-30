@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Methods to Initialize New Objects from a Class</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for initialize-methods {methods}"><tr><td>initialize-methods {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>The arguments to function <code><a href="new.html">new</a></code> to create an object from a
+<p>The arguments to function <code><a href="../../methods/help/new.html">new</a></code> to create an object from a
 particular class can be interpreted specially for that class, by the
 definition of a method for function <code>initialize</code> for the class.
 This documentation describes some existing methods, and also outlines
@@ -29,7 +30,7 @@ valid objects for the slot (that is, have the same class as
 specified for the slot, or some superclass of that class).  If the
 object comes from a superclass, it is not coerced strictly, so
 normally it will retain its current class (specifically,
-<code><a href="as.html">as</a>(object, Class, strict = FALSE)</code>).
+<code><a href="../../methods/help/as.html">as</a>(object, Class, strict = FALSE)</code>).
 </p>
 <p>Unnamed arguments must be objects of this class, of one of its
 superclasses, or one of its subclasses (from the class, from a
@@ -47,7 +48,7 @@ subclass arguments.
 </dd>
 <dt><code>signature(.Object = "traceable")</code></dt><dd>
 <p>Objects of a class that extends <code>traceable</code> are used to
-implement debug tracing (see class <a href="TraceClasses.html">traceable</a> and
+implement debug tracing (see class <a href="../../methods/help/traceable-class.html">traceable</a> and
 <code><a href="../../base/html/trace.html">trace</a></code>).
 </p>
 <p>The <code>initialize</code> method for these classes takes special
@@ -64,7 +65,7 @@ of <code>"environment"</code> inherit an initialize method through
 <code>".environment"</code>, which has the additional effect of
 allocating a new environment.  If you define your own method for
 such a subclass, be sure either to call the existing method via
-<code><a href="NextMethod.html">callNextMethod</a></code> or allocate an environment in your
+<code><a href="../../methods/help/callNextMethod.html">callNextMethod</a></code> or allocate an environment in your
 method, since environments are references and are not duplicated
 automatically.
 </p>
@@ -73,7 +74,7 @@ automatically.
 <p>This is a method for internal use only.
 It takes an optional <code>functionDef</code> argument to provide a
 generic function with a <code>signature</code> slot to define the
-argument names.  See <a href="Methods_Details.html">Methods_Details</a> for details.
+argument names.  See <a href="../../methods/help/Methods_Details.html">Methods_Details</a> for details.
 </p>
 </dd>
 </dl>
@@ -85,7 +86,7 @@ argument names.  See <a href="Methods_Details.html">Methods_Details</a> for deta
 <p>Initialization methods provide a general mechanism corresponding to
 generator functions in other languages.
 </p>
-<p>The arguments to <code><a href="new.html">initialize</a></code> are <code>.Object</code> and
+<p>The arguments to <code><a href="../../methods/help/initialize.html">initialize</a></code> are <code>.Object</code> and
 .... Nearly always, <code>initialize</code> is called from <code>new</code>,
 not directly.  The <code>.Object</code> argument is then the
 prototype object from the class.
@@ -98,10 +99,10 @@ the (default) slot names.  These will be the formal arguments to
 your method definition, in addition to <code>.Object</code> (always) and
 ... (optionally).  For example, the method for class
 <code>"traceable"</code> documented above would be created by a call to
-<code><a href="setMethod.html">setMethod</a></code> of the form:
+<code><a href="../../methods/help/setMethod.html">setMethod</a></code> of the form:
 </p>
 <pre>    setMethod("initialize", "traceable",
-      function(.Object, def, tracer, exit, at, print) \dots
+      function(.Object, def, tracer, exit, at, print) { .... }
     )
 </pre>
 <p>In this example, no other arguments are meaningful, and the resulting
@@ -123,5 +124,5 @@ something like this:
 interpreting <code>x</code>, and then calling the next method.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

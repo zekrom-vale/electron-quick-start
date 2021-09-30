@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Apply a Function to a Data Frame Split by Factors</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for by {base}"><tr><td>by {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>Function <code>by</code> is an object-oriented wrapper for
-<code><a href="tapply.html">tapply</a></code> applied to data frames.
+<code><a href="../../base/help/tapply.html">tapply</a></code> applied to data frames.
 </p>
 
 
@@ -44,7 +45,7 @@ by(data, INDICES, FUN, ..., simplify = TRUE)
 </td></tr>
 <tr valign="top"><td><code>simplify</code></td>
 <td>
-<p>logical: see <code><a href="tapply.html">tapply</a></code>.</p>
+<p>logical: see <code><a href="../../base/help/tapply.html">tapply</a></code>.</p>
 </td></tr>
 </table>
 
@@ -66,13 +67,13 @@ separately to (subsets of) each column of the data frame.
 
 <p>An object of class <code>"by"</code>, giving the results for each subset.
 This is always a list if <code>simplify</code> is false, otherwise a list or
-array (see <code><a href="tapply.html">tapply</a></code>).
+array (see <code><a href="../../base/help/tapply.html">tapply</a></code>).
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="tapply.html">tapply</a></code>, <code><a href="lapply.html">simplify2array</a></code>.
+<p><code><a href="../../base/help/tapply.html">tapply</a></code>, <code><a href="../../base/help/simplify2array.html">simplify2array</a></code>.
 <code><a href="../../stats/html/ave.html">ave</a></code> also applies a function block-wise.
 </p>
 
@@ -93,5 +94,5 @@ tmp &lt;- with(warpbreaks,
 sapply(tmp, coef)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

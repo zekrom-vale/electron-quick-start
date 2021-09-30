@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: A Completion Generator for R</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rcompgen {utils}"><tr><td>rcompgen {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -79,7 +80,7 @@ usually has very few arguments). </p>
 inside <code><a href="../../base/html/library.html">library</a></code> and <code><a href="../../base/html/library.html">require</a></code>. </p>
 </dd>
 <dt><code>data</code>:</dt><dd><p> Enables completion of data sets (including
-those already visible) inside <code><a href="data.html">data</a></code>. </p>
+those already visible) inside <code><a href="../../utils/help/data.html">data</a></code>. </p>
 </dd>
 <dt><code>help</code>:</dt><dd><p> Enables completion of help requests starting
 with a question mark, by looking inside help index files. </p>
@@ -252,16 +253,16 @@ as that would incur a further speed penalty.
 </dd>
 <dt><b>Special functions</b>:</dt><dd>
 <p>For a few special functions (<code><a href="../../base/html/library.html">library</a></code>,
-<code><a href="data.html">data</a></code>, etc), the first argument is treated specially,
+<code><a href="../../utils/help/data.html">data</a></code>, etc), the first argument is treated specially,
 in the sense that normal completion is suppressed, and some
 function specific completions are enabled if so requested by the
 settings.  The <code>ipck</code> setting, which controls whether
 <code><a href="../../base/html/library.html">library</a></code> and <code><a href="../../base/html/library.html">require</a></code> will complete on
 <em>installed packages</em>, is disabled by default because the
-first call to <code><a href="installed.packages.html">installed.packages</a></code> is potentially time
+first call to <code><a href="../../utils/help/installed.packages.html">installed.packages</a></code> is potentially time
 consuming (e.g., when packages are installed on a remote network
 file server).  Note, however, that the results of a call to
-<code><a href="installed.packages.html">installed.packages</a></code> is cached, so subsequent calls
+<code><a href="../../utils/help/installed.packages.html">installed.packages</a></code> is cached, so subsequent calls
 are usually fast, so turning this option on is not particularly
 onerous even in such situations.
 </p>
@@ -438,5 +439,5 @@ parentheses) are not evaluated in this manner.  However, this
 
 <p> Deepayan Sarkar, <a href="mailto:deepayan.sarkar@r-project.org">deepayan.sarkar@r-project.org</a> </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

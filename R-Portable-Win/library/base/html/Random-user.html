@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: User-supplied Random Number Generation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Random.user {base}"><tr><td>Random.user {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Function <code><a href="Random.html">RNGkind</a></code> allows user-coded uniform and
+<p>Function <code><a href="../../base/help/RNGkind.html">RNGkind</a></code> allows user-coded uniform and
 normal random number generators to be supplied.  The details are given
 here.
 </p>
@@ -25,10 +26,10 @@ pattern. The generator should have at least 25 bits of precision.
 </p>
 <p>Optionally, the user can supply the entry point <code>user_unif_init</code>,
 which is called with an <code>unsigned int</code> argument when
-<code><a href="Random.html">RNGkind</a></code> (or <code>set.seed</code>) is called, and is intended
+<code><a href="../../base/help/RNGkind.html">RNGkind</a></code> (or <code>set.seed</code>) is called, and is intended
 to be used to initialize the user's RNG code.  The argument is intended
 to be used to set the &lsquo;seeds&rsquo;; it is the <code>seed</code> argument to
-<code>set.seed</code> or an essentially random seed if <code><a href="Random.html">RNGkind</a></code>
+<code>set.seed</code> or an essentially random seed if <code><a href="../../base/help/RNGkind.html">RNGkind</a></code>
 is called.
 </p>
 <p>If only these functions are supplied, no information about the
@@ -105,5 +106,5 @@ R
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

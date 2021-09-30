@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Rounding of Numbers</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Round {base}"><tr><td>Round {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,7 +27,10 @@ number of decimal places (default 0).  See &lsquo;Details&rsquo; about
 &ldquo;round to even&rdquo; when rounding off a 5.
 </p>
 <p><code>signif</code> rounds the values in its first argument to the specified
-number of significant digits.
+number of significant digits.   Hence, for <code>numeric</code> <code>x</code>,
+<code>signif(x, dig)</code> is the same as <code>round(x, dig - ceiling(log10(abs(x))))</code>.
+For <code><a href="../../base/help/complex.html">complex</a></code> <code>x</code>, this is not the case, 
+see the &lsquo;Details&rsquo;.
 </p>
 
 
@@ -66,7 +70,7 @@ Negative values are allowed (see &lsquo;Details&rsquo;).</p>
 <h3>Details</h3>
 
 <p>These are generic functions: methods can be defined for them
-individually or via the <code><a href="groupGeneric.html">Math</a></code> group
+individually or via the <code><a href="../../base/help/S3groupGeneric.html">Math</a></code> group
 generic.
 </p>
 <p>Note that for rounding off a 5, the IEC 60559 standard (see also
@@ -113,6 +117,14 @@ especially with <code>floor</code> and <code>ceiling</code>.  For example, we
 <code>1</code>, but <code>0</code> has been seen on an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> platform.  It is
 normally necessary to use a tolerance.
 </p>
+<p>Rounding to decimal digits in binary arithmetic is non-trivial (when
+<code>digits != 0</code>) and may be surprising.  Be aware that most decimal
+fractions are <em>not</em> exactly representable in binary double precision.
+In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.0.0, the algorithm for <code>round(x, d)</code>, for <i>d &gt; 0</i>, has
+been improved to <em>measure</em> and round &ldquo;to nearest even&rdquo;,
+contrary to earlier versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> (or also to <code><a href="../../base/help/sprintf.html">sprintf</a>()</code>
+or <code><a href="../../base/help/format.html">format</a>()</code> based rounding).
+</p>
 
 
 <h3>References</h3>
@@ -123,14 +135,17 @@ normally necessary to use a tolerance.
 <p>The ISO/IEC/IEEE 60559:2011 standard is available for money from
 <a href="https://www.iso.org">https://www.iso.org</a>.
 </p>
-<p>The IEEE 745:2008 standard is more openly documented, e.g, at
+<p>The IEEE 754:2008 standard is more openly documented, e.g, at
 <a href="https://en.wikipedia.org/wiki/IEEE_754">https://en.wikipedia.org/wiki/IEEE_754</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="integer.html">as.integer</a></code>.
+<p><code><a href="../../base/help/as.integer.html">as.integer</a></code>.
+Package <a href="https://CRAN.R-project.org/package=round"><span class="pkg">round</span></a>'s <code><a href="../../round/help/roundX.html">roundX</a>()</code> for several
+versions or implementations of rounding, including some previous and the
+current <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version (as <code>version = "3d.C"</code>).
 </p>
 
 
@@ -151,5 +166,5 @@ round(x2, 3)
 signif(x2, 3)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

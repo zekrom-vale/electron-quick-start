@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add Line Segments to a Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for segments {graphics}"><tr><td>segments {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -36,13 +37,13 @@ one must be supplied.</p>
 </td></tr>
 <tr valign="top"><td><code>col, lty, lwd</code></td>
 <td>
-<p><a href="par.html">graphical parameters</a> as in
-<code><a href="par.html">par</a></code>, possibly vectors.  <code>NA</code> values in <code>col</code>
+<p><a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> as in
+<code><a href="../../graphics/help/par.html">par</a></code>, possibly vectors.  <code>NA</code> values in <code>col</code>
 cause the segment to be omitted.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>further <a href="par.html">graphical parameters</a> (from <code><a href="par.html">par</a></code>),
+<p>further <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> (from <code><a href="../../graphics/help/par.html">par</a></code>),
 such as <code>xpd</code> and the line characteristics <code>lend</code>, <code>ljoin</code>
 and <code>lmitre</code>.</p>
 </td></tr>
@@ -55,7 +56,7 @@ and <code>lmitre</code>.</p>
 <code>(x0[i], y0[i])</code> and the point <code>(x1[i], y1[i])</code>.  The
 coordinate vectors will be recycled to the length of the longest.
 </p>
-<p>The <a href="par.html">graphical parameters</a> <code>col</code>, <code>lty</code> and <code>lwd</code> can be
+<p>The <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> <code>col</code>, <code>lty</code> and <code>lwd</code> can be
 vectors of length greater than one and will be recycled if necessary.
 </p>
 
@@ -70,10 +71,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="arrows.html">arrows</a></code>,
-<code><a href="polygon.html">polygon</a></code> for slightly easier and less flexible line
+<p><code><a href="../../graphics/help/arrows.html">arrows</a></code>,
+<code><a href="../../graphics/help/polygon.html">polygon</a></code> for slightly easier and less flexible line
 drawing, and
-<code><a href="lines.html">lines</a></code> for the usual polygons.
+<code><a href="../../graphics/help/lines.html">lines</a></code> for the usual polygons.
 </p>
 
 
@@ -90,5 +91,5 @@ s &lt;- s[-length(s)]
 segments(x[s], y[s], x[s+2], y[s+2], col= 'pink')
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

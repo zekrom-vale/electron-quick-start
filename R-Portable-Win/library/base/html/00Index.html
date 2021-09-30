@@ -2,8 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><title>R: The R Base Package</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 <h1> The R Base Package
 <img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
 </h1>
@@ -11,7 +12,7 @@
 <div style="text-align: center;">
 <a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
 <a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
-</div><h2>Documentation for package &lsquo;base&rsquo; version 3.6.1</h2>
+</div><h2>Documentation for package &lsquo;base&rsquo; version 4.1.1</h2>
 
 <ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
 <li><a href="../demo">Code demos</a>.  Use <a href="../../utils/help/demo">demo()</a> to run them.</li>
@@ -66,6 +67,8 @@
 <td>Trigonometric Functions</td></tr>
 <tr><td style="width: 25%;"><a href="Hyperbolic.html">acosh</a></td>
 <td>Hyperbolic Functions</td></tr>
+<tr><td style="width: 25%;"><a href="bindenv.html">activeBindingFunction</a></td>
+<td>Binding and Environment Locking, Active Bindings</td></tr>
 <tr><td style="width: 25%;"><a href="factor.html">addNA</a></td>
 <td>Factors</td></tr>
 <tr><td style="width: 25%;"><a href="taskCallback.html">addTaskCallback</a></td>
@@ -180,6 +183,8 @@
 <td>Lists - Generic and Dotted Pairs</td></tr>
 <tr><td style="width: 25%;"><a href="Dates.html">as.list.Date</a></td>
 <td>Date Class</td></tr>
+<tr><td style="width: 25%;"><a href="difftime.html">as.list.difftime</a></td>
+<td>Time Intervals / Differences</td></tr>
 <tr><td style="width: 25%;"><a href="numeric_version.html">as.list.numeric_version</a></td>
 <td>Numeric Versions</td></tr>
 <tr><td style="width: 25%;"><a href="DateTimeClasses.html">as.list.POSIXct</a></td>
@@ -346,6 +351,8 @@
 <td>Date Class</td></tr>
 <tr><td style="width: 25%;"><a href="difftime.html">c.difftime</a></td>
 <td>Time Intervals / Differences</td></tr>
+<tr><td style="width: 25%;"><a href="factor.html">c.factor</a></td>
+<td>Factors</td></tr>
 <tr><td style="width: 25%;"><a href="noquote.html">c.noquote</a></td>
 <td>Class for 'no quote' Printing of Character Strings</td></tr>
 <tr><td style="width: 25%;"><a href="numeric_version.html">c.numeric_version</a></td>
@@ -377,7 +384,7 @@
 <tr><td style="width: 25%;"><a href="charmatch.html">charmatch</a></td>
 <td>Partial String Matching</td></tr>
 <tr><td style="width: 25%;"><a href="rawConversion.html">charToRaw</a></td>
-<td>Convert to or from Raw Vectors</td></tr>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="chartr.html">chartr</a></td>
 <td>Character Translation and Casefolding</td></tr>
 <tr><td style="width: 25%;"><a href="DateTimeClasses.html">check_tzones</a></td>
@@ -525,6 +532,8 @@
 <td>Delay Evaluation</td></tr>
 <tr><td style="width: 25%;"><a href="deparse.html">deparse</a></td>
 <td>Expression Deparsing</td></tr>
+<tr><td style="width: 25%;"><a href="deparse.html">deparse1</a></td>
+<td>Expression Deparsing</td></tr>
 <tr><td style="width: 25%;"><a href="Deprecated.html">Deprecated</a></td>
 <td>Marking Objects as Deprecated</td></tr>
 <tr><td style="width: 25%;"><a href="Deprecated.html">deprecated</a></td>
@@ -557,6 +566,8 @@
 <td>Manipulation of Directories and File Permissions</td></tr>
 <tr><td style="width: 25%;"><a href="basename.html">dirname</a></td>
 <td>Manipulate File Paths</td></tr>
+<tr><td style="width: 25%;"><a href="EnvVar.html">DISPLAY</a></td>
+<td>Environment Variables</td></tr>
 <tr><td style="width: 25%;"><a href="getLoadedDLLs.html">DLLInfo</a></td>
 <td>Get DLLs Loaded in Current Session</td></tr>
 <tr><td style="width: 25%;"><a href="getLoadedDLLs.html">DLLInfoList</a></td>
@@ -602,6 +613,8 @@
 <table width="100%">
 <tr><td style="width: 25%;"><a href="eapply.html">eapply</a></td>
 <td>Apply a Function Over Values in an Environment</td></tr>
+<tr><td style="width: 25%;"><a href="EnvVar.html">EDITOR</a></td>
+<td>Environment Variables</td></tr>
 <tr><td style="width: 25%;"><a href="eigen.html">eigen</a></td>
 <td>Spectral Decomposition of a Matrix</td></tr>
 <tr><td style="width: 25%;"><a href="Control.html">else</a></td>
@@ -671,6 +684,8 @@
 <td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
 <tr><td style="width: 25%;"><a href="connections.html">file</a></td>
 <td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
+<tr><td style="width: 25%;"><a href="UTF8filepaths.html">file path encoding</a></td>
+<td>File Paths not in the Native Encoding</td></tr>
 <tr><td style="width: 25%;"><a href="file.access.html">file.access</a></td>
 <td>Ascertain File Accessibility</td></tr>
 <tr><td style="width: 25%;"><a href="files.html">file.append</a></td>
@@ -820,8 +835,12 @@
 <td>Get or Set Working Directory</td></tr>
 <tr><td style="width: 25%;"><a href="gl.html">gl</a></td>
 <td>Generate Factor Levels</td></tr>
+<tr><td style="width: 25%;"><a href="conditions.html">globalCallingHandlers</a></td>
+<td>Condition Handling and Recovery</td></tr>
 <tr><td style="width: 25%;"><a href="environment.html">globalenv</a></td>
 <td>Environment Access</td></tr>
+<tr><td style="width: 25%;"><a href="grep.html">gregexec</a></td>
+<td>Pattern Matching and Replacement</td></tr>
 <tr><td style="width: 25%;"><a href="grep.html">gregexpr</a></td>
 <td>Pattern Matching and Replacement</td></tr>
 <tr><td style="width: 25%;"><a href="grep.html">grep</a></td>
@@ -884,6 +903,8 @@
 <td>Finite, Infinite and NaN Numbers</td></tr>
 <tr><td style="width: 25%;"><a href="is.finite.html">infinite</a></td>
 <td>Finite, Infinite and NaN Numbers</td></tr>
+<tr><td style="width: 25%;"><a href="readRDS.html">infoRDS</a></td>
+<td>Serialization Interface for Single Objects</td></tr>
 <tr><td style="width: 25%;"><a href="class.html">inherits</a></td>
 <td>Object Classes</td></tr>
 <tr><td style="width: 25%;"><a href="integer.html">integer</a></td>
@@ -903,7 +924,7 @@
 <tr><td style="width: 25%;"><a href="sets.html">intersection</a></td>
 <td>Set Operations</td></tr>
 <tr><td style="width: 25%;"><a href="rawConversion.html">intToBits</a></td>
-<td>Convert to or from Raw Vectors</td></tr>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="utf8Conversion.html">intToUtf8</a></td>
 <td>Convert Integer Vectors to or from UTF-8-encoded Character Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="rle.html">inverse.rle</a></td>
@@ -1000,6 +1021,8 @@
 <td>Test if an Object is Not Sorted</td></tr>
 <tr><td style="width: 25%;"><a href="vector.html">is.vector</a></td>
 <td>Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="class.html">isa</a></td>
+<td>Object Classes</td></tr>
 <tr><td style="width: 25%;"><a href="showConnections.html">isatty</a></td>
 <td>Display Connections</td></tr>
 <tr><td style="width: 25%;"><a href="debug.html">isdebugged</a></td>
@@ -1121,6 +1144,8 @@
 <td>List the Files in a Directory/Folder</td></tr>
 <tr><td style="width: 25%;"><a href="list.files.html">list.files</a></td>
 <td>List the Files in a Directory/Folder</td></tr>
+<tr><td style="width: 25%;"><a href="list2DF.html">list2DF</a></td>
+<td>Create Data Frame From List</td></tr>
 <tr><td style="width: 25%;"><a href="list2env.html">list2env</a></td>
 <td>From A List, Build or Add To an Environment</td></tr>
 <tr><td style="width: 25%;"><a href="load.html">load</a></td>
@@ -1180,8 +1205,10 @@
 <td>Common Higher-Order Functions in Functional Programming Languages</td></tr>
 <tr><td style="width: 25%;"><a href="mapply.html">mapply</a></td>
 <td>Apply a Function to Multiple List or Vector Arguments</td></tr>
-<tr><td style="width: 25%;"><a href="margin.table.html">margin.table</a></td>
-<td>Compute table margin</td></tr>
+<tr><td style="width: 25%;"><a href="marginSums.html">margin.table</a></td>
+<td>Compute table margins</td></tr>
+<tr><td style="width: 25%;"><a href="marginSums.html">marginSums</a></td>
+<td>Compute table margins</td></tr>
 <tr><td style="width: 25%;"><a href="mat.or.vec.html">mat.or.vec</a></td>
 <td>Create a Matrix or a Vector</td></tr>
 <tr><td style="width: 25%;"><a href="match.html">match</a></td>
@@ -1323,6 +1350,10 @@
 <td>Numeric Constants</td></tr>
 <tr><td style="width: 25%;"><a href="numeric_version.html">numeric_version</a></td>
 <td>Numeric Versions</td></tr>
+<tr><td style="width: 25%;"><a href="rawConversion.html">numToBits</a></td>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="rawConversion.html">numToInts</a></td>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="nchar.html">nzchar</a></td>
 <td>Count the Number of Characters (or Bytes or Width)</td></tr>
 </table>
@@ -1384,7 +1415,9 @@
 <tr><td style="width: 25%;"><a href="numeric_version.html">package_version</a></td>
 <td>Numeric Versions</td></tr>
 <tr><td style="width: 25%;"><a href="rawConversion.html">packBits</a></td>
-<td>Convert to or from Raw Vectors</td></tr>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
+<tr><td style="width: 25%;"><a href="EnvVar.html">PAGER</a></td>
+<td>Environment Variables</td></tr>
 <tr><td style="width: 25%;"><a href="list.html">pairlist</a></td>
 <td>Lists - Generic and Dotted Pairs</td></tr>
 <tr><td style="width: 25%;"><a href="Paren.html">Paren</a></td>
@@ -1409,6 +1442,10 @@
 <td>Built-in Constants</td></tr>
 <tr><td style="width: 25%;"><a href="connections.html">pipe</a></td>
 <td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
+<tr><td style="width: 25%;"><a href="pipeOp.html">pipeOp</a></td>
+<td>Forward Pipe Operator</td></tr>
+<tr><td style="width: 25%;"><a href="plot.html">plot</a></td>
+<td>Generic X-Y Plotting</td></tr>
 <tr><td style="width: 25%;"><a href="pmatch.html">pmatch</a></td>
 <td>Partial String Matching</td></tr>
 <tr><td style="width: 25%;"><a href="Extremes.html">pmax</a></td>
@@ -1505,7 +1542,9 @@
 <td>Delay Evaluation</td></tr>
 <tr><td style="width: 25%;"><a href="delayedAssign.html">promises</a></td>
 <td>Delay Evaluation</td></tr>
-<tr><td style="width: 25%;"><a href="prop.table.html">prop.table</a></td>
+<tr><td style="width: 25%;"><a href="proportions.html">prop.table</a></td>
+<td>Express Table Entries as Fraction of Marginal Table</td></tr>
+<tr><td style="width: 25%;"><a href="proportions.html">proportions</a></td>
 <td>Express Table Entries as Fraction of Marginal Table</td></tr>
 <tr><td style="width: 25%;"><a href="dimnames.html">provideDimnames</a></td>
 <td>Dimnames of an Object</td></tr>
@@ -1580,11 +1619,11 @@
 <tr><td style="width: 25%;"><a href="rawConnection.html">rawConnectionValue</a></td>
 <td>Raw Connections</td></tr>
 <tr><td style="width: 25%;"><a href="rawConversion.html">rawShift</a></td>
-<td>Convert to or from Raw Vectors</td></tr>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="rawConversion.html">rawToBits</a></td>
-<td>Convert to or from Raw Vectors</td></tr>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="rawConversion.html">rawToChar</a></td>
-<td>Convert to or from Raw Vectors</td></tr>
+<td>Convert to or from (Bit/Packed) Raw Vectors</td></tr>
 <tr><td style="width: 25%;"><a href="cbind.html">rbind</a></td>
 <td>Combine R Objects by Rows or Columns</td></tr>
 <tr><td style="width: 25%;"><a href="cbind.html">rbind.data.frame</a></td>
@@ -1641,6 +1680,8 @@
 <td>Initialization at Start of an R Session</td></tr>
 <tr><td style="width: 25%;"><a href="rep.html">rep</a></td>
 <td>Replicate Elements of Vectors and Lists</td></tr>
+<tr><td style="width: 25%;"><a href="difftime.html">rep.difftime</a></td>
+<td>Time Intervals / Differences</td></tr>
 <tr><td style="width: 25%;"><a href="numeric_version.html">rep.numeric_version</a></td>
 <td>Numeric Versions</td></tr>
 <tr><td style="width: 25%;"><a href="Control.html">repeat</a></td>
@@ -1759,6 +1800,8 @@
 <td>Environment Variables</td></tr>
 <tr><td style="width: 25%;"><a href="EnvVar.html">R_PLATFORM</a></td>
 <td>Environment Variables</td></tr>
+<tr><td style="width: 25%;"><a href="EnvVar.html">R_PRINTCMD</a></td>
+<td>Environment Variables</td></tr>
 <tr><td style="width: 25%;"><a href="Startup.html">R_PROFILE</a></td>
 <td>Initialization at Start of an R Session</td></tr>
 <tr><td style="width: 25%;"><a href="Startup.html">R_PROFILE_USER</a></td>
@@ -1822,6 +1865,8 @@
 <td>Sequence Generation</td></tr>
 <tr><td style="width: 25%;"><a href="serialize.html">serialize</a></td>
 <td>Simple Serialization Interface</td></tr>
+<tr><td style="width: 25%;"><a href="connections.html">serverSocket</a></td>
+<td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
 <tr><td style="width: 25%;"><a href="Random.html">set.seed</a></td>
 <td>Random Number Generation</td></tr>
 <tr><td style="width: 25%;"><a href="sets.html">setdiff</a></td>
@@ -1872,10 +1917,14 @@
 <td>Trigonometric Functions</td></tr>
 <tr><td style="width: 25%;"><a href="slice.index.html">slice.index</a></td>
 <td>Slice Indexes in an Array</td></tr>
+<tr><td style="width: 25%;"><a href="connections.html">socketAccept</a></td>
+<td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
 <tr><td style="width: 25%;"><a href="connections.html">socketConnection</a></td>
 <td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
 <tr><td style="width: 25%;"><a href="socketSelect.html">socketSelect</a></td>
 <td>Wait on Socket Connections</td></tr>
+<tr><td style="width: 25%;"><a href="connections.html">socketTimeout</a></td>
+<td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
 <tr><td style="width: 25%;"><a href="solve.html">solve</a></td>
 <td>Solve a System of Equations</td></tr>
 <tr><td style="width: 25%;"><a href="qr.html">solve.qr</a></td>
@@ -2161,6 +2210,8 @@
 <td>Try an Expression Allowing Error Recovery</td></tr>
 <tr><td style="width: 25%;"><a href="conditions.html">tryCatch</a></td>
 <td>Condition Handling and Recovery</td></tr>
+<tr><td style="width: 25%;"><a href="conditions.html">tryInvokeRestart</a></td>
+<td>Condition Handling and Recovery</td></tr>
 <tr><td style="width: 25%;"><a href="typeof.html">type</a></td>
 <td>The Type of an Object</td></tr>
 <tr><td style="width: 25%;"><a href="typeof.html">typeof</a></td>
@@ -2192,12 +2243,8 @@
 <td>Date-Time Classes</td></tr>
 <tr><td style="width: 25%;"><a href="warnings.html">unique.warnings</a></td>
 <td>Print Warning Messages</td></tr>
-<tr><td style="width: 25%;"><a href="difftime.html">units</a></td>
-<td>Time Intervals / Differences</td></tr>
 <tr><td style="width: 25%;"><a href="difftime.html">units.difftime</a></td>
 <td>Time Intervals / Differences</td></tr>
-<tr><td style="width: 25%;"><a href="system.time.html">unix.time</a></td>
-<td>CPU Time Used</td></tr>
 <tr><td style="width: 25%;"><a href="unlink.html">unlink</a></td>
 <td>Delete Files and Directories</td></tr>
 <tr><td style="width: 25%;"><a href="unlist.html">unlist</a></td>
@@ -2224,6 +2271,8 @@
 <td>Functions to Manipulate Connections (Files, URLs, ...)</td></tr>
 <tr><td style="width: 25%;"><a href="UseMethod.html">UseMethod</a></td>
 <td>Class Methods</td></tr>
+<tr><td style="width: 25%;"><a href="UTF8filepaths.html">UTF-8 file path</a></td>
+<td>File Paths not in the Native Encoding</td></tr>
 <tr><td style="width: 25%;"><a href="utf8Conversion.html">utf8ToInt</a></td>
 <td>Convert Integer Vectors to or from UTF-8-encoded Character Vectors</td></tr>
 </table>
@@ -2383,6 +2432,8 @@
 <td>..., '..1', etc used in Functions</td></tr>
 <tr><td style="width: 25%;"><a href="dots.html">...length</a></td>
 <td>..., '..1', etc used in Functions</td></tr>
+<tr><td style="width: 25%;"><a href="dots.html">...names</a></td>
+<td>..., '..1', etc used in Functions</td></tr>
 <tr><td style="width: 25%;"><a href="dots.html">..1</a></td>
 <td>..., '..1', etc used in Functions</td></tr>
 <tr><td style="width: 25%;"><a href="dots.html">..2</a></td>
@@ -2407,6 +2458,8 @@
 <td>Modern Interfaces to C/C++ code</td></tr>
 <tr><td style="width: 25%;"><a href="UseMethod.html">.Class</a></td>
 <td>Class Methods</td></tr>
+<tr><td style="width: 25%;"><a href="class.html">.class2</a></td>
+<td>Object Classes</td></tr>
 <tr><td style="width: 25%;"><a href="col.html">.col</a></td>
 <td>Column Indexes</td></tr>
 <tr><td style="width: 25%;"><a href="colSums.html">.colMeans</a></td>
@@ -2525,6 +2578,8 @@
 <td>Form Row and Column Sums and Means</td></tr>
 <tr><td style="width: 25%;"><a href="Startup.html">.Rprofile</a></td>
 <td>Initialization at Start of an R Session</td></tr>
+<tr><td style="width: 25%;"><a href="S3method.html">.S3method</a></td>
+<td>Register S3 Methods</td></tr>
 <tr><td style="width: 25%;"><a href="InternalMethods.html">.S3PrimitiveGenerics</a></td>
 <td>Internal Generic Functions</td></tr>
 <tr><td style="width: 25%;"><a href="conditions.html">.signalSimpleWarning</a></td>
@@ -2625,6 +2680,8 @@
 <td>Extract or Replace Parts of a Data Frame</td></tr>
 <tr><td style="width: 25%;"><a href="Dates.html">[&lt;-.Date</a></td>
 <td>Date Class</td></tr>
+<tr><td style="width: 25%;"><a href="difftime.html">[&lt;-.difftime</a></td>
+<td>Time Intervals / Differences</td></tr>
 <tr><td style="width: 25%;"><a href="Extract.factor.html">[&lt;-.factor</a></td>
 <td>Extract or Replace Parts of a Factor</td></tr>
 <tr><td style="width: 25%;"><a href="numeric_version.html">[&lt;-.numeric_version</a></td>
@@ -2659,9 +2716,11 @@
 <td>Display Numbers in Hexadecimal</td></tr>
 <tr><td style="width: 25%;"><a href="octmode.html">|.octmode</a></td>
 <td>Display Numbers in Octal</td></tr>
+<tr><td style="width: 25%;"><a href="pipeOp.html">|&gt;</a></td>
+<td>Forward Pipe Operator</td></tr>
 <tr><td style="width: 25%;"><a href="Logic.html">||</a></td>
 <td>Logical Operators</td></tr>
 <tr><td style="width: 25%;"><a href="tilde.html">~</a></td>
 <td>Tilde Operator</td></tr>
 </table>
-</body></html>
+</div></body></html>

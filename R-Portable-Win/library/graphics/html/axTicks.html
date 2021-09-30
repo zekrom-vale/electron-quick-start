@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Compute Axis Tickmark Locations</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for axTicks {graphics}"><tr><td>axTicks {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -12,7 +13,7 @@
 <p>Compute pretty tickmark locations, the same way as <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> does internally.
 This is only non-trivial when <b>log</b> coordinates are active.
 By default, gives the <code>at</code> values which
-<code><a href="axis.html">axis</a>(side)</code> would use.
+<code><a href="../../graphics/help/axis.html">axis</a>(side)</code> would use.
 </p>
 
 
@@ -28,12 +29,12 @@ axTicks(side, axp = NULL, usr = NULL, log = NULL, nintLog = NULL)
 <table summary="R argblock">
 <tr valign="top"><td><code>side</code></td>
 <td>
-<p>integer in 1:4, as for <code><a href="axis.html">axis</a></code>.</p>
+<p>integer in 1:4, as for <code><a href="../../graphics/help/axis.html">axis</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>axp</code></td>
 <td>
 <p>numeric vector of length three, defaulting to
-<code><a href="par.html">par</a>("xaxp")</code> or <code><a href="par.html">par</a>("yaxp")</code>
+<code><a href="../../graphics/help/par.html">par</a>("xaxp")</code> or <code><a href="../../graphics/help/par.html">par</a>("yaxp")</code>
 depending on the <code>side</code> argument (<code>par("xaxp")</code>
 if <code>side</code> is 1 or 3, <code>par("yaxp")</code> if side is 2 or 4).</p>
 </td></tr>
@@ -41,21 +42,21 @@ if <code>side</code> is 1 or 3, <code>par("yaxp")</code> if side is 2 or 4).</p>
 <td>
 <p>numeric vector of length two giving user coordinate
 limits, defaulting to the relevant portion of
-<code><a href="par.html">par</a>("usr")</code> (<code>par("usr")[1:2]</code> or
+<code><a href="../../graphics/help/par.html">par</a>("usr")</code> (<code>par("usr")[1:2]</code> or
 <code>par("usr")[3:4]</code> for <code>side</code> in (1,3) or (2,4)
 respectively).</p>
 </td></tr>
 <tr valign="top"><td><code>log</code></td>
 <td>
 <p>logical indicating if log coordinates are active; defaults
-to <code><a href="par.html">par</a>("xlog")</code> or <code><a href="par.html">par</a>("ylog")</code>
+to <code><a href="../../graphics/help/par.html">par</a>("xlog")</code> or <code><a href="../../graphics/help/par.html">par</a>("ylog")</code>
 depending on <code>side</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>nintLog</code></td>
 <td>
 <p>(only used when <code>log</code> is true): approximate (lower
 bound for the) number of tick intervals; defaults to
-<code><a href="par.html">par</a>("lab")[j]</code> where <code>j</code> is 1 or 2 depending on
+<code><a href="../../graphics/help/par.html">par</a>("lab")[j]</code> where <code>j</code> is 1 or 2 depending on
 <code>side</code>.  Set this to <code>Inf</code> if you want the same behavior
 as in earlier <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions (than 2.14.x).</p>
 </td></tr>
@@ -69,11 +70,11 @@ as their default values (the <code>par(..)</code> results) are.  If you
 specify all three (as non-NULL), the graphics environment is not used
 at all.  Note that the meaning of <code>axp</code> differs significantly
 when <code>log</code> is <code>TRUE</code>; see the documentation on
-<code><a href="par.html">par</a>(xaxp = .)</code>.
+<code><a href="../../graphics/help/par.html">par</a>(xaxp = .)</code>.
 </p>
 <p><code>axTicks()</code> may be seen as an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> implementation of the C function
 <code>CreateAtVector()</code> in &lsquo;<span class="file">..../src/main/plot.c</span>&rsquo;
-which is called by <code><a href="axis.html">axis</a>(side, *)</code> when no argument
+which is called by <code><a href="../../graphics/help/axis.html">axis</a>(side, *)</code> when no argument
 <code>at</code> is specified or directly by <code><a href="../../grDevices/html/axisTicks.html">axisTicks</a>()</code> (in package
 <span class="pkg">grDevices</span>).
 <br />
@@ -88,19 +89,19 @@ compatibility.
 <p>numeric vector of coordinate values at which axis tickmarks can be
 drawn.  By default, when only the first argument is specified,
 these values should be identical to those that
-<code><a href="axis.html">axis</a>(side)</code> would use or has used.  Note that the values
+<code><a href="../../graphics/help/axis.html">axis</a>(side)</code> would use or has used.  Note that the values
 are decreasing when <code>usr</code> is (&ldquo;reverse axis&rdquo; case).
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="axis.html">axis</a></code>, <code><a href="par.html">par</a></code>.  <code><a href="../../base/html/pretty.html">pretty</a></code>
+<p><code><a href="../../graphics/help/axis.html">axis</a></code>, <code><a href="../../graphics/help/par.html">par</a></code>.  <code><a href="../../base/html/pretty.html">pretty</a></code>
 uses the same algorithm (but independently of the graphics
 environment) and has more options.  However it is not available for
 <code>log = TRUE.</code>
 </p>
-<p><code><a href="../../grDevices/html/axisTicks.html">axisTicks</a>()</code> (package <span class="pkg">grDevices</span>).
+<p><code><a href="../../grDevices/help/axisTicks.html">axisTicks</a>()</code> (package <span class="pkg">grDevices</span>).
 </p>
 
 
@@ -150,5 +151,5 @@ plot(0:1, ylims, log = "y", yaxs = "r")
 stopifnot(all.equal(aT.r, axTicks(side = 2)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

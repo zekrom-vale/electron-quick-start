@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Length of an Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for length {base}"><tr><td>length {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -39,28 +40,28 @@ length(x) &lt;- value
 <h3>Details</h3>
 
 <p>Both functions are generic: you can write methods to handle specific
-classes of objects, see <a href="InternalMethods.html">InternalMethods</a>.  <code>length&lt;-</code> has a
+classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.  <code>length&lt;-</code> has a
 <code>"factor"</code> method.
 </p>
 <p>The replacement form can be used to reset the length of a vector.  If
 a vector is shortened, extra values are discarded and when a vector is
-lengthened, it is padded out to its new length with <code><a href="NA.html">NA</a></code>s
+lengthened, it is padded out to its new length with <code><a href="../../base/help/NA.html">NA</a></code>s
 (<code>nul</code> for raw vectors).
 </p>
-<p>Both are <a href="Primitive.html">primitive</a> functions.
+<p>Both are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
 <h3>Value</h3>
 
 <p>The default method for <code>length</code> currently returns a non-negative
-<code><a href="integer.html">integer</a></code> of length 1, except for vectors of more than
+<code><a href="../../base/help/integer.html">integer</a></code> of length 1, except for vectors of more than
 <i>2^31 - 1</i> elements, when it returns a double.
 </p>
 <p>For vectors (including lists) and factors the length is the number of
 elements.  For an environment it is the number of objects in the
 environment, and <code>NULL</code> has length 0.  For expressions and
-pairlists (including <a href="is.language.html">language objects</a> and dotlists) it is the
+pairlists (including <a href="../../base/help/language+20objects.html">language objects</a> and dotlists) it is the
 length of the pairlist chain.  All other objects (including functions)
 have length one: note that for functions this differs from S.
 </p>
@@ -73,7 +74,7 @@ names, which are adjusted (and if necessary extended by <code>""</code>).
 
 <p>Package authors have written methods that return a result of length
 other than one (<a href="https://CRAN.R-project.org/package=Formula"><span class="pkg">Formula</span></a>) and that return a vector of type
-<code><a href="double.html">double</a></code> (<a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a>), even with non-integer values
+<code><a href="../../base/help/double.html">double</a></code> (<a href="https://CRAN.R-project.org/package=Matrix"><span class="pkg">Matrix</span></a>), even with non-integer values
 (earlier versions of <a href="https://CRAN.R-project.org/package=sets"><span class="pkg">sets</span></a>).  Where a single double value is
 returned that can be represented as an integer it is returned as a
 length-one integer vector.
@@ -91,7 +92,7 @@ Wadsworth &amp; Brooks/Cole.
 <h3>See Also</h3>
 
 <p><code>nchar</code> for counting the number of characters in character
-vectors, <code><a href="lengths.html">lengths</a></code> for getting the length of every element
+vectors, <code><a href="../../base/help/lengths.html">lengths</a></code> for getting the length of every element
 in a list.
 </p>
 
@@ -112,5 +113,5 @@ length(fm1$call)      # 3, lm() and two arguments.
 length(formula(fm1))  # 3, ~ lhs rhs
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

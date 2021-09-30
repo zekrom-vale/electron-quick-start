@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Star (Spider/Radar) Plots and Segment Diagrams</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for stars {graphics}"><tr><td>stars {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -102,7 +103,7 @@ segments of the unit key.  If omitted, the second component of
 <tr valign="top"><td><code>key.xpd</code></td>
 <td>
 <p>clipping switch for the unit key (drawing and
-labeling), see <code><a href="par.html">par</a>("xpd")</code>.</p>
+labeling), see <code><a href="../../graphics/help/par.html">par</a>("xpd")</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>xlim</code></td>
 <td>
@@ -125,19 +126,19 @@ smart heuristic.</p>
 <tr valign="top"><td><code>col.segments</code></td>
 <td>
 <p>color vector (integer or character, see
-<code><a href="par.html">par</a></code>), each specifying a color for one of the segments
+<code><a href="../../graphics/help/par.html">par</a></code>), each specifying a color for one of the segments
 (variables).  Ignored if <code>draw.segments = FALSE</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>col.stars</code></td>
 <td>
 <p>color vector (integer or character, see
-<code><a href="par.html">par</a></code>), each specifying a color for one of the stars
+<code><a href="../../graphics/help/par.html">par</a></code>), each specifying a color for one of the stars
 (cases).  Ignored if <code>draw.segments = TRUE</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>col.lines</code></td>
 <td>
 <p>color vector (integer or character, see
-<code><a href="par.html">par</a></code>), each specifying a color for one of the lines
+<code><a href="../../graphics/help/par.html">par</a></code>), each specifying a color for one of the lines
 (cases).  Ignored if <code>draw.segments = TRUE</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>axes</code></td>
@@ -179,18 +180,18 @@ smart heuristic.</p>
 <tr valign="top"><td><code>xpd</code></td>
 <td>
 <p>logical or NA indicating if clipping should be done, see
-<code><a href="par.html">par</a>(xpd = .)</code>.</p>
+<code><a href="../../graphics/help/par.html">par</a>(xpd = .)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>mar</code></td>
 <td>
-<p>argument to <code><a href="par.html">par</a>(mar = *)</code>, typically choosing
+<p>argument to <code><a href="../../graphics/help/par.html">par</a>(mar = *)</code>, typically choosing
 smaller margins than by default.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>further arguments, passed to the first call of
-<code>plot()</code>, see <code><a href="plot.default.html">plot.default</a></code> and to
-<code><a href="box.html">box</a>()</code> if <code>frame.plot</code> is true.</p>
+<code>plot()</code>, see <code><a href="../../graphics/help/plot.default.html">plot.default</a></code> and to
+<code><a href="../../graphics/help/box.html">box</a>()</code> if <code>frame.plot</code> is true.</p>
 </td></tr>
 <tr valign="top"><td><code>add</code></td>
 <td>
@@ -249,7 +250,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="symbols.html">symbols</a></code> for another way to draw stars and other symbols.
+<p><code><a href="../../graphics/help/symbols.html">symbols</a></code> for another way to draw stars and other symbols.
 </p>
 
 
@@ -306,5 +307,5 @@ stars(cbind(1:16, 10*(16:1)), draw.segments = TRUE,
       main = "A Joke -- do *not* use symbols on 2D data!")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

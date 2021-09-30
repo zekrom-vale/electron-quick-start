@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Handle Missing Values in Objects</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for na.fail {stats}"><tr><td>na.fail {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -53,7 +54,7 @@ comprising vectors and matrices (only).
 <p><code>na.exclude</code> differs from <code>na.omit</code> only in the class of the
 <code>"na.action"</code> attribute of the result, which is
 <code>"exclude"</code>.  This gives different behaviour in functions making
-use of <code><a href="nafns.html">naresid</a></code> and <code><a href="nafns.html">napredict</a></code>: when
+use of <code><a href="../../stats/help/naresid.html">naresid</a></code> and <code><a href="../../stats/help/napredict.html">napredict</a></code>: when
 <code>na.exclude</code> is used the residuals and predictions are padded to
 the correct length by inserting <code>NA</code>s for cases omitted by
 <code>na.exclude</code>.
@@ -70,10 +71,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="na.action.html">na.action</a></code>;
+<p><code><a href="../../stats/help/na.action.html">na.action</a></code>;
 <code><a href="../../base/html/options.html">options</a></code> with argument <code>na.action</code> for setting NA actions;
-and <code><a href="lm.html">lm</a></code> and <code><a href="glm.html">glm</a></code> for functions using these.
-<code><a href="na.contiguous.html">na.contiguous</a></code> as alternative for time series.
+and <code><a href="../../stats/help/lm.html">lm</a></code> and <code><a href="../../stats/help/glm.html">glm</a></code> for functions using these.
+<code><a href="../../stats/help/na.contiguous.html">na.contiguous</a></code> as alternative for time series.
 </p>
 
 
@@ -90,5 +91,5 @@ try(na.fail(DF))   #&gt; Error: missing values in ...
 options("na.action")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Reflectance Information for C/Fortran routines in a DLL</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for getDLLRegisteredRoutines {base}"><tr><td>getDLLRegisteredRoutines {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,8 +16,8 @@ dynamic lookup, error handling when calling native routines,
 and potentially security in the future.
 This function provides a description of each of the
 registered routines in the DLL for the different interfaces,
-i.e. <code><a href="Foreign.html">.C</a></code>, <code><a href="CallExternal.html">.Call</a></code>, <code><a href="Foreign.html">.Fortran</a></code>
-and <code><a href="CallExternal.html">.External</a></code>.
+i.e. <code><a href="../../base/help/.C.html">.C</a></code>, <code><a href="../../base/help/.Call.html">.Call</a></code>, <code><a href="../../base/help/.Fortran.html">.Fortran</a></code>
+and <code><a href="../../base/help/.External.html">.External</a></code>.
 </p>
 
 
@@ -40,9 +41,9 @@ So a file &lsquo;<span class="file">MyPackage/libs/MyPackage.so</span>&rsquo; wo
 <span class="samp">MyPackage</span>.
 </p>
 <p>The <code>DLLInfo</code> objects can be obtained directly
-in calls to <code><a href="dynload.html">dyn.load</a></code> and  <code><a href="library.dynam.html">library.dynam</a></code>,
+in calls to <code><a href="../../base/help/dyn.load.html">dyn.load</a></code> and  <code><a href="../../base/help/library.dynam.html">library.dynam</a></code>,
 or can be found after the DLL has been loaded using
-<code><a href="getLoadedDLLs.html">getLoadedDLLs</a></code>, which returns a list of
+<code><a href="../../base/help/getLoadedDLLs.html">getLoadedDLLs</a></code>, which returns a list of
 <code>DLLInfo</code> objects (index-able by DLL file name).
 </p>
 <p>The <code>DLLInfo</code> approach avoids any ambiguities related to two
@@ -119,16 +120,19 @@ be called with.
 
 <h3>References</h3>
 
-<p>&lsquo;Writing R Extensions Manual&rsquo; for symbol registration.
+<p>&lsquo;Writing R Extensions&rsquo; manual for symbol registration.
 </p>
-<p>R News, Volume 1/3, September 2001.   &quot;In search of C/C++ &amp; Fortran Symbols&quot;
+<p>Duncan Temple Lang (2001).
+&ldquo;In Search of C/C++ &amp; FORTRAN Routines&rdquo;.
+<em>R News</em>, <b>1</b>(3), 20&ndash;23.
+<a href="https://www.r-project.org/doc/Rnews/Rnews_2001-3.pdf">https://www.r-project.org/doc/Rnews/Rnews_2001-3.pdf</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="getLoadedDLLs.html">getLoadedDLLs</a></code>,
-<code><a href="getNativeSymbolInfo.html">getNativeSymbolInfo</a></code> for information on the entry points listed.
+<p><code><a href="../../base/help/getLoadedDLLs.html">getLoadedDLLs</a></code>,
+<code><a href="../../base/help/getNativeSymbolInfo.html">getNativeSymbolInfo</a></code> for information on the entry points listed.
 </p>
 
 
@@ -141,5 +145,5 @@ getDLLRegisteredRoutines(dlls[["base"]])
 getDLLRegisteredRoutines("stats")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

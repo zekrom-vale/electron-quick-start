@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Encode or Decode a (partial) URL</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Encode or Decode (partial) URLs</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for URLencode {utils}"><tr><td>URLencode {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Encode or Decode a (partial) URL</h2>
+<h2>Encode or Decode (partial) URLs</h2>
 
 <h3>Description</h3>
 
@@ -26,7 +27,7 @@ URLdecode(URL)
 <table summary="R argblock">
 <tr valign="top"><td><code>URL</code></td>
 <td>
-<p>a character string.</p>
+<p>a character vector.</p>
 </td></tr>
 <tr valign="top"><td><code>reserved</code></td>
 <td>
@@ -62,7 +63,7 @@ not for <span class="samp">http://</span> ones.
 
 <h3>Value</h3>
 
-<p>A character string.
+<p>A character vector.
 </p>
 
 
@@ -83,7 +84,10 @@ URLdecode(y)
 
 URLdecode(z &lt;- "ab%20cd")
 c(URLencode(z), URLencode(z, repeated = TRUE)) # first is usually wanted
+
+## both functions support character vectors of length &gt; 1
+y &lt;- URLdecode(URLencode(c("url with space", "another one")))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

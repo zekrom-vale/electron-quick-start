@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get Current Date and Time</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Sys.time {base}"><tr><td>Sys.time {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,19 +28,19 @@ Sys.Date()
 <p><code>Sys.time</code> returns an absolute date-time value which can be
 converted to various time zones and may return different days.
 </p>
-<p><code>Sys.Date</code> returns the current day in the current <a href="timezones.html">time zone</a>.
+<p><code>Sys.Date</code> returns the current day in the current <a href="../../base/help/time+20zone.html">time zone</a>.
 </p>
 
 
 <h3>Value</h3>
 
 <p><code>Sys.time</code> returns an object of class <code>"POSIXct"</code> (see
-<a href="DateTimeClasses.html">DateTimeClasses</a>).  On almost all systems it will have
+<a href="../../base/help/DateTimeClasses.html">DateTimeClasses</a>).  On almost all systems it will have
 sub-second accuracy, possibly microseconds or better.  On Windows it
 increments in clock ticks (usually 1/60 of a second) reported to
 millisecond accuracy.
 </p>
-<p><code>Sys.Date</code> returns an object of class <code>"Date"</code> (see <a href="Dates.html">Date</a>).
+<p><code>Sys.Date</code> returns an object of class <code>"Date"</code> (see <a href="../../base/help/Date.html">Date</a>).
 </p>
 
 
@@ -47,18 +48,18 @@ millisecond accuracy.
 
 <p><code>Sys.time</code> may return fractional seconds, but they are ignored by
 the default conversions (e.g., printing) for class <code>"POSIXct"</code>.
-See the examples and <code><a href="strptime.html">format.POSIXct</a></code> for ways to reveal them.
+See the examples and <code><a href="../../base/help/format.POSIXct.html">format.POSIXct</a></code> for ways to reveal them.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="date.html">date</a></code> for the system time in a fixed-format character
+<p><code><a href="../../base/help/date.html">date</a></code> for the system time in a fixed-format character
 string.
 </p>
-<p><code><a href="timezones.html">Sys.timezone</a></code>.
+<p><code><a href="../../base/help/Sys.timezone.html">Sys.timezone</a></code>.
 </p>
-<p><code><a href="system.time.html">system.time</a></code> for measuring elapsed/CPU time of expressions.
+<p><code><a href="../../base/help/system.time.html">system.time</a></code> for measuring elapsed/CPU time of expressions.
 </p>
 
 
@@ -77,5 +78,5 @@ format(Sys.time(), "%a %b %d %X %Y")
 Sys.Date()
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

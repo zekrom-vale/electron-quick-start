@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Manage Implicit Versions of Generic Functions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for implicitGeneric {methods}"><tr><td>implicitGeneric {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,8 +16,8 @@ in a table in a package. The package does not want the current
 version of the function to be a generic, however, and retains the
 non-generic version.
 </p>
-<p>When a call to <code><a href="setMethod.html">setMethod</a></code> or
-<code><a href="setGeneric.html">setGeneric</a></code> creates a generic version for one of these
+<p>When a call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code> or
+<code><a href="../../methods/help/setGeneric.html">setGeneric</a></code> creates a generic version for one of these
 functions, the object in the table is used.
 This mechanism is only needed if special arguments were used to
 create the generic; e.g., the <code>signature</code> or the <code>valueClass</code>
@@ -130,7 +131,7 @@ supplied in the distribution of <span style="font-family: Courier New, Courier; 
 &lsquo;methods&rsquo; package itself and will always be available.
 </p>
 <p>As emphasized repeatedly in the documentation,
-<code><a href="setGeneric.html">setGeneric</a>()</code> calls for a function in  another package
+<code><a href="../../methods/help/setGeneric.html">setGeneric</a>()</code> calls for a function in  another package
 should never have non-default settings for arguments such as
 <code>signature</code>.
 The reasoning applies specially to functions in supplied packages,
@@ -141,7 +142,7 @@ A call to <code>implicitGeneric()</code> will show the generic version.
 
 <h3>See Also</h3>
 
-<p><code><a href="setGeneric.html">setGeneric</a></code></p>
+<p><code><a href="../../methods/help/setGeneric.html">setGeneric</a></code></p>
 
 
 <h3>Examples</h3>
@@ -169,5 +170,5 @@ implicitGeneric("with")
 # (This implicit generic is stored in the 'methods' package.)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: General-purpose Optimization</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for optim {stats}"><tr><td>optim {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -130,9 +131,9 @@ parameters. It is not a general-purpose method but can be very useful
 in getting to a good value on a very rough surface.
 </p>
 <p>Method <code>"Brent"</code> is for one-dimensional problems only, using
-<code><a href="optimize.html">optimize</a>()</code>.  It can be useful in cases where
+<code><a href="../../stats/help/optimize.html">optimize</a>()</code>.  It can be useful in cases where
 <code>optim()</code> is used inside other functions where only <code>method</code>
-can be specified, such as in <code><a href="../../stats4/html/mle.html">mle</a></code> from package <span class="pkg">stats4</span>.
+can be specified, such as in <code><a href="../../stats/help/mle.html">mle</a></code> from package <span class="pkg">stats4</span>.
 </p>
 <p>Function <code>fn</code> can return <code>NA</code> or <code>Inf</code> if the function
 cannot be evaluated at the supplied value, but the initial value must
@@ -303,7 +304,7 @@ applies.
 
 <p><code>optim</code> will work with one-dimensional <code>par</code>s, but the
 default method does not work well (and will warn).  Method
-<code>"Brent"</code> uses <code><a href="optimize.html">optimize</a></code> and needs bounds to be available;
+<code>"Brent"</code> uses <code><a href="../../stats/help/optimize.html">optimize</a></code> and needs bounds to be available;
 <code>"BFGS"</code> often works well enough if not.
 </p>
 
@@ -359,10 +360,10 @@ Springer.
 
 <h3>See Also</h3>
 
-<p><code><a href="nlm.html">nlm</a></code>, <code><a href="nlminb.html">nlminb</a></code>.
+<p><code><a href="../../stats/help/nlm.html">nlm</a></code>, <code><a href="../../stats/help/nlminb.html">nlminb</a></code>.
 </p>
-<p><code><a href="optimize.html">optimize</a></code> for one-dimensional minimization and
-<code><a href="constrOptim.html">constrOptim</a></code> for constrained optimization.
+<p><code><a href="../../stats/help/optimize.html">optimize</a></code> for one-dimensional minimization and
+<code><a href="../../stats/help/constrOptim.html">constrOptim</a></code> for constrained optimization.
 </p>
 
 
@@ -465,5 +466,5 @@ ro$par - pi     # ~= 1.9e-4    on one platform
 utils::str(ro)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

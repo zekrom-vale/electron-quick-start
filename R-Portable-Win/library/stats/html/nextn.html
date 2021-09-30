@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Find Highly Composite Numbers</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for nextn {stats}"><tr><td>nextn {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ greater than or equal to <code>n</code>, which can be obtained
 as a product of powers of the values contained in <code>factors</code>.
 </p>
 <p><code>nextn()</code> is intended to be used to find a suitable length
-to zero-pad the argument of <code><a href="fft.html">fft</a></code>
+to zero-pad the argument of <code><a href="../../stats/help/fft.html">fft</a></code>
 so that the transform is computed quickly.
 The default value for <code>factors</code> ensures this.
 </p>
@@ -70,7 +71,7 @@ advisable to use package <a href="https://CRAN.R-project.org/package=gmp"><span 
 
 <h3>See Also</h3>
 
-<p><code><a href="convolve.html">convolve</a></code>, <code><a href="fft.html">fft</a></code>.
+<p><code><a href="../../stats/help/convolve.html">convolve</a></code>, <code><a href="../../stats/help/fft.html">fft</a></code>.
 </p>
 
 
@@ -82,5 +83,5 @@ table(nextn(599:630))
 n &lt;- 1:100 ; plot(n, nextn(n) - n, type = "o", lwd=2, cex=1/2)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculate Variance-Covariance Matrix for a Fitted Model...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for vcov {stats}"><tr><td>vcov {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,8 +12,8 @@
 
 <p>Returns the variance-covariance matrix of the main parameters of
 a fitted model object.  The &ldquo;main&rdquo; parameters of model
-correspond to those returned by <code><a href="coef.html">coef</a></code>, and typically do
-not contain a nuisance scale parameter (<code><a href="sigma.html">sigma</a></code>).
+correspond to those returned by <code><a href="../../stats/help/coef.html">coef</a></code>, and typically do
+not contain a nuisance scale parameter (<code><a href="../../stats/help/sigma.html">sigma</a></code>).
 </p>
 
 
@@ -46,7 +47,7 @@ vcov(object, complete = FALSE, ...)
 applicable <code>summary.lm</code> etc methods: logical indicating if the
 full variance-covariance matrix should be returned also in case of
 an over-determined system where some coefficients are undefined and
-<code><a href="coef.html">coef</a>(.)</code> contains <code>NA</code>s correspondingly.   When
+<code><a href="../../stats/help/coef.html">coef</a>(.)</code> contains <code>NA</code>s correspondingly.   When
 <code>complete = TRUE</code>,  <code>vcov()</code> is compatible with
 <code>coef()</code> also in this singular case.</p>
 </td></tr>
@@ -54,7 +55,7 @@ an over-determined system where some coefficients are undefined and
 <td>
 
 <p>additional arguments for method functions.  For the
-<code><a href="glm.html">glm</a></code> method this can be used to pass a
+<code><a href="../../stats/help/glm.html">glm</a></code> method this can be used to pass a
 <code>dispersion</code> parameter.</p>
 </td></tr>
 </table>
@@ -103,17 +104,17 @@ than <code>length(aliased)</code>.
 <p>A matrix of the estimated covariances between the parameter estimates
 in the linear or non-linear predictor of the model.  This should have
 row and column names corresponding to the parameter names given by the
-<code><a href="coef.html">coef</a></code> method.
+<code><a href="../../stats/help/coef.html">coef</a></code> method.
 </p>
 <p>When some coefficients of the (linear) model are undetermined and
 hence <code>NA</code> because of linearly dependent terms (or an
 &ldquo;over specified&rdquo; model), also called
-&ldquo;aliased&rdquo;, see <code><a href="alias.html">alias</a></code>, then since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 3.5.0,
+&ldquo;aliased&rdquo;, see <code><a href="../../stats/help/alias.html">alias</a></code>, then since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 3.5.0,
 <code>vcov()</code> (iff <code>complete = TRUE</code>, i.e., by default for
 <code>lm</code> etc, but not for <code>aov</code>) contains corresponding rows and
-columns of <code>NA</code>s, wherever <code><a href="coef.html">coef</a>()</code> has always
+columns of <code>NA</code>s, wherever <code><a href="../../stats/help/coef.html">coef</a>()</code> has always
 contained such <code>NA</code>s.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

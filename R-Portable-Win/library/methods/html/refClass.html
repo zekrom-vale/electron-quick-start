@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Objects With Fields Treated by Reference (OOP-style)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ReferenceClasses {methods}"><tr><td>ReferenceClasses {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -119,7 +120,7 @@ and External Methods&rdquo;.
 <tr valign="top"><td><code>...</code></td>
 <td>
 
-<p>other arguments to be passed to <code><a href="setClass.html">setClass</a></code>.
+<p>other arguments to be passed to <code><a href="../../methods/help/setClass.html">setClass</a></code>.
 </p>
 </td></tr>
 </table>
@@ -138,7 +139,7 @@ objects from one of the superclasses of this class (but only
 superclasses that are themselves reference classes have any effect).
 </p>
 <p>The generator function is similar to the S4 generator function
-returned by <code><a href="setClass.html">setClass</a></code>. In addition to being a generator
+returned by <code><a href="../../methods/help/setClass.html">setClass</a></code>. In addition to being a generator
 function, however, it is also a reference class generator object,
 with reference class methods for various utilities.  See the section
 on reference class generator objects below.
@@ -482,7 +483,7 @@ to perform standard initialization, as shown in the
 </dd>
 <dt><code>$show()</code></dt><dd> 
 <p>This method is called when the object is printed automatically,
-analogously to the <code><a href="show.html">show</a></code> function.  A general method is
+analogously to the <code><a href="../../methods/help/show.html">show</a></code> function.  A general method is
 defined for class <code>"envRefClass"</code>.  User-defined reference
 classes will often define their own method: see the Example below.
 </p>
@@ -784,9 +785,9 @@ installed in the object's environment, with the same environment as the
 environment of the function.
 </p>
 <p>Reference classes can have validity methods in the same sense as any
-S4 class (see <code><a href="validObject.html">setValidity</a></code>).
+S4 class (see <code><a href="../../methods/help/setValidity.html">setValidity</a></code>).
 Such methods are often a good idea; they will be called by calling
-<code><a href="validObject.html">validObject</a></code> and a validity method, if one is defined,
+<code><a href="../../methods/help/validObject.html">validObject</a></code> and a validity method, if one is defined,
 will be called when a reference object is created (from version 3.4 of
 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> on).
 Just remember that these are S4 methods.  The function will be called
@@ -807,7 +808,7 @@ In addition, the initialization method for the class will have to sort
 out fields from slots, with a good chance of creating anomalous
 behavior for subclasses of this class.
 </p>
-<p>Inheriting from a <a href="setClassUnion.html">class union</a>, however, is a reasonable strategy (with
+<p>Inheriting from a <a href="../../methods/help/setClassUnion.html">class union</a>, however, is a reasonable strategy (with
 all members of the union likely to be reference classes).
 </p>
 
@@ -962,5 +963,5 @@ mEdit$trace(undo, browser)
  
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Help Search Utilities</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for hsearch-utils {utils}"><tr><td>hsearch-utils {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,19 +46,19 @@ of <code>NULL</code> corresponds to all libraries currently known.</p>
 <td>
 <p>a character vector listing the types of documentation
 to search.
-See <code><a href="help.search.html">help.search</a></code> for details.</p>
+See <code><a href="../../utils/help/help.search.html">help.search</a></code> for details.</p>
 </td></tr>
 <tr valign="top"><td><code>verbose</code></td>
 <td>
 <p>a logical controlling the verbosity of building the
 help search database.
-See <code><a href="help.search.html">help.search</a></code> for details.</p>
+See <code><a href="../../utils/help/help.search.html">help.search</a></code> for details.</p>
 </td></tr>
 <tr valign="top"><td><code>rebuild</code></td>
 <td>
 <p>a logical indicating whether the help search database
 should be rebuilt.
-See <code><a href="help.search.html">help.search</a></code> for details.</p>
+See <code><a href="../../utils/help/help.search.html">help.search</a></code> for details.</p>
 </td></tr>
 <tr valign="top"><td><code>use_UTF8</code></td>
 <td>
@@ -74,7 +75,7 @@ See <code><a href="help.search.html">help.search</a></code> for details.</p>
 <h3>Details</h3>
 
 <p><code>hsearch_db()</code> builds and caches the help search database for
-subsequent use by <code><a href="help.search.html">help.search</a></code>.  (In fact, re-builds only
+subsequent use by <code><a href="../../utils/help/help.search.html">help.search</a></code>.  (In fact, re-builds only
 when forced (<code>rebuild = TRUE</code>) or &ldquo;necessary&rdquo;.)
 </p>
 <p>The format of the help search database is still experimental, and may
@@ -86,7 +87,7 @@ documentation objects they belong to.  Separating out the latter three
 tables accounts for the fact that a single documentation object may
 provide several of these entries, and allows for efficient searching.
 </p>
-<p>See the details in <code><a href="help.search.html">help.search</a></code> for how searchable
+<p>See the details in <code><a href="../../utils/help/help.search.html">help.search</a></code> for how searchable
 entries are interpreted according to help type.
 </p>
 <p><code>hsearch_db_concepts()</code> and <code>hsearch_db_keywords()</code> extract
@@ -112,5 +113,5 @@ head(hsearch_db_concepts(), 10)
 head(hsearch_db_keywords(), 10)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

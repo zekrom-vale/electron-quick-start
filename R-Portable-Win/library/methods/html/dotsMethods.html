@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Use of '...' in Method Signatures</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dotsMethods {methods}"><tr><td>dotsMethods {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,7 +29,7 @@ does not contain &ldquo;...&rdquo;.  (This restriction may be lifted in a future
 version.)
 </p>
 <p>Given a suitable generic function, methods are specified in the
-usual way by a call to <code><a href="setMethod.html">setMethod</a></code>.  The method
+usual way by a call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>.  The method
 definition must be written expecting all the arguments corresponding
 to &ldquo;...&rdquo; to be from the class specified in the method's signature,
 or from a class that extends that class (i.e., a subclass of that
@@ -40,19 +41,19 @@ examples below.
 </p>
 <p>When you have a computation that is suitable for more than one existing
 class, a convenient approach may be to define a union of these
-classes by a call to <code><a href="setClassUnion.html">setClassUnion</a></code>. See the example
+classes by a call to <code><a href="../../methods/help/setClassUnion.html">setClassUnion</a></code>. See the example
 below.
 </p>
 
 
 <h3>Method Selection and Dispatch for &quot;...&quot;</h3>
 
-<p>See <a href="Methods_Details.html">Methods_Details</a> for a general discussion.  The following assumes
+<p>See <a href="../../methods/help/Methods_Details.html">Methods_Details</a> for a general discussion.  The following assumes
 you have read the &ldquo;Method Selection and Dispatch&rdquo; section of
 that documentation.
 </p>
 <p>A method selecting on &ldquo;...&rdquo; is specified by a single class in the
-call to <code><a href="setMethod.html">setMethod</a></code>.  If all the actual arguments
+call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>.  If all the actual arguments
 corresponding to &ldquo;...&rdquo; have this class, the corresponding method is
 selected directly.
 </p>
@@ -122,7 +123,7 @@ signature.  The selection computation first computes and sorts the
 distinct classes encountered.  This gives a label that will be
 cached in the table of all methods, avoiding any further search for
 inherited classes after the first occurrence.  A call to
-<code><a href="showMethods.html">showMethods</a></code> will expose such inherited methods.
+<code><a href="../../methods/help/showMethods.html">showMethods</a></code> will expose such inherited methods.
 </p>
 <p>The intention is that the &ldquo;...&rdquo; features will be added to the
 standard C code when enough experience with them has been obtained.
@@ -145,7 +146,7 @@ Springer (For the original S4 version.)
 
 <h3>See Also</h3>
 
-<p>For the general discussion of methods, see  <a href="Methods_Details.html">Methods_Details</a> and links
+<p>For the general discussion of methods, see  <a href="../../methods/help/Methods_Details.html">Methods_Details</a> and links
 from there.
 </p>
 
@@ -206,5 +207,5 @@ stopifnot(identical(paste(1:10, pi, 1), c(1:10, pi, 1)))
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

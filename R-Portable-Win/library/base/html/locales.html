@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Query or Set Aspects of the Locale</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for locales {base}"><tr><td>locales {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -50,10 +51,10 @@ Initially most aspects of the locale of <span style="font-family: Courier New, C
 usage &ndash; also known as <code>"POSIX"</code>).  <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> sets <code>"LC_CTYPE"</code> and
 <code>"LC_COLLATE"</code>, which allow the use of a different character set
 and alphabetic comparisons in that character set (including the use of
-<code><a href="sort.html">sort</a></code>), <code>"LC_MONETARY"</code> (for use by
-<code><a href="Sys.localeconv.html">Sys.localeconv</a></code>) and <code>"LC_TIME"</code> may affect the
-behaviour of <code><a href="as.POSIXlt.html">as.POSIXlt</a></code> and <code><a href="strptime.html">strptime</a></code> and
-functions which use them (but not <code><a href="date.html">date</a></code>).
+<code><a href="../../base/help/sort.html">sort</a></code>), <code>"LC_MONETARY"</code> (for use by
+<code><a href="../../base/help/Sys.localeconv.html">Sys.localeconv</a></code>) and <code>"LC_TIME"</code> may affect the
+behaviour of <code><a href="../../base/help/as.POSIXlt.html">as.POSIXlt</a></code> and <code><a href="../../base/help/strptime.html">strptime</a></code> and
+functions which use them (but not <code><a href="../../base/help/date.html">date</a></code>).
 </p>
 <p>The first seven categories described here are those specified by
 POSIX.  <code>"LC_MESSAGES"</code> will be <code>"C"</code> on systems that do not
@@ -77,7 +78,7 @@ some confusion.
 on most <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> platforms.
 </p>
 <p>On platforms where ICU is used for collation the locale used for
-collation can be reset by <code><a href="icuSetCollate.html">icuSetCollate</a></code>.  Except on
+collation can be reset by <code><a href="../../base/help/icuSetCollate.html">icuSetCollate</a></code>.  Except on
 Windows, the initial setting is taken from the <code>"LC_COLLATE"</code>
 category, and it is reset when this is changed by a call to
 <code>Sys.setlocale</code>.
@@ -121,11 +122,11 @@ search is the best way to find current information.
 <p>Setting <code>"LC_NUMERIC"</code> to any value other than <code>"C"</code> may
 cause <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> to function anomalously, so gives a warning.  Input
 conversions in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> itself are unaffected, but the reading and writing
-of ASCII <code><a href="save.html">save</a></code> files will be, as may packages which do
+of ASCII <code><a href="../../base/help/save.html">save</a></code> files will be, as may packages which do
 their own input/output.
 </p>
 <p>Setting it temporarily on a Unix-alike to produce graphical or text
-output may work well enough, but <code><a href="options.html">options</a>(OutDec)</code> is
+output may work well enough, but <code><a href="../../base/help/options.html">options</a>(OutDec)</code> is
 often preferable.
 </p>
 <p>Almost all the output routines used by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> itself under Windows ignore
@@ -140,16 +141,23 @@ library which is not internationalized.
 to be noticed by the OS services, and usually is but exceptions have
 been seen (usually in collation services).
 </p>
+<p>Do not use the value of <code>Sys.getlocale("LC_CTYPE")</code> to attempt to
+find the character set &ndash; for example UTF-8 locales can have suffix
+<span class="samp">.UTF-8</span> or <span class="samp">.utf8</span> (more common on Linux than <span class="samp">UTF-8</span>)
+or none (as on macOS) and Latin-9 locales can have suffix
+<span class="samp">ISO8859-15</span>, <span class="samp">iso885915</span>, <span class="samp">iso885915@euro</span> or
+<span class="samp">ISO8859-15@euro</span>.  Use <code><a href="../../base/help/l10n_info.html">l10n_info</a></code> instead.
+</p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="strptime.html">strptime</a></code> for uses of <code>category = "LC_TIME"</code>.
-<code><a href="Sys.localeconv.html">Sys.localeconv</a></code> for details of numerical and monetary
+<p><code><a href="../../base/help/strptime.html">strptime</a></code> for uses of <code>category = "LC_TIME"</code>.
+<code><a href="../../base/help/Sys.localeconv.html">Sys.localeconv</a></code> for details of numerical and monetary
 representations.
 </p>
-<p><code><a href="l10n_info.html">l10n_info</a></code> gives some summary facts about the locale and
-its encoding.
+<p><code><a href="../../base/help/l10n_info.html">l10n_info</a></code> gives some summary facts about the locale and
+its encoding (including if it is UTF-8).
 </p>
 <p>The &lsquo;R Installation and Administration&rsquo; manual for background
 on locales and how to find out locale names on your system.
@@ -177,5 +185,5 @@ Sys.setlocale("LC_COLLATE", "C")   # turn off locale-specific sorting,
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

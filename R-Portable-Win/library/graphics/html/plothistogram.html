@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot Histograms</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for plot.histogram {graphics}"><tr><td>plot.histogram {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>These are methods for objects of class <code>"histogram"</code>, typically
-produced by <code><a href="hist.html">hist</a></code>.
+produced by <code><a href="../../graphics/help/hist.html">hist</a></code>.
 </p>
 
 
@@ -38,7 +39,7 @@ lines(x, ...)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>a <code>histogram</code> object, or a list with components
-<code>density</code>, <code>mid</code>, etc, see <code><a href="hist.html">hist</a></code> for
+<code>density</code>, <code>mid</code>, etc, see <code><a href="../../graphics/help/hist.html">hist</a></code> for
 information about the components of <code>x</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>freq</code></td>
@@ -61,11 +62,11 @@ default is true for equidistant <code>breaks</code> and false otherwise.</p>
 <tr valign="top"><td><code>angle, density</code></td>
 <td>
 <p>select shading of bars by lines:
-see <code><a href="rect.html">rect</a></code>.</p>
+see <code><a href="../../graphics/help/rect.html">rect</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>lty</code></td>
 <td>
-<p>the line type used for the bars, see also <code><a href="lines.html">lines</a></code>.</p>
+<p>the line type used for the bars, see also <code><a href="../../graphics/help/lines.html">lines</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>main, sub, xlab, ylab</code></td>
 <td>
@@ -97,7 +98,7 @@ current plot.  This is what <code>lines.histogram(*)</code> does.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>further <a href="par.html">graphical parameters</a> to
+<p>further <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> to
 <code>title</code> and <code>axis</code>.</p>
 </td></tr>
 </table>
@@ -112,8 +113,8 @@ current plot.  This is what <code>lines.histogram(*)</code> does.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="hist.html">hist</a></code>,
-<code><a href="stem.html">stem</a></code>,
+<p><code><a href="../../graphics/help/hist.html">hist</a></code>,
+<code><a href="../../graphics/help/stem.html">stem</a></code>,
 <code><a href="../../stats/html/density.html">density</a></code>.
 </p>
 
@@ -131,5 +132,5 @@ w2 &lt;- wwt; w2$counts &lt;- w2$counts - 1
 lines(w2, col = "Midnight Blue", labels = ifelse(w2$counts, "&gt; 1", "1"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

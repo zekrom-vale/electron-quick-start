@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Constant Plus Proportion Variance Function</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for varConstProp {nlme}"><tr><td>varConstProp {nlme}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Constant Plus Proportion Variance Function</h2>
+
+<h3>Description</h3>
+
+<p>This function is a constructor for the <code>varConstProp</code> class,
+representing a variance function structure corresponding to
+a two-component error model (additive and proportional error). Letting
+<i>v</i> denote the variance covariate and <i>s2(v)</i>
+denote the variance function evaluated at <i>v</i>, the two-component variance
+function is defined as
+<i>s2(v) = a^2 + b^2 * v^2)</i>, where a is
+the additive component and b is the relative error component.  In order
+to avoid overparameterisation of the model, it is recommended to use
+the possibility to fix sigma, preferably to a value of 1 (see examples).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+varConstProp(const, prop, form, fixed)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>const, prop</code></td>
+<td>
+<p>optional numeric vectors, or lists of numeric
+values, with, respectively, the coefficients for the constant
+and the proportional error terms. Both arguments must have length one,
+unless a grouping factor is specified in <code>form</code>. If either argument
+has length greater than one, it must have names which identify its
+elements to the levels of the grouping factor defined in
+<code>form</code>. If a grouping factor is present in
+<code>form</code> and the argument has length one, its value will be
+assigned to all grouping levels. Only positive values are allowed
+for <code>const</code>. Default is 0.1 for both <code>const</code> and
+<code>prop</code>. </p>
+</td></tr>
+<tr valign="top"><td><code>form</code></td>
+<td>
+<p>an optional one-sided formula of the form <code>~ v</code>, or
+<code>~ v | g</code>, specifying a variance covariate <code>v</code> and,
+optionally, a grouping factor <code>g</code> for the coefficients. The
+variance covariate must evaluate to a numeric vector and may involve
+expressions using <code>"."</code>, representing  a fitted model object
+from which fitted values (<code>fitted(.)</code>) and residuals
+(<code>resid(.)</code>) can be extracted (this allows the variance
+covariate to be updated during the optimization of an object
+function). When a grouping factor is present in <code>form</code>,
+a different coefficient value is used for each of its
+levels. Several grouping variables may be
+simultaneously specified, separated by the <code>*</code> operator, as
+in <code>~ v | g1 * g2 * g3</code>. In this case, the levels of each
+grouping variable are pasted together and the resulting factor is
+used to group the observations. Defaults to <code>~ fitted(.)</code>
+representing a variance covariate given by the fitted values of a
+fitted model object and no grouping factor. </p>
+</td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+<p>an optional list with components <code>const</code> and/or
+<code>power</code>, consisting of numeric vectors, or lists of numeric
+values, specifying the values at which some or all of the
+coefficients in the variance function should be fixed. If a grouping
+factor is specified in <code>form</code>, the components of <code>fixed</code>
+must have names identifying which coefficients are to be
+fixed. Coefficients included in <code>fixed</code> are not allowed to vary
+during the optimization of an objective function. Defaults to
+<code>NULL</code>, corresponding to no fixed coefficients.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a <code>varConstProp</code> object representing a constant plus proportion variance
+function structure, also inheriting from class <code>varFunc</code>.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The error model underlying this variance function structure can be understood
+to result from two uncorrelated sequences of standardized random variables
+(Lavielle(2015), p. 55) and has been proposed for use in analytical chemistry
+(Werner et al. (1978), Wilson et al. (2004)) and chemical degradation
+kinetics (Ranke and Meinecke (2019)).  Note that the two-component error
+model proposed by Rocke and Lorenzato (1995) assumed a log-normal
+distribution of residuals at high absolute values, which is not
+compatible with the <code><a href="../../nlme/help/varFunc.html">varFunc</a></code> structures in package <span class="pkg">nlme</span>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>José Pinheiro and Douglas Bates (for <code><a href="../../nlme/help/varConstPower.html">varConstPower</a></code>) and
+Johannes Ranke (adaptation to <code>varConstProp()</code>).
+</p>
+
+
+<h3>References</h3>
+
+<p>Lavielle, M. (2015)
+<em>Mixed Effects Models for the Population Approach: Models, Tasks,
+Methods and Tools</em>, Chapman and Hall/CRC.
+doi: <a href="https://doi.org/10.1201/b17203">10.1201/b17203</a>
+</p>
+<p>Pinheiro, J.C., and Bates, D.M. (2000)
+<em>Mixed-Effects Models in S and S-PLUS</em>, Springer.
+doi: <a href="https://doi.org/10.1007/b98882">10.1007/b98882</a>
+</p>
+<p>Ranke, J., and Meinecke, S. (2019)
+Error Models for the Kinetic Evaluation of Chemical Degradation Data.
+<em>Environments</em> <b>6</b>(12), 124
+doi: <a href="https://doi.org/10.3390/environments6120124">10.3390/environments6120124</a>
+</p>
+<p>Rocke, David M. and Lorenzato, Stefan (1995)
+A Two-Component Model for Measurement Error in Analytical Chemistry.
+<em>Technometrics</em> <b>37</b>(2), 176&ndash;184.
+doi: <a href="https://doi.org/10.1080/00401706.1995.10484302">10.1080/00401706.1995.10484302</a>
+</p>
+<p>Werner, Mario, Brooks, Samuel H., and Knott, Lancaster B. (1978)
+Additive, Multiplicative, and Mixed Analytical Errors.
+<em>Clinical Chemistry</em> <b>24</b>(11), 1895&ndash;1898.
+doi: <a href="https://doi.org/10.1093/clinchem/24.11.1895">10.1093/clinchem/24.11.1895</a>
+</p>
+<p>Wilson, M.D., Rocke, D.M., Durbin, B. and Kahn, H.D (2004)
+Detection Limits and Goodness-of-Fit Measures for the Two-Component Model
+of Chemical Analytical Error.
+<em>Analytica Chimica Acta</em> 2004, 509, 197&ndash;208
+doi: <a href="https://doi.org/10.1016/j.aca.2003.12.047">10.1016/j.aca.2003.12.047</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../nlme/help/varClasses.html">varClasses</a></code>,
+<code><a href="../../nlme/help/varWeights.varFunc.html">varWeights.varFunc</a></code>,
+<code><a href="../../nlme/help/coef.varFunc.html">coef.varFunc</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Generate some synthetic data using the two-component error model and use
+# different variance functions, also with fixed sigma in order to avoid
+# overparameterisation in the case of a constant term in the variance function
+times &lt;- c(0, 1, 3, 7, 14, 28, 56, 120)
+pred &lt;- 100 * exp(- 0.03 * times)
+sd_pred &lt;- sqrt(3^2 + 0.07^2 * pred^2)
+n_replicates &lt;- 2
+
+set.seed(123456)
+syn_data &lt;- data.frame(
+  time = rep(times, each = n_replicates),
+  value = rnorm(length(times) * n_replicates,
+    rep(pred, each = n_replicates),
+    rep(sd_pred, each = n_replicates)))
+syn_data$value &lt;- ifelse(syn_data$value &lt; 0, NA, syn_data$value)
+
+f_const &lt;- gnls(value ~ SSasymp(time, 0, parent_0, lrc),
+  data = syn_data, na.action = na.omit,
+  start = list(parent_0 = 100, lrc = -3))
+f_varPower &lt;- gnls(value ~ SSasymp(time, 0, parent_0, lrc),
+  data = syn_data, na.action = na.omit,
+  start = list(parent_0 = 100, lrc = -3),
+  weights = varPower())
+f_varConstPower &lt;- gnls(value ~ SSasymp(time, 0, parent_0, lrc),
+  data = syn_data, na.action = na.omit,
+  start = list(parent_0 = 100, lrc = -3),
+  weights = varConstPower())
+f_varConstPower_sf &lt;- gnls(value ~ SSasymp(time, 0, parent_0, lrc),
+  data = syn_data, na.action = na.omit,
+  control = list(sigma = 1),
+  start = list(parent_0 = 100, lrc = -3),
+  weights = varConstPower())
+f_varConstProp &lt;- gnls(value ~ SSasymp(time, 0, parent_0, lrc),
+  data = syn_data, na.action = na.omit,
+  start = list(parent_0 = 100, lrc = -3),
+  weights = varConstProp())
+f_varConstProp_sf &lt;- gnls(value ~ SSasymp(time, 0, parent_0, lrc),
+  data = syn_data, na.action = na.omit,
+  start = list(parent_0 = 100, lrc = -3),
+  control = list(sigma = 1),
+  weights = varConstProp())
+
+AIC(f_const, f_varPower, f_varConstPower, f_varConstPower_sf,
+  f_varConstProp, f_varConstProp_sf)
+
+# The error model parameters 3 and 0.07 are approximately recovered
+intervals(f_varConstProp_sf)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>nlme</em> version 3.1-152 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

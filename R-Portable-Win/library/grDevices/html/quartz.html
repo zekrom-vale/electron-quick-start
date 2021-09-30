@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: macOS Quartz Device</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for quartz {grDevices}"><tr><td>quartz {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,7 +36,7 @@ quartz.save(file, type = "png", device = dev.cur(), dpi = 100, ...)
 <p>title for the Quartz window (applies to on-screen output
 only), default <code>"Quartz %d"</code>.  A C-style format for an integer
 will be substituted by the device number (see the <code>file</code>
-argument to <code><a href="postscript.html">postscript</a></code> for further details).</p>
+argument to <code><a href="../../grDevices/help/postscript.html">postscript</a></code> for further details).</p>
 </td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
@@ -125,7 +126,7 @@ file is only created when the device is closed (e.g., using
 substituted if a C integer format is included in the character string,
 e.g. <code>Rplot%03d.png</code>.  (The result must be less than
 <code>PATH_MAX</code> characters long, and may be truncated if not. See
-<code><a href="postscript.html">postscript</a></code> for further details.)  If a <code>file</code>
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> for further details.)  If a <code>file</code>
 argument is not supplied, the default is <code>Rplots.pdf</code> or
 <code>Rplot%03d.<var>type</var></code>.  Tilde expansion
 (see <code><a href="../../base/html/path.expand.html">path.expand</a></code>) is done.
@@ -162,7 +163,7 @@ non-Western-European languages something other than the default of
 <code>"Arial"</code> is likely to be needed&mdash;one choice for Chinese is
 <code>"MingLiU"</code>.
 </p>
-<p><code>quartz.save</code> is a modified version of <code><a href="dev2.html">dev.copy2pdf</a></code>
+<p><code>quartz.save</code> is a modified version of <code><a href="../../grDevices/help/dev.copy2pdf.html">dev.copy2pdf</a></code>
 to copy the plot from the current screen device to a <code>quartz</code>
 device, by default to a PNG file.
 </p>
@@ -171,7 +172,7 @@ device, by default to a PNG file.
 <h3>Conventions</h3>
 
 <p>This section describes the implementation of the conventions for
-graphics devices set out in the &ldquo;R Internals Manual&rdquo;.
+graphics devices set out in the &lsquo;R Internals&rsquo; manual.
 </p>
 
 <ul>
@@ -213,9 +214,9 @@ check the fonts that you are using.
 
 <h3>See Also</h3>
 
-<p><code><a href="quartzFonts.html">quartzFonts</a></code>, <code><a href="Devices.html">Devices</a></code>.
+<p><code><a href="../../grDevices/help/quartzFonts.html">quartzFonts</a></code>, <code><a href="../../grDevices/help/Devices.html">Devices</a></code>.
 </p>
-<p><code><a href="png.html">png</a></code> for way to access the bitmap types of this device
+<p><code><a href="../../grDevices/help/png.html">png</a></code> for way to access the bitmap types of this device
 via <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s standard bitmap devices.
 </p>
 
@@ -231,5 +232,5 @@ setHook(packageEvent("grDevices", "onLoad"),
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

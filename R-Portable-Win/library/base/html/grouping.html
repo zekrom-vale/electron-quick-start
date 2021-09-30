@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Grouping Permutation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for grouping {base}"><tr><td>grouping {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -42,14 +43,14 @@ stable, so ties are preserved, and if the data are already
 grouped/sorted, the grouping is unchanged.  This is useful for
 aggregation and is particularly fast for character vectors.
 </p>
-<p>Under the covers, the <code>"radix"</code> method of <code><a href="order.html">order</a></code> is
+<p>Under the covers, the <code>"radix"</code> method of <code><a href="../../base/help/order.html">order</a></code> is
 used, and the same caveats apply, including restrictions on character
-encodings and lack of support for long vectors (those with
+encodings and lack of support for <a href="../../base/help/long+20vectors.html">long vectors</a> (those with
 <i>2^31</i> or more elements). Real-valued numbers are slightly
 rounded to account for numerical imprecision.
 </p>
 <p>Like <code>order</code>, for a classed <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object the grouping is based on
-the result of <code><a href="xtfrm.html">xtfrm</a></code>.
+the result of <code><a href="../../base/help/xtfrm.html">xtfrm</a></code>.
 </p>
 
 
@@ -74,7 +75,7 @@ member of each group</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="order.html">order</a></code>, <code><a href="xtfrm.html">xtfrm</a></code>.
+<p><code><a href="../../base/help/order.html">order</a></code>, <code><a href="../../base/help/xtfrm.html">xtfrm</a></code>.
 </p>
 
 
@@ -86,5 +87,5 @@ member of each group</p>
 rbind(x, y, z)[, ii]
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

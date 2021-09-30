@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Reorder Levels of Factor</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for relevel {stats}"><tr><td>relevel {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,7 +44,7 @@ relevel(x, ref, ...)
 
 <h3>Details</h3>
 
-<p>This, as <code><a href="reorder.factor.html">reorder</a>()</code>, is a special case of simply calling
+<p>This, as <code><a href="../../stats/help/reorder.html">reorder</a>()</code>, is a special case of simply calling
 <code><a href="../../base/html/factor.html">factor</a>(x, levels = levels(x)[....])</code>.
 </p>
 
@@ -56,8 +57,8 @@ relevel(x, ref, ...)
 
 <h3>See Also</h3>
 
-<p><code><a href="../../base/html/factor.html">factor</a></code>, <code><a href="contrast.html">contr.treatment</a></code>,
-<code><a href="../../base/html/levels.html">levels</a></code>, <code><a href="reorder.factor.html">reorder</a></code>.
+<p><code><a href="../../base/html/factor.html">factor</a></code>, <code><a href="../../stats/help/contr.treatment.html">contr.treatment</a></code>,
+<code><a href="../../base/html/levels.html">levels</a></code>, <code><a href="../../stats/help/reorder.html">reorder</a></code>.
 </p>
 
 
@@ -68,5 +69,5 @@ warpbreaks$tension &lt;- relevel(warpbreaks$tension, ref = "M")
 summary(lm(breaks ~ wool + tension, data = warpbreaks))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

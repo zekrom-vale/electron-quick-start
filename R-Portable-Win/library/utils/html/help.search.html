@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Search the Help System</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for help.search {utils}"><tr><td>help.search {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -149,7 +150,7 @@ order specified.</p>
 serialized as &lsquo;<span class="file">hsearch.rds</span>&rsquo; in the &lsquo;<span class="file">Meta</span>&rsquo; directory
 (provided the package has any help pages).  Vignettes are also
 indexed in the &lsquo;<span class="file">Meta/vignette.rds</span>&rsquo; file.  These files are used to
-create the help search database via <code><a href="hsearch-utils.html">hsearch_db</a></code>.
+create the help search database via <code><a href="../../utils/help/hsearch_db.html">hsearch_db</a></code>.
 </p>
 <p>The arguments <code>apropos</code> and <code>whatis</code> play a role similar to
 the Unix commands with the same names.
@@ -165,7 +166,7 @@ subsequent calls in the session.
 <p>Note that currently the aliases in the matching help files are not
 displayed.
 </p>
-<p>As with <code><a href="Question.html">?</a></code>, in <code>??</code> the pattern may be prefixed with a
+<p>As with <code><a href="../../utils/help/+3F.html">?</a></code>, in <code>??</code> the pattern may be prefixed with a
 package name followed by <code>::</code> or <code>:::</code> to limit the search
 to that package.
 </p>
@@ -202,18 +203,18 @@ will be shown in separate help windows.
 
 <h3>See Also</h3>
 
-<p><code><a href="hsearch-utils.html">hsearch_db</a></code> for more information on the help search
+<p><code><a href="../../utils/help/hsearch_db.html">hsearch_db</a></code> for more information on the help search
 database employed, and for utilities to inspect available concepts and
 keywords.
 </p>
-<p><code><a href="help.html">help</a></code>;
-<code><a href="help.start.html">help.start</a></code> for starting the hypertext (currently HTML)
+<p><code><a href="../../utils/help/help.html">help</a></code>;
+<code><a href="../../utils/help/help.start.html">help.start</a></code> for starting the hypertext (currently HTML)
 version of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s online documentation, which offers a similar search
 mechanism.
 </p>
-<p><code><a href="RSiteSearch.html">RSiteSearch</a></code> to access an on-line search of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> resources.
+<p><code><a href="../../utils/help/RSiteSearch.html">RSiteSearch</a></code> to access an on-line search of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> resources.
 </p>
-<p><code><a href="apropos.html">apropos</a></code> uses regexps and has nice examples.
+<p><code><a href="../../utils/help/apropos.html">apropos</a></code> uses regexps and has nice examples.
 </p>
 
 
@@ -239,5 +240,5 @@ file.show(file.path(R.home("doc"), "KEYWORDS"))  # show all keywords
 help.search("\\btry", fields = "alias")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

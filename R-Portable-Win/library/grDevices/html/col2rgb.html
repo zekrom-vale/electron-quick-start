@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Color to RGB Conversion</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for col2rgb {grDevices}"><tr><td>col2rgb {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,10 +27,10 @@ col2rgb(col, alpha = FALSE)
 <tr valign="top"><td><code>col</code></td>
 <td>
 <p>vector of any of the three kinds of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> color specifications,
-i.e., either a color name (as listed by <code><a href="colors.html">colors</a>()</code>), a
+i.e., either a color name (as listed by <code><a href="../../grDevices/help/colors.html">colors</a>()</code>), a
 hexadecimal string of the form <code>"#rrggbb"</code> or
-<code>"#rrggbbaa"</code> (see <code><a href="rgb.html">rgb</a></code>), or a positive integer
-<code>i</code> meaning <code><a href="palette.html">palette</a>()[i]</code>.</p>
+<code>"#rrggbbaa"</code> (see <code><a href="../../grDevices/help/rgb.html">rgb</a></code>), or a positive integer
+<code>i</code> meaning <code><a href="../../grDevices/help/palette.html">palette</a>()[i]</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>alpha</code></td>
 <td>
@@ -41,7 +42,8 @@ values should be returned.</p>
 
 <h3>Details</h3>
 
-<p><code><a href="../../base/html/NA.html">NA</a></code> (as integer or character) and <code>"NA"</code> mean transparent.
+<p><code><a href="../../base/html/NA.html">NA</a></code> (as integer or character) and <code>"NA"</code> mean
+transparent, which can also be specified as <code>"transparent"</code>.
 </p>
 <p>Values of <code>col</code> not of one of these types are coerced: real
 vectors are coerced to integer and other types to character.  (factors
@@ -68,9 +70,9 @@ names these are used as the column names of the return value.
 
 <h3>See Also</h3>
 
-<p><code><a href="rgb.html">rgb</a></code>, <code><a href="colors.html">colors</a></code>, <code><a href="palette.html">palette</a></code>, etc.
+<p><code><a href="../../grDevices/help/rgb.html">rgb</a></code>, <code><a href="../../grDevices/help/colors.html">colors</a></code>, <code><a href="../../grDevices/help/palette.html">palette</a></code>, etc.
 </p>
-<p>The newer, more flexible interface, <code><a href="convertColor.html">convertColor</a>()</code>.
+<p>The newer, more flexible interface, <code><a href="../../grDevices/help/convertColor.html">convertColor</a>()</code>.
 </p>
 
 
@@ -122,5 +124,5 @@ utils::str(cl)
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

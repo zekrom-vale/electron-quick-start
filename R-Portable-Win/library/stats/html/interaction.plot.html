@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Two-way Interaction Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for interaction.plot {stats}"><tr><td>interaction.plot {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -19,9 +20,9 @@ combinations of factors, thereby illustrating possible interactions.
 <pre>
 interaction.plot(x.factor, trace.factor, response, fun = mean,
                  type = c("l", "p", "b", "o", "c"), legend = TRUE,
-                 trace.label = deparse(substitute(trace.factor)),
+                 trace.label = deparse1(substitute(trace.factor)),
                  fixed = FALSE,
-                 xlab = deparse(substitute(x.factor)),
+                 xlab = deparse1(substitute(x.factor)),
                  ylab = ylabel,
                  ylim = range(cells, na.rm = TRUE),
                  lty = nc:1, col = 1, pch = c(1:9, 0, letters),
@@ -168,25 +169,26 @@ with(OrchardSprays, {
   interaction.plot(rowpos, treatment, decrease, col = 2:9, lty = 1)
 })
 
-with(esoph, {
-  interaction.plot(agegp, alcgp, ncases/ncontrols, main = "'esoph' Data")
-  interaction.plot(agegp, tobgp, ncases/ncontrols, trace.label = "tobacco",
-                   fixed = TRUE, xaxt = "n")
-})
-## deal with NAs:
-esoph[66,] # second to last age group: 65-74
-esophNA &lt;- esoph; esophNA$ncases[66] &lt;- NA
-with(esophNA, {
-  interaction.plot(agegp, alcgp, ncases/ncontrols, col = 2:5)
-                                # doesn't show *last* group either
-  interaction.plot(agegp, alcgp, ncases/ncontrols, col = 2:5, type = "b")
-  ## alternative take non-NA's  {"cheating"}
-  interaction.plot(agegp, alcgp, ncases/ncontrols, col = 2:5,
-                   fun = function(x) mean(x, na.rm = TRUE),
-                   sub = "function(x) mean(x, na.rm=TRUE)")
-})
-rm(esophNA) # to clear up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

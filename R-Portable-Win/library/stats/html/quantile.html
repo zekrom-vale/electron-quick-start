@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Sample Quantiles</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for quantile {stats}"><tr><td>quantile {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -23,7 +24,7 @@ quantile(x, ...)
 
 ## Default S3 method:
 quantile(x, probs = seq(0, 1, 0.25), na.rm = FALSE,
-         names = TRUE, type = 7, ...)
+         names = TRUE, type = 7, digits = 7, ...)
 </pre>
 
 
@@ -57,6 +58,12 @@ attribute.  Set to <code>FALSE</code> for speedup with many <code>probs</code>.<
 <td>
 <p>an integer between 1 and 9 selecting one of the
 nine quantile algorithms detailed below to be used.</p>
+</td></tr>
+<tr valign="top"><td><code>digits</code></td>
+<td>
+<p>used only when <code>names</code> is true: the precision to use
+when formatting the percentages.  In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions up to 4.0.x, this had
+been set to <code>max(2, getOption("digits"))</code>, internally.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -121,9 +128,10 @@ function of <i>p</i>, with <i>m = 0</i> when <i>i = 1</i> and <i>i =
 <i>&gamma; = 0</i> if <i>g = 0</i>, and 1 otherwise.</p>
 </dd>
 <dt>Type 2</dt><dd><p>Similar to type 1 but with averaging at discontinuities.
-<i>&gamma; = 0.5</i> if <i>g = 0</i>, and 1 otherwise.</p>
+<i>&gamma; = 0.5</i> if <i>g = 0</i>, and 1 otherwise (SAS default, see
+Wicklin(2017)).</p>
 </dd>
-<dt>Type 3</dt><dd><p>SAS definition: nearest even order statistic.
+<dt>Type 3</dt><dd><p>Nearest even order statistic (SAS default till ca. 2010).
 <i>&gamma; = 0</i> if <i>g = 0</i> and <i>j</i> is even,
 and 1 otherwise.</p>
 </dd>
@@ -179,6 +187,9 @@ the expected order statistics if <code>x</code> is normally distributed.
 
 <p>Further details are provided in Hyndman and Fan (1996) who recommended type 8.
 The default method is type 7, as used by S and by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &lt; 2.0.0.
+Makkonen argues for type 6, also as already proposed by Weibull in 1939.
+The Wikipedia page contains further information about availability of
+these 9 types in software.
 </p>
 
 
@@ -198,13 +209,22 @@ Wadsworth &amp; Brooks/Cole.
 packages, <em>American Statistician</em> <b>50</b>, 361&ndash;365.
 doi: <a href="https://doi.org/10.2307/2684934">10.2307/2684934</a>.
 </p>
+<p>Wicklin, R. (2017) Sample quantiles: A comparison of 9 definitions; SAS Blog.
+<a href="https://blogs.sas.com/content/iml/2017/05/24/definitions-sample-quantiles.html">https://blogs.sas.com/content/iml/2017/05/24/definitions-sample-quantiles.html</a>
+</p>
+
+
+
+
+<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Quantile#Estimating_quantiles_from_a_sample">https://en.wikipedia.org/wiki/Quantile#Estimating_quantiles_from_a_sample</a>
+</p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="ecdf.html">ecdf</a></code> for empirical distributions of which
+<p><code><a href="../../stats/help/ecdf.html">ecdf</a></code> for empirical distributions of which
 <code>quantile</code> is an inverse;
-<code><a href="../../grDevices/html/boxplot.stats.html">boxplot.stats</a></code> and <code><a href="fivenum.html">fivenum</a></code> for computing
+<code><a href="../../grDevices/html/boxplot.stats.html">boxplot.stats</a></code> and <code><a href="../../stats/help/fivenum.html">fivenum</a></code> for computing
 other versions of quartiles, etc.
 </p>
 
@@ -217,13 +237,18 @@ quantile(x,  probs = c(0.1, 0.5, 1, 2, 5, 10, 50, NA)/100)
 
 ### Compare different types
 quantAll &lt;- function(x, prob, ...)
-  t(vapply(1:9, function(typ) quantile(x, prob=prob, type = typ, ...), quantile(x, prob, type=1)))
+  t(vapply(1:9, function(typ) quantile(x, probs = prob, type = typ, ...),
+           quantile(x, prob, type=1, ...)))
 p &lt;- c(0.1, 0.5, 1, 2, 5, 10, 50)/100
 signif(quantAll(x, p), 4)
+
+## 0% and 100% are equal to min(), max() for all types:
+stopifnot(t(quantAll(x, prob=0:1)) == range(x))
+
 ## for complex numbers:
-z &lt;- complex(re=x, im = -10*x)
+z &lt;- complex(real = x, imaginary = -10*x)
 signif(quantAll(z, p), 4)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

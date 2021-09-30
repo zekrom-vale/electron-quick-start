@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Which indices are TRUE?</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for which {base}"><tr><td>which {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,7 +28,7 @@ arrayInd(ind, .dim, .dimnames = NULL, useNames = FALSE)
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>a <code><a href="logical.html">logical</a></code> vector or array.  <code><a href="NA.html">NA</a></code>s
+<p>a <code><a href="../../base/help/logical.html">logical</a></code> vector or array.  <code><a href="../../base/help/NA.html">NA</a></code>s
 are allowed and omitted (treated as if <code>FALSE</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>arr.ind</code></td>
@@ -42,14 +43,14 @@ when <code>x</code> is an array?</p>
 </td></tr>
 <tr valign="top"><td><code>.dim</code></td>
 <td>
-<p><code><a href="dim.html">dim</a>(.)</code> integer vector</p>
+<p><code><a href="../../base/help/dim.html">dim</a>(.)</code> integer vector</p>
 </td></tr>
 <tr valign="top"><td><code>.dimnames</code></td>
 <td>
-<p>optional list of character <code><a href="dimnames.html">dimnames</a>(.)</code>.
+<p>optional list of character <code><a href="../../base/help/dimnames.html">dimnames</a>(.)</code>.
 If <code>useNames</code> is true, to be used for constructing dimnames for
 <code>arrayInd()</code> (and hence, <code>which(*, arr.ind=TRUE)</code>).
-If <code><a href="names.html">names</a>(.dimnames)</code> is not empty, these are used as
+If <code><a href="../../base/help/names.html">names</a>(.dimnames)</code> is not empty, these are used as
 column names.  <code>.dimnames[[1]]</code> is used as row names.</p>
 </td></tr>
 <tr valign="top"><td><code>useNames</code></td>
@@ -63,17 +64,17 @@ should have (non-null) dimnames at all.</p>
 <h3>Value</h3>
 
 <p>If <code>arr.ind == FALSE</code> (the default), an integer vector,
-or a double vector if <code>x</code> is a <em>long vector</em>, with
+or a double vector if <code>x</code> is a <em><a href="../../base/help/long+20vector.html">long vector</a></em>, with
 <code>length</code> equal to <code>sum(x)</code>, i.e., to the number of
 <code>TRUE</code>s in <code>x</code>.
 </p>
 <p>Basically, the result is <code>(1:length(x))[x]</code> in typical cases;
-more generally, including when <code>x</code> has <code><a href="NA.html">NA</a></code>'s,
+more generally, including when <code>x</code> has <code><a href="../../base/help/NA.html">NA</a></code>'s,
 <code>which(x)</code> is <code>seq_along(x)[!is.na(x) &amp; x]</code> plus
-<code><a href="names.html">names</a></code> when <code>x</code> has.
+<code><a href="../../base/help/names.html">names</a></code> when <code>x</code> has.
 </p>
-<p>If <code>arr.ind == TRUE</code> and <code>x</code> is an <code><a href="array.html">array</a></code> (has
-a <code><a href="dim.html">dim</a></code> attribute), the result is
+<p>If <code>arr.ind == TRUE</code> and <code>x</code> is an <code><a href="../../base/help/array.html">array</a></code> (has
+a <code><a href="../../base/help/dim.html">dim</a></code> attribute), the result is
 <code>arrayInd(which(x), dim(x), dimnames(x))</code>, namely a matrix
 whose rows each are the indices of one element of <code>x</code>; see
 Examples below.
@@ -83,7 +84,7 @@ Examples below.
 <h3>Note</h3>
 
 <p>Unlike most other base <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> functions this does not coerce <code>x</code>
-to logical: only arguments with <code><a href="typeof.html">typeof</a></code> logical are
+to logical: only arguments with <code><a href="../../base/help/typeof.html">typeof</a></code> logical are
 accepted and others give an error.
 </p>
 
@@ -96,8 +97,8 @@ accepted and others give an error.
 
 <h3>See Also</h3>
 
-<p><code><a href="Logic.html">Logic</a></code>, <code><a href="which.min.html">which.min</a></code> for the index of
-the minimum or maximum, and <code><a href="match.html">match</a></code> for the first index of
+<p><code><a href="../../base/help/Logic.html">Logic</a></code>, <code><a href="../../base/help/which.min.html">which.min</a></code> for the index of
+the minimum or maximum, and <code><a href="../../base/help/match.html">match</a></code> for the first index of
 an element in a vector, i.e., for a scalar <code>a</code>, <code>match(a, x)</code>
 is equivalent to  <code>min(which(x == a))</code> but much more efficient.</p>
 
@@ -129,5 +130,5 @@ which(div.3, arr.ind = TRUE)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

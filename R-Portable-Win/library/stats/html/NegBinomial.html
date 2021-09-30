@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Negative Binomial Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for NegBinomial {stats}"><tr><td>NegBinomial {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -87,7 +88,7 @@ The mean is <i>&mu; = n(1-p)/p</i> and variance <i>n(1-p)/p^2</i>.
 </p>
 <p>A negative binomial distribution can also arise as a mixture of
 Poisson distributions with mean distributed as a gamma distribution
-(see <code><a href="GammaDist.html">pgamma</a></code>) with scale parameter <code>(1 - prob)/prob</code>
+(see <code><a href="../../stats/help/pgamma.html">pgamma</a></code>) with scale parameter <code>(1 - prob)/prob</code>
 and shape parameter <code>size</code>.  (This definition allows non-integer
 values of <code>size</code>.)
 </p>
@@ -128,14 +129,18 @@ numerical arguments for the other functions.
 length of the result.  Only the first elements of the logical
 arguments are used.
 </p>
+<p><code>rnbinom</code> returns a vector of type <a href="../../base/html/integer.html">integer</a> unless generated
+values exceed the maximum representable integer when <code><a href="../../base/html/double.html">double</a></code>
+values are returned since R version 4.0.0.
+</p>
 
 
 <h3>Source</h3>
 
 <p><code>dnbinom</code> computes via binomial probabilities, using code
-contributed by Catherine Loader (see <code><a href="Binomial.html">dbinom</a></code>).
+contributed by Catherine Loader (see <code><a href="../../stats/help/dbinom.html">dbinom</a></code>).
 </p>
-<p><code>pnbinom</code> uses <code><a href="Beta.html">pbeta</a></code>.
+<p><code>pnbinom</code> uses <code><a href="../../stats/help/pbeta.html">pbeta</a></code>.
 </p>
 <p><code>qnbinom</code> uses the Cornish&ndash;Fisher Expansion to include a skewness
 correction to a normal approximation, followed by a search.
@@ -149,9 +154,9 @@ Springer-Verlag, New York. Page 480.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for standard distributions, including
-<code><a href="Binomial.html">dbinom</a></code> for the binomial, <code><a href="Poisson.html">dpois</a></code> for the
-Poisson and <code><a href="Geometric.html">dgeom</a></code> for the geometric distribution, which
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for standard distributions, including
+<code><a href="../../stats/help/dbinom.html">dbinom</a></code> for the binomial, <code><a href="../../stats/help/dpois.html">dpois</a></code> for the
+Poisson and <code><a href="../../stats/help/dgeom.html">dgeom</a></code> for the geometric distribution, which
 is a special case of the negative binomial.
 </p>
 
@@ -189,5 +194,5 @@ barplot(rbind(h1$counts, h2$counts, h3$counts),
         names.arg = round(h1$breaks[-length(h1$breaks)]))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

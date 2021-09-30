@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Graphics Device for Bitmap Files via Ghostscript</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dev2bitmap {grDevices}"><tr><td>dev2bitmap {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,13 +60,13 @@ something reasonable given the width and height</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Other parameters passed to <code><a href="postscript.html">postscript</a></code> or
-<code><a href="pdf.html">pdf</a></code>.</p>
+<p>Other parameters passed to <code><a href="../../grDevices/help/postscript.html">postscript</a></code> or
+<code><a href="../../grDevices/help/pdf.html">pdf</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
-<p>Should the plot be done by <code><a href="postscript.html">postscript</a></code> or
-<code><a href="pdf.html">pdf</a></code>?</p>
+<p>Should the plot be done by <code><a href="../../grDevices/help/postscript.html">postscript</a></code> or
+<code><a href="../../grDevices/help/pdf.html">pdf</a></code>?</p>
 </td></tr>
 <tr valign="top"><td><code>taa, gaa</code></td>
 <td>
@@ -79,7 +80,7 @@ all types.</p>
 <h3>Details</h3>
 
 <p><code>dev2bitmap</code> works by copying the current device to a
-<code><a href="postscript.html">postscript</a></code> or <code><a href="pdf.html">pdf</a></code> device, and
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> or <code><a href="../../grDevices/help/pdf.html">pdf</a></code> device, and
 post-processing the output file using <code>ghostscript</code>.
 <code>bitmap</code> works in the same way using a <code>postscript</code> device
 and post-processing the output as &lsquo;printing&rsquo;.
@@ -140,7 +141,7 @@ mapped to short names <em>via</em> <code><a href="../../utils/html/shortPathName
 <h3>Conventions</h3>
 
 <p>This section describes the implementation of the conventions for
-graphics devices set out in the &ldquo;R Internals Manual&rdquo;.  These
+graphics devices set out in the &lsquo;R Internals&rsquo; manual.  These
 devices follow the underlying device, so when viewed at the stated
 <code>res</code>:
 </p>
@@ -175,24 +176,24 @@ Use of <code>bitmap</code> will leave a temporary file (with file name
 starting <code>Rbit</code>).
 </p>
 <p>Although using <code>type = "pdfwrite"</code> will work for simple plots, it
-is not recommended.  Either use <code><a href="pdf.html">pdf</a></code> to produce PDF
+is not recommended.  Either use <code><a href="../../grDevices/help/pdf.html">pdf</a></code> to produce PDF
 directly, or call <code>ps2pdf -dAutoRotatePages=/None</code> on the
-output of <code><a href="postscript.html">postscript</a></code>: that command is optimized to do
+output of <code><a href="../../grDevices/help/postscript.html">postscript</a></code>: that command is optimized to do
 the conversion to PDF in ways that these functions are not.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="savePlot.html">savePlot</a></code>, which for <code>windows</code> and
+<p><code><a href="../../grDevices/help/savePlot.html">savePlot</a></code>, which for <code>windows</code> and
 <code>X11(type = "cairo")</code> provides a simple way to record a PNG
 record of the current plot.
 </p>
-<p><code><a href="postscript.html">postscript</a></code>, <code><a href="pdf.html">pdf</a></code>, <code><a href="png.html">png</a></code>,
-<code><a href="png.html">jpeg</a></code>, <code><a href="png.html">tiff</a></code> and  <code>bmp</code>.
+<p><code><a href="../../grDevices/help/postscript.html">postscript</a></code>, <code><a href="../../grDevices/help/pdf.html">pdf</a></code>, <code><a href="../../grDevices/help/png.html">png</a></code>,
+<code><a href="../../grDevices/help/jpeg.html">jpeg</a></code>, <code><a href="../../grDevices/help/tiff.html">tiff</a></code> and  <code>bmp</code>.
 </p>
 <p>To display an array of data, see <code><a href="../../graphics/html/image.html">image</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

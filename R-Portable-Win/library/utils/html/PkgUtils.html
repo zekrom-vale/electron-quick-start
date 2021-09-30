@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Utilities for Building and Checking Add-on Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for PkgUtils {utils}"><tr><td>PkgUtils {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -56,12 +57,13 @@ utility <code><var>foo</var></code>.
 </p>
 <p>The defaults for some of the options to <code>R CMD build</code> can be
 set by environment variables <span class="env">_R_BUILD_RESAVE_DATA_</span> and
-<span class="env">_R_BUILD_COMPACT_VIGNETTES_</span>: see &lsquo;Writing <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> Extensions&rsquo;.
+<span class="env">_R_BUILD_COMPACT_VIGNETTES_</span>: see &lsquo;Writing R Extensions&rsquo;.
 Many of the checks in <code>R CMD check</code> can be turned off or on by
-environment variables: see Chapter 6 of the &lsquo;R Internals&rsquo; manual.
+environment variables: see Chapter &lsquo;Tools&rsquo; of the
+&lsquo;R Internals&rsquo; manual. 
 </p>
 <p>By default <code>R CMD build</code> uses the <code>"internal"</code> option to
-<code><a href="tar.html">tar</a></code> to prepare the tarball.  An external <code>tar</code>
+<code><a href="../../utils/help/tar.html">tar</a></code> to prepare the tarball.  An external <code>tar</code>
 program can be specified by the <span class="env">R_BUILD_TAR</span> environment
 variable.  This may be substantially faster for very large packages,
 and can be needed for packages with long path names (over 100 bytes)
@@ -69,7 +71,7 @@ or very large files (over 8GB): however, the resulting tarball may not
 be portable.
 </p>
 <p><code>R CMD check</code> by default unpacks tarballs by the internal
-<code><a href="untar.html">untar</a></code> function: if needed an external <code>tar</code>
+<code><a href="../../utils/help/untar.html">untar</a></code> function: if needed an external <code>tar</code>
 command can be specified by the environment variable
 <span class="env">R_INSTALL_TAR</span>: please ensure that it can handle the type of
 compression used on the tarball.  (This is sometimes needed for
@@ -91,11 +93,12 @@ that if set forward slashes are used.
 
 <h3>See Also</h3>
 
-<p>The sections on &ldquo;Checking and building packages&rdquo; and
-&ldquo;Processing Rd format&rdquo; in &ldquo;Writing <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> Extensions&rdquo;
-(see on Unix-alikes the &lsquo;<span class="file">doc/manual</span>&rsquo; subdirectory of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> source tree,
-on Windows, see the Manuals sub-menu of the Help menu on the console).
+<p>The sections on &lsquo;Checking and building packages&rsquo; and
+&lsquo;Processing Rd format&rsquo; in &lsquo;Writing R Extensions&rsquo;
+(see on Unix-alikes the &lsquo;<span class="file">doc/manual</span>&rsquo; subdirectory of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+source tree, on Windows, see the Manuals sub-menu of the Help menu on
+the console).
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

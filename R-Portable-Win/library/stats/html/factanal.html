@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Factor Analysis</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for factanal {stats}"><tr><td>factanal {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -39,13 +40,13 @@ coerced to a numeric matrix.</p>
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>An optional data frame (or similar: see
-<code><a href="model.frame.html">model.frame</a></code>), used only if <code>x</code> is a formula.  By
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>), used only if <code>x</code> is a formula.  By
 default the variables are taken from <code>environment(formula)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>covmat</code></td>
 <td>
 <p>A covariance matrix, or a covariance list as returned by
-<code><a href="cov.wt.html">cov.wt</a></code>.  Of course, correlation matrices are covariance
+<code><a href="../../stats/help/cov.wt.html">cov.wt</a></code>.  Of course, correlation matrices are covariance
 matrices.</p>
 </td></tr>
 <tr valign="top"><td><code>n.obs</code></td>
@@ -97,7 +98,7 @@ argument the loadings matrix, and should return a list with component
 optimization. Should be &gt; 0. Default 0.005.</p>
 </dd>
 <dt>opt</dt><dd><p>A list of control values to be passed to
-<code><a href="optim.html">optim</a></code>'s <code>control</code> argument.</p>
+<code><a href="../../stats/help/optim.html">optim</a></code>'s <code>control</code> argument.</p>
 </dd>
 <dt>rotate</dt><dd><p>a list of additional arguments for the rotation function.</p>
 </dd>
@@ -176,9 +177,9 @@ standardized errors over the choice of <i>f</i>, given (the fitted)
 <i>&Lambda;</i>.
 </p>
 <p>If <code>x</code> is a formula then the standard <code>NA</code>-handling is
-applied to the scores (if requested): see <code><a href="nafns.html">napredict</a></code>.
+applied to the scores (if requested): see <code><a href="../../stats/help/napredict.html">napredict</a></code>.
 </p>
-<p>The <code>print</code> method (documented under <code><a href="loadings.html">loadings</a></code>)
+<p>The <code>print</code> method (documented under <code><a href="../../stats/help/loadings.html">loadings</a></code>)
 follows the factor analysis convention of drawing attention to the
 patterns of the results, so the default precision is three decimal
 places, and small loadings are suppressed.
@@ -196,7 +197,7 @@ places, and small loadings are suppressed.
 factors are ordered in decreasing order of sums of squares of
 loadings, and given the sign that will make the sum of the loadings
 positive.  This is of class <code>"loadings"</code>: see
-<code><a href="loadings.html">loadings</a></code> for its <code>print</code> method.</p>
+<code><a href="../../stats/help/loadings.html">loadings</a></code> for its <code>print</code> method.</p>
 </td></tr>
 <tr valign="top"><td><code>uniquenesses</code></td>
 <td>
@@ -292,8 +293,8 @@ London University Press.
 
 <h3>See Also</h3>
 
-<p><code><a href="loadings.html">loadings</a></code> (which explains some details of the
-<code>print</code> method), <code><a href="varimax.html">varimax</a></code>, <code><a href="princomp.html">princomp</a></code>,
+<p><code><a href="../../stats/help/loadings.html">loadings</a></code> (which explains some details of the
+<code>print</code> method), <code><a href="../../stats/help/varimax.html">varimax</a></code>, <code><a href="../../stats/help/princomp.html">princomp</a></code>,
 <code><a href="../../datasets/html/ability.cov.html">ability.cov</a></code>, <code><a href="../../datasets/html/Harman23.cor.html">Harman23.cor</a></code>,
 <code><a href="../../datasets/html/Harman74.cor.html">Harman74.cor</a></code>.
 </p>
@@ -330,5 +331,5 @@ factanal(~v1+v2+v3+v4+v5+v6, factors = 3,
 utils::example(ability.cov)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

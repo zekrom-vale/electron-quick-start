@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Draw Box Plots from Summaries</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for bxp {graphics}"><tr><td>bxp {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p><code>bxp</code> draws box plots based on the given summaries in <code>z</code>.
-It is usually called from within <code><a href="boxplot.html">boxplot</a></code>, but can be
+It is usually called from within <code><a href="../../graphics/help/boxplot.html">boxplot</a></code>, but can be
 invoked directly.
 </p>
 
@@ -34,7 +35,7 @@ bxp(z, notch = FALSE, width = NULL, varwidth = FALSE,
 <td>
 <p>a list containing data summaries to be used in constructing
 the plots.  These are usually the result of a call to
-<code><a href="boxplot.html">boxplot</a></code>, but can be generated in any fashion.</p>
+<code><a href="../../graphics/help/boxplot.html">boxplot</a></code>, but can be generated in any fashion.</p>
 </td></tr>
 <tr valign="top"><td><code>notch</code></td>
 <td>
@@ -74,12 +75,12 @@ and <code>outcol</code> options (see below).
 <tr valign="top"><td><code>log</code></td>
 <td>
 <p>character, indicating if any axis should be drawn in
-logarithmic scale, as in <code><a href="plot.default.html">plot.default</a></code>.</p>
+logarithmic scale, as in <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>frame.plot</code></td>
 <td>
 <p>logical, indicating if a &lsquo;frame&rsquo;
-(<code><a href="box.html">box</a></code>) should be drawn; defaults to <code>TRUE</code>, unless
+(<code><a href="../../graphics/help/box.html">box</a></code>) should be drawn; defaults to <code>TRUE</code>, unless
 <code>axes = FALSE</code> is specified.</p>
 </td></tr>
 <tr valign="top"><td><code>horizontal</code></td>
@@ -109,7 +110,7 @@ defaults on whether an x-axis label is printed for each group.</p>
 </td></tr>
 <tr valign="top"><td><code>pars,...</code></td>
 <td>
-<p><a href="par.html">graphical parameters</a> (etc) can be passed as
+<p><a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> (etc) can be passed as
 arguments to this function, either as a list (<code>pars</code>) or
 normally(<code>...</code>), see the following.  (Those in <code>...</code>
 take precedence over those in <code>pars</code>.)
@@ -117,20 +118,21 @@ take precedence over those in <code>pars</code>.)
 <p>Currently, <code>yaxs</code> and <code>ylim</code> are used &lsquo;along the
 boxplot&rsquo;, i.e., vertically, when <code>horizontal</code> is
 false, and <code>xlim</code> horizontally.
-<code>xaxt</code>, <code>yaxt</code>, <code>las</code>, <code>cex.axis</code>, and
-<code>col.axis</code> are passed to <code><a href="axis.html">axis</a></code>, and <code>main</code>,
+<code>xaxt</code>, <code>yaxt</code>, <code>las</code>, <code>cex.axis</code>,
+<code>gap.axis</code>, and
+<code>col.axis</code> are passed to <code><a href="../../graphics/help/axis.html">axis</a></code>, and <code>main</code>,
 <code>cex.main</code>, <code>col.main</code>, <code>sub</code>, <code>cex.sub</code>,
 <code>col.sub</code>, <code>xlab</code>, <code>ylab</code>, <code>cex.lab</code>, and
-<code>col.lab</code> are passed to <code><a href="title.html">title</a></code>.
+<code>col.lab</code> are passed to <code><a href="../../graphics/help/title.html">title</a></code>.
 </p>
 <p>In addition, <code>axes</code> is accepted (see
-<code><a href="plot.window.html">plot.window</a></code>), with default <code>TRUE</code>.
+<code><a href="../../graphics/help/plot.window.html">plot.window</a></code>), with default <code>TRUE</code>.
 </p>
 <p>The following arguments (or <code>pars</code> components) allow further
 customization of the boxplot graphics.  Their defaults are typically
 determined from the non-prefixed version (e.g., <code>boxlty</code> from
 <code>lty</code>), either from the specified argument or <code>pars</code>
-component or the corresponding <code><a href="par.html">par</a></code> one.
+component or the corresponding <code><a href="../../graphics/help/par.html">par</a></code> one.
 </p>
 
 <dl>
@@ -150,7 +152,7 @@ in future default to <code>par("bg")</code>).</p>
 line width, point character, point size expansion, color, and
 background color.  The default <code>medpch = NA</code> suppresses the
 point, and <code>medlty = "blank"</code> does so for the line.
-Note that<code>medlwd</code> defaults to
+Note that <code>medlwd</code> defaults to
 <i>3x</i> the default <code>lwd</code>.</p>
 </dd>
 <dt>whisklty, whisklwd, whiskcol:</dt><dd><p>whisker line type (default:
@@ -212,8 +214,8 @@ set.seed(753)
 op &lt;- par(mfrow =  c(2, 2))
 bxp(bx.p, xaxt = "n")
 bxp(bx.p, notch = TRUE, axes = FALSE, pch = 4, boxfill = 1:5)
-bxp(bx.p, notch = TRUE, boxfill = "lightblue", frame = FALSE,
-    outl = FALSE, main = "bxp(*, frame= FALSE, outl= FALSE)")
+bxp(bx.p, notch = TRUE, boxfill = "lightblue", frame.plot = FALSE,
+    outline = FALSE, main = "bxp(*, frame.plot= FALSE, outline= FALSE)")
 bxp(bx.p, notch = TRUE, boxfill = "lightblue", border = 2:6,
     ylim = c(-4,4), pch = 22, bg = "green", log = "x",
     main = "... log = 'x', ylim = *")
@@ -227,6 +229,10 @@ bx &lt;- boxplot(weight ~ group, data = PlantGrowth,
               subset = group == "ctrl", plot = FALSE)
 bxp(bx, show.names=TRUE)
 par(op)
+
+## passing gap.axis=* to axis(), PR#18109:
+boxplot(matrix(100*rnorm(1e3), 50, 20),
+        cex.axis = 1.5, gap.axis = -1)# showing *all* labels
 
 
 z &lt;- split(rnorm(1000), rpois(1000, 2.2))
@@ -255,5 +261,5 @@ boxplot(z, boxfill = "light gray", outpch = 21:25, outlty = 2,
         medcol = "dark blue", medcex = 2, medpch = 20)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: CPU Time Used</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for system.time {base}"><tr><td>system.time {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -17,7 +18,6 @@
 
 <pre>
 system.time(expr, gcFirst = TRUE)
-
 </pre>
 
 
@@ -38,7 +38,7 @@ immediately before the timing?  Default is <code>TRUE</code>.</p>
 
 <h3>Details</h3>
 
-<p><code>system.time</code> calls the function <code><a href="proc.time.html">proc.time</a></code>,
+<p><code>system.time</code> calls the function <code><a href="../../base/help/proc.time.html">proc.time</a></code>,
 evaluates <code>expr</code>, and then calls <code>proc.time</code> once more,
 returning the difference between the two <code>proc.time</code> calls.
 </p>
@@ -47,7 +47,7 @@ compatibility with S, and has finally been deprecated in 2016.
 </p>
 <p>Timings of evaluations of the same expression can vary considerably
 depending on whether the evaluation triggers a garbage collection.  When
-<code>gcFirst</code> is <code>TRUE</code> a garbage collection (<code><a href="gc.html">gc</a></code>)
+<code>gcFirst</code> is <code>TRUE</code> a garbage collection (<code><a href="../../base/help/gc.html">gc</a></code>)
 will be performed immediately before the evaluation of <code>expr</code>.
 This will usually produce more consistent timings.
 </p>
@@ -56,15 +56,18 @@ This will usually produce more consistent timings.
 <h3>Value</h3>
 
 <p>A object of class <code>"proc_time"</code>: see
-<code><a href="proc.time.html">proc.time</a></code> for details.
+<code><a href="../../base/help/proc.time.html">proc.time</a></code> for details.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="proc.time.html">proc.time</a></code>, <code><a href="../../stats/html/time.html">time</a></code> which is for time series.
+<p><code><a href="../../base/help/proc.time.html">proc.time</a></code>, <code><a href="../../stats/html/time.html">time</a></code> which is for time series.
 </p>
-<p><code><a href="Sys.time.html">Sys.time</a></code> to get the current date &amp; time.
+<p><code><a href="../../base/help/setTimeLimit.html">setTimeLimit</a></code> to limit the (CPU/elapsed) time <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is allowed
+to use.
+</p>
+<p><code><a href="../../base/help/Sys.time.html">Sys.time</a></code> to get the current date &amp; time.
 </p>
 
 
@@ -84,5 +87,5 @@ system.time(exT())    #~ +/- same
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

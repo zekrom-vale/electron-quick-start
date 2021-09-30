@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fit an Analysis of Variance Model</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for aov {stats}"><tr><td>aov {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -75,7 +76,7 @@ error stratum.
 </p>
 <p>Weights can be specified by a <code>weights</code> argument, but should not
 be used with an <code>Error</code> term, and are incompletely supported
-(e.g., not by <code><a href="model.tables.html">model.tables</a></code>).
+(e.g., not by <code><a href="../../stats/help/model.tables.html">model.tables</a></code>).
 </p>
 
 
@@ -83,7 +84,7 @@ be used with an <code>Error</code> term, and are incompletely supported
 
 <p>An object of class <code>c("aov", "lm")</code> or for multiple responses
 of class <code>c("maov", "aov", "mlm", "lm")</code> or for multiple error
-strata of class <code>c("aovlist", "<a href="listof.html">listof</a>")</code>.  There are
+strata of class <code>c("aovlist", "<a href="../../stats/help/listof.html">listof</a>")</code>.  There are
 <code><a href="../../base/html/print.html">print</a></code> and <code><a href="../../base/html/summary.html">summary</a></code> methods available for these.
 </p>
 
@@ -94,10 +95,10 @@ strata of class <code>c("aovlist", "<a href="listof.html">listof</a>")</code>.  
 hard to interpret without balance: beware that missing values in the
 response(s) will likely lose the balance.  If there are two or more
 error strata, the methods used are statistically inefficient without
-balance, and it may be better to use <code><a href="../../nlme/html/lme.html">lme</a></code> in
+balance, and it may be better to use <code><a href="../../nlme/help/lme.html">lme</a></code> in
 package <a href="https://CRAN.R-project.org/package=nlme"><span class="pkg">nlme</span></a>.
 </p>
-<p>Balance can be checked with the <code><a href="replications.html">replications</a></code> function.
+<p>Balance can be checked with the <code><a href="../../stats/help/replications.html">replications</a></code> function.
 </p>
 <p>The default &lsquo;contrasts&rsquo; in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> are not orthogonal contrasts, and
 <code>aov</code> and its helper functions will work better with such
@@ -123,9 +124,9 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="lm.html">lm</a></code>, <code><a href="summary.aov.html">summary.aov</a></code>,
-<code><a href="replications.html">replications</a></code>, <code><a href="alias.html">alias</a></code>,
-<code><a href="proj.html">proj</a></code>, <code><a href="model.tables.html">model.tables</a></code>, <code><a href="TukeyHSD.html">TukeyHSD</a></code>
+<p><code><a href="../../stats/help/lm.html">lm</a></code>, <code><a href="../../stats/help/summary.aov.html">summary.aov</a></code>,
+<code><a href="../../stats/help/replications.html">replications</a></code>, <code><a href="../../stats/help/alias.html">alias</a></code>,
+<code><a href="../../stats/help/proj.html">proj</a></code>, <code><a href="../../stats/help/model.tables.html">model.tables</a></code>, <code><a href="../../stats/help/TukeyHSD.html">TukeyHSD</a></code>
 </p>
 
 
@@ -154,5 +155,5 @@ summary(npk.aovE)
 options(op)  # reset to previous
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

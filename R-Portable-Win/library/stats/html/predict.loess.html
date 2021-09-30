@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Predict Loess Curve or Surface</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for predict.loess {stats}"><tr><td>predict.loess {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -53,7 +54,12 @@ values in data frame <code>newdata</code>.  The default is to predict <code>NA</
 
 <h3>Details</h3>
 
-<p>The standard errors calculation is slower than prediction.
+<p>The standard errors calculation <code>se = TRUE</code> is slower than
+prediction, notably as it needs a relatively large workspace (memory),
+notably matrices of dimension <i>N * Nf</i> where <i>f =
+  </i><code>span</code>, i.e., <code>se = TRUE</code> is <i>O(N^2)</i>
+and hence stops when the sample size <i>N</i> is larger than about 40'600
+(for default <code>span = 0.75</code>).
 </p>
 <p>When the fit was made using <code>surface = "interpolate"</code> (the
 default), <code>predict.loess</code> will not extrapolate &ndash; so points outside
@@ -117,7 +123,7 @@ Grosse and Shyu.
 
 <h3>See Also</h3>
 
-<p><code><a href="loess.html">loess</a></code></p>
+<p><code><a href="../../stats/help/loess.html">loess</a></code></p>
 
 
 <h3>Examples</h3>
@@ -131,5 +137,5 @@ cars.lo2 &lt;- loess(dist ~ speed, cars,
 predict(cars.lo2, data.frame(speed = seq(5, 30, 1)), se = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

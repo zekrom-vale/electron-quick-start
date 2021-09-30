@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Build Shared Object/DLL for Dynamic Loading</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for SHLIB {utils}"><tr><td>SHLIB {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -52,7 +53,7 @@ The most useful one on Windows is <code>-d</code> to build a debug DLL.
 
 <h3>Details</h3>
 
-<p><code>R CMD SHLIB</code> is the mechanism used by <code><a href="INSTALL.html">INSTALL</a></code> to
+<p><code>R CMD SHLIB</code> is the mechanism used by <code><a href="../../utils/help/INSTALL.html">INSTALL</a></code> to
 compile source code in packages.  It will generate suitable
 compilation commands for C, C++, Objective C(++) and Fortran sources: Fortran
 90/95 sources can also be used but it may not be possible to mix these
@@ -90,9 +91,9 @@ directory it will be used, otherwise all entry points in object files
 
 <p><code><a href="../../base/html/dynload.html">dyn.load</a></code>, <code><a href="../../base/html/library.dynam.html">library.dynam</a></code>.
 </p>
-<p>The &lsquo;R Installation and Administration&rsquo; and &lsquo;Writing R
-Extensions&rsquo; manuals, including the section on &ldquo;Customizing
-compilation&rdquo; in the former.
+<p>The &lsquo;R Installation and Administration&rsquo; and
+&lsquo;Writing R Extensions&rsquo; manuals, including the section on
+&lsquo;Customizing compilation&rsquo; in the former.
 </p>
 
 
@@ -104,5 +105,5 @@ Rcmd SHLIB -o my.dll a.f b.f -L/AMD/acml3.5.0/gnu32/lib -lacml
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

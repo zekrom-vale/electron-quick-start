@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Ordering Permutation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for order {base}"><tr><td>order {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p><code>order</code> returns a permutation which rearranges its first
 argument into ascending or descending order, breaking ties by further
-arguments. <code>sort.list</code> is the same, using only one argument.<br />
+arguments.  <code>sort.list</code> does the same, using only one argument.<br />
 See the examples for how to use these functions to sort data frames,
 etc.
 </p>
@@ -38,7 +39,10 @@ vectors, all of the same length, or a classed <span style="font-family: Courier 
 </td></tr>
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>an atomic vector.</p>
+<p>an atomic vector for <code>method</code>s <code>"shell"</code> and
+<code>"quick"</code>.  When <code>x</code> is a non-atomic <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object, the default
+<code>"auto"</code> and <code>"radix"</code> methods may work if <code>order(x,..)</code>
+does.</p>
 </td></tr>
 <tr valign="top"><td><code>partial</code></td>
 <td>
@@ -67,7 +71,7 @@ integer vectors, logical vectors and factors.
 Otherwise, it implies <code>"shell"</code>.
 For details of methods <code>"shell"</code>, 
 <code>"quick"</code>, and <code>"radix"</code>,
-see the help for <code><a href="sort.html">sort</a></code>.</p>
+see the help for <code><a href="../../base/help/sort.html">sort</a></code>.</p>
 </td></tr>
 </table>
 
@@ -85,14 +89,14 @@ part.
 </p>
 <p>Except for method <code>"radix"</code>, the sort order for character vectors
 will depend on the collating sequence of the locale in use: see
-<code><a href="Comparison.html">Comparison</a></code>.
+<code><a href="../../base/help/Comparison.html">Comparison</a></code>.
 </p>
 <p>The <code>"shell"</code> method is generally the safest bet and is the
 default method, except for short factors, numeric vectors,
 integer vectors and logical vectors, where <code>"radix"</code> is assumed.
 Method <code>"radix"</code> stably sorts logical,
 numeric and character vectors in linear time. It outperforms the other
-methods, although there are caveats (see <code><a href="sort.html">sort</a></code>).  Method
+methods, although there are caveats (see <code><a href="../../base/help/sort.html">sort</a></code>).  Method
 <code>"quick"</code> for <code>sort.list</code> is only supported for numeric
 <code>x</code> with <code>na.last = NA</code>, is not stable, and is slower than
 <code>"radix"</code>. 
@@ -102,8 +106,8 @@ implementations of S, but no other values are accepted and ordering is
 always complete.
 </p>
 <p>For a classed <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object, the sort order is taken from
-<code><a href="xtfrm.html">xtfrm</a></code>: as its help page notes, this can be slow unless a
-suitable method has been defined or <code><a href="numeric.html">is.numeric</a>(x)</code> is
+<code><a href="../../base/help/xtfrm.html">xtfrm</a></code>: as its help page notes, this can be slow unless a
+suitable method has been defined or <code><a href="../../base/help/is.numeric.html">is.numeric</a>(x)</code> is
 true.  For factors, this sorts on the internal codes, which is
 particularly appropriate for ordered factors.
 </p>
@@ -123,14 +127,14 @@ as the names could match current or future control
 arguments such as <code>decreasing</code>.  A sometimes-encountered unsafe
 practice is to call <code>do.call('order', df_obj)</code> where
 <code>df_obj</code> might be a data frame: copy <code>df_obj</code> and
-remove any names, for example using <code><a href="unname.html">unname</a></code>.
+remove any names, for example using <code><a href="../../base/help/unname.html">unname</a></code>.
 </p>
 
 
 <h3>Note</h3>
 
 <p><code>sort.list</code> can get called by mistake as a method for
-<code><a href="sort.html">sort</a></code> with a list argument: it gives a suitable error
+<code><a href="../../base/help/sort.html">sort</a></code> with a list argument: it gives a suitable error
 message for list <code>x</code>.
 </p>
 <p>There is a historical difference in behaviour for <code>na.last = NA</code>:
@@ -162,7 +166,7 @@ Searching.</em> 2nd ed. Addison-Wesley.
 
 <h3>See Also</h3>
 
-<p><code><a href="sort.html">sort</a></code>, <code><a href="rank.html">rank</a></code>, <code><a href="xtfrm.html">xtfrm</a></code>.
+<p><code><a href="../../base/help/sort.html">sort</a></code>, <code><a href="../../base/help/rank.html">rank</a></code>, <code><a href="../../base/help/xtfrm.html">xtfrm</a></code>.
 </p>
 
 
@@ -238,5 +242,5 @@ system.time(o &lt;- sort.list(xx, method = "quick", na.last = NA)) # 0.1 sec
 system.time(o &lt;- sort.list(xx, method = "radix")) # 0.05 sec, 2X faster
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

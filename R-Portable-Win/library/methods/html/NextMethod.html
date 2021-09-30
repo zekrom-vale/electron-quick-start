@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Call an Inherited Method</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for callNextMethod {methods}"><tr><td>callNextMethod {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -53,7 +54,7 @@ method did not exist. This is more-or-less literally what happens: The
 current method (to be precise, the method with signature given by the
 <code>defined</code> slot of the method from which <code>callNextMethod</code> is
 called) is deleted from a copy of the methods for the current generic,
-and <code><a href="getMethod.html">selectMethod</a></code> is called to find the next method (the
+and <code><a href="../../methods/help/selectMethod.html">selectMethod</a></code> is called to find the next method (the
 result is cached in the method object where the call occurred, so the search typically
 happens only once per session per combination of argument classes).
 </p>
@@ -142,9 +143,9 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="callGeneric.html">callGeneric</a></code> to call the generic function with the
+<p><code><a href="../../methods/help/callGeneric.html">callGeneric</a></code> to call the generic function with the
 current dispatch rules (typically for a group generic function);
-<a href="Methods_Details.html">Methods_Details</a> for the general behavior of method dispatch.
+<a href="../../methods/help/Methods_Details.html">Methods_Details</a> for the general behavior of method dispatch.
 </p>
 
 
@@ -286,5 +287,5 @@ tryCatch(f(b2), error = function(e) cat(e$message,"\n"))
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Simulate from an ARIMA Model</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for arima.sim {stats}"><tr><td>arima.sim {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -69,12 +70,12 @@ can be specified by <code>sd</code>.</p>
 
 <h3>Details</h3>
 
-<p>See <code><a href="arima.html">arima</a></code> for the precise definition of an ARIMA model.
+<p>See <code><a href="../../stats/help/arima.html">arima</a></code> for the precise definition of an ARIMA model.
 </p>
 <p>The ARMA model is checked for stationarity.
 </p>
 <p>ARIMA models are specified via the <code>order</code> component of
-<code>model</code>, in the same way as for <code><a href="arima.html">arima</a></code>.  Other
+<code>model</code>, in the same way as for <code><a href="../../stats/help/arima.html">arima</a></code>.  Other
 aspects of the <code>order</code> component are ignored, but inconsistent
 specifications of the MA and AR orders are detected.  The
 un-differencing assumes previous values of zero, and to remind the
@@ -93,7 +94,7 @@ user of this, those values are returned.
 
 <h3>See Also</h3>
 
-<p><code><a href="arima.html">arima</a></code>
+<p><code><a href="../../stats/help/arima.html">arima</a></code>
 </p>
 
 
@@ -113,5 +114,5 @@ ts.sim &lt;- arima.sim(list(order = c(1,1,0), ar = 0.7), n = 200)
 ts.plot(ts.sim)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

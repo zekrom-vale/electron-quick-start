@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Hypergeometric Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Hypergeometric {stats}"><tr><td>Hypergeometric {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,7 +44,8 @@ white balls.</p>
 </td></tr>
 <tr valign="top"><td><code>k</code></td>
 <td>
-<p>the number of balls drawn from the urn.</p>
+<p>the number of balls drawn from the urn, hence must be in
+<i>0,1,&hellip;, m+n</i>.</p>
 </td></tr>
 <tr valign="top"><td><code>p</code></td>
 <td>
@@ -71,7 +73,8 @@ is taken to be the number required.</p>
 <p>The hypergeometric distribution is used for sampling <em>without</em>
 replacement.  The density of this distribution with parameters
 <code>m</code>, <code>n</code> and <code>k</code> (named <i>Np</i>, <i>N-Np</i>, and
-<i>n</i>, respectively in the reference below) is given by
+<i>n</i>, respectively in the reference below, where <i>N := m+n</i> is also used
+in other references) is given by
 </p>
 <p style="text-align: center;"><i>p(x) =      choose(m, x) choose(n, k-x) / choose(m+n, k)</i></p>
 
@@ -95,9 +98,10 @@ hypergeometric has smaller variance unless <i>k = 1</i>).
 <p>The quantile is defined as the smallest value <i>x</i> such that
 <i>F(x) &ge; p</i>, where <i>F</i> is the distribution function.
 </p>
-<p>If one of <i>m, n, k</i>, exceeds <code><a href="../../base/html/zMachine.html">.Machine</a>$integer.max</code>,
-currently the equivalent of <code>qhyper(runif(nn), m,n,k)</code> is used,
-when a binomial approximation may be considerably more efficient.
+<p>In <code>rhyper()</code>, if one of <i>m, n, k</i> exceeds <code><a href="../../base/html/zMachine.html">.Machine</a>$integer.max</code>,
+currently the equivalent of <code>qhyper(runif(nn), m,n,k)</code> is used
+which is comparably slow while instead a binomial approximation may be
+considerably more efficient.
 </p>
 
 
@@ -123,13 +127,13 @@ arguments are used.
 <h3>Source</h3>
 
 <p><code>dhyper</code> computes via binomial probabilities, using code
-contributed by Catherine Loader (see <code><a href="Binomial.html">dbinom</a></code>).
+contributed by Catherine Loader (see <code><a href="../../stats/help/dbinom.html">dbinom</a></code>).
 </p>
 <p><code>phyper</code> is based on calculating <code>dhyper</code> and
 <code>phyper(...)/dhyper(...)</code> (as a summation), based on ideas of Ian
 Smith and Morten Welinder.
 </p>
-<p><code>qhyper</code> is based on inversion.
+<p><code>qhyper</code> is based on inversion (of an earlier <code>phyper()</code> algorithm).
 </p>
 <p><code>rhyper</code> is based on a corrected version of
 </p>
@@ -150,7 +154,7 @@ Second Edition. New York: Wiley.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for other standard distributions.
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions.
 </p>
 
 
@@ -165,5 +169,5 @@ all(phyper(x, m, n, k) == cumsum(dhyper(x, m, n, k)))  # FALSE
 signif(phyper(x, m, n, k) - cumsum(dhyper(x, m, n, k)), digits = 3)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Merge Two Data Frames</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for merge {base}"><tr><td>merge {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ See &lsquo;Details&rsquo;.</p>
 <tr valign="top"><td><code>all</code></td>
 <td>
 <p>logical; <code>all = L</code> is shorthand for <code>all.x = L</code> and
-<code>all.y = L</code>, where <code>L</code> is either <code><a href="logical.html">TRUE</a></code> or
+<code>all.y = L</code>, where <code>L</code> is either <code><a href="../../base/help/TRUE.html">TRUE</a></code> or
 <code>FALSE</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>all.x</code></td>
@@ -81,7 +82,7 @@ was implicitly false before <span style="font-family: Courier New, Courier; colo
 <tr valign="top"><td><code>incomparables</code></td>
 <td>
 <p>values which cannot be matched.  See
-<code><a href="match.html">match</a></code>.  This is intended to be used for merging on one
+<code><a href="../../base/help/match.html">match</a></code>.  This is intended to be used for merging on one
 column, so these are incomparable values of that column.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
@@ -103,7 +104,7 @@ both have, but separate specifications of the columns can be given by
 match on the specified columns are extracted, and joined together.  If
 there is more than one match, all possible matches contribute one row
 each.  For the precise meaning of &lsquo;match&rsquo;, see
-<code><a href="match.html">match</a></code>.
+<code><a href="../../base/help/match.html">match</a></code>.
 </p>
 <p>Columns to merge on can be specified by name, number or by a logical
 vector: the name <code>"row.names"</code> or the number <code>0</code> specifies
@@ -166,9 +167,9 @@ the result for 32-bit platforms.
 
 <h3>See Also</h3>
 
-<p><code><a href="data.frame.html">data.frame</a></code>,
-<code><a href="by.html">by</a></code>,
-<code><a href="cbind.html">cbind</a></code>.
+<p><code><a href="../../base/help/data.frame.html">data.frame</a></code>,
+<code><a href="../../base/help/by.html">by</a></code>,
+<code><a href="../../base/help/cbind.html">cbind</a></code>.
 </p>
 <p><code><a href="../../stats/html/dendrogram.html">dendrogram</a></code> for a class which has a <code>merge</code> method.
 </p>
@@ -218,5 +219,5 @@ merge(x, y, by = "k1") # NA's match, so 6 rows
 merge(x, y, by = "k2", incomparables = NA) # 2 rows
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

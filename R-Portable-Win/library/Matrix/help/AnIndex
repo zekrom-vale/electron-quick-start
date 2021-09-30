@@ -373,6 +373,7 @@ bdiag	bdiag
 BunchKaufman	BunchKaufman-methods
 BunchKaufman,dspMatrix-method	BunchKaufman-methods
 BunchKaufman,dsyMatrix-method	BunchKaufman-methods
+BunchKaufman,matrix-method	BunchKaufman-methods
 BunchKaufman-class	Cholesky-class
 BunchKaufman-methods	BunchKaufman-methods
 c.abIndex	abIseq
@@ -388,7 +389,7 @@ cbind2,ddiMatrix,matrix-method	diagonalMatrix-class
 cbind2,denseMatrix,denseMatrix-method	denseMatrix-class
 cbind2,denseMatrix,matrix-method	denseMatrix-class
 cbind2,denseMatrix,numeric-method	denseMatrix-class
-cbind2,denseMatrix,sparseMatrix-method	sparseMatrix-class
+cbind2,denseMatrix,sparseMatrix-method	cBind
 cbind2,diagonalMatrix,sparseMatrix-method	diagonalMatrix-class
 cbind2,ldiMatrix,atomicVector-method	diagonalMatrix-class
 cbind2,ldiMatrix,matrix-method	diagonalMatrix-class
@@ -404,7 +405,7 @@ cbind2,matrix,sparseMatrix-method	sparseMatrix-class
 cbind2,NULL,Matrix-method	Matrix-class
 cbind2,numeric,denseMatrix-method	denseMatrix-class
 cbind2,numeric,sparseMatrix-method	sparseMatrix-class
-cbind2,sparseMatrix,denseMatrix-method	sparseMatrix-class
+cbind2,sparseMatrix,denseMatrix-method	cBind
 cbind2,sparseMatrix,diagonalMatrix-method	diagonalMatrix-class
 cbind2,sparseMatrix,matrix-method	sparseMatrix-class
 cbind2,sparseMatrix,numeric-method	sparseMatrix-class
@@ -420,6 +421,9 @@ chol,dpoMatrix-method	chol
 chol,dppMatrix-method	chol
 chol,dsCMatrix-method	chol
 chol,dsparseMatrix-method	chol
+chol,dtCMatrix-method	chol
+chol,dtRMatrix-method	chol
+chol,dtTMatrix-method	chol
 chol,ldiMatrix-method	chol
 chol,lsCMatrix-method	chol
 chol,Matrix-method	chol
@@ -472,8 +476,10 @@ coerce,ddenseMatrix,dgeMatrix-method	ddenseMatrix-class
 coerce,ddenseMatrix,matrix-method	ddenseMatrix-class
 coerce,ddiMatrix,CsparseMatrix-method	diagonalMatrix-class
 coerce,ddiMatrix,ddenseMatrix-method	diagonalMatrix-class
+coerce,ddiMatrix,dgCMatrix-method	dgCMatrix-class
 coerce,ddiMatrix,dgeMatrix-method	diagonalMatrix-class
 coerce,ddiMatrix,dsparseMatrix-method	diagonalMatrix-class
+coerce,ddiMatrix,dtCMatrix-method	dtCMatrix-class
 coerce,ddiMatrix,matrix-method	diagonalMatrix-class
 coerce,ddiMatrix,symmetricMatrix-method	diagonalMatrix-class
 coerce,ddiMatrix,triangularMatrix-method	diagonalMatrix-class
@@ -1303,12 +1309,14 @@ is.na,sparseVector-method	sparseVector-class
 is.na-methods	is.na-methods
 is.null.DN	is.null.DN
 isDiagonal	isTriangular
+isDiagonal,CsparseMatrix-method	isTriangular
 isDiagonal,denseMatrix-method	isTriangular
 isDiagonal,diagonalMatrix-method	isTriangular
 isDiagonal,matrix-method	isTriangular
 isDiagonal,sparseMatrix-method	isTriangular
 isDiagonal,symmetricMatrix-method	isTriangular
 isDiagonal,triangularMatrix-method	isTriangular
+isDiagonal,TsparseMatrix-method	isTriangular
 isDiagonal-methods	isTriangular
 isLDL	CHMfactor-class
 isparseVector-class	sparseVector-class
@@ -1379,8 +1387,15 @@ lgeMatrix-class	lgeMatrix-class
 lgRMatrix-class	lsparseMatrix-classes
 lgTMatrix-class	lsparseMatrix-classes
 lMatrix-class	dMatrix-class
+log,CsparseMatrix-method	CsparseMatrix-class
+log,ddenseMatrix-method	ddenseMatrix-class
+log,denseMatrix-method	denseMatrix-class
 log,dgCMatrix-method	dgCMatrix-class
+log,dgeMatrix-method	dgeMatrix-class
+log,diagonalMatrix-method	diagonalMatrix-class
 log,dMatrix-method	dMatrix-class
+log,sparseMatrix-method	sparseMatrix-class
+log,sparseVector-method	sparseVector-class
 Logic,ANY,Matrix-method	Matrix-class
 Logic,CsparseMatrix,CsparseMatrix-method	CsparseMatrix-class
 Logic,dMatrix,logical-method	dMatrix-class
@@ -1441,10 +1456,10 @@ lu,dtCMatrix-method	lu
 lu,matrix-method	lu
 lu,sparseMatrix-method	sparseMatrix-class
 LU-class	LU-class
+mat2triplet	mat2triplet
 Math,CsparseMatrix-method	CsparseMatrix-class
 Math,ddenseMatrix-method	ddenseMatrix-class
 Math,denseMatrix-method	denseMatrix-class
-Math,dgCMatrix-method	dgCMatrix-class
 Math,dgeMatrix-method	dgeMatrix-class
 Math,diagonalMatrix-method	diagonalMatrix-class
 Math,sparseMatrix-method	sparseMatrix-class
@@ -1642,6 +1657,7 @@ qr.resid,sparseQR,ddenseMatrix-method	sparseQR-class
 qr.resid,sparseQR,Matrix-method	sparseQR-class
 qr.resid,sparseQR,matrix-method	sparseQR-class
 qr.resid,sparseQR,numeric-method	sparseQR-class
+qr2rankMatrix	rankMatrix
 qrR	qr-methods
 rankMatrix	rankMatrix
 rBind	cBind
@@ -1654,7 +1670,7 @@ rbind2,ddiMatrix,matrix-method	diagonalMatrix-class
 rbind2,denseMatrix,denseMatrix-method	denseMatrix-class
 rbind2,denseMatrix,matrix-method	denseMatrix-class
 rbind2,denseMatrix,numeric-method	denseMatrix-class
-rbind2,denseMatrix,sparseMatrix-method	sparseMatrix-class
+rbind2,denseMatrix,sparseMatrix-method	cBind
 rbind2,diagonalMatrix,sparseMatrix-method	diagonalMatrix-class
 rbind2,indMatrix,indMatrix-method	indMatrix-class
 rbind2,ldiMatrix,atomicVector-method	diagonalMatrix-class
@@ -1671,7 +1687,7 @@ rbind2,matrix,sparseMatrix-method	sparseMatrix-class
 rbind2,NULL,Matrix-method	Matrix-class
 rbind2,numeric,denseMatrix-method	denseMatrix-class
 rbind2,numeric,sparseMatrix-method	sparseMatrix-class
-rbind2,sparseMatrix,denseMatrix-method	sparseMatrix-class
+rbind2,sparseMatrix,denseMatrix-method	cBind
 rbind2,sparseMatrix,diagonalMatrix-method	diagonalMatrix-class
 rbind2,sparseMatrix,matrix-method	sparseMatrix-class
 rbind2,sparseMatrix,numeric-method	sparseMatrix-class
@@ -2121,6 +2137,7 @@ which,ntTMatrix-method	nsparseMatrix-classes
 writeMM	externalFormats
 writeMM,CsparseMatrix-method	externalFormats
 writeMM,sparseMatrix-method	externalFormats
+wrld_1deg	wrld_1deg
 xsparseVector-class	sparseVector-class
 zapsmall,dMatrix-method	dMatrix-class
 zMatrix-class	unused-classes
@@ -2151,6 +2168,8 @@ zsparseVector-class	sparseVector-class
 [,Matrix,matrix,missing,missing-method	Xtrct-methods
 [,Matrix,missing,index,missing-method	Xtrct-methods
 [,Matrix,missing,missing,ANY-method	Xtrct-methods
+[,Matrix,missing,missing,logical-method	Xtrct-methods
+[,Matrix,missing,missing,missing-method	Xtrct-methods
 [,sparseMatrix,index,index,logical-method	Xtrct-methods
 [,sparseMatrix,index,missing,logical-method	Xtrct-methods
 [,sparseMatrix,missing,index,logical-method	Xtrct-methods

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Predict Method for GLM Fits</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for predict.glm {stats}"><tr><td>predict.glm {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -86,7 +87,7 @@ original fit is determined by the <code>na.action</code> argument of that
 fit.  If <code>na.action = na.omit</code> omitted cases will not appear in
 the residuals, whereas if <code>na.action = na.exclude</code> they will
 appear (in predictions and standard errors), with residual value
-<code>NA</code>.  See also <code><a href="nafns.html">napredict</a></code>.
+<code>NA</code>.  See also <code><a href="../../stats/help/napredict.html">napredict</a></code>.
 </p>
 
 
@@ -127,7 +128,7 @@ if it was supplied.
 
 <h3>See Also</h3>
 
-<p><code><a href="glm.html">glm</a></code>, <code><a href="makepredictcall.html">SafePrediction</a></code>
+<p><code><a href="../../stats/help/glm.html">glm</a></code>, <code><a href="../../stats/help/SafePrediction.html">SafePrediction</a></code>
 </p>
 
 
@@ -156,5 +157,5 @@ lines(2^ld, predict(budworm.lg, data.frame(ldose = ld,
    type = "response"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

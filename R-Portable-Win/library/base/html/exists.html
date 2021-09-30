@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Is an Object Defined?</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for exists {base}"><tr><td>exists {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ get0(x, envir = pos.to.env(-1L), mode = "any", inherits = TRUE,
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>a variable name (given as a character string).</p>
+<p>a variable name (given as a character string or a symbol).</p>
 </td></tr>
 <tr valign="top"><td><code>where</code></td>
 <td>
@@ -69,9 +70,9 @@ searched?</p>
 
 <p>The <code>where</code> argument can specify the environment in which to look
 for the object in any of several ways: as an integer (the position in
-the <code><a href="search.html">search</a></code> list); as the character string name of an
-element in the search list; or as an <code><a href="environment.html">environment</a></code>
-(including using <code><a href="sys.parent.html">sys.frame</a></code> to access the currently active
+the <code><a href="../../base/help/search.html">search</a></code> list); as the character string name of an
+element in the search list; or as an <code><a href="../../base/help/environment.html">environment</a></code>
+(including using <code><a href="../../base/help/sys.frame.html">sys.frame</a></code> to access the currently active
 function calls).  The <code>envir</code> argument is an alternative way to
 specify an environment, but is primarily there for back compatibility.
 </p>
@@ -79,7 +80,7 @@ specify an environment, but is primarily there for back compatibility.
 it in the specified environment.  If <code>inherits</code> is <code>TRUE</code> and
 a value is not found for <code>x</code> in the specified environment, the
 enclosing frames of the environment are searched until the name <code>x</code>
-is encountered.  See <code><a href="environment.html">environment</a></code> and the &lsquo;R
+is encountered.  See <code><a href="../../base/help/environment.html">environment</a></code> and the &lsquo;R
 Language Definition&rsquo; manual for details about the structure of
 environments and their enclosures.
 </p>
@@ -88,7 +89,7 @@ environments and their enclosures.
 </p>
 <p>If <code>mode</code> is specified then only objects of that type are sought.
 The <code>mode</code> may specify one of the collections <code>"numeric"</code> and
-<code>"function"</code> (see <code><a href="mode.html">mode</a></code>): any member of the
+<code>"function"</code> (see <code><a href="../../base/help/mode.html">mode</a></code>): any member of the
 collection will suffice.  (This is true even if a member of a
 collection is specified, so for example <code>mode = "special"</code> will
 seek any type of function.)
@@ -100,7 +101,7 @@ seek any type of function.)
 <p><code>exists():</code> Logical, true if and only if an object of the correct
 name and mode is found.
 </p>
-<p><code>get0():</code> The object&mdash;as from <code><a href="get.html">get</a>(x, *)</code>&mdash;
+<p><code>get0():</code> The object&mdash;as from <code><a href="../../base/help/get.html">get</a>(x, *)</code>&mdash;
 if <code>exists(x, *)</code> is true, otherwise <code>ifnotfound</code>.
 </p>
 
@@ -108,19 +109,21 @@ if <code>exists(x, *)</code> is true, otherwise <code>ifnotfound</code>.
 <h3>Note</h3>
 
 <p>With <code>get0()</code>, instead of the easy to read but somewhat
-inefficient </p>
+inefficient
+</p>
 <pre>
-  if (exists(myVarName, envir = myEnvir)) {
-    r &lt;- get(myVarName, envir = myEnvir)
-    ## ... deal with r ...
-  }
-</pre>
-<p>you now can use the more efficient (and slightly harder to read) </p>
+    if (exists(myVarName, envir = myEnvir)) {
+      r &lt;- get(myVarName, envir = myEnvir)
+      ## ... deal with r ...
+    }
+  </pre>
+<p>you now can use the more efficient (and slightly harder to read)
+</p>
 <pre>
-  if (!is.null(r &lt;- get0(myVarName, envir = myEnvir))) {
-    ## ... deal with r ...
-  }
-</pre>
+    if (!is.null(r &lt;- get0(myVarName, envir = myEnvir))) {
+      ## ... deal with r ...
+    }
+  </pre>
 
 
 <h3>References</h3>
@@ -133,12 +136,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="get.html">get</a></code> and <code><a href="../../utils/html/hasName.html">hasName</a></code>.  For quite a different 
+<p><code><a href="../../base/help/get.html">get</a></code> and <code><a href="../../utils/html/hasName.html">hasName</a></code>.  For quite a different 
 kind of &ldquo;existence&rdquo;
 checking, namely if function arguments were specified,
-<code><a href="missing.html">missing</a></code>;
+<code><a href="../../base/help/missing.html">missing</a></code>;
 and for yet a different kind, namely if a file exists,
-<code><a href="files.html">file.exists</a></code>.
+<code><a href="../../base/help/file.exists.html">file.exists</a></code>.
 </p>
 
 
@@ -158,5 +161,5 @@ identical(NULL, get0(".foo.bar.")) # default ifnotfound = NULL (!)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

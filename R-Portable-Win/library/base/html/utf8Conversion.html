@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert Integer Vectors to or from UTF-8-encoded Character...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for utf8Conversion {base}"><tr><td>utf8Conversion {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -38,7 +39,7 @@ character string or multiple individual characters?</p>
 <td>
 <p>logical: should interpretation of
 surrogate pairs be attempted?  (See &lsquo;Details&rsquo;.)
-Only supported for <code>multiple = FALSE</code> and in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.5.0 and later.</p>
+Only supported for <code>multiple = FALSE</code>.</p>
 </td></tr>
 </table>
 
@@ -50,8 +51,9 @@ otherwise support multi-byte character sets.
 </p>
 <p>Unicode defines a name and a number of all of the glyphs it
 encompasses: the numbers are called <em>code points</em>: since RFC3629
-they run from <code>0</code> to <code>0x10FFFF</code> (with about 12% being
-assigned by version 10.0 of the Unicode standard).
+they run from <code>0</code> to <code>0x10FFFF</code> (with about 5% being
+assigned by version 13.0 of the Unicode standard and 7% reserved for
+&lsquo;private use&rsquo;).
 </p>
 <p><code>intToUtf8</code> does not by default handle surrogate pairs: inputs in
 the surrogate ranges are mapped to <code>NA</code>.  They might occur if a
@@ -72,7 +74,7 @@ either (default) to a single character string or a character vector of
 single characters. Non-integral numeric values are truncated to
 integers.  For output to a single character string <code>0</code> is
 silently omitted: otherwise <code>0</code> is mapped to <code>""</code>.  The
-<code><a href="Encoding.html">Encoding</a></code> of a non-<code>NA</code> return value is declared as
+<code><a href="../../base/help/Encoding.html">Encoding</a></code> of a non-<code>NA</code> return value is declared as
 <code>"UTF-8"</code>.
 </p>
 <p>Invalid and <code>NA</code> inputs are mapped to <code>NA</code> output.
@@ -88,7 +90,7 @@ has been stated that there will never be valid code points larger than
 <code>0x10FFFF</code>, and so valid UTF-8 encodings are never more than 4
 bytes.
 </p>
-<p>The code points in the surrogate-pair range <code>0xD000</code> to
+<p>The code points in the surrogate-pair range <code>0xD800</code> to
 <code>0xDFFF</code> are prohibited in UTF-8 and so are regarded as invalid
 by <code>utf8ToInt</code> and by default by <code>intToUtf8</code>.
 </p>
@@ -96,6 +98,7 @@ by <code>utf8ToInt</code> and by default by <code>intToUtf8</code>.
 <code>0xFFFF</code>) was clarified by &lsquo;Corrigendum 9&rsquo; in 2013.  These
 are valid but will never be given an official interpretation.  (In some
 earlier versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> <code>utf8ToInt</code> treated them as invalid.)
+
 </p>
 
 
@@ -103,7 +106,7 @@ earlier versions of <span style="font-family: Courier New, Courier; color: #6666
 
 <p><a href="https://tools.ietf.org/html/rfc3629">https://tools.ietf.org/html/rfc3629</a>, the current standard for UTF-8.
 </p>
-<p><a href="http://www.unicode.org/versions/corrigendum9.html">http://www.unicode.org/versions/corrigendum9.html</a> for non-characters.
+<p><a href="https://www.unicode.org/versions/corrigendum9.html">https://www.unicode.org/versions/corrigendum9.html</a> for non-characters.
 </p>
 
 
@@ -123,20 +126,19 @@ intToUtf8(x, TRUE)
 (xx &lt;- intToUtf8(x, , TRUE)) # will only display in some locales and fonts
 charToRaw(xx)
 
-## Not run: ## An example of how surrogate pairs might occur
+## An example of how surrogate pairs might occur
 x &lt;- "\U10437"
 charToRaw(x)
 foo &lt;- tempfile()
 writeLines(x, file(foo, encoding = "UTF-16LE"))
 ## next two are OS-specific, but are mandated by POSIX
-system(paste("od -x", foo)) # 2-byte units, correct on little-endian platform
+system(paste("od -x", foo)) # 2-byte units, correct on little-endian platforms
 system(paste("od -t x1", foo)) # single bytes as hex
 y &lt;- readBin(foo, "integer", 2, 2, FALSE, endian = "little")
 sprintf("%X", y)
 intToUtf8(y, , TRUE)
 
-## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

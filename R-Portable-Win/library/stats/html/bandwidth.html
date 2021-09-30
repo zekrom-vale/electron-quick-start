@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Bandwidth Selectors for Kernel Density Estimation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for bandwidth {stats}"><tr><td>bandwidth {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Bandwidth selectors for Gaussian kernels in <code><a href="density.html">density</a></code>.
+<p>Bandwidth selectors for Gaussian kernels in <code><a href="../../stats/help/density.html">density</a></code>.
 </p>
 
 
@@ -56,7 +57,7 @@ from a normal reference bandwidth.</p>
 <tr valign="top"><td><code>tol</code></td>
 <td>
 <p>for method <code>"ste"</code>, the convergence tolerance for
-<code><a href="uniroot.html">uniroot</a></code>.  The default leads to bandwidth estimates
+<code><a href="../../stats/help/uniroot.html">uniroot</a></code>.  The default leads to bandwidth estimates
 with only slightly more than one digit accuracy, which is sufficient
 for practical density estimation, but possibly not for theoretical
 simulation studies.</p>
@@ -84,7 +85,7 @@ biased cross-validation respectively.
 <p><code>bw.SJ</code> implements the methods of Sheather &amp; Jones (1991)
 to select the bandwidth using pilot estimation of derivatives.<br />
 The algorithm for method <code>"ste"</code> solves an equation (via
-<code><a href="uniroot.html">uniroot</a></code>) and because of that, enlarges the interval
+<code><a href="../../stats/help/uniroot.html">uniroot</a></code>) and because of that, enlarges the interval
 <code>c(lower, upper)</code> when the boundaries were not user-specified and
 do not bracket the root.
 </p>
@@ -105,7 +106,7 @@ of <code>density</code>.
 <h3>Note</h3>
 
 <p>Long vectors <code>x</code> are not supported, but neither are they by
-<code><a href="density.html">density</a></code> and kernel density estimation and for more than
+<code><a href="../../stats/help/density.html">density</a></code> and kernel density estimation and for more than
 a few thousand points a histogram would be preferred.
 </p>
 
@@ -128,7 +129,8 @@ A reliable data-based bandwidth selection method for kernel density
 estimation.
 <em>Journal of the Royal Statistical Society series B</em>,
 <b>53</b>, 683&ndash;690.
-<a href="http://www.jstor.org/stable/2345597">http://www.jstor.org/stable/2345597</a>.
+doi: <a href="https://doi.org/10.1111/j.2517-6161.1991.tb01857.x">10.1111/j.2517-6161.1991.tb01857.x</a>.
+<a href="https://www.jstor.org/stable/2345597">https://www.jstor.org/stable/2345597</a>.
 </p>
 <p>Silverman, B. W. (1986).
 <em>Density Estimation</em>.
@@ -142,10 +144,10 @@ Springer.
 
 <h3>See Also</h3>
 
-<p><code><a href="density.html">density</a></code>.
+<p><code><a href="../../stats/help/density.html">density</a></code>.
 </p>
-<p><code><a href="../../MASS/html/bandwidth.nrd.html">bandwidth.nrd</a></code>, <code><a href="../../MASS/html/ucv.html">ucv</a></code>,
-<code><a href="../../MASS/html/bcv.html">bcv</a></code> and <code><a href="../../MASS/html/width.SJ.html">width.SJ</a></code> in
+<p><code><a href="../../MASS/help/bandwidth.nrd.html">bandwidth.nrd</a></code>, <code><a href="../../MASS/help/ucv.html">ucv</a></code>,
+<code><a href="../../MASS/help/bcv.html">bcv</a></code> and <code><a href="../../MASS/help/width.SJ.html">width.SJ</a></code> in
 package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>, which are all scaled to the <code>width</code> argument
 of <code>density</code> and so give answers four times as large.
 </p>
@@ -168,5 +170,5 @@ legend(55, 0.035,
        col = 1:6, lty = 1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

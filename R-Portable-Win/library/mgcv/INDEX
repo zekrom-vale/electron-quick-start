@@ -5,13 +5,15 @@ Predict.matrix.cr.smooth
 Predict.matrix.soap.film
                         Prediction matrix for soap film smooth
 Rrank                   Find rank of upper triangular matrix
-Sl.initial.repara       Re-parametrizing model matrix X
+Sl.inirep               Re-parametrizing model matrix X
 Sl.repara               Applying re-parameterization from
                         log-determinant of penalty matrix to model
                         matrix.
 Sl.setup                Setting up a list representing a block diagonal
                         penalty matrix
 Tweedie                 GAM Tweedie families
+XWXd                    Internal functions for discretized model matrix
+                        handling
 anova.gam               Approximate hypothesis tests related to GAM
                         fits
 bam                     Generalized additive models for very large
@@ -21,6 +23,7 @@ bam.update              Update a strictly additive bam model for new
 bandchol                Choleski decomposition of a band diagonal
                         matrix
 betar                   GAM beta regression family
+blas.thread.test        BLAS thread safety
 bug.reports.mgcv        Reporting mgcv bugs.
 cSplineDes              Evaluate cyclic B spline basis
 choldrop                Deletion and rank one Cholesky factor update
@@ -54,6 +57,7 @@ gam.fit                 GAM P-IRLS estimation with GCV/UBRE smoothness
 gam.fit3                P-IRLS GAM estimation with GCV & UBRE/AIC or
                         RE/ML derivative calculation
 gam.fit5.post.proc      Post-processing output of gam.fit5
+gam.mh                  Simple posterior simulation with gam fits
 gam.models              Specifying generalized additive models
 gam.outer               Minimize GCV or UBRE score of a GAM using
                         'outer' iteration
@@ -73,6 +77,7 @@ gamlss.etamu            Transform derivatives wrt mu to derivatives wrt
 gamlss.gH               Calculating derivatives of log-likelihood wrt
                         regression coefficients
 gamm                    Generalized Additive Mixed Models
+gammals                 Gamma location-scale model family
 gaulss                  Gaussian location-scale model family
 get.var                 Get named variable or evaluate expression from
                         list or data.frame
@@ -80,6 +85,7 @@ gevlss                  Generalized Extreme Value location-scale model
                         family
 ginla                   GAM Integrated Nested Laplace Approximation
                         Newton Enhanced
+gumbls                  Gumbel location-scale model family
 identifiability         Identifiability constraints
 in.out                  Which of a set of points lie within a polygon
                         defined region
@@ -139,15 +145,20 @@ polys.plot              Plot geographic regions defined as polygons
 predict.bam             Prediction from fitted Big Additive Model model
 predict.gam             Prediction from fitted GAM model
 print.gam               Print a Generalized Additive Model object.
+psum.chisq              Evaluate the c.d.f. of a weighted sum of
+                        chi-squared deviates
 qq.gam                  QQ plots for gam model residuals
 rTweedie                Generate Tweedie random deviates
 random.effects          Random effects in GAMs
 residuals.gam           Generalized Additive Model residuals
 rig                     Generate inverse Gaussian random deviates
-rmvn                    Generate multivariate normal deviates
+rmvn                    Generate from or evaluate multivariate normal
+                        or t densities.
 s                       Defining smooths in GAM formulae
 scat                    GAM scaled t family for heavy tailed data
 sdiag                   Extract or modify diagonals of a matrix
+shash                   Sinh-arcsinh location scale and shape model
+                        family
 single.index            Single index models with mgcv
 slanczos                Compute truncated eigen decomposition of a
                         symmetric matrix
@@ -180,6 +191,8 @@ smooth.construct.tensor.smooth.spec
                         Tensor product smoothing constructor
 smooth.construct.tp.smooth.spec
                         Penalized thin plate regression splines in GAMs
+smooth.info             Generic function to provide extra information
+                        about smooth specification
 smooth.terms            Smooth terms in GAM
 smooth2random           Convert a smooth to a form suitable for
                         estimating as random effect
@@ -195,8 +208,8 @@ t2                      Define alternative tensor product smooths in
 te                      Define tensor product smooths or tensor product
                         interactions in GAM formulae
 tensor.prod.model.matrix
-                        Utility functions for constructing tensor
-                        product smooths
+                        Row Kronecker product/ tensor product smooth
+                        construction
 totalPenaltySpace       Obtaining (orthogonal) basis for null space and
                         range of the penalty matrix
 trichol                 Choleski decomposition of a tri-diagonal matrix
@@ -207,6 +220,7 @@ uniquecombs             find the unique rows in a matrix
 vcov.gam                Extract parameter (estimator) covariance matrix
                         from GAM fit
 vis.gam                 Visualization of GAM objects
-ziP                     GAM zero-inflated Poisson regression family
-ziplss                  Zero inflated Poisson location-scale model
+ziP                     GAM zero-inflated (hurdle) Poisson regression
                         family
+ziplss                  Zero inflated (hurdle) Poisson location-scale
+                        model family

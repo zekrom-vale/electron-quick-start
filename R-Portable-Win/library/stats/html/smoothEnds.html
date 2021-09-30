@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: End Points Smoothing (for Running Medians)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for smoothEnds {stats}"><tr><td>smoothEnds {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ than half the window <code>k</code>.  The first and last value are computed usin
 </p>
 <p>In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions 3.6.0 and earlier, missing values (<code><a href="../../base/html/NA.html">NA</a></code>)
 in <code>y</code> typically lead to an error, whereas now the equivalent of
-<code><a href="median.html">median</a>(*, na.rm=TRUE)</code> is used.
+<code><a href="../../stats/help/median.html">median</a>(*, na.rm=TRUE)</code> is used.
 </p>
 
 
@@ -73,7 +74,7 @@ Data Analysis)</em>; Duxbury.
 
 <h3>See Also</h3>
 
-<p><code><a href="runmed.html">runmed</a>(*, endrule = "median")</code> which calls
+<p><code><a href="../../stats/help/runmed.html">runmed</a>(*, endrule = "median")</code> which calls
 <code>smoothEnds()</code>.
 </p>
 
@@ -110,11 +111,10 @@ stopifnot(exprs = {
    !anyNA(rN[,2:3])
    identical(which(is.na(rN[,"keep"])), c(2L, 40L))
    identical(which(is.na(rN.), arr.ind=TRUE, useNames=FALSE),
-             rbind(cbind(c(1:2,37:38,40L), 1L),
-                   cbind(37:41, 2L), cbind(37:38, 3L)))
-   identical(rN.[39:41, "median"], c(324, 397, 470))
+             cbind(c(1:2,40L), 1L))
+   identical(rN.[38:41, "median"], c(289,289, 397, 470))
 })
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

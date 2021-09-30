@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Apply a Function Over a Ragged Array</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for tapply {base}"><tr><td>tapply {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,15 +28,15 @@ tapply(X, INDEX, FUN = NULL, ..., default = NA, simplify = TRUE)
 <table summary="R argblock">
 <tr valign="top"><td><code>X</code></td>
 <td>
-<p>an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object for which a <code><a href="split.html">split</a></code> method
+<p>an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object for which a <code><a href="../../base/help/split.html">split</a></code> method
 exists.  Typically vector-like, allowing subsetting with
-<code><a href="Extract.html">[</a></code>.</p>
+<code><a href="../../base/help/+5B.html">[</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>INDEX</code></td>
 <td>
-<p>a <code><a href="list.html">list</a></code> of one or more <code><a href="factor.html">factor</a></code>s,
+<p>a <code><a href="../../base/help/list.html">list</a></code> of one or more <code><a href="../../base/help/factor.html">factor</a></code>s,
 each of same length as <code>X</code>.  The elements are coerced to
-factors by <code><a href="factor.html">as.factor</a></code>.</p>
+factors by <code><a href="../../base/help/as.factor.html">as.factor</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>FUN</code></td>
 <td>
@@ -53,10 +54,10 @@ the multi-way array <code>tapply</code> normally produces.</p>
 <td>
 <p>(only in the case of simplification to an array) the
 value with which the array is initialized as
-<code><a href="array.html">array</a>(default, dim = ..)</code>.  Before <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.4.0, this
-was hard coded to <code><a href="array.html">array</a>()</code>'s default <code>NA</code>.  If it
+<code><a href="../../base/help/array.html">array</a>(default, dim = ..)</code>.  Before <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.4.0, this
+was hard coded to <code><a href="../../base/help/array.html">array</a>()</code>'s default <code>NA</code>.  If it
 is <code>NA</code> (the default), the missing value of the answer type,
-e.g. <code><a href="NA.html">NA_real_</a></code>, is chosen (<code><a href="raw.html">as.raw</a>(0)</code> for
+e.g. <code><a href="../../base/help/NA_real_.html">NA_real_</a></code>, is chosen (<code><a href="../../base/help/as.raw.html">as.raw</a>(0)</code> for
 <code>"raw"</code>).  In a numerical case, it may be set, e.g., to
 <code>FUN(integer(0))</code>, e.g., in the case of <code>FUN = sum</code> to
 <code>0</code> or <code>0L</code>.</p>
@@ -64,8 +65,8 @@ e.g. <code><a href="NA.html">NA_real_</a></code>, is chosen (<code><a href="raw.
 <tr valign="top"><td><code>simplify</code></td>
 <td>
 <p>logical; if <code>FALSE</code>, <code>tapply</code> always returns
-an array of mode <code>"list"</code>; in other words, a <code><a href="list.html">list</a></code>
-with a <code><a href="dim.html">dim</a></code> attribute.  If <code>TRUE</code> (the default), then if
+an array of mode <code>"list"</code>; in other words, a <code><a href="../../base/help/list.html">list</a></code>
+with a <code><a href="../../base/help/dim.html">dim</a></code> attribute.  If <code>TRUE</code> (the default), then if
 <code>FUN</code> always returns a scalar, <code>tapply</code> returns an array
 with the mode of the scalar.</p>
 </td></tr>
@@ -75,7 +76,7 @@ with the mode of the scalar.</p>
 <h3>Details</h3>
 
 <p>If <code>FUN</code> is not <code>NULL</code>, it is passed to
-<code><a href="match.fun.html">match.fun</a></code>, and hence it can be a function or a symbol or
+<code><a href="../../base/help/match.fun.html">match.fun</a></code>, and hence it can be a function or a symbol or
 character string naming a function.
 </p>
 
@@ -86,21 +87,21 @@ character string naming a function.
 cell that has any data in it.  If <code>FUN</code> returns a single atomic
 value for each such cell (e.g., functions <code>mean</code> or <code>var</code>)
 and when <code>simplify</code> is <code>TRUE</code>, <code>tapply</code> returns a
-multi-way <a href="array.html">array</a> containing the values, and <code>NA</code> for the
+multi-way <a href="../../base/help/array.html">array</a> containing the values, and <code>NA</code> for the
 empty cells.  The array has the same number of dimensions as
 <code>INDEX</code> has components; the number of levels in a dimension is
 the number of levels (<code>nlevels()</code>) in the corresponding component
 of <code>INDEX</code>.  Note that if the return value has a class (e.g., an
-object of class <code>"<a href="Dates.html">Date</a>"</code>) the class is discarded.
+object of class <code>"<a href="../../base/help/Date.html">Date</a>"</code>) the class is discarded.
 </p>
 <p><code>simplify = TRUE</code> always returns an array, possibly 1-dimensional.
 </p>
 <p>If <code>FUN</code> does not return a single atomic value, <code>tapply</code>
-returns an array of mode <code><a href="list.html">list</a></code> whose components are the
+returns an array of mode <code><a href="../../base/help/list.html">list</a></code> whose components are the
 values of the individual calls to <code>FUN</code>, i.e., the result is a
-list with a <code><a href="dim.html">dim</a></code> attribute.
+list with a <code><a href="../../base/help/dim.html">dim</a></code> attribute.
 </p>
-<p>When there is an array answer, its <code><a href="dimnames.html">dimnames</a></code> are named by
+<p>When there is an array answer, its <code><a href="../../base/help/dimnames.html">dimnames</a></code> are named by
 the names of <code>INDEX</code> and are based on the levels of the grouping
 factors (possibly after coercion).
 </p>
@@ -128,11 +129,11 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p>the convenience functions <code><a href="by.html">by</a></code> and
+<p>the convenience functions <code><a href="../../base/help/by.html">by</a></code> and
 <code><a href="../../stats/html/aggregate.html">aggregate</a></code> (using <code>tapply</code>);
-<code><a href="apply.html">apply</a></code>,
-<code><a href="lapply.html">lapply</a></code> with its versions
-<code><a href="lapply.html">sapply</a></code> and <code><a href="mapply.html">mapply</a></code>.
+<code><a href="../../base/help/apply.html">apply</a></code>,
+<code><a href="../../base/help/lapply.html">lapply</a></code> with its versions
+<code><a href="../../base/help/sapply.html">sapply</a></code> and <code><a href="../../base/help/mapply.html">mapply</a></code>.
 </p>
 
 
@@ -178,5 +179,5 @@ stopifnot(
                  `4` = NULL, `5` = NULL), dim=4, dimnames=list(as.character(2:5)))))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

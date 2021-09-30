@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Methods for Coercing an Object to a Class</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for setAs {methods}"><tr><td>setAs {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>A call to <code>setAs</code> defines a method for coercing an object of
 class <code>from</code> to class <code>to</code>.  The methods will then be used
-by calls to <code><a href="as.html">as</a></code> for objects with class <code>from</code>,
+by calls to <code><a href="../../methods/help/as.html">as</a></code> for objects with class <code>from</code>,
 including calls that replace part of the object.
 </p>
 <p>Methods for this purpose work indirectly, by defining methods for
@@ -80,9 +81,9 @@ usual terminology, the earlier classes are <em>superclasses</em> of
 the new class and it is a <em>subclass</em> of each of them).
 </p>
 <p>This form of inheritance is called <em>simple</em> inheritance in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
-See <code><a href="setClass.html">setClass</a></code> for details.
+See <code><a href="../../methods/help/setClass.html">setClass</a></code> for details.
 Inheritance can also be defined explicitly by a call to
-<code><a href="setIs.html">setIs</a></code>.
+<code><a href="../../methods/help/setIs.html">setIs</a></code>.
 The two versions have slightly different implications for coerce methods.
 Simple inheritance implies that inherited slots behave identically in the subclass and the superclass.
 Whenever two classes are related by simple inheritance, corresponding coerce methods
@@ -100,7 +101,7 @@ explicitly, not rely on inheritance.
 Inheritance will apply (to the <code>from</code> argument, as described in  the section below).
 You could also supply methods via <code>setAs</code> for non-inherited relationships, and now these also can be inherited.
 </p>
-<p>For further on the distinction between simple and explicit inheritance, see <code><a href="setIs.html">setIs</a></code>.
+<p>For further on the distinction between simple and explicit inheritance, see <code><a href="../../methods/help/setIs.html">setIs</a></code>.
 </p>
 
 
@@ -138,7 +139,7 @@ to construct a coerce method.
 In the usual case that the subclass contains the superclass (i.e., has
 all its slots), the method is constructed either by extracting or
 replacing the inherited slots.
-Non-simple extensions (the result of a call to <code><a href="setIs.html">setIs</a></code>)
+Non-simple extensions (the result of a call to <code><a href="../../methods/help/setIs.html">setIs</a></code>)
 will usually contain explicit methods, though possibly not for replacement.
 </p>
 <p>If no subclass/superclass relationship provides a method, <code>as</code>
@@ -159,7 +160,7 @@ occurrence of a coerce from <code>class(object)</code> to <code>Class</code>.
 not intended to be called directly.  To prevent accidentally caching
 an invalid inherited method, calls are routed to an equivalent call to
 <code>as</code>, and a warning is issued.  Also, calls to
-<code><a href="getMethod.html">selectMethod</a></code> for this function may not represent the
+<code><a href="../../methods/help/selectMethod.html">selectMethod</a></code> for this function may not represent the
 method that <code>as</code> will choose.  You can only trust the result if
 the corresponding call to <code>as</code> has occurred previously in this
 session.
@@ -223,7 +224,7 @@ Chapman &amp; Hall.
 <h3>See Also</h3>
 
 <p>If you think of using <code>try(as(x, cl))</code>, consider
-<code><a href="canCoerce.html">canCoerce</a>(x, cl)</code> instead.
+<code><a href="../../methods/help/canCoerce.html">canCoerce</a>(x, cl)</code> instead.
 </p>
 
 
@@ -265,5 +266,5 @@ as(CB, "numeric")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

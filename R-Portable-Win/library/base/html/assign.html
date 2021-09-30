@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Assign a Value to a Name</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for assign {base}"><tr><td>assign {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -41,7 +42,7 @@ current environment.  See &lsquo;Details&rsquo; for other possibilities.</p>
 </td></tr>
 <tr valign="top"><td><code>envir</code></td>
 <td>
-<p>the <code><a href="environment.html">environment</a></code> to use.  See &lsquo;Details&rsquo;.</p>
+<p>the <code><a href="../../base/help/environment.html">environment</a></code> to use.  See &lsquo;Details&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>inherits</code></td>
 <td>
@@ -58,13 +59,13 @@ inspected?</p>
 <h3>Details</h3>
 
 <p>There are no restrictions on the name given as <code>x</code>: it can be a
-non-syntactic name (see <code><a href="make.names.html">make.names</a></code>).
+non-syntactic name (see <code><a href="../../base/help/make.names.html">make.names</a></code>).
 </p>
 <p>The <code>pos</code> argument can specify the  environment in which to assign
 the object in any of several ways: as <code>-1</code> (the default),
-as a positive integer (the position in the <code><a href="search.html">search</a></code> list); as
+as a positive integer (the position in the <code><a href="../../base/help/search.html">search</a></code> list); as
 the character string name of an element in the search list; or as an
-<code><a href="environment.html">environment</a></code> (including using <code><a href="sys.parent.html">sys.frame</a></code> to
+<code><a href="../../base/help/environment.html">environment</a></code> (including using <code><a href="../../base/help/sys.frame.html">sys.frame</a></code> to
 access the currently active function calls).
 The <code>envir</code> argument is an alternative way to specify an
 environment, but is primarily for back compatibility.
@@ -73,8 +74,8 @@ environment, but is primarily for back compatibility.
 used to set elements of vectors, names, attributes, etc.
 </p>
 <p>Note that assignment to an attached list or data frame changes the
-attached copy and not the original object: see <code><a href="attach.html">attach</a></code>
-and <code><a href="with.html">with</a></code>.
+attached copy and not the original object: see <code><a href="../../base/help/attach.html">attach</a></code>
+and <code><a href="../../base/help/with.html">with</a></code>.
 </p>
 
 
@@ -89,7 +90,7 @@ environment.
 environment are searched until the variable <code>x</code> is encountered.
 The value is then assigned in the environment in which the variable is
 encountered (provided that the binding is not locked: see
-<code><a href="bindenv.html">lockBinding</a></code>: if it is, an error is signaled).  If the
+<code><a href="../../base/help/lockBinding.html">lockBinding</a></code>: if it is, an error is signaled).  If the
 symbol is not encountered then assignment takes place in the user's
 workspace (the global environment).
 </p>
@@ -110,10 +111,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="assignOps.html">&lt;-</a></code>,
-<code><a href="get.html">get</a></code>, the inverse of <code>assign()</code>,
-<code><a href="exists.html">exists</a></code>,
-<code><a href="environment.html">environment</a></code>.
+<p><code><a href="../../base/help/+3C-.html">&lt;-</a></code>,
+<code><a href="../../base/help/get.html">get</a></code>, the inverse of <code>assign()</code>,
+<code><a href="../../base/help/exists.html">exists</a></code>,
+<code><a href="../../base/help/environment.html">environment</a></code>.
 </p>
 
 
@@ -141,5 +142,5 @@ get("a[1]") == 2   # TRUE
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

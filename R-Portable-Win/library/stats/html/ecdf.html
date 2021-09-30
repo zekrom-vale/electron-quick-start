@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Empirical Cumulative Distribution Function</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ecdf {stats}"><tr><td>ecdf {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ the methods, an object inheriting from class <code>"ecdf"</code>.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>arguments to be passed to subsequent methods, e.g.,
-<code><a href="plot.stepfun.html">plot.stepfun</a></code> for the <code>plot</code> method.</p>
+<code><a href="../../stats/help/plot.stepfun.html">plot.stepfun</a></code> for the <code>plot</code> method.</p>
 </td></tr>
 <tr valign="top"><td><code>ylab</code></td>
 <td>
@@ -53,7 +54,7 @@ the methods, an object inheriting from class <code>"ecdf"</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>verticals</code></td>
 <td>
-<p>see <code><a href="plot.stepfun.html">plot.stepfun</a></code>.</p>
+<p>see <code><a href="../../stats/help/plot.stepfun.html">plot.stepfun</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>col.01line</code></td>
 <td>
@@ -87,22 +88,22 @@ i.e.,
 <p style="text-align: center;"><i>
     Fn(t) = #{xi &lt;= t}/n  =  1/n sum(i=1,n) Indicator(xi &lt;= t).</i></p>
 
-<p>The function <code>plot.ecdf</code> which implements the <code><a href="../../graphics/html/plot.html">plot</a></code>
+<p>The function <code>plot.ecdf</code> which implements the <code><a href="../../graphics/html/plot.default.html">plot</a></code>
 method for <code>ecdf</code> objects, is implemented via a call to
-<code><a href="plot.stepfun.html">plot.stepfun</a></code>; see its documentation.
+<code><a href="../../stats/help/plot.stepfun.html">plot.stepfun</a></code>; see its documentation.
 </p>
 
 
 <h3>Value</h3>
 
 <p>For <code>ecdf</code>, a function of class <code>"ecdf"</code>, inheriting from the
-<code>"<a href="stepfun.html">stepfun</a>"</code> class, and hence inheriting a
-<code><a href="stepfun.html">knots</a>()</code> method.
+<code>"<a href="../../stats/help/stepfun.html">stepfun</a>"</code> class, and hence inheriting a
+<code><a href="../../stats/help/knots.html">knots</a>()</code> method.
 </p>
 <p>For the <code>summary</code> method, a summary of the knots of <code>object</code>
 with a <code>"header"</code> attribute.
 </p>
-<p>The <code><a href="quantile.html">quantile</a>(obj, ...)</code> method computes the same quantiles as
+<p>The <code><a href="../../stats/help/quantile.html">quantile</a>(obj, ...)</code> method computes the same quantiles as
 <code>quantile(x, ...)</code> would where <code>x</code> is the original sample.
 </p>
 
@@ -126,8 +127,8 @@ did at <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b>
 
 <h3>See Also</h3>
 
-<p><code><a href="stepfun.html">stepfun</a></code>, the more general class of step functions,
-<code><a href="approxfun.html">approxfun</a></code> and <code><a href="splinefun.html">splinefun</a></code>.
+<p><code><a href="../../stats/help/stepfun.html">stepfun</a></code>, the more general class of step functions,
+<code><a href="../../stats/help/approxfun.html">approxfun</a></code> and <code><a href="../../stats/help/splinefun.html">splinefun</a></code>.
 </p>
 
 
@@ -154,7 +155,7 @@ summary.stepfun(Fn12)
 
 ## Advanced: What's inside the function closure?
 ls(environment(Fn12))
-##[1] "f"  "method"  "n"  "x"  "y"  "yleft"  "yright"
+## "f"     "method" "na.rm"  "nobs"   "x"     "y"    "yleft"  "yright"
 utils::ls.str(environment(Fn12))
 stopifnot(all.equal(quantile(Fn12), quantile(y)))
 
@@ -170,7 +171,7 @@ plot(F10)
 plot(F10, verticals = TRUE, do.points = FALSE)
 
 plot(Fn12 , lwd = 2) ; mtext("lwd = 2", adj = 1)
-xx &lt;- unique(sort(c(seq(-3, 2, length = 201), knots(Fn12))))
+xx &lt;- unique(sort(c(seq(-3, 2, length.out = 201), knots(Fn12))))
 lines(xx, Fn12(xx), col = "blue")
 abline(v = knots(Fn12), lty = 2, col = "gray70")
 
@@ -188,5 +189,5 @@ title("via  simple  plot.ecdf(x)", adj = 1)
 par(op)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

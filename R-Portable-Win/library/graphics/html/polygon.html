@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Polygon Drawing</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for polygon {graphics}"><tr><td>polygon {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -55,7 +56,7 @@ this gives the color of the shading lines.</p>
 <tr valign="top"><td><code>border</code></td>
 <td>
 <p>the color to draw the border.  The default, <code>NULL</code>,
-means to use <code><a href="par.html">par</a>("fg")</code>.  Use <code>border = NA</code> to
+means to use <code><a href="../../graphics/help/par.html">par</a>("fg")</code>.  Use <code>border = NA</code> to
 omit borders.
 </p>
 <p>For compatibility with S, <code>border</code> can also be logical, in
@@ -65,7 +66,7 @@ and <code>TRUE</code> is equivalent to <code>NULL</code> (use the foreground col
 </td></tr>
 <tr valign="top"><td><code>lty</code></td>
 <td>
-<p>the line type to be used, as in <code><a href="par.html">par</a></code>.</p>
+<p>the line type to be used, as in <code><a href="../../graphics/help/par.html">par</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -90,7 +91,7 @@ below for details.  Default <code>FALSE</code>.</p>
 point to the first point.
 </p>
 <p>The coordinates can contain missing values.  The behaviour is similar
-to that of <code><a href="lines.html">lines</a></code>, except that instead of breaking a line
+to that of <code><a href="../../graphics/help/lines.html">lines</a></code>, except that instead of breaking a line
 into several lines, <code>NA</code> values break the polygon into several
 complete polygons (including closing the last point to the first
 point).  See the examples below.
@@ -136,10 +137,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="segments.html">segments</a></code> for even more flexibility, <code><a href="lines.html">lines</a></code>,
-<code><a href="rect.html">rect</a></code>, <code><a href="box.html">box</a></code>, <code><a href="abline.html">abline</a></code>.
+<p><code><a href="../../graphics/help/segments.html">segments</a></code> for even more flexibility, <code><a href="../../graphics/help/lines.html">lines</a></code>,
+<code><a href="../../graphics/help/rect.html">rect</a></code>, <code><a href="../../graphics/help/box.html">box</a></code>, <code><a href="../../graphics/help/abline.html">abline</a></code>.
 </p>
-<p><code><a href="par.html">par</a></code> for how to specify colors.
+<p><code><a href="../../graphics/help/par.html">par</a></code> for how to specify colors.
 </p>
 
 
@@ -184,5 +185,5 @@ polygon(1:9, c(2,1,2,1,NA,2,1,2,1),
         density = c(10, 20), angle = c(-45, 45))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check Source Packages and Their Reverse Dependencies</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for check_packages_in_dir {tools}"><tr><td>check_packages_in_dir {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -67,11 +68,11 @@ package names.</p>
 <td>
 <p>a list with names partially matching <code>"repos"</code>,
 <code>"which"</code>, or <code>"recursive"</code>, giving the repositories to
-use for locating reverse dependencies (default:
-<code>getOption("repos")</code>), the types of reverse dependencies
+use for locating reverse dependencies (a subset of
+<code>getOption("repos")</code>, the default), the types of reverse dependencies
 (default: <code>c("Depends", "Imports", "LinkingTo")</code>, with
 shorthands <code>"most"</code> and <code>"all"</code> as for
-<code><a href="package_dependencies.html">package_dependencies</a></code>), and indicating whether to also
+<code><a href="../../tools/help/package_dependencies.html">package_dependencies</a></code>), and indicating whether to also
 check reverse dependencies of reverse dependencies and so on
 (default: <code>FALSE</code>), or <code>NULL</code> (default), in which case no
 reverse dependencies are checked.</p>
@@ -118,7 +119,7 @@ available).</p>
 </td></tr>
 <tr valign="top"><td><code>which</code></td>
 <td>
-<p>see <code><a href="package_dependencies.html">package_dependencies</a></code>.</p>
+<p>see <code><a href="../../tools/help/package_dependencies.html">package_dependencies</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>old</code></td>
 <td>
@@ -178,8 +179,8 @@ dependencies are renamed by prefixing their base names with
 <code>summarize_check_packages_in_dir_timings</code>, respectively.
 </p>
 <p>Installation and checking is performed in parallel if <code>Ncpus</code> is
-greater than one: this will use <code><a href="../../parallel/html/mclapply.html">mclapply</a></code> on
-Unix and <code><a href="../../parallel/html/parLapply.html">parLapply</a></code> on Windows.
+greater than one: this will use <code><a href="../../parallel/help/mclapply.html">mclapply</a></code> on
+Unix and <code><a href="../../parallel/help/clusterApply.html">parLapply</a></code> on Windows.
 </p>
 <p><code>check_packages_in_dir</code> returns an object inheriting from class
 <code>"check_packages_in_dir"</code> which has <code><a href="../../base/html/print.html">print</a></code> and
@@ -240,5 +241,5 @@ check_packages_in_dir(dir,
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

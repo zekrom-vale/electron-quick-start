@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Finite, Infinite and NaN Numbers</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for is.finite {base}"><tr><td>is.finite {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -17,7 +18,7 @@ and not missing) or infinite.
 whereas <code>NaN</code> means &lsquo;Not a Number&rsquo;.  (These apply to numeric
 values and real and imaginary parts of complex values but not to
 values of integer vectors.)  <code>Inf</code> and <code>NaN</code> are
-<a href="Reserved.html">reserved</a> words in the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> language.
+<a href="../../base/help/reserved.html">reserved</a> words in the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> language.
 </p>
 
 
@@ -59,7 +60,7 @@ otherwise.  This will be false unless <code>x</code> is numeric or complex.
 Complex numbers are infinite if either the real or the imaginary part is.
 </p>
 <p><code>is.nan</code> tests if a numeric value is <code>NaN</code>.  Do not test
-equality to <code>NaN</code>, or even use <code><a href="identical.html">identical</a></code>, since
+equality to <code>NaN</code>, or even use <code><a href="../../base/help/identical.html">identical</a></code>, since
 systems typically have many different NaN values.  One of these is
 used for the numeric missing value <code>NA</code>, and <code>is.nan</code> is
 false for that value.  A complex number is regarded as <code>NaN</code> if
@@ -75,7 +76,7 @@ values; cases which are not atomic vectors are now signalled as
 errors.
 </p>
 <p>All three functions are generic: you can write methods to handle
-specific classes of objects, see <a href="InternalMethods.html">InternalMethods</a>.
+specific classes of objects, see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.
 </p>
 
 
@@ -89,14 +90,14 @@ specific classes of objects, see <a href="InternalMethods.html">InternalMethods<
 <h3>Note</h3>
 
 <p>In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, basically all mathematical functions (including basic
-<code><a href="Arithmetic.html">Arithmetic</a></code>), are supposed to work properly with
+<code><a href="../../base/help/Arithmetic.html">Arithmetic</a></code>), are supposed to work properly with
 <code>+/- Inf</code> and <code>NaN</code> as input or output.
 </p>
 <p>The basic rule should be that calls and relations with <code>Inf</code>s
 really are statements with a proper mathematical <em>limit</em>.
 </p>
 <p>Computations involving <code>NaN</code> will return <code>NaN</code> or perhaps
-<code><a href="NA.html">NA</a></code>: which of those two is not guaranteed and may depend
+<code><a href="../../base/help/NA.html">NA</a></code>: which of those two is not guaranteed and may depend
 on the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> platform (since compilers may re-order computations).
 </p>
 
@@ -108,11 +109,21 @@ ANSI/IEEE 754 Floating-Point Standard.
 </p>
 <p><a href="https://en.wikipedia.org/wiki/NaN">https://en.wikipedia.org/wiki/NaN</a>.
 </p>
-<p>D. Goldberg (1991) <em>What Every Computer Scientist Should Know
-about Floating-Point Arithmetic</em>  ACM Computing Surveys, <b>23(1)</b>.<br />
-Postscript version available at
-<a href="http://www.validlab.com/goldberg/paper.ps">http://www.validlab.com/goldberg/paper.ps</a>
-Extended PDF version at <a href="http://www.validlab.com/goldberg/paper.pdf">http://www.validlab.com/goldberg/paper.pdf</a>
+<p>D. Goldberg (1991).
+What Every Computer Scientist Should Know about Floating-Point
+Arithmetic.
+<em>ACM Computing Surveys</em>, <b>23</b>(1), 5&ndash;48.
+doi: <a href="https://doi.org/10.1145/103162.103163">10.1145/103162.103163</a>.
+<br />
+
+
+
+
+
+
+
+Also available at
+<a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html</a>.
 </p>
 <p>The C99 function <code>isfinite</code> is used for <code>is.finite</code>.
 </p>
@@ -120,11 +131,11 @@ Extended PDF version at <a href="http://www.validlab.com/goldberg/paper.pdf">htt
 
 <h3>See Also</h3>
 
-<p><code><a href="NA.html">NA</a></code>, &lsquo;<em>Not Available</em>&rsquo; which is not a number
+<p><code><a href="../../base/help/NA.html">NA</a></code>, &lsquo;<em>Not Available</em>&rsquo; which is not a number
 as well, however usually used for missing values and applies to many
 modes, not just numeric and complex.
 </p>
-<p><code><a href="Arithmetic.html">Arithmetic</a></code>, <code><a href="double.html">double</a></code>.
+<p><code><a href="../../base/help/Arithmetic.html">Arithmetic</a></code>, <code><a href="../../base/help/double.html">double</a></code>.
 </p>
 
 
@@ -146,5 +157,5 @@ cos(Inf)
 tan(Inf)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

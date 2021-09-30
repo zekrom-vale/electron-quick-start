@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot Annotation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for title {graphics}"><tr><td>title {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -61,7 +62,7 @@ placed in the outer margins of the plot.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>further <a href="par.html">graphical parameters</a> from <code><a href="par.html">par</a></code>.  Use
+<p>further <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> from <code><a href="../../graphics/help/par.html">par</a></code>.  Use
 e.g., <code>col.main</code> or <code>cex.sub</code> instead of just <code>col</code>
 or <code>cex</code>.  <code>adj</code> controls the justification of the titles.
 <code>xpd</code> can be used to set the clipping region:
@@ -78,7 +79,7 @@ controls the default placing of the axis titles.
 <p>The labels passed to <code>title</code> can be character strings or
 language objects (names, calls or expressions), or a list
 containing the string to be plotted, and a selection of the optional
-modifying <a href="par.html">graphical parameters</a> <code>cex=</code>, <code>col=</code> and
+modifying <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> <code>cex=</code>, <code>col=</code> and
 <code>font=</code>.  Other objects will be coerced by
 <code><a href="../../grDevices/html/as.graphicsAnnot.html">as.graphicsAnnot</a></code>.
 </p>
@@ -106,7 +107,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="mtext.html">mtext</a></code>, <code><a href="text.html">text</a></code>;
+<p><code><a href="../../graphics/help/mtext.html">mtext</a></code>, <code><a href="../../graphics/help/text.html">text</a></code>;
 <code><a href="../../grDevices/html/plotmath.html">plotmath</a></code> for details on mathematical annotation.
 </p>
 
@@ -128,7 +129,7 @@ title("Main Title", sub = "sub title",
       cex.sub = 0.75, font.sub = 3, col.sub = "red")
 
 
-x &lt;- seq(-4, 4, len = 101)
+x &lt;- seq(-4, 4, length.out = 101)
 y &lt;- cbind(sin(x), cos(x))
 matplot(x, y, type = "l", xaxt = "n",
         main = expression(paste(plain(sin) * phi, "  and  ",
@@ -141,5 +142,5 @@ axis(1, at = c(-pi, -pi/2, 0, pi/2, pi),
 abline(h = 0, v = pi/2 * c(-1,1), lty = 2, lwd = .1, col = "gray70")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

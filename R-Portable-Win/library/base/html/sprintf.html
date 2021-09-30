@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Use C-style String Formatting Commands</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sprintf {base}"><tr><td>sprintf {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,7 +38,7 @@ will be done: see the &lsquo;Details&rsquo; section. Up to 100.</p>
 </td></tr>
 <tr valign="top"><td><code>domain</code></td>
 <td>
-<p>see <code><a href="gettext.html">gettext</a></code>.</p>
+<p>see <code><a href="../../base/help/gettext.html">gettext</a></code>.</p>
 </td></tr>
 </table>
 
@@ -57,12 +58,15 @@ number of times to the length of the longest, and then the formatting
 is done in parallel.  Zero-length arguments are allowed and will give
 a zero-length result.  All arguments are evaluated even if unused, and
 hence some types (e.g., <code>"symbol"</code> or <code>"language"</code>, see
-<code><a href="typeof.html">typeof</a></code>) are not allowed.
+<code><a href="../../base/help/typeof.html">typeof</a></code>) are not allowed. Arguments unused by <code>fmt</code>
+result in a warning. (The format <code>%.0s</code> can be used to
+&ldquo;skip&rdquo; an argument.)
 </p>
 <p>The following is abstracted from Kernighan and Ritchie (see
 References): however the actual implementation will follow the C99
 standard and fine details (especially the behaviour under user error)
-may depend on the platform.
+may depend on the platform. References to numbered arguments come from
+POSIX.
 </p>
 <p>The string <code>fmt</code> contains normal characters,
 which are passed through to the output string, and also conversion
@@ -133,8 +137,8 @@ characters given below are permitted in this case).
 </dd>
 </dl>
 
-<p>Conversion by <code><a href="character.html">as.character</a></code> is used for non-character
-arguments with <code>s</code> and by <code><a href="double.html">as.double</a></code> for
+<p>Conversion by <code><a href="../../base/help/as.character.html">as.character</a></code> is used for non-character
+arguments with <code>s</code> and by <code><a href="../../base/help/as.double.html">as.double</a></code> for
 non-double arguments with <code>f, e, E, g, G</code>.  NB: the length is
 determined before conversion, so do not rely on the internal
 coercion if this would change the length.  The coercion is done only
@@ -233,7 +237,11 @@ which means it is allowed to differ by platform.
 Describes the format options in table B-1 in the Appendix.
 </p>
 <p>The C Standards, especially ISO/IEC 9899:1999 for &lsquo;C99&rsquo;.  Links
-can be found at <a href="https://developer.r-project.org/Portability.html">https://developer.r-project.org/Portability.html</a>.
+can be found at
+<a href="https://developer.r-project.org/Portability.html">https://developer.r-project.org/Portability.html</a>.
+</p>
+<p><a href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/snprintf.html">https://pubs.opengroup.org/onlinepubs/9699919799/functions/snprintf.html</a>
+for POSIX extensions such as numbered arguments.
 </p>
 <p><code>man sprintf</code> on a Unix-alike system.
 </p>
@@ -241,13 +249,13 @@ can be found at <a href="https://developer.r-project.org/Portability.html">https
 
 <h3>See Also</h3>
 
-<p><code><a href="formatc.html">formatC</a></code> for a way of formatting vectors of numbers in a
+<p><code><a href="../../base/help/formatC.html">formatC</a></code> for a way of formatting vectors of numbers in a
 similar fashion.
 </p>
-<p><code><a href="paste.html">paste</a></code> for another way of creating a vector combining
+<p><code><a href="../../base/help/paste.html">paste</a></code> for another way of creating a vector combining
 text and values.
 </p>
-<p><code><a href="gettext.html">gettext</a></code> for the mechanisms for the automated translation
+<p><code><a href="../../base/help/gettext.html">gettext</a></code> for the mechanisms for the automated translation
 of text.
 </p>
 
@@ -320,5 +328,5 @@ x &lt;- seq(0, 1.0, 0.1); y &lt;- c(0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1)
 cbind(x, sprintf("%a", x), sprintf("%a", y))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

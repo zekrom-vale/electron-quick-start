@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Bessel Functions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Bessel {base}"><tr><td>Bessel {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -86,7 +87,7 @@ Martin Maechler <a href="mailto:maechler@stat.math.ethz.ch">maechler@stat.math.e
 <h3>Source</h3>
 
 <p>The C code is a translation of Fortran routines from
-<a href="http://www.netlib.org/specfun/ribesl">http://www.netlib.org/specfun/ribesl</a>, <span class="samp">../rjbesl</span>, etc.
+<a href="https://www.netlib.org/specfun/ribesl">https://www.netlib.org/specfun/ribesl</a>, <span class="samp">../rjbesl</span>, etc.
 The four source code files for bessel[IJKY] each contain a paragraph
 &ldquo;Acknowledgement&rdquo; and &ldquo;References&rdquo;, a short summary of
 which is
@@ -117,10 +118,11 @@ Chapter 9: Bessel Functions of Integer Order.
 </p>
 <p>In order of &ldquo;Source&rdquo; citation above:
 </p>
-<p>Sockne, David J. (1973).
+<p>Sookne, David J. (1973).
 Bessel Functions of Real Argument and Integer Order.
 <em>Journal of Research of the National Bureau of Standards</em>,
 <b>77B</b>, 125&ndash;132.
+doi: <a href="https://doi.org/10.6028/jres.077B.012">10.6028/jres.077B.012</a>.
 </p>
 <p>Cody, William J. (1983).
 Algorithm 597: Sequence of modified Bessel functions of the first kind.
@@ -148,7 +150,7 @@ doi: <a href="https://doi.org/10.1016/0021-9991(76)90032-2">10.1016/0021-9991(76
 <h3>See Also</h3>
 
 <p>Other special mathematical functions, such as
-<code><a href="Special.html">gamma</a></code>, <i>&Gamma;(x)</i>, and <code><a href="Special.html">beta</a></code>,
+<code><a href="../../base/help/gamma.html">gamma</a></code>, <i>&Gamma;(x)</i>, and <code><a href="../../base/help/beta.html">beta</a></code>,
 <i>B(x)</i>.
 </p>
 
@@ -240,5 +242,5 @@ title(expression(besselY(x, nu) * "   " *
                  {nu == list(-0.1, -0.2, ..., -2)}))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

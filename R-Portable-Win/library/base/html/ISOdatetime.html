@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Date-time Conversion Functions from Numeric Representations</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ISOdatetime {base}"><tr><td>ISOdatetime {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,7 +36,7 @@ Fractional seconds are allowed.</p>
 </td></tr>
 <tr valign="top"><td><code>tz</code></td>
 <td>
-<p>A <a href="timezones.html">time zone</a> specification to be used for the conversion.
+<p>A <a href="../../base/help/time+20zone.html">time zone</a> specification to be used for the conversion.
 <code>""</code> is the current time zone and <code>"GMT"</code> is UTC.  Invalid
 values are most commonly treated as UTC, on some platforms with a warning.</p>
 </td></tr>
@@ -47,26 +48,26 @@ values are most commonly treated as UTC, on some platforms with a warning.</p>
 <p><code>ISOdatetime</code> and <code>ISOdate</code> are convenience wrappers for
 <code>strptime</code> that differ only in their defaults and that
 <code>ISOdate</code> sets UTC as the time zone.  For dates without times it
-would normally be better to use the <code>"<a href="Dates.html">Date</a>"</code> class.
+would normally be better to use the <code>"<a href="../../base/help/Date.html">Date</a>"</code> class.
 </p>
 <p>The main arguments will be recycled using the usual recycling rules.
 </p>
-<p>Because these make use of <code><a href="strptime.html">strptime</a></code>, only years in the
+<p>Because these make use of <code><a href="../../base/help/strptime.html">strptime</a></code>, only years in the
 range <code>0:9999</code> are accepted.
 </p>
 
 
 <h3>Value</h3>
 
-<p>An object of class <code>"<a href="DateTimeClasses.html">POSIXct</a>"</code>.
+<p>An object of class <code>"<a href="../../base/help/POSIXct.html">POSIXct</a>"</code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><a href="DateTimeClasses.html">DateTimeClasses</a> for details of the date-time classes;
-<code><a href="strptime.html">strptime</a></code> for conversions from character strings.
+<p><a href="../../base/help/DateTimeClasses.html">DateTimeClasses</a> for details of the date-time classes;
+<code><a href="../../base/help/strptime.html">strptime</a></code> for conversions from character strings.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

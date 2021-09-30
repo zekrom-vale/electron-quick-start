@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Outer Product of Arrays</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for outer {base}"><tr><td>outer {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,7 +36,7 @@ Typically a vector or array.</p>
 <tr valign="top"><td><code>FUN</code></td>
 <td>
 <p>a function to use on the outer products, found <em>via</em>
-<code><a href="match.fun.html">match.fun</a></code> (except for the special case <code>"*"</code>).</p>
+<code><a href="../../base/help/match.fun.html">match.fun</a></code> (except for the special case <code>"*"</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -47,7 +48,7 @@ Typically a vector or array.</p>
 <h3>Details</h3>
 
 <p><code>X</code> and <code>Y</code> must be suitable arguments for <code>FUN</code>.  Each
-will be extended by <code><a href="rep.html">rep</a></code> to length the products of the
+will be extended by <code><a href="../../base/help/rep.html">rep</a></code> to length the products of the
 lengths of <code>X</code> and <code>Y</code> before <code>FUN</code> is called.
 </p>
 <p><code>FUN</code> is called with these two extended vectors as arguments
@@ -84,10 +85,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="matmult.html">%*%</a></code> for usual (<em>inner</em>) matrix vector
+<p><code><a href="../../base/help/+25+2A+25.html">%*%</a></code> for usual (<em>inner</em>) matrix vector
 multiplication;
-<code><a href="kronecker.html">kronecker</a></code> which is based on <code>outer</code>;
-<code><a href="Vectorize.html">Vectorize</a></code> for vectorizing a non-vectorized function.
+<code><a href="../../base/help/kronecker.html">kronecker</a></code> which is based on <code>outer</code>;
+<code><a href="../../base/help/Vectorize.html">Vectorize</a></code> for vectorizing a non-vectorized function.
 </p>
 
 
@@ -106,5 +107,5 @@ outer(month.abb, 1999:2003, FUN = "paste")
 x %o% x %o% y[1:3]
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

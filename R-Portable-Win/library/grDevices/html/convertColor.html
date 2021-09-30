@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert between Colour Spaces</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for convertColor {grDevices}"><tr><td>convertColor {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -60,7 +61,7 @@ colors to <code>NaN</code>.</p>
 <h3>Details</h3>
 
 <p>Color spaces are specified by objects of class <code>colorConverter</code>,
-created by <code><a href="make.rgb.html">colorConverter</a></code> or <code><a href="make.rgb.html">make.rgb</a></code>.
+created by <code><a href="../../grDevices/help/colorConverter.html">colorConverter</a></code> or <code><a href="../../grDevices/help/make.rgb.html">make.rgb</a></code>.
 Built-in color spaces may be referenced by strings: <code>"XYZ"</code>,
 <code>"sRGB"</code>, <code>"Apple RGB"</code>, <code>"CIE RGB"</code>, <code>"Lab"</code>,
 <code>"Luv"</code>.  The converters for these colour spaces are in the object
@@ -84,7 +85,7 @@ standard CIE illuminants supported are <code>B</code>, <code>C</code>, <code>E</
 reference white, and can be only approximately translated to other
 reference whites.  The von Kries chromatic adaptation algorithm is used
 for this.  Prior to R 3.6, color conversions involving color spaces
-created with <code><a href="make.rgb.html">make.rgb</a></code> were carried out assuming a <code>D65</code>
+created with <code><a href="../../grDevices/help/make.rgb.html">make.rgb</a></code> were carried out assuming a <code>D65</code>
 illuminant, irrespective of the actual illuminant used in the creation of the
 color space.  This affected the built-in <code>"CIE RGB"</code> color space.
 </p>
@@ -108,16 +109,16 @@ the <code>from</code> color space: in particular opaque colors.
 <p>For all the conversion equations <a href="http://www.brucelindbloom.com/">http://www.brucelindbloom.com/</a>.
 </p>
 <p>For the white points
-<a href="http://www.efg2.com/Lab/Graphics/Colors/Chromaticity.htm">http://www.efg2.com/Lab/Graphics/Colors/Chromaticity.htm</a>.
+<a href="https://web.archive.org/web/20190613001950/http://efg2.com/Lab/Graphics/Colors/Chromaticity.htm">https://web.archive.org/web/20190613001950/http://efg2.com/Lab/Graphics/Colors/Chromaticity.htm</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="col2rgb.html">col2rgb</a></code> and <code><a href="colors.html">colors</a></code> for ways to specify
+<p><code><a href="../../grDevices/help/col2rgb.html">col2rgb</a></code> and <code><a href="../../grDevices/help/colors.html">colors</a></code> for ways to specify
 colors in graphics.
 </p>
-<p><code><a href="make.rgb.html">make.rgb</a></code> for specifying other colour spaces.
+<p><code><a href="../../grDevices/help/make.rgb.html">make.rgb</a></code> for specifying other colour spaces.
 </p>
 
 
@@ -169,5 +170,5 @@ stopifnot(all.equal(cols, # converting back.. getting the original:
                     check.attributes = FALSE))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

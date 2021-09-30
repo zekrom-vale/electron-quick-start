@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select Package Repositories</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for setRepositories {utils}"><tr><td>setRepositories {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ setRepositories(graphics = getOption("menu.graphics"),
 <p>Logical. If true, use a graphical list: on Windows or
 macOS GUI use a list box, and on a Unix-alike if <span class="pkg">tcltk</span> and an X
 server are available, use Tk widget. Otherwise use a text
-<code><a href="menu.html">menu</a></code>.</p>
+<code><a href="../../utils/help/menu.html">menu</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>ind</code></td>
 <td>
@@ -56,7 +57,7 @@ in &lsquo;<span class="file"><var>HOME</var>/.R/repositories</span>&rsquo;, whic
 </p>
 <p>A Bioconductor mirror can be selected by setting
 <code><a href="../../base/html/options.html">options</a>("BioC_mirror")</code>, e.g. via
-<code><a href="chooseBioCmirror.html">chooseBioCmirror</a></code> &mdash; the default value is
+<code><a href="../../utils/help/chooseBioCmirror.html">chooseBioCmirror</a></code> &mdash; the default value is
 <span class="samp">"https://bioconductor.org"</span>.
 </p>
 <p>The items that are preselected are those that are currently in
@@ -98,8 +99,8 @@ so set <code><a href="../../base/html/options.html">options</a>(repos =)</code> 
 
 <h3>See Also</h3>
 
-<p><code><a href="chooseCRANmirror.html">chooseCRANmirror</a></code>, <code><a href="chooseBioCmirror.html">chooseBioCmirror</a></code>,
-<code><a href="install.packages.html">install.packages</a></code>.
+<p><code><a href="../../utils/help/chooseCRANmirror.html">chooseCRANmirror</a></code>, <code><a href="../../utils/help/chooseBioCmirror.html">chooseBioCmirror</a></code>,
+<code><a href="../../utils/help/install.packages.html">install.packages</a></code>.
 </p>
 
 
@@ -107,9 +108,9 @@ so set <code><a href="../../base/html/options.html">options</a>(repos =)</code> 
 
 <pre>## Not run: 
 setRepositories(addURLs =
-                c(CRANxtras = "http://www.stats.ox.ac.uk/pub/RWin"))
+                c(CRANxtras = "https://www.stats.ox.ac.uk/pub/RWin"))
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

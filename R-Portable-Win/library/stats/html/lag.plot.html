@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Time Series Lag Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for lag.plot {stats}"><tr><td>lag.plot {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -67,7 +68,7 @@ of each page.</p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
-<p>plot type to be used, but see <code><a href="plot.ts.html">plot.ts</a></code> about
+<p>plot type to be used, but see <code><a href="../../stats/help/plot.ts.html">plot.ts</a></code> about
 its restricted meaning.</p>
 </td></tr>
 <tr valign="top"><td><code>oma</code></td>
@@ -89,7 +90,7 @@ confirm before a new page is started.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Further arguments to <code><a href="plot.ts.html">plot.ts</a></code>.  Several
+<p>Further arguments to <code><a href="../../stats/help/plot.ts.html">plot.ts</a></code>.  Several
 graphical parameters are set in this function and so cannot be
 changed: these include <code>xlab</code>, <code>ylab</code>, <code>mgp</code>,
 <code>col.lab</code> and <code>font.lab</code>: this also applies to the
@@ -125,7 +126,7 @@ internal consistency.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.ts.html">plot.ts</a></code> which is the basic work horse.
+<p><code><a href="../../stats/help/plot.ts.html">plot.ts</a></code> which is the basic work horse.
 </p>
 
 
@@ -144,8 +145,8 @@ lag.plot(nhtemp, 6, layout = c(2,1), asp = NA,
 lag.plot(freeny.x, lags = 3)
 
 ## no lines for long series :
-lag.plot(sqrt(sunspots), set = c(1:4, 9:12), pch = ".", col = "gold")
+lag.plot(sqrt(sunspots), set.lags = c(1:4, 9:12), pch = ".", col = "gold")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

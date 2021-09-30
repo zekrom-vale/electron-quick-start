@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Tk widgets</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for TkWidgets {tcltk}"><tr><td>TkWidgets {tcltk}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -68,7 +69,7 @@ ttktreeview(parent, ...)
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>handled via <code><a href="TclInterface.html">.Tcl.args</a></code>.</p>
+<p>handled via <code><a href="../../tcltk/help/.Tcl.args.html">.Tcl.args</a></code>.</p>
 </td></tr>
 </table>
 
@@ -80,7 +81,7 @@ a given type, the others simply call <code>tkwidget</code> with the
 respective <code>type</code> argument.
 </p>
 <p>The functions starting <code>ttk</code> are for the themed widget set for Tk
-8.5 or later.  A tutorial can be found at <a href="http://www.tkdocs.com">http://www.tkdocs.com</a>.
+8.5 or later.  A tutorial can be found at <a href="https://tkdocs.com/">https://tkdocs.com/</a>.
 </p>
 <p>It is not possible to describe the widgets and their arguments in
 full.  Please refer to the Tcl/Tk documentation.
@@ -89,8 +90,8 @@ full.  Please refer to the Tcl/Tk documentation.
 
 <h3>See Also</h3>
 
-<p><code><a href="TclInterface.html">TclInterface</a></code>, <code><a href="TkCommands.html">TkCommands</a></code>,
-<code><a href="TkWidgetcmds.html">TkWidgetcmds</a></code></p>
+<p><code><a href="../../tcltk/help/TclInterface.html">TclInterface</a></code>, <code><a href="../../tcltk/help/TkCommands.html">TkCommands</a></code>,
+<code><a href="../../tcltk/help/TkWidgetcmds.html">TkWidgetcmds</a></code></p>
 
 
 <h3>Examples</h3>
@@ -115,14 +116,16 @@ tkdestroy(tt)
 if(as.character(tcl("info", "tclversion")) &gt;= "8.5") {
   # make use of themed widgets
   # list themes
-  as.character(tcl("ttk::style", "theme", "names"))
-  # select a theme -- here pre-XP windows
-  tcl("ttk::style", "theme", "use", "winnative")
+  themes &lt;- as.character(tcl("ttk::style", "theme", "names"))
+  themes
+  # select a theme -- for pre-XP windows
+  #   tcl("ttk::style", "theme", "use", "winnative")
+  tcl("ttk::style", "theme", "use", themes[1])
 } else {
   # use Tk 8.0 widgets
 }
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>tcltk</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tcltk</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Computations on the Dependency Hierarchy of Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for package_dependencies {tools}"><tr><td>package_dependencies {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -16,9 +17,9 @@
 <h3>Usage</h3>
 
 <pre>
-package_dependencies(packages = NULL, db = NULL,
-        which = c("Depends", "Imports", "LinkingTo"),
-	recursive = FALSE, reverse = FALSE, verbose = getOption("verbose"))
+package_dependencies(packages = NULL, db = NULL, which = "strong",
+	             recursive = FALSE, reverse = FALSE,
+                     verbose = getOption("verbose"))
 </pre>
 
 
@@ -45,13 +46,17 @@ dependencies, a subset of
 <code>c("Depends", "Imports", "LinkingTo", "Suggests", "Enhances")</code>.
 Character string <code>"all"</code> is shorthand for that vector,
 character string <code>"most"</code> for the same vector without
-<code>"Enhances"</code>.
+<code>"Enhances"</code>,
+character string <code>"strong"</code> (default) for the first three
+elements of that vector.
 </p>
 </td></tr>
 <tr valign="top"><td><code>recursive</code></td>
 <td>
-<p>logical: should (reverse) dependencies of (reverse)
-dependencies (and so on) be included?</p>
+<p>a logical indicating whether (reverse) dependencies
+of (reverse) dependencies (and so on) should be included, or a
+character vector like <code>which</code> indicating the type of (reverse)
+dependencies to be added recursively.</p>
 </td></tr>
 <tr valign="top"><td><code>reverse</code></td>
 <td>
@@ -79,8 +84,7 @@ as opposed to <code>character(0)</code> entries which indicate no dependencies.
 
 <h3>See Also</h3>
 
-<p><code><a href="dependsOnPkgs.html">dependsOnPkgs</a></code>, and <code><a href="tools-deprecated.html">package.dependencies</a></code> for checking
-dependencies.
+<p><code><a href="../../tools/help/dependsOnPkgs.html">dependsOnPkgs</a></code>.
 </p>
 
 
@@ -96,14 +100,21 @@ dep1 &lt;- package_dependencies(myPkgs, db = pdb) # all arguments at default
 utils::str(dep1, vec.len=10)
 
 system.time( ## reverse dependencies, recursively --- takes much longer:
-deps &lt;- package_dependencies(myPkgs, db = pdb,
-                    which = c("Depends", "Imports", "LinkingTo", "Suggests"),
-                    recursive = TRUE, reverse = TRUE)
+deps &lt;- package_dependencies(myPkgs, db = pdb, which = "most",
+                             recursive = TRUE, reverse = TRUE)
 ) # seen ~ 10 seconds
 
-lengths(deps) # 2015-01-14: all are 7040, but codetools with 7046
+lengths(deps) # 2020-05-03: all are 16053, but codetools with 16057
+
+## install.packages(dependencies = TRUE) installs 'most' dependencies
+## and the strong recursive dependencies of these: these dependencies
+## can be obtained using 'which = "most"' and 'recursive = "strong"'.
+## To illustrate on the the first packages with non-missing Suggests:
+packages &lt;- pdb[head(which(!is.na(pdb[, "Suggests"]))), "Package"]
+package_dependencies(packages, db = pdb,
+                     which = "most", recursive = "strong")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

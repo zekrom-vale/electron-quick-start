@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: PostScript and PDF Font Families</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for postscriptFonts {grDevices}"><tr><td>postscriptFonts {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>These functions handle the translation of a <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> graphics
 font family name to a PostScript or PDF font description, used by the
-<code><a href="postscript.html">postscript</a></code> or <code><a href="pdf.html">pdf</a></code> graphics devices.
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> or <code><a href="../../grDevices/help/pdf.html">pdf</a></code> graphics devices.
 </p>
 
 
@@ -41,7 +42,7 @@ existing mappings, whereas if they are called with named arguments
 they add (or change) mappings.
 </p>
 <p>A PostScript or PDF device is created with a default font family (see the
-documentation for <code><a href="postscript.html">postscript</a></code>), but it is also possible
+documentation for <code><a href="../../grDevices/help/postscript.html">postscript</a></code>), but it is also possible
 to specify a font family when drawing to the device (for example, see
 the documentation for <code>"family"</code> in <code><a href="../../graphics/html/par.html">par</a></code> and for
 <code>"fontfamily"</code> in <code><a href="../../grid/html/gpar.html">gpar</a></code> in the <span class="pkg">grid</span> package).
@@ -53,7 +54,7 @@ current <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b
 </p>
 <p>The <code>postscriptFonts</code> and <code>pdfFonts</code> functions can be used
 to list existing mappings and to define new mappings.  The
-<code><a href="Type1Font.html">Type1Font</a></code> and <code><a href="Type1Font.html">CIDFont</a></code> functions can be
+<code><a href="../../grDevices/help/Type1Font.html">Type1Font</a></code> and <code><a href="../../grDevices/help/CIDFont.html">CIDFont</a></code> functions can be
 used to create new mappings, when the <code>xxxFonts</code> function is used
 to add them to the database.  See the examples.
 </p>
@@ -79,13 +80,13 @@ are also provided: <code>"AvantGarde"</code>,
 described in a separate section.
 </p>
 <p>The specification of font metrics and encodings is described in the help
-for the <code><a href="postscript.html">postscript</a></code> function.
+for the <code><a href="../../grDevices/help/postscript.html">postscript</a></code> function.
 </p>
 <p>The fonts are not embedded in the resulting PostScript or PDF file, so
 software including the PostScript or PDF plot file should either embed
 the font outlines (usually from &lsquo;<span class="file">.pfb</span>&rsquo; or &lsquo;<span class="file">.pfa</span>&rsquo; files) or
 use DSC comments to instruct the print spooler or including
-application to do so (see also <code><a href="embedFonts.html">embedFonts</a></code>).
+application to do so (see also <code><a href="../../grDevices/help/embedFonts.html">embedFonts</a></code>).
 </p>
 <p>A font family has both an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-level name, the argument name used when
 <code>postscriptFonts</code> was called, and an internal name, the
@@ -226,9 +227,9 @@ and <code>"Japan1Ryumin"</code> for Japanese;
 
 
 <p><code>BousungEG-Light-GB</code> can be found at
-<a href="ftp://ftp.gnu.org/pub/non-gnu/chinese-fonts-truetype/">ftp://ftp.gnu.org/pub/non-gnu/chinese-fonts-truetype/</a>.
-Ken Lunde's CJKV resources are at
-<a href="ftp://ftp.oreilly.com/pub/examples/nutshell/cjkv/adobe/samples/">ftp://ftp.oreilly.com/pub/examples/nutshell/cjkv/adobe/samples/</a>.
+<a href="https://ftp.gnu.org/pub/non-gnu/chinese-fonts-truetype/">https://ftp.gnu.org/pub/non-gnu/chinese-fonts-truetype/</a>.
+
+
 These will need to be installed or otherwise made available to the
 postscript/PDF interpreter such as ghostscript (and not all
 interpreters can handle TrueType fonts).
@@ -252,8 +253,8 @@ Brian D'Urso.
 
 <h3>See Also</h3>
 
-<p><code><a href="postscript.html">postscript</a></code> and <code><a href="pdf.html">pdf</a></code>;  <code><a href="Type1Font.html">Type1Font</a></code>
-and <code><a href="Type1Font.html">CIDFont</a></code> for specifying new font mappings.
+<p><code><a href="../../grDevices/help/postscript.html">postscript</a></code> and <code><a href="../../grDevices/help/pdf.html">pdf</a></code>;  <code><a href="../../grDevices/help/Type1Font.html">Type1Font</a></code>
+and <code><a href="../../grDevices/help/CIDFont.html">CIDFont</a></code> for specifying new font mappings.
 </p>
 
 
@@ -281,5 +282,5 @@ pdfFonts(`Jp_UCS-2` = `Jp_UCS-2`)
 names(pdfFonts())
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

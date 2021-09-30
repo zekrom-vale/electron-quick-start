@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Determine Duplicate Elements</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for duplicated {base}"><tr><td>duplicated {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,7 +16,8 @@ of elements with smaller subscripts, and returns a logical vector
 indicating which elements (rows) are duplicates.
 </p>
 <p><code>anyDuplicated(.)</code> is a &ldquo;generalized&rdquo; more efficient
-shortcut for <code>any(duplicated(.))</code>.
+version <code>any(duplicated(.))</code>, returning positive integer indices
+instead of just <code>TRUE</code>.
 </p>
 
 
@@ -74,7 +76,7 @@ elements would correspond to <code>duplicated = FALSE</code>.</p>
 <tr valign="top"><td><code>MARGIN</code></td>
 <td>
 <p>the array margin to be held fixed: see
-<code><a href="apply.html">apply</a></code>, and note that <code>MARGIN = 0</code> may be useful.</p>
+<code><a href="../../base/help/apply.html">apply</a></code>, and note that <code>MARGIN = 0</code> may be useful.</p>
 </td></tr>
 </table>
 
@@ -104,10 +106,10 @@ duplicated rows (the default) or columns (with <code>MARGIN = 2</code>).
 Note that <code>MARGIN = 0</code> returns an array of the same
 dimensionality attributes as <code>x</code>.
 </p>
-<p>Missing values (<code>"<a href="NA.html">NA</a>"</code>) are regarded as equal, numeric and
+<p>Missing values (<code>"<a href="../../base/help/NA.html">NA</a>"</code>) are regarded as equal, numeric and
 complex ones differing from <code>NaN</code>; character strings will be compared in a
-&ldquo;common encoding&rdquo;; for details, see <code><a href="match.html">match</a></code> (and
-<code><a href="unique.html">unique</a></code>) which use the same concept.
+&ldquo;common encoding&rdquo;; for details, see <code><a href="../../base/help/match.html">match</a></code> (and
+<code><a href="../../base/help/unique.html">unique</a></code>) which use the same concept.
 </p>
 <p>Values in <code>incomparables</code> will never be marked as duplicated.
 This is intended to be used for a fairly small set of values and will
@@ -121,7 +123,7 @@ the smaller of <code>length(x)</code> and the number of levels plus one (for
 <code>NA</code>).  If <code>nmax</code> is set too small there is liable to be an
 error: <code>nmax = 1</code> is silently ignored.
 </p>
-<p><a href="LongVectors.html">Long vectors</a> are supported for the default method of
+<p><a href="../../base/help/Long+20vectors.html">Long vectors</a> are supported for the default method of
 <code>duplicated</code>, but may only be usable if <code>nmax</code> is supplied.
 </p>
 
@@ -143,7 +145,7 @@ value the 1-based index of the first duplicate if any, otherwise
 <h3>Warning</h3>
 
 <p>Using this for lists is potentially slow, especially if the elements
-are not atomic vectors (see <code><a href="vector.html">vector</a></code>) or differ only
+are not atomic vectors (see <code><a href="../../base/help/vector.html">vector</a></code>) or differ only
 in their attributes.  In the worst case it is <i>O(n^2)</i>.
 </p>
 
@@ -158,7 +160,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="unique.html">unique</a></code>.</p>
+<p><code><a href="../../base/help/unique.html">unique</a></code>.</p>
 
 
 <h3>Examples</h3>
@@ -183,5 +185,5 @@ anyDuplicated(x)
 anyDuplicated(x, fromLast = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create Names for Temporary Files</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for tempfile {base}"><tr><td>tempfile {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -40,7 +41,7 @@ of the name.</p>
 </td></tr>
 <tr valign="top"><td><code>check</code></td>
 <td>
-<p><code><a href="logical.html">logical</a></code> indicating if <code>tmpdir()</code>
+<p><code><a href="../../base/help/logical.html">logical</a></code> indicating if <code>tmpdir()</code>
 should be checked and recreated if no longer valid.</p>
 </td></tr>
 </table>
@@ -87,7 +88,7 @@ is created before the interpreter is started.
 </p>
 <p>On a Unix-alike, the value will be an absolute path (unless
 <code>tmpdir</code> is set to a relative path), but it need not be canonical
-(see <code><a href="normalizePath.html">normalizePath</a></code>) and on macOS it often is not.  
+(see <code><a href="../../base/help/normalizePath.html">normalizePath</a></code>) and on macOS it often is not.  
 </p>
 
 
@@ -105,14 +106,14 @@ that <code>tempfile</code> calls in different children try different names.
 <h3>Source</h3>
 
 <p>The final component of <code>tempdir()</code> is created by the POSIX system
-call <code>mkdtmp</code>, or if this is not available (e.g. on
+call <code>mkdtemp</code>, or if this is not available (e.g. on
 Windows) a version derived from the source code of GNU <code>glibc</code>.
 </p>
 <p>It will be of the form &lsquo;<span class="file">RtmpXXXXXX</span>&rsquo; where the last 6 characters
 are replaced in a platform-specific way.  POSIX only requires that the
 replacements be ASCII, which allows <code>.</code> (so the value may appear
-to have a file extension) and <a href="regex.html">regexp</a> metacharacters such as
-<code>+</code>.  Most commonly the replacements are from the <a href="regex.html">regexp</a>
+to have a file extension) and <a href="../../base/help/regexp.html">regexp</a> metacharacters such as
+<code>+</code>.  Most commonly the replacements are from the <a href="../../base/help/regexp.html">regexp</a>
 pattern <code>[A-Za-z0-9]</code>, but <code>.</code> <em>has</em> been seen.
 </p>
 
@@ -127,7 +128,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="unlink.html">unlink</a></code> for deleting files.</p>
+<p><code><a href="../../base/help/unlink.html">unlink</a></code> for deleting files.</p>
 
 
 <h3>Examples</h3>
@@ -151,5 +152,5 @@ if(exists("I'm brave") &amp;&amp; `I'm brave` &amp;&amp;
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

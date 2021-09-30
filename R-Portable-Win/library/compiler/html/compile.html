@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Byte Code Compiler</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for compile {compiler}"><tr><td>compile {compiler}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -86,7 +87,8 @@ Version 3 is supported from <span style="font-family: Courier New, Courier; colo
 </td></tr>
 <tr valign="top"><td><code>level</code></td>
 <td>
-<p>integer; the JIT level to use (<code>0</code> to <code>3</code>).</p>
+<p>integer; the JIT level to use (<code>0</code> to <code>3</code>, or
+negative to <em>return</em> it).</p>
 </td></tr>
 <tr valign="top"><td><code>enable</code></td>
 <td>
@@ -125,7 +127,7 @@ global environment rather than the base environment.
 that may be useful to give a hint of what is going on.
 </p>
 <p><code>enableJIT</code> enables or disables just-in-time (JIT)
-compilation. JIT is disabled if the argument is 0. If <code>level</code> is
+compilation. JIT is disabled if the argument is 0.  If <code>level</code> is
 1 then larger closures are compiled before their first use.  If
 <code>level</code> is 2, then some small closures are also compiled before
 their second use.  If <code>level</code> is 3 then in addition
@@ -202,7 +204,7 @@ la1 &lt;- function(X, FUN, ...) {
     if (!is.list(X))
 	X &lt;- as.list(X)
     rval &lt;- vector("list", length(X))
-    for(i in seq(along = X))
+    for(i in seq_along(X))
 	rval[i] &lt;- list(FUN(X[[i]], ...))
     names(rval) &lt;- names(X)		  # keep `names' !
     return(rval)
@@ -213,7 +215,7 @@ la2 &lt;- function(X, FUN, ...) {
     if (!is.list(X))
 	X &lt;- as.list(X)
     rval &lt;- vector("list", length(X))
-    for(i in seq(along = X)) {
+    for(i in seq_along(X)) {
         v &lt;- FUN(X[[i]], ...)
         if (is.null(v)) rval[i] &lt;- list(v)
         else rval[[i]] &lt;- v
@@ -242,5 +244,5 @@ system.time(for (i in 1:1000) la2c(y, is.null))
 
 enableJIT(oldJIT)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>compiler</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>compiler</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

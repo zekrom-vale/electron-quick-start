@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Low-level Tcl/Tk Interface</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for TclInterface {tcltk}"><tr><td>TclInterface {tcltk}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -295,9 +296,9 @@ well in many circumstances.
 
 <h3>See Also</h3>
 
-<p><code><a href="TkWidgets.html">TkWidgets</a></code>,
-<code><a href="TkCommands.html">TkCommands</a></code>,
-<code><a href="TkWidgetcmds.html">TkWidgetcmds</a></code>.
+<p><code><a href="../../tcltk/help/TkWidgets.html">TkWidgets</a></code>,
+<code><a href="../../tcltk/help/TkCommands.html">TkCommands</a></code>,
+<code><a href="../../tcltk/help/TkWidgetcmds.html">TkWidgetcmds</a></code>.
 </p>
 <p><code><a href="../../base/html/capabilities.html">capabilities</a>("tcltk")</code> to see if Tcl/Tk support was
 compiled into this build of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
@@ -309,13 +310,12 @@ compiled into this build of <span style="font-family: Courier New, Courier; colo
 <pre>
 tclVersion()
 
-## Not run: 
-## These cannot be run by example() but should be OK when pasted
-## into an interactive R session with the tcltk package loaded
 .Tcl("format \"%s\n\" \"Hello, World!\"")
-f &lt;- function()cat("HI!\n")
+f &lt;- function() cat("HI!\n")
+## IGNORE_RDIFF_BEGIN
 .Tcl.callback(f)
 .Tcl.args(text = "Push!", command = f) # NB: Different address
+## IGNORE_RDIFF_END
 
 xyzzy &lt;- tclVar(7913)
 tclvalue(xyzzy)
@@ -323,12 +323,18 @@ tclvalue(xyzzy) &lt;- "foo"
 as.character(xyzzy)
 tcl("set", as.character(xyzzy))
 
+## Not run: 
+## These cannot be run by example() but should be OK when pasted
+## into an interactive R session with the tcltk package loaded
 top &lt;- tktoplevel() # a Tk widget, see Tk-widgets
-ls(envir = top$env, all = TRUE)
-ls(envir = .TkRoot$env, all = TRUE) # .Tcl.args put a callback ref in here
+ls(envir = top$env, all.names = TRUE)
 
 ## End(Not run)
+
+## IGNORE_RDIFF_BEGIN
+ls(envir = .TkRoot$env, all.names = TRUE) # .Tcl.args put a callback ref in here
+## IGNORE_RDIFF_END
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>tcltk</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tcltk</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

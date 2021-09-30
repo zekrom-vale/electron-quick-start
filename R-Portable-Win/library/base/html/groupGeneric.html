@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: S3 Group Generic Functions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for groupGeneric {base}"><tr><td>groupGeneric {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -23,10 +24,10 @@ precedence over a method defined for the group as a whole.
 
 <pre>
 ## S3 methods for group generics have prototypes:
-Math(x, \dots)
+Math(x, ...)
 Ops(e1, e2)
 Complex(z)
-Summary(\dots, na.rm = FALSE)
+Summary(..., na.rm = FALSE)
 </pre>
 
 
@@ -55,11 +56,11 @@ Summary(\dots, na.rm = FALSE)
 namely the <code>"Math"</code>, <code>"Ops"</code>, <code>"Summary"</code> and
 <code>"Complex"</code> groups.  These are not <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects in base <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, but
 methods can be supplied for them and base <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> contains
-<code><a href="factor.html">factor</a></code>, <code><a href="data.frame.html">data.frame</a></code> and
-<code><a href="difftime.html">difftime</a></code> methods for the first three groups.  (There is
-also a <code><a href="factor.html">ordered</a></code> method for <code>Ops</code>,
-<code><a href="DateTimeClasses.html">POSIXt</a></code> and <code><a href="Dates.html">Date</a></code> methods for <code>Math</code>
-and <code>Ops</code>, <code><a href="numeric_version.html">package_version</a></code> methods for <code>Ops</code>
+<code><a href="../../base/help/factor.html">factor</a></code>, <code><a href="../../base/help/data.frame.html">data.frame</a></code> and
+<code><a href="../../base/help/difftime.html">difftime</a></code> methods for the first three groups.  (There is
+also a <code><a href="../../base/help/ordered.html">ordered</a></code> method for <code>Ops</code>,
+<code><a href="../../base/help/POSIXt.html">POSIXt</a></code> and <code><a href="../../base/help/Date.html">Date</a></code> methods for <code>Math</code>
+and <code>Ops</code>, <code><a href="../../base/help/package_version.html">package_version</a></code> methods for <code>Ops</code>
 and <code>Summary</code>, as well as a <code><a href="../../stats/html/ts.html">ts</a></code> method for
 <code>Ops</code> in package <span class="pkg">stats</span>.)
 </p>
@@ -142,10 +143,10 @@ If different methods are found, there is a warning about
 &lsquo;incompatible methods&rsquo;: in that case or if no method is found
 for either argument the internal method is used.
 </p>
-<p>Note that the <code><a href="data.frame.html">data.frame</a></code> methods for the comparison
+<p>Note that the <code><a href="../../base/help/data.frame.html">data.frame</a></code> methods for the comparison
 (<code>"Compare"</code>: <code>==</code>, <code>&lt;</code>, ...) and logic
 (<code>"Logic"</code>: <code>&amp;</code> <code>|</code> and <code>!</code>) operators return a
-logical <code><a href="matrix.html">matrix</a></code> instead of a data frame, for
+logical <code><a href="../../base/help/matrix.html">matrix</a></code> instead of a data frame, for
 convenience and back compatibility.
 </p>
 <p>If the members of this group are called as functions, any argument
@@ -174,6 +175,11 @@ names are removed to ensure that positional matching is always used.
 
 <p>Members of this group dispatch on the first argument supplied.
 </p>
+<p>Note that the <code><a href="../../base/help/data.frame.html">data.frame</a></code> methods for the
+<code>"Summary"</code> and <code>"Math"</code> groups require &ldquo;numeric-alike&rdquo;
+columns <code>x</code>, i.e., fulfilling </p>
+<pre>
+      is.numeric(x) || is.logical(x) || is.complex(x)</pre>
 </li>
 <li><p> Group <code>"Complex"</code>:
 </p>
@@ -190,8 +196,8 @@ names are removed to ensure that positional matching is always used.
 
 <p>Note that a method will be used for one of these groups or one of its
 members <em>only</em> if it corresponds to a <code>"class"</code> attribute,
-as the internal code dispatches on <code><a href="class.html">oldClass</a></code> and not on
-<code><a href="class.html">class</a></code>.  This is for efficiency: having to dispatch on,
+as the internal code dispatches on <code><a href="../../base/help/oldClass.html">oldClass</a></code> and not on
+<code><a href="../../base/help/class.html">class</a></code>.  This is for efficiency: having to dispatch on,
 say, <code>Ops.integer</code> would be too slow.
 </p>
 <p>The number of arguments supplied for primitive members of the
@@ -203,10 +209,10 @@ say, <code>Ops.integer</code> would be too slow.
 
 <h3>Technical Details</h3>
 
-<p>These functions are all primitive and <a href="InternalMethods.html">internal generic</a>.
+<p>These functions are all primitive and <a href="../../base/help/internal+20generic.html">internal generic</a>.
 </p>
 <p>The details of method dispatch and variables such as <code>.Generic</code>
-are discussed in the help for <code><a href="UseMethod.html">UseMethod</a></code>.  There are a
+are discussed in the help for <code><a href="../../base/help/UseMethod.html">UseMethod</a></code>.  There are a
 few small differences:
 </p>
 
@@ -263,5 +269,5 @@ methods("Summary")
 methods("Complex")  # none in base R
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

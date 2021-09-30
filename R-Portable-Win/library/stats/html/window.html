@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Time Windows</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Time (Series) Windows</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for window {stats}"><tr><td>window {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Time Windows</h2>
+<h2>Time (Series) Windows</h2>
 
 <h3>Description</h3>
 
@@ -25,7 +26,7 @@ window(x, ...)
 window(x, ...)
 ## Default S3 method:
 window(x, start = NULL, end = NULL,
-      frequency = NULL, deltat = NULL, extend = FALSE, ...)
+      frequency = NULL, deltat = NULL, extend = FALSE, ts.eps = getOption("ts.eps"), ...)
 
 window(x, ...) &lt;- value
 ## S3 replacement method for class 'ts'
@@ -59,6 +60,12 @@ window(x, start, end, frequency, deltat, ...) &lt;- value
 are allowed to extend the series.  If false, attempts to extend the
 series give a warning and are ignored.</p>
 </td></tr>
+<tr valign="top"><td><code>ts.eps</code></td>
+<td>
+<p>time series comparison tolerance.  Frequencies are
+considered equal if their absolute difference is less than
+<code>ts.eps</code>.</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>further arguments passed to or from other methods.</p>
@@ -72,7 +79,7 @@ series give a warning and are ignored.</p>
 
 <h3>Details</h3>
 
-<p>The start and end times can be specified as for <code><a href="ts.html">ts</a></code>. If
+<p>The start and end times can be specified as for <code><a href="../../stats/help/ts.html">ts</a></code>. If
 there is no observation at the new <code>start</code> or <code>end</code>,
 the immediately following (<code>start</code>) or preceding (<code>end</code>)
 observation time is used.
@@ -86,7 +93,7 @@ method.
 <h3>Value</h3>
 
 <p>The value depends on the method. <code>window.default</code> will return a
-vector or matrix with an appropriate <code><a href="tsp.html">tsp</a></code> attribute.
+vector or matrix with an appropriate <code><a href="../../stats/help/tsp.html">tsp</a></code> attribute.
 </p>
 <p><code>window.ts</code> differs from <code>window.default</code> only in
 ensuring the result is a <code>ts</code> object.
@@ -106,7 +113,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="time.html">time</a></code>, <code><a href="ts.html">ts</a></code>.</p>
+<p><code><a href="../../stats/help/time.html">time</a></code>, <code><a href="../../stats/help/ts.html">ts</a></code>.</p>
 
 
 <h3>Examples</h3>
@@ -124,5 +131,5 @@ window(pres, c(1945,4), c(1949,4), frequency = 1) &lt;- 85:89
 pres
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

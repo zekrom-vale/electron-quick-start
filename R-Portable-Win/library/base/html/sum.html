@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Sum of Vector Elements</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sum {base}"><tr><td>sum {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -39,7 +40,7 @@ removed?</p>
 <h3>Details</h3>
 
 <p>This is a generic function: methods can be defined for it
-directly or via the <code><a href="groupGeneric.html">Summary</a></code> group generic.
+directly or via the <code><a href="../../base/help/S3groupGeneric.html">Summary</a></code> group generic.
 For this to work properly, the arguments <code>...</code> should be
 unnamed, and dispatch is on the first argument.
 </p>
@@ -61,12 +62,12 @@ with C99 and newer, but possibly platform-dependent.
 
 <h3>Value</h3>
 
-<p>The sum.  If all of the <i>M</i> <code>...</code> arguments are of type
-integer or logical, then the sum is <code><a href="integer.html">integer</a></code> when
+<p>The sum.  If all of the <code>...</code> arguments are of type
+integer or logical, then the sum is <code><a href="../../base/help/integer.html">integer</a></code> when
 possible and is <code>double</code> otherwise.  Integer overflow should no
 longer happen since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 3.5.0.
 For other argument types it is a length-one numeric
-(<code><a href="double.html">double</a></code>) or complex vector.
+(<code><a href="../../base/help/double.html">double</a></code>) or complex vector.
 </p>
 <p><strong>NB:</strong> the sum of an empty set is zero, by definition.
 </p>
@@ -92,7 +93,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="colSums.html">colSums</a></code> for row and column sums.
+<p><code><a href="../../base/help/colSums.html">colSums</a></code> for row and column sums.
 </p>
 
 
@@ -114,5 +115,5 @@ sum(1:5, NA)
 sum(1:5, NA, na.rm = TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

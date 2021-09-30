@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Windows Graphics Devices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for windows {grDevices}"><tr><td>windows {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -113,7 +114,7 @@ for an integer will be substituted by the device number.</p>
 Windows metafile, usually given extension &lsquo;<span class="file">.emf</span>&rsquo; or
 &lsquo;<span class="file">.wmf</span>&rsquo;.  Up to 511 characters are allowed. The page number is
 substituted if an integer format is included in the character
-string (see <code><a href="postscript.html">postscript</a></code> for further details) and
+string (see <code><a href="../../grDevices/help/postscript.html">postscript</a></code> for further details) and
 tilde-expansion (see <code><a href="../../base/html/path.expand.html">path.expand</a></code>) is performed. (The
 result must be less than 600 characters long.)  The default,
 <code>""</code>, means the clipboard.</p>
@@ -159,7 +160,7 @@ over font antialiasing.  This is partially matched to
 <p>All these devices are implemented as variants of the same device.
 </p>
 <p>All arguments of <code>windows</code> have defaults set by
-<code><a href="windows.options.html">windows.options</a></code>: the defaults given in the arguments section
+<code><a href="../../grDevices/help/windows.options.html">windows.options</a></code>: the defaults given in the arguments section
 are the defaults for the defaults.  These defaults also apply to the
 internal values of <code>gamma</code>, <code>xpinch</code>, <code>ypinch</code>,
 <code>buffered</code>, <code>restoreConsole</code> and <code>antialias</code> for
@@ -170,7 +171,7 @@ display: it depends on the system being configured accurately.
 By default a screen device asks Windows for the number of pixels per
 inch.  This can be overridden (it is often wrong) by specifying
 <code>xpinch</code> and <code>ypinch</code>, most conveniently <em>via</em>
-<code><a href="windows.options.html">windows.options</a></code>.  For example, a 13.3 inch 1280x800
+<code><a href="../../grDevices/help/windows.options.html">windows.options</a></code>.  For example, a 13.3 inch 1280x800
 screen (a typical laptop display) was reported as 96 dpi even though
 it is physically about 114 dpi.
 </p>
@@ -188,7 +189,7 @@ sets the initial value of <code><a href="../../graphics/html/par.html">par</a>("
 <p>Recorded plot histories are of class <code>"SavedPlots"</code>.  They have a
 <code>print</code> method, and a subset method.  As the individual plots are
 of class <code>"recordedplot"</code> they can be replayed by printing them:
-see <code><a href="recordplot.html">recordPlot</a></code>.  The active plot history is stored in
+see <code><a href="../../grDevices/help/recordPlot.html">recordPlot</a></code>.  The active plot history is stored in
 variable <code>.SavedPlots</code> in the workspace.
 </p>
 <p>When a screen device is double-buffered (the default) the
@@ -266,7 +267,7 @@ specify mappings for <code>par(font =)</code> (or the <span class="pkg">grid</sp
 Alternatively, a font family can be specified by a non-empty
 <code>family</code> argument (or by e.g. <code>par(family =)</code> in the graphics
 package) and this will be used for fonts 1:4 via the Windows font
-database (see <code><a href="windowsFonts.html">windowsFonts</a></code>).
+database (see <code><a href="../../grDevices/help/windowsFonts.html">windowsFonts</a></code>).
 </p>
 <p>How the fonts look depends on the antialiasing settings, both through
 the <code>antialias</code> argument and the machine settings.  These are
@@ -289,7 +290,7 @@ for example the <code>Meiryo</code> Japanese font.
 <h3>Conventions</h3>
 
 <p>This section describes the implementation of the conventions for
-graphics devices set out in the &ldquo;R Internals Manual&rdquo;.
+graphics devices set out in the &lsquo;R Internals&rsquo; manual.
 </p>
 
 <ul>
@@ -326,17 +327,17 @@ the graphics card &ndash; this is <em>assumed</em> to conform to sRGB.
 <p><code>x11()</code>, <code>X11()</code> and <code>win.graph()</code> are simple wrappers
 calling <code>windows()</code>, and mainly exist for compatibility reasons.
 </p>
-<p>Further, <code><a href="x11.html">x11</a>()</code> and <code>X11()</code> have their own help page
+<p>Further, <code><a href="../../grDevices/help/x11.html">x11</a>()</code> and <code>X11()</code> have their own help page
 for Unix-alikes (where they also have more arguments).
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="windowsFonts.html">windowsFonts</a></code>,
-<code><a href="savePlot.html">savePlot</a></code>, <code><a href="bringToTop.html">bringToTop</a></code>,
-<code><a href="Devices.html">Devices</a></code>, <code><a href="postscript.html">postscript</a></code>,
-<code><a href="x11.html">x11</a></code> for Unix-alikes.
+<p><code><a href="../../grDevices/help/windowsFonts.html">windowsFonts</a></code>,
+<code><a href="../../grDevices/help/savePlot.html">savePlot</a></code>, <code><a href="../../grDevices/help/bringToTop.html">bringToTop</a></code>,
+<code><a href="../../grDevices/help/Devices.html">Devices</a></code>, <code><a href="../../grDevices/help/postscript.html">postscript</a></code>,
+<code><a href="../../grDevices/help/x11.html">x11</a></code> for Unix-alikes.
 </p>
 
 
@@ -348,5 +349,5 @@ if(.Platform$OS.type == "windows")
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

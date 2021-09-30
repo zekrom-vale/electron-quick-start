@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Linearly Constrained Optimization</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for constrOptim {stats}"><tr><td>constrOptim {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -55,7 +56,7 @@ or <code>NULL</code> (see below).</p>
 </td></tr>
 <tr valign="top"><td><code>control, method, hessian</code></td>
 <td>
-<p>passed to <code><a href="optim.html">optim</a></code>.</p>
+<p>passed to <code><a href="../../stats/help/optim.html">optim</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>outer.iterations</code></td>
 <td>
@@ -69,7 +70,7 @@ tolerance of the barrier algorithm.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>Other named arguments to be passed to <code>f</code> and <code>grad</code>:
-needs to be passed through <code><a href="optim.html">optim</a></code> so should not match its
+needs to be passed through <code><a href="../../stats/help/optim.html">optim</a></code> so should not match its
 argument names.</p>
 </td></tr>
 </table>
@@ -82,7 +83,7 @@ starting value must be in the interior of the feasible region, but the
 minimum may be on the boundary.
 </p>
 <p>A logarithmic barrier is added to enforce the constraints and then
-<code><a href="optim.html">optim</a></code> is called. The barrier function is chosen so that
+<code><a href="../../stats/help/optim.html">optim</a></code> is called. The barrier function is chosen so that
 the objective function should decrease at each outer iteration. Minima
 in the interior of the feasible region are typically found quite
 quickly, but a substantial number of outer iterations may be needed
@@ -113,12 +114,12 @@ those of <code>f</code> and return a vector containing the gradient.
 
 <h3>Value</h3>
 
-<p>As for <code><a href="optim.html">optim</a></code>, but with two extra components:
+<p>As for <code><a href="../../stats/help/optim.html">optim</a></code>, but with two extra components:
 <code>barrier.value</code> giving the value of the barrier function at the
 optimum and <code>outer.iterations</code> gives the
 number of outer iterations (calls to <code>optim</code>).
 The <code>counts</code> component contains the <em>sum</em> of all
-<code><a href="optim.html">optim</a>()$counts</code>.
+<code><a href="../../stats/help/optim.html">optim</a>()$counts</code>.
 </p>
 
 
@@ -131,7 +132,7 @@ The <code>counts</code> component contains the <em>sum</em> of all
 
 <h3>See Also</h3>
 
-<p><code><a href="optim.html">optim</a></code>, especially <code>method = "L-BFGS-B"</code> which
+<p><code><a href="../../stats/help/optim.html">optim</a></code>, especially <code>method = "L-BFGS-B"</code> which
 does box-constrained optimisation.
 </p>
 
@@ -178,5 +179,5 @@ constrOptim(c(2,-1,-1), hQP, NULL, ui = t(Amat), ci = bvec,
             control = list(fnscale = -1))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

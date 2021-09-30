@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Collect Information About the Current R Session</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sessionInfo {utils}"><tr><td>sessionInfo {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ osVersion
 </td></tr>
 <tr valign="top"><td><code>locale</code></td>
 <td>
-<p>show locale information?</p>
+<p>show locale and code page information?</p>
 </td></tr>
 <tr valign="top"><td><code>RNG</code></td>
 <td>
@@ -63,7 +64,7 @@ iff it differs from the <span style="font-family: Courier New, Courier; color: #
 
 <p><code>sessionInfo()</code> returns an object of class <code>"sessionInfo"</code>
 which has <code>print</code> and
-<code><a href="toLatex.html">toLatex</a></code> methods.  This is a list with components
+<code><a href="../../utils/help/toLatex.html">toLatex</a></code> methods.  This is a list with components
 </p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>R.version</code></td>
@@ -103,6 +104,16 @@ as <code>osVersion</code>, see below.</p>
 <td>
 <p>a character string, the result of calling <code><a href="../../base/html/locales.html">Sys.getlocale</a>()</code>.</p>
 </td></tr>
+<tr valign="top"><td><code>codepage</code></td>
+<td>
+<p>an integer, the result of calling
+<code><a href="../../base/html/l10n_info.html">l10n_info</a>()["codepage"]</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>system.codepage</code></td>
+<td>
+<p>an integer, the result of calling
+<code><a href="../../base/html/l10n_info.html">l10n_info</a>()["system.codepage"]</code>.</p>
+</td></tr>
 <tr valign="top"><td><code>basePkgs</code></td>
 <td>
 <p>a character vector of base packages which are attached.</p>
@@ -115,7 +126,7 @@ attached packages.</p>
 <tr valign="top"><td><code>loadedOnly</code></td>
 <td>
 <p>(not always present): a named list of the results of
-calling <code><a href="packageDescription.html">packageDescription</a></code> on packages whose
+calling <code><a href="../../utils/help/packageDescription.html">packageDescription</a></code> on packages whose
 namespaces are loaded but are not attached.</p>
 </td></tr>
 </table>
@@ -132,11 +143,16 @@ distribution and give the OS name on an Apple Mac.
 and created when loading the <span class="pkg">utils</span> package.
 </p>
 <p>Windows may report unexpected versions: see the help for
-<code><a href="winextras.html">win.version</a></code>.
+<code><a href="../../utils/help/win.version.html">win.version</a></code>.
 </p>
 <p>How OSes identify themselves and their versions can be arcane: where
 possible <code>osVersion</code> (and hence <code>sessionInfo()$running</code>) uses
 a human-readable form.
+</p>
+<p>Where <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is compiled under macOS 10.x (as the
+<acronym><span class="acronym">CRAN</span></acronym> Intel distribution has been) but running under
+&lsquo;Big Sur&rsquo;, macOS reports itself as <span class="samp">10.16</span> (which <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+recognizes as &lsquo;Big Sur&rsquo;) and not <span class="samp">11.x</span>.
 </p>
 
 
@@ -165,5 +181,5 @@ sI
 toLatex(sI, locale = FALSE) # shortest; possibly desirable at end of report
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

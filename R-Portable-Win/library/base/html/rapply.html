@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Recursively Apply a Function to a List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rapply {base}"><tr><td>rapply {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p><code>rapply</code> is a recursive version of <code><a href="lapply.html">lapply</a></code> with
+<p><code>rapply</code> is a recursive version of <code><a href="../../base/help/lapply.html">lapply</a></code> with
 flexibility in <em>how</em> the result is structured (<code>how = ".."</code>).
 </p>
 
@@ -27,16 +28,16 @@ rapply(object, f, classes = "ANY", deflt = NULL,
 <table summary="R argblock">
 <tr valign="top"><td><code>object</code></td>
 <td>
-<p>a <code><a href="list.html">list</a></code> or <code><a href="expression.html">expression</a></code>, i.e., &ldquo;list-like&rdquo;.</p>
+<p>a <code><a href="../../base/help/list.html">list</a></code> or <code><a href="../../base/help/expression.html">expression</a></code>, i.e., &ldquo;list-like&rdquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>f</code></td>
 <td>
-<p>a <code><a href="function.html">function</a></code> of one &ldquo;principal&rdquo; argument,
+<p>a <code><a href="../../base/help/function.html">function</a></code> of one &ldquo;principal&rdquo; argument,
 passing further arguments via <code>...</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>classes</code></td>
 <td>
-<p>character vector of <code><a href="class.html">class</a></code> names, or
+<p>character vector of <code><a href="../../base/help/class.html">class</a></code> names, or
 <code>"ANY"</code> to match any class.</p>
 </td></tr>
 <tr valign="top"><td><code>deflt</code></td>
@@ -70,7 +71,7 @@ element and all others are replaced by <code>deflt</code>.  Finally, if
 <code>how = "unlist"</code>, <code>unlist(recursive = TRUE)</code> is called on
 the result.
 </p>
-<p>The semantics differ in detail from <code><a href="lapply.html">lapply</a></code>: in
+<p>The semantics differ in detail from <code><a href="../../base/help/lapply.html">lapply</a></code>: in
 particular the arguments are evaluated before calling the C code.
 </p>
 <p>In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.5.x and earlier, <code>object</code> was required to be a list,
@@ -96,7 +97,7 @@ Springer.<br />
 
 <h3>See Also</h3>
 
-<p><code><a href="lapply.html">lapply</a></code>, <code><a href="../../stats/html/dendrapply.html">dendrapply</a></code>.
+<p><code><a href="../../base/help/lapply.html">lapply</a></code>, <code><a href="../../stats/html/dendrapply.html">dendrapply</a></code>.
 </p>
 
 
@@ -126,5 +127,5 @@ stopifnot(exprs = {
 })
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

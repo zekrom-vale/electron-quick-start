@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get or Set Working Directory</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for getwd {base}"><tr><td>getwd {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,9 +29,15 @@ setwd(dir)
 <table summary="R argblock">
 <tr valign="top"><td><code>dir</code></td>
 <td>
-<p>A character string: <a href="path.expand.html">tilde expansion</a> will be done.</p>
+<p>A character string: <a href="../../base/help/tilde+20expansion.html">tilde expansion</a> will be done.</p>
 </td></tr>
 </table>
+
+
+<h3>Details</h3>
+
+<p>See <a href="../../base/help/files.html">files</a> for how file paths with marked encodings are interpreted.
+</p>
 
 
 <h3>Value</h3>
@@ -59,9 +66,9 @@ example if symbolic links have been traversed).
 
 <h3>See Also</h3>
 
-<p><code><a href="list.files.html">list.files</a></code> for the <em>contents</em> of a directory.
+<p><code><a href="../../base/help/list.files.html">list.files</a></code> for the <em>contents</em> of a directory.
 </p>
-<p><code><a href="normalizePath.html">normalizePath</a></code> for a &lsquo;canonical&rsquo; path name.
+<p><code><a href="../../base/help/normalizePath.html">normalizePath</a></code> for a &lsquo;canonical&rsquo; path name.
 </p>
 
 
@@ -72,5 +79,5 @@ example if symbolic links have been traversed).
 if (!is.null(WD)) setwd(WD)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

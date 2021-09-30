@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Is an Object a Language Object?</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for is.language {base}"><tr><td>is.language {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,8 +11,8 @@
 <h3>Description</h3>
 
 <p><code>is.language</code> returns <code>TRUE</code> if <code>x</code> is a
-variable <code><a href="name.html">name</a></code>, a <code><a href="call.html">call</a></code>, or an
-<code><a href="expression.html">expression</a></code>.
+variable <code><a href="../../base/help/name.html">name</a></code>, a <code><a href="../../base/help/call.html">call</a></code>, or an
+<code><a href="../../base/help/expression.html">expression</a></code>.
 </p>
 
 
@@ -35,13 +36,13 @@ is.language(x)
 <h3>Note</h3>
 
 <p>A <code>name</code> is also known as &lsquo;symbol&rsquo;, from its type
-(<code><a href="typeof.html">typeof</a></code>), see <code><a href="name.html">is.symbol</a></code>.
+(<code><a href="../../base/help/typeof.html">typeof</a></code>), see <code><a href="../../base/help/is.symbol.html">is.symbol</a></code>.
 </p>
-<p>If <code><a href="typeof.html">typeof</a>(x) == "language"</code>, then <code>is.language(x)</code>
+<p>If <code><a href="../../base/help/typeof.html">typeof</a>(x) == "language"</code>, then <code>is.language(x)</code>
 is always true, but the reverse does not hold as expressions or
 names <code>y</code> also fulfill <code>is.language(y)</code>, see the examples.
 </p>
-<p>This is a <a href="Primitive.html">primitive</a> function.
+<p>This is a <a href="../../base/help/primitive.html">primitive</a> function.
 </p>
 
 
@@ -63,5 +64,5 @@ sapply(ll, mode)
 stopifnot(sapply(ll, is.language))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

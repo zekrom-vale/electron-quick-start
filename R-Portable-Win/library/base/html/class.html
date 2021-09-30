@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Object Classes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for class {base}"><tr><td>class {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -22,9 +23,11 @@ class(x)
 class(x) &lt;- value
 unclass(x)
 inherits(x, what, which = FALSE)
+isa(x, what)
 
 oldClass(x)
 oldClass(x) &lt;- value
+.class2(x)
 </pre>
 
 
@@ -62,15 +65,28 @@ attribute, which can also be done directly.)
 <p>If the object does not have a class attribute, it has an implicit
 class, notably <code>"matrix"</code>, <code>"array"</code>, <code>"function"</code> or
 <code>"numeric"</code> or the result of
-<code><a href="typeof.html">typeof</a>(x)</code> (which is similar to <code><a href="mode.html">mode</a>(x)</code>),
-but for type <code>"language"</code> and <code><a href="mode.html">mode</a></code> <code>"call"</code>,
+<code><a href="../../base/help/typeof.html">typeof</a>(x)</code> (which is similar to <code><a href="../../base/help/mode.html">mode</a>(x)</code>),
+but for type <code>"language"</code> and <code><a href="../../base/help/mode.html">mode</a></code> <code>"call"</code>,
 where the following extra classes exist for the corresponding function
-<code><a href="call.html">call</a></code>s:
+<code><a href="../../base/help/call.html">call</a></code>s:
 <code>if</code>, <code>while</code>, <code>for</code>, <code>=</code>, <code>&lt;-</code>, <code>(</code>,
 <code>{</code>, <code>call</code>.
 </p>
-<p>Note that <code><a href="NULL.html">NULL</a></code> objects cannot have attributes (hence not
-classes) and attempting to assign a class is an error.
+<p>Note that for objects <code>x</code> of an implicit (or an S4) class, when a
+(S3) generic function <code>foo(x)</code> is called, method dispatch may use
+more classes than are returned by <code>class(x)</code>, e.g., for a numeric
+matrix, the <code>foo.numeric()</code> method may apply.  The exact full
+<code><a href="../../base/help/character.html">character</a></code> vector of the classes which
+<code><a href="../../base/help/UseMethod.html">UseMethod</a>()</code> uses, is available as <code>.class2(x)</code> since
+<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 4.0.0.  (This also applies to S4 objects when S3 dispatch is
+considered, see below.)
+</p>
+<p>Beware that using <code>.class2()</code> for other reasons than didactical,
+diagnostical or for debugging may rather be a misuse than smart.
+</p>
+<p><code><a href="../../base/help/NULL.html">NULL</a></code> objects (of implicit class <code>"NULL"</code>) cannot have
+attributes (hence no <code>class</code> attribute) and attempting to assign a
+class is an error.
 </p>
 <p>When a generic function <code>fun</code> is applied to an object with class
 attribute <code>c("first", "second")</code>, the system searches for a
@@ -99,7 +115,12 @@ no match. If <code>which</code> is <code>FALSE</code> then <code>TRUE</code> is
 returned by <code>inherits</code> if any of the names in <code>what</code> match
 with any <code>class</code>.
 </p>
-<p>All but <code>inherits</code> are <a href="Primitive.html">primitive</a> functions.
+<p><code>isa</code> tests whether <code>x</code> is an object of class(es) as given
+in <code>what</code> by using <code><a href="../../methods/help/is.html">is</a></code> if <code>x</code> is an S4
+object, and otherwise giving <code>TRUE</code> iff <em>all</em> elements of
+<code>class(x)</code> are contained in <code>what</code>.
+</p>
+<p>All but <code>inherits</code> are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
@@ -113,7 +134,7 @@ method dispatch can happen on <em>several</em> arguments, instead of
 only the first.  However, S3 method selection attempts to treat objects
 from an S4 class as if they had the appropriate S3 class attribute, as
 does <code>inherits</code>.  Therefore, S3 methods can be defined for S4
-classes.  See the &lsquo;<a href="../../methods/html/Introduction.html">Introduction</a>&rsquo; and &lsquo;<a href="../../methods/html/Methods_for_S3.html">Methods_for_S3</a>&rsquo;
+classes.  See the &lsquo;<a href="../../methods/help/Introduction.html">Introduction</a>&rsquo; and &lsquo;<a href="../../methods/html/Methods_for_S3.html">Methods_for_S3</a>&rsquo;
 help pages for basic information on S4 methods and for the relation
 between these and S3 methods.
 </p>
@@ -136,11 +157,11 @@ superclasses.
 
 <p>Functions <code>oldClass</code> and <code>oldClass&lt;-</code> behave in the same way
 as functions of those names in S-PLUS 5/6, <em>but</em> in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-<code><a href="UseMethod.html">UseMethod</a></code> dispatches on the class as returned by
+<code><a href="../../base/help/UseMethod.html">UseMethod</a></code> dispatches on the class as returned by
 <code>class</code> (with some interpolated classes: see the link) rather
-than <code>oldClass</code>.  <em>However</em>, <a href="groupGeneric.html">group generic</a>s dispatch
-on the <code>oldClass</code> for efficiency, and <a href="InternalMethods.html">internal generic</a>s
-only dispatch on objects for which <code><a href="is.object.html">is.object</a></code> is true.
+than <code>oldClass</code>.  <em>However</em>, <a href="../../base/help/group+20generic.html">group generic</a>s dispatch
+on the <code>oldClass</code> for efficiency, and <a href="../../base/help/internal+20generic.html">internal generic</a>s
+only dispatch on objects for which <code><a href="../../base/help/is.object.html">is.object</a></code> is true.
 </p>
 <p>In older versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, assigning a zero-length vector with
 <code>class</code> removed the class: it is now an error (whereas it
@@ -151,8 +172,8 @@ to remove the class.
 
 <h3>See Also</h3>
 
-<p><code><a href="UseMethod.html">UseMethod</a></code>, <code><a href="UseMethod.html">NextMethod</a></code>,
-&lsquo;<a href="groupGeneric.html">group generic</a>&rsquo;, &lsquo;<a href="InternalMethods.html">internal generic</a>&rsquo;
+<p><code><a href="../../base/help/UseMethod.html">UseMethod</a></code>, <code><a href="../../base/help/NextMethod.html">NextMethod</a></code>,
+&lsquo;<a href="../../base/help/group+20generic.html">group generic</a>&rsquo;, &lsquo;<a href="../../base/help/internal+20generic.html">internal generic</a>&rsquo;
 </p>
 
 
@@ -175,7 +196,10 @@ class( quote(sin(pi*x)) )    # "call"
 class( quote(x &lt;- 1) )       # "&lt;-"
 class( quote((1 &lt; 2)) )      # "("
 class( quote( if(8&lt;3) pi ) ) # "if"
+
+.class2(pi)               # "double" "numeric"
+.class2(matrix(1:6, 2,3)) # "matrix" "array" "integer" "numeric"
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

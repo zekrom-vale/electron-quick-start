@@ -39,6 +39,7 @@ draw.details	grid-defunct
 drawDetails	drawDetails
 editDetails	editDetails
 editGrob	grid.edit
+editViewport	editViewport
 emptyCoords	grobCoords
 engine.display.list	grid.display.list
 explode	explode
@@ -152,6 +153,7 @@ layout.torture	grid-internal
 layout.widths	grid-internal
 layoutRegion	grid-internal
 legendGrob	legendGrob
+linearGradient	patterns
 linesGrob	grid.lines
 lineToGrob	grid.move.to
 makeContent	makeContent
@@ -162,6 +164,8 @@ nullGrob	grid.null
 packGrob	grid.pack
 pathGrob	grid.path
 pathListing	grid.ls
+pattern	patterns
+patterns	patterns
 placeGrob	grid.place
 plotViewport	plotViewport
 pointsGrob	grid.points
@@ -173,6 +177,7 @@ postDrawDetails	drawDetails
 preDrawDetails	drawDetails
 push.viewport	grid-defunct
 pushViewport	viewports
+radialGradient	patterns
 rasterGrob	grid.raster
 recordGrob	grid.record
 rectGrob	grid.rect
@@ -199,7 +204,9 @@ unit.c	unit.c
 unit.length	unit.length
 unit.pmax	unit.pmin
 unit.pmin	unit.pmin
+unit.psum	unit.pmin
 unit.rep	unit.rep
+unitType	unitType
 upViewport	viewports
 valid.just	valid.just
 validDetails	validDetails

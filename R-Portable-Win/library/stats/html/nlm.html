@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Non-Linear Minimization</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for nlm {stats}"><tr><td>nlm {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -37,7 +38,7 @@ the <code>...</code> argument.
 <p>If the function value has an attribute called <code>gradient</code> or
 both <code>gradient</code> and <code>hessian</code> attributes, these will be
 used in the calculation of updated parameter values.  Otherwise,
-numerical derivatives are used. <code><a href="deriv.html">deriv</a></code> returns a
+numerical derivatives are used. <code><a href="../../stats/help/deriv.html">deriv</a></code> returns a
 function with suitable <code>gradient</code> attribute and optionally a
 <code>hessian</code> attribute.</p>
 </td></tr>
@@ -214,14 +215,14 @@ doi: <a href="https://doi.org/10.1145/6187.6192">10.1145/6187.6192</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="optim.html">optim</a></code> and <code><a href="nlminb.html">nlminb</a></code>.
+<p><code><a href="../../stats/help/optim.html">optim</a></code> and <code><a href="../../stats/help/nlminb.html">nlminb</a></code>.
 </p>
-<p><code><a href="constrOptim.html">constrOptim</a></code> for constrained optimization,
-<code><a href="optimize.html">optimize</a></code> for one-dimensional
-minimization and <code><a href="uniroot.html">uniroot</a></code> for root finding.
-<code><a href="deriv.html">deriv</a></code> to calculate analytical derivatives.
+<p><code><a href="../../stats/help/constrOptim.html">constrOptim</a></code> for constrained optimization,
+<code><a href="../../stats/help/optimize.html">optimize</a></code> for one-dimensional
+minimization and <code><a href="../../stats/help/uniroot.html">uniroot</a></code> for root finding.
+<code><a href="../../stats/help/deriv.html">deriv</a></code> to calculate analytical derivatives.
 </p>
-<p>For nonlinear regression, <code><a href="nls.html">nls</a></code> may be better.
+<p>For nonlinear regression, <code><a href="../../stats/help/nls.html">nls</a></code> may be better.
 </p>
 
 
@@ -247,5 +248,5 @@ nlm(f, c(10,10), a = c(3,5))
 ## Not run: demo(nlm)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

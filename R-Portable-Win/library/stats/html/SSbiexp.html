@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Self-Starting Nls Biexponential model</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for SSbiexp {stats}"><tr><td>SSbiexp {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -71,7 +72,7 @@ these names is attached as an attribute named <code>gradient</code>.
 
 <h3>See Also</h3>
 
-<p><code><a href="nls.html">nls</a></code>, <code><a href="selfStart.html">selfStart</a></code>
+<p><code><a href="../../stats/help/nls.html">nls</a></code>, <code><a href="../../stats/help/selfStart.html">selfStart</a></code>
 </p>
 
 
@@ -91,7 +92,7 @@ summary(fm1)
 ## Show the model components visually
   require(graphics)
 
-  xx &lt;- seq(0, 5, len = 101)
+  xx &lt;- seq(0, 5, length.out = 101)
   y1 &lt;- 3.5 * exp(-4*xx)
   y2 &lt;- 1.5 * exp(-xx)
   plot(xx, y1 + y2, type = "l", lwd=2, ylim = c(-0.2,6), xlim = c(0, 5),
@@ -106,7 +107,26 @@ summary(fm1)
   ySS &lt;- SSbiexp(xx, 3.5, log(4), 1.5, log(1))
   ##                      ---          ---
   stopifnot(all.equal(y1+y2, ySS, tolerance = 1e-15))
+
+## Show a no-noise example
+datN &lt;- data.frame(time = (0:600)/64)
+datN$conc &lt;- predict(fm1, newdata=datN)
+plot(conc ~ time, data=datN) # perfect, no noise
+## IGNORE_RDIFF_BEGIN
+## Fails by default (scaleOffset=0):
+## Not run: 
+        nls(conc ~ SSbiexp(time, A1, lrc1, A2, lrc2), data = datN, trace=TRUE)
+## End(Not run)
+
+fmX1 &lt;- nls(conc ~ SSbiexp(time, A1, lrc1, A2, lrc2), data = datN, control = list(scaleOffset=1))
+fmX  &lt;- nls(conc ~ SSbiexp(time, A1, lrc1, A2, lrc2), data = datN,
+           control = list(scaleOffset=1, printEval=TRUE, tol=1e-11, nDcentral=TRUE), trace=TRUE)
+all.equal(coef(fm1), coef(fmX1), tolerance=0) # ... rel.diff.: 1.57e-6
+all.equal(coef(fm1), coef(fmX),  tolerance=0) # ... rel.diff.: 1.03e-12
+## IGNORE_RDIFF_END
+stopifnot(all.equal(coef(fm1), coef(fmX1), tolerance = 6e-6),
+          all.equal(coef(fm1), coef(fmX ), tolerance = 1e-11))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

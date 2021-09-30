@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert Character Vector between Encodings</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for iconv {base}"><tr><td>iconv {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ iconvlist()
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>A character vector, or an object to be converted to a character
-vector by <code><a href="character.html">as.character</a></code>, or a list with <code>NULL</code> and
+vector by <code><a href="../../base/help/as.character.html">as.character</a></code>, or a list with <code>NULL</code> and
 <code>raw</code> elements as returned by <code>iconv(toRaw = TRUE)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>from</code></td>
@@ -45,7 +46,8 @@ vector by <code><a href="character.html">as.character</a></code>, or a list with
 <p>character string.  If not <code>NA</code> it is used to replace
 any non-convertible bytes in the input.  (This would normally be a
 single character, but can be more.)  If <code>"byte"</code>, the indication is
-<code>"&lt;xx&gt;"</code> with the hex code of the byte.</p>
+<code>"&lt;xx&gt;"</code> with the hex code of the byte.  If <code>"Unicode"</code>
+and converting from UTF-8, the Unicode point in the form <code>"&lt;U+xxxx&gt;"</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>mark</code></td>
 <td>
@@ -83,15 +85,18 @@ encoding) will be returned as <code>NA</code> unless <code>sub</code> is specifi
 <p>Encoding <code>"ASCII"</code> is accepted, and on most systems <code>"C"</code>
 and <code>"POSIX"</code> are synonyms for ASCII.
 </p>
-<p>Any encoding bits (see <code><a href="Encoding.html">Encoding</a></code>) on elements of <code>x</code>
+<p>Any encoding bits (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>) on elements of <code>x</code>
 are ignored: they will always be translated as if from encoding
-<code>from</code> even if declared otherwise.  <code><a href="Encoding.html">enc2native</a></code> and
-<code><a href="Encoding.html">enc2utf8</a></code> provide alternatives which do take declared
+<code>from</code> even if declared otherwise.  <code><a href="../../base/help/enc2native.html">enc2native</a></code> and
+<code><a href="../../base/help/enc2utf8.html">enc2utf8</a></code> provide alternatives which do take declared
 encodings into account.
 </p>
 <p>Note that implementations of <code>iconv</code> typically do not do much
 validity checking and will often mis-convert inputs which are invalid
 in encoding <code>from</code>.
+</p>
+<p>If <code>sub = "Unicode"</code> is used for a non-UTF-8 input it is the same
+as <code>sub = "byte"</code>.
 </p>
 
 
@@ -117,21 +122,28 @@ elements) of known encoding names.
 
 <h3>Implementation Details</h3>
 
-<p>There are three main implementations of <code>iconv</code> in use.
-Linux's C runtime <span class="samp">glibc</span> contains one.  Several platforms
+<p>There are three main implementations of <code>iconv</code> in use.  Linux's
+most common C runtime, <span class="samp">glibc</span>, contains one.  Several platforms
 supply GNU <span class="samp">libiconv</span>, including macOS, FreeBSD and Cygwin, in
 some cases with additional encodings.  On Windows we use a version of
 Yukihiro Nakadaira's <span class="samp">win_iconv</span>, which is based on Windows'
-codepages.  (We have added many encoding names for compatibility
-with other systems.)  All three have <code>iconvlist</code>, ignore case in
+codepages.  (We have added many encoding names for compatibility with
+other systems.)  All three have <code>iconvlist</code>, ignore case in
 encoding names and support <span class="samp">//TRANSLIT</span> (but with different
 results, and for <span class="samp">win_iconv</span> currently a &lsquo;best fit&rsquo;
 strategy is used except for <code>to = "ASCII"</code>).
 </p>
-<p>Most commercial Unixes contain an implemetation of <code>iconv</code> but
+<p>Most commercial Unixes contain an implementation of <code>iconv</code> but
 none we have encountered have supported the encoding names we need:
-the &ldquo;R Installation and Administration Manual&rdquo; recommends
+the &lsquo;R Installation and Administration&rsquo; manual recommends
 installing GNU <span class="samp">libiconv</span> on Solaris and AIX, for example.
+</p>
+
+
+<p>Some Linux distributions use <span class="samp">musl</span> as their C runtime.  This is
+less comprehensive than <span class="samp">glibc</span>: it does not support
+<span class="samp">//TRANSLIT</span> but does inexact conversions (currently using
+<span class="samp">*</span>).
 </p>
 <p>There are other implementations, e.g.  NetBSD has used one from the
 Citrus project (which does not support <span class="samp">//TRANSLIT</span>) and there is
@@ -140,7 +152,8 @@ not been reported whether or not these work with <span style="font-family: Couri
 </p>
 <p>Note that you cannot rely on invalid inputs being detected, especially
 for <code>to = "ASCII"</code> where some implementations allow 8-bit
-characters and pass them through unchanged or with transliteration.
+characters and pass them through unchanged or with transliteration or
+substitution.
 </p>
 <p>Some of the implementations have interesting extra encodings: for
 example GNU <span class="samp">libiconv</span> allows <code>to = "C99"</code> to use
@@ -159,7 +172,7 @@ encodings.  Some systems will write the Unicode character
 <code>U+FEFF</code> at the beginning of a file in these encodings and
 perhaps also in UTF-8.  In that usage the character is known as a BOM,
 and should be handled during input (see the &lsquo;Encodings&rsquo; section
-under <code><a href="connections.html">connection</a></code>: re-encoded connections have some
+under <code><a href="../../base/help/connection.html">connection</a></code>: re-encoded connections have some
 special handling of BOMs).  The rest of this section applies when this
 has not been done so <code>x</code> starts with a BOM.
 </p>
@@ -188,7 +201,7 @@ the official (and most widely supported) name for &lsquo;Mac Roman&rsquo;
 
 <h3>See Also</h3>
 
-<p><code><a href="../../utils/html/localeToCharset.html">localeToCharset</a></code>, <code><a href="connections.html">file</a></code>.
+<p><code><a href="../../utils/html/localeToCharset.html">localeToCharset</a></code>, <code><a href="../../base/help/file.html">file</a></code>.
 </p>
 
 
@@ -217,6 +230,7 @@ iconv(x, "latin1", "ASCII")          #   NA
 iconv(x, "latin1", "ASCII", "?")     # "fa?ile"
 iconv(x, "latin1", "ASCII", "")      # "faile"
 iconv(x, "latin1", "ASCII", "byte")  # "fa&lt;e7&gt;ile"
+iconv(xx, "UTF-8", "ASCII", "Unicode") # "fa&lt;U+00E7&gt;ile"
 
 ## Extracts from old R help files (they are nowadays in UTF-8)
 x &lt;- c("Ekstr\xf8m", "J\xf6reskog", "bi\xdfchen Z\xfcrcher")
@@ -229,5 +243,5 @@ str(xx &lt;- iconv(x, "latin1", "UTF-16LE", toRaw = TRUE))
 iconv(xx, "UTF-16LE", "UTF-8")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

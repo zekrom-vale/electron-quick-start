@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Transfer Binary Data To and From Connections</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for readBin {base}"><tr><td>readBin {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ writeBin(object, con, size = NA_integer_,
 <table summary="R argblock">
 <tr valign="top"><td><code>con</code></td>
 <td>
-<p>A <a href="connections.html">connection</a> object or a character string naming a file or
+<p>A <a href="../../base/help/connection.html">connection</a> object or a character string naming a file or
 a raw vector.</p>
 </td></tr>
 <tr valign="top"><td><code>what</code></td>
@@ -70,7 +71,7 @@ endian-ness.</p>
 </td></tr>
 <tr valign="top"><td><code>useBytes</code></td>
 <td>
-<p>See <code><a href="writeLines.html">writeLines</a></code>.</p>
+<p>See <code><a href="../../base/help/writeLines.html">writeLines</a></code>.</p>
 </td></tr>
 </table>
 
@@ -79,7 +80,7 @@ endian-ness.</p>
 
 <p>These functions can only be used with binary-mode connections.
 If <code>con</code> is a character string, the functions call
-<code><a href="connections.html">file</a></code> to obtain a binary-mode file connection which is
+<code><a href="../../base/help/file.html">file</a></code> to obtain a binary-mode file connection which is
 opened for the duration of the function call.
 </p>
 <p>If the connection is open it is read/written from its current
@@ -103,7 +104,7 @@ precision sizes are unlikely to be portable across platforms.
 </p>
 <p><code>readBin</code> and <code>writeBin</code> read and write C-style
 zero-terminated character strings.  Input strings are limited to 10000
-characters.  <code><a href="readChar.html">readChar</a></code> and <code><a href="readChar.html">writeChar</a></code> can
+characters.  <code><a href="../../base/help/readChar.html">readChar</a></code> and <code><a href="../../base/help/writeChar.html">writeChar</a></code> can
 be used to read and write fixed-length strings.  No check is made that
 the string is valid in the current locale's encoding.
 </p>
@@ -153,10 +154,10 @@ into pieces of length 10000 with any final part being discarded.
 </p>
 <p><code>readChar</code> to read/write fixed-length strings.
 </p>
-<p><code><a href="connections.html">connections</a></code>, <code><a href="readLines.html">readLines</a></code>,
-<code><a href="writeLines.html">writeLines</a></code>.
+<p><code><a href="../../base/help/connections.html">connections</a></code>, <code><a href="../../base/help/readLines.html">readLines</a></code>,
+<code><a href="../../base/help/writeLines.html">writeLines</a></code>.
 </p>
-<p><code><a href="zMachine.html">.Machine</a></code> for the sizes of <code>long</code>, <code>long long</code>
+<p><code><a href="../../base/help/.Machine.html">.Machine</a></code> for the sizes of <code>long</code>, <code>long long</code>
 and <code>long double</code>.
 </p>
 
@@ -222,5 +223,5 @@ z &lt;- writeBin(c("a", "test", "of", "character"), raw())
 readBin(z, character(), 4)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

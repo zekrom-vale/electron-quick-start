@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: List Objects and their Structure</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ls.str {utils}"><tr><td>ls.str {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p><code>ls.str</code> and <code>lsf.str</code> are variations of <code><a href="../../base/html/ls.html">ls</a></code>
-applying <code><a href="str.html">str</a>()</code> to each matched name: see section Value.
+applying <code><a href="../../utils/help/str.html">str</a>()</code> to each matched name: see section Value.
 </p>
 
 
@@ -80,7 +81,7 @@ consider.  Passed to <code><a href="../../base/html/exists.html">exists</a></cod
 <p>further arguments to pass.  <code>lsf.str</code> passes them to
 <code>ls.str</code> which passes them on to <code><a href="../../base/html/ls.html">ls</a></code>.  The
 (non-exported) print method <code>print.ls_str</code> passes them to
-<code><a href="str.html">str</a></code>.</p>
+<code><a href="../../utils/help/str.html">str</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>digits</code></td>
 <td>
@@ -94,7 +95,7 @@ consider.  Passed to <code><a href="../../base/html/exists.html">exists</a></cod
 <p><code>ls.str</code> and <code>lsf.str</code> return an object of class
 <code>"ls_str"</code>, basically the character vector of matching names
 (functions only for <code>lsf.str</code>), similarly to
-<code><a href="../../base/html/ls.html">ls</a></code>, with a <code>print()</code> method that calls <code><a href="str.html">str</a>()</code>
+<code><a href="../../base/html/ls.html">ls</a></code>, with a <code>print()</code> method that calls <code><a href="../../utils/help/str.html">str</a>()</code>
 on each object.
 </p>
 
@@ -106,7 +107,7 @@ on each object.
 
 <h3>See Also</h3>
 
-<p><code><a href="str.html">str</a></code>, <code><a href="../../base/html/summary.html">summary</a></code>, <code><a href="../../base/html/args.html">args</a></code>.
+<p><code><a href="../../utils/help/str.html">str</a></code>, <code><a href="../../base/html/summary.html">summary</a></code>, <code><a href="../../base/html/args.html">args</a></code>.
 </p>
 
 
@@ -133,5 +134,5 @@ tt &lt;- function(x, y = 1) { aa &lt;- 7; r &lt;- x + y; ls.str() }
 stopifnot(nms == c("aa", "r","x","y"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

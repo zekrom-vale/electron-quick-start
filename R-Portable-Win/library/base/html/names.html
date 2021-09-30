@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Names of an Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for names {base}"><tr><td>names {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,10 +44,10 @@ generic replacement function.  The default methods get and set
 the <code>"names"</code> attribute of a vector (including a list) or
 pairlist.
 </p>
-<p>For an <code><a href="environment.html">environment</a></code> <code>env</code>, <code>names(env)</code> gives
+<p>For an <code><a href="../../base/help/environment.html">environment</a></code> <code>env</code>, <code>names(env)</code> gives
 the names of the corresponding list, i.e.,
 <code>names(as.list(env, all.names = TRUE))</code> which are also given by
-<code><a href="ls.html">ls</a>(env, all.names = TRUE, sorted = FALSE)</code>.  If the
+<code><a href="../../base/help/ls.html">ls</a>(env, all.names = TRUE, sorted = FALSE)</code>.  If the
 environment is used as a hash table, <code>names(env)</code> are its
 &ldquo;keys&rdquo;.
 </p>
@@ -65,7 +66,7 @@ have no name).
 <p>A name can be character <code>NA</code>, but such a name will never be
 matched and is likely to lead to confusion.
 </p>
-<p>Both are <a href="Primitive.html">primitive</a> functions.
+<p>Both are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
@@ -85,12 +86,12 @@ the return value from the left-hand side.)
 
 <h3>Note</h3>
 
-<p>For vectors, the names are one of the <a href="attributes.html">attributes</a> with
+<p>For vectors, the names are one of the <a href="../../base/help/attributes.html">attributes</a> with
 restrictions on the possible values.  For pairlists, the names are the
 tags and converted to and from a character vector.
 </p>
 <p>For a one-dimensional array the <code>names</code> attribute really is
-<code><a href="dimnames.html">dimnames</a>[[1]]</code>.
+<code><a href="../../base/help/dimnames.html">dimnames</a>[[1]]</code>.
 </p>
 <p>Formally classed aka &ldquo;S4&rdquo; objects typically have
 <code><a href="../../methods/html/slot.html">slotNames</a>()</code> (and no <code>names()</code>).
@@ -107,7 +108,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="../../methods/html/slot.html">slotNames</a></code>, <code><a href="dimnames.html">dimnames</a></code>.
+<p><code><a href="../../methods/html/slot.html">slotNames</a></code>, <code><a href="../../base/help/dimnames.html">dimnames</a></code>.
 </p>
 
 
@@ -137,5 +138,5 @@ z
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

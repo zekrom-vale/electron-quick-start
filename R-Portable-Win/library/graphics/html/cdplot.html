@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Conditional Density Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for cdplot {graphics}"><tr><td>cdplot {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -113,7 +114,7 @@ to be used for plotting.</p>
 the levels of <code>y</code> weighted by the marginal distribution of <code>y</code>.
 The densities are derived cumulatively over the levels of <code>y</code>.
 </p>
-<p>This visualization technique is similar to spinograms (see <code><a href="spineplot.html">spineplot</a></code>)
+<p>This visualization technique is similar to spinograms (see <code><a href="../../graphics/help/spineplot.html">spineplot</a></code>)
 and plots <i>P(y | x)</i> against <i>x</i>. The conditional probabilities
 are not derived by discretization (as in the spinogram), but using a smoothing
 approach via <code><a href="../../stats/html/density.html">density</a></code>.
@@ -146,7 +147,7 @@ conditional distributions</em>, Unpublished Manuscript.
 
 <h3>See Also</h3>
 
-<p><code><a href="spineplot.html">spineplot</a></code>, <code><a href="../../stats/html/density.html">density</a></code>
+<p><code><a href="../../graphics/help/spineplot.html">spineplot</a></code>, <code><a href="../../stats/html/density.html">density</a></code>
 </p>
 
 
@@ -178,5 +179,5 @@ plot(I(as.numeric(fail) - 1) ~ jitter(temperature, factor = 2),
 lines(53:81, 1 - cdens[[1]](53:81), col = 2)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

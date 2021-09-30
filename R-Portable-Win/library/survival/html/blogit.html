@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Bounded link functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for blogit {survival}"><tr><td>blogit {survival}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Bounded link functions
+</h2>
+
+<h3>Description</h3>
+
+<p>Alternate link functions that impose bounds on the input of their link function
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+blogit(edge = 0.05)
+bprobit(edge= 0.05)
+bcloglog(edge=.05)
+blog(edge=.05)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>edge</code></td>
+<td>
+<p>input values less than the cutpoint are replaces with the
+cutpoint.  For all be <code>blog</code> input values greater than (1-edge)
+are replaced with (1-edge)</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>When using survival psuedovalues for binomial regression, the raw data can be
+outside the range (0,1), yet we want to restrict the predicted values
+to lie within that range.  A natural way to deal with this is to use
+<code>glm</code> with <code>family = gaussian(link= "logit")</code>.
+But this will fail.
+The reason is that the <code>family</code> object has a component
+<code>linkfun</code> that does not accept values outside of (0,1).
+</p>
+<p>This function is only used to create initial values for the iteration
+step, however. Mapping the offending input argument into the range
+of (egde, 1-edge) before computing the link results in starting
+estimates that are good enough.  The final result of the fit will be
+no different than if explicit starting estimates were given using the
+<code>etastart</code> or <code>mustart</code> arguments.
+These functions create copies of the logit, probit, and complimentary
+log-log families that differ from the standard ones only in this
+use of a bounded input argument, and are called a &quot;bounded logit&quot; =
+<code>blogit</code>, etc.
+</p>
+<p>The same argument hold when using RMST (area under the curve)
+pseudovalues along with a log link to ensure positive predictions,
+though in this case only the lower boundary needs to be mapped.  
+</p>
+
+
+<h3>Value</h3>
+
+<p>a <code>family</code> object of the same form as <code>make.family</code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stats/html/stats-package.html">stats</a>{make.family}</code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+py &lt;- pseudo(survfit(Surv(time, status) ~1, lung), time=730) #2 year survival
+range(py)
+pfit &lt;- glm(py ~ ph.ecog, data=lung, family=gaussian(link=blogit()))
+# For each +1 change in performance score, the odds of 2 year survival
+#  are multiplied by 1/2  = exp of the coefficient.
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>survival</em> version 3.2-11 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

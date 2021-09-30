@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot Method for isoreg Objects</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for plot.isoreg {stats}"><tr><td>plot.isoreg {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>The <code><a href="../../graphics/html/plot.html">plot</a></code> and <code><a href="../../graphics/html/lines.html">lines</a></code> method for
-<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects of class <code><a href="isoreg.html">isoreg</a></code>.
+<p>The <code><a href="../../graphics/html/plot.default.html">plot</a></code> and <code><a href="../../graphics/html/lines.html">lines</a></code> method for
+<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects of class <code><a href="../../stats/help/isoreg.html">isoreg</a></code>.
 </p>
 
 
@@ -38,7 +39,7 @@ lines(x, col = "red", lwd = 1.5,
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>an <code><a href="isoreg.html">isoreg</a></code> object.</p>
+<p>an <code><a href="../../stats/help/isoreg.html">isoreg</a></code> object.</p>
 </td></tr>
 <tr valign="top"><td><code>plot.type</code></td>
 <td>
@@ -96,7 +97,7 @@ is <code>TRUE</code>.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="isoreg.html">isoreg</a></code> for computation of <code>isoreg</code> objects.</p>
+<p><code><a href="../../stats/help/isoreg.html">isoreg</a></code> for computation of <code>isoreg</code> objects.</p>
 
 
 <h3>Examples</h3>
@@ -113,7 +114,7 @@ lines(ir3)
 plot(isoreg(2^(1:9), c(1,0,4,3,3,5,4,2,0)), plot.type = "row", log = "x")
 
 plot(ir3, plot.type = "row", ylab = "y3")
-plot(isoreg(y3 - 4), plot.t="r", ylab = "y3 - 4")
+plot(isoreg(y3 - 4), plot.type = "r", ylab = "y3 - 4")
 plot(ir4, plot.type = "ro",  ylab = "y4", xlab = "x = 1:n")
 
 ## experiment a bit with these (C-c C-j):
@@ -124,5 +125,5 @@ plot(ir &lt;- isoreg(sample(10), sample(10, replace = TRUE)),
                   plot.type = "r")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

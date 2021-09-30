@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Projection Pursuit Regression</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ppr {stats}"><tr><td>ppr {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -61,7 +62,7 @@ columns represent variables.  Missing values are not accepted.
 <tr valign="top"><td><code>data</code></td>
 <td>
 
-<p>a data frame (or similar: see <code><a href="model.frame.html">model.frame</a></code>) from which
+<p>a data frame (or similar: see <code><a href="../../stats/help/model.frame.html">model.frame</a></code>) from which
 variables specified in <code>formula</code> are preferentially to be taken.
 </p>
 </td></tr>
@@ -116,9 +117,9 @@ section.
 <td>
 
 <p>the method used for smoothing the ridge functions.  The default is
-to use Friedman's super smoother <code><a href="supsmu.html">supsmu</a></code>.  The
+to use Friedman's super smoother <code><a href="../../stats/help/supsmu.html">supsmu</a></code>.  The
 alternatives are to use the smoothing spline code underlying
-<code><a href="smooth.spline.html">smooth.spline</a></code>, either with a specified (equivalent)
+<code><a href="../../stats/help/smooth.spline.html">smooth.spline</a></code>, either with a specified (equivalent)
 degrees of freedom for each ridge functions, or to allow the
 smoothness to be chosen by GCV.
 </p>
@@ -136,7 +137,7 @@ resulting in increased smoothing.
 <tr valign="top"><td><code>span</code></td>
 <td>
 
-<p>super smoother span control (see <code><a href="supsmu.html">supsmu</a></code>).  The default, <code>0</code>,
+<p>super smoother span control (see <code><a href="../../stats/help/supsmu.html">supsmu</a></code>).  The default, <code>0</code>,
 results in automatic span selection by local cross validation. <code>span</code>
 can also take a value in <code>(0, 1]</code>.
 </p>
@@ -319,7 +320,7 @@ Springer.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.ppr.html">plot.ppr</a></code>, <code><a href="supsmu.html">supsmu</a></code>, <code><a href="smooth.spline.html">smooth.spline</a></code>
+<p><code><a href="../../stats/help/plot.ppr.html">plot.ppr</a></code>, <code><a href="../../stats/help/supsmu.html">supsmu</a></code>, <code><a href="../../stats/help/smooth.spline.html">smooth.spline</a></code>
 </p>
 
 
@@ -365,5 +366,5 @@ cbind(perm = rock$perm, prediction = round(exp(predict(rock.ppr)), 1))
 detach()
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

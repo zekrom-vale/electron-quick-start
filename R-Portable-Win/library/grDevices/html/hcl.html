@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: HCL Color Specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for hcl {grDevices}"><tr><td>hcl {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -60,7 +61,7 @@ range [0,1] will result in an <code>NA</code> value.</p>
 <p>This function corresponds to polar coordinates in the CIE-LUV
 color space. Steps of equal size in this space correspond to
 approximately equal perceptual changes in color.  Thus, <code>hcl</code>
-can be thought of as a perceptually based version of <code><a href="hsv.html">hsv</a></code>.
+can be thought of as a perceptually based version of <code><a href="../../grDevices/help/hsv.html">hsv</a></code>.
 </p>
 <p>The function is primarily intended as a way of computing
 colors for filling areas in plots where area corresponds to a
@@ -79,7 +80,7 @@ color space used on most PC computer displays.  There are other
 packages which provide more general color space facilities.
 </p>
 <p>Semi-transparent colors (<code>0 &lt; alpha &lt; 1</code>) are supported only on
-some devices: see <code><a href="rgb.html">rgb</a></code>.
+some devices: see <code><a href="../../grDevices/help/rgb.html">rgb</a></code>.
 </p>
 
 
@@ -114,14 +115,14 @@ in future.
 Colour for Presentation Graphics, Proceedings of the 3rd International
 Workshop on Distributed Statistical Computing (DSC 2003), March 20-22,
 2003, Technische Universität Wien, Vienna, Austria.
-<a href="http://www.ci.tuwien.ac.at/Conferences/DSC-2003">http://www.ci.tuwien.ac.at/Conferences/DSC-2003</a>.
+<a href="http://www.ci.tuwien.ac.at/Conferences/DSC-2003/">http://www.ci.tuwien.ac.at/Conferences/DSC-2003/</a>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="hsv.html">hsv</a></code>,
-<code><a href="rgb.html">rgb</a></code>.
+<p><code><a href="../../grDevices/help/hsv.html">hsv</a></code>,
+<code><a href="../../grDevices/help/rgb.html">rgb</a></code>.
 </p>
 
 
@@ -139,8 +140,8 @@ csd &lt;- matrix(c( 4,2,4,6, 4,3,1,4, 4,7,7,1,
 
 csphd &lt;- function(colors)
   barplot(csd, col = colors, ylim = c(0,30),
-          names = 72:85, xlab = "Year", ylab = "Students",
-          legend = c("Winter", "Spring", "Summer", "Fall"),
+          names.arg = 72:85, xlab = "Year", ylab = "Students",
+          legend.text = c("Winter", "Spring", "Summer", "Fall"),
           main = "Computer Science PhD Graduates", las = 1)
 
 # The Original (Metaphorical) Colors (Ouch!)
@@ -160,13 +161,13 @@ csphd(hcl(h = c(30, 120, 210, 300),
 csphd(hcl(h = seq(60, 240, by = 60)))
 
 # Metaphorical Colors
-csphd(hcl(h = seq(210, 60, length = 4)))
+csphd(hcl(h = seq(210, 60, length.out = 4)))
 
 # Cool Colors
-csphd(hcl(h = seq(120, 0, length = 4) + 150))
+csphd(hcl(h = seq(120, 0, length.out = 4) + 150))
 
 # Warm Colors
-csphd(hcl(h = seq(120, 0, length = 4) - 30))
+csphd(hcl(h = seq(120, 0, length.out = 4) - 30))
 
 # Single Color
 hist(stats::rnorm(1000), col = hcl(240))
@@ -176,5 +177,5 @@ demo(hclColors)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

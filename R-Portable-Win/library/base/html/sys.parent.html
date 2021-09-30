@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Functions to Access the Function Call Stack</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sys.parent {base}"><tr><td>sys.parent {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>These functions provide access to <code><a href="environment.html">environment</a></code>s
+<p>These functions provide access to <code><a href="../../base/help/environment.html">environment</a></code>s
 (&lsquo;frames&rsquo; in S terminology) associated with functions further
 up the calling stack.
 </p>
@@ -51,16 +52,17 @@ to go back if negative.</p>
 
 <h3>Details</h3>
 
-<p><code><a href="environment.html">.GlobalEnv</a></code> is given number 0 in the list of frames.
-Each subsequent function evaluation increases the frame stack by 1
-and the call, function definition and the environment for evaluation
+<p><code><a href="../../base/help/.GlobalEnv.html">.GlobalEnv</a></code> is given number 0 in the list of frames.
+Each subsequent function evaluation increases the frame stack by 1.
+The call, function definition and the environment for evaluation
 of that function are returned by <code>sys.call</code>, <code>sys.function</code>
 and <code>sys.frame</code> with the appropriate index.
 </p>
-<p><code>sys.call</code>, <code>sys.frame</code> and <code>sys.function</code> accept
+<p><code>sys.call</code>, <code>sys.function</code> and <code>sys.frame</code> accept
 integer values for the argument <code>which</code>.  Non-negative values of
-<code>which</code> are frame numbers whereas negative values are
-counted back from the frame number of the current evaluation.
+<code>which</code> are frame numbers starting from <code><a href="../../base/help/.GlobalEnv.html">.GlobalEnv</a></code>
+whereas negative values are counted back from the frame number of the
+current evaluation.
 </p>
 <p>The parent frame of a function evaluation is the environment in which
 the function was called.  It is not necessarily numbered one less than
@@ -83,11 +85,11 @@ are they reported.  There is no access to them.
 </p>
 <p><code>sys.status()</code> returns a list with components <code>sys.calls</code>,
 <code>sys.parents</code> and <code>sys.frames</code>, the results of calls to
-those three functions (which this will include the call to
+those three functions (which will include the call to
 <code>sys.status</code>: see the first example).
 </p>
 <p><code>sys.on.exit()</code> returns the expression stored for use by
-<code><a href="on.exit.html">on.exit</a></code> in the function currently being evaluated.
+<code><a href="../../base/help/on.exit.html">on.exit</a></code> in the function currently being evaluated.
 (Note that this differs from S, which returns a list of expressions
 for the current frame and its parents.)
 </p>
@@ -114,10 +116,16 @@ functions (which may or may not set contexts and so may or may not
 appear on the call stack) may not be counted, and S3 methods can also do
 surprising things.
 </p>
-<p>Beware of the effect of lazy evaluation: these two functions look at
-the call stack at the time they are evaluated, not at the time they
-are called.  Passing calls to them as function arguments is unlikely to
-be a good idea.
+<p>As an effect of lazy evaluation, these functions look at the call stack at
+the time they are evaluated, not at the time they are called.  Passing
+calls to them as function arguments is unlikely to be a good idea, but
+these functions still look at the call stack and count frames from the
+frame of the function evaluation from which they were called.
+</p>
+<p>Hence, when these functions are called to provide default values for
+function arguments, they are evaluated in the evaluation of the called
+function and they count frames accordingly (see e.g. the <code>envir</code>
+argument of <code><a href="../../base/help/eval.html">eval</a></code>).
 </p>
 
 
@@ -131,7 +139,7 @@ Wadsworth &amp; Brooks/Cole.  (Not <code>parent.frame</code>.)
 
 <h3>See Also</h3>
 
-<p><code><a href="eval.html">eval</a></code> for a usage of <code>sys.frame</code> and <code>parent.frame</code>.
+<p><code><a href="../../base/help/eval.html">eval</a></code> for a usage of <code>sys.frame</code> and <code>parent.frame</code>.
 </p>
 
 
@@ -195,5 +203,5 @@ a &lt;- structure(pi, class = "foo")
 t2(a)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

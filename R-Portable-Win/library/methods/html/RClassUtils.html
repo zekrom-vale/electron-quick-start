@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Utilities for Managing Class Definitions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for RClassUtils {methods}"><tr><td>RClassUtils {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ formal classes.  Most of them are rarely suitable to be called
 directly.
 </p>
 <p>Others are somewhat experimental and/or partially implemented only. Do
-refer to <code><a href="setClass.html">setClass</a></code> for normal code development.
+refer to <code><a href="../../methods/help/setClass.html">setClass</a></code> for normal code development.
 </p>
 
 
@@ -40,7 +41,7 @@ isVirtualClass(Class, where)
 
 newBasic(Class, ...)
 
-makeExtends(Class, to, coerce, test, replace, by, package, slots,
+makeExtends(Class, coerce, test, replace, by, package, slots,
             classDef1, classDef2)
 
 reconcilePropertiesAndPrototype(name, properties, prototype,
@@ -206,7 +207,8 @@ result will be set to <code>Class</code>.
 </p>
 </dd>
 <dt><code>makeExtends</code>:</dt><dd>
-<p>convert the argument to a list defining the extension mechanism.
+<p>Construct an SClassExtension object representing the relationship
+from <code>Class</code> to the class defined by <code>classDef2</code>. 
 </p>
 </dd>
 <dt><code>reconcilePropertiesAndPrototype</code>:</dt><dd>
@@ -240,7 +242,7 @@ classes.
 <p>If <code>complete</code> is <code>TRUE</code>, include the indirect
 information about extensions.
 </p>
-<p>It is the utility called from <code><a href="show.html">show</a>(<a href="getClass.html">getClass</a>(.))</code>,
+<p>It is the utility called from <code><a href="../../methods/help/show.html">show</a>(<a href="../../methods/help/getClass.html">getClass</a>(.))</code>,
 and the user should typically use <code>getClass(.)</code> for looking
 at class definitions.
 </p>
@@ -248,7 +250,7 @@ at class definitions.
 <dt><code>showExtends</code>:</dt><dd>
 <p>Print the elements of the list of extensions; for <code>printTo = FALSE</code>,
 returns a list with components <code>what</code> and <code>how</code>; this is
-used e.g., by <code><a href="promptClass.html">promptClass</a>()</code>.
+used e.g., by <code><a href="../../methods/help/promptClass.html">promptClass</a>()</code>.
 </p>
 </dd>
 <dt><code>possibleExtends</code>:</dt><dd>
@@ -256,7 +258,7 @@ used e.g., by <code><a href="promptClass.html">promptClass</a>()</code>.
 directly or indirectly.
 </p>
 <p>This can be either a logical value or an object of class
-<code><a href="SClassExtension-class.html">SClassExtension</a></code> containing various
+<code><a href="../../methods/help/SClassExtension-class.html">SClassExtension</a></code> containing various
 functions to test and/or coerce the relationship.
 </p>
 </dd>
@@ -269,8 +271,8 @@ and, if appropriate, the package from which the class came.
 <p>Returns the environment, typically a namespace, in which the
 <code>Class</code> has been defined.  <code>Class</code> should typically be
 the result of <code><a href="../../base/html/class.html">class</a>()</code> (and hence contain a
-<code>"package"</code> attribute) or <code><a href="getClass.html">getClass</a></code> (or
-<code><a href="getClass.html">getClassDef</a></code>).
+<code>"package"</code> attribute) or <code><a href="../../methods/help/getClass.html">getClass</a></code> (or
+<code><a href="../../methods/help/getClassDef.html">getClassDef</a></code>).
 </p>
 </dd>
 <dt><code>completeExtends</code>:</dt><dd>
@@ -297,7 +299,7 @@ class information.
 <dt><code>metaNameUndo</code></dt><dd>
 <p>As its name implies, this function undoes the
 name-mangling used to produce meta-data object names, and
-returns a object of class <code><a href="ObjectsWithPackage-class.html">ObjectsWithPackage</a></code>.
+returns a object of class <code><a href="../../methods/help/ObjectsWithPackage-class.html">ObjectsWithPackage</a></code>.
 </p>
 </dd>
 <dt><code>requireMethods</code>:</dt><dd>
@@ -380,5 +382,5 @@ stopifnot(TRUE
 if(get4) detach("package:stats4")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

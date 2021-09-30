@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Evaluate an (Unevaluated) Expression</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for eval {base}"><tr><td>eval {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -34,16 +35,16 @@ local(expr, envir = new.env())
 </td></tr>
 <tr valign="top"><td><code>envir</code></td>
 <td>
-<p>the <code><a href="environment.html">environment</a></code> in which <code>expr</code> is to
+<p>the <code><a href="../../base/help/environment.html">environment</a></code> in which <code>expr</code> is to
 be evaluated.  May also be <code>NULL</code>, a list, a data frame,
-a pairlist or an integer as specified to <code><a href="sys.parent.html">sys.call</a></code>.</p>
+a pairlist or an integer as specified to <code><a href="../../base/help/sys.call.html">sys.call</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>enclos</code></td>
 <td>
 <p>Relevant when <code>envir</code> is a (pair)list or a data frame.
 Specifies the enclosure, i.e., where <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> looks for objects not found
 in <code>envir</code>.  This can be <code>NULL</code> (interpreted as the base
-package environment, <code><a href="environment.html">baseenv</a>()</code>) or an environment.</p>
+package environment, <code><a href="../../base/help/baseenv.html">baseenv</a>()</code>) or an environment.</p>
 </td></tr>
 <tr valign="top"><td><code>n</code></td>
 <td>
@@ -57,12 +58,12 @@ package environment, <code><a href="environment.html">baseenv</a>()</code>) or a
 <p><code>eval</code> evaluates the <code>expr</code> argument in the
 environment specified by <code>envir</code> and returns the computed value.
 If <code>envir</code> is not specified, then the default is
-<code><a href="sys.parent.html">parent.frame</a>()</code> (the environment where the call to
+<code><a href="../../base/help/parent.frame.html">parent.frame</a>()</code> (the environment where the call to
 <code>eval</code> was made).
 </p>
-<p>Objects to be evaluated can be of types <code><a href="call.html">call</a></code> or
-<code><a href="expression.html">expression</a></code> or <a href="name.html">name</a> (when the name is looked
-up in the current scope and its binding is evaluated), a <a href="delayedAssign.html">promise</a>
+<p>Objects to be evaluated can be of types <code><a href="../../base/help/call.html">call</a></code> or
+<code><a href="../../base/help/expression.html">expression</a></code> or <a href="../../base/help/name.html">name</a> (when the name is looked
+up in the current scope and its binding is evaluated), a <a href="../../base/help/promise.html">promise</a>
 or any of the basic types such as vectors, functions and environments
 (which are returned unchanged).
 </p>
@@ -121,10 +122,10 @@ Wadsworth &amp; Brooks/Cole.  (<code>eval</code> only.)
 
 <h3>See Also</h3>
 
-<p><code><a href="expression.html">expression</a></code>, <code><a href="substitute.html">quote</a></code>, <code><a href="sys.parent.html">sys.frame</a></code>,
-<code><a href="sys.parent.html">parent.frame</a></code>, <code><a href="environment.html">environment</a></code>.
+<p><code><a href="../../base/help/expression.html">expression</a></code>, <code><a href="../../base/help/quote.html">quote</a></code>, <code><a href="../../base/help/sys.frame.html">sys.frame</a></code>,
+<code><a href="../../base/help/parent.frame.html">parent.frame</a></code>, <code><a href="../../base/help/environment.html">environment</a></code>.
 </p>
-<p>Further, <code><a href="force.html">force</a></code> to <em>force</em> evaluation, typically of
+<p>Further, <code><a href="../../base/help/force.html">force</a></code> to <em>force</em> evaluation, typically of
 function arguments.
 </p>
 
@@ -199,5 +200,5 @@ ls(envir = environment(gg))
 ls(envir = environment(get("k", envir = environment(gg))))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

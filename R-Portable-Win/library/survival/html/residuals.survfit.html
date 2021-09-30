@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: IJ residuals from a survfit object.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for residuals.survfit {survival}"><tr><td>residuals.survfit {survival}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>IJ residuals from a survfit object.</h2>
+
+<h3>Description</h3>
+
+<p>Return infinitesimal jackknife residuals from a survfit object, for
+the survival, cumulative hazard, or restricted mean time in state (RMTS).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'survfit'
+residuals(object, times, 
+    type="pstate", collapse, weighted=FALSE,
+    method=1, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>a <code>survfit</code> object</p>
+</td></tr>
+<tr valign="top"><td><code>times</code></td>
+<td>
+<p>a vector of times at which the residuals are desired</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>the type of residual, see below</p>
+</td></tr>
+<tr valign="top"><td><code>collapse</code></td>
+<td>
+<p>add the residuals for all subjects in a cluster</p>
+</td></tr>
+<tr valign="top"><td><code>weighted</code></td>
+<td>
+<p>weight the residuals by each observation's weight</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>controls a choice of algorithm.  Current an internal
+debugging option.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>arguments for other methods</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This function is designed to efficiently compute the leverage residuals at a
+small number of time points; a primary use is the creation of
+pseudo-values.
+If the residuals at all time points are needed, e.g. to compute a robust
+pointwise confidence interval for the survival curve, then this can be done
+more efficiently
+using the <code>influence</code> argument of the underlying <code>survfit</code>
+function.  But be aware that such matrices can get very large. 
+</p>
+<p>The residuals are the impact of each observation or cluster on the
+resulting probability in state curves at the given time points,
+the cumulative hazard curv<code>surv</code> at those time points,
+or the expected sojourn time in each state up to the given time points.
+For a simple Kaplan-Meier the <code>survfit</code> object contains only the
+probability in the &quot;initial&quot; state, i.e., the survival fraction.
+For the KM case the sojourn time, the expected amount of time spent in
+the initial state, up to the specified endpoint, is more commonly known as the
+restricted mean survival time (RMST).
+For a multistate model this same quantity is also referred to as the
+restricted mean time in state (RMTS).
+It can be computed as the area under the respective probability in state curve.
+The program allows any of <code>pstate</code>, <code>surv</code>, <code>cumhaz</code>,
+<code>chaz</code>, <code>sojourn</code>, <code>rmst</code>, <code>rmts</code> or <code>auc</code>
+for the type argument, ignoring upper/lowercase, so
+users can choose whichever abbreviation they like best.
+</p>
+<p>When <code>collapse=TRUE</code> the result has the cluster identifier (which
+defaults to the <code>id</code> variable) as the dimname for the first dimension.
+If the <code>fit</code> object contains more than one curve, and the same
+identifier is reused in two different curves this approach does not work
+and the routine will stop with an error.
+In principle this is not necessary, e.g., the result could contain two rows
+with the same label, showing the separate effect on each curve,
+but this was deemed too confusing. 
+</p>
+
+
+<h3>Value</h3>
+
+<p>A matrix or array with one row per observation or cluster, and one column
+for each value in <code>times</code>.  For a multi-state model the three
+dimensions are observation, time and state.  For cumulative hazard,
+the last dimension is the set of transitions.  (A competing risks
+model for instance has 3 states and 2 transitions.)
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../survival/help/survfit.html">survfit</a></code>, <code><a href="../../survival/help/survfit.formula.html">survfit.formula</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fit &lt;- survfit(Surv(time, status) ~ x, aml)
+resid(fit, times=c(24, 48), type="RMTS")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>survival</em> version 3.2-11 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

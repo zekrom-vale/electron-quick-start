@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Is an Object from a Class?</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for is {methods}"><tr><td>is {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -42,7 +43,7 @@ objects for the classes.</p>
 
 <p>In a call to <code>extends</code>, with <code>class2</code> missing,
 <code>fullInfo</code> is a flag, which if <code>TRUE</code> causes a list of
-objects of class <code><a href="SClassExtension-class.html">SClassExtension</a></code> to be returned, rather than
+objects of class <code><a href="../../methods/help/SClassExtension-class.html">SClassExtension</a></code> to be returned, rather than
 just the names of the classes.  Only the distance slot is likely to
 be useful in practice; see the &lsquo;Selecting Superclasses&rsquo; section;
 </p>
@@ -60,7 +61,7 @@ argument should not be needed.
 
 <h3>Selecting Superclasses</h3>
 
-<p>A call to  <code><a href="selectSuperClasses.html">selectSuperClasses</a>(cl)</code> returns a list of
+<p>A call to  <code><a href="../../methods/help/selectSuperClasses.html">selectSuperClasses</a>(cl)</code> returns a list of
 superclasses, similarly to
 <code>extends(cl)</code>.  Additional arguments restrict the class names
 returned to direct superclasses and/or to non-virtual classes.
@@ -78,7 +79,7 @@ if <code>extends</code> is called with <code>fullInfo =
     TRUE</code>, the return value is a named list, its names being the previous
 character vector.  The elements of the list corresponding to
 superclasses are objects of class
-<code><a href="SClassExtension-class.html">SClassExtension</a></code>. Of the information in these objects, one piece can be useful:
+<code><a href="../../methods/help/SClassExtension-class.html">SClassExtension</a></code>. Of the information in these objects, one piece can be useful:
 the number of generations between the classes, given by the
 <code>"distance"</code> slot.
 </p>
@@ -121,7 +122,7 @@ Chapman &amp; Hall.
 been modified so that the result returned is nearly always equivalent to
 <code>is</code>, both for S4 and non-S4 objects. Since it is implemented
 in C, it is somewhat faster.
-The only non-equivalences arise from use of <code><a href="setIs.html">setIs</a></code>,
+The only non-equivalences arise from use of <code><a href="../../methods/help/setIs.html">setIs</a></code>,
 which should rarely be encountered.
 </p>
 
@@ -149,5 +150,5 @@ names(superRelations)[dist2]
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

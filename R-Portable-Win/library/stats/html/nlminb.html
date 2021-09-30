@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Optimization using PORT routines</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for nlminb {stats}"><tr><td>nlminb {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -206,7 +207,7 @@ objective function value.</p>
 
 <h3>Source</h3>
 
-<p><a href="http://www.netlib.org/port/">http://www.netlib.org/port/</a>
+<p><a href="https://www.netlib.org/port/">https://www.netlib.org/port/</a>
 </p>
 
 
@@ -221,10 +222,10 @@ Hill.
 
 <h3>See Also</h3>
 
-<p><code><a href="optim.html">optim</a></code> (which is preferred) and <code><a href="nlm.html">nlm</a></code>.
+<p><code><a href="../../stats/help/optim.html">optim</a></code> (which is preferred) and <code><a href="../../stats/help/nlm.html">nlm</a></code>.
 </p>
-<p><code><a href="optimize.html">optimize</a></code> for one-dimensional minimization and
-<code><a href="constrOptim.html">constrOptim</a></code> for constrained optimization.
+<p><code><a href="../../stats/help/optimize.html">optimize</a></code> for one-dimensional minimization and
+<code><a href="../../stats/help/constrOptim.html">constrOptim</a></code> for constrained optimization.
 </p>
 
 
@@ -283,5 +284,5 @@ r &lt;- nlminb(rep(3, 25), flb, control = list(rel.tol = 1e-16))
 stopifnot(grepl("rel.tol", r$message))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

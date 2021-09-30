@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Type 1 and CID Fonts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Type1Font {grDevices}"><tr><td>Type1Font {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>These functions are used to define the translation of a <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> graphics
 font family name to a Type 1 or CID font descriptions, used by both
-the <code><a href="postscript.html">postscript</a></code> and <code><a href="pdf.html">pdf</a></code> graphics devices.
+the <code><a href="../../grDevices/help/postscript.html">postscript</a></code> and <code><a href="../../grDevices/help/pdf.html">pdf</a></code> graphics devices.
 </p>
 
 
@@ -32,7 +33,7 @@ CIDFont(family, cmap, cmapEncoding, pdfresource = "")
 <p>a character string giving the name to be used internally
 for a Type 1 or CID-keyed font family.  This needs to uniquely
 identify each family, so if you modify a family which is in use
-(see <code><a href="postscriptFonts.html">postscriptFonts</a></code>) you need to change the family name.</p>
+(see <code><a href="../../grDevices/help/postscriptFonts.html">postscriptFonts</a></code>) you need to change the family name.</p>
 </td></tr>
 <tr valign="top"><td><code>metrics</code></td>
 <td>
@@ -86,13 +87,13 @@ The CMap file maps encoded strings (usually in a MBCS) to IDs, so
 <code>cmap</code> and <code>cmapEncoding</code> specifications must match.  There
 are no real bold or italic versions of CID fonts (bold/italic were
 very rarely used in traditional East Asian topography), and for the
-<code><a href="pdf.html">pdf</a></code> device all four font faces will be identical.
-However, for the <code><a href="postscript.html">postscript</a></code> device, bold and italic (and
+<code><a href="../../grDevices/help/pdf.html">pdf</a></code> device all four font faces will be identical.
+However, for the <code><a href="../../grDevices/help/postscript.html">postscript</a></code> device, bold and italic (and
 bold italic) are emulated.
 </p>
 <p>CID-keyed fonts are intended only for use for the glyphs of East Asian
 languages, which are all monospaced and are all treated as filling the
-same bounding box.  (Thus <code><a href="plotmath.html">plotmath</a></code> will work with such
+same bounding box.  (Thus <code><a href="../../grDevices/help/plotmath.html">plotmath</a></code> will work with such
 characters, but the spacing will be less carefully controlled than
 with Western glyphs.)  The CID-keyed fonts do contain other
 characters, including a Latin alphabet: non-East-Asian glyphs are
@@ -112,8 +113,8 @@ glyphs.
 
 <h3>See Also</h3>
 
-<p><code><a href="postscript.html">postscript</a></code>, <code><a href="pdf.html">pdf</a></code>,
-<code><a href="postscriptFonts.html">postscriptFonts</a></code>, and <code><a href="postscriptFonts.html">pdfFonts</a></code>.
+<p><code><a href="../../grDevices/help/postscript.html">postscript</a></code>, <code><a href="../../grDevices/help/pdf.html">pdf</a></code>,
+<code><a href="../../grDevices/help/postscriptFonts.html">postscriptFonts</a></code>, and <code><a href="../../grDevices/help/pdfFonts.html">pdfFonts</a></code>.
 </p>
 
 
@@ -136,5 +137,5 @@ postscript(family = "CMitalic", encoding = "TeXtext.enc")
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

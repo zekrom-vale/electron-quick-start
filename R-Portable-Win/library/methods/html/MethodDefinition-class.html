@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Classes to Represent Method Definitions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for MethodDefinition-class {methods}"><tr><td>MethodDefinition-class {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -21,17 +22,17 @@ defining how the function is being used as a method.  The
 <code>target</code> slot is the class signature for which the method will
 be dispatched, and the <code>defined</code> slot the signature for which
 the method was originally specified (that is, the one that appeared
-in some call to <code><a href="setMethod.html">setMethod</a></code>).
+in some call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>).
 </p>
 
 
 <h3>Objects from the Class</h3>
 
-<p>The action of setting a method by a call to <code><a href="setMethod.html">setMethod</a></code> creates an object of this class.  It's
+<p>The action of setting a method by a call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code> creates an object of this class.  It's
 unwise to create them directly.
 </p>
 <p>The class <code>"SealedMethodDefinition"</code> is created by a call to
-<code><a href="setMethod.html">setMethod</a></code> with argument <code>sealed = TRUE</code>.  It has
+<code><a href="../../methods/help/setMethod.html">setMethod</a></code> with argument <code>sealed = TRUE</code>.  It has
 the same representation as <code>"MethodDefinition"</code>.
 </p>
 
@@ -67,13 +68,13 @@ Class <code>"OptionalMethods"</code>, by class <code>"function"</code>.
 
 <h3>See Also</h3>
 
-<p>class <code><a href="MethodsList-class.html">MethodsList</a></code> for the objects
+<p>class <code><a href="../../methods/help/MethodsList-class.html">MethodsList</a></code> for the objects
 defining sets of methods associated with a particular generic
 function.  The individual method definitions stored in these objects
 are from class <code>MethodDefinition</code>, or an extension.
-Class <code><a href="MethodWithNext-class.html">MethodWithNext</a></code> for an extension used by
-<code><a href="NextMethod.html">callNextMethod</a></code>.
+Class <code><a href="../../methods/help/MethodWithNext-class.html">MethodWithNext</a></code> for an extension used by
+<code><a href="../../methods/help/callNextMethod.html">callNextMethod</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

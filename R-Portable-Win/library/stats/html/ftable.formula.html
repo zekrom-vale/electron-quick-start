@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Formula Notation for Flat Contingency Tables</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for ftable.formula {stats}"><tr><td>ftable.formula {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,7 +33,7 @@ specifying the column and row variables of the flat table.</p>
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>a data frame, list or environment (or similar: see
-<code><a href="model.frame.html">model.frame</a></code>) containing the variables
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code>) containing the variables
 to be cross-tabulated, or a contingency table (see below).</p>
 </td></tr>
 <tr valign="top"><td><code>subset</code></td>
@@ -50,14 +51,14 @@ Ignored if <code>data</code> is a contingency table.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>further arguments to the default ftable method may also
-be passed as arguments, see <code><a href="ftable.html">ftable.default</a></code>.</p>
+be passed as arguments, see <code><a href="../../stats/help/ftable.default.html">ftable.default</a></code>.</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>This is a method of the generic function <code><a href="ftable.html">ftable</a></code>.
+<p>This is a method of the generic function <code><a href="../../stats/help/ftable.html">ftable</a></code>.
 </p>
 <p>The left and right hand side of <code>formula</code> specify the column and
 row variables, respectively, of the flat contingency table to be
@@ -90,8 +91,8 @@ displaying the counts.
 
 <h3>See Also</h3>
 
-<p><code><a href="ftable.html">ftable</a></code>,
-<code><a href="ftable.html">ftable.default</a></code>;
+<p><code><a href="../../stats/help/ftable.html">ftable</a></code>,
+<code><a href="../../stats/help/ftable.default.html">ftable.default</a></code>;
 <code><a href="../../base/html/table.html">table</a></code>.
 </p>
 
@@ -105,5 +106,5 @@ x
 ftable(Sex ~ Class + Age, data = x)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

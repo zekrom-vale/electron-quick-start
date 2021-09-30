@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read Text Lines from a Connection</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for readLines {base}"><tr><td>readLines {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,7 +27,7 @@ readLines(con = stdin(), n = -1L, ok = TRUE, warn = TRUE,
 <table summary="R argblock">
 <tr valign="top"><td><code>con</code></td>
 <td>
-<p>a <a href="connections.html">connection</a> object or a character string.</p>
+<p>a <a href="../../base/help/connection.html">connection</a> object or a character string.</p>
 </td></tr>
 <tr valign="top"><td><code>n</code></td>
 <td>
@@ -50,7 +51,7 @@ there are embedded nuls in the file.</p>
 used to mark character strings as known to be in
 Latin-1 or UTF-8: it is not used to re-encode the input.  To do the
 latter, specify the encoding as part of the connection <code>con</code> or
-via <code><a href="options.html">options</a>(encoding=)</code>: see the examples.
+via <code><a href="../../base/help/options.html">options</a>(encoding=)</code>: see the examples.
 See also &lsquo;Details&rsquo;.
 </p>
 </td></tr>
@@ -64,13 +65,14 @@ See also &lsquo;Details&rsquo;.
 <h3>Details</h3>
 
 <p>If the <code>con</code> is a character string, the function calls
-<code><a href="connections.html">file</a></code> to obtain a file connection which is opened for
+<code><a href="../../base/help/file.html">file</a></code> to obtain a file connection which is opened for
 the duration of the function call.  This can be a compressed file.
+(<a href="../../base/help/tilde+20expansion.html">tilde expansion</a> of the file path is done by <code>file</code>.)
 </p>
 <p>If the connection is open it is read from its current position.  If it
 is not open, it is opened in <code>"rt"</code> mode for the duration of
 the call and then closed (but not destroyed; one must call
-<code><a href="connections.html">close</a></code> to do that).
+<code><a href="../../base/help/close.html">close</a></code> to do that).
 </p>
 <p>If the final line is incomplete (no final EOL marker) the behaviour
 depends on whether the connection is blocking or not.  For a
@@ -85,7 +87,7 @@ be accepted as the EOL marker for a line.
 being read, with a warning (unless <code>skipNul = TRUE</code> or <code>warn
     = FALSE</code>).
 </p>
-<p>If <code>con</code> is a not-already-open <a href="connections.html">connection</a> with a non-default
+<p>If <code>con</code> is a not-already-open <a href="../../base/help/connection.html">connection</a> with a non-default
 <code>encoding</code> argument, the text is converted to UTF-8 and declared
 as such (and the <code>encoding</code> argument to <code>readLines</code> is ignored).
 See the examples.
@@ -103,15 +105,15 @@ See the examples.
 
 <h3>Note</h3>
 
-<p>The default connection, <code><a href="showConnections.html">stdin</a></code>, may be different from
-<code>con = "stdin"</code>: see <code><a href="connections.html">file</a></code>.
+<p>The default connection, <code><a href="../../base/help/stdin.html">stdin</a></code>, may be different from
+<code>con = "stdin"</code>: see <code><a href="../../base/help/file.html">file</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="connections.html">connections</a></code>, <code><a href="writeLines.html">writeLines</a></code>, <code><a href="readBin.html">readBin</a></code>,
-<code><a href="scan.html">scan</a></code></p>
+<p><code><a href="../../base/help/connections.html">connections</a></code>, <code><a href="../../base/help/writeLines.html">writeLines</a></code>, <code><a href="../../base/help/readBin.html">readBin</a></code>,
+<code><a href="../../base/help/scan.html">scan</a></code></p>
 
 
 <h3>Examples</h3>
@@ -144,5 +146,5 @@ unique(Encoding(A)) # will most likely be UTF-8
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create Zip Archives</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for zip {utils}"><tr><td>zip {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -51,9 +52,9 @@ see &lsquo;Details&rsquo;.</p>
 
 <h3>Details</h3>
 
-<p>On a Unix-alike, the default for <code>zip</code> will by default use the
-value of <span class="env">R_ZIPCMD</span>, which is set in &lsquo;<span class="file">etc/Renviron</span>&rsquo; if an
-<code>unzip</code> command was found during configuration.  On Windows, the
+<p>On a Unix-alike, the default for <code>zip</code> will use the
+value of <span class="env">R_ZIPCMD</span>, whose default is set in &lsquo;<span class="file">etc/Renviron</span>&rsquo;
+to the <code>zip</code> command found during configuration.  On Windows, the
 default relies on a <code>zip</code> program (for example that from
 Rtools) being in the path.
 </p>
@@ -62,7 +63,10 @@ directory tree in a portable way: see the system-specific help for the
 <code>zip</code> command for other possibilities.
 </p>
 <p>Argument <code>extras</code> can be used to specify <code>-x</code> or <code>-i</code>
-followed by a list of filepaths to exclude or include.
+followed by a list of filepaths to exclude or include. Since
+<code>extras</code> will be treated as if passed to <code><a href="../../base/html/system.html">system</a></code>, if
+the filepaths contain spaces they must be quoted e.g. by
+<code><a href="../../base/html/shQuote.html">shQuote</a></code>.
 </p>
 
 
@@ -74,9 +78,9 @@ followed by a list of filepaths to exclude or include.
 
 <h3>See Also</h3>
 
-<p><code><a href="unzip.html">unzip</a></code>, <code><a href="../../base/html/connections.html">unz</a></code>; further, <code><a href="tar.html">tar</a></code> and
-<code><a href="untar.html">untar</a></code> for (un)packing tar archives.
+<p><code><a href="../../utils/help/unzip.html">unzip</a></code>, <code><a href="../../base/html/connections.html">unz</a></code>; further, <code><a href="../../utils/help/tar.html">tar</a></code> and
+<code><a href="../../utils/help/untar.html">untar</a></code> for (un)packing tar archives.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

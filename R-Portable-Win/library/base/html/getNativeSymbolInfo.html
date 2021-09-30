@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Obtain a Description of one or more Native (C/Fortran)...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for getNativeSymbolInfo {base}"><tr><td>getNativeSymbolInfo {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -15,9 +16,9 @@ Obtain a Description of one or more Native (C/Fortran) Symbols
 or &lsquo;exported&rsquo; built-in native symbols.  For each name, it
 returns information about the name of the symbol, the library in which
 it is located and, if available, the number of arguments it expects
-and by which interface it should be called (i.e <code><a href="CallExternal.html">.Call</a></code>,
-<code><a href="Foreign.html">.C</a></code>, <code><a href="Foreign.html">.Fortran</a></code>, or
-<code><a href="CallExternal.html">.External</a></code>). Additionally, it returns the address of the
+and by which interface it should be called (i.e <code><a href="../../base/help/.Call.html">.Call</a></code>,
+<code><a href="../../base/help/.C.html">.C</a></code>, <code><a href="../../base/help/.Fortran.html">.Fortran</a></code>, or
+<code><a href="../../base/help/.External.html">.External</a></code>). Additionally, it returns the address of the
 symbol and this can be passed to other C routines.  Specifically, this
 provides a way to explicitly share symbols between different
 dynamically loaded package libraries.  Also, it provides a way to
@@ -75,7 +76,7 @@ or if <code>FALSE</code> to return just the address of the symbol.
 <h3>Details</h3>
 
 <p>This uses the same mechanism for resolving symbols as is used
-in all the native interfaces (<code><a href="CallExternal.html">.Call</a></code>, etc.).
+in all the native interfaces (<code><a href="../../base/help/.Call.html">.Call</a></code>, etc.).
 If the symbol has been explicitly registered by the DLL
 in which it is contained, information about the number of arguments
 and the interface by which it should be called will be returned.
@@ -108,8 +109,8 @@ information is available for the symbol, then this is
 an object of class <code>RegisteredNativeSymbol</code> and is a reference
 to an internal data type that has access to the routine pointer and
 registration information.  This too can be used in calls to
-<code><a href="CallExternal.html">.Call</a></code>, <code><a href="Foreign.html">.C</a></code>, <code><a href="Foreign.html">.Fortran</a></code> and
-<code><a href="CallExternal.html">.External</a></code>.
+<code><a href="../../base/help/.Call.html">.Call</a></code>, <code><a href="../../base/help/.C.html">.C</a></code>, <code><a href="../../base/help/.Fortran.html">.Fortran</a></code> and
+<code><a href="../../base/help/.External.html">.External</a></code>.
 </p>
 </td></tr>
 <tr valign="top"><td><code>dll</code></td>
@@ -160,7 +161,7 @@ rather than the list containing that one element.
 <p>The third element of the <code>NativeSymbolInfo</code> objects was renamed
 from <code>package</code> to <code>dll</code> in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version 3.6.0, for consistency
 with the names of the <code>NativeSymbolInfo</code> objects returned by
-<code><a href="getDLLRegisteredRoutines.html">getDLLRegisteredRoutines</a>()</code>.
+<code><a href="../../base/help/getDLLRegisteredRoutines.html">getDLLRegisteredRoutines</a>()</code>.
 </p>
 
 
@@ -193,14 +194,14 @@ R-News, volume 1, number 3, 2001, p20&ndash;23
 
 <h3>See Also</h3>
 
-<p><code><a href="getDLLRegisteredRoutines.html">getDLLRegisteredRoutines</a></code>,
-<code><a href="dynload.html">is.loaded</a></code>,
-<code><a href="Foreign.html">.C</a></code>,
-<code><a href="Foreign.html">.Fortran</a></code>,
-<code><a href="CallExternal.html">.External</a></code>,
-<code><a href="CallExternal.html">.Call</a></code>,
-<code><a href="dynload.html">dyn.load</a></code>.
+<p><code><a href="../../base/help/getDLLRegisteredRoutines.html">getDLLRegisteredRoutines</a></code>,
+<code><a href="../../base/help/is.loaded.html">is.loaded</a></code>,
+<code><a href="../../base/help/.C.html">.C</a></code>,
+<code><a href="../../base/help/.Fortran.html">.Fortran</a></code>,
+<code><a href="../../base/help/.External.html">.External</a></code>,
+<code><a href="../../base/help/.Call.html">.Call</a></code>,
+<code><a href="../../base/help/dyn.load.html">dyn.load</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

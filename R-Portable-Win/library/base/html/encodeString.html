@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Encode Character Vector as for Printing</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for encodeString {base}"><tr><td>encodeString {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -31,7 +32,7 @@ encodeString(x, width = 0, quote = "", na.encode = TRUE,
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>A character vector, or an object that can be coerced to one
-by <code><a href="character.html">as.character</a></code>.</p>
+by <code><a href="../../base/help/as.character.html">as.character</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
@@ -70,7 +71,7 @@ with leading zeroes).
 Windows' reporting of printable characters is unreliable, so there all
 other control characters are regarded as non-printable, and all
 characters with codes 32&ndash;255 as printable in a single-byte locale.
-See <code><a href="print.default.html">print.default</a></code> for how non-printable characters are
+See <code><a href="../../base/help/print.default.html">print.default</a></code> for how non-printable characters are
 handled in multi-byte locales.
 </p>
 <p>If <code>quote</code> is a single or double quote any embedded quote of the
@@ -98,7 +99,7 @@ using escapes.
 
 <h3>See Also</h3>
 
-<p><code><a href="print.default.html">print.default</a></code>
+<p><code><a href="../../base/help/print.default.html">print.default</a></code>
 </p>
 
 
@@ -121,5 +122,5 @@ encodeString(x, width = NA, justify = "r")
 encodeString(x, width = NA, quote = "'", justify = "r")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Self-Starting Nls Asymptotic Regression Model</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for SSasymp {stats}"><tr><td>SSasymp {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ function and its gradient.  It has an <code>initial</code> attribute that
 will evaluate initial estimates of the parameters <code>Asym</code>, <code>R0</code>,
 and <code>lrc</code> for a given set of data.
 </p>
-<p>Note that <code><a href="SSweibull.html">SSweibull</a>()</code> generalizes this asymptotic model
+<p>Note that <code><a href="../../stats/help/SSweibull.html">SSweibull</a>()</code> generalizes this asymptotic model
 with an extra parameter.
 </p>
 
@@ -68,7 +69,7 @@ attached as an attribute named <code>gradient</code>.
 
 <h3>See Also</h3>
 
-<p><code><a href="nls.html">nls</a></code>, <code><a href="selfStart.html">selfStart</a></code>
+<p><code><a href="../../stats/help/nls.html">nls</a></code>, <code><a href="../../stats/help/selfStart.html">selfStart</a></code>
 </p>
 
 
@@ -89,7 +90,7 @@ summary(fm1)
 
 ## Visualize the SSasymp()  model  parametrization :
 
-  xx &lt;- seq(-.3, 5, len = 101)
+  xx &lt;- seq(-.3, 5, length.out = 101)
   ##  Asym + (R0-Asym) * exp(-exp(lrc)* x) :
   yy &lt;- 5 - 4 * exp(-xx / exp(3/4))
   stopifnot( all.equal(yy, SSasymp(xx, Asym = 5, R0 = 1, lrc = -3/4)) )
@@ -123,5 +124,5 @@ summary(fm1)
   par(op)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

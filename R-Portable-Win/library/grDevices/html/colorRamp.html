@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Color interpolation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for colorRamp {grDevices}"><tr><td>colorRamp {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,9 +11,9 @@
 <h3>Description</h3>
 
 <p>These functions return functions that interpolate a set of given
-colors to create new color palettes (like <code><a href="palettes.html">topo.colors</a></code>) and
+colors to create new color palettes (like <code><a href="../../grDevices/help/topo.colors.html">topo.colors</a></code>) and
 color ramps, functions that map the interval <i>[0, 1]</i> to colors
-(like <code><a href="gray.html">grey</a></code>).
+(like <code><a href="../../grDevices/help/grey.html">grey</a></code>).
 </p>
 
 
@@ -31,7 +32,7 @@ colorRampPalette(colors, ...)
 <tr valign="top"><td><code>colors</code></td>
 <td>
 <p>colors to interpolate; must be a valid argument to
-<code><a href="col2rgb.html">col2rgb</a>()</code>.</p>
+<code><a href="../../grDevices/help/col2rgb.html">col2rgb</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>bias</code></td>
 <td>
@@ -82,8 +83,8 @@ of RGB color values with one row per color and 3 or 4 columns.
 </p>
 <p><code>colorRampPalette</code> returns a function that takes an integer
 argument (the required number of colors) and returns a character
-vector of colors (see <code><a href="rgb.html">rgb</a></code>) interpolating the given sequence
-(similar to <code><a href="palettes.html">heat.colors</a></code> or <code><a href="palettes.html">terrain.colors</a></code>).
+vector of colors (see <code><a href="../../grDevices/help/rgb.html">rgb</a></code>) interpolating the given sequence
+(similar to <code><a href="../../grDevices/help/heat.colors.html">heat.colors</a></code> or <code><a href="../../grDevices/help/terrain.colors.html">terrain.colors</a></code>).
 </p>
 
 
@@ -138,7 +139,7 @@ filled.contour(volcano,
 jet.colors &lt;-
   colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan",
                      "#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
-filled.contour(volcano, color = jet.colors, asp = 1)
+filled.contour(volcano, color.palette = jet.colors, asp = 1)
 
 ## space="Lab" helps when colors don't form a natural sequence
 m &lt;- outer(1:20,1:20,function(x,y) sin(sqrt(x*y)/3))
@@ -150,5 +151,5 @@ filled.contour(m, col = rgb.palette(20))
 filled.contour(m, col = Lab.palette(20))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

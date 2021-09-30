@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add or Remove a Top-Level Task Callback</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for taskCallback {base}"><tr><td>taskCallback {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -18,8 +19,8 @@ that was registered earlier via <code>addTaskCallback</code>.
 </p>
 <p>These provide low-level access to the internal/native
 mechanism for managing task-completion actions.
-One can use <code><a href="taskCallbackManager.html">taskCallbackManager</a></code>
-at the S-language level to manage S functions
+One can use <code><a href="../../base/help/taskCallbackManager.html">taskCallbackManager</a></code>
+at the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-language level to manage <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> functions
 that are called at the completion of each task.
 This is easier and more direct.
 </p>
@@ -55,8 +56,8 @@ callback function <code>f</code>.</p>
 internal callback list to be removed.
 Integer indices are 1-based, i.e the first element is 1.
 The names of currently registered handlers is available
-using <code><a href="taskCallbackNames.html">getTaskCallbackNames</a></code>
-and is also returned in a call to <code><a href="taskCallback.html">addTaskCallback</a></code>.
+using <code><a href="../../base/help/getTaskCallbackNames.html">getTaskCallbackNames</a></code>
+and is also returned in a call to <code><a href="../../base/help/addTaskCallback.html">addTaskCallback</a></code>.
 </p>
 </td></tr>
 <tr valign="top"><td><code>name</code></td>
@@ -115,8 +116,8 @@ to allow C routines rather than R functions be used.
 
 <h3>See Also</h3>
 
-<p><code><a href="taskCallbackNames.html">getTaskCallbackNames</a></code>
-<code><a href="taskCallbackManager.html">taskCallbackManager</a></code>
+<p><code><a href="../../base/help/getTaskCallbackNames.html">getTaskCallbackNames</a></code>
+<code><a href="../../base/help/taskCallbackManager.html">taskCallbackManager</a></code>
 <a href="https://developer.r-project.org/TaskHandlers.pdf">https://developer.r-project.org/TaskHandlers.pdf</a>
 </p>
 
@@ -155,5 +156,5 @@ cospi(1)
 tanpi(1)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

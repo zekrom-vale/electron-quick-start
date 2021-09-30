@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: PDF Graphics Device</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for pdf {grDevices}"><tr><td>pdf {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,7 +30,7 @@ pdf(file = if(onefile) "Rplots.pdf" else "Rplot%03d.pdf",
 <table summary="R argblock">
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>a character string giving the name of the file.
+<p>a character string giving the file path.
 If it is of the form <code>"|cmd"</code>, the output is piped to the
 command given by <code>cmd</code>.  If it is <code>NULL</code>,
 then no external file is created (effectively, no drawing occurs),
@@ -37,9 +38,11 @@ but the device may still be queried (e.g., for size of text).
 </p>
 <p>For use with <code>onefile = FALSE</code> give a C integer format such
 as <code>"Rplot%03d.pdf"</code> (the default in that case).
-(See <code><a href="postscript.html">postscript</a></code> for further details.)
+(See <code><a href="../../grDevices/help/postscript.html">postscript</a></code> for further details.)
 </p>
-<p>Tilde expansion (see <code><a href="../../base/html/path.expand.html">path.expand</a></code>) is done.
+<p>Tilde expansion (see <code><a href="../../base/html/path.expand.html">path.expand</a></code>) is done. An input with
+a marked encoding is converted to the native encoding or an error is
+given.
 </p>
 </td></tr>
 <tr valign="top"><td><code>width, height</code></td>
@@ -57,7 +60,7 @@ if <code>file</code> is a pipe.</p>
 <tr valign="top"><td><code>family</code></td>
 <td>
 <p>the font family to be used, see
-<code><a href="postscript.html">postscript</a></code>.  Defaults to <code>"Helvetica"</code>.</p>
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code>.  Defaults to <code>"Helvetica"</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>title</code></td>
 <td>
@@ -94,7 +97,7 @@ Defaults to <code>"special"</code>.
 <tr valign="top"><td><code>encoding</code></td>
 <td>
 <p>the name of an encoding file.  See
-<code><a href="postscript.html">postscript</a></code> for details.  Defaults to <code>"default"</code>.</p>
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> for details.  Defaults to <code>"default"</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>bg</code></td>
 <td>
@@ -128,13 +131,14 @@ currently allowed values are <code>"srgb"</code>, <code>"gray"</code> (or
 <tr valign="top"><td><code>useDingbats</code></td>
 <td>
 <p>logical.  Should small circles be rendered
-<em>via</em> the Dingbats font?  Defaults to <code>TRUE</code>, which produces
-smaller and better output.  Setting this to <code>FALSE</code> can work
-around font display problems in broken PDF viewers: although this
+<em>via</em> the Dingbats font?  Defaults to <code>FALSE</code>.
+If <code>TRUE</code>, this can produce smaller and better output, but
+there can font display problems in broken PDF viewers: although this
 font is one of the 14 guaranteed to be available in all PDF viewers,
 that guarantee is not always honoured.
 </p>
-<p>On Unix-alikes (incl. Mac), see the &lsquo;Note&rsquo; for a possible fix for some viewers.</p>
+<p>For Unix-alikes (including macOS) see the &lsquo;Note&rsquo; for a
+possible fix for some viewers.</p>
 </td></tr>
 <tr valign="top"><td><code>useKerning</code></td>
 <td>
@@ -157,7 +161,7 @@ compression?  Defaults to <code>TRUE</code>.</p>
 <h3>Details</h3>
 
 <p>All arguments except <code>file</code> default to values given by
-<code><a href="pdf.options.html">pdf.options</a>()</code>.  The ultimate defaults are quoted in the
+<code><a href="../../grDevices/help/pdf.options.html">pdf.options</a>()</code>.  The ultimate defaults are quoted in the
 arguments section.
 </p>
 <p><code>pdf()</code> opens the file <code>file</code> and the PDF commands needed to
@@ -177,7 +181,7 @@ font families are to be used they should be included in the
 <code>par(family = )</code> in the graphics package), the PDF device makes use
 of the PostScript font mappings to convert the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> graphics font family
 to a PDF-specific font family description.  (See the
-documentation for <code><a href="postscriptFonts.html">pdfFonts</a></code>.)
+documentation for <code><a href="../../grDevices/help/pdfFonts.html">pdfFonts</a></code>.)
 </p>
 <p>This device does <em>not</em> embed fonts in the PDF file, so it is only
 straightforward to use mappings to the font families that can be
@@ -188,8 +192,8 @@ Other families may be specified, but it is the user's responsibility
 to ensure that these fonts are available on the system and third-party
 software (e.g., Ghostscript) may be required to embed the fonts so
 that the PDF can be included in other documents (e.g., LaTeX): see
-<code><a href="embedFonts.html">embedFonts</a></code>.  The URW-based families described for
-<code><a href="postscript.html">postscript</a></code> can be used with viewers, platform dependently:
+<code><a href="../../grDevices/help/embedFonts.html">embedFonts</a></code>.  The URW-based families described for
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> can be used with viewers, platform dependently:
 </p>
 
 <dl>
@@ -200,10 +204,10 @@ usual with those based on <code>xpdf</code> or Ghostscript.</p>
 </dd>
 </dl>
 
-<p>Since <code><a href="embedFonts.html">embedFonts</a></code> makes use of Ghostscript, it should be
+<p>Since <code><a href="../../grDevices/help/embedFonts.html">embedFonts</a></code> makes use of Ghostscript, it should be
 able to embed the URW-based families for use with other viewers.
 </p>
-<p>See <code><a href="postscript.html">postscript</a></code> for details of encodings, as the internal
+<p>See <code><a href="../../grDevices/help/postscript.html">postscript</a></code> for details of encodings, as the internal
 code is shared between the drivers.  The native PDF encoding is given
 in file &lsquo;<span class="file">PDFDoc.enc</span>&rsquo;.
 </p>
@@ -233,7 +237,7 @@ specified size is (by default) centred on the rectangle given by the
 paper size: if either <code>width</code> or <code>height</code> is less
 than <code>0.1</code> or too large to give a total margin of 0.5 inch, it is
 reset to the corresponding paper dimension minus 0.5.  Thus if you
-want the default behaviour of <code><a href="postscript.html">postscript</a></code> use
+want the default behaviour of <code><a href="../../grDevices/help/postscript.html">postscript</a></code> use
 <code>pdf(paper = "a4r", width = 0, height = 0)</code> to centre the device region
 on a landscape A4 page with 0.25 inch margins.
 </p>
@@ -265,7 +269,7 @@ colorspace faster than in sRGB, and the plot files will be smaller.
 <h3>Conventions</h3>
 
 <p>This section describes the implementation of the conventions for
-graphics devices set out in the &ldquo;R Internals Manual&rdquo;.
+graphics devices set out in the &lsquo;R Internals&rsquo; manual.
 </p>
 
 <ul>
@@ -282,8 +286,8 @@ graphics devices set out in the &ldquo;R Internals Manual&rdquo;.
 of 0.01 enforced.
 </p>
 </li>
-<li><p> Circles of any radius are allowed.  Unless <code>useDingbats =
-      FALSE</code>, opaque circles of less than 10 big points radius are
+<li><p> Circles of any radius are allowed.  If <code>useDingbats =
+      TRUE</code>, opaque circles of less than 10 big points radius are
 rendered using char 108 in the Dingbats font: all semi-transparent
 and larger circles using a Bézier curve for each
 quadrant.
@@ -333,8 +337,9 @@ they may be offered for download as needed).
 </p>
 
 <dl>
-<dt>On some Unix-alike systems</dt><dd><p>the default plotting character
-<code>pch = 1</code> was
+<dt>On some Unix-alike systems:</dt><dd>
+<p>If <code>useDingbats = TRUE</code>,
+the default plotting character <code>pch = 1</code> was
 displayed in some PDF viewers incorrectly as a <code>"q"</code>
 character.  (These seem to be viewers based on the <span class="samp">poppler</span> PDF
 rendering library).  This may be due to incorrect or incomplete mapping
@@ -352,7 +357,7 @@ systems.
 </pre>
 <p>Some further workarounds for problems with symbol fonts on
 viewers using &lsquo;fontconfig&rsquo; are given in the &lsquo;Cairo Fonts&rsquo;
-section of the help for <code><a href="x11.html">X11</a></code>.
+section of the help for <code><a href="../../grDevices/help/X11.html">X11</a></code>.
 </p>
 </dd>
 <dt>On Windows:</dt><dd>
@@ -365,27 +370,28 @@ manage to display Dingbats.
 </dd>
 </dl>
 
-<p>There is a different font bug in the <code>pdf.js</code> viewer included
-in Firefox 19 and later: that maps Dingbats to the Symbol font and so
-displays symbols such <code>pch = 1</code> as lambda.
+<p>There was a different font bug in the <code>pdf.js</code> viewer included
+in Firefox: that mapped Dingbats to the Symbol font and so displayed
+symbols such <code>pch = 1</code> as lambda.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="postscriptFonts.html">pdfFonts</a></code>, <code><a href="pdf.options.html">pdf.options</a></code>,
-<code><a href="embedFonts.html">embedFonts</a></code>,
-<code><a href="Devices.html">Devices</a></code>,
-<code><a href="postscript.html">postscript</a></code>.
+<p><code><a href="../../grDevices/help/pdfFonts.html">pdfFonts</a></code>, <code><a href="../../grDevices/help/pdf.options.html">pdf.options</a></code>,
+<code><a href="../../grDevices/help/embedFonts.html">embedFonts</a></code>,
+<code><a href="../../grDevices/help/Devices.html">Devices</a></code>,
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code>.
 </p>
-<p><code><a href="cairo.html">cairo_pdf</a></code> and (on macOS only) <code><a href="quartz.html">quartz</a></code>
+<p><code><a href="../../grDevices/help/cairo_pdf.html">cairo_pdf</a></code> and (on macOS only) <code><a href="../../grDevices/help/quartz.html">quartz</a></code>
 for other devices that can produce PDF.
 </p>
 <p>More details of font families and encodings and especially handling
 text in a non-Latin-1 encoding and embedding fonts can be found in
 </p>
-<p>Paul Murrell and Brian Ripley (2006) Non-standard fonts in PostScript
-and PDF graphics. <em>R News</em>, 6(2):41&ndash;47.
+<p>Paul Murrell and Brian Ripley (2006).
+&ldquo;Non-standard fonts in PostScript and PDF graphics.&rdquo;
+<em>R News</em>, <b>6</b>(2), 41&ndash;47.
 <a href="https://www.r-project.org/doc/Rnews/Rnews_2006-2.pdf">https://www.r-project.org/doc/Rnews/Rnews_2006-2.pdf</a>.
 </p>
 
@@ -417,5 +423,5 @@ TestChars("ISOLatin2", family = "URWHelvetica")
 ## works well for viewing in gs-based viewers, and often in xpdf.
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

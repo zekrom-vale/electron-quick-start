@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Class '&quot;envRefClass&quot;'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for envRefClass-class {methods}"><tr><td>envRefClass-class {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -29,9 +30,9 @@ usually subject to change.
 
 <p>This class implements basic reference-style semantics for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 objects.  Objects normally do not come directly from this class, but
-from subclasses defined by a call to <code><a href="refClass.html">setRefClass</a></code>.
+from subclasses defined by a call to <code><a href="../../methods/help/setRefClass.html">setRefClass</a></code>.
 The documentation below is technical background describing the implementation, but applications
-should use the interface documented under <code><a href="refClass.html">setRefClass</a></code>,
+should use the interface documented under <code><a href="../../methods/help/setRefClass.html">setRefClass</a></code>,
 in particular the <code>$</code> operator and field accessor functions as
 described there.
 </p>
@@ -44,10 +45,10 @@ according to the mechanism used for implementing references, fields,
 and class methods.
 Each version of this mechanism is defined by a <em>basic reference
 class</em>, which must implement a set of methods and provide some
-further information used by <code><a href="refClass.html">setRefClass</a></code>.
+further information used by <code><a href="../../methods/help/setRefClass.html">setRefClass</a></code>.
 </p>
 <p>The required methods are for operators <code>$</code> and <code>$&lt;-</code> to
-get and set a field in an object, and for <code><a href="new.html">initialize</a></code> to
+get and set a field in an object, and for <code><a href="../../methods/help/initialize.html">initialize</a></code> to
 initialize objects.
 </p>
 <p>To support these methods, the basic reference class needs to have some
@@ -58,7 +59,7 @@ is, changes made to the contents of an object are global, seen by any
 code accessing that object, rather than only local to the function
 call where the change takes place.
 As described below, class <code>envRefClass</code> implements reference
-semantics through specialized use of <a href="EnvironmentClass.html">environment</a>
+semantics through specialized use of <a href="../../methods/help/environment-class.html">environment</a>
 objects.
 Other basic reference classes may use an interface to a language such
 as Java or C++ using reference semantics for classes.
@@ -74,7 +75,7 @@ the sense that fields are accessed by &ldquo;get&rdquo; and &ldquo;set&rdquo;
 methods.  The basic reference class provides this facility by setting
 the <code>"fieldAccessorGenerator"</code> slot in its definition to a
 function of one variable.
-This function will be called by <code><a href="refClass.html">setRefClass</a></code> with the
+This function will be called by <code><a href="../../methods/help/setRefClass.html">setRefClass</a></code> with the
 vector of field names as arguments.
 The generator function must return a list of defined accessor
 functions.
@@ -113,5 +114,5 @@ not needed in order to use existing reference classes.
 <p>John Chambers
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

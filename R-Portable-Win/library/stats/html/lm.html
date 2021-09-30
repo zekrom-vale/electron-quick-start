@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fitting Linear Models</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for lm {stats}"><tr><td>lm {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -12,7 +13,7 @@
 <p><code>lm</code> is used to fit linear models.
 It can be used to carry out regression,
 single stratum analysis of variance and
-analysis of covariance (although <code><a href="aov.html">aov</a></code> may provide a more
+analysis of covariance (although <code><a href="../../stats/help/aov.html">aov</a></code> may provide a more
 convenient interface for these).
 </p>
 
@@ -31,7 +32,7 @@ lm(formula, data, subset, weights, na.action,
 <table summary="R argblock">
 <tr valign="top"><td><code>formula</code></td>
 <td>
-<p>an object of class <code>"<a href="formula.html">formula</a>"</code> (or one that
+<p>an object of class <code>"<a href="../../stats/help/formula.html">formula</a>"</code> (or one that
 can be coerced to that class): a symbolic description of the
 model to be fitted.  The details of model specification are given
 under &lsquo;Details&rsquo;.</p>
@@ -62,9 +63,9 @@ ordinary least squares is used.  See also &lsquo;Details&rsquo;,</p>
 <p>a function which indicates what should happen
 when the data contain <code>NA</code>s.  The default is set by
 the <code>na.action</code> setting of <code><a href="../../base/html/options.html">options</a></code>, and is
-<code><a href="na.fail.html">na.fail</a></code> if that is unset.  The &lsquo;factory-fresh&rsquo;
-default is <code><a href="na.fail.html">na.omit</a></code>.  Another possible value is
-<code>NULL</code>, no action.  Value <code><a href="na.fail.html">na.exclude</a></code> can be useful.</p>
+<code><a href="../../stats/help/na.fail.html">na.fail</a></code> if that is unset.  The &lsquo;factory-fresh&rsquo;
+default is <code><a href="../../stats/help/na.omit.html">na.omit</a></code>.  Another possible value is
+<code>NULL</code>, no action.  Value <code><a href="../../stats/help/na.exclude.html">na.exclude</a></code> can be useful.</p>
 </td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
@@ -87,16 +88,16 @@ not in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b>
 <tr valign="top"><td><code>contrasts</code></td>
 <td>
 <p>an optional list. See the <code>contrasts.arg</code>
-of <code><a href="model.matrix.html">model.matrix.default</a></code>.</p>
+of <code><a href="../../stats/help/model.matrix.default.html">model.matrix.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>offset</code></td>
 <td>
 <p>this can be used to specify an <em>a priori</em> known
 component to be included in the linear predictor during fitting.
 This should be <code>NULL</code> or a numeric vector or matrix of extents
-matching those of the response.  One or more <code><a href="offset.html">offset</a></code> terms can be
+matching those of the response.  One or more <code><a href="../../stats/help/offset.html">offset</a></code> terms can be
 included in the formula instead or as well, and if more than one are
-specified their sum is used.  See <code><a href="model.extract.html">model.offset</a></code>.</p>
+specified their sum is used.  See <code><a href="../../stats/help/model.offset.html">model.offset</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -120,20 +121,20 @@ with all terms in <code>second</code>.  The specification <code>first*second</co
 indicates the <em>cross</em> of <code>first</code> and <code>second</code>.  This is
 the same as <code>first + second + first:second</code>.
 </p>
-<p>If the formula includes an <code><a href="offset.html">offset</a></code>, this is evaluated and
+<p>If the formula includes an <code><a href="../../stats/help/offset.html">offset</a></code>, this is evaluated and
 subtracted from the response.
 </p>
 <p>If <code>response</code> is a matrix a linear model is fitted separately by
 least-squares to each column of the matrix.
 </p>
-<p>See <code><a href="model.matrix.html">model.matrix</a></code> for some further details.  The terms in
+<p>See <code><a href="../../stats/help/model.matrix.html">model.matrix</a></code> for some further details.  The terms in
 the formula will be re-ordered so that main effects come first,
 followed by the interactions, all second-order, all third-order and so
 on: to avoid this pass a <code>terms</code> object as the formula (see
-<code><a href="aov.html">aov</a></code> and <code>demo(glm.vr)</code> for an example).
+<code><a href="../../stats/help/aov.html">aov</a></code> and <code>demo(glm.vr)</code> for an example).
 </p>
 <p>A formula has an implied intercept term.  To remove this use either
-<code>y ~ x - 1</code> or <code>y ~ 0 + x</code>.  See <code><a href="formula.html">formula</a></code> for
+<code>y ~ x - 1</code> or <code>y ~ 0 + x</code>.  See <code><a href="../../stats/help/formula.html">formula</a></code> for
 more details of allowed formulae.
 </p>
 <p>Non-<code>NULL</code> <code>weights</code> can be used to indicate that
@@ -149,7 +150,7 @@ degrees of freedom may be suboptimal; in the case of replication
 weights, even wrong. Hence, standard errors and analysis of variance
 tables should be treated with care.
 </p>
-<p><code>lm</code> calls the lower level functions <code><a href="lmfit.html">lm.fit</a></code>, etc,
+<p><code>lm</code> calls the lower level functions <code><a href="../../stats/help/lm.fit.html">lm.fit</a></code>, etc,
 see below, for the actual numerical computations.  For programming
 only, you may consider doing likewise.
 </p>
@@ -164,7 +165,7 @@ in the same way as variables in <code>formula</code>, that is first in
 <p><code>lm</code> returns an object of <code><a href="../../base/html/class.html">class</a></code> <code>"lm"</code> or for
 multiple responses of class <code>c("mlm", "lm")</code>.
 </p>
-<p>The functions <code>summary</code> and <code><a href="anova.html">anova</a></code> are used to
+<p>The functions <code>summary</code> and <code><a href="../../stats/help/anova.html">anova</a></code> are used to
 obtain and print a summary and analysis of variance table of the
 results.  The generic accessor functions <code>coefficients</code>,
 <code>effects</code>, <code>fitted.values</code> and <code>residuals</code> extract
@@ -204,7 +205,7 @@ following components:
 </td></tr>
 <tr valign="top"><td><code>terms</code></td>
 <td>
-<p>the <code><a href="terms.html">terms</a></code> object used.</p>
+<p>the <code><a href="../../stats/help/terms.html">terms</a></code> object used.</p>
 </td></tr>
 <tr valign="top"><td><code>contrasts</code></td>
 <td>
@@ -234,13 +235,13 @@ factors used in fitting.</p>
 <tr valign="top"><td><code>na.action</code></td>
 <td>
 <p>(where relevant) information returned by
-<code><a href="model.frame.html">model.frame</a></code> on the special handling of <code>NA</code>s.</p>
+<code><a href="../../stats/help/model.frame.html">model.frame</a></code> on the special handling of <code>NA</code>s.</p>
 </td></tr>
 </table>
 <p>In addition, non-null fits will have components <code>assign</code>,
 <code>effects</code> and (unless not requested) <code>qr</code> relating to the linear
 fit, for use by extractor functions such as <code>summary</code> and
-<code><a href="effects.html">effects</a></code>.
+<code><a href="../../stats/help/effects.html">effects</a></code>.
 </p>
 
 
@@ -257,7 +258,7 @@ the result would no longer be a regular time series.)
 <p>Even if the time series attributes are retained, they are not used to
 line up series, so that the time shift of a lagged or differenced
 regressor would be ignored.  It is good practice to prepare a
-<code>data</code> argument by <code><a href="ts.union.html">ts.intersect</a>(..., dframe = TRUE)</code>,
+<code>data</code> argument by <code><a href="../../stats/help/ts.intersect.html">ts.intersect</a>(..., dframe = TRUE)</code>,
 then apply a suitable <code>na.action</code> to that data frame and call
 <code>lm</code> with <code>na.action = NULL</code> so that residuals and fitted
 values are time series.
@@ -267,7 +268,7 @@ values are time series.
 <h3>Note</h3>
 
 <p>Offsets specified by <code>offset</code> will not be included in predictions
-by <code><a href="predict.lm.html">predict.lm</a></code>, whereas those specified by an offset term
+by <code><a href="../../stats/help/predict.lm.html">predict.lm</a></code>, whereas those specified by an offset term
 in the formula will be.
 </p>
 
@@ -296,21 +297,21 @@ doi: <a href="https://doi.org/10.2307/2346786">10.2307/2346786</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="summary.lm.html">summary.lm</a></code> for summaries and <code><a href="anova.lm.html">anova.lm</a></code> for
-the ANOVA table; <code><a href="aov.html">aov</a></code> for a different interface.
+<p><code><a href="../../stats/help/summary.lm.html">summary.lm</a></code> for summaries and <code><a href="../../stats/help/anova.lm.html">anova.lm</a></code> for
+the ANOVA table; <code><a href="../../stats/help/aov.html">aov</a></code> for a different interface.
 </p>
-<p>The generic functions <code><a href="coef.html">coef</a></code>, <code><a href="effects.html">effects</a></code>,
-<code><a href="residuals.html">residuals</a></code>, <code><a href="fitted.values.html">fitted</a></code>, <code><a href="vcov.html">vcov</a></code>.
+<p>The generic functions <code><a href="../../stats/help/coef.html">coef</a></code>, <code><a href="../../stats/help/effects.html">effects</a></code>,
+<code><a href="../../stats/help/residuals.html">residuals</a></code>, <code><a href="../../stats/help/fitted.html">fitted</a></code>, <code><a href="../../stats/help/vcov.html">vcov</a></code>.
 </p>
-<p><code><a href="predict.lm.html">predict.lm</a></code> (via <code><a href="predict.html">predict</a></code>) for prediction,
+<p><code><a href="../../stats/help/predict.lm.html">predict.lm</a></code> (via <code><a href="../../stats/help/predict.html">predict</a></code>) for prediction,
 including confidence and prediction intervals;
-<code><a href="confint.html">confint</a></code> for confidence intervals of <em>parameters</em>.
+<code><a href="../../stats/help/confint.html">confint</a></code> for confidence intervals of <em>parameters</em>.
 </p>
-<p><code><a href="lm.influence.html">lm.influence</a></code> for regression diagnostics, and
-<code><a href="glm.html">glm</a></code> for <b>generalized</b> linear models.
+<p><code><a href="../../stats/help/lm.influence.html">lm.influence</a></code> for regression diagnostics, and
+<code><a href="../../stats/help/glm.html">glm</a></code> for <b>generalized</b> linear models.
 </p>
 <p>The underlying low level functions,
-<code><a href="lmfit.html">lm.fit</a></code> for plain, and <code><a href="lmfit.html">lm.wfit</a></code> for weighted
+<code><a href="../../stats/help/lm.fit.html">lm.fit</a></code> for plain, and <code><a href="../../stats/help/lm.wfit.html">lm.wfit</a></code> for weighted
 regression fitting.
 </p>
 <p>More <code>lm()</code> examples are available e.g., in
@@ -348,5 +349,5 @@ par(opar)
 ### less simple examples in "See Also" above
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

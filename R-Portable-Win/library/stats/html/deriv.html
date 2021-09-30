@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Symbolic and Algorithmic Derivatives of Simple Expressions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for deriv {stats}"><tr><td>deriv {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -80,7 +81,7 @@ should be calculated and incorporated in the return value.</p>
 derivatives.
 </p>
 <p><code>deriv</code> is a <em>generic</em> function with a default and a
-<code><a href="formula.html">formula</a></code> method.  It returns a <code><a href="../../base/html/call.html">call</a></code> for
+<code><a href="../../stats/help/formula.html">formula</a></code> method.  It returns a <code><a href="../../base/html/call.html">call</a></code> for
 computing the <code>expr</code> and its (partial) derivatives,
 simultaneously.  It uses so-called <em>algorithmic derivatives</em>.  If
 <code>function.arg</code> is a function, its arguments can have default
@@ -142,7 +143,7 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="nlm.html">nlm</a></code> and <code><a href="optim.html">optim</a></code> for numeric minimization
+<p><code><a href="../../stats/help/nlm.html">nlm</a></code> and <code><a href="../../stats/help/optim.html">optim</a></code> for numeric minimization
 which could make use of derivatives,
 </p>
 
@@ -175,7 +176,7 @@ eval(dxy)
 eval(D.sc)
 
 ## function returned:
-deriv((y ~ sin(cos(x) * y)), c("x","y"), func = TRUE)
+deriv((y ~ sin(cos(x) * y)), c("x","y"), function.arg = TRUE)
 
 ## function with defaulted arguments:
 (fx &lt;- deriv(y ~ b0 + b1 * 2^(-x/th), c("b0", "b1", "th"),
@@ -227,5 +228,5 @@ stopifnot(identical(D(quote(log2 (x^2)), "x"),
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

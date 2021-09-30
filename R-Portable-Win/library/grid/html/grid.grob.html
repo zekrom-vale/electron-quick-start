@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create Grid Graphical Objects, aka &quot;Grob&quot;s</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for grid.grob {grid}"><tr><td>grid.grob {grid}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -57,17 +58,17 @@ grob on the display list and/or as a child of another grob. </p>
 </td></tr>
 <tr valign="top"><td><code>childrenvp</code></td>
 <td>
-<p>a <code><a href="viewport.html">viewport</a></code> object (or <code>NULL</code>).</p>
+<p>a <code><a href="../../grid/help/viewport.html">viewport</a></code> object (or <code>NULL</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>gp</code></td>
 <td>
-<p>A gpar object, typically the output
-from a call to the function <code>gpar</code>.  This is basically
+<p>A <code>"gpar"</code> object, typically the output
+from a call to the function <code><a href="../../grid/help/gpar.html">gpar</a></code>.  This is basically
 a list of graphical parameter settings.</p>
 </td></tr>
 <tr valign="top"><td><code>vp</code></td>
 <td>
-<p>a <code><a href="viewport.html">viewport</a></code> object (or <code>NULL</code>).</p>
+<p>a <code><a href="../../grid/help/viewport.html">viewport</a></code> object (or <code>NULL</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>cl</code></td>
 <td>
@@ -94,26 +95,26 @@ one of these.
 item.  These basic classes provide default behaviour for
 validating, drawing,
 and modifying graphical objects.  Both <code>grob()</code> and
-<code>gTree()</code> call the function <code><a href="validDetails.html">validDetails</a></code> to check
+<code>gTree()</code> call the function <code><a href="../../grid/help/validDetails.html">validDetails</a></code> to check
 that the object returned is internally coherent.
 </p>
 <p>A <code>"gTree"</code> can have other grobs as children;  when a gTree is drawn, it
 draws all of its children.  Before drawing its children, a gTree
 pushes its <code>childrenvp</code> slot and then navigates back up (calls
-<code><a href="viewports.html">upViewport</a></code>) so that the children can specify their location
-within the <code>childrenvp</code> via a <code><a href="vpPath.html">vpPath</a></code>.
+<code><a href="../../grid/help/upViewport.html">upViewport</a></code>) so that the children can specify their location
+within the <code>childrenvp</code> via a <code><a href="../../grid/help/vpPath.html">vpPath</a></code>.
 </p>
 <p>Grob names need not be unique in general, but all children of a
 gTree must have different names.
 A grob name can be any string, though it is not
-advisable to use the <code><a href="gPath.html">gPath</a></code> separator (currently
+advisable to use the <code><a href="../../grid/help/gPath.html">gPath</a></code> separator (currently
 <code>::</code>) in grob names.
 </p>
 <p>The function <code>childNames</code> returns the names of the grobs
 which are children of a gTree.
 </p>
-<p>All grid primitives (<code><a href="grid.lines.html">grid.lines</a></code>, <code>grid.rect</code>, ...)
-and some higher-level grid components (e.g., <code><a href="grid.xaxis.html">grid.xaxis</a></code>
+<p>All grid primitives (<code><a href="../../grid/help/grid.lines.html">grid.lines</a></code>, <code>grid.rect</code>, ...)
+and some higher-level grid components (e.g., <code><a href="../../grid/help/grid.xaxis.html">grid.xaxis</a></code>
 and <code>grid.yaxis</code>) are derived from these classes.
 </p>
 <p><code>grobTree</code> is just a convenient wrapper for <code>gTree</code>
@@ -137,10 +138,10 @@ unnamed arguments become children of the gTree).
 
 <h3>See Also</h3>
 
-<p><code><a href="grid.draw.html">grid.draw</a></code>,
-<code><a href="grid.edit.html">grid.edit</a></code>,
-<code><a href="grid.get.html">grid.get</a></code>.
+<p><code><a href="../../grid/help/grid.draw.html">grid.draw</a></code>,
+<code><a href="../../grid/help/grid.edit.html">grid.edit</a></code>,
+<code><a href="../../grid/help/grid.get.html">grid.get</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>grid</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grid</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

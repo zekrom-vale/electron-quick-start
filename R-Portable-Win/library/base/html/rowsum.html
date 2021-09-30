@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Give Column Sums of a Matrix or Data Frame, Based on a...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rowsum {base}"><tr><td>rowsum {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -70,8 +71,8 @@ except when there are very many distinct values of <code>group</code> and
 <p>The original function was written by Terry Therneau, but this is a
 new implementation using hashing that is much faster for large matrices.
 </p>
-<p>To sum over all the rows of a matrix (ie, a single <code>group</code>) use
-<code><a href="colSums.html">colSums</a></code>, which should be even faster.
+<p>To sum over all the rows of a matrix (i.e., a single <code>group</code>) use
+<code><a href="../../base/help/colSums.html">colSums</a></code>, which should be even faster.
 </p>
 <p>For integer arguments, over/underflow in forming the sum results in
 <code>NA</code>.
@@ -87,7 +88,7 @@ unique value of <code>group</code>.
 
 <h3>See Also</h3>
 
-<p><code><a href="tapply.html">tapply</a></code>, <code><a href="../../stats/html/aggregate.html">aggregate</a></code>, <code><a href="colSums.html">rowSums</a></code>
+<p><code><a href="../../base/help/tapply.html">tapply</a></code>, <code><a href="../../stats/html/aggregate.html">aggregate</a></code>, <code><a href="../../base/help/rowSums.html">rowSums</a></code>
 </p>
 
 
@@ -105,5 +106,5 @@ t(sapply(split(as.data.frame(x), group), colSums))
 aggregate(x, list(group), sum)[-1]
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

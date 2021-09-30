@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Adjust for Missing Values</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for naresid {stats}"><tr><td>naresid {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,9 +29,9 @@ napredict(omit, x, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>omit</code></td>
 <td>
-<p>an object produced by an <code><a href="na.action.html">na.action</a></code> function,
+<p>an object produced by an <code><a href="../../stats/help/na.action.html">na.action</a></code> function,
 typically the <code>"na.action"</code> attribute of the result of
-<code><a href="na.fail.html">na.omit</a></code> or <code><a href="na.fail.html">na.exclude</a></code>.</p>
+<code><a href="../../stats/help/na.omit.html">na.omit</a></code> or <code><a href="../../stats/help/na.exclude.html">na.exclude</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>x</code></td>
 <td>
@@ -46,13 +47,13 @@ missing value information.</p>
 
 <h3>Details</h3>
 
-<p>These are utility functions used to allow <code><a href="predict.html">predict</a></code>,
-<code><a href="fitted.values.html">fitted</a></code> and <code><a href="residuals.html">residuals</a></code> methods for modelling
+<p>These are utility functions used to allow <code><a href="../../stats/help/predict.html">predict</a></code>,
+<code><a href="../../stats/help/fitted.html">fitted</a></code> and <code><a href="../../stats/help/residuals.html">residuals</a></code> methods for modelling
 functions to compensate for the removal of <code>NA</code>s in the fitting
 process.  They are used by the default, <code>"lm"</code>, <code>"glm"</code> and
 <code>"nls"</code> methods, and by further methods in packages <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>,
 <a href="https://CRAN.R-project.org/package=rpart"><span class="pkg">rpart</span></a> and <a href="https://CRAN.R-project.org/package=survival"><span class="pkg">survival</span></a>.  Also used for the scores returned by
-<code><a href="factanal.html">factanal</a></code>, <code><a href="prcomp.html">prcomp</a></code> and <code><a href="princomp.html">princomp</a></code>.
+<code><a href="../../stats/help/factanal.html">factanal</a></code>, <code><a href="../../stats/help/prcomp.html">prcomp</a></code> and <code><a href="../../stats/help/princomp.html">princomp</a></code>.
 </p>
 <p>The default methods do nothing.  The default method for the <code>na.exclude</code>
 action is to pad the object with <code>NA</code>s in the correct positions to
@@ -60,7 +61,7 @@ have the same number of rows as the original data frame.
 </p>
 <p>Currently <code>naresid</code> and <code>napredict</code> are identical, but
 future methods need not be.  <code>naresid</code> is used for residuals, and
-<code>napredict</code> for fitted values, predictions and <code><a href="weights.html">weights</a></code>.
+<code>napredict</code> for fitted values, predictions and <code><a href="../../stats/help/weights.html">weights</a></code>.
 </p>
 
 
@@ -77,5 +78,5 @@ versions of these functions that had an <code>na.omit</code> action
 equivalent to that now used for <code>na.exclude</code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

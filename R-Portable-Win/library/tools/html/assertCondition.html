@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Asserting Error Conditions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for assertCondition {tools}"><tr><td>assertCondition {tools}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -22,8 +23,8 @@ an error is signalled.
 <h3>Usage</h3>
 
 <pre>
-assertError(expr, verbose = FALSE)
-assertWarning(expr, verbose = FALSE)
+assertError(expr, classes = "error", verbose = FALSE)
+assertWarning(expr, classes = "warning", verbose = FALSE)
 assertCondition(expr, ..., .exprString = , verbose = FALSE)
 </pre>
 
@@ -36,11 +37,11 @@ assertCondition(expr, ..., .exprString = , verbose = FALSE)
 <p>an unevaluated <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expression which will be evaluated via
 <code><a href="../../base/html/conditions.html">tryCatch</a>(expr, ..)</code>.</p>
 </td></tr>
-<tr valign="top"><td><code>...</code></td>
+<tr valign="top"><td><code>classes, ...</code></td>
 <td>
 <p><code><a href="../../base/html/character.html">character</a></code> strings corresponding to the
 classes of the conditions that would satisfy the assertion; e.g., <code>"error"</code> or
-<code>"warning"</code>. If none are specified, any condition will
+<code>"warning"</code>.  If none are specified, any condition will
 satisfy the assertion.  See the details section. </p>
 </td></tr>
 <tr valign="top"><td><code>.exprString</code></td>
@@ -136,5 +137,5 @@ assertCondition( assertCondition(matrix(1:8, 4,3), "error"),
                 "error")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>tools</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>tools</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Split the Elements of a Character Vector</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for strsplit {base}"><tr><td>strsplit {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -35,7 +36,7 @@ inputs, including a factor, will give an error.
 <td>
 
 <p>character vector (or object which can be coerced to such)
-containing <a href="regex.html">regular expression</a>(s) (unless <code>fixed = TRUE</code>)
+containing <a href="../../base/help/regular+20expression.html">regular expression</a>(s) (unless <code>fixed = TRUE</code>)
 to use for splitting.  If empty matches occur, in particular if
 <code>split</code> has length 0, <code>x</code> is split into single characters.
 If <code>split</code> has length greater than 1, it is re-cycled along
@@ -59,7 +60,7 @@ use regular expressions.  Has priority over <code>perl</code>.
 byte-by-byte rather than character-by-character, and inputs with
 marked encodings are not converted.  This is forced (with a warning)
 if any input is found which is marked as <code>"bytes"</code>
-(see <code><a href="Encoding.html">Encoding</a></code>).</p>
+(see <code><a href="../../base/help/Encoding.html">Encoding</a></code>).</p>
 </td></tr>
 </table>
 
@@ -108,8 +109,10 @@ as with the match removed.
 contains the vector of splits of <code>x[i]</code>.
 </p>
 <p>If any element of <code>x</code> or <code>split</code> is declared to be in UTF-8
-(see <code><a href="Encoding.html">Encoding</a></code>), all non-ASCII character strings in the
+(see <code><a href="../../base/help/Encoding.html">Encoding</a></code>), all non-ASCII character strings in the
 result will be in UTF-8 and have their encoding declared as UTF-8.
+(This also holds if any element is declared to be Latin-1 except in a
+Latin-1 locale.)
 For <code>perl = TRUE, useBytes = FALSE</code> all non-ASCII strings in a
 multibyte locale are translated to UTF-8.
 </p>
@@ -117,11 +120,11 @@ multibyte locale are translated to UTF-8.
 
 <h3>See Also</h3>
 
-<p><code><a href="paste.html">paste</a></code> for the reverse,
-<code><a href="grep.html">grep</a></code> and <code><a href="grep.html">sub</a></code> for string search and
-manipulation; also <code><a href="nchar.html">nchar</a></code>, <code><a href="substr.html">substr</a></code>.
+<p><code><a href="../../base/help/paste.html">paste</a></code> for the reverse,
+<code><a href="../../base/help/grep.html">grep</a></code> and <code><a href="../../base/help/sub.html">sub</a></code> for string search and
+manipulation; also <code><a href="../../base/help/nchar.html">nchar</a></code>, <code><a href="../../base/help/substr.html">substr</a></code>.
 </p>
-<p>&lsquo;<a href="regex.html">regular expression</a>&rsquo; for the details of the pattern
+<p>&lsquo;<a href="../../base/help/regular+20expression.html">regular expression</a>&rsquo; for the details of the pattern
 specification.
 </p>
 <p>Option <code>PCRE_use_JIT</code> controls the details when <code>perl = TRUE</code>.
@@ -166,5 +169,5 @@ strsplit("", " ")[[1]]    # character(0)
 strsplit(" ", " ")[[1]]   # [1] ""
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

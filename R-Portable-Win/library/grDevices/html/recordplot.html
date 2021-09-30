@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Record and Replay Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for recordPlot {grDevices}"><tr><td>recordPlot {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -86,7 +87,7 @@ or something worse.
 
 <p>Replay of a recorded plot may not produce the correct result
 (or may just fail) if the display list contains a call to
-<code><a href="recordGraphics.html">recordGraphics</a></code> which in turn contains an expression
+<code><a href="../../grDevices/help/recordGraphics.html">recordGraphics</a></code> which in turn contains an expression
 that calls code from a non-base package other than <span class="pkg">graphics</span>
 or <span class="pkg">grid</span>.  The most well-known example of this is a plot
 drawn with the package <a href="https://CRAN.R-project.org/package=ggplot2"><span class="pkg">ggplot2</span></a>.  One solution is to load
@@ -103,9 +104,9 @@ replay in one R session a plot that was recorded in a different R session.
 
 <h3>See Also</h3>
 
-<p>The displaylist can be turned on and off using <code><a href="dev2.html">dev.control</a></code>.
+<p>The displaylist can be turned on and off using <code><a href="../../grDevices/help/dev.control.html">dev.control</a></code>.
 Initially recording is on for screen devices, and off for print devices.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

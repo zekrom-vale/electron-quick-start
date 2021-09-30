@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: An Etags-like Tagging Utility for R</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rtags {utils}"><tr><td>rtags {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -24,7 +25,8 @@ rtags(path = ".", pattern = "\\.[RrSs]$",
                        recursive = recursive),
       keep.re = NULL,
       ofile = "", append = FALSE,
-      verbose = getOption("verbose"))
+      verbose = getOption("verbose"),
+      type = c("etags", "ctags"))
 </pre>
 
 
@@ -58,8 +60,8 @@ extension <code>.R</code> inside a directory named <code>R</code>.
 <td>
 <p> Passed on to <code><a href="../../base/html/cat.html">cat</a></code> as the <code>file</code>
 argument; typically the output file where the tags will be written
-(<code>"TAGS"</code> by convention).  By default, the output is written to
-the R console (unless redirected).
+(<code>"TAGS"</code> or <code>"tags"</code> by convention).  By default, the
+output is written to the R console (unless redirected).
 </p>
 </td></tr>
 <tr valign="top"><td><code>append</code></td>
@@ -72,6 +74,13 @@ an existing file, or append to it.
 <td>
 <p> Logical.  If <code>TRUE</code>, file names are echoed to the
 R console as they are processed.
+</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p> Character string specifying whether emacs style
+(<code>"etags"</code>) or vi style (<code>"ctags"</code>) tags are to be
+generated.
 </p>
 </td></tr>
 </table>
@@ -93,8 +102,12 @@ but this too is insufficient.
 </p>
 <p>The <code>rtags</code> function is intended to be a tagging utility for R
 code.  It parses R code files (using R's parser) and produces tags in
-Emacs' etags format.  Support for vi-style tags is currently absent,
-but should not be difficult to add.
+both etags and ctags formats.  The support for vi-style ctags is
+rudimentary, and was adapted from a patch by Neal Fultz; see
+<a href="https://bugs.R-project.org/bugzilla3/show_bug.cgi?id=17214">PR#17214</a>.
+</p>
+<p>It may be more convenient to use the command-line wrapper script
+<code>R CMD rtags</code>.
 </p>
 
 
@@ -132,5 +145,5 @@ rtags("/path/to/src/repository",
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

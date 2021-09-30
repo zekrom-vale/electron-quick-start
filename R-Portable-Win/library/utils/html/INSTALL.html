@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Install Add-on Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for INSTALL {utils}"><tr><td>INSTALL {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -73,7 +74,7 @@ directory, optionally compressed by <code>gzip</code>, <code>bzip2</code>,
 Finally, zipped binary packages (as created by
 <code>R CMD INSTALL --build</code>) can be supplied.
 </p>
-<p>Tarballs are by default unpackaged by the internal <code><a href="untar.html">untar</a></code>
+<p>Tarballs are by default unpackaged by the internal <code><a href="../../utils/help/untar.html">untar</a></code>
 function: if needed an external <code>tar</code> command can be specified
 by the environment variable <span class="env">R_INSTALL_TAR</span>: please ensure that it
 can handle the type of compression used on the tarball.  (This is
@@ -94,7 +95,7 @@ install is interrupted from the keyboard: after cleaning up the script
 terminates.
 </p>
 <p>For details of the locking which is done, see the section
-&lsquo;Locking&rsquo; in the help for <code><a href="install.packages.html">install.packages</a></code>.
+&lsquo;Locking&rsquo; in the help for <code><a href="../../utils/help/install.packages.html">install.packages</a></code>.
 </p>
 <p>Option <span class="option">--build</span> can be used to zip up the installed package
 for distribution.
@@ -107,6 +108,12 @@ override this.
 (see the <code>keep.source</code> argument to <code><a href="../../base/html/source.html">source</a></code>): this
 can be enabled by the option <span class="option">--with-keep.source</span> or by setting
 environment variable <span class="env">R_KEEP_PKG_SOURCE</span> to <code>yes</code>.
+</p>
+<p>Specifying the <span class="option">--install-tests</span> option copies the contents
+of the &lsquo;<span class="file">tests</span>&rsquo; directory into the package installation. If the
+<span class="env">R_ALWAYS_INSTALL_TESTS</span> environment variable is set to a true
+value, the tests will be installed even if <span class="option">--install-tests</span> is
+omitted.
 </p>
 <p>Use <code>R CMD INSTALL --help</code> for concise usage information,
 including all the available options.
@@ -169,19 +176,20 @@ effects the last one will win.
 
 <h3>See Also</h3>
 
-<p><code><a href="REMOVE.html">REMOVE</a></code>;
+<p><code><a href="../../utils/help/REMOVE.html">REMOVE</a></code>;
 <code><a href="../../base/html/libPaths.html">.libPaths</a></code> for information on using several library trees;
-<code><a href="install.packages.html">install.packages</a></code> for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-level installation of packages;
-<code><a href="update.packages.html">update.packages</a></code> for automatic update of packages using
+<code><a href="../../utils/help/install.packages.html">install.packages</a></code> for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-level installation of packages;
+<code><a href="../../utils/help/update.packages.html">update.packages</a></code> for automatic update of packages using
 the Internet or a local repository.
 </p>
-<p>The section on &ldquo;Add-on packages&rdquo; in &ldquo;R Installation and
-Administration&rdquo; and the chapter on &ldquo;Creating R packages&rdquo; in
-&ldquo;Writing <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> Extensions&rdquo;
+<p>The section on &lsquo;Add-on packages&rsquo; in
+&lsquo;R Installation and Administration&rsquo;
+and the chapter on &lsquo;Creating R packages&rsquo; in
+&lsquo;Writing R Extensions&rsquo;
 (on the Help menu in <code>RGui</code>),
-<em>via</em> <code><a href="RShowDoc.html">RShowDoc</a></code> or in the &lsquo;<span class="file">doc/manual</span>&rsquo;
+<em>via</em> <code><a href="../../utils/help/RShowDoc.html">RShowDoc</a></code> or in the &lsquo;<span class="file">doc/manual</span>&rsquo;
 subdirectory of the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> source tree.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

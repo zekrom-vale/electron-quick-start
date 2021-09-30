@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Step Functions - Creation and Class</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for stepfun {stats}"><tr><td>stepfun {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -70,12 +71,12 @@ the function values <em>between</em> the x values.</p>
 <tr valign="top"><td><code>f</code></td>
 <td>
 <p>a number between 0 and 1, indicating how interpolation outside
-the given x values should happen.  See <code><a href="approxfun.html">approxfun</a></code>.</p>
+the given x values should happen.  See <code><a href="../../stats/help/approxfun.html">approxfun</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>ties</code></td>
 <td>
 <p>Handling of tied <code>x</code> values. Either a function or
-the string <code>"ordered"</code>.  See  <code><a href="approxfun.html">approxfun</a></code>.</p>
+the string <code>"ordered"</code>.  See  <code><a href="../../stats/help/approxfun.html">approxfun</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>right</code></td>
 <td>
@@ -103,7 +104,7 @@ the right (and open on the left) or vice versa.</p>
 </p>
 <p>There are methods available for summarizing (<code>"summary(.)"</code>),
 representing (<code>"print(.)"</code>) and plotting  (<code>"plot(.)"</code>, see
-<code><a href="plot.stepfun.html">plot.stepfun</a></code>) <code>"stepfun"</code> objects.
+<code><a href="../../stats/help/plot.stepfun.html">plot.stepfun</a></code>) <code>"stepfun"</code> objects.
 </p>
 <p>The <code><a href="../../base/html/environment.html">environment</a></code> of <code>fn</code> contains all the
 information needed;
@@ -128,10 +129,10 @@ information needed;
 <tr valign="top"><td><code>&quot;method&quot;</code></td>
 <td>
 <p>(always <code>== "constant"</code>, from
-<code><a href="approxfun.html">approxfun</a>(.)</code>).</p>
+<code><a href="../../stats/help/approxfun.html">approxfun</a>(.)</code>).</p>
 </td></tr>
 </table>
-<p>The knots are also available via <code><a href="stepfun.html">knots</a>(fn)</code>.
+<p>The knots are also available via <code><a href="../../stats/help/knots.html">knots</a>(fn)</code>.
 </p>
 
 
@@ -155,11 +156,11 @@ code from Thomas Lumley.
 
 <h3>See Also</h3>
 
-<p><code><a href="ecdf.html">ecdf</a></code> for empirical distribution functions as
-special step functions and <code><a href="plot.stepfun.html">plot.stepfun</a></code> for <em>plotting</em>
+<p><code><a href="../../stats/help/ecdf.html">ecdf</a></code> for empirical distribution functions as
+special step functions and <code><a href="../../stats/help/plot.stepfun.html">plot.stepfun</a></code> for <em>plotting</em>
 step functions.
 </p>
-<p><code><a href="approxfun.html">approxfun</a></code> and <code><a href="splinefun.html">splinefun</a></code>.
+<p><code><a href="../../stats/help/approxfun.html">approxfun</a></code> and <code><a href="../../stats/help/splinefun.html">splinefun</a></code>.
 </p>
 
 
@@ -187,5 +188,5 @@ stopifnot(identical(y0[-1], sfun0 (1:3)), # right = FALSE
           identical(y0[-4], sfun1c(1:3))) # right = TRUE
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

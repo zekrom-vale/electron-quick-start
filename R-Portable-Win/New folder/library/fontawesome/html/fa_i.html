@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate a Font Awesome &lt;i&gt; tag</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fa_i {fontawesome}"><tr><td>fa_i {fontawesome}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Generate a Font Awesome <code style="white-space: pre;">&lt;i&gt;</code> tag</h2>
+
+<h3>Description</h3>
+
+<p>The <code>fa_i()</code> function creates a Font Awesome <code style="white-space: pre;">&lt;i&gt;</code> tag and not an SVG as with
+<code><a href="fa.html">fa()</a></code>. The primary use case for <code>fa_i()</code> is for legacy Shiny applications
+that use the <code>shiny::icon()</code> function. This function is called within a
+<code>shiny::icon()</code> call and all HTML dependencies to support icon generation are
+hosted in the <strong>fontawesome</strong> package.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fa_i(name, class = NULL, ..., html_dependency = NULL, verify_fa = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>The name of the Font Awesome icon. This could be as a short name
+(e.g., <code>"npm"</code>, <code>"drum"</code>, etc.), or, a full name (e.g., <code>"fab fa-npm"</code>,
+<code>"fas fa-drum"</code>, etc.). The names should correspond to current Version 5
+Font Awesome names. A list of short and full names can be accessed through
+the <code><a href="fa_metadata.html">fa_metadata()</a></code> function with <code>fa_metadata()$icon_names</code> and
+<code>fa_metadata()$icon_names_full</code>. If supplying a Version 4 icon name, it
+will be internally translated to the Version 5 icon name and a Version 5
+icon will be returned. A data frame containing the short names that changed
+from version 4 (<code>v4_name</code>) to version 5 (<code>v5_name</code>) can be obtained by
+using <code>fa_metadata()$v4_v5_name_tbl</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>class</code></td>
+<td>
+<p>Additional classes to customize the style of the icon (see the
+usage examples for details on supported styles).</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Arguments passed to the <code style="white-space: pre;">&lt;i&gt;</code> tag of <a href="../../htmltools/html/builder.html">htmltools::tags</a>.</p>
+</td></tr>
+<tr valign="top"><td><code>html_dependency</code></td>
+<td>
+<p>Provides an opportunity to use a custom
+<code>html_dependency</code> object (created via a call to
+<code><a href="../../htmltools/html/htmlDependency.html">htmltools::htmlDependency()</a></code>) instead of one supplied by the function
+(which uses Font Awesome's free assets and are bundled in the package). A
+custom <code>html_dependency</code> object is useful when you have paid icons from
+Font Awesome or would otherwise like to customize exactly which icon assets
+are used (e.g., woff, woff2, eot, etc.). By default, this is <code>NULL</code> where
+the function interally generates an <code>html_dependency</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>verify_fa</code></td>
+<td>
+<p>An option to verify the provided icon <code>name</code>. If <code>TRUE</code> (the
+default), internal checks will take place and issue messages should the
+<code>name</code> is a Font Awesome 4 icon name (the message will provide the Version
+5 name), or, if the icon name cannot be found in either Font Awesome 4 or
+5.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An icon element.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+if (interactive()) {
+
+# Create a Font Awesome icon object
+fa_i(name = "r-project")
+
+}
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>fontawesome</em> version 0.2.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

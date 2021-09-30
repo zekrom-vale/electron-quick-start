@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Data Frames</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for data.frame {base}"><tr><td>data.frame {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -21,9 +22,9 @@ of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></sp
 <pre>
 data.frame(..., row.names = NULL, check.rows = FALSE,
            check.names = TRUE, fix.empty.names = TRUE,
-           stringsAsFactors = default.stringsAsFactors())
+           stringsAsFactors = FALSE)
 
-default.stringsAsFactors()
+default.stringsAsFactors() # &lt;&lt; this is deprecated !
 </pre>
 
 
@@ -52,7 +53,7 @@ consistency of length and names.</p>
 <p>logical.  If <code>TRUE</code> then the names of the
 variables in the data frame are checked to ensure that they are
 syntactically valid variable names and are not duplicated.
-If necessary they are adjusted (by <code><a href="make.names.html">make.names</a></code>)
+If necessary they are adjusted (by <code><a href="../../base/help/make.names.html">make.names</a></code>)
 so that they are.</p>
 </td></tr>
 <tr valign="top"><td><code>fix.empty.names</code></td>
@@ -66,9 +67,8 @@ rather name <code>""</code>.  Needs to be set to <code>FALSE</code> even when
 <tr valign="top"><td><code>stringsAsFactors</code></td>
 <td>
 <p>logical: should character vectors be converted
-to factors?  The &lsquo;factory-fresh&rsquo; default is <code>TRUE</code>, but
-this can be changed by setting <code><a href="options.html">options</a>(stringsAsFactors
-      = FALSE)</code>.</p>
+to factors?  The &lsquo;factory-fresh&rsquo; default has been <code>TRUE</code>
+previously but has been changed to <code>FALSE</code> for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.0.0.</p>
 </td></tr>
 </table>
 
@@ -87,19 +87,19 @@ frames will preserve duplicated column names: for example matrix-like
 subsetting will force column names in the result to be unique.
 </p>
 <p><code>data.frame</code> converts each of its arguments to a data frame by
-calling <code><a href="as.data.frame.html">as.data.frame</a>(optional = TRUE)</code>.  As that is a
+calling <code><a href="../../base/help/as.data.frame.html">as.data.frame</a>(optional = TRUE)</code>.  As that is a
 generic function, methods can be written to change the behaviour of
 arguments according to their classes: <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> comes with many such methods.
 Character variables passed to <code>data.frame</code> are converted to
-factor columns unless protected by <code><a href="AsIs.html">I</a></code> or argument
+factor columns unless protected by <code><a href="../../base/help/I.html">I</a></code> or argument
 <code>stringsAsFactors</code> is false.  If a list or data
 frame or matrix is passed to <code>data.frame</code> it is as if each
 component or column had been passed as a separate argument (except for
-matrices protected by <code><a href="AsIs.html">I</a></code>).
+matrices protected by <code><a href="../../base/help/I.html">I</a></code>).
 </p>
 <p>Objects passed to <code>data.frame</code> should have the same number of
-rows, but atomic vectors (see <code><a href="vector.html">is.vector</a></code>), factors and
-character vectors protected by <code><a href="AsIs.html">I</a></code> will be recycled a
+rows, but atomic vectors (see <code><a href="../../base/help/is.vector.html">is.vector</a></code>), factors and
+character vectors protected by <code><a href="../../base/help/I.html">I</a></code> will be recycled a
 whole number of times if necessary (including as elements of list
 arguments).
 </p>
@@ -110,18 +110,19 @@ for example a named vector or a matrix with rownames or a data frame.
 with a warning.)  If <code>row.names</code> was supplied as <code>NULL</code> or no
 suitable component was found the row names are the integer sequence
 starting at one (and such row names are considered to be
-&lsquo;automatic&rsquo;, and not preserved by <code><a href="matrix.html">as.matrix</a></code>).
+&lsquo;automatic&rsquo;, and not preserved by <code><a href="../../base/help/as.matrix.html">as.matrix</a></code>).
 </p>
 <p>If row names are supplied of length one and the data frame has a
 single row, the <code>row.names</code> is taken to specify the row names and
 not a column (by name or number).
 </p>
-<p>Names are removed from vector inputs not protected by <code><a href="AsIs.html">I</a></code>.
+<p>Names are removed from vector inputs not protected by <code><a href="../../base/help/I.html">I</a></code>.
 </p>
 <p><code>default.stringsAsFactors</code> is a utility that takes
-<code><a href="options.html">getOption</a>("stringsAsFactors")</code> and ensures the result is
+<code><a href="../../base/help/getOption.html">getOption</a>("stringsAsFactors")</code> and ensures the result is
 <code>TRUE</code> or <code>FALSE</code> (or throws an error if the value is not
-<code>NULL</code>).
+<code>NULL</code>).  This function is <b>deprecated</b> now and will no longer
+be available in the future.
 </p>
 
 
@@ -165,16 +166,17 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="AsIs.html">I</a></code>,
+<p><code><a href="../../base/help/I.html">I</a></code>,
 <code><a href="../../graphics/html/plot.dataframe.html">plot.data.frame</a></code>,
-<code><a href="print.dataframe.html">print.data.frame</a></code>,
-<code><a href="row.names.html">row.names</a></code>, <code><a href="names.html">names</a></code> (for the column names),
-<code><a href="Extract.data.frame.html">[.data.frame</a></code> for subsetting methods 
+<code><a href="../../base/help/print.data.frame.html">print.data.frame</a></code>,
+<code><a href="../../base/help/row.names.html">row.names</a></code>, <code><a href="../../base/help/names.html">names</a></code> (for the column names),
+<code><a href="../../base/help/+5B.data.frame.html">[.data.frame</a></code> for subsetting methods 
 and <code>I(matrix(..))</code> examples;
-<code><a href="groupGeneric.html">Math.data.frame</a></code> etc, about
+<code><a href="../../base/help/Math.data.frame.html">Math.data.frame</a></code> etc, about
 <em>Group</em> methods for <code>data.frame</code>s;
 <code><a href="../../utils/html/read.table.html">read.table</a></code>,
-<code><a href="make.names.html">make.names</a></code>.
+<code><a href="../../base/help/make.names.html">make.names</a></code>,
+<code><a href="../../base/help/list2DF.html">list2DF</a></code> for creating data frames from lists of variables.
 </p>
 
 
@@ -200,5 +202,5 @@ stopifnot(1:10 == row.names(d))  # {coercion}
 (d00 &lt;- d0[FALSE, ])  # data frame with 0 columns and 0 rows
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Creating and Controlling Multiple Screens on a Single Device</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for screen {graphics}"><tr><td>screen {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -115,11 +116,11 @@ returning to a screen to add to an existing plot is unpredictable and
 may result in problems that are not readily visible.
 </p>
 <p>These functions are totally incompatible with the other mechanisms for
-arranging plots on a device: <code><a href="par.html">par</a>(mfrow)</code>,
-<code>par(mfcol)</code> and <code><a href="layout.html">layout</a>()</code>.
+arranging plots on a device: <code><a href="../../graphics/help/par.html">par</a>(mfrow)</code>,
+<code>par(mfcol)</code> and <code><a href="../../graphics/help/layout.html">layout</a>()</code>.
 </p>
 <p>The functions are also incompatible with some plotting functions,
-such as <code><a href="coplot.html">coplot</a></code>, which make use of these other mechanisms.
+such as <code><a href="../../graphics/help/coplot.html">coplot</a></code>, which make use of these other mechanisms.
 </p>
 <p><code>erase.screen</code> will appear not to work if the background colour
 is transparent (as it is by default on most devices).
@@ -138,7 +139,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="par.html">par</a></code>, <code><a href="layout.html">layout</a></code>, <code><a href="../../grDevices/html/Devices.html">Devices</a></code>,
+<p><code><a href="../../graphics/help/par.html">par</a></code>, <code><a href="../../graphics/help/layout.html">layout</a></code>, <code><a href="../../grDevices/html/Devices.html">Devices</a></code>,
 <code>dev.*</code>
 </p>
 
@@ -173,5 +174,5 @@ close.screen(all = TRUE)    # exit split-screen mode
 }
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

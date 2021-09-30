@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Replicate Elements of Vectors and Lists</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rep {base}"><tr><td>rep {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ function, and the (internal) default method is described here.
 </p>
 <p><code>rep.int</code> and <code>rep_len</code> are faster simplified versions for
 two common cases.  Internally, they are generic, so methods can be
-defined for them.
+defined for them (see <a href="../../base/help/InternalMethods.html">InternalMethods</a>).
 </p>
 
 
@@ -34,7 +35,7 @@ rep_len(x, length.out)
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>a vector (of any mode including a <code><a href="list.html">list</a></code>) or a factor or (for
+<p>a vector (of any mode including a <code><a href="../../base/help/list.html">list</a></code>) or a factor or (for
 <code>rep</code> only) a <code>POSIXct</code> or <code>POSIXlt</code> or <code>Date</code>
 object; or an S4 object containing such an object.</p>
 </td></tr>
@@ -95,7 +96,7 @@ necessary to create a vector of this length.  If both are given,
 </p>
 <p>Non-integer values of <code>times</code> will be truncated towards zero.
 If <code>times</code> is a computed quantity it is prudent to add a small
-fuzz or use <code><a href="Round.html">round</a></code>.  And analogously for <code>each</code>.
+fuzz or use <code><a href="../../base/help/round.html">round</a></code>.  And analogously for <code>each</code>.
 </p>
 <p>If <code>x</code> has length zero and <code>length.out</code> is supplied and is
 positive, the values are filled in using the extraction rules, that is
@@ -134,7 +135,7 @@ names is performed as for normal functions.
 result is always <code>NULL</code> even when <code>length.out</code> is positive.
 </p>
 <p>Although it has never been documented, these functions have always
-worked on <a href="expression.html">expression</a> vectors.
+worked on <a href="../../base/help/expression.html">expression</a> vectors.
 </p>
 
 
@@ -148,7 +149,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="seq.html">seq</a></code>, <code><a href="sequence.html">sequence</a></code>, <code><a href="lapply.html">replicate</a></code>.
+<p><code><a href="../../base/help/seq.html">seq</a></code>, <code><a href="../../base/help/sequence.html">sequence</a></code>, <code><a href="../../base/help/replicate.html">replicate</a></code>.
 </p>
 
 
@@ -159,9 +160,9 @@ rep(1:4, 2)
 rep(1:4, each = 2)       # not the same.
 rep(1:4, c(2,2,2,2))     # same as second.
 rep(1:4, c(2,1,2,1))
-rep(1:4, each = 2, len = 4)    # first 4 only.
-rep(1:4, each = 2, len = 10)   # 8 integers plus two recycled 1's.
-rep(1:4, each = 2, times = 3)  # length 24, 3 complete replications
+rep(1:4, each = 2, length.out = 4)    # first 4 only.
+rep(1:4, each = 2, length.out = 10)   # 8 integers plus two recycled 1's.
+rep(1:4, each = 2, times = 3)         # length 24, 3 complete replications
 
 rep(1, 40*(1-.8)) # length 7 on most platforms
 rep(1, 40*(1-.8)+1e-7) # better
@@ -184,5 +185,5 @@ rep.int(x, 2)  # no names
 rep_len(x, 10)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

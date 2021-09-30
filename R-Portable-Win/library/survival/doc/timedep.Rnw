@@ -91,7 +91,7 @@ and that this interval did not end in a death.
 The underlying code treats intervals as open on the left and closed on the
 right, e.g. the creatinine on exactly day 90 is 0.9. 
 One way to think of this is that all changes for a given day (covariates or
-status) are recorded at the end of the day.
+status) are recorded at the start of the next interval.
 
 
 The key rule for time dependent covariates in a Cox model is simple
@@ -157,7 +157,7 @@ re-discovered.
 A slightly subtler form of the error is discussed in Redmond et al
 \cite{Redmond83}.  The exploration was motivated by a flawed analysis presented
 in Bonadonna et. al \cite{Bref} which looked at the effect of total dose.
-breast cancer chemotherapy patients were
+Breast cancer chemotherapy patients were
 divided into three groups based on whether the patient eventually
 received $>85$\%, 65--85\% or $<65$\% of the dose planned at the start of
 their treatment. 
@@ -167,6 +167,7 @@ by definition get a lower dose.
 A proportional hazards model using total dose received shows a very strong
 effect for dose, so much so that it could encourage a treating physician to
 defer necessary dose reductions in response to treatment toxicity.
+This false result actively harmed patients.
 
 Redmond looked at a variant of this: create a variable $p$ for each subject
 which
@@ -277,7 +278,7 @@ Where \code{data1} is the starting data set and additions to the data are
 taken from \code{data2}.
 The idea behind the function is that each addition will be ``slipped in''
 to the original data in the same way that one
-would slide a new card into an existing deck of cards. 
+would add a new folder into a file cabinet.
 It is a complex function, and we illustrate it below with a set of
 examples that sequentially reveal its features.
 
@@ -325,7 +326,7 @@ process form.
 \begin{itemize}
   \item Each row of the resulting data set represents a time interval
     (time1, time2] which is open on the left and closed on the right.
-    Covariate values for that row are the covariate values that apply
+    Covariate values for each row are the covariate values that apply
     over that interval.
   \item The event variable for each row $i$ is 1 if the time interval ends
     with an event and 0 otherwise.
@@ -346,7 +347,7 @@ newcgd <- tmerge(newcgd, cgd0, id=id, infect = event(etime7))
 newcgd <- tmerge(newcgd, newcgd, id, enum=cumtdc(tstart))
 dim(newcgd)
 newcgd[1:5,c(1, 4:6, 13:17)]
-attr(newcgd, "tcount")
+summary(newcgd)
 coxph(Surv(tstart, tstop, infect) ~ treat + inherit + steroids +
       + cluster(id), newcgd)
 @ 
@@ -363,15 +364,15 @@ more bit of information to the data set.
     This first result has \Sexpr{nrow(cgd0)} rows, the same number as
     \code{cgd0}.
   \item Each additional call then adds either an endpoint or a covariate,
-    splitting individual rows of the input in two as necessary.
+    splitting individual rows of the input into two as necessary.
     An \code{event} or \code{cumevent} directive adds events, while
-    a \code{tdc} or \code{cumtdc} one adds a time dependent covariate.
+    a \code{tdc} or \code{cumtdc} command adds a time dependent covariate.
     Events happen at the ends of intervals and time-dependent covariates 
     change at the start of an interval.  
   \item Additions from \code{data2} with a missing time value are ignored.
   \item The result of \code{tmerge} is a data frame with a few extra
     attributes. One of these, tcount, is designed to help visualize
-    the process and was printed out after the last step above.
+    the process, it is printed out by the summary function.
     Assume that a subject already had 3 intervals of (2,5), (5,10)
     and (14,40).
     A new event added at time 1 would be ``early'' while one at time 50
@@ -379,16 +380,18 @@ more bit of information to the data set.
     An event at
     time 3 is within an interval, one at 5 is on the border of two
     intervals, one at 14 is at the leading edge of an interval, one at
-    time 10 in on the trailing edge and at time 11 is in a gap.
+    time 10 in on the trailing edge, and one at time 11 is in a gap.
     In this data set all new additions fell strictly within prior intervals.
     We also see that etime6 and etime7 each added only a single event to 
-    the data.
+    the data.  Only one subject had more than 5 infections.
   \item If two observations in data2 for a single person share exactly
     the same time, the created value will be the later contribution for
     tdc() or event() calls, cumtdc() and cumevent() will add.
     The ``tied'' column tells how often this happened; in some
     data sets this behavior might not be desired and one would need to
     break the ties before calling tmerge.
+  \item If there are observations in \code{data2} that do not match any
+    of the identifiers in \code{data1} they count in the `missid' column.
   \item The last tmerge call adds a
     simple time-dependent variable \code{enum} which is a running observation
     count for each subject.  This can often be a useful variable in later
@@ -396,9 +399,11 @@ more bit of information to the data set.
     for each subject.
   \item The extra attributes of the data frame are ephemeral: they will be
     lost as soon as any further manipulation is done.  This is intentional.
+    The reason is that these may be invalid if, for instance, a subset of
+    the data was selected.
   \item One can verify that the resulting data set is equivalent to
     \code{cgd}, a (start, stop] version of the CGD data in the
-    survival library which had been created by hand several years earlier.
+    survival library, which had been created by hand several years earlier.
 \end{itemize}
 
 The \code{tmerge} function processes arguments sequentially, and the 
@@ -416,8 +421,8 @@ all.equal(newcgd, test)
 
 \subsection{Stanford heart transplant}
 The \code{jasa} data set contains information from the Stanford heart
-transplant study, in the form that it appeared in the 
-paper of Crowley and Hu \cite{Crowley77}.
+transplant study, in the form that it appeared in the J American Statistical
+Association paper of Crowley and Hu \cite{Crowley77}.
 The data set has one line per subject
 which contains the baseline covariates along with
 dates of enrollment, transplant, and death or last follow-up.
@@ -438,7 +443,7 @@ that need to be dealt with when setting up an analysis data set.
     treatment for days 1--10 and as transplanted starting on day 11.
     That is, except for patient 38 who died on the same day as their procedure.
     They should be treated as a transplant death; the problem is resolved by
-    moving this transplant back .5 day.
+    moving this forward in time by .5 day.
 
   \item The treatment coefficients in table 6.1 of the 
     definitive analysis found in
@@ -464,6 +469,10 @@ tdata <- with(jasa, data.frame(subject = subject,
                                               (tx.date - accept.dt)),
                                fustat = fustat
                              ))
+xdata <- tmerge(jasa, tdata, id=subject,
+                  death = event(futime, fustat),
+                  transplant   =  tdc(txtime), 
+                  options= list(idname="subject"))
 
 sdata <- tmerge(jasa, tdata, id=subject,
                   death = event(futime, fustat),
@@ -481,33 +490,40 @@ coxph(Surv(tstart, tstop, death) ~ age*trt + surgery + year,
 This example shows a special case for the \code{tmerge} function that 
 is quite common: if the first
 created variable is an event then the time range for each subject is
-inferred to be from 0 to the event time: explicit \code{tstop} 
+inferred to be from 0 to that event time: explicit \code{tstop} 
 and \code{tstart} arguments are not required.
 It also makes use of a two argument form of \code{event}.
-Each of the \code{event}, \code{cumevent}, \code{tdc} and \code{cumtdc}
-functions
+Each of the \code{event} and \code{cumevent} functions
 may have a second argument, which if present will be used as the value
-for the event code or time dependent covariate.
+for the event code.
 If this second argument is not present a value of 1 is used.
-
-If a created variable is not already in data1, 
-the starting value \emph{before} the first definition of that
-variable is a NA for a
-\code{tdc} or \code{cumtdc} call that has two arguments and 0
-in all other cases.
-If the variable being created is already a part of data1, 
-then our updates make changes to that variable.
-Be careful of this.  This feature is what allowed for the 
+If an event variable is already a part of data1, 
+then our updates make changes to that variable, possibly adding more events.
+This feature is what allowed for the 
 \code{infection} indicator to be build up incrementally in the cgd
-example above, but quite surprising results can occur when you
-think a new variable is being created de novo but its name is already
-in use.  For example, if we name the new variable
-`transplant' in the third line of \code{sdata} above it collides
-with an existing variable in the \code{jasa} data set; the result
-is to not create a time-dependent transplant variable at all.
-(The author made this mistake himself when creating this vignette,
- and then spent several hours searching the tmerge
-code for an error that wasn't there.)
+example above.
+
+The \code{tdc} and \code{cumtdc} arguments can have 1, 2 or three
+arguments.
+The first is always the time point, the second, if present, is the
+value to be inserted, and an optional third argument is the initial value.
+If the \code{tdc} call has a single argument the result is always a
+0/1 variable, 0 before the time point and 1 after.
+For the 2 or three argument form, the starting value \emph{before} the 
+first definition of the new variable (before the first time point)
+will be the initial value.
+The default for the initial value is NA, the value of the 
+\code{tdcstart} option.
+If the \code{tdc} variable being created is already a part of data1,
+the old value is replaced wholesale, it is not updated.
+This differs from the behavior for events.
+Although there is a use case for updating an existing time-dependent value, 
+say from a new data source, our experience had been that the much more
+common case was accidental reuse of an existing name, resulting in
+a chimeric mishmash between an existing baseline covariate and the additions,
+and creating a column which was valid for neither.
+Equally, some examples showed that we can not reliably update a tdc, i.e., 
+cases where the correct answer is unclear.
 
 The \code{tcount} table for the above fit shows all the deaths at the
 trailing edge of their interval, which is expected since the time
@@ -859,7 +875,7 @@ The first subject died at 72 days, his data is unchanged.
 The second and third subjects contribute time to each of the three
 intervals.
 <<split2>>=
-vfit2 <- coxph(Surv(tstart, time, status) ~ trt + prior + 
+vfit2 <- coxph(Surv(tstart, time, status) ~ trt + prior +
                   karno:strata(tgroup), data=vet2)
 vfit2
 cox.zph(vfit2)

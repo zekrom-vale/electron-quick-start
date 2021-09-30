@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generic Function to Add an Axis to a Plot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Axis {graphics}"><tr><td>Axis {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -50,7 +51,7 @@ length.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>arguments to be passed to methods and perhaps then to
-<code><a href="axis.html">axis</a></code>.</p>
+<code><a href="../../graphics/help/axis.html">axis</a></code>.</p>
 </td></tr>
 </table>
 
@@ -60,20 +61,20 @@ length.</p>
 <p>This is a generic function.  It works in a slightly non-standard way:
 if <code>x</code> is supplied and non-NULL it dispatches on <code>x</code>,
 otherwise if <code>at</code> is supplied and non-NULL it dispatches on <code>at</code>,
-and the default action is to call <code><a href="axis.html">axis</a></code>, omitting argument
+and the default action is to call <code><a href="../../graphics/help/axis.html">axis</a></code>, omitting argument
 <code>x</code>.
 </p>
 <p>The idea is that for plots for which either or both of the axes are
 numerical but with a special interpretation, the standard plotting
-functions (including <code><a href="boxplot.html">boxplot</a></code>, <code><a href="contour.html">contour</a></code>,
-<code><a href="coplot.html">coplot</a></code>, <code><a href="filled.contour.html">filled.contour</a></code>,
-<code><a href="pairs.html">pairs</a></code>, <code><a href="plot.default.html">plot.default</a></code>, <code><a href="rug.html">rug</a></code> and
-<code><a href="stripchart.html">stripchart</a></code>) will set up user coordinates and <code>Axis</code>
+functions (including <code><a href="../../graphics/help/boxplot.html">boxplot</a></code>, <code><a href="../../graphics/help/contour.html">contour</a></code>,
+<code><a href="../../graphics/help/coplot.html">coplot</a></code>, <code><a href="../../graphics/help/filled.contour.html">filled.contour</a></code>,
+<code><a href="../../graphics/help/pairs.html">pairs</a></code>, <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>, <code><a href="../../graphics/help/rug.html">rug</a></code> and
+<code><a href="../../graphics/help/stripchart.html">stripchart</a></code>) will set up user coordinates and <code>Axis</code>
 will be called to label them appropriately.
 </p>
 <p>There are <code>"Date"</code> and <code>"POSIXt"</code> methods which can pass an
 argument <code>format</code> on to the appropriate <code>axis</code> method (see
-<code><a href="axis.POSIXct.html">axis.POSIXct</a></code>).
+<code><a href="../../graphics/help/axis.POSIXct.html">axis.POSIXct</a></code>).
 </p>
 
 
@@ -89,9 +90,9 @@ an axis to an already existing plot.
 
 <h3>See Also</h3>
 
-<p><code><a href="axis.html">axis</a></code> (which is eventually called from all <code>Axis()</code>
-methods in package <span class="pkg">graphics</span>.
+<p><code><a href="../../graphics/help/axis.html">axis</a></code> (which is eventually called from all <code>Axis()</code>
+methods) in package <span class="pkg">graphics</span>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

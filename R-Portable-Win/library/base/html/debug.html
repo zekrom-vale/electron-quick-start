@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Debug a Function</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for debug {base}"><tr><td>debug {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>Set, unset or query the debugging flag on a function.
 The <code>text</code> and <code>condition</code> arguments are the same as those
-that can be supplied via a call to <code><a href="browser.html">browser</a></code>.  They can be retrieved
+that can be supplied via a call to <code><a href="../../base/help/browser.html">browser</a></code>.  They can be retrieved
 by the user once the browser has been entered, and provide a mechanism to
 allow users to identify which breakpoint has been activated.
 </p>
@@ -56,7 +57,7 @@ method is debugged, rather than its generic.</p>
 turned on, <code>FALSE</code> otherwise.  An argument of one or the other
 of those values sets the state.  If the debugging state is
 <code>FALSE</code>, none of the debugging actions will occur (but explicit
-<code><a href="browser.html">browser</a></code> calls in functions will continue to work).</p>
+<code><a href="../../base/help/browser.html">browser</a></code> calls in functions will continue to work).</p>
 </td></tr>
 </table>
 
@@ -66,19 +67,19 @@ of those values sets the state.  If the debugging state is
 
 <p>When a function flagged for debugging is entered, normal execution
 is suspended and the body of function is executed one statement at a
-time.  A new <code><a href="browser.html">browser</a></code> context is initiated for each step
+time.  A new <code><a href="../../base/help/browser.html">browser</a></code> context is initiated for each step
 (and the previous one destroyed).
 </p>
 <p>At the debug prompt the user can enter commands or <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expressions,
 followed by a newline.  The commands are described in the
-<code><a href="browser.html">browser</a></code> help topic.
+<code><a href="../../base/help/browser.html">browser</a></code> help topic.
 </p>
 <p>To debug a function which is defined inside another function,
 single-step through to the end of its definition, and then call
 <code>debug</code> on its name.
 </p>
 <p>If you want to debug a function not starting at the very beginning,
-use <code><a href="trace.html">trace</a>(..., at = *)</code> or <code><a href="../../utils/html/findLineNum.html">setBreakpoint</a></code>.
+use <code><a href="../../base/help/trace.html">trace</a>(..., at = *)</code> or <code><a href="../../utils/html/findLineNum.html">setBreakpoint</a></code>.
 </p>
 <p>Using <code>debug</code> is persistent, and unless debugging is turned off
 the debugger will be entered on every invocation (note that if the
@@ -94,7 +95,7 @@ the debugging bit. As such, <code>text</code> and <code>condition</code> cannot 
 specified in combination with a non-null <code>signature</code>. For methods
 which implement the <code>.local</code> rematching mechanism, the
 <code>.local</code> closure itself is the one that will be ultimately
-debugged (see <code><a href="../../methods/html/isRematched.html">isRematched</a></code>).
+debugged (see <code><a href="../../methods/help/RMethodUtils.html">isRematched</a></code>).
 </p>
 <p><code>isdebugged</code> returns <code>TRUE</code> if a) <code>signature</code> is <code>NULL</code>
 and the closure <code>fun</code> has been debugged, or b) <code>signature</code> is not
@@ -104,7 +105,7 @@ for that signature has been debugged. In all other cases, it returns
 </p>
 <p>The number of lines printed for the deparsed call when a function is
 entered for debugging can be limited by setting
-<code><a href="options.html">options</a>(deparse.max.lines)</code>.
+<code><a href="../../base/help/options.html">options</a>(deparse.max.lines)</code>.
 </p>
 <p>When debugging is enabled on a byte compiled function then the
 interpreted version of the function will be used until debugging is
@@ -125,8 +126,8 @@ disabled.
 <h3>See Also</h3>
 
 <p><code><a href="../../utils/html/debugcall.html">debugcall</a></code> for conveniently debugging methods,
-<code><a href="browser.html">browser</a></code> notably for its &lsquo;<em>commands</em>&rsquo;, <code><a href="trace.html">trace</a></code>;
-<code><a href="traceback.html">traceback</a></code> to see the stack after an <code>Error: ...</code>
+<code><a href="../../base/help/browser.html">browser</a></code> notably for its &lsquo;<em>commands</em>&rsquo;, <code><a href="../../base/help/trace.html">trace</a></code>;
+<code><a href="../../base/help/traceback.html">traceback</a></code> to see the stack after an <code>Error: ...</code>
 message; <code><a href="../../utils/html/recover.html">recover</a></code> for another debugging approach.
 </p>
 
@@ -148,5 +149,5 @@ sample(10, 1)
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Unevaluated Expressions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for expression {base}"><tr><td>expression {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,15 +44,15 @@ or constants.<br />
 
 <p>&lsquo;Expression&rsquo; here is not being used in its colloquial sense,
 that of mathematical expressions.  Those are calls (see
-<code><a href="call.html">call</a></code>) in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, and an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expression vector is a list of
-calls, symbols etc, for example as returned by <code><a href="parse.html">parse</a></code>.
+<code><a href="../../base/help/call.html">call</a></code>) in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, and an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expression vector is a list of
+calls, symbols etc, for example as returned by <code><a href="../../base/help/parse.html">parse</a></code>.
 </p>
 <p>As an object of mode <code>"expression"</code> is a list, it can be
 subsetted by <code>[</code>, <code>[[</code> or <code>$</code>, the latter two extracting
 individual calls etc.  The replacement forms of these operators can be
 used to replace or delete elements.
 </p>
-<p><code>expression</code> and <code>is.expression</code> are <a href="Primitive.html">primitive</a> functions.
+<p><code>expression</code> and <code>is.expression</code> are <a href="../../base/help/primitive.html">primitive</a> functions.
 <code>expression</code> is &lsquo;special&rsquo;: it does not evaluate its arguments.
 </p>
 
@@ -68,8 +69,8 @@ expression object and <code>FALSE</code> otherwise.
 expression object.  It is generic, and only the default method is
 described here.  (The default method calls
 <code>as.vector(type = "expression")</code> and so may dispatch methods for
-<code><a href="vector.html">as.vector</a></code>.)  <code>NULL</code>, calls, symbols (see
-<code><a href="name.html">as.symbol</a></code>) and pairlists are returned as the element of
+<code><a href="../../base/help/as.vector.html">as.vector</a></code>.)  <code>NULL</code>, calls, symbols (see
+<code><a href="../../base/help/as.symbol.html">as.symbol</a></code>) and pairlists are returned as the element of
 a length-one expression vector.  Atomic vectors are placed
 element-by-element into an expression vector (without using any
 names): lists are changed type to an expression vector (keeping all
@@ -87,9 +88,9 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="call.html">call</a></code>,
-<code><a href="eval.html">eval</a></code>,
-<code><a href="function.html">function</a></code>.
+<p><code><a href="../../base/help/call.html">call</a></code>,
+<code><a href="../../base/help/eval.html">eval</a></code>,
+<code><a href="../../base/help/function.html">function</a></code>.
 Further,
 <code><a href="../../graphics/html/text.html">text</a></code> and
 <code><a href="../../graphics/html/legend.html">legend</a></code>
@@ -113,5 +114,5 @@ sapply(ex3, typeof) # symbol  double  language
 rm(ex3)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

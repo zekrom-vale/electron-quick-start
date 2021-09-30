@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Copy Graphics Between Multiple Devices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dev2 {grDevices}"><tr><td>dev2 {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -56,10 +57,10 @@ dev.control(displaylist = c("inhibit", "enable"))
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>Arguments to the <code>device</code> function above: for
-<code>dev.copy2eps</code> arguments to <code><a href="postscript.html">postscript</a></code> and for
-<code>dev.copy2pdf</code>, arguments to <code><a href="pdf.html">pdf</a></code>.
+<code>dev.copy2eps</code> arguments to <code><a href="../../grDevices/help/postscript.html">postscript</a></code> and for
+<code>dev.copy2pdf</code>, arguments to <code><a href="../../grDevices/help/pdf.html">pdf</a></code>.
 For <code>dev.print</code>, this includes <code>which</code> and by default any
-<code><a href="postscript.html">postscript</a></code> arguments.</p>
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> arguments.</p>
 </td></tr>
 <tr valign="top"><td><code>which</code></td>
 <td>
@@ -69,7 +70,7 @@ For <code>dev.print</code>, this includes <code>which</code> and by default any
 <td>
 <p>The name of the output device: can be <code>"pdf"</code>, or
 <code>"quartz"</code> (some macOS builds) or <code>"cairo"</code> (Windows
-and some Unix-alikes, see <code><a href="cairo.html">cairo_pdf</a></code>).</p>
+and some Unix-alikes, see <code><a href="../../grDevices/help/cairo_pdf.html">cairo_pdf</a></code>).</p>
 </td></tr>
 <tr valign="top"><td><code>displaylist</code></td>
 <td>
@@ -85,7 +86,7 @@ and some Unix-alikes, see <code><a href="cairo.html">cairo_pdf</a></code>).</p>
 plot: the background colour of the device surface is part of what is
 copied.  Most screen devices default to a transparent background, which
 is probably not what is needed when copying to a device such as
-<code><a href="png.html">png</a></code>.
+<code><a href="../../grDevices/help/png.html">png</a></code>.
 </p>
 <p>For <code>dev.copy2eps</code> and <code>dev.copy2pdf</code>, <code>width</code> and
 <code>height</code> are taken from the current device unless otherwise
@@ -95,8 +96,8 @@ device being copied.  The default file name is <code>Rplot.eps</code> or
 <code>Rplot.pdf</code>, and can be overridden by specifying a <code>file</code>
 argument.
 </p>
-<p>Copying to devices such as <code><a href="postscript.html">postscript</a></code> and
-<code><a href="pdf.html">pdf</a></code> which need font families pre-specified needs extra
+<p>Copying to devices such as <code><a href="../../grDevices/help/postscript.html">postscript</a></code> and
+<code><a href="../../grDevices/help/pdf.html">pdf</a></code> which need font families pre-specified needs extra
 care &ndash; <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is unaware of which families were used in a plot and so
 they will need to manually specified by the <code>fonts</code> argument
 passed as part of <code>...</code>.  Similarly, if the device to be copied
@@ -106,7 +107,7 @@ from was opened with a <code>family</code> argument, a suitable
 <p>The default for <code>dev.print</code> is to produce and print a postscript
 copy.  This will not work unless <code><a href="../../base/html/options.html">options</a>("printcmd")</code> is
 set suitably and you have a PostScript printing system: see
-<code><a href="postscript.html">postscript</a></code> for how to set this up.  Windows users may
+<code><a href="../../grDevices/help/postscript.html">postscript</a></code> for how to set this up.  Windows users may
 prefer to use <code>dev.print(win.print)</code>.
 </p>
 <p><code>dev.print</code> is most useful for producing a postscript print
@@ -160,7 +161,7 @@ useful if memory usage is an issue.
 
 <h3>See Also</h3>
 
-<p><code><a href="dev.html">dev.cur</a></code> and other <code>dev.xxx</code> functions.
+<p><code><a href="../../grDevices/help/dev.cur.html">dev.cur</a></code> and other <code>dev.xxx</code> functions.
 </p>
 
 
@@ -179,5 +180,5 @@ dev.off()
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

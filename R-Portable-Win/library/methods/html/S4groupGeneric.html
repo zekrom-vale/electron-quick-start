@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: S4 Group Generic Functions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for S4groupGeneric {methods}"><tr><td>S4groupGeneric {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -20,7 +21,7 @@ method defined, with the same signature, for the group generic.
 </p>
 <p>The functions shown in this documentation page all reside in the
 <span class="pkg">methods</span> package, but the mechanism is available to any
-programmer, by calling <code><a href="setGroupGeneric.html">setGroupGeneric</a></code> (provided package
+programmer, by calling <code><a href="../../methods/help/setGroupGeneric.html">setGroupGeneric</a></code> (provided package
 <span class="pkg">methods</span> is attached).
 </p>
 
@@ -65,7 +66,7 @@ Complex(z)
 <h3>Details</h3>
 
 <p>Methods can be defined for the group generic functions by calls to
-<code><a href="setMethod.html">setMethod</a></code> in the usual way.
+<code><a href="../../methods/help/setMethod.html">setMethod</a></code> in the usual way.
 Note that the group generic functions
 should never be called directly
 &ndash; a suitable error message will result if they are.  When metadata
@@ -74,7 +75,7 @@ for the members of the group, but only if no method has been
 specified directly for the member function for the same signature.
 The effect is that group generic definitions are selected before
 inherited methods but after directly specified methods.  For more on
-method selection, see <code><a href="Methods_Details.html">Methods_Details</a></code>.
+method selection, see <code><a href="../../methods/help/Methods_Details.html">Methods_Details</a></code>.
 </p>
 <p>There are also
 S3 groups <code>Math</code>, <code>Ops</code>, <code>Summary</code> and
@@ -83,7 +84,7 @@ with no corresponding <span style="font-family: Courier New, Courier; color: #66
 group generic functions.
 </p>
 <p>The members of the group defined by a particular generic can be
-obtained by calling <code><a href="RMethodUtils.html">getGroupMembers</a></code>. For the group
+obtained by calling <code><a href="../../methods/help/getGroupMembers.html">getGroupMembers</a></code>. For the group
 generic functions currently defined in this package the members are
 as follows:
 </p>
@@ -131,7 +132,7 @@ themselves) are basic functions in <span style="font-family: Courier New, Courie
 functions, and many of them are defined as primitives.  However, you can still define
 formal methods for them, both individually and via the group generics.  It all works more or less as you
 might expect, admittedly via a bit of trickery in the background.
-See <a href="Methods_Details.html">Methods_Details</a> for details.
+See <a href="../../methods/help/Methods_Details.html">Methods_Details</a> for details.
 </p>
 <p>Note that two members of the <code>Math</code> group, <code><a href="../../base/html/Log.html">log</a></code> and
 <code><a href="../../base/html/Round.html">trunc</a></code>, have ... as an extra formal argument.
@@ -159,7 +160,7 @@ Springer. (Section 10.5)
 
 <h3>See Also</h3>
 
-<p> The function <code><a href="callGeneric.html">callGeneric</a></code> is nearly always
+<p> The function <code><a href="../../methods/help/callGeneric.html">callGeneric</a></code> is nearly always
 relevant when writing a method for a group generic.  See the
 examples below and in section 10.5 of <em>Software for Data Analysis</em>.
 </p>
@@ -183,5 +184,5 @@ stopifnot(identical(Mod(z2), c("groupMethod", Mod(z1))))
 stopifnot(identical(Arg(z2), c("ArgMethod", Arg(z1))))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

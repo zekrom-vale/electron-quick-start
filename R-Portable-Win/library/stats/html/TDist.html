@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Student t Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for TDist {stats}"><tr><td>TDist {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -81,13 +82,13 @@ is defined as the distribution of
 <i>T(df, Del) := (U + Del) / &radic;(V/df) </i>
 where <i>U</i> and <i>V</i>  are independent random
 variables, <i>U ~ N(0,1)</i> and
-<i>V ~ &chi;^2(df)</i> (see <a href="Chisquare.html">Chisquare</a>).
+<i>V ~ &chi;^2(df)</i> (see <a href="../../stats/help/Chisquare.html">Chisquare</a>).
 </p>
 <p>The most used applications are power calculations for <i>t</i>-tests:<br />
 Let <i>T= (mX - m0) / (S/sqrt(n))</i>
 where
 <i>mX</i> is the <code><a href="../../base/html/mean.html">mean</a></code> and <i>S</i> the sample standard
-deviation (<code><a href="sd.html">sd</a></code>) of <i>X_1, X_2, &hellip;, X_n</i> which are
+deviation (<code><a href="../../stats/help/sd.html">sd</a></code>) of <i>X_1, X_2, &hellip;, X_n</i> which are
 i.i.d. <i>N(&mu;, &sigma;^2)</i>
 Then <i>T</i> is distributed as non-central <i>t</i> with
 <code>df</code><i>= n - 1</i>
@@ -131,14 +132,14 @@ especially in the tails, for large values.
 <h3>Source</h3>
 
 <p>The central <code>dt</code> is computed via an accurate formula
-provided by Catherine Loader (see the reference in <code><a href="Binomial.html">dbinom</a></code>).
+provided by Catherine Loader (see the reference in <code><a href="../../stats/help/dbinom.html">dbinom</a></code>).
 </p>
 <p>For the non-central case of <code>dt</code>, C code contributed by
 Claus Ekstrøm based on the relationship (for
 <i>x != 0</i>) to the cumulative distribution.
 </p>
 <p>For the central case of <code>pt</code>, a normal approximation in the
-tails, otherwise via <code><a href="Beta.html">pbeta</a></code>.
+tails, otherwise via <code><a href="../../stats/help/pbeta.html">pbeta</a></code>.
 </p>
 <p>For the non-central case of <code>pt</code> based on a C translation of
 </p>
@@ -178,8 +179,8 @@ Wiley, New York.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for other standard distributions, including
-<code><a href="Fdist.html">df</a></code> for the F distribution.
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions, including
+<code><a href="../../stats/help/df.html">df</a></code> for the F distribution.
 </p>
 
 
@@ -191,8 +192,8 @@ require(graphics)
 1 - pt(1:5, df = 1)
 qt(.975, df = c(1:10,20,50,100,1000))
 
-tt &lt;- seq(0, 10, len = 21)
-ncp &lt;- seq(0, 6, len = 31)
+tt &lt;- seq(0, 10, length.out = 21)
+ncp &lt;- seq(0, 6, length.out = 31)
 ptn &lt;- outer(tt, ncp, function(t, d) pt(t, df = 3, ncp = d))
 t.tit &lt;- "Non-central t - Probabilities"
 image(tt, ncp, ptn, zlim = c(0,1), main = t.tit)
@@ -204,5 +205,5 @@ plot(function(x) dt(x, df = 3, ncp = 2), -3, 11, ylim = c(0, 0.32),
      main = "Non-central t - Density", yaxs = "i")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

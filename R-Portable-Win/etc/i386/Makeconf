@@ -11,13 +11,18 @@ else
   DEBUGFLAG=
 endif
 
-DLLFLAGS+= -static-libgcc
-LINKFLAGS+= -static-libgcc
+DLLFLAGS += -static-libgcc
+LINKFLAGS += -static-libgcc
 
-## Things which are substituted by fixed/Makefile (and also -O3 -> -O2)
+## The rtools40 installer sets RTOOLS40_HOME, default to standard install path
+RTOOLS40_HOME ?= c:/rtools40
+RTOOLS40_ROOT ?= $(subst \,/,$(RTOOLS40_HOME))
+
+## Things which are substituted by fixed/Makefile (and also -O2 -> -O2)
 WIN = 32
-BINPREF ?= c:/Rtools/mingw_32/bin/
-COMPILED_BY = gcc-4.9.3
+MINGW_PREFIX = /mingw$(WIN)
+BINPREF ?= "$(RTOOLS40_ROOT)/mingw32/bin/"
+COMPILED_BY = gcc-8.3.0
 # SYMPAT = 's/^.* [BCDRT] _/ /p' for 32-bit
 # SYMPAT = 's/^.* [BCDRT] / /p' for 64-bit
 SYMPAT = 's/^.* [BCDRT] _/ /p'
@@ -28,7 +33,7 @@ DT_ARCH =
 RC_ARCH = 
 # Used by packages tcltk and tkrplot
 TCL_HOME = $(R_HOME)/Tcl
-#LOCAL_SOFT
+LOCAL_SOFT ?= 
 NM_FILTER = 
 
 ifneq ($(strip $(LOCAL_SOFT)),)
@@ -66,29 +71,34 @@ AR = $(BINPREF)ar
 BLAS_LIBS = -L"$(R_HOME)/$(IMPDIR)" -lRblas
 C_VISIBILITY = 
 CC = $(BINPREF)gcc $(M_ARCH)
-CFLAGS = -O3 -Wall $(DEBUGFLAG) -std=gnu99 -mtune=generic
+CFLAGS = -O2 -Wall $(DEBUGFLAG) -std=gnu99 -mfpmath=sse -msse2 -mstackrealign $(LTO)
 CPICFLAGS = 
 CPPFLAGS =
-CXX = $(BINPREF)g++ $(M_ARCH)
+CXX = $(BINPREF)g++ -std=gnu++11 $(M_ARCH)
 CXXCPP = $(CXX) -E
-CXXFLAGS = -O2 -Wall $(DEBUGFLAG) -mtune=generic
+CXXFLAGS = -O2 -Wall $(DEBUGFLAG) -mfpmath=sse -msse2 -mstackrealign $(LTO)
 CXXPICFLAGS =
-CXX98 = $(BINPREF)g++ $(M_ARCH)
-CXX98FLAGS = -O2 -Wall $(DEBUGFLAG) -mtune=generic
-CXX98PICFLAGS = 
-CXX98STD = -std=gnu++98
+#CXX98 = $(BINPREF)g++ $(M_ARCH)
+#CXX98FLAGS = -O2 -Wall $(DEBUGFLAG) -mfpmath=sse -msse2 -mstackrealign
+#CXX98PICFLAGS = 
+#CXX98STD = -std=gnu++98
 CXX11 = $(BINPREF)g++ $(M_ARCH)
-CXX11FLAGS = -O2 -Wall $(DEBUGFLAG) -mtune=generic
+CXX11FLAGS = -O2 -Wall $(DEBUGFLAG) -mfpmath=sse -msse2 -mstackrealign $(LTO)
 CXX11PICFLAGS =
 CXX11STD = -std=gnu++11
-CXX14 = 
-CXX14FLAGS = 
+## these settings are for gcc >= 8
+CXX14 = $(CXX11)
+CXX14FLAGS = $(CXX11FLAGS)
 CXX14PICFLAGS =
-CXX14STD = 
-CXX17 = 
-CXX17FLAGS = 
+CXX14STD = -std=gnu++14
+CXX17 = $(CXX11)
+CXX17FLAGS = $(CXX11FLAGS)
 CXX17PICFLAGS =
-CXX17STD = 
+CXX17STD = -std=gnu++17
+CXX20 = $(CXX11)
+CXX20FLAGS = $(CXX11FLAGS)
+CXX20PICFLAGS =
+CXX20STD = -std=gnu++2a
 DYLIB_EXT = .dll
 DYLIB_LD = $(DLL)
 DYLIB_LDFLAGS = -shared
@@ -101,14 +111,14 @@ ECHO_T =
 F_VISIBILITY = 
 ## FC is the compiler used for all Fortran as from R 3.6.0
 FC = $(BINPREF)gfortran $(M_ARCH)
-FCFLAGS = -O3 $(DEBUGFLAG) -mtune=generic
+FCFLAGS = -O2 $(DEBUGFLAG) -mfpmath=sse -msse2 -mstackrealign $(LTO)
 ## additional libs needed when linking with $(FC), e.g. on some Oracle compilers
 FCLIBS_XTRA =
-F77 = $(BINPREF)gfortran $(M_ARCH)
-F77_VISIBILITY = 
-FFLAGS = -O3 $(DEBUGFLAG) -mtune=generic
+#F77 = $(BINPREF)gfortran $(M_ARCH)
+#F77_VISIBILITY = 
+FFLAGS = -O2 $(DEBUGFLAG) -mfpmath=sse -msse2 -mstackrealign $(LTO)
 FLIBS = -lgfortran -lm -lquadmath
-FCPICFLAGS =
+#FCPICFLAGS =
 FPICFLAGS = 
 FOUNDATION_CPPFLAGS =
 FOUNDATION_LIBS =
@@ -119,25 +129,29 @@ JAVAH =
 ## JAVA_HOME might be used in the next three.  
 ## They are for packages 'JavaGD' and 'rJava'
 # JAVA_HOME = 
-# JAVA_LD_LIBRARY_PATH = 
-JAVA_LIBS = -L"$(JAVA_HOME)/bin/client" -ljvm -ljvm-w32
 JAVA_CPPFLAGS = -I"$(JAVA_HOME)/../include" -I"$(JAVA_HOME)/../include/win32"
+JAVA_LIBS = -L"$(JAVA_HOME)/bin/client" -ljvm -ljvm-w32
+# JAVA_LD_LIBRARY_PATH = 
 LAPACK_LIBS = -L"$(R_HOME)/$(IMPDIR)" -lRlapack
+LDFLAGS =
 ## we only need this is if it is external, as otherwise link to R
-LIBINTL=
+LIBINTL =
 LIBM = -lm
 LIBR = -L"$(R_HOME)/$(IMPDIR)" -lR
 LIBS =  -lm
 ## needed by R CMD config
 LIBnn = lib
 LIBTOOL =
-LDFLAGS =
+LTO = 
+## used in INSTALL
+LTO_OPT = 
 ## needed to build applications linking to static libR
 # MAIN_LD =
 # MAIN_LDFLAGS =
 # MAIN_LINK = $(MAIN_LD) $(MAIN_LDFLAGS) $(LDFLAGS)
 # don't have this: would 'mkdir -p' do?
 # MKINSTALLDIRS = $(R_HOME)/bin/mkinstalldirs
+NM = $(BINPREF)nm
 ## There is no ObjC support in the recommended toolchain,
 ## but if a toolchain had support, this it what it would be.
 OBJC = $(CC)
@@ -156,14 +170,16 @@ SHLIB_CXXFLAGS =
 SHLIB_CXXLD = $(CXX)
 ## ideally -shared -static-libstdc++, but not for gcc 4.2.1
 SHLIB_CXXLDFLAGS = -shared
-SHLIB_CXX98LD = $(CXX98)
-SHLIB_CXX98LDFLAGS = -shared
+#SHLIB_CXX98LD = $(CXX98)
+#SHLIB_CXX98LDFLAGS = -shared
 SHLIB_CXX11LD = $(CXX11)
 SHLIB_CXX11LDFLAGS = -shared
 SHLIB_CXX14LD = $(CXX14)
 SHLIB_CXX14LDFLAGS = -shared
 SHLIB_CXX17LD = $(CXX17)
 SHLIB_CXX17LDFLAGS = -shared
+SHLIB_CXX20LD = $(CXX20)
+SHLIB_CXX20LDFLAGS = -shared
 SHLIB_EXT = .dll
 SHLIB_FCLD = $(FC)
 ## ideally -shared -static-libgfortran, but not for gcc 4.2.1
@@ -188,7 +204,21 @@ STATIC_LIBR =
 R_XTRA_CFLAGS =
 R_XTRA_CPPFLAGS = -I"$(R_HOME)/include" -DNDEBUG
 R_XTRA_CXXFLAGS = 
-R_XTRA_FFLAGS = 
+R_XTRA_FFLAGS =  -fno-optimize-sibling-calls
+
+ifneq "$(LTO_OPT)" ""
+LTO =  $(LTO_OPT)
+AR = $(BINPREF)gcc-ar
+NM = $(BINPREF)gcc-nm
+RANLIB = $(BINPREF)gcc-ranlib
+SHLIB_LDFLAGS += $(CFLAGS)
+SHLIB_FCLDFLAGS += $(FFLAGS)
+SHLIB_CXXLDFLAGS += $(CXXFLAGS)
+SHLIB_CXX11LDFLAGS += $(CXX11FLAGS)
+SHLIB_CXX14LDFLAGS += $(CXX14FLAGS)
+SHLIB_CXX17LDFLAGS += $(CXX17FLAGS)
+SHLIB_CXX20LDFLAGS += $(CXX20FLAGS)
+endif
 
 ALL_CFLAGS = $(R_XTRA_CFLAGS) $(PKG_CFLAGS) $(CPICFLAGS) $(SHLIB_CFLAGS) $(CFLAGS)
 ALL_CPPFLAGS = $(R_XTRA_CPPFLAGS) $(PKG_CPPFLAGS) $(CLINK_CPPFLAGS) $(CPPFLAGS) $($*-CPPFLAGS) $(LOCAL_CPPFLAGS)
@@ -235,15 +265,18 @@ ALL_FCFLAGS = $(R_XTRA_FFLAGS) $(P_FCFLAGS) $(FPICFLAGS) $(SHLIB_FFLAGS) $(FCFLA
 .f90.o:
 	$(FC) $(ALL_FCFLAGS) -c  $< -o $@
 
+## Not used in R itself
 %.exe:
 	$(LINKER) $(LINKFLAGS) $($*-LINKFLAGS) -o $@ $^ $($*-LIBS) $(LOCAL_LIBS) $(LIBS)
 
 %.dll:
 	@echo EXPORTS > $*.def
 	@$(NM) $^ | $(SED) -n $(SYMPAT) >> $*.def
-	$(SHLIB_LD) -shared $(DLLFLAGS) -o $@ $*.def $^ $(ALL_LIBS)
+	$(SHLIB_LD) $(SHLIB_LDFLAGS) $(DLLFLAGS) -o $@ $*.def $^ $(ALL_LIBS)
 	@$(RM) $*.def
 
+## It does not make much sense to have $($*-DLLTOOLFLAGS) here
+## It is currently unused on CRAN
 lib%.dll.a: %.def
 	$(DLLTOOL) $(DLLTOOLFLAGS) $($*-DLLTOOLFLAGS) --dllname $*.dll --input-def $*.def --output-lib $@
 

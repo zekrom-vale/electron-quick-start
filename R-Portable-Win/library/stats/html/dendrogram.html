@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: General Tree Structures</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for dendrogram {stats}"><tr><td>dendrogram {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -79,7 +80,7 @@ is.leaf(object)
 <td>
 <p>numeric scalar indicating how the <em>height</em> of leaves
 should be computed from the heights of their parents; see
-<code><a href="hclust.html">plot.hclust</a></code>.</p>
+<code><a href="../../stats/help/plot.hclust.html">plot.hclust</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>check</code></td>
 <td>
@@ -265,18 +266,18 @@ returns the underlying list structure.
 </p>
 <p>Objects of class <code>"hclust"</code> can be converted to class
 <code>"dendrogram"</code> using method <code>as.dendrogram()</code>, and since R
-2.13.0, there is also a <code><a href="as.hclust.html">as.hclust</a>()</code> method as an inverse.
+2.13.0, there is also a <code><a href="../../stats/help/as.hclust.html">as.hclust</a>()</code> method as an inverse.
 </p>
 <p><code>rev.dendrogram</code> simply returns the dendrogram <code>x</code> with
-reversed nodes, see also <code><a href="reorder.dendrogram.html">reorder.dendrogram</a></code>.
+reversed nodes, see also <code><a href="../../stats/help/reorder.dendrogram.html">reorder.dendrogram</a></code>.
 </p>
 <p>The <code><a href="../../base/html/merge.html">merge</a>(x, y, ...)</code> method merges two or more
 dendrograms into a new one which has <code>x</code> and <code>y</code> (and
 optional further arguments) as branches.  Note that before <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.1.2,
 <code>adjust = "none"</code> was used implicitly, which is invalid when,
-e.g., the dendrograms are from <code><a href="dendrogram.html">as.dendrogram</a>(hclust(..))</code>.
+e.g., the dendrograms are from <code><a href="../../stats/help/as.dendrogram.html">as.dendrogram</a>(hclust(..))</code>.
 </p>
-<p><code><a href="nobs.html">nobs</a>(object)</code> returns the total number of leaves (the
+<p><code><a href="../../stats/help/nobs.html">nobs</a>(object)</code> returns the total number of leaves (the
 <code>members</code> attribute, see above).
 </p>
 <p><code>is.leaf(object)</code> returns logical indicating if <code>object</code> is a
@@ -312,8 +313,8 @@ structure, use <code>str(unclass(d))</code> instead.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="dendrapply.html">dendrapply</a></code> for applying a function to <em>each</em> node.
-<code><a href="order.dendrogram.html">order.dendrogram</a></code> and <code><a href="reorder.dendrogram.html">reorder.dendrogram</a></code>;
+<p><code><a href="../../stats/help/dendrapply.html">dendrapply</a></code> for applying a function to <em>each</em> node.
+<code><a href="../../stats/help/order.dendrogram.html">order.dendrogram</a></code> and <code><a href="../../stats/help/reorder.dendrogram.html">reorder.dendrogram</a></code>;
 further, the <code><a href="../../base/html/labels.html">labels</a></code> method.
 </p>
 
@@ -326,9 +327,9 @@ require(graphics); require(utils)
 hc &lt;- hclust(dist(USArrests), "ave")
 (dend1 &lt;- as.dendrogram(hc)) # "print()" method
 str(dend1)          # "str()" method
-str(dend1, max = 2, last.str =  "'") # only the first two sub-levels
+str(dend1, max.level = 2, last.str =  "'") # only the first two sub-levels
 oo &lt;- options(str.dendrogram.last = "\\") # yet another possibility
-str(dend1, max = 2) # only the first two sub-levels
+str(dend1, max.level = 2) # only the first two sub-levels
 options(oo)  # .. resetting them
 
 op &lt;- par(mfrow =  c(2,2), mar = c(5,2,1,4))
@@ -345,8 +346,8 @@ plot(dend1, nodePar = list(pch = 2:1, cex = .4*2:1, col = 2:3),
 stopifnot(identical(as.hclust(dend1)[1:4], hc[1:4]))
 
 dend2 &lt;- cut(dend1, h = 70)
+## leaves are wrong horizontally in R 4.0 and earlier:
 plot(dend2$upper)
-## leaves are wrong horizontally:
 plot(dend2$upper, nodePar = list(pch = c(1,7), col = 2:1))
 ##  dend2$lower is *NOT* a dendrogram, but a list of .. :
 plot(dend2$lower[[3]], nodePar = list(col = 4), horiz = TRUE, type = "tr")
@@ -396,5 +397,5 @@ plot(d3e, nodePar =  nP, leaflab = "textlike")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

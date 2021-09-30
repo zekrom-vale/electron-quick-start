@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: MethodsList Objects</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for MethodsList {methods}"><tr><td>MethodsList {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -13,9 +14,9 @@
 objects formerly used in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> to store methods for dispatch.  Use of
 these objects is deprecated since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.2.0, as it will rarely be a
 good idea.  Where methods dispatch is
-to be studied, see <code><a href="getMethod.html">selectMethod</a></code>.  For computations
+to be studied, see <code><a href="../../methods/help/selectMethod.html">selectMethod</a></code>.  For computations
 that iterate over methods or over method signatures, see
-<code><a href="findMethods.html">findMethods</a></code>, which returns a linearized methods list
+<code><a href="../../methods/help/findMethods.html">findMethods</a></code>, which returns a linearized methods list
 to hold method definitions, usually more convenient for iteration
 than the recursive <code>MethodsList</code> objects.
 </p>
@@ -141,7 +142,7 @@ class <code>MethodDefinition</code> has a method that stores the target
 and defined signatures in the environment.  Class
 <code>MethodWithNext</code> has a method taking account of the
 mechanism for storing the method to be used in a call to
-<code><a href="NextMethod.html">callNextMethod</a></code>.
+<code><a href="../../methods/help/callNextMethod.html">callNextMethod</a></code>.
 </p>
 <p>Any methods defined for <code>loadMethod</code> must return the function
 definition to be used for this call; typically, this is just the
@@ -172,5 +173,5 @@ Springer.  (For the R version.)
 Springer (For the original S4 version.)
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

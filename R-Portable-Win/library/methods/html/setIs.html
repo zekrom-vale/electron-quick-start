@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Specify a Superclass Explicitly</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for setIs {methods}"><tr><td>setIs {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,14 +11,14 @@
 <h3>Description</h3>
 
 <p><code>setIs</code> is an explicit alternative
-to the <code>contains=</code> argument to <code><a href="setClass.html">setClass</a></code>.  It is
+to the <code>contains=</code> argument to <code><a href="../../methods/help/setClass.html">setClass</a></code>.  It is
 only needed to create relations with explicit test or coercion.
 These have not proved to be of much practical value, so this
 function should not likely be needed in applications.
 </p>
 <p>Where the programming goal is to define methods for transforming one
 class of objects to another, it is usually better practice to call
-<code><a href="setAs.html">setAs</a>()</code>, which requires the transformations to be done explicitly.
+<code><a href="../../methods/help/setAs.html">setAs</a>()</code>, which requires the transformations to be done explicitly.
 </p>
 
 
@@ -90,7 +91,7 @@ know what you are doing.</p>
 
 <p>Optional class definition for <code>class</code> , required internally
 when <code>setIs</code> is called during the initial definition of the
-class by a call to <code><a href="setClass.html">setClass</a></code>. <em>Don't</em> use this
+class by a call to <code><a href="../../methods/help/setClass.html">setClass</a></code>. <em>Don't</em> use this
 argument, unless you really know why you're doing so.</p>
 </td></tr>
 </table>
@@ -106,7 +107,7 @@ providing what is called  &ldquo;simple&rdquo; inheritance, the preferred form:
 
 <ol>
 <li>
-<p>By the <code>contains=</code> argument in a call to <code><a href="setClass.html">setClass</a></code>.  This
+<p>By the <code>contains=</code> argument in a call to <code><a href="../../methods/help/setClass.html">setClass</a></code>.  This
 is and should be the most common mechanism.  It arranges that the new
 class contains all the structure of the existing class, and in
 particular all the slots with the same class specified.  The
@@ -117,7 +118,7 @@ this topic below).
 </li>
 <li>
 <p>Making <code>class1</code> a subclass of a virtual class
-either by a call to <code><a href="setClassUnion.html">setClassUnion</a></code> to make the
+either by a call to <code><a href="../../methods/help/setClassUnion.html">setClassUnion</a></code> to make the
 subclass a member of a new class union, or by a call to
 <code>setIs</code> to add a class to an existing class union or as a new
 subclass of an existing virtual class.  In either case, the
@@ -133,10 +134,10 @@ relationships are also generally simple.
 <p>Supplying <code>coerce</code>  and <code>replace</code> arguments to <code>setAs</code>.
 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> allows arbitrary inheritance relationships, using the same
 mechanism for defining coerce methods by a call to
-<code><a href="setAs.html">setAs</a></code>.  The difference between the  two is simply
-that <code><a href="setAs.html">setAs</a></code> will require a call to <code><a href="as.html">as</a></code>
+<code><a href="../../methods/help/setAs.html">setAs</a></code>.  The difference between the  two is simply
+that <code><a href="../../methods/help/setAs.html">setAs</a></code> will require a call to <code><a href="../../methods/help/as.html">as</a></code>
 for a conversion to take place, whereas after the call to
-<code><a href="setIs.html">setIs</a></code>, objects will be automatically converted to
+<code><a href="../../methods/help/setIs.html">setIs</a></code>, objects will be automatically converted to
 the superclass.
 </p>
 <p>The automatic feature is the dangerous part, mainly because it
@@ -149,7 +150,7 @@ relatively slight.
 <p>If the superclass inherits methods where the subclass has only a
 default or remotely inherited method, problems are more likely.
 In this case, a general
-recommendation is to use the <code><a href="setAs.html">setAs</a></code> mechanism
+recommendation is to use the <code><a href="../../methods/help/setAs.html">setAs</a></code> mechanism
 instead, unless there is a strong counter reason. Otherwise, be prepared to
 override some of  the methods inherited.
 </p>
@@ -202,7 +203,7 @@ and return the modified object as its value.
 </p>
 <p>For additional discussion of these functions, see
 the documentation of the
-<code><a href="setAs.html">setAs</a></code> function.  (Unfortunately, argument
+<code><a href="../../methods/help/setAs.html">setAs</a></code> function.  (Unfortunately, argument
 <code>def</code> to that function corresponds to argument <code>coerce</code> here.)
 </p>
 <p>The inheritance relationship can also be conditional, if a function is supplied as the
@@ -231,7 +232,7 @@ available methods for the classes.
 <p>The code that selects and dispatches the methods ensures that this
 assumption is correct.  If the inheritance was &ldquo;simple&rdquo;, that
 is, defined by one or more uses of the <code>contains=</code> argument in
-a call to <code><a href="setClass.html">setClass</a></code>, no extra work is generally
+a call to <code><a href="../../methods/help/setClass.html">setClass</a></code>, no extra work is generally
 needed.  Classes are inherited from the superclass, with the same
 definition.
 </p>
@@ -240,10 +241,10 @@ definition.
 inheritance implies that the subclass does <em>not</em> just contain
 the slots of the superclass, but instead requires the explicit call
 to the coerce and/or replace method.  To ensure correct computation,
-the inherited method is supplemented by calls to <code><a href="as.html">as</a></code>
+the inherited method is supplemented by calls to <code><a href="../../methods/help/as.html">as</a></code>
 before the body of the method is evaluated.
 </p>
-<p>The calls to <code><a href="as.html">as</a></code> generated in this case have the
+<p>The calls to <code><a href="../../methods/help/as.html">as</a></code> generated in this case have the
 argument <code>strict = FALSE</code>, meaning that extra information can
 be left in the converted object, so long as it has all the
 appropriate slots.  (It's this option that allows simple subclass
@@ -265,19 +266,19 @@ class.  But the S3 class is ambiguous, and in fact is
 <p>For some generic functions, methods inherited by non-simple
 extensions are either known to be invalid or sufficiently likely to
 be so that the generic function has been defined to exclude such
-inheritance.  For example <code><a href="new.html">initialize</a></code> methods must
+inheritance.  For example <code><a href="../../methods/help/initialize.html">initialize</a></code> methods must
 return an object of the target class; this is straightforward if the
 extension is simple, because no change is made to the argument
 object, but is essentially impossible.  For this reason, the generic
 function insists on only simple extensions for inheritance.  See the
-<code>simpleInheritanceOnly</code> argument to <code><a href="setGeneric.html">setGeneric</a></code>
+<code>simpleInheritanceOnly</code> argument to <code><a href="../../methods/help/setGeneric.html">setGeneric</a></code>
 for the mechanism.  You can use this mechanism when defining new
 generic functions.
 </p>
 <p>If you get into problems with functions that do allow non-simple
 inheritance, there are two basic choices.  Either
 back off from the <code>setIs</code> call and settle for explicit coercing
-defined by a call to <code><a href="setAs.html">setAs</a></code>; or, define explicit
+defined by a call to <code><a href="../../methods/help/setAs.html">setAs</a></code>; or, define explicit
 methods involving <code>class1</code> to override the bad inherited
 methods.  The first choice is the safer, when there are serious
 problems.
@@ -359,5 +360,5 @@ fd &lt;- new("factorDated", factor(ll), stamp = Sys.time())
 identical(levels(fd), levels(as(fd, "factor")))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

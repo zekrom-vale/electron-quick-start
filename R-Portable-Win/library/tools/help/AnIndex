@@ -19,6 +19,7 @@ checkPoFile	checkPoFiles
 checkPoFiles	checkPoFiles
 checkRd	checkRd
 checkRdaFiles	checkRdaFiles
+checkRdContents	QC
 checkReplaceFuns	QC
 checkS3methods	QC
 checkTnF	checkTnF
@@ -74,6 +75,7 @@ pkgVignettes	buildVignettes
 print.checkDocFiles	QC
 print.checkDocStyle	QC
 print.checkFF	checkFF
+print.checkRdContents	QC
 print.checkReplaceFuns	QC
 print.checkS3methods	QC
 print.checkTnF	checkTnF
@@ -102,6 +104,7 @@ readNEWS	tools-defunct
 resaveRdaFiles	checkRdaFiles
 R_DISABLE_HTTPD	startDynamicHelp
 R_GSCMD	find_gs_cmd
+R_user_dir	userdir
 showNonASCII	showNonASCII
 showNonASCIIfile	showNonASCII
 SIGCHLD	pskill

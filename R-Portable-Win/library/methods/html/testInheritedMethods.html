@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test for and Report about Selection of Inherited Methods</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for testInheritedMethods {methods}"><tr><td>testInheritedMethods {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -52,7 +53,7 @@ with <code>test = FALSE</code>, to test selection in batches.
 
 <p>optional flag to control whether method selection is actually tested.
 If <code>FALSE</code>, returns just the list of relevant signatures for
-subclasses, without calling <code><a href="getMethod.html">selectMethod</a></code> for each signature.
+subclasses, without calling <code><a href="../../methods/help/selectMethod.html">selectMethod</a></code> for each signature.
 If there are a very large number of signatures, you may want to collect the full list  and then test them in batches.
 </p>
 </td></tr>
@@ -89,7 +90,7 @@ packages with relevant methods and/or class definitions.
 <p>The following description applies when the optional arguments are
 omitted, the usual case.
 First, the defining signatures for all methods are computed by calls
-to <code><a href="findMethods.html">findMethodSignatures</a></code>.
+to <code><a href="../../methods/help/findMethodSignatures.html">findMethodSignatures</a></code>.
 From these all the known non-virtual subclasses are found for each
 class that appears in the signature of some method.
 These subclasses are split into groups according to which class they
@@ -105,7 +106,7 @@ tested.
 <p>All combinations of retained subclasses for the
 arguments in the generic signature are then computed.
 Each row of the resulting matrix is a signature to be tested by a call
-to <code><a href="getMethod.html">selectMethod</a></code>.
+to <code><a href="../../methods/help/selectMethod.html">selectMethod</a></code>.
 To collect information on ambiguous selections,
 <code>testInheritedMethods</code> establishes a calling handler for the
 special signal <code>"ambiguousMethodSelection"</code>, by setting the
@@ -149,5 +150,5 @@ Springer.  (Section 10.6 for basics of method selection.)
 testInheritedMethods("+")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

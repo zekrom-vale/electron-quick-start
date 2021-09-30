@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Simple Serialization Interface</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for serialize {base}"><tr><td>serialize {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,7 +33,7 @@ unserialize(connection, refhook = NULL)
 </td></tr>
 <tr valign="top"><td><code>connection</code></td>
 <td>
-<p>an open <a href="connections.html">connection</a> or (for <code>serialize</code>)
+<p>an open <a href="../../base/help/connection.html">connection</a> or (for <code>serialize</code>)
 <code>NULL</code> or (for <code>unserialize</code>) a raw vector
 (see &lsquo;Details&rsquo;).</p>
 </td></tr>
@@ -40,7 +41,7 @@ unserialize(connection, refhook = NULL)
 <td>
 <p>a logical.  If <code>TRUE</code> or <code>NA</code>, an ASCII
 representation is written; otherwise (default) a binary one.
-See also the comments in the help for <code><a href="save.html">save</a></code>.</p>
+See also the comments in the help for <code><a href="../../base/help/save.html">save</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>xdr</code></td>
 <td>
@@ -90,7 +91,7 @@ error.
 <p>The format consists of a single line followed by the data: the first
 line contains a single character: <code>X</code> for binary serialization
 and <code>A</code> for ASCII serialization, followed by a new line.  (The
-format used is identical to that used by <code><a href="readRDS.html">readRDS</a></code>.)
+format used is identical to that used by <code><a href="../../base/help/readRDS.html">readRDS</a></code>.)
 </p>
 <p>As almost all systems in current use are little-endian, <code>xdr =
   FALSE</code> can be used to avoid byte-shuffling at both ends when
@@ -126,10 +127,10 @@ normally be larger than the objects.
 
 <h3>See Also</h3>
 
-<p><code><a href="readRDS.html">saveRDS</a></code> for a more convenient interface to serialize an
+<p><code><a href="../../base/help/saveRDS.html">saveRDS</a></code> for a more convenient interface to serialize an
 object to a file or connection.
 </p>
-<p><code><a href="save.html">save</a></code> and <code><a href="load.html">load</a></code> to serialize and restore one
+<p><code><a href="../../base/help/save.html">save</a></code> and <code><a href="../../base/help/load.html">load</a></code> to serialize and restore one
 or more named objects.
 </p>
 <p>The &lsquo;R Internals&rsquo; manual for details of the format used.
@@ -145,5 +146,5 @@ unserialize(x)
 ## see also the examples for saveRDS
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Complex Numbers and Basic Functionality</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for complex {base}"><tr><td>complex {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -78,9 +79,9 @@ modulus and argument.  (Giving just the length generates a vector of
 complex zeroes.)
 </p>
 <p><code>as.complex</code> attempts to coerce its argument to be of complex
-type: like <code><a href="vector.html">as.vector</a></code> it strips attributes including
+type: like <code><a href="../../base/help/as.vector.html">as.vector</a></code> it strips attributes including
 names.  Up to <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> versions 3.2.x, all forms of <code>NA</code> and <code>NaN</code>
-were coerced to a complex <code>NA</code>, i.e., the <code><a href="NA.html">NA_complex_</a></code>
+were coerced to a complex <code>NA</code>, i.e., the <code><a href="../../base/help/NA_complex_.html">NA_complex_</a></code>
 constant, for which both the real and imaginary parts are <code>NA</code>.
 Since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.3.0, typically only objects which are <code>NA</code> in parts
 are coerced to complex <code>NA</code>, but others with <code>NaN</code> parts,
@@ -100,24 +101,24 @@ coordinates</em>.  If <i>z = x + i y</i> with real <i>x</i> and <i>y</i>, for
 <i>r = Mod(z) = &radic;(x^2 + y^2)</i>,
 and <i>&phi; = Arg(z)</i>, <i>x = r*cos(&phi;)</i> and
 <i>y = r*sin(&phi;)</i>.  They are all
-<a href="InternalMethods.html">internal generic</a> <a href="Primitive.html">primitive</a> functions: methods can be
+<a href="../../base/help/internal+20generic.html">internal generic</a> <a href="../../base/help/primitive.html">primitive</a> functions: methods can be
 defined for them
-individually or <em>via</em> the <code><a href="groupGeneric.html">Complex</a></code>
+individually or <em>via</em> the <code><a href="../../base/help/S3groupGeneric.html">Complex</a></code>
 group generic.
 </p>
-<p>In addition to the arithmetic operators (see <a href="Arithmetic.html">Arithmetic</a>)
+<p>In addition to the arithmetic operators (see <a href="../../base/help/Arithmetic.html">Arithmetic</a>)
 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>^</code>, the elementary
 trigonometric, logarithmic, exponential, square root and hyperbolic
 functions are implemented for complex values.
 </p>
-<p>Matrix multiplications (<code><a href="matmult.html">%*%</a></code>, <code><a href="crossprod.html">crossprod</a></code>,
-<code><a href="crossprod.html">tcrossprod</a></code>) are also defined for complex matrices
-(<code><a href="matrix.html">matrix</a></code>), and so are <code><a href="solve.html">solve</a></code>,
-<code><a href="eigen.html">eigen</a></code> or <code><a href="svd.html">svd</a></code>.
+<p>Matrix multiplications (<code><a href="../../base/help/+25+2A+25.html">%*%</a></code>, <code><a href="../../base/help/crossprod.html">crossprod</a></code>,
+<code><a href="../../base/help/tcrossprod.html">tcrossprod</a></code>) are also defined for complex matrices
+(<code><a href="../../base/help/matrix.html">matrix</a></code>), and so are <code><a href="../../base/help/solve.html">solve</a></code>,
+<code><a href="../../base/help/eigen.html">eigen</a></code> or <code><a href="../../base/help/svd.html">svd</a></code>.
 </p>
-<p>Internally, complex numbers are stored as a pair of <a href="double.html">double</a>
-precision numbers, either or both of which can be <code><a href="is.finite.html">NaN</a></code>
-(including <code>NA</code>, see <code><a href="NA.html">NA_complex_</a></code> and above) or
+<p>Internally, complex numbers are stored as a pair of <a href="../../base/help/double.html">double</a>
+precision numbers, either or both of which can be <code><a href="../../base/help/NaN.html">NaN</a></code>
+(including <code>NA</code>, see <code><a href="../../base/help/NA_complex_.html">NA_complex_</a></code> and above) or
 plus or minus infinity.
 </p>
 
@@ -135,15 +136,15 @@ set for them individually or via the group generic.
 
 <h3>Note</h3>
 
-<p>Operations and functions involving complex <code><a href="is.finite.html">NaN</a></code> mostly
+<p>Operations and functions involving complex <code><a href="../../base/help/NaN.html">NaN</a></code> mostly
 rely on the C library's handling of <span class="samp">double complex</span> arithmetic,
 which typically returns <code>complex(re=NaN, im=NaN)</code> (but we have
 not seen a guarantee for that).
 For <code>+</code> and <code>-</code>, <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s own handling works strictly
 &ldquo;coordinate wise&rdquo;.
 </p>
-<p>Operations involving complex <code>NA</code>, i.e., <code><a href="NA.html">NA_complex_</a></code>, return
-<code><a href="NA.html">NA_complex_</a></code>.
+<p>Operations involving complex <code>NA</code>, i.e., <code><a href="../../base/help/NA_complex_.html">NA_complex_</a></code>, return
+<code><a href="../../base/help/NA_complex_.html">NA_complex_</a></code>.
 </p>
 
 
@@ -157,7 +158,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="Arithmetic.html">Arithmetic</a></code>; <code><a href="polyroot.html">polyroot</a></code> finds all <i>n</i>
+<p><code><a href="../../base/help/Arithmetic.html">Arithmetic</a></code>; <code><a href="../../base/help/polyroot.html">polyroot</a></code> finds all <i>n</i>
 complex roots of a polynomial of degree <i>n</i>.
 </p>
 
@@ -178,7 +179,7 @@ z &lt;- complex(real = stats::rnorm(100), imaginary = stats::rnorm(100))
 z2 &lt;- 1:2 + 1i*(8:9)
 
 ## The Arg(.) is an angle:
-zz &lt;- (rep(1:4, len = 9) + 1i*(9:1))/10
+zz &lt;- (rep(1:4, length.out = 9) + 1i*(9:1))/10
 zz.shift &lt;- complex(modulus = Mod(zz), argument = Arg(zz) + pi)
 plot(zz, xlim = c(-1,1), ylim = c(-1,1), col = "red", asp = 1,
      main = expression(paste("Rotation by "," ", pi == 180^o)))
@@ -196,5 +197,5 @@ identical(NpNA, NA_complex_)
 showC(NA_complex_) # always == (R = NA, I = NA)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

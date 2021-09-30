@@ -48,7 +48,7 @@ Quinidine               Quinidine Kinetics
 Rail                    Evaluation of Stress in Railway Rails
 RatPupWeight            The weight of rat pups
 Relaxin                 Assay for Relaxin
-Remifentanil            Pharmacokinetics of remifentanil
+Remifentanil            Pharmacokinetics of Remifentanil
 Soybean                 Growth of soybean plants
 Spruce                  Growth of Spruce Trees
 Tetracycline1           Pharmacokinetics of tetracycline
@@ -285,12 +285,13 @@ summary.lme             Summarize an lme Object
 summary.modelStruct     Summarize a modelStruct Object
 summary.nlsList         Summarize an nlsList Object
 summary.pdMat           Summarize a pdMat Object
-summary.varFunc         Summarize varFunc Object
+summary.varFunc         Summarize "varFunc" Object
 update.modelStruct      Update a modelStruct Object
 update.varFunc          Update varFunc Object
 varClasses              Variance Function Classes
 varComb                 Combination of Variance Functions
 varConstPower           Constant Plus Power Variance Function
+varConstProp            Constant Plus Proportion Variance Function
 varExp                  Exponential Variance Function
 varFixed                Fixed Variance Function
 varFunc                 Variance Function Structure

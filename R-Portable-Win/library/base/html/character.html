@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Character Vectors</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for character {base}"><tr><td>character {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -46,8 +47,8 @@ supplying an argument of length other than one is an error.</p>
 
 <p><code>as.character</code> and <code>is.character</code> are generic: you can
 write methods to handle specific classes of objects,
-see <a href="InternalMethods.html">InternalMethods</a>.  Further, for <code>as.character</code> the
-default method calls <code><a href="vector.html">as.vector</a></code>, so dispatch is first on
+see <a href="../../base/help/InternalMethods.html">InternalMethods</a>.  Further, for <code>as.character</code> the
+default method calls <code><a href="../../base/help/as.vector.html">as.vector</a></code>, so dispatch is first on
 methods for <code>as.character</code> and then for methods for <code>as.vector</code>.
 </p>
 <p><code>as.character</code> represents real and complex numbers to 15 significant
@@ -58,7 +59,7 @@ digits in the result will be reliable (and not the result of
 representation error), but does mean that conversion to character and
 back to numeric may change the number.  If you want to convert numbers
 to character with the maximum possible precision, use
-<code><a href="format.html">format</a></code>.
+<code><a href="../../base/help/format.html">format</a></code>.
 </p>
 
 
@@ -68,8 +69,8 @@ to character with the maximum possible precision, use
 The elements of the vector are all equal to <code>""</code>.
 </p>
 <p><code>as.character</code> attempts to coerce its argument to character type;
-like <code><a href="vector.html">as.vector</a></code> it strips attributes including names.
-For lists and pairlists (including <a href="is.language.html">language objects</a> such as
+like <code><a href="../../base/help/as.vector.html">as.vector</a></code> it strips attributes including names.
+For lists and pairlists (including <a href="../../base/help/language+20objects.html">language objects</a> such as
 calls) it deparses the elements individually, except that it extracts
 the first element of length-one character vectors.
 </p>
@@ -96,18 +97,21 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="options.html">options</a></code>: option <code>scipen</code> affects the conversion of
+<p><code><a href="../../base/help/options.html">options</a></code>: option <code>scipen</code> affects the conversion of
 numbers.
 </p>
-<p><code><a href="paste.html">paste</a></code>, <code><a href="substr.html">substr</a></code> and <code><a href="strsplit.html">strsplit</a></code>
+<p><code><a href="../../base/help/paste.html">paste</a></code>, <code><a href="../../base/help/substr.html">substr</a></code> and <code><a href="../../base/help/strsplit.html">strsplit</a></code>
 for character concatenation and splitting,
-<code><a href="chartr.html">chartr</a></code> for character translation and casefolding (e.g.,
-upper to lower case) and <code><a href="grep.html">sub</a></code>, <code><a href="grep.html">grep</a></code> etc for
+<code><a href="../../base/help/chartr.html">chartr</a></code> for character translation and casefolding (e.g.,
+upper to lower case) and <code><a href="../../base/help/sub.html">sub</a></code>, <code><a href="../../base/help/grep.html">grep</a></code> etc for
 string matching and substitutions.  Note that
 <code>help.search(keyword = "character")</code> gives even more links.
 </p>
-<p><code><a href="deparse.html">deparse</a></code>, which is normally preferable to
-<code>as.character</code> for <a href="is.language.html">language objects</a>.
+<p><code><a href="../../base/help/deparse.html">deparse</a></code>, which is normally preferable to
+<code>as.character</code> for <a href="../../base/help/language+20objects.html">language objects</a>.
+</p>
+<p><code><a href="../../base/help/Quotes.html">Quotes</a></code> on how to specify <code>character</code> / string
+constants, including <em>raw</em> ones.
 </p>
 
 
@@ -127,5 +131,5 @@ as.character(a2)      # normally different from a1
 print(c(a0, a2), digits = 16)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

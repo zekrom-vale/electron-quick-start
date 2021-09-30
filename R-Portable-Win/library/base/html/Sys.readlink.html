@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read File Symbolic Links</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Sys.readlink {base}"><tr><td>Sys.readlink {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -32,7 +33,7 @@ Sys.readlink(paths)
 <tr valign="top"><td><code>paths</code></td>
 <td>
 <p>character vector of file paths.  Tilde expansion is done:
-see <code><a href="path.expand.html">path.expand</a></code>.</p>
+see <code><a href="../../base/help/path.expand.html">path.expand</a></code>.</p>
 </td></tr>
 </table>
 
@@ -42,7 +43,7 @@ see <code><a href="path.expand.html">path.expand</a></code>.</p>
 <p>A character vector of the same length as <code>paths</code>.  The
 entries are the path of the file linked to, <code>""</code> if the path is
 not a symbolic link, and <code>NA</code> if there is an error (e.g., the
-path does not exist).
+path does not exist or cannot be converted to the native encoding).
 </p>
 <p>On platforms without the <code>readlink</code> system call, all elements are
 <code>""</code>.
@@ -51,8 +52,8 @@ path does not exist).
 
 <h3>See Also</h3>
 
-<p><code><a href="files.html">file.symlink</a></code> for the creation of symbolic links (and
-their Windows analogues), <code><a href="file.info.html">file.info</a></code>
+<p><code><a href="../../base/help/file.symlink.html">file.symlink</a></code> for the creation of symbolic links (and
+their Windows analogues), <code><a href="../../base/help/file.info.html">file.info</a></code>
 </p>
 
 
@@ -65,5 +66,5 @@ is.symlink &lt;- function(paths) isTRUE(nzchar(Sys.readlink(paths), keepNA=TRUE)
 is.symlink("/foo/bar")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

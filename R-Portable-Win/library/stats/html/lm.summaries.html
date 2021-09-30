@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Accessing Linear Model Fits</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for lm.summaries {stats}"><tr><td>lm.summaries {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -39,7 +40,7 @@ labels(object, ...)
 <tr valign="top"><td><code>object, x</code></td>
 <td>
 <p>an object inheriting from class <code>lm</code>, usually
-the result of a call to <code><a href="lm.html">lm</a></code> or <code><a href="aov.html">aov</a></code>.</p>
+the result of a call to <code><a href="../../stats/help/lm.html">lm</a></code> or <code><a href="../../stats/help/aov.html">aov</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -63,14 +64,14 @@ deviance and pearson residuals are weighted residuals, scaled by the
 square root of the weights used in fitting.  The partial residuals
 are a matrix with each column formed by omitting a term from the
 model.  In all these, zero weight cases are never omitted (as opposed
-to the standardized <code><a href="influence.measures.html">rstudent</a></code> residuals, and the
-<code><a href="weighted.residuals.html">weighted.residuals</a></code>).
+to the standardized <code><a href="../../stats/help/rstudent.html">rstudent</a></code> residuals, and the
+<code><a href="../../stats/help/weighted.residuals.html">weighted.residuals</a></code>).
 </p>
 <p>How <code>residuals</code> treats cases with missing values in the original
 fit is determined by the <code>na.action</code> argument of that fit.
 If <code>na.action = na.omit</code> omitted cases will not appear in the
 residuals, whereas if <code>na.action = na.exclude</code> they will appear,
-with residual value <code>NA</code>.  See also <code><a href="nafns.html">naresid</a></code>.
+with residual value <code>NA</code>.  See also <code><a href="../../stats/help/naresid.html">naresid</a></code>.
 </p>
 <p>The <code>"lm"</code> method for generic <code><a href="../../base/html/labels.html">labels</a></code> returns the
 term labels for estimable terms, that is the names of the terms with
@@ -89,20 +90,20 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p>The model fitting function <code><a href="lm.html">lm</a></code>, <code><a href="anova.lm.html">anova.lm</a></code>.
+<p>The model fitting function <code><a href="../../stats/help/lm.html">lm</a></code>, <code><a href="../../stats/help/anova.lm.html">anova.lm</a></code>.
 </p>
-<p><code><a href="coef.html">coef</a></code>, <code><a href="deviance.html">deviance</a></code>,
-<code><a href="df.residual.html">df.residual</a></code>,
-<code><a href="effects.html">effects</a></code>, <code><a href="fitted.values.html">fitted</a></code>,
-<code><a href="glm.html">glm</a></code> for <b>generalized</b> linear models,
-<code><a href="lm.influence.html">influence</a></code> (etc on that page) for regression diagnostics,
-<code><a href="weighted.residuals.html">weighted.residuals</a></code>,
-<code><a href="residuals.html">residuals</a></code>, <code><a href="glm.summaries.html">residuals.glm</a></code>,
-<code><a href="summary.lm.html">summary.lm</a></code>, <code><a href="weights.html">weights</a></code>.
+<p><code><a href="../../stats/help/coef.html">coef</a></code>, <code><a href="../../stats/help/deviance.html">deviance</a></code>,
+<code><a href="../../stats/help/df.residual.html">df.residual</a></code>,
+<code><a href="../../stats/help/effects.html">effects</a></code>, <code><a href="../../stats/help/fitted.html">fitted</a></code>,
+<code><a href="../../stats/help/glm.html">glm</a></code> for <b>generalized</b> linear models,
+<code><a href="../../stats/help/influence.html">influence</a></code> (etc on that page) for regression diagnostics,
+<code><a href="../../stats/help/weighted.residuals.html">weighted.residuals</a></code>,
+<code><a href="../../stats/help/residuals.html">residuals</a></code>, <code><a href="../../stats/help/residuals.glm.html">residuals.glm</a></code>,
+<code><a href="../../stats/help/summary.lm.html">summary.lm</a></code>, <code><a href="../../stats/help/weights.html">weights</a></code>.
 </p>
-<p><a href="influence.measures.html">influence.measures</a> for deletion diagnostics, including
-standardized (<code><a href="influence.measures.html">rstandard</a></code>)
-and studentized (<code><a href="influence.measures.html">rstudent</a></code>) residuals.
+<p><a href="../../stats/help/influence.measures.html">influence.measures</a> for deletion diagnostics, including
+standardized (<code><a href="../../stats/help/rstandard.html">rstandard</a></code>)
+and studentized (<code><a href="../../stats/help/rstudent.html">rstudent</a></code>) residuals.
 </p>
 
 
@@ -120,5 +121,5 @@ abline(h = 0, lty = 2, col = "gray")
 qqnorm(residuals(lm.D90))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

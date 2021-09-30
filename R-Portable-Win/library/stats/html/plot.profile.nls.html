@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot a profile.nls Object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for plot.profile.nls {stats}"><tr><td>plot.profile.nls {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -88,9 +89,9 @@ Wiley (chapter 6)
 
 <h3>See Also</h3>
 
-<p><code><a href="nls.html">nls</a></code>,
-<code><a href="profile.html">profile</a></code>,
-<code><a href="profile.nls.html">profile.nls</a></code>
+<p><code><a href="../../stats/help/nls.html">nls</a></code>,
+<code><a href="../../stats/help/profile.html">profile</a></code>,
+<code><a href="../../stats/help/profile.nls.html">profile.nls</a></code>
 </p>
 
 
@@ -102,7 +103,7 @@ require(graphics)
 # obtain the fitted object
 fm1 &lt;- nls(demand ~ SSasympOrig(Time, A, lrc), data = BOD)
 # get the profile for the fitted model
-pr1 &lt;- profile(fm1, alpha = 0.05)
+pr1 &lt;- profile(fm1, alphamax = 0.05)
 opar &lt;- par(mfrow = c(2,2), oma = c(1.1, 0, 1.1, 0), las = 1)
 plot(pr1, conf = c(95, 90, 80, 50)/100)
 plot(pr1, conf = c(95, 90, 80, 50)/100, absVal = FALSE)
@@ -113,5 +114,5 @@ mtext("BOD data - confidence levels of 50%, 80%, 90% and 95%",
 par(opar)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

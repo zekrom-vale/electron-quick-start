@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test if a Matrix or other Object is Symmetric (Hermitian)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for isSymmetric {base}"><tr><td>isSymmetric {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p>Generic function to test if <code>object</code> is symmetric or not.
 Currently only a matrix method is implemented, where a
-<code><a href="complex.html">complex</a></code> matrix <code>Z</code> must be &ldquo;Hermitian&rdquo; for
+<code><a href="../../base/help/complex.html">complex</a></code> matrix <code>Z</code> must be &ldquo;Hermitian&rdquo; for
 <code>isSymmetric(Z)</code> to be true.
 </p>
 
@@ -31,12 +32,12 @@ isSymmetric(object, tol = 100 * .Machine$double.eps,
 <table summary="R argblock">
 <tr valign="top"><td><code>object</code></td>
 <td>
-<p>any <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object; a <code><a href="matrix.html">matrix</a></code> for the matrix method.</p>
+<p>any <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object; a <code><a href="../../base/help/matrix.html">matrix</a></code> for the matrix method.</p>
 </td></tr>
 <tr valign="top"><td><code>tol</code></td>
 <td>
 <p>numeric scalar &gt;= 0.  Smaller differences are not
-considered, see <code><a href="all.equal.html">all.equal.numeric</a></code>.</p>
+considered, see <code><a href="../../base/help/all.equal.numeric.html">all.equal.numeric</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>tol1</code></td>
 <td>
@@ -48,7 +49,7 @@ to length zero will skip the pre-tests.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>further arguments passed to methods; the matrix method
-passes these to <code><a href="all.equal.html">all.equal</a></code>.  If the row and column
+passes these to <code><a href="../../base/help/all.equal.html">all.equal</a></code>.  If the row and column
 names of <code>object</code> are allowed to differ for the symmetry check
 do use <code>check.attributes = FALSE</code>!</p>
 </td></tr>
@@ -57,13 +58,13 @@ do use <code>check.attributes = FALSE</code>!</p>
 
 <h3>Details</h3>
 
-<p>The <code><a href="matrix.html">matrix</a></code> method is used inside <code><a href="eigen.html">eigen</a></code> by
+<p>The <code><a href="../../base/help/matrix.html">matrix</a></code> method is used inside <code><a href="../../base/help/eigen.html">eigen</a></code> by
 default to test symmetry of matrices <em>up to rounding error</em>, using
-<code><a href="all.equal.html">all.equal</a></code>.  It might not be appropriate in all
+<code><a href="../../base/help/all.equal.html">all.equal</a></code>.  It might not be appropriate in all
 situations.
 </p>
 <p>Note that a matrix <code>m</code> is only symmetric if its <code>rownames</code> and
-<code>colnames</code> are identical.  Consider using <code><a href="unname.html">unname</a>(m)</code>.
+<code>colnames</code> are identical.  Consider using <code><a href="../../base/help/unname.html">unname</a>(m)</code>.
 </p>
 
 
@@ -75,7 +76,7 @@ situations.
 
 <h3>See Also</h3>
 
-<p><code><a href="eigen.html">eigen</a></code> which calls <code>isSymmetric</code> when its
+<p><code><a href="../../base/help/eigen.html">eigen</a></code> which calls <code>isSymmetric</code> when its
 <code>symmetric</code> argument is missing.
 </p>
 
@@ -102,5 +103,5 @@ isSymmetric(D3)                         # FALSE (as row and column names differ)
 isSymmetric(D3, check.attributes=FALSE) # TRUE  (as names are not checked)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Spell Check Interface</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for aspell {utils}"><tr><td>aspell {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -71,8 +72,8 @@ extension (currently, only &lsquo;<span class="file">.rds</span>&rsquo;) can be 
 pipe interface activated via command line option <span class="option">-a</span>.  In
 addition to the programs, suitable dictionaries need to be available.
 See <a href="http://aspell.net">http://aspell.net</a>,
-<a href="http://hunspell.sourceforge.net/">http://hunspell.sourceforge.net/</a> and
-<a href="http://lasr.cs.ucla.edu/geoff/ispell.html">http://lasr.cs.ucla.edu/geoff/ispell.html</a>, respectively, for
+<a href="https://hunspell.github.io/">https://hunspell.github.io/</a> and
+<a href="https://www.cs.hmc.edu/~geoff/ispell.html">https://www.cs.hmc.edu/~geoff/ispell.html</a>, respectively, for
 obtaining the Aspell, Hunspell and (International) Ispell programs and
 dictionaries.
 </p>
@@ -131,21 +132,21 @@ method) with the information about possibly mis-spelled words.
 
 <h3>References</h3>
 
-<p>Kurt Hornik and Duncan Murdoch (2011),
-Watch your spelling!
-<em>The R Journal</em> <b>3</b>(2), 22&ndash;28.
-<a href="https://journal.r-project.org/archive/2011-2/RJournal_2011-2_Hornik+Murdoch.pdf">https://journal.r-project.org/archive/2011-2/RJournal_2011-2_Hornik+Murdoch.pdf</a>.
+<p>Kurt Hornik and Duncan Murdoch (2011).
+&ldquo;Watch your spelling!&rdquo;
+<em>The R Journal</em>, <b>3</b>(2), 22&ndash;28.
+doi: <a href="https://doi.org/10.32614/RJ-2011-014">10.32614/RJ-2011-014</a>.
+
 </p>
 
 
 <h3>See Also</h3>
 
-<p><a href="aspell-utils.html">aspell-utils</a> for utilities for spell checking packages.
+<p><a href="../../utils/help/aspell-utils.html">aspell-utils</a> for utilities for spell checking packages.
 </p>
-<p>Package <span class="pkg">Aspell</span> on Omegahat
-(<a href="http://www.omegahat.net/Aspell">http://www.omegahat.net/Aspell</a>) for a fine-grained R interface
-to the Aspell library.
-</p>
+
+
+
 
 
 <h3>Examples</h3>
@@ -171,5 +172,5 @@ aspell(files, control = "--mode=texinfo")
 Sys.glob(file.path(R.home("share"), "dictionaries", "*.rds"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

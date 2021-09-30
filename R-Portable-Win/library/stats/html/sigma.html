@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract Residual Standard Deviation 'Sigma'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for sigma {stats}"><tr><td>sigma {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,9 +11,9 @@
 <h3>Description</h3>
 
 <p>Extract the estimated standard deviation of the errors, the
-&ldquo;residual standard deviation&rdquo; (misnomed also
+&ldquo;residual standard deviation&rdquo; (misnamed also
 &ldquo;residual standard error&rdquo;, e.g., in
-<code><a href="summary.lm.html">summary.lm</a>()</code>'s output, from a fitted model).
+<code><a href="../../stats/help/summary.lm.html">summary.lm</a>()</code>'s output, from a fitted model).
 </p>
 <p>Many classical statistical models have a <em>scale parameter</em>,
 typically the standard deviation of a zero-mean normal (or Gaussian)
@@ -38,16 +39,16 @@ sigma(object, use.fallback = TRUE, ...)
 <tr valign="top"><td><code>object</code></td>
 <td>
 <p>an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object, typically resulting from a model fitting
-function such as <code><a href="lm.html">lm</a></code>.</p>
+function such as <code><a href="../../stats/help/lm.html">lm</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>use.fallback</code></td>
 <td>
-<p>logical, passed to <code><a href="nobs.html">nobs</a></code>.</p>
+<p>logical, passed to <code><a href="../../stats/help/nobs.html">nobs</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>potentially further arguments passed to and from
-methods.  Passed to <code><a href="deviance.html">deviance</a>(*, ...)</code> for the default method.</p>
+methods.  Passed to <code><a href="../../stats/help/deviance.html">deviance</a>(*, ...)</code> for the default method.</p>
 </td></tr>
 </table>
 
@@ -57,12 +58,14 @@ methods.  Passed to <code><a href="deviance.html">deviance</a>(*, ...)</code> fo
 <p>The <span class="pkg">stats</span> package provides the S3 generic and a default method.
 The latter is correct typically for (asymptotically / approximately)
 generalized gaussian (&ldquo;least squares&rdquo;) problems, since it is
-defined as </p>
+defined as
+</p>
 <pre>
    sigma.default &lt;- function (object, use.fallback = TRUE, ...)
-                      sqrt( deviance(object, ...) / (NN - PP) )
- </pre><p> where <code>NN &lt;- <a href="nobs.html">nobs</a>(object, use.fallback = use.fallback)</code>
-and <code>PP &lt;- sum(!is.na(<a href="coef.html">coef</a>(object)))</code> &ndash; where in older <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+       sqrt( deviance(object, ...) / (NN - PP) )
+ </pre>
+<p>where <code>NN &lt;- <a href="../../stats/help/nobs.html">nobs</a>(object, use.fallback = use.fallback)</code>
+and <code>PP &lt;- sum(!is.na(<a href="../../stats/help/coef.html">coef</a>(object)))</code> &ndash; where in older <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 versions this was <code>length(coef(object))</code> which is too large in
 case of undetermined coefficients, e.g., for rank deficient model fits.
 </p>
@@ -74,7 +77,7 @@ case of undetermined coefficients, e.g., for rank deficient model fits.
 errors (&ldquo;residual standard deviation&rdquo;) for Gaussian
 models, and&mdash;less interpretably&mdash;the square root of the residual
 deviance per degree of freedom in more general models.
-In some generalized linear modelling (<code><a href="glm.html">glm</a></code>) contexts,
+In some generalized linear modelling (<code><a href="../../stats/help/glm.html">glm</a></code>) contexts,
 <i>sigma^2</i> (<code>sigma(.)^2</code>) is called &ldquo;dispersion
 (parameter)&rdquo;.  Consequently, for well-fitting binomial or Poisson
 GLMs, <code>sigma</code> is around 1.
@@ -96,7 +99,7 @@ too many <span style="font-family: Courier New, Courier; color: #666666;"><b>R</
 
 <h3>See Also</h3>
 
-<p><code><a href="deviance.html">deviance</a></code>, <code><a href="nobs.html">nobs</a></code>, <code><a href="vcov.html">vcov</a></code>.
+<p><code><a href="../../stats/help/deviance.html">deviance</a></code>, <code><a href="../../stats/help/nobs.html">nobs</a></code>, <code><a href="../../stats/help/vcov.html">vcov</a></code>.
 </p>
 
 
@@ -106,13 +109,13 @@ too many <span style="font-family: Courier New, Courier; color: #666666;"><b>R</
 ## -- lm() ------------------------------
 lm1 &lt;- lm(Fertility ~ . , data = swiss)
 sigma(lm1) # ~= 7.165  = "Residual standard error"  printed from summary(lm1)
-stopifnot(all.equal(sigma(lm1), summary(lm1)$sigma, tol=1e-15))
+stopifnot(all.equal(sigma(lm1), summary(lm1)$sigma, tolerance=1e-15))
 
 ## -- nls() -----------------------------
 DNase1 &lt;- subset(DNase, Run == 1)
 fm.DN1 &lt;- nls(density ~ SSlogis(log(conc), Asym, xmid, scal), DNase1)
 sigma(fm.DN1) # ~= 0.01919  as from summary(..)
-stopifnot(all.equal(sigma(fm.DN1), summary(fm.DN1)$sigma, tol=1e-15))
+stopifnot(all.equal(sigma(fm.DN1), summary(fm.DN1)$sigma, tolerance=1e-15))
 
 
 ## -- glm() -----------------------------
@@ -143,5 +146,5 @@ sqrt(diag(estVar(mlmfit)))
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

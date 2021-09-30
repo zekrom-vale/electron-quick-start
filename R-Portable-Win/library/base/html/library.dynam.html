@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Loading DLLs from Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for library.dynam {base}"><tr><td>library.dynam {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -55,7 +56,7 @@ library trees to search through.</p>
 <p>a logical value indicating whether an announcement
 is printed on the console before loading the DLL.  The
 default value is taken from the verbose entry in the system
-<code><a href="options.html">options</a></code>.</p>
+<code><a href="../../base/help/options.html">options</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>file.ext</code></td>
 <td>
@@ -66,7 +67,7 @@ to the appropriate value for the operating system.</p>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional arguments needed by some libraries that
-are passed to the call to <code><a href="dynload.html">dyn.load</a></code> to control
+are passed to the call to <code><a href="../../base/help/dyn.load.html">dyn.load</a></code> to control
 how the library and its dependencies are loaded.</p>
 </td></tr>
 <tr valign="top"><td><code>new</code></td>
@@ -79,25 +80,25 @@ DLLs loaded by packages.  Can be missing.</p>
 
 <h3>Details</h3>
 
-<p>See <code><a href="dynload.html">dyn.load</a></code> for what sort of objects these functions handle.
+<p>See <code><a href="../../base/help/dyn.load.html">dyn.load</a></code> for what sort of objects these functions handle.
 </p>
 <p><code>library.dynam</code> is designed to be used inside a package rather
 than at the command line, and should really only be used inside
-<code><a href="ns-hooks.html">.onLoad</a></code>.  The system-specific extension for DLLs (e.g.,
+<code><a href="../../base/help/.onLoad.html">.onLoad</a></code>.  The system-specific extension for DLLs (e.g.,
 &lsquo;<span class="file">.so</span>&rsquo; or &lsquo;<span class="file">.sl</span>&rsquo; on Unix-alike systems,
 &lsquo;<span class="file">.dll</span>&rsquo; on Windows) should not be added.
 </p>
 <p>If <code>...</code> does not include a named argument <code>DLLpath</code>,
-<code><a href="dynload.html">dyn.load</a></code> is called with <code>DLLpath</code> set to the
+<code><a href="../../base/help/dyn.load.html">dyn.load</a></code> is called with <code>DLLpath</code> set to the
 package's &lsquo;<span class="file">libs</span>&rsquo; directory.  See the &ldquo;Windows&rdquo; section of
-the help on <code><a href="dynload.html">dyn.load</a></code> for how to control where dependent
+the help on <code><a href="../../base/help/dyn.load.html">dyn.load</a></code> for how to control where dependent
 DLLs are found.
 </p>
-<p>See <code><a href="dynload.html">dyn.load</a></code> for comments about diagnostic messages
+<p>See <code><a href="../../base/help/dyn.load.html">dyn.load</a></code> for comments about diagnostic messages
 which may be seen on Windows.
 </p>
 <p><code>library.dynam.unload</code> is designed for use in
-<code><a href="ns-hooks.html">.onUnload</a></code>: it unloads the DLL and updates the value of
+<code><a href="../../base/help/.onUnload.html">.onUnload</a></code>: it unloads the DLL and updates the value of
 <code>.dynLibs()</code>
 </p>
 <p><code>.dynLibs</code> is used for getting (with no argument) or setting the
@@ -108,33 +109,33 @@ DLLs which are currently loaded by packages (using <code>library.dynam</code>).
 <h3>Value</h3>
 
 <p>If <code>chname</code> is not specified, <code>library.dynam</code> returns an
-object of class <code>"<a href="getLoadedDLLs.html">DLLInfoList</a>"</code> corresponding to the DLLs
+object of class <code>"<a href="../../base/help/DLLInfoList.html">DLLInfoList</a>"</code> corresponding to the DLLs
 loaded by packages.
 </p>
 <p>If <code>chname</code> is specified, an object of class
-<code>"<a href="getLoadedDLLs.html">DLLInfo</a>"</code> that identifies the DLL and which can be used
+<code>"<a href="../../base/help/DLLInfo.html">DLLInfo</a>"</code> that identifies the DLL and which can be used
 in future calls is returned invisibly.  Note that the class
-<code>"<a href="getLoadedDLLs.html">DLLInfo</a>"</code> has a method for <code>$</code> which can be used to
+<code>"<a href="../../base/help/DLLInfo.html">DLLInfo</a>"</code> has a method for <code>$</code> which can be used to
 resolve native symbols within that DLL.
 </p>
 <p><code>library.dynam.unload</code> invisibly returns an object of class
-<code>"<a href="getLoadedDLLs.html">DLLInfo</a>"</code> identifying the DLL successfully unloaded.
+<code>"<a href="../../base/help/DLLInfo.html">DLLInfo</a>"</code> identifying the DLL successfully unloaded.
 </p>
-<p><code>.dynLibs</code> returns an object of class <code>"<a href="getLoadedDLLs.html">DLLInfoList</a>"</code>
+<p><code>.dynLibs</code> returns an object of class <code>"<a href="../../base/help/DLLInfoList.html">DLLInfoList</a>"</code>
 corresponding corresponding to its current value.
 </p>
 
 
 <h3>Warning</h3>
 
-<p>Do not use <code><a href="dynload.html">dyn.unload</a></code> on a DLL loaded by
+<p>Do not use <code><a href="../../base/help/dyn.unload.html">dyn.unload</a></code> on a DLL loaded by
 <code>library.dynam</code>: use <code>library.dynam.unload</code> to ensure
 that <code>.dynLibs</code> gets updated.  Otherwise a subsequent call to
 <code>library.dynam</code> will be told the object is already loaded.
 </p>
 <p>Note that whether or not it is possible to unload a DLL and then
 reload a revised version of the same file is OS-dependent: see the
-&lsquo;Value&rsquo; section of the help for  <code><a href="dynload.html">dyn.unload</a></code>.
+&lsquo;Value&rsquo; section of the help for  <code><a href="../../base/help/dyn.unload.html">dyn.unload</a></code>.
 </p>
 
 
@@ -148,12 +149,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="getLoadedDLLs.html">getLoadedDLLs</a></code> for information on <code>"DLLInfo"</code> and
+<p><code><a href="../../base/help/getLoadedDLLs.html">getLoadedDLLs</a></code> for information on <code>"DLLInfo"</code> and
 <code>"DLLInfoList"</code> objects.
 </p>
-<p><code><a href="ns-hooks.html">.onLoad</a></code>, <code><a href="library.html">library</a></code>,
-<code><a href="dynload.html">dyn.load</a></code>, <code><a href="zpackages.html">.packages</a></code>,
-<code><a href="libPaths.html">.libPaths</a></code>
+<p><code><a href="../../base/help/.onLoad.html">.onLoad</a></code>, <code><a href="../../base/help/library.html">library</a></code>,
+<code><a href="../../base/help/dyn.load.html">dyn.load</a></code>, <code><a href="../../base/help/.packages.html">.packages</a></code>,
+<code><a href="../../base/help/.libPaths.html">.libPaths</a></code>
 </p>
 <p><code><a href="../../utils/html/SHLIB.html">SHLIB</a></code> for how to create suitable DLLs.
 </p>
@@ -181,5 +182,5 @@ unloadNamespace("nlme") # now gives warning
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

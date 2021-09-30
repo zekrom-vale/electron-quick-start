@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check if a Function Acts as an S3 Generic</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for isS3stdGeneric {utils}"><tr><td>isS3stdGeneric {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,7 +27,7 @@ isS3stdGeneric(f)
 <table summary="R argblock">
 <tr valign="top"><td><code>f</code></td>
 <td>
-<p>A function object</p>
+<p>a function object</p>
 </td></tr>
 </table>
 
@@ -38,14 +39,18 @@ in its body calls <code><a href="../../base/html/UseMethod.html">UseMethod</a></
 operations before calling <code>UseMethod</code> will not be considered
 &ldquo;standard&rdquo; S3 generics.
 </p>
+<p>If <code>f</code> is currently being traced, i.e., inheriting from class
+<code>"traceable"</code>, the definition of the original untraced version of
+the function is used instead.
+</p>
 
 
 <h3>Value</h3>
 
-<p>If <code>f</code> is an S3 generic, a logical vector containing <code>TRUE</code>
+<p>If <code>f</code> is an S3 generic, a logical containing <code>TRUE</code>
 with the name of the S3 generic (the string passed to
 <code>UseMethod</code>). Otherwise, <code>FALSE</code> (unnamed).
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

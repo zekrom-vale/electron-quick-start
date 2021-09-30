@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: List Available Packages at CRAN-like Repositories</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for available.packages {utils}"><tr><td>available.packages {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -22,8 +23,8 @@ from a local mirror).
 available.packages(contriburl = contrib.url(repos, type), method,
                    fields = NULL, type = getOption("pkgType"),
                    filters = NULL, repos = getOption("repos"),
-                   ignore_repo_cache =  FALSE, max_repo_cache_age,
-                   ...)
+                   ignore_repo_cache = FALSE, max_repo_cache_age,
+                   quiet = TRUE, ...)
 </pre>
 
 
@@ -41,14 +42,14 @@ e.g., because you burned only the &lsquo;<span class="file">contrib</span>&rsquo
 <tr valign="top"><td><code>method</code></td>
 <td>
 
-<p>download method, see <code><a href="download.file.html">download.file</a></code>.
+<p>download method, see <code><a href="../../utils/help/download.file.html">download.file</a></code>.
 </p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
 
 <p>character string, indicate which type of packages: see
-<code><a href="install.packages.html">install.packages</a></code>.
+<code><a href="../../utils/help/install.packages.html">install.packages</a></code>.
 </p>
 <p>If <code>type = "both"</code> this will use the source repository.
 </p>
@@ -86,11 +87,17 @@ never used (see &lsquo;Details&rsquo;).
 will be ignored. See &lsquo;Details&rsquo;.
 </p>
 </td></tr>
+<tr valign="top"><td><code>quiet</code></td>
+<td>
+<p>logical, passed to <code><a href="../../utils/help/download.file.html">download.file</a>()</code>; change
+only if you know what you are doing.</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 
 <p>allow additional arguments to be passed from callers (which might be
-arguments to future versions of this function).
+arguments to future versions of this function).  Currently these are
+all passed to <code><a href="../../utils/help/download.file.html">download.file</a>()</code>.
 </p>
 </td></tr>
 </table>
@@ -196,14 +203,14 @@ specified using the <code>fields</code> argument.
 <code>"License"</code>, <code>"License_is_FOSS"</code>,
 <code>"License_restricts_use"</code>, <code>"Archs"</code>, <code>"MD5sum"</code> and
 <code>"NeedsCompilation"</code> are reported for use by the filters and
-package management tools, including <code><a href="install.packages.html">install.packages</a></code>.
+package management tools, including <code><a href="../../utils/help/install.packages.html">install.packages</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="install.packages.html">install.packages</a></code>, <code><a href="download.packages.html">download.packages</a></code>,
-<code><a href="contrib.url.html">contrib.url</a></code>.
+<p><code><a href="../../utils/help/install.packages.html">install.packages</a></code>, <code><a href="../../utils/help/download.packages.html">download.packages</a></code>,
+<code><a href="../../utils/help/contrib.url.html">contrib.url</a></code>.
 </p>
 <p>The &lsquo;R Installation and Administration&rsquo; manual for how to
 set up a repository.
@@ -213,6 +220,18 @@ set up a repository.
 <h3>Examples</h3>
 
 <pre>## Not run: 
+## Count package licenses
+db &lt;- available.packages(filters = "duplicates")
+table(db[,"License"])
+
+## Use custom filter function to only keep recommended packages
+## which do not require compilation
+available.packages(filters = list(
+  add = TRUE,
+  function (db) db[db[,"Priority"] %in% "recommended" &amp;
+                   db[,"NeedsCompilation"] == "no", ]
+))
+
 ## Restrict install.packages() (etc) to known-to-be-FOSS packages
 options(available_packages_filters =
   c("R_version", "OS_type", "subarch", "duplicates", "license/FOSS"))
@@ -220,11 +239,11 @@ options(available_packages_filters =
 options(available_packages_filters = list(add = TRUE, "license/FOSS"))
 
 ## Give priority to released versions on CRAN, rather than development
-## versions on Omegahat, R-Forge etc.
+## versions on R-Forge etc.
 options(available_packages_filters =
      c("R_version", "OS_type", "subarch", "CRAN", "duplicates"))
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

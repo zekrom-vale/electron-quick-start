@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: File Manipulation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for files {base}"><tr><td>files {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -66,7 +67,7 @@ possible?</p>
 <tr valign="top"><td><code>copy.date</code></td>
 <td>
 <p>logical:  should file dates be preserved where
-possible? See <code><a href="Sys.setFileTime.html">Sys.setFileTime</a></code>.</p>
+possible? See <code><a href="../../base/help/Sys.setFileTime.html">Sys.setFileTime</a></code>.</p>
 </td></tr>
 </table>
 
@@ -75,28 +76,28 @@ possible? See <code><a href="Sys.setFileTime.html">Sys.setFileTime</a></code>.</
 
 <p>The <code>...</code> arguments are concatenated to form one character
 string: you can specify the files separately or as one vector.
-All of these functions expand path names: see <code><a href="path.expand.html">path.expand</a></code>.
+All of these functions expand path names: see <code><a href="../../base/help/path.expand.html">path.expand</a></code>.
 </p>
 <p><code>file.create</code> creates files with the given names if they do not
 already exist and truncates them if they do.  They are created with
 the maximal read/write permissions allowed by the
-&lsquo;<a href="files2.html">umask</a>&rsquo; setting (where relevant).  By default a warning
+&lsquo;<a href="../../base/help/umask.html">umask</a>&rsquo; setting (where relevant).  By default a warning
 is given (with the reason) if the operation fails.
 </p>
 <p><code>file.exists</code> returns a logical vector indicating whether the
 files named by its argument exist.  (Here &lsquo;exists&rsquo; is in the
 sense of the system's <code>stat</code> call: a file will be reported as
 existing only if you have the permissions needed by <code>stat</code>.
-Existence can also be checked by <code><a href="file.access.html">file.access</a></code>, which
+Existence can also be checked by <code><a href="../../base/help/file.access.html">file.access</a></code>, which
 might use different permissions and so obtain a different result.
 Note that the existence of a file does not imply that it is readable:
-for that use <code><a href="file.access.html">file.access</a></code>.)  What constitutes a
+for that use <code><a href="../../base/help/file.access.html">file.access</a></code>.)  What constitutes a
 &lsquo;file&rsquo; is system-dependent, but should include directories.
 (However, directory names must not include a trailing backslash or
 slash on Windows.)  Note that if the file is a symbolic link on a
 Unix-alike, the result indicates if the link points to an actual file,
 not just if the link exists.
-Lastly, note the <em>different</em> function <code><a href="exists.html">exists</a></code> which
+Lastly, note the <em>different</em> function <code><a href="../../base/help/exists.html">exists</a></code> which
 checks for existence of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects.
 </p>
 <p><code>file.remove</code> attempts to remove the files named in its argument.
@@ -110,7 +111,9 @@ this will overwrite an existing element of <code>to</code>.  This is subject
 to the limitations of the OS's corresponding system call (see
 something like <code>man 2 rename</code> on a Unix-alike): in particular
 in the interpretation of &lsquo;file&rsquo;: most platforms will not rename
-files from one file system to another.  (On Windows,
+files from one file system to another.  <strong>NB:</strong> This means that
+renaming a file from a temporary directory to the user's filespace or
+during package installation will often fail.  (On Windows,
 <code>file.rename</code> can rename files but not directories across
 volumes.)  On platforms which allow directories to be renamed,
 typically neither or both of <code>from</code> and <code>to</code> must a
@@ -126,8 +129,8 @@ the arguments in the natural order for copying.  Copying to existing
 destination files is skipped unless <code>overwrite = TRUE</code>.  The
 <code>to</code> argument can specify a single existing directory.  If
 <code>copy.mode = TRUE</code> file read/write/execute permissions are copied
-where possible, restricted by &lsquo;<a href="files2.html">umask</a>&rsquo;.  (On Windows this
-applies only to files.) Other security attributes such as ACLs are not
+where possible, restricted by &lsquo;<a href="../../base/help/umask.html">umask</a>&rsquo;.  (On Windows this
+applies only to files.)  Other security attributes such as ACLs are not
 copied.  On a POSIX filesystem the targets of symbolic links will be
 copied rather than the links themselves, and hard links are copied
 separately.  Using <code>copy.date = TRUE</code> may or may not copy the
@@ -141,6 +144,12 @@ macOS native filesystems support both.  Windows has hard links to
 files on NTFS file systems and concepts related to symbolic links on
 recent versions: see the section below on the Windows version of this
 help page.  What happens on a FAT or SMB-mounted file system is OS-specific.)
+</p>
+<p>File arguments with a marked encoding (see <code><a href="../../base/help/Encoding.html">Encoding</a></code> are
+if possible translated to the native encoding, except on Windows where
+Unicode file operations are used (so marking as UTF-8 can be used to
+access file paths not in the native encoding on suitable file
+systems).
 </p>
 
 
@@ -234,16 +243,16 @@ and &lsquo;<span class="file">foo\</span>&rsquo; <em>are</em> invalid on Windows
 
 <h3>See Also</h3>
 
-<p><code><a href="file.info.html">file.info</a></code>, <code><a href="file.access.html">file.access</a></code>, <code><a href="file.path.html">file.path</a></code>,
-<code><a href="file.show.html">file.show</a></code>, <code><a href="list.files.html">list.files</a></code>,
-<code><a href="unlink.html">unlink</a></code>, <code><a href="basename.html">basename</a></code>,
-<code><a href="path.expand.html">path.expand</a></code>.
+<p><code><a href="../../base/help/file.info.html">file.info</a></code>, <code><a href="../../base/help/file.access.html">file.access</a></code>, <code><a href="../../base/help/file.path.html">file.path</a></code>,
+<code><a href="../../base/help/file.show.html">file.show</a></code>, <code><a href="../../base/help/list.files.html">list.files</a></code>,
+<code><a href="../../base/help/unlink.html">unlink</a></code>, <code><a href="../../base/help/basename.html">basename</a></code>,
+<code><a href="../../base/help/path.expand.html">path.expand</a></code>.
 </p>
-<p><code><a href="files2.html">dir.create</a></code>.
+<p><code><a href="../../base/help/dir.create.html">dir.create</a></code>.
 </p>
-<p><code><a href="Sys.glob.html">Sys.glob</a></code> to expand wildcards in file specifications.
+<p><code><a href="../../base/help/Sys.glob.html">Sys.glob</a></code> to expand wildcards in file specifications.
 </p>
-<p><code><a href="../../utils/html/filetest.html">file_test</a></code>, <code><a href="Sys.readlink.html">Sys.readlink</a></code> (for &lsquo;symlink&rsquo;s).
+<p><code><a href="../../utils/html/filetest.html">file_test</a></code>, <code><a href="../../base/help/Sys.readlink.html">Sys.readlink</a></code> (for &lsquo;symlink&rsquo;s).
 </p>
 <p><a href="https://en.wikipedia.org/wiki/Hard_link">https://en.wikipedia.org/wiki/Hard_link</a> and
 <a href="https://en.wikipedia.org/wiki/Symbolic_link">https://en.wikipedia.org/wiki/Symbolic_link</a> for the concepts of
@@ -270,5 +279,5 @@ file.remove("A", "B", "C")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

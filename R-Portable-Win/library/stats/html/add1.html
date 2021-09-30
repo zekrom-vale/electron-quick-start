@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add or Drop All Possible Single Terms to a Model</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for add1 {stats}"><tr><td>add1 {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -70,13 +71,13 @@ used in computing <i>Cp</i>. Ignored if <code>0</code> or <code>NULL</code>.</p>
 <tr valign="top"><td><code>test</code></td>
 <td>
 <p>should the results include a test statistic relative to the
-original model?  The F test is only appropriate for <code><a href="lm.html">lm</a></code> and
-<code><a href="aov.html">aov</a></code> models or perhaps for <code><a href="glm.html">glm</a></code> fits with
+original model?  The F test is only appropriate for <code><a href="../../stats/help/lm.html">lm</a></code> and
+<code><a href="../../stats/help/aov.html">aov</a></code> models or perhaps for <code><a href="../../stats/help/glm.html">glm</a></code> fits with
 estimated dispersion.
 The <i>Chisq</i> test can be an exact test
 (<code>lm</code> models with known scale) or a likelihood-ratio test or a
 test of the reduction in scaled deviance depending on the method.
-For <code><a href="glm.html">glm</a></code> fits, you can also choose <code>"LRT"</code> and
+For <code><a href="../../stats/help/glm.html">glm</a></code> fits, you can also choose <code>"LRT"</code> and
 <code>"Rao"</code> for likelihood ratio tests and Rao's efficient score test.
 The former is synonymous with <code>"Chisq"</code> (although both have
 an asymptotic chi-square distribution).
@@ -120,7 +121,7 @@ interaction must remain, and so on.
 </p>
 <p>In a <code>scope</code> formula <code>.</code> means &lsquo;what is already there&rsquo;.
 </p>
-<p>The methods for <code><a href="lm.html">lm</a></code> and <code><a href="glm.html">glm</a></code> are more
+<p>The methods for <code><a href="../../stats/help/lm.html">lm</a></code> and <code><a href="../../stats/help/glm.html">glm</a></code> are more
 efficient in that they do not recompute the model matrix and call the
 <code>fit</code> methods directly.
 </p>
@@ -134,7 +135,7 @@ the column is labelled as <code>Cp</code> rather than <code>AIC</code>.
 </p>
 <p>The F tests for the <code>"glm"</code> methods are based on analysis of
 deviance tests, so if the dispersion is estimated it is based on the
-residual deviance, unlike the F tests of <code><a href="anova.glm.html">anova.glm</a></code>.
+residual deviance, unlike the F tests of <code><a href="../../stats/help/anova.glm.html">anova.glm</a></code>.
 </p>
 
 
@@ -153,7 +154,7 @@ values for any of the variables if <code>na.action = na.omit</code>, but
 this may give biased results.  Only use these functions with data
 containing missing values with great care.
 </p>
-<p>The default methods make calls to the function <code><a href="nobs.html">nobs</a></code> to
+<p>The default methods make calls to the function <code><a href="../../stats/help/nobs.html">nobs</a></code> to
 check that the number of observations involved in the fitting process
 remained unchanged.
 </p>
@@ -188,8 +189,8 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="step.html">step</a></code>, <code><a href="aov.html">aov</a></code>, <code><a href="lm.html">lm</a></code>,
-<code><a href="extractAIC.html">extractAIC</a></code>, <code><a href="anova.html">anova</a></code>
+<p><code><a href="../../stats/help/step.html">step</a></code>, <code><a href="../../stats/help/aov.html">aov</a></code>, <code><a href="../../stats/help/lm.html">lm</a></code>,
+<code><a href="../../stats/help/extractAIC.html">extractAIC</a></code>, <code><a href="../../stats/help/anova.html">anova</a></code>
 </p>
 
 
@@ -211,5 +212,5 @@ add1(glm.D93, scope = ~outcome*treatment, test = "Rao") ## Pearson Chi-square
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

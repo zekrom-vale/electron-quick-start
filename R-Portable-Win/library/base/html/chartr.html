@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Character Translation and Casefolding</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for chartr {base}"><tr><td>chartr {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -30,7 +31,7 @@ casefold(x, upper = FALSE)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>a character vector, or an object that can be coerced to
-character by <code><a href="character.html">as.character</a></code>.</p>
+character by <code><a href="../../base/help/as.character.html">as.character</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>old</code></td>
 <td>
@@ -62,7 +63,8 @@ extra characters at the end of <code>new</code> are ignored.
 </p>
 <p><code>tolower</code> and <code>toupper</code> convert upper-case characters in a
 character vector to lower-case, or vice versa.  Non-alphabetic
-characters are left unchanged.
+characters are left unchanged.  More than one character can be mapped
+to a single upper-case character.
 </p>
 <p><code>casefold</code> is a wrapper for <code>tolower</code> and <code>toupper</code>
 provided for compatibility with S-PLUS.
@@ -75,17 +77,26 @@ provided for compatibility with S-PLUS.
 <code>x</code> (after possible coercion).
 </p>
 <p>Elements of the result will be have the encoding declared as that of
-the current locale (see <code><a href="Encoding.html">Encoding</a></code>) if the corresponding
+the current locale (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>) if the corresponding
 input had a declared encoding and the current locale is either Latin-1
 or UTF-8.  The result will be in the current locale's encoding unless
-the corresponding input was in UTF-8, when it will be in UTF-8 when
-the system has Unicode wide characters.
+the corresponding input was in UTF-8 or Latin-1, when it will be in UTF-8.
+</p>
+
+
+<h3>Note</h3>
+
+<p>These functions are platform-dependent, usually using OS services.
+The latter can be quite deficient, for example only covering ASCII
+characters in 8-bit locales.  The definition of &lsquo;alphabetic&rsquo; is
+platform-dependent and liable to change over time as most platforms
+are based on the frequently-updated Unicode tables.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="grep.html">sub</a></code> and <code><a href="grep.html">gsub</a></code> for other
+<p><code><a href="../../base/help/sub.html">sub</a></code> and <code><a href="../../base/help/gsub.html">gsub</a></code> for other
 substitutions in strings.
 </p>
 
@@ -138,5 +149,5 @@ rot(crypw, 54 - 13) # -&gt; the original:
 stopifnot(identical(pw, rot(crypw, 54 - 13)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: BMP, JPEG, PNG and TIFF graphics devices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for png {grDevices}"><tr><td>png {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -19,24 +20,28 @@
 bmp(filename = "Rplot%03d.bmp",
     width = 480, height = 480, units = "px", pointsize = 12,
     bg = "white", res = NA, family = "", restoreConsole = TRUE,
-    type = c("windows", "cairo"), antialias)
+    type = c("windows", "cairo"), antialias,
+    symbolfamily="default")
 
 jpeg(filename = "Rplot%03d.jpg",
      width = 480, height = 480, units = "px", pointsize = 12,
      quality = 75,
      bg = "white", res = NA, family = "", restoreConsole = TRUE,
-     type = c("windows", "cairo"), antialias)
+     type = c("windows", "cairo"), antialias,
+     symbolfamily="default")
 
 png(filename = "Rplot%03d.png",
     width = 480, height = 480, units = "px", pointsize = 12,
     bg = "white", res = NA, family = "", restoreConsole = TRUE,
-    type = c("windows", "cairo", "cairo-png"), antialias)
+    type = c("windows", "cairo", "cairo-png"), antialias,
+    symbolfamily="default")
 
 tiff(filename = "Rplot%03d.tif",
      width = 480, height = 480, units = "px", pointsize = 12,
      compression = c("none", "rle", "lzw", "jpeg", "zip", "lzw+p", "zip+p"),
      bg = "white", res = NA, family = "", restoreConsole = TRUE,
-     type = c("windows", "cairo"), antialias)
+     type = c("windows", "cairo"), antialias,
+     symbolfamily="default")
 </pre>
 
 
@@ -45,11 +50,11 @@ tiff(filename = "Rplot%03d.tif",
 <table summary="R argblock">
 <tr valign="top"><td><code>filename</code></td>
 <td>
-<p>the name of the output file, up to 511 characters.  The
+<p>the path of the output file, up to 511 characters.  The
 page number is substituted if a C integer format is included in the
 character string, as in the default, and tilde-expansion is
 performed (see <code><a href="../../base/html/path.expand.html">path.expand</a></code>).   (The result must be less than
-600 characters long.  See <code><a href="postscript.html">postscript</a></code> for further
+600 characters long.  See <code><a href="../../grDevices/help/postscript.html">postscript</a></code> for further
 details.)
 </p>
 </td></tr>
@@ -104,7 +109,7 @@ versions.</p>
 <tr valign="top"><td><code>restoreConsole</code></td>
 <td>
 <p>See the &lsquo;Details&rsquo; section of
-<code><a href="windows.html">windows</a></code>.  For <code>type == "windows"</code> only.</p>
+<code><a href="../../grDevices/help/windows.html">windows</a></code>.  For <code>type == "windows"</code> only.</p>
 </td></tr>
 <tr valign="top"><td><code>type</code></td>
 <td>
@@ -115,12 +120,20 @@ versions.</p>
 <p>Length-one character vector.
 </p>
 <p>For allowed values and their effect on fonts with <code>type =
-      "windows"</code> see <code><a href="windows.html">windows</a></code>: for that type if the
+      "windows"</code> see <code><a href="../../grDevices/help/windows.html">windows</a></code>: for that type if the
 argument is missing the default is taken from
 <code>windows.options()$bitmap.aa.win</code>.
 </p>
 <p>For allowed values and their effect (on fonts and lines, but not
-fills) with <code>type = "cairo"</code> see <code><a href="cairo.html">svg</a></code>.</p>
+fills) with <code>type = "cairo"</code> see <code><a href="../../grDevices/help/svg.html">svg</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>symbolfamily</code></td>
+<td>
+<p>  For cairographics only:
+a length-one character string that specifies the font family to
+be used as the &quot;symbol&quot; font (e.g., for <a href="../../grDevices/help/plotmath.html">plotmath</a> output).
+The default value is &quot;default&quot;, which means that R will choose
+a default &quot;symbol&quot; font based on the graphics device capabilities.</p>
 </td></tr>
 </table>
 
@@ -237,7 +250,7 @@ available.
 <h3>Conventions</h3>
 
 <p>This section describes the implementation of the conventions for
-graphics devices set out in the &ldquo;R Internals Manual&rdquo;.
+graphics devices set out in the &lsquo;R Internals&rsquo; manual.
 </p>
 
 <ul>
@@ -291,9 +304,9 @@ compact files
 
 <h3>See Also</h3>
 
-<p><code><a href="Devices.html">Devices</a></code>, <code><a href="dev2.html">dev.print</a></code>
+<p><code><a href="../../grDevices/help/Devices.html">Devices</a></code>, <code><a href="../../grDevices/help/dev.print.html">dev.print</a></code>
 </p>
-<p><code><a href="dev2bitmap.html">bitmap</a></code> provides an alternative way to generate plots in
+<p><code><a href="../../grDevices/help/bitmap.html">bitmap</a></code> provides an alternative way to generate plots in
 many bitmap formats if GhostScript is available.
 </p>
 
@@ -315,5 +328,5 @@ dev.off()
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

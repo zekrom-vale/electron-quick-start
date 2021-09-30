@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Cophenetic Distances for a Hierarchical Clustering</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for cophenetic {stats}"><tr><td>cophenetic {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -30,9 +31,9 @@ cophenetic(x)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>an R object representing a hierarchical clustering.
-For the default method, an object of class <code>"<a href="hclust.html">hclust</a>"</code> or
-with a method for <code><a href="as.hclust.html">as.hclust</a>()</code> such as
-<code>"<a href="../../cluster/html/agnes.html">agnes</a>"</code> in package <a href="https://CRAN.R-project.org/package=cluster"><span class="pkg">cluster</span></a>.</p>
+For the default method, an object of class <code>"<a href="../../stats/help/hclust.html">hclust</a>"</code> or
+with a method for <code><a href="../../stats/help/as.hclust.html">as.hclust</a>()</code> such as
+<code>"<a href="../../cluster/help/agnes.html">agnes</a>"</code> in package <a href="https://CRAN.R-project.org/package=cluster"><span class="pkg">cluster</span></a>.</p>
 </td></tr>
 </table>
 
@@ -51,10 +52,10 @@ the description of the output of the clustering algorithm.
 </p>
 <p><code>cophenetic</code> is a generic function.  Support for classes which
 represent hierarchical clusterings (total indexed hierarchies) can be
-added by providing an <code><a href="as.hclust.html">as.hclust</a>()</code> or, more directly, a
+added by providing an <code><a href="../../stats/help/as.hclust.html">as.hclust</a>()</code> or, more directly, a
 <code>cophenetic()</code> method for such a class.
 </p>
-<p>The method for objects of class <code>"<a href="dendrogram.html">dendrogram</a>"</code> requires
+<p>The method for objects of class <code>"<a href="../../stats/help/dendrogram.html">dendrogram</a>"</code> requires
 that all leaves of the dendrogram object have non-null labels.
 </p>
 
@@ -81,8 +82,8 @@ Freeman, San Francisco.
 
 <h3>See Also</h3>
 
-<p><code><a href="dist.html">dist</a></code>,
-<code><a href="hclust.html">hclust</a></code>
+<p><code><a href="../../stats/help/dist.html">dist</a></code>,
+<code><a href="../../stats/help/hclust.html">hclust</a></code>
 </p>
 
 
@@ -109,5 +110,5 @@ plot(upgma, hang = -1)
 cor(d0, d.coph) # 0.9911
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

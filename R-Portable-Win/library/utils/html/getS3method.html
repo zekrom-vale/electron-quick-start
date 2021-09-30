@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get an S3 Method</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for getS3method {utils}"><tr><td>getS3method {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -26,11 +27,11 @@ getS3method(f, class, optional = FALSE, envir = parent.frame())
 <table summary="R argblock">
 <tr valign="top"><td><code>f</code></td>
 <td>
-<p>character: name of the generic.</p>
+<p>a character string giving the name of the generic.</p>
 </td></tr>
 <tr valign="top"><td><code>class</code></td>
 <td>
-<p>character: name of the class.</p>
+<p>a character string giving the name of the class.</p>
 </td></tr>
 <tr valign="top"><td><code>optional</code></td>
 <td>
@@ -70,7 +71,7 @@ method found if <code>f</code> were called from the same environment.
 
 <h3>See Also</h3>
 
-<p><code><a href="methods.html">methods</a></code>, <code><a href="../../base/html/get.html">get</a></code>, <code><a href="getAnywhere.html">getAnywhere</a></code>
+<p><code><a href="../../utils/help/methods.html">methods</a></code>, <code><a href="../../base/html/get.html">get</a></code>, <code><a href="../../utils/help/getAnywhere.html">getAnywhere</a></code>
 </p>
 
 
@@ -82,5 +83,5 @@ exists("predict.ppr") # false
 getS3method("predict", "ppr")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

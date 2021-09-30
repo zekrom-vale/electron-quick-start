@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Bar Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for barplot {graphics}"><tr><td>barplot {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -151,7 +152,7 @@ the border as for the shading lines.</p>
 <tr valign="top"><td><code>log</code></td>
 <td>
 <p>string specifying if axis scales should be logarithmic; see
-<code><a href="plot.default.html">plot.default</a></code>.</p>
+<code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>axes</code></td>
 <td>
@@ -166,7 +167,8 @@ other axis is drawn (with <code>lty = 0</code>) and labeled.</p>
 </td></tr>
 <tr valign="top"><td><code>cex.axis</code></td>
 <td>
-<p>expansion factor for numeric axis labels.</p>
+<p>expansion factor for numeric axis labels (see
+<code><a href="../../graphics/help/par.html">par</a>('cex')</code>).</p>
 </td></tr>
 <tr valign="top"><td><code>cex.names</code></td>
 <td>
@@ -188,7 +190,8 @@ adjacent (non-stacked!) bars will be drawn.  Only applies when
 </td></tr>
 <tr valign="top"><td><code>axis.lty</code></td>
 <td>
-<p>the graphics parameter <code>lty</code> applied to the axis
+<p>the graphics parameter <code>lty</code> (see
+<code><a href="../../graphics/help/par.html">par</a>('lty')</code>) applied to the axis
 and tick marks of the categorical (default horizontal) axis.  Note
 that by default the axis is suppressed.</p>
 </td></tr>
@@ -206,24 +209,26 @@ existing plot; defaults to <code>FALSE</code>.</p>
 <td>
 <p>logical specifying if the default annotation (<code>main</code>,
 <code>sub</code>, <code>xlab</code>, <code>ylab</code>) should appear on the plot, see
-<code><a href="title.html">title</a></code>.</p>
+<code><a href="../../graphics/help/title.html">title</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>args.legend</code></td>
 <td>
 <p>list of additional arguments to pass to
-<code><a href="legend.html">legend</a>()</code>; names of the list are used as argument
+<code><a href="../../graphics/help/legend.html">legend</a>()</code>; names of the list are used as argument
 names.  Only used if <code>legend.text</code> is supplied.</p>
 </td></tr>
 <tr valign="top"><td><code>formula</code></td>
 <td>
 <p>a formula where the <code>y</code> variables are numeric data
 to plot against the categorical <code>x</code> variables.  The formula
-can have one of three forms: </p>
+can have one of three forms:
+</p>
 <pre>
       y ~ x
       y ~ x1 + x2
-      cbind(y1, y2) ~ x</pre><p>,
-see the examples.</p>
+      cbind(y1, y2) ~ x
+    </pre>
+<p>(see the examples).</p>
 </td></tr>
 <tr valign="top"><td><code>data</code></td>
 <td>
@@ -246,9 +251,9 @@ values in the given variables.</p>
 <p>arguments to be passed to/from other methods.  For the
 default method these can include further arguments (such as
 <code>axes</code>, <code>asp</code> and <code>main</code>) and
-<a href="par.html">graphical parameters</a> (see <code><a href="par.html">par</a></code>) which are passed to
-<code><a href="plot.window.html">plot.window</a>()</code>, <code><a href="title.html">title</a>()</code> and
-<code><a href="axis.html">axis</a></code>.</p>
+<a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> (see <code><a href="../../graphics/help/par.html">par</a></code>) which are passed to
+<code><a href="../../graphics/help/plot.window.html">plot.window</a>()</code>, <code><a href="../../graphics/help/title.html">title</a>()</code> and
+<code><a href="../../graphics/help/axis.html">axis</a></code>.</p>
 </td></tr>
 </table>
 
@@ -281,9 +286,9 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="plot.html">plot</a>(..., type = "h")</code>, <code><a href="dotchart.html">dotchart</a></code>;
-<code><a href="hist.html">hist</a></code> for bars of a <em>continuous</em> variable.
-<code><a href="mosaicplot.html">mosaicplot</a>()</code>, more sophisticated to visualize
+<p><code><a href="../../graphics/help/plot.html">plot</a>(..., type = "h")</code>, <code><a href="../../graphics/help/dotchart.html">dotchart</a></code>;
+<code><a href="../../graphics/help/hist.html">hist</a></code> for bars of a <em>continuous</em> variable.
+<code><a href="../../graphics/help/mosaicplot.html">mosaicplot</a>()</code>, more sophisticated to visualize
 <em>several</em> categorical variables.
 </p>
 
@@ -300,7 +305,7 @@ op &lt;- par(mfrow = 2:1, mgp = c(3,1,0)/2, mar = .1+c(3,3:1))
 summary(d.Titanic &lt;- as.data.frame(Titanic))
 barplot(Freq ~ Class + Survived, data = d.Titanic,
         subset = Age == "Adult" &amp; Sex == "Male",
-        main = "barplot(Freq ~ Class + Survived, *)", ylab = "# {passengers}", legend = TRUE)
+        main = "barplot(Freq ~ Class + Survived, *)", ylab = "# {passengers}", legend.text = TRUE)
 # Corresponding table :
 (xt &lt;- xtabs(Freq ~ Survived + Class + Sex, d.Titanic, subset = Age=="Adult"))
 # Alternatively, a mosaic plot :
@@ -327,7 +332,7 @@ text(mp, tot + 3, format(tot), xpd = TRUE, col = "blue")
 barplot(VADeaths, beside = TRUE,
         col = c("lightblue", "mistyrose", "lightcyan",
                 "lavender", "cornsilk"),
-        legend = rownames(VADeaths), ylim = c(0, 100))
+        legend.text = rownames(VADeaths), ylim = c(0, 100))
 title(main = "Death Rates in Virginia", font.main = 4)
 
 hh &lt;- t(VADeaths)[, 5:1]
@@ -335,7 +340,7 @@ mybarcol &lt;- "gray20"
 mp &lt;- barplot(hh, beside = TRUE,
         col = c("lightblue", "mistyrose",
                 "lightcyan", "lavender"),
-        legend = colnames(VADeaths), ylim = c(0,100),
+        legend.text = colnames(VADeaths), ylim = c(0,100),
         main = "Death Rates in Virginia", font.main = 4,
         sub = "Faked upper 2*sigma error bars", col.sub = mybarcol,
         cex.names = 1.5)
@@ -346,7 +351,7 @@ mtext(side = 1, at = colMeans(mp), line = -2,
 
 # Bar shading example
 barplot(VADeaths, angle = 15+10*1:5, density = 20, col = "black",
-        legend = rownames(VADeaths))
+        legend.text = rownames(VADeaths))
 title(main = list("Death Rates in Virginia", font = 4))
 
 # Border color
@@ -368,5 +373,5 @@ barplot(height = cbind(x = c(465, 91) / 465 * 100,
         args.legend = list(x = "topleft"))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

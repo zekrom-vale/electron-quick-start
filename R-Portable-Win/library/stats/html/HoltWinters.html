@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Holt-Winters Filtering</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for HoltWinters {stats}"><tr><td>HoltWinters {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -136,7 +137,7 @@ will be used for the single-parameter case, and <code>optim</code> otherwise.
 <p>For seasonal models, start values for <code>a</code>, <code>b</code> and <code>s</code>
 are inferred by performing a simple decomposition in trend and
 seasonal component using moving averages (see function
-<code><a href="decompose.html">decompose</a></code>) on the <code>start.periods</code> first periods (a simple
+<code><a href="../../stats/help/decompose.html">decompose</a></code>) on the <code>start.periods</code> first periods (a simple
 linear regression on the trend component is used for starting level
 and trend). For level/trend-models (no seasonal component), start
 values for <code>a</code> and <code>b</code> are <code>x[2]</code> and <code>x[2] -
@@ -205,7 +206,7 @@ components</p>
 <p>C. C. Holt (1957)
 Forecasting seasonals and trends by exponentially weighted moving averages,
 <em>ONR Research Memorandum, Carnegie Institute of Technology</em> <b>52</b>.
-(reprint at <a href="https://doi.org/10.1016/j.ijforecast.2003.09.015">https://doi.org/10.1016/j.ijforecast.2003.09.015</a>).
+(reprint at doi: <a href="https://doi.org/10.1016/j.ijforecast.2003.09.015">10.1016/j.ijforecast.2003.09.015</a>).
 </p>
 <p>P. R. Winters (1960).
 Forecasting sales by exponentially weighted moving averages.
@@ -216,7 +217,7 @@ doi: <a href="https://doi.org/10.1287/mnsc.6.3.324">10.1287/mnsc.6.3.324</a>.
 
 <h3>See Also</h3>
 
-<p><code><a href="predict.HoltWinters.html">predict.HoltWinters</a></code>, <code><a href="optim.html">optim</a></code>.
+<p><code><a href="../../stats/help/predict.HoltWinters.html">predict.HoltWinters</a></code>, <code><a href="../../stats/help/optim.html">optim</a></code>.
 </p>
 
 
@@ -245,5 +246,5 @@ lines(fitted(m2)[,1], col = 3)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

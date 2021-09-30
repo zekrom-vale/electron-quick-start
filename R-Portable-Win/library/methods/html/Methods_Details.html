@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: General Information on Methods</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Methods_Details {methods}"><tr><td>Methods_Details {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -16,12 +17,12 @@ classes, but may be helpful for moderately ambitious projects, or when
 something doesn't work as expected.
 </p>
 <p>For additional information  see documentation for
-the important steps: (<code><a href="setMethod.html">setMethod</a>()</code>,
-<code><a href="setClass.html">setClass</a>()</code> and <code><a href="setGeneric.html">setGeneric</a>()</code>). Also
-<code><a href="Methods_for_Nongenerics.html">Methods_for_Nongenerics</a></code> on defining formal methods for
+the important steps: (<code><a href="../../methods/help/setMethod.html">setMethod</a>()</code>,
+<code><a href="../../methods/help/setClass.html">setClass</a>()</code> and <code><a href="../../methods/help/setGeneric.html">setGeneric</a>()</code>). Also
+<code><a href="../../methods/help/Methods_for_Nongenerics.html">Methods_for_Nongenerics</a></code> on defining formal methods for
 functions  that are not currently generic functions;
-<a href="Methods_for_S3.html">Methods_for_S3</a> for the relation to S3 classes and methods;
-<code><a href="Classes_Details.html">Classes_Details</a></code> for class definitions and
+<a href="../../methods/help/Methods_for_S3.html">Methods_for_S3</a> for the relation to S3 classes and methods;
+<code><a href="../../methods/help/Classes_Details.html">Classes_Details</a></code> for class definitions and
 Chapters 9 and 10 of the reference.
 </p>
 
@@ -49,14 +50,14 @@ An identical version of the corresponding generic function may exist
 in several packages.  All methods will be dispatched consistently
 from the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session.
 </p>
-<p>Each <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> package with a call to <code><a href="setMethod.html">setMethod</a></code> in its source code
+<p>Each <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> package with a call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code> in its source code
 will include  a methods metadata object for that generic.
 When the package is loaded into an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session, the methods for each
 generic function are <em>cached</em>, that is, added to the
 environment of the generic function.  This merged table of methods is used to
 dispatch or select methods from the generic, using class inheritance
 and possibly group generic functions (see
-<code><a href="S4groupGeneric.html">GroupGenericFunctions</a></code>) to find an applicable method.
+<code><a href="../../methods/help/GroupGenericFunctions.html">GroupGenericFunctions</a></code>) to find an applicable method.
 See the &ldquo;Method Selection and Dispatch&rdquo; section below.
 The caching computations ensure that only one version of each
 generic function is visible globally; although different attached
@@ -71,7 +72,7 @@ combination of name and package.  See the &ldquo;Generic Functions&rdquo;
 section below.
 </p>
 <p>The methods for a generic are stored according to the
-corresponding <code>signature</code> in the call to <code><a href="setMethod.html">setMethod</a></code>
+corresponding <code>signature</code> in the call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>
 that defined  the method.  The signature associates one
 class name with each of a subset of the formal arguments to the
 generic function.  Which formal arguments are available, and the
@@ -123,14 +124,14 @@ search for inherited methods will be a negligible overhead.
 <p>Each class definition may include a list of  one or more direct
 <em>superclasses</em> of the new class.
 The simplest and most common specification is by the <code>contains=</code> argument in
-the  call to <code><a href="setClass.html">setClass</a></code>.
+the  call to <code><a href="../../methods/help/setClass.html">setClass</a></code>.
 Each class named in this argument is a superclass of the new class.
 A class will also have as a direct superclass any class union to which
 it is a member.
 Class unions are created by
-a call to <code><a href="setClassUnion.html">setClassUnion</a></code>.
+a call to <code><a href="../../methods/help/setClassUnion.html">setClassUnion</a></code>.
 Additional members can be added to the union by a simple call to
-<code><a href="setIs.html">setIs</a></code>.
+<code><a href="../../methods/help/setIs.html">setIs</a></code>.
 Superclasses specified by either mechanism are the <em>direct</em> superclasses.
 </p>
 <p>Inheritance specified in either of these forms is <em>simple</em> in the
@@ -141,7 +142,7 @@ inheritance may require some transformation or be conditional on a
 test.
 This more general form has not proved to be useful in general
 practical situations.   Since it also adds some computational costs
-non-simple inheritance is not recommended.  See <code><a href="setIs.html">setIs</a></code>
+non-simple inheritance is not recommended.  See <code><a href="../../methods/help/setIs.html">setIs</a></code>
 for the general version.
 </p>
 <p>The direct superclasses themselves may
@@ -156,7 +157,7 @@ number of generations:
 defined them), then <code>2</code> for the direct superclasses of those
 classes, and so on.
 To see all the superclasses, with their distance, print the class
-definition by calling <code><a href="getClass.html">getClass</a></code>.
+definition by calling <code><a href="../../methods/help/getClass.html">getClass</a></code>.
 In addition, any class implicitly has class <code>"ANY"</code> as a superclass.  The
 distance to <code>"ANY"</code> is treated as larger than the distance to any
 actual class.
@@ -200,7 +201,7 @@ been selected.
 Since the ambiguity is usually nothing the end user could control,
 this is not a warning.
 Package authors should examine their package for possible ambiguous
-inheritance by calling <code><a href="testInheritedMethods.html">testInheritedMethods</a></code>.
+inheritance by calling <code><a href="../../methods/help/testInheritedMethods.html">testInheritedMethods</a></code>.
 </p>
 <p>Cached inherited selections are
 not themselves used in future inheritance searches, since that could result
@@ -208,19 +209,19 @@ in invalid selections.
 If you want inheritance computations to be done again (for example,
 because a newly loaded package has a more direct method than one
 that has already been used in this session), call
-<code><a href="MethodSupport.html">resetGeneric</a></code>.  Because classes and methods involving
+<code><a href="../../methods/help/resetGeneric.html">resetGeneric</a></code>.  Because classes and methods involving
 them tend to come from the same package, the current implementation
 does not reset all generics every time a new package is loaded.
 </p>
 <p>Besides being initiated through calls to the generic function, method
 selection can be done explicitly by calling the function
-<code><a href="getMethod.html">selectMethod</a></code>.
+<code><a href="../../methods/help/selectMethod.html">selectMethod</a></code>.
 Note that some computations may use this function directly, with
 optional arguments.
-The prime example is the use of <code><a href="setAs.html">coerce</a>()</code> methods by
-function <code><a href="as.html">as</a>()</code>.
+The prime example is the use of <code><a href="../../methods/help/coerce.html">coerce</a>()</code> methods by
+function <code><a href="../../methods/help/as.html">as</a>()</code>.
 There has been some confusion from comparing coerce methods to a call
-to <code><a href="getMethod.html">selectMethod</a></code> with other options.
+to <code><a href="../../methods/help/selectMethod.html">selectMethod</a></code> with other options.
 </p>
 
 
@@ -259,7 +260,7 @@ a call to <code>standardGeneric()</code>, the internal function that selects
 a method and evaluates a call to  the selected method.  In practice,
 generic functions are special objects that in addition to being from a
 subclass of class <code>"function"</code> also extend the class
-<code><a href="genericFunction-class.html">genericFunction</a></code>.  Such objects have slots to define
+<code><a href="../../methods/help/genericFunction-class.html">genericFunction</a></code>.  Such objects have slots to define
 information needed to deal with their methods.  They also have
 specialized environments, containing the tables used in method
 selection.
@@ -302,7 +303,7 @@ but to constrain what the function would be like if it were generic.
 Such implicit generic functions are created during the installation of
 the package, essentially by defining the generic function and
 possibly methods for it, and then reverting the function to its
-non-generic form. (See <a href="implicitGeneric.html">implicitGeneric</a> for how this is done.)
+non-generic form. (See <a href="../../methods/help/implicitGeneric.html">implicitGeneric</a> for how this is done.)
 The mechanism is mainly used for functions in the older packages in
 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, which may prefer to ignore S4 methods.
 Even in this case, the actual mechanism is only needed if something
@@ -355,8 +356,8 @@ detected for the function in some package loaded in the session and
 <code>isS4(x)</code> is <code>TRUE</code> for  the first argument (or for the
 second argument, in the case of binary operators).
 You can test whether methods have been detected by calling
-<code><a href="GenericFunctions.html">isGeneric</a></code> for the relevant function and you can examine
-the generic function by calling <code><a href="RMethodUtils.html">getGeneric</a></code>, whether or
+<code><a href="../../methods/help/isGeneric.html">isGeneric</a></code> for the relevant function and you can examine
+the generic function by calling <code><a href="../../methods/help/getGeneric.html">getGeneric</a></code>, whether or
 not methods have been detected.
 For more on generic functions, see the references and also section 2
 of the <em>R Internals</em> document supplied with <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
@@ -366,16 +367,16 @@ of the <em>R Internals</em> document supplied with <span style="font-family: Cou
 <h3>Method Definitions</h3>
 
 <p>All method definitions are stored as objects from the
-<code><a href="MethodDefinition-class.html">MethodDefinition</a></code> class.
+<code><a href="../../methods/help/MethodDefinition-class.html">MethodDefinition</a></code> class.
 Like the class of generic functions, this class extends ordinary <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 functions with some additional slots: <code>"generic"</code>, containing the
 name and package of the generic function, and two signature slots,
 <code>"defined"</code> and <code>"target"</code>, the first being the signature supplied when
-the method was defined by a call to <code><a href="setMethod.html">setMethod</a></code>.
+the method was defined by a call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>.
 The  <code>"target"</code> slot starts off equal to the <code>"defined"</code>
 slot.  When an inherited method is cached after being selected, as
 described above, a copy is made with the  appropriate <code>"target"</code>  signature.
-Output from <code><a href="showMethods.html">showMethods</a></code>, for example, includes both
+Output from <code><a href="../../methods/help/showMethods.html">showMethods</a></code>, for example, includes both
 signatures.
 </p>
 <p>Method definitions are required to have the same formal arguments as
@@ -400,11 +401,11 @@ Springer. (Section 10.5 for some details.)
 <h3>See Also</h3>
 
 <p>For more specific information, see
-<code><a href="setGeneric.html">setGeneric</a></code>, <code><a href="setMethod.html">setMethod</a></code>, and
-<code><a href="setClass.html">setClass</a></code>.
+<code><a href="../../methods/help/setGeneric.html">setGeneric</a></code>, <code><a href="../../methods/help/setMethod.html">setMethod</a></code>, and
+<code><a href="../../methods/help/setClass.html">setClass</a></code>.
 </p>
-<p>For the use of ... in methods, see  <a href="dotsMethods.html">dotsMethods</a>.
+<p>For the use of ... in methods, see  <a href="../../methods/help/dotsMethods.html">dotsMethods</a>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

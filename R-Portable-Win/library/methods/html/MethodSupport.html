@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Additional (Support) Functions for Methods</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for MethodSupport {methods}"><tr><td>MethodSupport {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -31,12 +32,12 @@ resetGeneric(f, fdef, mlist, where, deflt)
 
 <dl>
 <dt><code>listFromMethods</code>:</dt><dd>
-<p>A list object describing the methods for the function <code>generic</code>, supplied either as the function or the name of the function.   For user code, the function <code><a href="findMethods.html">findMethods</a></code> or <code><a href="findMethods.html">findMethodSignatures</a></code> is recommended instead,  returning a simple list of methods or a character matrix of the signatures.
+<p>A list object describing the methods for the function <code>generic</code>, supplied either as the function or the name of the function.   For user code, the function <code><a href="../../methods/help/findMethods.html">findMethods</a></code> or <code><a href="../../methods/help/findMethodSignatures.html">findMethodSignatures</a></code> is recommended instead,  returning a simple list of methods or a character matrix of the signatures.
 </p>
 <p>If <code>where</code> is supplied, this should be an environment or search list position from which a table of methods for the generic will be taken.  If <code>table</code> is supplied, this is itself assumed to be such a table.  If neither argument is supplied, the table is taken directly from the generic function (that is, the current set of methods defined for this generic).
 </p>
 <p>Returns an object of class <code>"LinearMethodsList"</code> (see
-<a href="LinearMethodsList-class.html">LinearMethodsList</a>) describing all the methods in the
+<a href="../../methods/help/LinearMethodsList-class.html">LinearMethodsList</a>) describing all the methods in the
 relevant table.
 </p>
 </dd>
@@ -55,7 +56,7 @@ loading and detaching  of packages all generate a call automatically.
 <p>Store the definition for this function and signature in the method
 metadata for the function.  Used to store extensions of coerce
 methods found through inheritance, and to cache methods with
-<code><a href="NextMethod.html">callNextMethod</a></code> information.
+<code><a href="../../methods/help/callNextMethod.html">callNextMethod</a></code> information.
 </p>
 <p>No persistent effect, since the method metadata is session-scope
 only.
@@ -65,13 +66,13 @@ only.
 <p>Get the table of methods (an <code><a href="../../base/html/environment.html">environment</a></code> since R
 version 2.6.0) representing the methods for function <code>f</code>.
 </p>
-<p>For user code, the function <code><a href="findMethods.html">findMethods</a></code> or
-<code><a href="findMethods.html">findMethodSignatures</a></code> is recommended instead, returning
+<p>For user code, the function <code><a href="../../methods/help/findMethods.html">findMethods</a></code> or
+<code><a href="../../methods/help/findMethodSignatures.html">findMethodSignatures</a></code> is recommended instead, returning
 a simple list of methods or a character matrix of the signatures.
 </p>
 </dd>
 </dl>
 
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

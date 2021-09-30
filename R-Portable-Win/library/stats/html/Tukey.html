@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Studentized Range Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Tukey {stats}"><tr><td>Tukey {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -12,7 +13,7 @@
 <p>Functions of the distribution of the studentized range, <i>R/s</i>,
 where <i>R</i> is the range of a standard normal sample and
 <i>df*s^2</i> is independently distributed as
-chi-squared with <i>df</i> degrees of freedom, see <code><a href="Chisquare.html">pchisq</a></code>.
+chi-squared with <i>df</i> degrees of freedom, see <code><a href="../../stats/help/pchisq.html">pchisq</a></code>.
 </p>
 
 
@@ -115,8 +116,8 @@ doi: <a href="https://doi.org/10.2307/2347061">10.2307/2347061</a>.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for standard distributions, including
-<code><a href="Normal.html">pnorm</a></code> and <code><a href="Normal.html">qnorm</a></code> for the corresponding
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for standard distributions, including
+<code><a href="../../stats/help/pnorm.html">pnorm</a></code> and <code><a href="../../stats/help/qnorm.html">qnorm</a></code> for the corresponding
 functions for the normal distribution.
 </p>
 
@@ -132,5 +133,5 @@ if(interactive())
 summary(abs(.95 - ptukey(qtt, 2, df = 2:11)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

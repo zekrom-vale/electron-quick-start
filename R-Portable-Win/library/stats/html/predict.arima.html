@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Forecast from ARIMA fits</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for predict.Arima {stats}"><tr><td>predict.Arima {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Forecast from models fitted by <code><a href="arima.html">arima</a></code>.
+<p>Forecast from models fitted by <code><a href="../../stats/help/arima.html">arima</a></code>.
 </p>
 
 
@@ -51,7 +52,7 @@ prediction. Must have at least <code>n.ahead</code> rows.</p>
 
 <h3>Details</h3>
 
-<p>Finite-history prediction is used, via <code><a href="KalmanLike.html">KalmanForecast</a></code>.
+<p>Finite-history prediction is used, via <code><a href="../../stats/help/KalmanForecast.html">KalmanForecast</a></code>.
 This is only statistically efficient if the MA part of the fit is
 invertible, so <code>predict.Arima</code> will give a warning for
 non-invertible MA models.
@@ -91,7 +92,7 @@ Sections 3.3 and 4.4.
 
 <h3>See Also</h3>
 
-<p><code><a href="arima.html">arima</a></code>
+<p><code><a href="../../stats/help/arima.html">arima</a></code>
 </p>
 
 
@@ -107,5 +108,5 @@ predict(fit, n.ahead = 6)
 options(od)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

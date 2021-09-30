@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Numeric Constants</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for NumericConstants {base}"><tr><td>NumericConstants {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -18,11 +19,11 @@
 <p><span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> parses numeric constants in its input in a very similar way to C99
 floating-point constants.
 </p>
-<p><code><a href="is.finite.html">Inf</a></code> and <code><a href="is.finite.html">NaN</a></code> are numeric constants (with
-<code><a href="typeof.html">typeof</a>(.) "double"</code>).  In text input (e.g., in
-<code><a href="scan.html">scan</a></code> and <code><a href="double.html">as.double</a></code>), these are recognized
+<p><code><a href="../../base/help/Inf.html">Inf</a></code> and <code><a href="../../base/help/NaN.html">NaN</a></code> are numeric constants (with
+<code><a href="../../base/help/typeof.html">typeof</a>(.) "double"</code>).  In text input (e.g., in
+<code><a href="../../base/help/scan.html">scan</a></code> and <code><a href="../../base/help/as.double.html">as.double</a></code>), these are recognized
 ignoring case as is <code>infinity</code> as an alternative to <code>Inf</code>.
-<code><a href="NA.html">NA_real_</a></code> and <code><a href="NA.html">NA_integer_</a></code> are constants of
+<code><a href="../../base/help/NA_real_.html">NA_real_</a></code> and <code><a href="../../base/help/NA_integer_.html">NA_integer_</a></code> are constants of
 types <code>"double"</code> and <code>"integer"</code> representing missing
 values.  All other numeric constants start with a digit or period and
 are either a decimal or hexadecimal constant optionally followed by
@@ -47,10 +48,10 @@ of ten.
 overflow to <code>Inf</code> or underflow to <code>0.0</code>.
 </p>
 <p>A numeric constant immediately followed by <code>i</code> is regarded as an
-imaginary <a href="complex.html">complex</a> number.
+imaginary <a href="../../base/help/complex.html">complex</a> number.
 </p>
 <p>An numeric constant immediately followed by <code>L</code> is regarded as an
-<code><a href="integer.html">integer</a></code> number when possible (and with a warning if it
+<code><a href="../../base/help/integer.html">integer</a></code> number when possible (and with a warning if it
 contains a <code>"."</code>).
 </p>
 <p>Only the ASCII digits 0&ndash;9 are recognized as digits, even in languages
@@ -71,17 +72,17 @@ one of the nearest representable numbers will be returned.
 <p><span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s own C code is used to convert constants to binary numbers, so the
 effect can be expected to be the same on all platforms implementing
 full IEC 600559 arithmetic (the most likely area of difference being
-the handling of numbers less than <code><a href="zMachine.html">.Machine</a>$double.xmin</code>).
-The same code is used by <code><a href="scan.html">scan</a></code>.
+the handling of numbers less than <code><a href="../../base/help/.Machine.html">.Machine</a>$double.xmin</code>).
+The same code is used by <code><a href="../../base/help/scan.html">scan</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="Syntax.html">Syntax</a></code>.
-For complex numbers, see <code><a href="complex.html">complex</a></code>.
-<code><a href="Quotes.html">Quotes</a></code> for the parsing of character constants,
-<code><a href="Reserved.html">Reserved</a></code> for the &ldquo;reserved words&rdquo; in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
+<p><code><a href="../../base/help/Syntax.html">Syntax</a></code>.
+For complex numbers, see <code><a href="../../base/help/complex.html">complex</a></code>.
+<code><a href="../../base/help/Quotes.html">Quotes</a></code> for the parsing of character constants,
+<code><a href="../../base/help/Reserved.html">Reserved</a></code> for the &ldquo;reserved words&rdquo; in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
 </p>
 
 
@@ -121,5 +122,5 @@ identical(1L, as.integer(1))
 identical(0xFL, as.integer(15))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

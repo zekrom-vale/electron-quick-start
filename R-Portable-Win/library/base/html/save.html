@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Save R Objects</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for save {base}"><tr><td>save {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,13 +12,13 @@
 
 <p><code>save</code> writes an external representation of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects to the
 specified file.  The objects can be read back from the file at a later
-date by using the function <code><a href="load.html">load</a></code> or <code><a href="attach.html">attach</a></code>
+date by using the function <code><a href="../../base/help/load.html">load</a></code> or <code><a href="../../base/help/attach.html">attach</a></code>
 (or <code><a href="../../utils/html/data.html">data</a></code> in some cases).
 </p>
 <p><code>save.image()</code> is just a short-cut for &lsquo;save my current
 workspace&rsquo;, i.e., <code>save(list = ls(all.names = TRUE), file =
     ".RData", envir = .GlobalEnv)</code>.
-It is also what happens with <code><a href="quit.html">q</a>("yes")</code>.
+It is also what happens with <code><a href="../../base/help/q.html">q</a>("yes")</code>.
 </p>
 
 
@@ -50,8 +51,8 @@ saved.</p>
 </td></tr>
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>a (writable binary-mode) <a href="connections.html">connection</a> or the name of the
-file where the data will be saved (when <a href="path.expand.html">tilde expansion</a>
+<p>a (writable binary-mode) <a href="../../base/help/connection.html">connection</a> or the name of the
+file where the data will be saved (when <a href="../../base/help/tilde+20expansion.html">tilde expansion</a>
 is done).  Must be a file name for <code>save.image</code> or
 <code>version = 1</code>.</p>
 </td></tr>
@@ -87,7 +88,8 @@ for workspace format version 1.</p>
 <td>
 <p>integer: the level of compression to be
 used.  Defaults to <code>6</code> for <code>gzip</code> compression and to
-<code>9</code> for <code>bzip2</code> or <code>xz</code> compression.</p>
+<code>9</code> for <code>bzip2</code> or <code>xz</code> compression.  See the
+help for <code><a href="../../base/help/file.html">file</a></code> for possible values and their merits.</p>
 </td></tr>
 <tr valign="top"><td><code>eval.promises</code></td>
 <td>
@@ -116,7 +118,7 @@ extra disk space during the save.</p>
 <p>The names of the objects specified either as symbols (or character
 strings) in <code>...</code> or as a character vector in <code>list</code> are
 used to look up the objects from environment <code>envir</code>.  By default
-<a href="delayedAssign.html">promises</a> are evaluated, but if <code>eval.promises = FALSE</code>
+<a href="../../base/help/promises.html">promises</a> are evaluated, but if <code>eval.promises = FALSE</code>
 promises are saved (together with their evaluation environments).
 (Promises embedded in objects are always saved unevaluated.)
 </p>
@@ -171,8 +173,8 @@ uncompressed and re-compressed under a different compression scheme
 
 <p>That <code>file</code> can be a connection can be exploited to make use of
 an external parallel compression utility such as <code>pigz</code>
-(<a href="http://zlib.net/pigz/">http://zlib.net/pigz/</a>) or <code>pbzip2</code>
-(<a href="https://launchpad.net/pbzip2">https://launchpad.net/pbzip2</a>) <em>via</em> a <code><a href="connections.html">pipe</a></code>
+(<a href="https://zlib.net/pigz/">https://zlib.net/pigz/</a>) or <code>pbzip2</code>
+(<a href="https://launchpad.net/pbzip2">https://launchpad.net/pbzip2</a>) <em>via</em> a <code><a href="../../base/help/pipe.html">pipe</a></code>
 connection.  For example, using 8 threads,
 </p>
 <pre>    con &lt;- pipe("pigz -p8 &gt; fname.gz", "wb")
@@ -202,27 +204,28 @@ not be those found.
 conversion of end-of-line markers and of 8-bit characters.  The lines
 are delimited by LF on all platforms.
 </p>
-<p>Although the default version has not changed since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 1.4.0, this
-does not mean that saved files are necessarily backwards compatible.
-You will be able to load a saved image into an earlier version of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-unless use is made of later additions (for example, raw vectors,
-external pointers and some S4 objects).
+<p>Although the default version was not changed between <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 1.4.0 and <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+3.4.4 nor since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.5.0, this does not mean that saved files are
+necessarily backwards compatible.  You will be able to load a saved
+image into an earlier version of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> which supports its version unless
+use is made of later additions (for example for version 2, raw
+vectors, external pointers and some S4 objects).
 </p>
-<p>One such &lsquo;later addition&rsquo; was long vectors, introduced in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
+<p>One such &lsquo;later addition&rsquo; was <a href="../../base/help/long+20vectors.html">long vectors</a>, introduced in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
 3.0.0 and loadable only on 64-bit platforms.
 </p>
 <p>Loading files saved with <code>ASCII = NA</code> requires a C99-compliant C
 function <code>sscanf</code>: this is a problem on Windows, first worked
-around in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.1.2: they should be readable in earlier versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-on all other platforms.
+around in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.1.2: version-2 files in that format should be readable
+in earlier versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> on all other platforms.
 </p>
 
 
 <h3>Note</h3>
 
-<p>For saving single <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects, <code><a href="readRDS.html">saveRDS</a>()</code> is mostly
+<p>For saving single <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects, <code><a href="../../base/help/saveRDS.html">saveRDS</a>()</code> is mostly
 preferable to <code>save()</code>, notably because of the <em>functional</em>
-nature of <code><a href="readRDS.html">readRDS</a>()</code>, as opposed to <code><a href="load.html">load</a>()</code>.
+nature of <code><a href="../../base/help/readRDS.html">readRDS</a>()</code>, as opposed to <code><a href="../../base/help/load.html">load</a>()</code>.
 </p>
 <p>The most common reason for failure is lack of write permission in the
 current directory.  For <code>save.image</code> and for saving at the end of
@@ -241,11 +244,11 @@ the current locale.
 
 <h3>See Also</h3>
 
-<p><code><a href="dput.html">dput</a></code>, <code><a href="dump.html">dump</a></code>, <code><a href="load.html">load</a></code>,
+<p><code><a href="../../base/help/dput.html">dput</a></code>, <code><a href="../../base/help/dump.html">dump</a></code>, <code><a href="../../base/help/load.html">load</a></code>,
 <code><a href="../../utils/html/data.html">data</a></code>.
 </p>
 <p>For other interfaces to the underlying serialization format, see
-<code><a href="serialize.html">serialize</a></code> and <code><a href="readRDS.html">saveRDS</a></code>.
+<code><a href="../../base/help/serialize.html">serialize</a></code> and <code><a href="../../base/help/saveRDS.html">saveRDS</a></code>.
 </p>
 
 
@@ -270,5 +273,5 @@ unlink(".RData")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

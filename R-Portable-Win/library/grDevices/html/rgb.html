@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: RGB Color Specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for rgb {grDevices}"><tr><td>rgb {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -64,7 +65,7 @@ In this case the first three columns of <code>red</code> are taken to be
 the <code>red</code>, <code>green</code> and <code>blue</code> values.
 </p>
 <p>Semi-transparent colors (<code>0 &lt; alpha &lt; 1</code>) are supported only on
-some devices: at the time of writing on the <code><a href="pdf.html">pdf</a></code>,
+some devices: at the time of writing on the <code><a href="../../grDevices/help/pdf.html">pdf</a></code>,
 <code>windows</code>, <code>quartz</code> and <code>X11(type = "cairo")</code> devices and
 associated bitmap devices (<code>jpeg</code>, <code>png</code>, <code>bmp</code>,
 <code>tiff</code> and <code>bitmap</code>). They are supported by several
@@ -93,9 +94,9 @@ values range from <code>0</code> (fully transparent) to <code>255</code> (opaque
 
 <h3>See Also</h3>
 
-<p><code><a href="col2rgb.html">col2rgb</a></code> for translating <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> colors to RGB vectors;
-<code><a href="palettes.html">rainbow</a></code>, <code><a href="hsv.html">hsv</a></code>, <code><a href="hcl.html">hcl</a></code>,
-<code><a href="gray.html">gray</a></code>.
+<p><code><a href="../../grDevices/help/col2rgb.html">col2rgb</a></code> for translating <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> colors to RGB vectors;
+<code><a href="../../grDevices/help/rainbow.html">rainbow</a></code>, <code><a href="../../grDevices/help/hsv.html">hsv</a></code>, <code><a href="../../grDevices/help/hcl.html">hcl</a></code>,
+<code><a href="../../grDevices/help/gray.html">gray</a></code>.
 </p>
 
 
@@ -106,11 +107,11 @@ rgb(0, 1, 0)
 
 rgb((0:15)/15, green = 0, blue = 0, names = paste("red", 0:15, sep = "."))
 
-rgb(0, 0:12, 0, max = 255) # integer input
+rgb(0, 0:12, 0, maxColorValue = 255) # integer input
 
 ramp &lt;- colorRamp(c("red", "white"))
-rgb( ramp(seq(0, 1, length = 5)), max = 255)
+rgb( ramp(seq(0, 1, length.out = 5)), maxColorValue = 255)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

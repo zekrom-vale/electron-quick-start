@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Where is the Min() or Max() or first TRUE or FALSE ?</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for which.min {base}"><tr><td>which.min {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,8 +29,8 @@ which.max(x)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>numeric (logical, integer or double) vector or an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object
-for which the internal coercion to <code><a href="double.html">double</a></code> works whose
-<code><a href="Extremes.html">min</a></code> or <code><a href="Extremes.html">max</a></code> is searched for.</p>
+for which the internal coercion to <code><a href="../../base/help/double.html">double</a></code> works whose
+<code><a href="../../base/help/min.html">min</a></code> or <code><a href="../../base/help/max.html">max</a></code> is searched for.</p>
 </td></tr>
 </table>
 
@@ -38,9 +39,9 @@ for which the internal coercion to <code><a href="double.html">double</a></code>
 
 <p>Missing and <code>NaN</code> values are discarded.
 </p>
-<p>an <code><a href="integer.html">integer</a></code> or on 64-bit platforms, if
-<code><a href="length.html">length</a>(x) =: n</code><i>&gt;= 2^31</i> an integer
-valued <code><a href="double.html">double</a></code> of length 1 or 0 (iff <code>x</code> has no
+<p>an <code><a href="../../base/help/integer.html">integer</a></code> or on 64-bit platforms, if
+<code><a href="../../base/help/length.html">length</a>(x) =: n</code><i>&gt;= 2^31</i> an integer
+valued <code><a href="../../base/help/double.html">double</a></code> of length 1 or 0 (iff <code>x</code> has no
 non-<code>NA</code>s), giving the index of the <em>first</em> minimum or
 maximum respectively of <code>x</code>.
 </p>
@@ -52,7 +53,7 @@ maximum respectively of <code>x</code>.
 
 <h3>Logical <code>x</code> &ndash; First <code>TRUE</code> or <code>FALSE</code></h3>
 
-<p>For a <code><a href="logical.html">logical</a></code> vector <code>x</code> with both <code>FALSE</code> and
+<p>For a <code><a href="../../base/help/logical.html">logical</a></code> vector <code>x</code> with both <code>FALSE</code> and
 <code>TRUE</code> values, <code>which.min(x)</code> and <code>which.max(x)</code> return
 the index of the first <code>FALSE</code> or <code>TRUE</code>, respectively, as
 <code>FALSE &lt; TRUE</code>.  However, <code>match(FALSE, x)</code> or
@@ -68,12 +69,12 @@ indicate mismatches.
 
 <h3>See Also</h3>
 
-<p><code><a href="which.html">which</a></code>, <code><a href="maxCol.html">max.col</a></code>, <code><a href="Extremes.html">max</a></code>, etc.
+<p><code><a href="../../base/help/which.html">which</a></code>, <code><a href="../../base/help/max.col.html">max.col</a></code>, <code><a href="../../base/help/max.html">max</a></code>, etc.
 </p>
-<p>Use <code><a href="which.html">arrayInd</a>()</code>, if you need array/matrix indices instead
+<p>Use <code><a href="../../base/help/arrayInd.html">arrayInd</a>()</code>, if you need array/matrix indices instead
 of 1D vector ones.
 </p>
-<p><code><a href="../../nnet/html/which.is.max.html">which.is.max</a></code> in package <a href="https://CRAN.R-project.org/package=nnet"><span class="pkg">nnet</span></a> differs in
+<p><code><a href="../../nnet/help/which.is.max.html">which.is.max</a></code> in package <a href="https://CRAN.R-project.org/package=nnet"><span class="pkg">nnet</span></a> differs in
 breaking ties at random (and having a &lsquo;fuzz&rsquo; in the definition
 of ties).
 </p>
@@ -102,5 +103,5 @@ which.min(list(A = 7, pi = pi)) ##  -&gt;  c(pi = 2L)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

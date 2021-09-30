@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Methods for Non-Generic Functions in Other Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Methods_for_Nongenerics {methods}"><tr><td>Methods_for_Nongenerics {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -14,7 +15,7 @@ apply to a function (in another package) that is not  generic in that
 package; that is, there are no formal methods for the function in its
 own package, although it may have S3 methods.
 The programming in this case involves one extra step, to call
-<code><a href="setGeneric.html">setGeneric</a>()</code> to declare that the function <em>is</em>
+<code><a href="../../methods/help/setGeneric.html">setGeneric</a>()</code> to declare that the function <em>is</em>
 generic in your package.
 </p>
 <p>Calls to the function in your package will then use all methods
@@ -184,16 +185,16 @@ eligible non-default S4 method.
 inheritance, as far as possible.
 S3 classes can be used for any S4 method selection, provided that the
 S3 classes have been registered by a call to
-<code><a href="setOldClass.html">setOldClass</a></code>, with that call specifying the correct S3
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code>, with that call specifying the correct S3
 inheritance pattern.
 S4 classes can be used for any S3 method selection; when an S4 object
 is detected, S3 method selection uses the contents of
-<code><a href="is.html">extends</a>(class(x))</code> as the equivalent of the S3
+<code><a href="../../methods/help/extends.html">extends</a>(class(x))</code> as the equivalent of the S3
 inheritance (the inheritance is cached after the first call).
 </p>
 <p>An existing S3 method may not behave as desired for an S4 subclass, in
 which case utilities such as <code><a href="../../base/html/isS4.html">asS3</a></code> and
-<code><a href="S3Part.html">S3Part</a></code> may be useful.  If the S3 method fails on the S4
+<code><a href="../../methods/help/S3Part.html">S3Part</a></code> may be useful.  If the S3 method fails on the S4
 object, <code>asS3(x)</code> may be passed instead; if the object returned
 by the S3 method needs to be incorporated in the S4 object, the
 replacement function for <code>S3Part</code> may be useful.</p>
@@ -210,7 +211,7 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><a href="Methods_for_S3.html">Methods_for_S3</a> for suggested implementation of methods
+<p><a href="../../methods/help/Methods_for_S3.html">Methods_for_S3</a> for suggested implementation of methods
 that work for both S3 and S4 dispatch.
 </p>
 
@@ -313,7 +314,7 @@ f3(x); f3(y) # now both choose "classA" method
 ## or if called from a package without the S4 generic
 
 MathFun &lt;- function(x) { # a smarter "data.frame" method for Math group
-  for (i in seq(length = ncol(x))[sapply(x, is.numeric)])
+  for (i in seq_len(ncol(x))[sapply(x, is.numeric)])
     x[, i] &lt;- (getFunction(.Generic))(x[, i])
   x
 }
@@ -337,5 +338,5 @@ logIris &lt;- log(iris)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

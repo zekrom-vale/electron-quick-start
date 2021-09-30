@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Apply a Function Over Values in an Environment</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for eapply {base}"><tr><td>eapply {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,12 +11,10 @@
 <h3>Description</h3>
 
 <p><code>eapply</code> applies <code>FUN</code> to the named values from an
-<code><a href="environment.html">environment</a></code> and returns the results as a list.  The user
+<code><a href="../../base/help/environment.html">environment</a></code> and returns the results as a list.  The user
 can request that all named objects are used (normally names that begin
 with a dot are not).  The output is not sorted and no enclosing
 environments are searched.
-</p>
-<p>This is a <a href="Primitive.html">primitive</a> function.
 </p>
 
 
@@ -36,7 +35,7 @@ eapply(env, FUN, ..., all.names = FALSE, USE.NAMES = TRUE)
 <tr valign="top"><td><code>FUN</code></td>
 <td>
 <p>the function to be applied, found <em>via</em>
-<code><a href="match.fun.html">match.fun</a></code>.
+<code><a href="../../base/help/match.fun.html">match.fun</a></code>.
 In the case of functions like <code>+</code>, <code>%*%</code>, etc., the
 function name must be backquoted or quoted.</p>
 </td></tr>
@@ -52,7 +51,7 @@ all values.</p>
 <tr valign="top"><td><code>USE.NAMES</code></td>
 <td>
 <p>logical indicating whether the resulting list should
-have <code><a href="names.html">names</a></code>.</p>
+have <code><a href="../../base/help/names.html">names</a></code>.</p>
 </td></tr>
 </table>
 
@@ -66,7 +65,7 @@ the components is arbitrary for hashed environments.
 
 <h3>See Also</h3>
 
-<p><code><a href="environment.html">environment</a></code>, <code><a href="lapply.html">lapply</a></code>.
+<p><code><a href="../../base/help/environment.html">environment</a></code>, <code><a href="../../base/help/lapply.html">lapply</a></code>.
 </p>
 
 
@@ -91,5 +90,5 @@ eapply(env, quantile, probs = 1:3/4)
 eapply(env, quantile)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

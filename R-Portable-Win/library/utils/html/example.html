@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Run an Examples Section from the Online Help</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for example {utils}"><tr><td>example {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,7 +34,7 @@ example(topic, package = NULL, lib.loc = NULL,
 <tr valign="top"><td><code>topic</code></td>
 <td>
 <p>name or literal character string: the online
-<code><a href="help.html">help</a></code> topic the examples of which should be run.</p>
+<code><a href="../../utils/help/help.html">help</a></code> topic the examples of which should be run.</p>
 </td></tr>
 <tr valign="top"><td><code>package</code></td>
 <td>
@@ -78,7 +79,7 @@ example code.</p>
 number generator state is saved, then initialized to a specified state,
 the example is run and the (saved) state is restored.
 <code>setRNG = TRUE</code> sets the same state as
-<code>R CMD <a href="PkgUtils.html">check</a></code> does for
+<code>R CMD <a href="../../utils/help/check.html">check</a></code> does for
 running a package's examples.  This is currently equivalent to
 <code>setRNG = {RNGkind("default", "default", "default"); set.seed(1)}</code>.</p>
 </td></tr>
@@ -163,7 +164,7 @@ is true, where a <code><a href="../../base/html/character.html">character</a></c
 
 <h3>See Also</h3>
 
-<p><code><a href="demo.html">demo</a></code></p>
+<p><code><a href="../../utils/help/demo.html">demo</a></code></p>
 
 
 <h3>Examples</h3>
@@ -193,5 +194,5 @@ lmex &lt;- sapply(apropos("^lm", mode = "function"),
 sapply(lmex, length)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

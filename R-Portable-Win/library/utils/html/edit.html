@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Invoke a Text Editor</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for edit {utils}"><tr><td>edit {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -80,7 +81,7 @@ to edit matrices and data frames on systems for which
 called <code>name</code>. Instead, a copy of name is made and it is that
 copy which is changed.  Should you want the changes to apply to the
 object <code>name</code> you must assign the result of <code>edit</code> to
-<code>name</code>.  (Try <code><a href="fix.html">fix</a></code> if you want to make permanent
+<code>name</code>.  (Try <code><a href="../../utils/help/fix.html">fix</a></code> if you want to make permanent
 changes to an object.)
 </p>
 <p>In the form <code>edit(name)</code>,
@@ -96,7 +97,7 @@ editing can differ in subtle ways from that deparsed: see
 <code><a href="../../base/html/dput.html">dput</a></code> and <code><a href="../../base/html/deparseOpts.html">.deparseOpts</a></code>. (The deparse options
 used are the same as the defaults for <code>dump</code>.)  Editing a
 function will preserve its environment.  See
-<code><a href="edit.data.frame.html">edit.data.frame</a></code> for further changes that can occur when
+<code><a href="../../utils/help/edit.data.frame.html">edit.data.frame</a></code> for further changes that can occur when
 editing a data frame or matrix.
 </p>
 <p>Currently only the internal editor in Windows makes use of the
@@ -115,9 +116,9 @@ being on the path. This is system-dependent.
 
 <h3>See Also</h3>
 
-<p><code><a href="edit.data.frame.html">edit.data.frame</a></code>,
-<code><a href="dataentry.html">data.entry</a></code>,
-<code><a href="fix.html">fix</a></code>.
+<p><code><a href="../../utils/help/edit.data.frame.html">edit.data.frame</a></code>,
+<code><a href="../../utils/help/data.entry.html">data.entry</a></code>,
+<code><a href="../../utils/help/fix.html">fix</a></code>.
 </p>
 
 
@@ -134,5 +135,5 @@ vi(mean, file = "mean.out")
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plotting Dimensions of Character Strings and Math Expressions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for strwidth {graphics}"><tr><td>strwidth {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -42,14 +43,14 @@ partial matching is performed.</p>
 <tr valign="top"><td><code>cex</code></td>
 <td>
 <p>numeric <b>c</b>haracter <b>ex</b>pansion factor; multiplied
-by <code><a href="par.html">par</a>("cex")</code> yields the final character size; the
+by <code><a href="../../graphics/help/par.html">par</a>("cex")</code> yields the final character size; the
 default <code>NULL</code> is equivalent to <code>1</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>font, vfont, ...</code></td>
 <td>
 <p>additional information about the font,
 possibly including the graphics parameter <code>"family"</code>:
-see <code><a href="text.html">text</a></code>.</p>
+see <code><a href="../../graphics/help/text.html">text</a></code>.</p>
 </td></tr>
 </table>
 
@@ -64,11 +65,11 @@ bounding box as computed by <a href="../../grDevices/html/plotmath.html">plotmat
 an estimate of how far <b>above</b> the final baseline the typeset
 object extends.  (It may also extend below the baseline.)  The
 inter-line spacing is controlled by <code>cex</code>,
-<code><a href="par.html">par</a>("lheight")</code> and the &lsquo;point size&rsquo; (but not the
+<code><a href="../../graphics/help/par.html">par</a>("lheight")</code> and the &lsquo;point size&rsquo; (but not the
 actual font in use).
 </p>
 <p>Measurements in <code>"user"</code> units (the default) are only available
-after <code><a href="frame.html">plot.new</a></code> has been called &ndash; otherwise an error is
+after <code><a href="../../graphics/help/plot.new.html">plot.new</a></code> has been called &ndash; otherwise an error is
 thrown.
 </p>
 
@@ -83,7 +84,7 @@ width and height 0 (as they are not plotted).
 
 <h3>See Also</h3>
 
-<p><code><a href="text.html">text</a></code>, <code><a href="../../base/html/nchar.html">nchar</a></code>
+<p><code><a href="../../graphics/help/text.html">text</a></code>, <code><a href="../../base/html/nchar.html">nchar</a></code>
 </p>
 
 
@@ -118,5 +119,5 @@ strheight(sumex)
 par(op)  #- reset to previous setting
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

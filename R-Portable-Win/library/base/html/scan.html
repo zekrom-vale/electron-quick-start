@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read Data Values</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for scan {base}"><tr><td>scan {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -33,21 +34,21 @@ scan(file = "", what = double(), nmax = -1, n = -1, sep = "",
 <td>
 <p>the name of a file to read data values from.  If the
 specified file is <code>""</code>, then input is taken from the keyboard
-(or whatever <code><a href="showConnections.html">stdin</a>()</code> reads if input is redirected or
+(or whatever <code><a href="../../base/help/stdin.html">stdin</a>()</code> reads if input is redirected or
 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> is embedded).
 (In this case input can be terminated by a blank line or an EOF
 signal, <span class="samp">Ctrl-D</span> on Unix and <span class="samp">Ctrl-Z</span> on Windows.)
 </p>
 <p>Otherwise, the file name is interpreted <em>relative</em> to the
-current working directory (given by <code><a href="getwd.html">getwd</a>()</code>),
+current working directory (given by <code><a href="../../base/help/getwd.html">getwd</a>()</code>),
 unless it specifies an <em>absolute</em> path.
 Tilde-expansion is performed where supported.
 When running <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> from a script, <code>file = "stdin"</code> can be used to
 refer to the process's <code>stdin</code> file stream.
 </p>
-<p>This can be a compressed file (see <code><a href="connections.html">file</a></code>).
+<p>This can be a compressed file (see <code><a href="../../base/help/file.html">file</a></code>).
 </p>
-<p>Alternatively, <code>file</code> can be a <code><a href="connections.html">connection</a></code>,
+<p>Alternatively, <code>file</code> can be a <code><a href="../../base/help/connection.html">connection</a></code>,
 which will be opened if necessary, and if so closed at the end of
 the function call.  Whatever mode the connection is opened in,
 any of LF, CRLF or CR will be accepted as the EOL marker for a line
@@ -55,24 +56,24 @@ and so will match <code>sep = "\n"</code>.
 </p>
 <p><code>file</code> can also be a complete URL.  (For the supported URL
 schemes, see the &lsquo;URLs&rsquo; section of the help for
-<code><a href="connections.html">url</a></code>.)
+<code><a href="../../base/help/url.html">url</a></code>.)
 </p>
 <p>To read a data file not in the current encoding (for example a
 Latin-1 file in a UTF-8 locale or conversely) use a
-<code><a href="connections.html">file</a></code> connection setting its <code>encoding</code> argument
+<code><a href="../../base/help/file.html">file</a></code> connection setting its <code>encoding</code> argument
 (or <code>scan</code>'s <code>fileEncoding</code> argument).
 </p>
 </td></tr>
 <tr valign="top"><td><code>what</code></td>
 <td>
-<p>the <a href="typeof.html">type</a> of <code>what</code> gives the type of data to
+<p>the <a href="../../base/help/type.html">type</a> of <code>what</code> gives the type of data to
 be read.  (Here &lsquo;type&rsquo; is used in the sense of
-<code><a href="typeof.html">typeof</a></code>.)  The supported types are <code>logical</code>,
+<code><a href="../../base/help/typeof.html">typeof</a></code>.)  The supported types are <code>logical</code>,
 <code>integer</code>, <code>numeric</code>, <code>complex</code>, <code>character</code>,
-<code>raw</code> and <code><a href="list.html">list</a></code>.  If <code>what</code> is a list, it is
+<code>raw</code> and <code><a href="../../base/help/list.html">list</a></code>.  If <code>what</code> is a list, it is
 assumed that the lines of the data file are records each containing
 <code>length(what)</code> items (&lsquo;fields&rsquo;) and the list components
-should have elements which are one of the first six (<a href="vector.html">atomic</a>)
+should have elements which are one of the first six (<a href="../../base/help/atomic.html">atomic</a>)
 types listed or <code>NULL</code>, see section &lsquo;Details&rsquo; below.</p>
 </td></tr>
 <tr valign="top"><td><code>nmax</code></td>
@@ -125,7 +126,7 @@ beginning to read data values.</p>
 <tr valign="top"><td><code>na.strings</code></td>
 <td>
 <p>character vector.  Elements of this vector are to be
-interpreted as missing (<code><a href="NA.html">NA</a></code>) values.  Blank fields are
+interpreted as missing (<code><a href="../../base/help/NA.html">NA</a></code>) values.  Blank fields are
 also considered to be missing values in logical, integer, numeric
 and complex fields.  Note that the test happens <em>after</em> 
 white space is stripped from the input, so <code>na.strings</code> values 
@@ -195,7 +196,7 @@ as a comment character).
 hexadecimal representations like <span class="samp">\040</span> and <span class="samp">\0x2A</span>.  Any
 other escaped character is treated as itself, including backslash.
 Note that Unicode escapes (starting <span class="samp">\u</span> or <span class="samp">\U</span>: see
-<a href="Quotes.html">Quotes</a>) are never processed.
+<a href="../../base/help/Quotes.html">Quotes</a>) are never processed.
 </p>
 </td></tr>
 <tr valign="top"><td><code>fileEncoding</code></td>
@@ -203,7 +204,7 @@ Note that Unicode escapes (starting <span class="samp">\u</span> or <span class=
 <p>character string: if non-empty declares the
 encoding used on a file (not a connection nor the keyboard) so the
 character data can be re-encoded.  See the &lsquo;Encoding&rsquo; section
-of the help for <code><a href="connections.html">file</a></code>, and the &lsquo;R Data
+of the help for <code><a href="../../base/help/file.html">file</a></code>, and the &lsquo;R Data
 Import/Export Manual&rsquo;.
 </p>
 </td></tr>
@@ -239,7 +240,7 @@ columnar data.  If any of the types is <code>NULL</code>, the corresponding
 field is skipped (but a <code>NULL</code> component appears in the result).
 </p>
 <p>The type of <code>what</code> or its components can be one of the six
-atomic vector types or <code>NULL</code> (see <code><a href="is.recursive.html">is.atomic</a></code>).
+atomic vector types or <code>NULL</code> (see <code><a href="../../base/help/is.atomic.html">is.atomic</a></code>).
 </p>
 <p>&lsquo;White space&rsquo; is defined for the purposes of this function as
 one or more contiguous characters from the set space, horizontal tab,
@@ -254,7 +255,7 @@ values.
 </p>
 <p>The allowed input for a numeric field is optional whitespace followed
 either <code>NA</code> or an optional sign followed by a decimal or
-hexadecimal constant (see <a href="NumericConstants.html">NumericConstants</a>), or <code>NaN</code>,
+hexadecimal constant (see <a href="../../base/help/NumericConstants.html">NumericConstants</a>), or <code>NaN</code>,
 <code>Inf</code> or <code>infinity</code> (ignoring case).  Out-of-range values
 are recorded as <code>Inf</code>, <code>-Inf</code> or <code>0</code>.
 </p>
@@ -280,7 +281,7 @@ fields (which might be skipping character fields).
 reading a file by <code>scan("foo", sep = "\n", blank.lines.skip = FALSE)</code>
 will give an empty final line if the file ends in a linefeed and not if
 it does not.  This might not be what you expected; see also
-<code><a href="readLines.html">readLines</a></code>.
+<code><a href="../../base/help/readLines.html">readLines</a></code>.
 </p>
 <p>If <code>comment.char</code> occurs (except inside a quoted character
 field), it signals that the rest of the line should be regarded as a
@@ -296,10 +297,10 @@ to R&rsquo;).
 is a list, otherwise every 10000 items.
 </p>
 <p>If <code>file</code> is a character string and <code>fileEncoding</code> is
-non-default, or if it is a not-already-open <a href="connections.html">connection</a> with a
+non-default, or if it is a not-already-open <a href="../../base/help/connection.html">connection</a> with a
 non-default <code>encoding</code> argument, the text is converted to UTF-8
 and declared as such (and the <code>encoding</code> argument to <code>scan</code>
-is ignored).  See the examples of <code><a href="readLines.html">readLines</a></code>.
+is ignored).  See the examples of <code><a href="../../base/help/readLines.html">readLines</a></code>.
 </p>
 <p>Embedded nuls in the input stream will terminate the field currently
 being read, with a warning once per call to <code>scan</code>.  Setting
@@ -338,7 +339,7 @@ chars: use an explicit separator to avoid this.
 <p>Having <code>nul</code> bytes in fields (including <span class="samp">\0</span> if
 <code>allowEscapes = TRUE</code>) may lead to interpretation of the
 field being terminated at the <code>nul</code>.  They not normally present
-in text files &ndash; see <code><a href="readBin.html">readBin</a></code>.
+in text files &ndash; see <code><a href="../../base/help/readBin.html">readBin</a></code>.
 </p>
 
 
@@ -354,12 +355,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <p><code><a href="../../utils/html/read.table.html">read.table</a></code> for more user-friendly reading of data
 matrices;
-<code><a href="readLines.html">readLines</a></code> to read a file a line at a time.
-<code><a href="write.html">write</a></code>.
+<code><a href="../../base/help/readLines.html">readLines</a></code> to read a file a line at a time.
+<code><a href="../../base/help/write.html">write</a></code>.
 </p>
 <p><code>Quotes</code> for the details of C-style escape sequences.
 </p>
-<p><code><a href="readChar.html">readChar</a></code> and <code><a href="readBin.html">readBin</a></code> to read fixed or
+<p><code><a href="../../base/help/readChar.html">readChar</a></code> and <code><a href="../../base/help/readBin.html">readBin</a></code> to read fixed or
 variable length character strings or binary representations of numbers
 a few at a time from a connection.
 </p>
@@ -381,5 +382,5 @@ scan(text = "1 2 3")
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

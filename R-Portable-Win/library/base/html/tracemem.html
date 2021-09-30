@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Trace Copying of Objects</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for tracemem {base}"><tr><td>tracemem {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -59,14 +60,14 @@ and a stack trace showing where the duplication occurred.
 <code>retracemem()</code> is used to indicate that a variable should be
 considered a copy of a previous variable (e.g., after subscripting).
 </p>
-<p>The messages can be turned off with <code><a href="trace.html">tracingState</a></code>.
+<p>The messages can be turned off with <code><a href="../../base/help/tracingState.html">tracingState</a></code>.
 </p>
 <p>It is not possible to trace functions, as this would conflict with
-<code><a href="trace.html">trace</a></code> and it is not useful to trace <code>NULL</code>,
+<code><a href="../../base/help/trace.html">trace</a></code> and it is not useful to trace <code>NULL</code>,
 environments, promises, weak references, or external pointer objects, as
 these are not duplicated.
 </p>
-<p>These functions are <a href="Primitive.html">primitive</a>.
+<p>These functions are <a href="../../base/help/primitive.html">primitive</a>.
 </p>
 
 
@@ -79,10 +80,10 @@ address in hex enclosed in angle brackets), or <code>NULL</code> (invisibly).
 
 <h3>See Also</h3>
 
-<p><code><a href="capabilities.html">capabilities</a>("profmem")</code> to see if this was enabled for
+<p><code><a href="../../base/help/capabilities.html">capabilities</a>("profmem")</code> to see if this was enabled for
 this build of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.
 </p>
-<p><code><a href="trace.html">trace</a></code>, <code><a href="../../utils/html/Rprofmem.html">Rprofmem</a></code>
+<p><code><a href="../../base/help/trace.html">trace</a></code>, <code><a href="../../utils/html/Rprofmem.html">Rprofmem</a></code>
 </p>
 <p><a href="https://developer.r-project.org/memory-profiling.html">https://developer.r-project.org/memory-profiling.html</a>
 </p>
@@ -112,5 +113,5 @@ f+1
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

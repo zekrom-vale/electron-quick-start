@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Invoke a System Command</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for system {base}"><tr><td>system {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -88,13 +89,13 @@ command window should be visible on the screen.</p>
 <h3>Details</h3>
 
 <p>This interface has become rather complicated over the years: see
-<code><a href="system2.html">system2</a></code> for a more portable and flexible interface
+<code><a href="../../base/help/system2.html">system2</a></code> for a more portable and flexible interface
 which is recommended for new code.
 </p>
 <p><code>command</code> is parsed as a command plus arguments separated by
 spaces.  So if the path to the command (or a single argument such as a
 file path) contains spaces, it must be quoted e.g. by
-<code><a href="shQuote.html">shQuote</a></code>.
+<code><a href="../../base/help/shQuote.html">shQuote</a></code>.
 Only double quotes are allowed on Windows: see the examples.  (Note: a
 Windows path name cannot contain a double quote, so we do not need to
 worry about escaping embedded quotes.)
@@ -103,7 +104,7 @@ worry about escaping embedded quotes.)
 &lsquo;<span class="file">.com</span>&rsquo;) or a batch file (extensions &lsquo;<span class="file">.cmd</span>&rsquo; and &lsquo;<span class="file">.bat</span>&rsquo;):
 these extensions are tried in turn if none is supplied. This means
 that redirection, pipes, DOS internal commands, ... cannot be used:
-see <code><a href="shell.html">shell</a></code> if you want to pass a shell command-line.
+see <code><a href="../../base/help/shell.html">shell</a></code> if you want to pass a shell command-line.
 </p>
 <p>The search path for <code>command</code> may be system-dependent: it will
 include the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &lsquo;<span class="file">bin</span>&rsquo; directory, the working directory and the
@@ -118,7 +119,7 @@ after the time is out.  Timeouts can only be set with <code>wait = TRUE</code>.
 time: it is recommended to name all arguments after the first.
 </p>
 <p>There are many pitfalls in using <code>system</code> to ascertain if a
-command can be run &mdash; <code><a href="Sys.which.html">Sys.which</a></code> is more suitable.
+command can be run &mdash; <code><a href="../../base/help/Sys.which.html">Sys.which</a></code> is more suitable.
 </p>
 
 
@@ -126,8 +127,8 @@ command can be run &mdash; <code><a href="Sys.which.html">Sys.which</a></code> i
 
 <p>If <code>intern = TRUE</code>, a character vector giving the output of the
 command, one line per character string.  (Output lines of more than
-8095 bytes will be split.)  If the command could not be run an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
-error is generated.
+8095 bytes will be split on some systems.)
+If the command could not be run an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> error is generated.
 Under the <code>Rgui</code> console <code>intern = TRUE</code> also captures
 <code>stderr</code> unless <code>ignore.stderr = TRUE</code>.
 If <code>command</code> runs but gives a non-zero exit status this will be
@@ -212,7 +213,7 @@ a POSIX shell).
 <p>This means that it cannot be assumed that redirection or piping will
 work in <code>system</code> (redirection sometimes does, but we have seen
 cases where it stopped working after a Windows security patch), and
-<code><a href="system2.html">system2</a></code> (or <code>shell</code>) must be used on Windows.
+<code><a href="../../base/help/system2.html">system2</a></code> (or <code>shell</code>) must be used on Windows.
 </p>
 </li>
 <li><p> What happens to <code>stdout</code> and <code>stderr</code> when not
@@ -228,7 +229,7 @@ differed between <span style="font-family: Courier New, Courier; color: #666666;
 </p>
 </li>
 <li><p> The quoting conventions for <code>command</code> differ, but
-<code><a href="shQuote.html">shQuote</a></code> is a portable interface.
+<code><a href="../../base/help/shQuote.html">shQuote</a></code> is a portable interface.
 </p>
 </li>
 <li><p> Arguments <code>show.output.on.console</code>, <code>minimized</code>,
@@ -241,12 +242,12 @@ to <code>Rgui</code> there).
 
 <h3>See Also</h3>
 
-<p><code><a href="shell.html">shell</a></code> or <code><a href="shell.exec.html">shell.exec</a></code> for a less raw
+<p><code><a href="../../base/help/shell.html">shell</a></code> or <code><a href="../../base/help/shell.exec.html">shell.exec</a></code> for a less raw
 interface.
 </p>
-<p><code><a href="Platform.html">.Platform</a></code> for platform-specific variables.
+<p><code><a href="../../base/help/.Platform.html">.Platform</a></code> for platform-specific variables.
 </p>
-<p><code><a href="connections.html">pipe</a></code> to set up a pipe connection.
+<p><code><a href="../../base/help/pipe.html">pipe</a></code> to set up a pipe connection.
 </p>
 
 
@@ -264,5 +265,5 @@ system(paste('"c:/Program Files/Mozilla Firefox/firefox.exe"',
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

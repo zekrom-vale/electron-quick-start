@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Citing R and R Packages in Publications</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for citation {utils}"><tr><td>citation {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,7 +44,7 @@ packages are searched before the libraries.</p>
 auto-generated from the package &lsquo;<span class="file">DESCRIPTION</span>&rsquo; metadata should
 be used or not, or <code>NULL</code> (default), indicating that a
 &lsquo;<span class="file">CITATION</span>&rsquo; file is used if it exists, or an object of class
-<code>"<a href="packageDescription.html">packageDescription</a>"</code> with package metadata (see
+<code>"<a href="../../utils/help/packageDescription.html">packageDescription</a>"</code> with package metadata (see
 below).</p>
 </td></tr>
 <tr valign="top"><td><code>file</code></td>
@@ -53,7 +54,7 @@ below).</p>
 <tr valign="top"><td><code>meta</code></td>
 <td>
 <p>a list of package metadata as obtained by
-<code><a href="packageDescription.html">packageDescription</a></code>, or <code>NULL</code> (the default).</p>
+<code><a href="../../utils/help/packageDescription.html">packageDescription</a></code>, or <code>NULL</code> (the default).</p>
 </td></tr>
 </table>
 
@@ -75,7 +76,7 @@ file.
 </p>
 <p>In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> &gt;= 2.14.0, one can use a <span class="samp">Authors@R</span> field in
 &lsquo;<span class="file">DESCRIPTION</span>&rsquo; to provide (<span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code giving) a
-<code><a href="person.html">person</a></code> object with a refined, machine-readable
+<code><a href="../../utils/help/person.html">person</a></code> object with a refined, machine-readable
 description of the package &ldquo;authors&rdquo; (in particular specifying
 their precise roles).  Only those with an author role will be
 included in the auto-generated citation.
@@ -93,19 +94,19 @@ conditionals and computations.  Function <code>readCitationFile()</code> is
 used by <code>citation()</code> to extract the information in
 &lsquo;<span class="file">CITATION</span>&rsquo; files.  The file is <code>source()</code>ed by the R
 parser in a temporary environment and all resulting bibliographic
-objects (specifically, of class <code>"<a href="bibentry.html">bibentry</a>"</code>) are
+objects (specifically, of class <code>"<a href="../../utils/help/bibentry.html">bibentry</a>"</code>) are
 collected.
 </p>
 <p>Traditionally, the &lsquo;<span class="file">CITATION</span>&rsquo; file contained zero or more calls
-to <code>citHeader</code>, then one or more calls to <code><a href="citEntry.html">citEntry</a></code>,
+to <code>citHeader</code>, then one or more calls to <code><a href="../../utils/help/citEntry.html">citEntry</a></code>,
 and finally zero or more calls to <code>citFooter</code>, where in fact
 <code>citHeader</code> and <code>citFooter</code> are simply wrappers to
 <code><a href="../../base/html/paste.html">paste</a></code>, with their <code>...</code> argument passed on to
-<code><a href="../../base/html/paste.html">paste</a></code> as is.  The <code>"<a href="bibentry.html">bibentry</a>"</code> class
+<code><a href="../../base/html/paste.html">paste</a></code> as is.  The <code>"<a href="../../utils/help/bibentry.html">bibentry</a>"</code> class
 makes for improved representation and manipulation of bibliographic
 information (in fact, the old mechanism is implemented using the new
 one), and one can write &lsquo;<span class="file">CITATION</span>&rsquo; files using the unified
-<code><a href="bibentry.html">bibentry</a></code> interface.
+<code><a href="../../utils/help/bibentry.html">bibentry</a></code> interface.
 </p>
 <p>One can include an auto-generated package citation in the
 &lsquo;<span class="file">CITATION</span>&rsquo; file via <code>citation(auto = meta)</code>.
@@ -118,14 +119,14 @@ any) of <code>meta</code> to determine the encoding of the file.
 <h3>Value</h3>
 
 <p>An object of class <code>"citation"</code>, inheriting from class
-<code>"<a href="bibentry.html">bibentry</a>"</code>; see there, notably for the
+<code>"<a href="../../utils/help/bibentry.html">bibentry</a>"</code>; see there, notably for the
 <code><a href="../../base/html/print.html">print</a></code> and <code><a href="../../base/html/format.html">format</a></code> methods.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="bibentry.html">bibentry</a></code>
+<p><code><a href="../../utils/help/bibentry.html">bibentry</a></code>
 </p>
 
 
@@ -154,5 +155,5 @@ print(cm, bibtex = TRUE) # each showing its bibtex code
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

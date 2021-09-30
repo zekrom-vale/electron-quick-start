@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The Poisson Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Poisson {stats}"><tr><td>Poisson {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -75,7 +76,7 @@ The mean and variance are <i>E(X) = Var(X) = &lambda;</i>.
 <p>If an element of <code>x</code> is not integer, the result of <code>dpois</code>
 is zero, with a warning.
 <i>p(x)</i> is computed using Loader's algorithm, see the reference in
-<code><a href="Binomial.html">dbinom</a></code>.
+<code><a href="../../stats/help/dbinom.html">dbinom</a></code>.
 </p>
 <p>The quantile is right continuous: <code>qpois(p, lambda)</code> is the smallest
 integer <i>x</i> such that <i>P(X &le; x) &ge; p</i>.
@@ -103,12 +104,16 @@ numerical arguments for the other functions.
 length of the result.  Only the first elements of the logical
 arguments are used.
 </p>
+<p><code>rpois</code> returns a vector of type <a href="../../base/html/integer.html">integer</a> unless generated
+values exceed the maximum representable integer when <code><a href="../../base/html/double.html">double</a></code>
+values are returned since R version 4.0.0.
+</p>
 
 
 <h3>Source</h3>
 
 <p><code>dpois</code> uses C code contributed by Catherine Loader
-(see <code><a href="Binomial.html">dbinom</a></code>).
+(see <code><a href="../../stats/help/dbinom.html">dbinom</a></code>).
 </p>
 <p><code>ppois</code> uses <code>pgamma</code>.
 </p>
@@ -125,11 +130,11 @@ Computer generation of Poisson deviates from modified normal distributions.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for other standard distributions, including
-<code><a href="Binomial.html">dbinom</a></code> for the binomial and <code><a href="NegBinomial.html">dnbinom</a></code> for
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions, including
+<code><a href="../../stats/help/dbinom.html">dbinom</a></code> for the binomial and <code><a href="../../stats/help/dnbinom.html">dnbinom</a></code> for
 the negative binomial distribution.
 </p>
-<p><code><a href="poisson.test.html">poisson.test</a></code>.
+<p><code><a href="../../stats/help/poisson.test.html">poisson.test</a></code>.
 </p>
 
 
@@ -156,5 +161,5 @@ stopifnot(identical(dpois(0,0), 1),
 	  identical(qpois(1,0), 0))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

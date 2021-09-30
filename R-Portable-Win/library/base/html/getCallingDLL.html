@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Compute DLL for Native Interface Call</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for getCallingDLL {base}"><tr><td>getCallingDLL {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -46,8 +47,8 @@ is the one in which the native routine is being invoked.</p>
 a namespace and/or DLL is an error (<code>TRUE</code>) or not
 (<code>FALSE</code>).  The default is <code>FALSE</code> so that when this is
 called because there is no <code>PACKAGE</code> argument in a
-<code><a href="Foreign.html">.C</a></code>, <code><a href="CallExternal.html">.Call</a></code>, <code><a href="Foreign.html">.Fortran</a></code>,
-<code><a href="CallExternal.html">.External</a></code> call,  no error occurs and the regular lookup
+<code><a href="../../base/help/.C.html">.C</a></code>, <code><a href="../../base/help/.Call.html">.Call</a></code>, <code><a href="../../base/help/.Fortran.html">.Fortran</a></code>,
+<code><a href="../../base/help/.External.html">.External</a></code> call,  no error occurs and the regular lookup
 is performed by searching all DLLs in order.</p>
 </td></tr>
 <tr valign="top"><td><code>e</code></td>
@@ -59,10 +60,10 @@ is performed by searching all DLLs in order.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="Foreign.html">.C</a></code>,
-<code><a href="CallExternal.html">.Call</a></code>,
-<code><a href="Foreign.html">.Fortran</a></code>,
-<code><a href="CallExternal.html">.External</a></code>
+<p><code><a href="../../base/help/.C.html">.C</a></code>,
+<code><a href="../../base/help/.Call.html">.Call</a></code>,
+<code><a href="../../base/help/.Fortran.html">.Fortran</a></code>,
+<code><a href="../../base/help/.External.html">.External</a></code>
 </p>
 
 
@@ -73,5 +74,5 @@ if(exists("ansari.test"))
    getCallingDLL(ansari.test)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Foreign Function Interface</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Foreign {base}"><tr><td>Foreign {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -28,8 +29,8 @@
 <td>
 <p>a character string giving the name of a C function or
 Fortran subroutine, or an object of class
-<code>"<a href="getNativeSymbolInfo.html">NativeSymbolInfo</a>"</code>, <code>"<a href="getNativeSymbolInfo.html">RegisteredNativeSymbol</a>"</code>
-or <code>"<a href="getNativeSymbolInfo.html">NativeSymbol</a>"</code> referring to such a name.</p>
+<code>"<a href="../../base/help/NativeSymbolInfo.html">NativeSymbolInfo</a>"</code>, <code>"<a href="../../base/help/RegisteredNativeSymbol.html">RegisteredNativeSymbol</a>"</code>
+or <code>"<a href="../../base/help/NativeSymbol.html">NativeSymbol</a>"</code> referring to such a name.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -37,8 +38,8 @@ or <code>"<a href="getNativeSymbolInfo.html">NativeSymbol</a>"</code> referring 
 </td></tr>
 <tr valign="top"><td><code>NAOK</code></td>
 <td>
-<p>if <code>TRUE</code> then any <code><a href="NA.html">NA</a></code> or
-<code><a href="is.finite.html">NaN</a></code> or <code><a href="is.finite.html">Inf</a></code> values in the arguments are
+<p>if <code>TRUE</code> then any <code><a href="../../base/help/NA.html">NA</a></code> or
+<code><a href="../../base/help/NaN.html">NaN</a></code> or <code><a href="../../base/help/Inf.html">Inf</a></code> values in the arguments are
 passed on to the foreign function.  If <code>FALSE</code>, the presence of
 <code>NA</code> or <code>NaN</code> or <code>Inf</code> values is regarded as an error.</p>
 </td></tr>
@@ -61,12 +62,12 @@ symbols, and also speeds up the search (see &lsquo;Note&rsquo;).</p>
 
 <h3>Details</h3>
 
-<p>These functions can be used to make calls to compiled C and Fortran 77
-code.  Later interfaces are <code><a href="CallExternal.html">.Call</a></code> and
-<code><a href="CallExternal.html">.External</a></code> which are more flexible and have better
+<p>These functions can be used to make calls to compiled C and Fortran
+code.  Later interfaces are <code><a href="../../base/help/.Call.html">.Call</a></code> and
+<code><a href="../../base/help/.External.html">.External</a></code> which are more flexible and have better
 performance.
 </p>
-<p>These functions are <a href="Primitive.html">primitive</a>, and <code>.NAME</code> is always
+<p>These functions are <a href="../../base/help/primitive.html">primitive</a>, and <code>.NAME</code> is always
 matched to the first argument supplied (which should not be named).
 The other named arguments follow <code>...</code> and so cannot be
 abbreviated.  For clarity, should avoid using names in the arguments
@@ -143,11 +144,12 @@ difference matters on most 64-bit platforms, where <code>int</code> is
 <p><em>Note:</em> The Fortran type corresponding to <code>logical</code> is
 <code>integer</code>, not <code>logical</code>: the difference matters on some
 Fortran compilers.
+
 </p>
 <p>Numeric vectors in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> will be passed as type <code>double *</code> to C
 (and as <code>double precision</code> to Fortran) unless the argument has
 attribute <code>Csingle</code> set to <code>TRUE</code> (use
-<code><a href="double.html">as.single</a></code> or <code><a href="double.html">single</a></code>).  This mechanism is
+<code><a href="../../base/help/as.single.html">as.single</a></code> or <code><a href="../../base/help/single.html">single</a></code>).  This mechanism is
 only intended to be used to facilitate the interfacing of existing C
 and Fortran code.
 </p>
@@ -165,7 +167,7 @@ mapped to <code>TRUE</code>.
 <p>Missing (<code>NA</code>) string values are passed to <code>.C</code> as the string
 &quot;NA&quot;. As the C <code>char</code> type can represent all possible bit patterns
 there appears to be no way to distinguish missing strings from the
-string <code>"NA"</code>.  If this distinction is important use <code><a href="CallExternal.html">.Call</a></code>.
+string <code>"NA"</code>.  If this distinction is important use <code><a href="../../base/help/.Call.html">.Call</a></code>.
 </p>
 <p>Using a character string with <code>.Fortran</code> is deprecated and will
 give a warning.  It passes the first (only) character string of a
@@ -175,8 +177,8 @@ up to 255 characters of the string are passed back.  (How well this
 works, and even if it works at all, depends on the C and Fortran
 compilers and the platform.)
 </p>
-<p>Lists, functions are other <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects can (for historical reasons) be
-passed to <code>.C</code>, but the <code><a href="CallExternal.html">.Call</a></code> interface is much
+<p>Lists, functions or other <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> objects can (for historical reasons) be
+passed to <code>.C</code>, but the <code><a href="../../base/help/.Call.html">.Call</a></code> interface is much
 preferred.  All inputs apart from atomic vectors should be regarded as
 read-only, and all apart from vectors (including lists), functions and
 environments are now deprecated.
@@ -197,7 +199,7 @@ information used by <code>.Fortran</code>), but portable code should not use
 Fortran names containing underscores.
 </p>
 <p>Use <code>.Fortran</code> with care for compiled Fortran 9x code: it may not
-work if the Fortran 9x compiler used differs from the Fortran 77
+work if the Fortran 9x compiler used differs from the Fortran
 compiler used when configuring <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, especially if the subroutine name
 is not lower-case or includes an underscore.  It is possible to use
 <code>.C</code> and do any necessary symbol-name translation yourself.
@@ -215,7 +217,7 @@ calling code.
 copied.
 </p>
 <p>This behaviour can be changed by setting
-<code><a href="options.html">options</a>(CBoundsCheck = TRUE)</code>.  In that case raw,
+<code><a href="../../base/help/options.html">options</a>(CBoundsCheck = TRUE)</code>.  In that case raw,
 logical, integer, double and complex vector arguments are copied both
 before and after calling the compiled code.  The first copy made is
 extended at each end by guard bytes, and on return it is checked that
@@ -247,10 +249,10 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="dynload.html">dyn.load</a></code>, <code><a href="CallExternal.html">.Call</a></code>.
+<p><code><a href="../../base/help/dyn.load.html">dyn.load</a></code>, <code><a href="../../base/help/.Call.html">.Call</a></code>.
 </p>
 <p>The &lsquo;Writing R Extensions&rsquo; manual.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

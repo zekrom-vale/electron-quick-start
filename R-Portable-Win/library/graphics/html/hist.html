@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Histograms</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for hist {graphics}"><tr><td>hist {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -12,7 +13,7 @@
 <p>The generic function <code>hist</code> computes a histogram of the given
 data values.  If <code>plot = TRUE</code>, the resulting object of
 <a href="../../base/html/class.html">class</a> <code>"histogram"</code> is plotted by
-<code><a href="plothistogram.html">plot.histogram</a></code>, before it is returned.
+<code><a href="../../graphics/help/plot.histogram.html">plot.histogram</a></code>, before it is returned.
 </p>
 
 
@@ -25,7 +26,7 @@ hist(x, ...)
 hist(x, breaks = "Sturges",
      freq = NULL, probability = !freq,
      include.lowest = TRUE, right = TRUE,
-     density = NULL, angle = 45, col = NULL, border = NULL,
+     density = NULL, angle = 45, col = "lightgray", border = NULL,
      main = paste("Histogram of" , xname),
      xlim = range(breaks), ylim = NULL,
      xlab = xname, ylab,
@@ -121,8 +122,9 @@ is to use the standard foreground color.</p>
 </td></tr>
 <tr valign="top"><td><code>main, xlab, ylab</code></td>
 <td>
-<p>these arguments to <code>title</code> have useful
-defaults here.</p>
+<p>main title and axis labels: these arguments to
+<code><a href="../../graphics/help/title.html">title</a>()</code> get &ldquo;smart&rdquo; defaults here, e.g., the default
+<code>ylab</code> is <code>"Frequency"</code> iff <code>freq</code> is true.</p>
 </td></tr>
 <tr valign="top"><td><code>xlim, ylim</code></td>
 <td>
@@ -145,7 +147,7 @@ are specified that only apply to the <code>plot = TRUE</code> case.</p>
 <tr valign="top"><td><code>labels</code></td>
 <td>
 <p>logical or character string.  Additionally draw labels on top
-of bars, if not <code>FALSE</code>; see <code><a href="plothistogram.html">plot.histogram</a></code>.</p>
+of bars, if not <code>FALSE</code>; see <code><a href="../../graphics/help/plot.histogram.html">plot.histogram</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>nclass</code></td>
 <td>
@@ -161,9 +163,9 @@ parameters are passed to <code>hist.default()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>further arguments and <a href="par.html">graphical parameters</a> passed to
-<code><a href="plothistogram.html">plot.histogram</a></code> and thence to <code><a href="title.html">title</a></code> and
-<code><a href="axis.html">axis</a></code> (if <code>plot = TRUE</code>).</p>
+<p>further arguments and <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a> passed to
+<code><a href="../../graphics/help/plot.histogram.html">plot.histogram</a></code> and thence to <code><a href="../../graphics/help/title.html">title</a></code> and
+<code><a href="../../graphics/help/axis.html">axis</a></code> (if <code>plot = TRUE</code>).</p>
 </td></tr>
 </table>
 
@@ -259,12 +261,12 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="../../grDevices/html/nclass.html">nclass.Sturges</a></code>, <code><a href="stem.html">stem</a></code>,
-<code><a href="../../stats/html/density.html">density</a></code>,  <code><a href="../../MASS/html/truehist.html">truehist</a></code> in package
+<p><code><a href="../../grDevices/html/nclass.html">nclass.Sturges</a></code>, <code><a href="../../graphics/help/stem.html">stem</a></code>,
+<code><a href="../../stats/html/density.html">density</a></code>,  <code><a href="../../MASS/help/truehist.html">truehist</a></code> in package
 <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>.
 </p>
 <p>Typical plots with vertical bars are <em>not</em> histograms.  Consider
-<code><a href="barplot.html">barplot</a></code> or <code><a href="plot.html">plot</a>(*, type = "h")</code>
+<code><a href="../../graphics/help/barplot.html">barplot</a></code> or <code><a href="../../graphics/help/plot.html">plot</a>(*, type = "h")</code>
 for such bar plots.
 </p>
 
@@ -312,5 +314,5 @@ curve(dchisq(x, df = 4), col = 2, lty = 2, lwd = 2, add = TRUE)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Forward Pipe Operator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for pipeOp {base}"><tr><td>pipeOp {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Forward Pipe Operator</h2>
+
+<h3>Description</h3>
+
+<p>Pipe a value into a call expression or a function expression.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+lhs |&gt; rhs
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>lhs</code></td>
+<td>
+<p>expression producing a value.</p>
+</td></tr>
+<tr valign="top"><td><code>rhs</code></td>
+<td>
+<p>a call expression or an expression of the form
+<code>symbol =&gt; call</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>A pipe expression passes, or pipes, the result of the left-hand side
+expression <code>lhs</code> to the right-hand side expression <code>rhs</code>.
+</p>
+<p>If the <code>rhs</code> expression is a call, then the <code>lhs</code> is
+inserted as the first argument in the call. So <code>x |&gt; f(y)</code> is
+interpreted as <code>f(x, y)</code>.
+</p>
+<p>To avoid ambiguities, functions in <code>rhs</code> calls may not be
+syntactically special, such as <code>+</code> or <code>if</code>.
+</p>
+<p>Pipe notation allows a nested sequence of calls to be written in a way
+that may make the sequence of processing steps easier to follow.
+</p>
+<p>Currently, pipe operations are implemented as syntax transformations.
+So an expression written as <code>x |&gt; f(y)</code> is parsed as <code>f(x,
+  y)</code>. It is worth emphasizing that while the code in a pipeline is
+written sequentially, regular R semantics for evaluation apply and
+so piped expressions will be evaluated only when first used in the
+<code>rhs</code> expression.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns the result of evaluating the transformed expression.
+</p>
+
+
+<h3>Background</h3>
+
+<p>The forward pipe operator is motivated by the pipe introduced in the
+<a href="https://CRAN.R-project.org/package=magrittr"><span class="pkg">magrittr</span></a> package, but is more streamlined. It is similar to
+the pipe or pipeline operators introduced in other languages, including
+F#, Julia, and JavaScript.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# simple uses:
+mtcars |&gt; head()                      # same as head(mtcars)
+mtcars |&gt; head(2)                     # same as head(mtcars, 2)
+mtcars |&gt; subset(cyl == 4) |&gt; nrow()  # same as nrow(subset(mtcars, cyl == 4))
+
+# passing the lhs into an argument other than the first:
+mtcars |&gt; subset(cyl == 4) |&gt; (function(d) lm(mpg ~ disp, data = d))()
+
+# the pipe operator is implemented as a syntax transformation:
+quote(mtcars |&gt; subset(cyl == 4) |&gt; nrow())
+
+# regular R evaluation semantics apply
+stop() |&gt; (function(...) {})() # stop() is not used on RHS so is not evaluated
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

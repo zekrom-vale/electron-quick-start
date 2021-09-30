@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Class Methods</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for UseMethod {base}"><tr><td>UseMethod {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -49,13 +50,13 @@ argument of the enclosing function.</p>
 <h3>Details</h3>
 
 <p>An <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object is a data object which has a <code>class</code>
-attribute (and this can be tested by <code><a href="is.object.html">is.object</a></code>).
+attribute (and this can be tested by <code><a href="../../base/help/is.object.html">is.object</a></code>).
 A class attribute is a character vector giving the names of
 the classes from which the object <em>inherits</em>.
 If the object does not have a class attribute, it has an implicit
 class.  Matrices and arrays have class <code>"matrix"</code>
 or<code>"array"</code> followed by the class of the underlying vector.
-Most vectors have class the result of <code><a href="mode.html">mode</a>(x)</code>, except
+Most vectors have class the result of <code><a href="../../base/help/mode.html">mode</a>(x)</code>, except
 that integer vectors have class <code>c("integer", "numeric")</code> and
 real vectors have class <code>c("double", "numeric")</code>.
 </p>
@@ -72,7 +73,7 @@ methods for a particular generic function or class.
 </p>
 <p><code>UseMethod</code> is a primitive function but uses standard argument
 matching.  It is not the only means of dispatch of methods, for there
-are <a href="InternalMethods.html">internal generic</a> and <a href="groupGeneric.html">group generic</a> functions.
+are <a href="../../base/help/internal+20generic.html">internal generic</a> and <a href="../../base/help/group+20generic.html">group generic</a> functions.
 <code>UseMethod</code> currently dispatches on the implicit class even for
 arguments that are not objects, but the other means of dispatch do
 not.
@@ -86,7 +87,7 @@ supplied these modify the call to the next method.
 </p>
 <p><code>NextMethod</code> should not be called except in methods called by
 <code>UseMethod</code> or from internal generics (see
-<a href="InternalMethods.html">InternalGenerics</a>).  In particular it will not work inside
+<a href="../../base/help/InternalGenerics.html">InternalGenerics</a>).  In particular it will not work inside
 anonymous calling functions (e.g., <code>get("print.ts")(AirPassengers)</code>).
 </p>
 <p>Namespaces can register methods for generic functions.  To support
@@ -99,7 +100,7 @@ environment of the call to the generic, or they must be registered.
 (It does not matter whether they are visible in the environment in
 which the generic is defined.)  As from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.5.0, the registration
 data base is searched after the top level environment (see
-<code><a href="ns-topenv.html">topenv</a></code>) of the calling environment (but before the
+<code><a href="../../base/help/topenv.html">topenv</a></code>) of the calling environment (but before the
 parents of the top level environment).
 </p>
 
@@ -137,10 +138,10 @@ in the current (or a previous environment) they remain evaluated.
 <p>The search for methods for <code>NextMethod</code> is slightly different
 from that for <code>UseMethod</code>.   Finding no <code>fun.default</code> is not
 necessarily an error, as the search continues to the generic
-itself.  This is to pick up an <a href="InternalMethods.html">internal generic</a> like <code>[</code>
+itself.  This is to pick up an <a href="../../base/help/internal+20generic.html">internal generic</a> like <code>[</code>
 which has no separate default method, and succeeds only if the generic
-is a <a href="Primitive.html">primitive</a> function or a wrapper for a
-<code><a href="Internal.html">.Internal</a></code> function of the same name.  (When a primitive
+is a <a href="../../base/help/primitive.html">primitive</a> function or a wrapper for a
+<code><a href="../../base/help/.Internal.html">.Internal</a></code> function of the same name.  (When a primitive
 is called as the default method, argument matching may not work as
 described above due to the different semantics of primitives.)
 </p>
@@ -175,7 +176,7 @@ matched to the formals of the method.
 </p>
 <p><code>.Method</code> is a character vector (normally of length one) naming
 the method function.  (For functions in the group generic
-<code><a href="groupGeneric.html">Ops</a></code> it is of length two.)
+<code><a href="../../base/help/S3groupGeneric.html">Ops</a></code> it is of length two.)
 </p>
 <p><code>.Class</code> is a character vector of classes used to find the next
 method.  <code>NextMethod</code> adds an attribute <code>"previous"</code> to
@@ -216,9 +217,9 @@ eds J. M. Chambers and T. J. Hastie, Wadsworth &amp; Brooks/Cole.
 
 <p>The draft &lsquo;R Language Definition&rsquo;.
 </p>
-<p><code><a href="../../utils/html/methods.html">methods</a></code>, <code><a href="class.html">class</a></code>,
-<code><a href="../../utils/html/getS3method.html">getS3method</a></code>, <code><a href="is.object.html">is.object</a></code>.
+<p><code><a href="../../utils/html/methods.html">methods</a></code>, <code><a href="../../base/help/class.html">class</a></code>,
+<code><a href="../../utils/html/getS3method.html">getS3method</a></code>, <code><a href="../../base/help/is.object.html">is.object</a></code>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

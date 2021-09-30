@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Simulate Responses</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for simulate {stats}"><tr><td>simulate {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -57,7 +58,7 @@ random generator state, and return <code><a href="../../base/html/Random.html">.
 for details on how to use this function.
 </p>
 <p>Package <span class="pkg">stats</span> has a method for <code>"lm"</code> objects which is used
-for <code><a href="lm.html">lm</a></code> and <code><a href="glm.html">glm</a></code> fits.  There is a method
+for <code><a href="../../stats/help/lm.html">lm</a></code> and <code><a href="../../stats/help/glm.html">glm</a></code> fits.  There is a method
 for fits from <code>glm.nb</code> in package <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>, and hence the
 case of negative binomial families is not covered by the <code>"lm"</code>
 method.
@@ -65,7 +66,7 @@ method.
 <p>The methods for linear models fitted by <code>lm</code> or <code>glm(family
   = "gaussian")</code> assume that any weights which have been supplied are
 inversely proportional to the error variance.  For other GLMs the
-(optional) <code>simulate</code> component of the <code><a href="family.html">family</a></code>
+(optional) <code>simulate</code> component of the <code><a href="../../stats/help/family.html">family</a></code>
 object is used&mdash;there is no appropriate simulation method for
 &lsquo;quasi&rsquo; models as they are specified only up to two moments.
 </p>
@@ -76,7 +77,7 @@ natural for binomials specified as proportions but less so for a
 Poisson, for which prior weights are ignored with a warning.
 </p>
 <p>For a gamma GLM the shape parameter is estimated by maximum likelihood
-(using function <code><a href="../../MASS/html/gamma.shape.glm.html">gamma.shape</a></code> in package
+(using function <code><a href="../../MASS/help/gamma.shape.glm.html">gamma.shape</a></code> in package
 <a href="https://CRAN.R-project.org/package=MASS"><span class="pkg">MASS</span></a>).  The interpretation of weights is as multipliers to a
 basic shape parameter, since dispersion is inversely proportional to
 shape.
@@ -88,7 +89,7 @@ where <i>&lambda;</i> is estimated by the inverse of the dispersion
 estimate for the fit.  The variance is
 <i>&mu;_i^3/(&lambda; w_i)</i> and
 hence inversely proportional to the prior weights.  The simulation is
-done by function <code><a href="../../SuppDists/html/invGauss.html">rinvGauss</a></code> from the
+done by function <code><a href="../../SuppDists/help/invGauss.html">rinvGauss</a></code> from the
 <a href="https://CRAN.R-project.org/package=SuppDists"><span class="pkg">SuppDists</span></a> package, which must be installed.
 </p>
 
@@ -112,8 +113,8 @@ a <code>"kind"</code> attribute with value <code>as.list(<a href="../../base/htm
 <h3>See Also</h3>
 
 <p><code><a href="../../base/html/Random.html">RNG</a></code> about random number generation in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>,
-<code><a href="fitted.values.html">fitted.values</a></code> and <code><a href="residuals.html">residuals</a></code> for related methods;
-<code><a href="glm.html">glm</a></code>, <code><a href="lm.html">lm</a></code> for model fitting.
+<code><a href="../../stats/help/fitted.values.html">fitted.values</a></code> and <code><a href="../../stats/help/residuals.html">residuals</a></code> for related methods;
+<code><a href="../../stats/help/glm.html">glm</a></code>, <code><a href="../../stats/help/lm.html">lm</a></code> for model fitting.
 </p>
 <p>There are further examples in the &lsquo;<span class="file">simulate.R</span>&rsquo; tests file in the
 sources for package <span class="pkg">stats</span>.
@@ -158,5 +159,5 @@ S4 &lt;- simulate(modb2, nsim = 4)
 # each column of S4 is a factor
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

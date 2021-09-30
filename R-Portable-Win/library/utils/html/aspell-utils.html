@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Spell Check Utilities</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for aspell-utils {utils}"><tr><td>aspell-utils {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -43,7 +44,7 @@ directory.</p>
 <tr valign="top"><td><code>drop</code></td>
 <td>
 <p>a character vector naming additional Rd sections to drop
-when selecting text via <code><a href="../../tools/html/RdTextFilter.html">RdTextFilter</a></code>.</p>
+when selecting text via <code><a href="../../tools/help/RdTextFilter.html">RdTextFilter</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>control</code></td>
 <td>
@@ -61,7 +62,7 @@ order), and the first one found is used.</p>
 <tr valign="top"><td><code>dictionaries</code></td>
 <td>
 <p>a character vector of names or file paths of
-additional R level dictionaries to use.  See <code><a href="aspell.html">aspell</a></code>.</p>
+additional R level dictionaries to use.  See <code><a href="../../utils/help/aspell.html">aspell</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>ignore</code></td>
 <td>
@@ -71,7 +72,7 @@ replaced by blanks when filtering the message strings.</p>
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>a character vector, or the result of a call to
-<code><a href="aspell.html">aspell</a>()</code>.</p>
+<code><a href="../../utils/help/aspell.html">aspell</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>out</code></td>
 <td>
@@ -95,12 +96,13 @@ vignettes, R files, and C-level messages of the package with root
 directory <code>dir</code>.  They determine the respective files, apply the
 appropriate filters, and run the spell checker.
 </p>
-<p>See <code><a href="aspell.html">aspell</a></code> for details on filters.
+<p>See <code><a href="../../utils/help/aspell.html">aspell</a></code> for details on filters.
 </p>
 <p>The C-level message string are obtained from the
 &lsquo;<span class="file">po/<var>PACKAGE</var>.pot</span>&rsquo; message catalog file, with <var>PACKAGE</var>
-the basename of <code>dir</code>.  See the section on &ldquo;C-level
-messages&rdquo; in &ldquo;Writing <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> Extensions&rdquo; for more information.
+the basename of <code>dir</code>.
+See the section on &lsquo;C-level messages&rsquo; in
+&lsquo;Writing R Extensions&rsquo; for more information.
 </p>
 <p>When using Aspell, the vignette checking skips parameters and/or
 options of commands <code style="white-space: pre;">\Sexpr</code>, <code style="white-space: pre;">\citep</code>, <code style="white-space: pre;">\code</code>,
@@ -141,8 +143,8 @@ subdirectory.
 
 <h3>See Also</h3>
 
-<p><code><a href="aspell.html">aspell</a></code>
+<p><code><a href="../../utils/help/aspell.html">aspell</a></code>
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

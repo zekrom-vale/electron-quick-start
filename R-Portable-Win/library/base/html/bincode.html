@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Bin a Numeric Vector</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for .bincode {base}"><tr><td>.bincode {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -54,7 +55,7 @@ value should be included in the first (or last) bin.</p>
 arguments passed.  (Note the different order of the arguments they have
 in common.)
 </p>
-<p>Unlike <code><a href="cut.html">cut</a></code>, the <code>breaks</code> do not need to be unique.
+<p>Unlike <code><a href="../../base/help/cut.html">cut</a></code>, the <code>breaks</code> do not need to be unique.
 An input can only fall into a zero-length interval if it is closed
 at both ends, so only if <code>include.lowest = TRUE</code> and it is the
 first (or last for <code>right = FALSE</code>) interval.
@@ -72,7 +73,7 @@ each element falls into (the leftmost bin being bin <code>1</code>).
 
 <h3>See Also</h3>
 
-<p><code><a href="cut.html">cut</a></code>, <code><a href="tabulate.html">tabulate</a></code>
+<p><code><a href="../../base/help/cut.html">cut</a></code>, <code><a href="../../base/help/tabulate.html">tabulate</a></code>
 </p>
 
 
@@ -88,5 +89,5 @@ b &lt;- c(0, 0, 1, 1)
 .bincode(x, b, FALSE, TRUE)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

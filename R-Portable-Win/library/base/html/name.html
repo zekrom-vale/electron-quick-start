@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Names and Symbols</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for name {base}"><tr><td>name {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -53,17 +54,17 @@ takes the first element and provided it is not <code>""</code>, returns a
 symbol of that name (and if the element is <code>NA_character_</code>, the
 name is <code>`NA`</code>).
 </p>
-<p><code>as.name</code> is implemented as <code><a href="vector.html">as.vector</a>(x, "symbol")</code>,
+<p><code>as.name</code> is implemented as <code><a href="../../base/help/as.vector.html">as.vector</a>(x, "symbol")</code>,
 and hence will dispatch methods for the generic function <code>as.vector</code>.
 </p>
-<p><code>is.name</code> and <code>is.symbol</code> are <a href="Primitive.html">primitive</a> functions.
+<p><code>is.name</code> and <code>is.symbol</code> are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
 <h3>Value</h3>
 
 <p>For <code>as.name</code> and <code>as.symbol</code>, an <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object of type
-<code>"symbol"</code> (see <code><a href="typeof.html">typeof</a></code>).
+<code>"symbol"</code> (see <code><a href="../../base/help/typeof.html">typeof</a></code>).
 </p>
 <p>For <code>is.name</code> and <code>is.symbol</code>, a length-one logical vector
 with value <code>TRUE</code> or <code>FALSE</code>.
@@ -87,8 +88,8 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="call.html">call</a></code>, <code><a href="is.language.html">is.language</a></code>.
-For the internal object mode, <code><a href="typeof.html">typeof</a></code>.
+<p><code><a href="../../base/help/call.html">call</a></code>, <code><a href="../../base/help/is.language.html">is.language</a></code>.
+For the internal object mode, <code><a href="../../base/help/typeof.html">typeof</a></code>.
 </p>
 <p><code><a href="../../grDevices/html/plotmath.html">plotmath</a></code> for another use of &lsquo;symbol&rsquo;.
 </p>
@@ -103,5 +104,5 @@ mode(an)   # name
 typeof(an) # symbol
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

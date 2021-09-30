@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Compute Orthogonal Polynomials</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for poly {stats}"><tr><td>poly {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -132,7 +133,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="contrast.html">contr.poly</a></code>.
+<p><code><a href="../../stats/help/contr.poly.html">contr.poly</a></code>.
 </p>
 <p><code><a href="../../datasets/html/cars.html">cars</a></code> for an example of polynomial regression.
 </p>
@@ -149,15 +150,15 @@ zapsmall(poly(seq(4, 6, 0.5), 3, coefs = attr(z, "coefs")))
  zm &lt;- zapsmall(polym (    1:4, c(1, 4:6),  degree = 3)) # or just poly():
 (z1 &lt;- zapsmall(poly(cbind(1:4, c(1, 4:6)), degree = 3)))
 ## they are the same :
-stopifnot(all.equal(zm, z1, tol = 1e-15))
+stopifnot(all.equal(zm, z1, tolerance = 1e-15))
 
 ## poly(&lt;matrix&gt;, df) --- used to fail till July 14 (vive la France!), 2017:
 m2 &lt;- cbind(1:4, c(1, 4:6))
 pm2 &lt;- zapsmall(poly(m2, 3)) # "unnamed degree = 3"
-stopifnot(all.equal(pm2, zm, tol = 1e-15))
+stopifnot(all.equal(pm2, zm, tolerance = 1e-15))
 
 options(od)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Method Utilities</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for RMethodUtils {methods}"><tr><td>RMethodUtils {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -126,7 +127,7 @@ name for that object  (<code>mlistMetaName</code>).
 <p>The assign function should not be used directly.  The get
 function may be useful if you want explicitly only the outcome of
 the methods assigned in this package.  Otherwise, use
-<code><a href="findMethods.html">getMethods</a></code>.
+<code><a href="../../methods/help/getMethods.html">getMethods</a></code>.
 </p>
 </dd>
 <dt><code>matchSignature</code>:</dt><dd>
@@ -211,10 +212,10 @@ since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b><
 <dt><code>sigToEnv</code>:</dt><dd>
 <p>Turn the signature (a named vector of classes) into an environment
 with the classes assigned to the names.  The environment is then
-suitable for calling <code><a href="MethodsList.html">MethodsListSelect</a></code>, with
+suitable for calling <code><a href="../../methods/help/MethodsListSelect.html">MethodsListSelect</a></code>, with
 <code>evalArgs=FALSE</code>, to select a method corresponding to the
 signature.  Usually not called directly: see
-<code><a href="getMethod.html">selectMethod</a></code>.
+<code><a href="../../methods/help/selectMethod.html">selectMethod</a></code>.
 </p>
 </dd>
 <dt><code>.saveImage</code>:</dt><dd>
@@ -225,7 +226,7 @@ signature.  Usually not called directly: see
 <dt><code>rematchDefinition</code>,
 <code>unRematchDefinition</code>,
 <code>isRematched</code>:</dt><dd>
-<p>If the specified method in a call to <code><a href="setMethod.html">setMethod</a></code>
+<p>If the specified method in a call to <code><a href="../../methods/help/setMethod.html">setMethod</a></code>
 specializes the argument list (by replacing ...), then
 <code>rematchDefinition</code> constructs the actual method stored.
 Using knowledge of how <code>rematchDefinition</code> works,
@@ -238,7 +239,7 @@ constructing a given method.
 </dd>
 <dt><code>asMethodDefinition</code>:</dt><dd>
 <p>Turn a function definition into an object of class
-<code><a href="MethodDefinition-class.html">MethodDefinition</a></code>, corresponding to the
+<code><a href="../../methods/help/MethodDefinition-class.html">MethodDefinition</a></code>, corresponding to the
 given <code>signature</code> (by default generates a default method
 with empty signature).  The definition is sealed according to
 the <code>sealed</code> argument.
@@ -256,7 +257,7 @@ obsolete and not used.
 <p>Makes a generic function object corresponding to the given
 function name, optional definition and optional default method.
 Other arguments supply optional elements for the slots of class
-<code><a href="genericFunction-class.html">genericFunction</a></code>.
+<code><a href="../../methods/help/genericFunction-class.html">genericFunction</a></code>.
 </p>
 </dd>
 <dt><code>makeStandardGeneric</code>:</dt><dd>
@@ -307,8 +308,8 @@ function body).
 
 <h3>See Also</h3>
 
-<p><code><a href="setGeneric.html">setGeneric</a></code>, <code><a href="setClass.html">setClass</a></code>,
-<code><a href="showMethods.html">showMethods</a></code>.
+<p><code><a href="../../methods/help/setGeneric.html">setGeneric</a></code>, <code><a href="../../methods/help/setClass.html">setClass</a></code>,
+<code><a href="../../methods/help/showMethods.html">showMethods</a></code>.
 </p>
 
 
@@ -323,5 +324,5 @@ getGroupMembers("Math")
 getGroupMembers("Ops") # -&gt; its sub groups
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

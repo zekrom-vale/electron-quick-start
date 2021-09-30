@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert the format of a survfit object.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for survfit0 {survival}"><tr><td>survfit0 {survival}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Convert the format of a survfit object.
+</h2>
+
+<h3>Description</h3>
+
+<p>Add the point for a starting time (time 0) to a survfit object's
+elements.  This is useful for plotting.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+survfit0(x, start.time=0)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a survfit object</p>
+</td></tr>
+<tr valign="top"><td><code>start.time</code></td>
+<td>
+<p>the desired starting time; see details below.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Survival curves are traditionally plotted forward from time 0, but
+since the true starting time is not known as a part of the data,
+the <code>survfit</code> routine does not include a time 0 value in
+the resulting object.
+Someone might look at cumulative mortgage defaults versus calendar
+year, for instance, with the &lsquo;time&rsquo; value a Date object.
+The plotted curve probably should not start at 0 = 1970/01/01.
+Due to this uncertainty, it was decided not to include a &quot;time 0&quot; as
+part of a survfit object.  If the original <code>survfit</code> call
+included a <code>start.time</code> argument, that value is of course
+retained.
+</p>
+<p>Whether that (1989) decision was wise or
+foolish, it is now far too late to change it. (We tried it once as a
+trial, resulting in over 20 errors in the survival test suite.  We
+extrapolate that it might break 1/2 - 2/3 of the other CRAN packages
+that depend on survival, if made a default.)
+If the original <code>survfit</code> call
+included a <code>start.time</code> argument, that value is of course
+retained.
+</p>
+<p>One problem with this choice is that some functions must choose a
+starting point, plots for example.
+This utility function is used by <code>plot.survfit</code> and
+<code>summary.survfit</code> to do so, adding a new time point at the front of each
+curve in a consistent way: the optional argument to the <code>survfit0</code>
+function as the first choice (if supplied),
+then the user's <code>start.time</code> if present,
+otherwise <code>min(0, x$time)</code>.  The resulting object is <em>not</em>
+guarranteed to work with functions that further manipulate a
+<code>survfit</code> object such as subscripting, aggregation, pseudovalues,
+etc. (remember the 20 errors).  Rather it is intended as a penultimate
+step, most often when creating a plot.
+</p>
+
+
+<h3>Value</h3>
+
+<p>a reformulated version of the object with an initial data point
+at <code>start.time</code> added. 
+The <code>time</code>, <code>surv</code>, <code>pstate</code>, <code>cumhaz</code>,
+<code>std.err</code>, <code>std.cumhaz</code> and other components will all be aligned,
+so as to make plots and summaries easier to produce.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>survival</em> version 3.2-11 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The F Distribution</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for FDist {stats}"><tr><td>FDist {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -83,7 +84,7 @@ distribution, the square of a <i>t_m</i> variate has a F distribution on
 <p>The non-central F distribution is again the ratio of mean squares of
 independent normals of unit variance, but those in the numerator are
 allowed to have non-zero means and <code>ncp</code> is the sum of squares of
-the means.  See <a href="Chisquare.html">Chisquare</a> for further details on
+the means.  See <a href="../../stats/help/Chisquare.html">Chisquare</a> for further details on
 non-central distributions.
 </p>
 
@@ -124,14 +125,14 @@ especially in the tails, for large values.
 
 <p>For the central case of <code>df</code>, computed <em>via</em> a binomial
 probability, code contributed by Catherine Loader (see
-<code><a href="Binomial.html">dbinom</a></code>); for the non-central case computed <em>via</em>
-<code><a href="Beta.html">dbeta</a></code>, code contributed by Peter Ruckdeschel.
+<code><a href="../../stats/help/dbinom.html">dbinom</a></code>); for the non-central case computed <em>via</em>
+<code><a href="../../stats/help/dbeta.html">dbeta</a></code>, code contributed by Peter Ruckdeschel.
 </p>
-<p>For <code>pf</code>, <em>via</em> <code><a href="Beta.html">pbeta</a></code> (or for large
-<code>df2</code>, <em>via</em> <code><a href="Chisquare.html">pchisq</a></code>).
+<p>For <code>pf</code>, <em>via</em> <code><a href="../../stats/help/pbeta.html">pbeta</a></code> (or for large
+<code>df2</code>, <em>via</em> <code><a href="../../stats/help/pchisq.html">pchisq</a></code>).
 </p>
-<p>For <code>qf</code>, <em>via</em> <code><a href="Chisquare.html">qchisq</a></code> for large <code>df2</code>,
-else <em>via</em> <code><a href="Beta.html">qbeta</a></code>.
+<p>For <code>qf</code>, <em>via</em> <code><a href="../../stats/help/qchisq.html">qchisq</a></code> for large <code>df2</code>,
+else <em>via</em> <code><a href="../../stats/help/qbeta.html">qbeta</a></code>.
 </p>
 
 
@@ -149,8 +150,8 @@ Wiley, New York.
 
 <h3>See Also</h3>
 
-<p><a href="Distributions.html">Distributions</a> for other standard distributions, including
-<code><a href="Chisquare.html">dchisq</a></code> for chi-squared and <code><a href="TDist.html">dt</a></code> for Student's
+<p><a href="../../stats/help/Distributions.html">Distributions</a> for other standard distributions, including
+<code><a href="../../stats/help/dchisq.html">dchisq</a></code> for chi-squared and <code><a href="../../stats/help/dt.html">dt</a></code> for Student's
 t distributions.
 </p>
 
@@ -159,22 +160,22 @@ t distributions.
 
 <pre>
 ## Equivalence of pt(.,nu) with pf(.^2, 1,nu):
-x &lt;- seq(0.001, 5, len = 100)
+x &lt;- seq(0.001, 5, length.out = 100)
 nu &lt;- 4
 stopifnot(all.equal(2*pt(x,nu) - 1, pf(x^2, 1,nu)),
           ## upper tails:
- 	  all.equal(2*pt(x,     nu, lower=FALSE),
-		      pf(x^2, 1,nu, lower=FALSE)))
+ 	  all.equal(2*pt(x,     nu, lower.tail=FALSE),
+		      pf(x^2, 1,nu, lower.tail=FALSE)))
 
 ## the density of the square of a t_m is 2*dt(x, m)/(2*x)
 # check this is the same as the density of F_{1,m}
 all.equal(df(x^2, 1, 5), dt(x, 5)/x)
 
 ## Identity:  qf(2*p - 1, 1, df) == qt(p, df)^2  for  p &gt;= 1/2
-p &lt;- seq(1/2, .99, length = 50); df &lt;- 10
+p &lt;- seq(1/2, .99, length.out = 50); df &lt;- 10
 rel.err &lt;- function(x, y) ifelse(x == y, 0, abs(x-y)/mean(abs(c(x,y))))
 quantile(rel.err(qf(2*p - 1, df1 = 1, df2 = df), qt(p, df)^2), .90)  # ~= 7e-9
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

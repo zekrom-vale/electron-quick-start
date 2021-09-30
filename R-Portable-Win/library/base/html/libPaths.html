@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Search Paths for Packages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for libPaths {base}"><tr><td>libPaths {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -17,7 +18,7 @@ looked for.
 <h3>Usage</h3>
 
 <pre>
-.libPaths(new)
+.libPaths(new, include.site = TRUE)
 
 .Library
 .Library.site
@@ -30,9 +31,16 @@ looked for.
 <tr valign="top"><td><code>new</code></td>
 <td>
 <p>a character vector with the locations of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> library
-trees.  Tilde expansion (<code><a href="path.expand.html">path.expand</a></code>) is done, and if
+trees.  Tilde expansion (<code><a href="../../base/help/path.expand.html">path.expand</a></code>) is done, and if
 any element contains one of <code>*?[</code>, globbing is done where
-supported by the platform: see <code><a href="Sys.glob.html">Sys.glob</a></code>.</p>
+supported by the platform: see <code><a href="../../base/help/Sys.glob.html">Sys.glob</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>include.site</code></td>
+<td>
+<p>a logical value indicating whether the value of
+<code>.Library.site</code> should be included in the new set of library
+tree locations.  Defaulting to <code>TRUE</code>, it is ignored when
+<code>.libPaths</code> is called without the <code>new</code> argument.</p>
 </td></tr>
 </table>
 
@@ -48,10 +56,12 @@ subdirectory of <span class="env">R_HOME</span> (which may not exist).
 </p>
 <p><code>.libPaths</code> is used for getting or setting the library trees that
 <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> knows about (and hence uses when looking for packages).  If called
-with argument <code>new</code>, the library search path is set to
+with argument <code>new</code>, by default, the library search path is set to
 the existing directories in <code>unique(c(new, .Library.site, .Library))</code>
-and this is returned.  If given no argument, a character vector with
-the currently active library trees is returned.
+and this is returned.  If <code>include.site</code> is <code>FALSE</code> when the
+<code>new</code> argument is set, <code>.Library.site</code> is excluded from the
+new library search path.  If called without the <code>new</code> argument, a
+character vector with the currently active library trees is returned.
 </p>
 <p>How paths <code>new</code> with a trailing slash are treated is
 OS-dependent.  On a POSIX filesystem existing directories can usually
@@ -88,17 +98,17 @@ specifications as follows:
 <span class="samp">2.5</span>).</p>
 </dd>
 <dt><span class="samp">%p</span></dt><dd><p>the platform for which <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> was built, the value of
-<code><a href="Version.html">R.version</a>$platform</code>.</p>
+<code><a href="../../base/help/R.version.html">R.version</a>$platform</code>.</p>
 </dd>
 <dt><span class="samp">%o</span></dt><dd><p>the underlying operating system, the value of
-<code><a href="Version.html">R.version</a>$os</code>.</p>
+<code><a href="../../base/help/R.version.html">R.version</a>$os</code>.</p>
 </dd>
 <dt><span class="samp">%a</span></dt><dd><p>the architecture (CPU) <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> was built on/for, the
-value of <code><a href="Version.html">R.version</a>$arch</code>.</p>
+value of <code><a href="../../base/help/R.version.html">R.version</a>$arch</code>.</p>
 </dd>
 </dl>
 
-<p>(See <code><a href="Version.html">version</a></code> for details on R version information.)
+<p>(See <code><a href="../../base/help/version.html">version</a></code> for details on R version information.)
 </p>
 <p>Function <code>.libPaths</code> always uses the values of <code>.Library</code>
 and <code>.Library.site</code> in the base namespace.  <code>.Library.site</code>
@@ -107,7 +117,7 @@ followed by a call to <code>.libPaths(.libPaths())</code> to make use of the
 updated value.
 </p>
 <p>For consistency, the paths are always normalized by
-<code><a href="normalizePath.html">normalizePath</a>(winslash = "/")</code>.
+<code><a href="../../base/help/normalizePath.html">normalizePath</a>(winslash = "/")</code>.
 </p>
 
 
@@ -127,7 +137,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="library.html">library</a></code>
+<p><code><a href="../../base/help/library.html">library</a></code>
 </p>
 
 
@@ -137,5 +147,5 @@ Wadsworth &amp; Brooks/Cole.
 .libPaths()                 # all library trees R knows about
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

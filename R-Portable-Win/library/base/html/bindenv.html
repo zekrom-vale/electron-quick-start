@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Binding and Environment Locking, Active Bindings</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for bindenv {base}"><tr><td>bindenv {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,6 +28,7 @@ bindingIsLocked(sym, env)
 
 makeActiveBinding(sym, fun, env)
 bindingIsActive(sym, env)
+activeBindingFunction(sym, env)
 </pre>
 
 
@@ -54,9 +56,8 @@ bindingIsActive(sym, env)
 
 <h3>Details</h3>
 
-<p>The function <code>lockEnvironment</code> locks its environment argument,
-which must be a normal environment (not base).  (Locking the base
-environment and namespace may be supported later.)  Locking the
+<p>The function <code>lockEnvironment</code> locks its environment argument.
+Locking the
 environment prevents adding or removing variable bindings from the
 environment.  Changing the value of a variable is still possible unless
 the binding has been locked.  The namespace environments of packages
@@ -75,7 +76,7 @@ things like C variables linked to <span style="font-family: Courier New, Courier
 databases, and is used to implement <code><a href="../../methods/html/refClass.html">setRefClass</a></code>.  It may
 also be useful for making thread-safe versions of some system globals.
 Currently active bindings are not preserved during package installation,
-but they can be created in <code><a href="ns-hooks.html">.onLoad</a></code>.
+but they can be created in <code><a href="../../base/help/.onLoad.html">.onLoad</a></code>.
 </p>
 
 
@@ -134,5 +135,5 @@ fred &lt;- 2
 fred
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Power Calculations for Two-Sample Test for Proportions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for power.prop.test {stats}"><tr><td>power.prop.test {stats}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -98,7 +99,7 @@ desired power for <i>(p1,p2) = (0.9, 1)</i>.
 
 <h3>Note</h3>
 
-<p><code><a href="uniroot.html">uniroot</a></code> is used to solve power equation for unknowns, so
+<p><code><a href="../../stats/help/uniroot.html">uniroot</a></code> is used to solve power equation for unknowns, so
 you may see errors from it, notably about inability to bracket the
 root when invalid arguments are given.   If one of <code>p1</code> and
 <code>p2</code> is computed, then <i>p1 &lt; p2</i> is assumed and will hold,
@@ -114,7 +115,7 @@ Ekstrøm</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="prop.test.html">prop.test</a></code>, <code><a href="uniroot.html">uniroot</a></code></p>
+<p><code><a href="../../stats/help/prop.test.html">prop.test</a></code>, <code><a href="../../stats/help/uniroot.html">uniroot</a></code></p>
 
 
 <h3>Examples</h3>
@@ -134,5 +135,5 @@ try(
 power.prop.test(      p1=0.90, p2= 1.0, power=0.8) ##-&gt; n = 73.37
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>stats</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>stats</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

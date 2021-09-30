@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Register Old-Style (S3) Classes and Inheritance</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for setOldClass {methods}"><tr><td>setOldClass {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -18,9 +19,9 @@ class. Simple usage will be of the form:
 <code>class</code> attribute of the S3 object. Calls to
 <code>setOldClass()</code> in the code for a package
 allow the class to be used as a slot in formal (S4) classes and in
-signatures for methods (see <a href="Methods_for_S3.html">Methods_for_S3</a>).
+signatures for methods (see <a href="../../methods/help/Methods_for_S3.html">Methods_for_S3</a>).
 Formal classes can also contain a registered S3 class (see
-<a href="S3Part.html">S3Part</a> for details).
+<a href="../../methods/help/S3Part.html">S3Part</a> for details).
 </p>
 <p>If the S3 class has a known set of attributes, an
 equivalent S4 class can be specified by <code>S4Class=</code> in the call to
@@ -97,7 +98,7 @@ If a virtual class (any virtual class) is used for a slot in another class, then
 initializing method for the class needs to put something legal in
 that slot; otherwise it will be set to <code>NULL</code>.
 </p>
-<p>See <a href="Methods_for_S3.html">Methods_for_S3</a> for the details of method dispatch and
+<p>See <a href="../../methods/help/Methods_for_S3.html">Methods_for_S3</a> for the details of method dispatch and
 inheritance with mixed S3 and S4 methods.
 </p>
 <p>Some S3 classes cannot be represented as an ordinary combination of S4
@@ -123,7 +124,7 @@ are defined by the methods package.  Each element of the list is a
 character vector, with multiple strings if inheritance is included.
 Each element of the list was passed to <code>setOldClass</code> when
 creating the <span class="pkg">methods</span> package; therefore, these classes can be used
-in <code><a href="setMethod.html">setMethod</a></code> calls, with the inheritance as implied by
+in <code><a href="../../methods/help/setMethod.html">setMethod</a></code> calls, with the inheritance as implied by
 the list.
 </p>
 
@@ -145,7 +146,7 @@ argument <code>S4Class=</code> to <code>setOldClass()</code>.
 </p>
 <p>See the definition of class <code>"ts"</code> in the examples below and
 the <code>data.frame</code> example in Section 10.2 of the reference.
-The call to <code><a href="setClass.html">setClass</a></code> to create the S4 class can use the same
+The call to <code><a href="../../methods/help/setClass.html">setClass</a></code> to create the S4 class can use the same
 class name, as here, so long as the call to <code>setOldClass</code>
 follows in the same package.  For clarity it should be the next
 expression in the same file.
@@ -161,7 +162,7 @@ as always with S3 classes, no guarantee is possible.
 <p>The S4 class definition can  have virtual superclasses (as in
 the <code>"ts"</code> case) if the S3 class is asserted to behave
 consistently with these (in the example, time-series objects are
-asserted to be consistent with the <a href="StructureClasses.html">structure</a> class).
+asserted to be consistent with the <a href="../../methods/help/structure-class.html">structure</a> class).
 </p>
 <p>Failures of the S3 class to live up to its asserted
 behavior will usually go uncorrected, since S3 classes inherently
@@ -179,7 +180,7 @@ attributes, unlike slots, can not have value <code>NULL</code>.
 add other attributes to those guaranteed to exist (for example,
 <code>"terms"</code> in <code>"data.frame"</code> objects returned by
 <code><a href="../../stats/html/model.frame.html">model.frame</a></code>).  Validity checks by
-<code><a href="validObject.html">validObject</a></code> ignore extra attributes; even if this check
+<code><a href="../../methods/help/validObject.html">validObject</a></code> ignore extra attributes; even if this check
 is tightened in the future, classes extending S3 classes would likely
 be exempted because extra attributes are so common.
 </p>
@@ -196,7 +197,7 @@ Chapman &amp; Hall.
 
 <h3>See Also</h3>
 
-<p><code><a href="setClass.html">setClass</a></code>, <code><a href="setMethod.html">setMethod</a></code>
+<p><code><a href="../../methods/help/setClass.html">setClass</a></code>, <code><a href="../../methods/help/setMethod.html">setMethod</a></code>
 </p>
 
 
@@ -248,5 +249,5 @@ setOldClass("ts", S4Class = "ts", where = envir)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

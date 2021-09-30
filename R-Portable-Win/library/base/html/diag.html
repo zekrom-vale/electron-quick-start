@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Matrix Diagonals</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for diag {base}"><tr><td>diag {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -27,7 +28,7 @@ diag(x) &lt;- value
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>a matrix, vector or 1D <code><a href="array.html">array</a></code>, or missing.</p>
+<p>a matrix, vector or 1D <code><a href="../../base/help/array.html">array</a></code>, or missing.</p>
 </td></tr>
 <tr valign="top"><td><code>nrow, ncol</code></td>
 <td>
@@ -38,7 +39,7 @@ not a matrix.</p>
 <td>
 <p>(when <code>x</code> is a matrix) logical indicating if the
 resulting vector, the diagonal of <code>x</code>, should inherit
-<code><a href="names.html">names</a></code> from <code>dimnames(x)</code> if available.</p>
+<code><a href="../../base/help/names.html">names</a></code> from <code>dimnames(x)</code> if available.</p>
 </td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
@@ -66,9 +67,9 @@ an identity matrix.
 argument, it returns a square identity matrix of size given by the scalar.
 </p>
 </li>
-<li> <p><code>x</code> is a &lsquo;numeric&rsquo; (<code><a href="complex.html">complex</a></code>,
-<code>numeric</code>, <code>integer</code>, <code><a href="logical.html">logical</a></code>, or
-<code><a href="raw.html">raw</a></code>) vector, either of length at least 2 or there
+<li> <p><code>x</code> is a &lsquo;numeric&rsquo; (<code><a href="../../base/help/complex.html">complex</a></code>,
+<code>numeric</code>, <code>integer</code>, <code><a href="../../base/help/logical.html">logical</a></code>, or
+<code><a href="../../base/help/raw.html">raw</a></code>) vector, either of length at least 2 or there
 were further arguments.  This returns a matrix with the given
 diagonal and zero off-diagonal entries.
 </p>
@@ -81,7 +82,7 @@ diagonal and zero off-diagonal entries.
 <h3>Value</h3>
 
 <p>If <code>x</code> is a matrix then <code>diag(x)</code> returns the diagonal of
-<code>x</code>.  The resulting vector will have <code><a href="names.html">names</a></code> if the
+<code>x</code>.  The resulting vector will have <code><a href="../../base/help/names.html">names</a></code> if the
 matrix <code>x</code> has matching column and rownames.
 </p>
 <p>The replacement form sets the diagonal of the matrix <code>x</code> to the
@@ -120,7 +121,7 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="lower.tri.html">upper.tri</a></code>, <code><a href="lower.tri.html">lower.tri</a></code>, <code><a href="matrix.html">matrix</a></code>.
+<p><code><a href="../../base/help/upper.tri.html">upper.tri</a></code>, <code><a href="../../base/help/lower.tri.html">lower.tri</a></code>, <code><a href="../../base/help/matrix.html">matrix</a></code>.
 </p>
 
 
@@ -147,5 +148,5 @@ diag(M, names = FALSE) # w/o names
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

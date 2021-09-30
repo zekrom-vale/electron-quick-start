@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Access to and Manipulation of the Formal Arguments</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for formals {base}"><tr><td>formals {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Get or set the formal arguments of a <code><a href="function.html">function</a></code>.
+<p>Get or set the formal arguments of a <code><a href="../../base/help/function.html">function</a></code>.
 </p>
 
 
@@ -26,17 +27,17 @@ formals(fun, envir = environment(fun)) &lt;- value
 <table summary="R argblock">
 <tr valign="top"><td><code>fun</code></td>
 <td>
-<p>a <code><a href="function.html">function</a></code>, or see &lsquo;Details&rsquo;.</p>
+<p>a <code><a href="../../base/help/function.html">function</a></code>, or see &lsquo;Details&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>envir</code></td>
 <td>
-<p><code><a href="environment.html">environment</a></code> in which the function should be
-defined (or found via <code><a href="get.html">get</a>()</code> in the first case and when
+<p><code><a href="../../base/help/environment.html">environment</a></code> in which the function should be
+defined (or found via <code><a href="../../base/help/get.html">get</a>()</code> in the first case and when
 <code>fun</code> a character string).</p>
 </td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
-<p>a <code><a href="list.html">list</a></code> (or <code><a href="list.html">pairlist</a></code>) of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expressions.</p>
+<p>a <code><a href="../../base/help/list.html">list</a></code> (or <code><a href="../../base/help/pairlist.html">pairlist</a></code>) of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> expressions.</p>
 </td></tr>
 </table>
 
@@ -56,22 +57,24 @@ used.
 <h3>Value</h3>
 
 <p><code>formals</code> returns the formal argument list of the function
-specified, as a <code><a href="list.html">pairlist</a></code>, or <code>NULL</code> for a
+specified, as a <code><a href="../../base/help/pairlist.html">pairlist</a></code>, or <code>NULL</code> for a
 non-function or primitive.
 </p>
 <p>The replacement form sets the formals of a function to the
 list/pairlist on the right hand side, and (potentially) resets the
-environment of the function.
+environment of the function, dropping <code><a href="../../base/help/attributes.html">attributes</a></code>.
 </p>
 
 
 <h3>See Also</h3>
 
 <p><code><a href="../../methods/html/methodUtilities.html">formalArgs</a></code> (from <span class="pkg">methods</span>), a shortcut for <code>names(formals(.))</code>.
-<code><a href="args.html">args</a></code> for a human-readable version,
-<code><a href="list.html">alist</a></code>,
-<code><a href="body.html">body</a></code>,
-<code><a href="function.html">function</a></code>.
+<code><a href="../../base/help/args.html">args</a></code> for a human-readable version,
+<code><a href="../../base/help/alist.html">alist</a></code> to <em>construct</em> a typical formals <code>value</code>,
+see the examples.
+</p>
+<p>The three parts of a (non-primitive) <code><a href="../../base/help/function.html">function</a></code> are its
+<code>formals</code>, <code><a href="../../base/help/body.html">body</a></code>, and <code><a href="../../base/help/environment.html">environment</a></code>.
 </p>
 
 
@@ -102,5 +105,5 @@ f    # function(a, b = 3) a + b
 f(2) # result = 5
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

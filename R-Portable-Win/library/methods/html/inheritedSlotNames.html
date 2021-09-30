@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Names of Slots Inherited From a Super Class</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for inheritedSlotNames {methods}"><tr><td>inheritedSlotNames {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>For a class (or class definition, see <code><a href="getClass.html">getClass</a></code> and
-the description of class <code><a href="classRepresentation-class.html">classRepresentation</a></code>),
+<p>For a class (or class definition, see <code><a href="../../methods/help/getClass.html">getClass</a></code> and
+the description of class <code><a href="../../methods/help/classRepresentation-class.html">classRepresentation</a></code>),
 give the names which are inherited from &ldquo;above&rdquo;, i.e., super
 classes, rather than by this class' definition itself.
 </p>
@@ -29,13 +30,13 @@ inheritedSlotNames(Class, where = topenv(parent.frame()))
 <tr valign="top"><td><code>Class</code></td>
 <td>
 <p>character string or
-<code><a href="classRepresentation-class.html">classRepresentation</a></code>, i.e., resulting from
-<code><a href="getClass.html">getClass</a></code>.</p>
+<code><a href="../../methods/help/classRepresentation-class.html">classRepresentation</a></code>, i.e., resulting from
+<code><a href="../../methods/help/getClass.html">getClass</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>where</code></td>
 <td>
 <p>environment, to be passed further to
-<code><a href="findClass.html">isClass</a></code> and <code><a href="getClass.html">getClass</a></code>.</p>
+<code><a href="../../methods/help/isClass.html">isClass</a></code> and <code><a href="../../methods/help/getClass.html">getClass</a></code>.</p>
 </td></tr>
 </table>
 
@@ -48,7 +49,7 @@ inheritedSlotNames(Class, where = topenv(parent.frame()))
 
 <h3>See Also</h3>
 
-<p><code><a href="slot.html">slotNames</a></code>, <code><a href="slot.html">slot</a></code>, <code><a href="setClass.html">setClass</a></code>, etc.
+<p><code><a href="../../methods/help/slotNames.html">slotNames</a></code>, <code><a href="../../methods/help/slot.html">slot</a></code>, <code><a href="../../methods/help/setClass.html">setClass</a></code>, etc.
 </p>
 
 
@@ -59,7 +60,7 @@ inheritedSlotNames(Class, where = topenv(parent.frame()))
 library(stats4)
 inheritedSlotNames("mle")
 
-if(require("Matrix")) withAutoprint({
+if(require("Matrix", quietly = TRUE)) withAutoprint({
   inheritedSlotNames("Matrix")       # NULL
   ## whereas
   inheritedSlotNames("sparseMatrix") # --&gt; Dim &amp; Dimnames
@@ -77,5 +78,5 @@ for(n in rev(which(is.na(match(search(), .srch)))))
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Detect which Files Have Changed</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for changedFiles {utils}"><tr><td>changedFiles {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -115,7 +116,7 @@ each file.
 </p>
 <p>If the <code>timestamp</code> argument to <code>fileSnapshot</code> is length 1, a
 file with that name is created. If it is length 1 in
-<code>changedFiles</code>, the <code><a href="filetest.html">file_test</a></code> function is used to
+<code>changedFiles</code>, the <code><a href="../../utils/help/file_test.html">file_test</a></code> function is used to
 compare the age of all files common to both <code>before</code> and
 <code>after</code> to it.  This test may be unreliable:  it compares the
 current modification time of the <code>after</code> files to the timestamp;
@@ -195,7 +196,7 @@ displays the arguments used to produce them, while the one for
 
 <h3>See Also</h3>
 
-<p><code><a href="../../base/html/file.info.html">file.info</a></code>, <code><a href="filetest.html">file_test</a></code>, <code><a href="../../tools/html/md5sum.html">md5sum</a></code>.
+<p><code><a href="../../base/html/file.info.html">file.info</a></code>, <code><a href="../../utils/help/file_test.html">file_test</a></code>, <code><a href="../../tools/html/md5sum.html">md5sum</a></code>.
 </p>
 
 
@@ -220,5 +221,5 @@ changedFiles(snapshot)
 changedFiles(snapshot)$changes
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

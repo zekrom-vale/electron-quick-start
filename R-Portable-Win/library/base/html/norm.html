@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Compute the Norm of a Matrix</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for norm {base}"><tr><td>norm {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -53,7 +54,7 @@ Euclidean norm of <code>x</code> treated as if it were a vector);</p>
 all the elements in <code>x</code>; and</p>
 </dd>
 <dt><code>"2"</code></dt><dd><p>specifies the &ldquo;spectral&rdquo; or 2-norm, which
-is the largest singular value (<code><a href="svd.html">svd</a></code>) of <code>x</code>.</p>
+is the largest singular value (<code><a href="../../base/help/svd.html">svd</a></code>) of <code>x</code>.</p>
 </dd>
 </dl>
 
@@ -65,7 +66,7 @@ is the largest singular value (<code><a href="svd.html">svd</a></code>) of <code
 
 <h3>Details</h3>
 
-<p>The <span class="pkg">base</span> method of <code>norm()</code> calls the Lapack function
+<p>The <span class="pkg">base</span> method of <code>norm()</code> calls the LAPACK function
 <code>dlange</code>.
 </p>
 <p>Note that the 1-, Inf- and <code>"M"</code> norm is faster to calculate than
@@ -87,7 +88,7 @@ detailed study of the FORTRAN code.
 
 <p>Except for <code>norm = "2"</code>, the LAPACK routine <code>DLANGE</code>.
 </p>
-<p>LAPACK is from <a href="http://www.netlib.org/lapack">http://www.netlib.org/lapack</a>.
+<p>LAPACK is from <a href="https://www.netlib.org/lapack/">https://www.netlib.org/lapack/</a>.
 </p>
 
 
@@ -101,7 +102,7 @@ detailed study of the FORTRAN code.
 
 <h3>See Also</h3>
 
-<p><code><a href="kappa.html">rcond</a></code> for the (reciprocal) condition number.
+<p><code><a href="../../base/help/rcond.html">rcond</a></code> for the (reciprocal) condition number.
 </p>
 
 
@@ -122,5 +123,5 @@ h9 &lt;- hilbert(9)
 sapply(nTyp, norm, x = h9)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

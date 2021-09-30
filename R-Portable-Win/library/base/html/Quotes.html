@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Quotes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Quotes {base}"><tr><td>Quotes {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -108,20 +109,33 @@ strings, and double quotes in double-quoted strings.
 
 <p>Alternative forms for the last two are <span class="samp">\u{nnnn}</span> and
 <span class="samp">\U{nnnnnnnn}</span>.  All except the Unicode escape sequences are
-also supported when reading character strings by <code><a href="scan.html">scan</a></code>
+also supported when reading character strings by <code><a href="../../base/help/scan.html">scan</a></code>
 and <code><a href="../../utils/html/read.table.html">read.table</a></code> if <code>allowEscapes = TRUE</code>.  Unicode
 escapes can be used to enter Unicode characters not in the current
 locale's charset (when the string will be stored internally in UTF-8).
 </p>
+<p>As from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 4.1.0 the largest allowed <span class="samp">\U</span> value is
+<span class="samp">\U10FFFF</span>, the maximum Unicode point.
+</p>
 <p>The parser does not allow the use of both octal/hex and Unicode
 escapes in a single string.
 </p>
-<p>These forms will also be used by <code><a href="print.default.html">print.default</a></code>
+<p>These forms will also be used by <code><a href="../../base/help/print.default.html">print.default</a></code>
 when outputting non-printable characters (including backslash).
 </p>
 <p>Embedded nuls are not allowed in character strings, so using escapes
 (such as <span class="samp">\0</span>) for a nul will result in the string being
 truncated at that point (usually with a warning).
+</p>
+<p>Raw character constants are also available using a syntax similar to
+the one used in C++: <code>r"(...)"</code> with <code>...</code> any character
+sequence, except that it must not contain the closing sequence
+<span class="samp">)"</span>. 
+The delimiter pairs <code>[]</code> and <code>{}</code> can also be
+used, and <code>R</code> can be used in place of <code>r</code>.  For additional
+flexibility, a number of dashes can be placed between the opening quote
+and the opening delimiter, as long as the same number of dashes appear
+between the closing delimiter and the closing quote.
 </p>
 
 
@@ -129,7 +143,7 @@ truncated at that point (usually with a warning).
 
 <p>Identifiers consist of a sequence of letters, digits, the period
 (<code>.</code>) and the underscore.  They must not start with a digit nor
-underscore, nor with a period followed by a digit.  <a href="Reserved.html">Reserved</a>
+underscore, nor with a period followed by a digit.  <a href="../../base/help/Reserved.html">Reserved</a>
 words are not valid identifiers.
 </p>
 <p>The definition of a <em>letter</em> depends on the current locale, but
@@ -138,7 +152,7 @@ only ASCII digits are considered to be digits.
 <p>Such identifiers are also known as <em>syntactic names</em> and may be used
 directly in <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> code.  Almost always, other names can be used
 provided they are quoted.  The preferred quote is the backtick
-(<span class="samp">`</span>), and <code><a href="deparse.html">deparse</a></code> will normally use it, but under
+(<span class="samp">`</span>), and <code><a href="../../base/help/deparse.html">deparse</a></code> will normally use it, but under
 many circumstances single or double quotes can be used (as a character
 constant will often be converted to a name).  One place where
 backticks may be essential is to delimit variable names in formulae:
@@ -146,13 +160,24 @@ see <code><a href="../../stats/html/formula.html">formula</a></code>.
 </p>
 
 
+<h3>Note</h3>
+
+<p>UTF-16 surrogate pairs in <span class="samp">\unnnn\uoooo</span> form will be converted
+to a single Unicode point, so for example <span class="samp">\uD834\uDD1E</span> gives
+the single character <span class="samp">\U1D11E</span>.  However, unpaired values in
+the surrogate range such as in the string <code>"abc\uD834de"</code> will be
+converted to a non-standard-conformant UTF-8 string (as is done by most
+other software): this may change in future.
+</p>
+
+
 <h3>See Also</h3>
 
-<p><code><a href="Syntax.html">Syntax</a></code> for other aspects of the syntax.
+<p><code><a href="../../base/help/Syntax.html">Syntax</a></code> for other aspects of the syntax.
 </p>
-<p><code><a href="sQuote.html">sQuote</a></code> for quoting English text.
+<p><code><a href="../../base/help/sQuote.html">sQuote</a></code> for quoting English text.
 </p>
-<p><code><a href="shQuote.html">shQuote</a></code> for quoting OS commands.
+<p><code><a href="../../base/help/shQuote.html">shQuote</a></code> for quoting OS commands.
 </p>
 <p>The  &lsquo;R Language Definition&rsquo; manual.
 </p>
@@ -199,7 +224,7 @@ d$`1st column`
 ## Mixing octal and hexadecimal in the same string is OK
 (hw2 &lt;- "\110\x65\154\x6c\157\x20\127\x6f\162\x6c\144\x21")
 
-## \u is also hexadecimal, but supported up to 4 numbers,
+## \u is also hexadecimal, but supports up to 4 digits,
 ## using Unicode specification.  In the previous example,
 ## you can simply replace \x with \u.
 (hw3 &lt;- "\u48\u65\u6c\u6c\u6f\u20\u57\u6f\u72\u6c\u64\u21")
@@ -218,7 +243,7 @@ stopifnot(identical(hw, hw1), identical(hw1, hw2), identical(hw2, hw3))
 ## End(Not run)
 ##   --&gt;   Error: mixing Unicode and octal/hex escapes .....
 
-## \U works like \u, but supports up to eight numbers.
+## \U works like \u, but supports up to six hex digits.
 ## So we can replace \u with \U in the previous example.
 n2 &lt;- "\U0126\U0119\U1114\U022d\U2001\U03e2\U0954\U0f3f\U13d3\U147b\U203c"
 stopifnot(identical(nn, n2))
@@ -228,7 +253,9 @@ stopifnot(identical(nn, n2))
 ## See the R language manual,
 ## https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Literal-constants
 ## and bug 16098 https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=16098
-"\U1d4d7" # On Windows this gives the incorrect value of "\Ud4d7"
+## This character may or not be printable (the platform decides)
+## and if it is, may not have a glyph in the font used.
+"\U1d4d7" # On Windows this used to give the incorrect value of "\Ud4d7"
 
 ## nul characters (for terminating strings in C) are not allowed (parse errors)
 ## Not run: 
@@ -236,7 +263,15 @@ stopifnot(identical(nn, n2))
   "foo\u0000bar" # same error
 
 ## End(Not run)
+
+## A Windows path written as a raw string constant:
+r"(c:\Program files\R)"
+
+## More raw strings:
+r"{(\1\2)}"
+r"(use both "double" and 'single' quotes)"
+r"---(\1--)-)---"
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

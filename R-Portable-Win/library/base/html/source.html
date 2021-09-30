@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read R Code from a File, a Connection or Expressions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for source {base}"><tr><td>source {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -11,7 +12,7 @@
 
 <p><code>source</code> causes <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> to accept its input from the named file or URL
 or connection or expressions directly.  Input is read and
-<code><a href="parse.html">parse</a></code>d from that file
+<code><a href="../../base/help/parse.html">parse</a></code>d from that file
 until the end of the file is reached, then the parsed expressions are
 evaluated sequentially in the chosen environment.
 </p>
@@ -49,9 +50,9 @@ withAutoprint(exprs, evaluated = FALSE, local = parent.frame(),
 <table summary="R argblock">
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>a <a href="connections.html">connection</a> or a character string giving the
+<p>a <a href="../../base/help/connection.html">connection</a> or a character string giving the
 pathname of the file or URL to read from.  <code>""</code> indicates the
-connection <code><a href="showConnections.html">stdin</a>()</code>.</p>
+connection <code><a href="../../base/help/stdin.html">stdin</a>()</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>local</code></td>
 <td>
@@ -76,8 +77,8 @@ to the value of <code>echo</code>.</p>
 <td>
 <p>for <code>source()</code> and <code>withAutoprint(*, evaluated=TRUE)</code>:
 <em>instead</em> of specifying <code>file</code>, an
-<code><a href="expression.html">expression</a></code>, <code><a href="call.html">call</a></code>, or <code><a href="list.html">list</a></code>
-of <code><a href="call.html">call</a></code>'s, but <em>not</em> an unevaluated &ldquo;expression&rdquo;.
+<code><a href="../../base/help/expression.html">expression</a></code>, <code><a href="../../base/help/call.html">call</a></code>, or <code><a href="../../base/help/list.html">list</a></code>
+of <code><a href="../../base/help/call.html">call</a></code>'s, but <em>not</em> an unevaluated &ldquo;expression&rdquo;.
 </p>
 <p>for <code>withAutoprint()</code> (with default <code>evaluated=FALSE</code>):
 one or more unevaluated &ldquo;expressions&rdquo;.
@@ -113,14 +114,14 @@ the deparse of a single expression.</p>
 </td></tr>
 <tr valign="top"><td><code>width.cutoff</code></td>
 <td>
-<p>integer, passed to <code><a href="deparse.html">deparse</a>()</code> which
+<p>integer, passed to <code><a href="../../base/help/deparse.html">deparse</a>()</code> which
 is used (only) when there are no source references.</p>
 </td></tr>
 <tr valign="top"><td><code>deparseCtrl</code></td>
 <td>
-<p><code><a href="character.html">character</a></code> vector, passed as
-<code>control</code> to <code><a href="deparse.html">deparse</a>()</code>, see also
-<code><a href="deparseOpts.html">.deparseOpts</a></code>.  In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version &lt;= 3.3.x, this was
+<p><code><a href="../../base/help/character.html">character</a></code> vector, passed as
+<code>control</code> to <code><a href="../../base/help/deparse.html">deparse</a>()</code>, see also
+<code><a href="../../base/help/.deparseOpts.html">.deparseOpts</a></code>.  In <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> version &lt;= 3.3.x, this was
 hardcoded to <code>"showAttributes"</code>, which is the default
 currently; <code>deparseCtrl = "all"</code> may be preferable, when strict
 back compatibility is not of importance.</p>
@@ -134,7 +135,7 @@ containing <code>file</code> for evaluating.</p>
 <tr valign="top"><td><code>encoding</code></td>
 <td>
 <p>character vector.  The encoding(s) to be assumed when
-<code>file</code> is a character string: see <code><a href="connections.html">file</a></code>.  A
+<code>file</code> is a character string: see <code><a href="../../base/help/file.html">file</a></code>.  A
 possible value is <code>"unknown"</code> when the encoding is guessed: see
 the &lsquo;Encodings&rsquo; section.</p>
 </td></tr>
@@ -173,8 +174,8 @@ run, syntax errors result in none of the code being run.  If an error
 occurs in running a syntactically correct script, anything assigned
 into the workspace by code that has been run will be kept (just as
 from the command line), but diagnostic information such as
-<code><a href="traceback.html">traceback</a>()</code> will contain additional calls to
-<code><a href="withVisible.html">withVisible</a></code>.
+<code><a href="../../base/help/traceback.html">traceback</a>()</code> will contain additional calls to
+<code><a href="../../base/help/withVisible.html">withVisible</a></code>.
 </p>
 <p>All versions of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> accept input from a connection with end of line
 marked by LF (as used on Unix), CRLF (as used on DOS/Windows) or CR
@@ -207,7 +208,7 @@ the code at all.  If there are executable lines within the first
 <h3>Encodings</h3>
 
 <p>By default the input is read and parsed in  the current encoding of
-the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session.  This is usually what it required, but occasionally
+the <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> session.  This is usually what is required, but occasionally
 re-encoding is needed, e.g. if a file from a UTF-8-using system is to
 be read on Windows (or <em>vice versa</em>).
 </p>
@@ -220,12 +221,12 @@ the file/URL can be read without error in the trial encoding.  If an
 actual <code>encoding</code> is specified (rather than the default or
 <code>"unknown"</code>) in a Latin-1 or UTF-8 locale then character strings
 in the result will be translated to the current encoding and marked as
-such (see <code><a href="Encoding.html">Encoding</a></code>).
+such (see <code><a href="../../base/help/Encoding.html">Encoding</a></code>).
 </p>
 <p>If <code>file</code> is a connection (including one specified by <code>""</code>),
 it is not possible to re-encode the input inside <code>source</code>, and so
 the <code>encoding</code> argument is just used to mark character strings in the
-parsed input in Latin-1 and UTF-8 locales: see <code><a href="parse.html">parse</a></code>.
+parsed input in Latin-1 and UTF-8 locales: see <code><a href="../../base/help/parse.html">parse</a></code>.
 </p>
 
 
@@ -240,10 +241,10 @@ Wadsworth &amp; Brooks/Cole.
 <h3>See Also</h3>
 
 <p><code><a href="../../utils/html/demo.html">demo</a></code> which uses <code>source</code>;
-<code><a href="eval.html">eval</a></code>, <code><a href="parse.html">parse</a></code> and <code><a href="scan.html">scan</a></code>;
-<code><a href="options.html">options</a>("keep.source")</code>.
+<code><a href="../../base/help/eval.html">eval</a></code>, <code><a href="../../base/help/parse.html">parse</a></code> and <code><a href="../../base/help/scan.html">scan</a></code>;
+<code><a href="../../base/help/options.html">options</a>("keep.source")</code>.
 </p>
-<p><code><a href="sys.source.html">sys.source</a></code> which is a streamlined version to source a
+<p><code><a href="../../base/help/sys.source.html">sys.source</a></code> which is a streamlined version to source a
 file into an environment.
 </p>
 <p>&lsquo;The R Language Definition&rsquo; for a discussion of source
@@ -268,10 +269,12 @@ if(someCond) withAutoprint({
 ## If you want to source() a bunch of files, something like
 ## the following may be useful:
  sourceDir &lt;- function(path, trace = TRUE, ...) {
+    op &lt;- options(); on.exit(options(op)) # to reset after each 
     for (nm in list.files(path, pattern = "[.][RrSsQq]$")) {
        if(trace) cat(nm,":")
        source(file.path(path, nm), ...)
        if(trace) cat("\n")
+       options(op)
     }
  }
 
@@ -281,9 +284,9 @@ withAutoprint({ x &lt;- 1:2; cat("x=",x,"\n"); y &lt;- x^2 })
 stopifnot(identical(x, 1:2), identical(y, x^2))
 
 withAutoprint({ formals(sourceDir); body(sourceDir) },
-              max.dep = 20, verbose = TRUE)
+              max.deparse.length = 20, verbose = TRUE)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

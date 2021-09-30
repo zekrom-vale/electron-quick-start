@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create colour spaces</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for make.rgb {grDevices}"><tr><td>make.rgb {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,7 +11,7 @@
 <h3>Description</h3>
 
 <p>These functions specify colour spaces for use in
-<code><a href="convertColor.html">convertColor</a></code>.
+<code><a href="../../grDevices/help/convertColor.html">convertColor</a></code>.
 </p>
 
 
@@ -85,7 +86,7 @@ the colour space (as for the RGB spaces) this second argument should
 be ignored and may be <code>...</code>.
 </p>
 <p>As of R 3.6.0 the built in color converters along with
-<code><a href="convertColor.html">convertColor</a></code> were vectorized to process three column
+<code><a href="../../grDevices/help/convertColor.html">convertColor</a></code> were vectorized to process three column
 color matrices in one call, instead of row by row via <code><a href="../../base/html/apply.html">apply</a></code>.
 In order to maintain backwards compatibility, <code>colorConverter</code> wraps
 <code>fromXYZ</code> and <code>toXYZ</code> in a <code>apply</code> loop in case they do not
@@ -109,7 +110,7 @@ row by row, you can set <code>vectorized=TRUE</code> for a performance improveme
 
 <h3>See Also</h3>
 
-<p><code><a href="convertColor.html">convertColor</a>
+<p><code><a href="../../grDevices/help/convertColor.html">convertColor</a>
   </code>
 </p>
 
@@ -164,5 +165,5 @@ stopifnot(ccv == cols)
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

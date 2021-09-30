@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Regular Expressions as used in R</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for regex {base}"><tr><td>regex {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -10,9 +11,10 @@
 <h3>Description</h3>
 
 <p>This help page documents the regular expression patterns supported by
-<code><a href="grep.html">grep</a></code> and related functions <code>grepl</code>, <code>regexpr</code>,
+<code><a href="../../base/help/grep.html">grep</a></code> and related functions <code>grepl</code>, <code>regexpr</code>,
 <code>gregexpr</code>, <code>sub</code> and <code>gsub</code>, as well as by
-<code><a href="strsplit.html">strsplit</a></code>.
+<code><a href="../../base/help/strsplit.html">strsplit</a></code> and optionally by <code><a href="../../base/help/agrep.html">agrep</a></code> and
+<code><a href="../../base/help/agrepl.html">agrepl</a></code>.
 </p>
 
 
@@ -78,13 +80,17 @@ regular expression <span class="samp">[0123456789]</span> matches any single dig
 <span class="samp">b</span> or <span class="samp">c</span>.  A range of characters may be specified by
 giving the first and last characters, separated by a hyphen.  (Because
 their interpretation is locale- and implementation-dependent,
-character ranges are best avoided.)  The only portable way to specify
-all ASCII letters is to list them all as the character class<br />
+character ranges are best avoided.  Some but not all implementations
+include both cases in ranges when doing caseless matching.)  The only
+portable way to specify all ASCII letters is to list them all as the
+character class<br />
 <span class="samp">[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz]</span>.<br /> (The
-current implementation uses numerical order of the encoding.)
+current implementation uses numerical order of the encoding, normally a
+single-byte encoding or Unicode points.)
+
 </p>
 <p>Certain named classes of characters are predefined.  Their
-interpretation depends on the <em>locale</em> (see <a href="locales.html">locales</a>); the
+interpretation depends on the <em>locale</em> (see <a href="../../base/help/locales.html">locales</a>); the
 interpretation below is that of the POSIX locale.
 </p>
 
@@ -220,26 +226,28 @@ to the PCRE library that implements regular expression pattern
 matching using the same syntax and semantics as Perl 5.x,
 with just a few differences.
 </p>
-<p>For complete details please consult the man pages for PCRE (and not
-PCRE2), especially <code>man pcrepattern</code> and <code>man
-  pcreapi</code>, on your system or from the sources at
-<a href="http://www.pcre.org">http://www.pcre.org</a>.  (The version in use can be found by
-calling <code><a href="extSoftVersion.html">extSoftVersion</a></code>.  It need not be the version
-described in the system's man page.  As PCRE has been feature-frozen
-for some time (essentially 2012), the man pages at
-<a href="http://www.pcre.org/original/doc/html/">http://www.pcre.org/original/doc/html/</a> should be a good match.)
+<p>For complete details please consult the man pages for PCRE, especially
+<code>man pcrepattern</code> and <code>man pcreapi</code>, on your system or
+from the sources at <a href="https://www.pcre.org">https://www.pcre.org</a>.  (The version in use can be
+found by calling <code><a href="../../base/help/extSoftVersion.html">extSoftVersion</a></code>.  It need not be the version
+described in the system's man page.  PCRE1 (reported as version &lt; 10.00 by
+<code><a href="../../base/help/extSoftVersion.html">extSoftVersion</a></code>) has been feature-frozen for some time
+(essentially 2012), the man pages at
+<a href="https://www.pcre.org/original/doc/html/">https://www.pcre.org/original/doc/html/</a> should be a good match.
+PCRE2 (PCRE version &gt;= 10.00) has man pages at
+<a href="https://www.pcre.org/current/doc/html/">https://www.pcre.org/current/doc/html/</a>).
 </p>
 <p>Perl regular expressions can be computed byte-by-byte or
 (UTF-8) character-by-character: the latter is used in all multibyte
 locales and if any of the inputs are marked as UTF-8 (see
-<code><a href="Encoding.html">Encoding</a></code>).
+<code><a href="../../base/help/Encoding.html">Encoding</a></code>, or as Latin-1 except in a Latin-1 locale.
 </p>
 <p>All the regular expressions described for extended regular expressions
 are accepted except <span class="samp">\&lt;</span> and <span class="samp">\&gt;</span>: in Perl all backslashed
 metacharacters are alphanumeric and backslashed symbols always are
 interpreted as a literal character. <span class="samp">{</span> is not special if it
 would be the start of an invalid interval specification.  There can be
-more than 9 backreferences (but the replacement in <code><a href="grep.html">sub</a></code>
+more than 9 backreferences (but the replacement in <code><a href="../../base/help/sub.html">sub</a></code>
 can only refer to the first 9).
 </p>
 <p>Character ranges are interpreted in the numerical order of the
@@ -303,7 +311,15 @@ end of the previous match).  <span class="samp">\C</span> matches a single
 byte, including a newline, but its use is warned against.  In UTF-8
 mode, <span class="samp">\R</span> matches any Unicode newline character (not just CR),
 and <span class="samp">\X</span> matches any number of Unicode characters that form an
-extended Unicode sequence.
+extended Unicode sequence. <span class="samp">\X</span>, <span class="samp">\R</span> and <span class="samp">\B</span> cannot be
+used inside a character class (with PCRE1, they are treated as characters
+<span class="samp">X</span>, <span class="samp">R</span> and <span class="samp">B</span>; with PCRE2 they cause an error).
+</p>
+<p>A hyphen (minus) inside a character class is treated as a range, unless it
+is first or last character in the class definition.  It can be quoted to
+represent the hyphen literal (<span class="samp">\-</span>).  PCRE1 allows an unquoted hyphen
+at some other locations inside a character class where it cannot represent
+a valid range, but PCRE2 reports an error in such cases.
 </p>
 <p>In UTF-8 mode, some Unicode properties may be supported via
 <span class="samp">\p{xx}</span> and <span class="samp">\P{xx}</span> which match characters with and
@@ -312,7 +328,8 @@ properties see the PCRE documentation, but for example <span class="samp">Lu</sp
 &lsquo;upper case letter&rsquo; and <span class="samp">Sc</span> is &lsquo;currency symbol&rsquo;.
 (This support depends on the PCRE library being compiled with
 &lsquo;Unicode property support&rsquo; which can be checked <em>via</em>
-<code><a href="pcre_config.html">pcre_config</a></code>.)
+<code><a href="../../base/help/pcre_config.html">pcre_config</a></code>. PCRE2 when compiled with Unicode support always
+supports also Unicode properties.)
 </p>
 <p>The sequence <span class="samp">(?#</span> marks the start of a comment which continues
 up to the next closing parenthesis.  Nested parentheses are not
@@ -347,26 +364,26 @@ and recursive patterns are not covered here.
 <h3>Author(s)</h3>
 
 <p>This help page is based on the TRE documentation and the POSIX
-standard, and the <code>pcrepattern</code> man page from PCRE 8.36.
+standard, and the <code>pcre2pattern</code> man page from PCRE2 10.35.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="grep.html">grep</a></code>, <code><a href="../../utils/html/apropos.html">apropos</a></code>, <code><a href="../../utils/html/browseEnv.html">browseEnv</a></code>,
-<code><a href="../../utils/html/glob2rx.html">glob2rx</a></code>, <code><a href="../../utils/html/help.search.html">help.search</a></code>, <code><a href="list.files.html">list.files</a></code>,
-<code><a href="ls.html">ls</a></code> and <code><a href="strsplit.html">strsplit</a></code>.
+<p><code><a href="../../base/help/grep.html">grep</a></code>, <code><a href="../../utils/html/apropos.html">apropos</a></code>, <code><a href="../../utils/html/browseEnv.html">browseEnv</a></code>,
+<code><a href="../../utils/html/glob2rx.html">glob2rx</a></code>, <code><a href="../../utils/html/help.search.html">help.search</a></code>, <code><a href="../../base/help/list.files.html">list.files</a></code>,
+<code><a href="../../base/help/ls.html">ls</a></code>, <code><a href="../../base/help/strsplit.html">strsplit</a></code> and <code><a href="../../base/help/agrep.html">agrep</a></code>.
 </p>
-<p>The TRE documentation at
-<a href="http://laurikari.net/tre/documentation/regex-syntax/">http://laurikari.net/tre/documentation/regex-syntax/</a>.
+<p>The <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/laurikari/tre/master/doc/tre-syntax.html">TRE regexp syntax</a>.
 </p>
 <p>The POSIX 1003.2 standard at
-<a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html">http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html</a>.
+<a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html">https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html</a>.
 </p>
-<p>The <code>pcrepattern</code> <code>man</code> page (found as part of
-<a href="http://www.pcre.org/original/pcre.txt">http://www.pcre.org/original/pcre.txt</a>), and details of Perl's own
-implementation at <a href="http://perldoc.perl.org/perlre.html">http://perldoc.perl.org/perlre.html</a>.
+<p>The <code>pcre2pattern</code> or <code>pcrepattern</code> <code>man</code> page
+(found as part of <a href="https://www.pcre.org/original/pcre.txt">https://www.pcre.org/original/pcre.txt</a>), and
+details of Perl's own implementation at
+<a href="https://perldoc.perl.org/perlre">https://perldoc.perl.org/perlre</a>.
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

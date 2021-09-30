@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Methods For S3 and S4 Dispatch</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Methods_for_S3 {methods}"><tr><td>Methods_for_S3 {methods}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -21,7 +22,7 @@ documentation outlines how to write methods for both systems by
 defining an S4 method for a function that dispatches S3 methods.
 </p>
 <p>The systems can also be combined by using an S3 class with S4 method
-dispatch or in S4 class definitions.  See <code><a href="setOldClass.html">setOldClass</a></code>.
+dispatch or in S4 class definitions.  See <code><a href="../../methods/help/setOldClass.html">setOldClass</a></code>.
 </p>
 
 
@@ -133,15 +134,15 @@ intended.
 inheritance, as far as possible.
 S3 classes can be used for any S4 method selection, provided that the
 S3 classes have been registered by a call to
-<code><a href="setOldClass.html">setOldClass</a></code>, with that call specifying the correct S3
+<code><a href="../../methods/help/setOldClass.html">setOldClass</a></code>, with that call specifying the correct S3
 inheritance pattern.
 S4 classes can be used for any S3 method selection; when an S4 object
 is detected, S3 method selection uses the contents of
-<code><a href="is.html">extends</a>(class(x))</code> as the equivalent of the S3
+<code><a href="../../methods/help/extends.html">extends</a>(class(x))</code> as the equivalent of the S3
 inheritance (the inheritance is cached after the first call).
 </p>
 <p>For the details of S4 and S3
-dispatch see <a href="Methods_Details.html">Methods_Details</a> and <a href="../../base/html/UseMethod.html">S3Methods</a>.
+dispatch see <a href="../../methods/help/Methods_Details.html">Methods_Details</a> and <a href="../../base/html/UseMethod.html">S3Methods</a>.
 </p>
 
 
@@ -153,5 +154,5 @@ Chapman &amp; Hall.
 (Chapters 9 and 10.)
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>methods</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>methods</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

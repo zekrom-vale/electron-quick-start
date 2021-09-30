@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create an R-level Task Callback Manager</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for taskCallbackManager {base}"><tr><td>taskCallbackManager {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,10 +10,10 @@
 
 <h3>Description</h3>
 
-<p>This provides an entirely S-language mechanism
+<p>This provides an entirely <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>-language mechanism
 for managing callbacks or actions  that are invoked at
 the conclusion of each top-level task.  Essentially,
-we register a single R function from this manager
+we register a single <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> function from this manager
 with the underlying, native
 task-callback mechanism and this function handles invoking the other
 R callbacks under the control of the manager.
@@ -53,7 +54,7 @@ via the <code>add</code> function, the
 <code>evaluate</code> function is automatically registered.
 One can control when the function is registered
 by specifying <code>TRUE</code> for this argument
-and calling <code><a href="taskCallback.html">addTaskCallback</a></code> manually.
+and calling <code><a href="../../base/help/addTaskCallback.html">addTaskCallback</a></code> manually.
 </p>
 </td></tr>
 <tr valign="top"><td><code>verbose</code></td>
@@ -70,7 +71,7 @@ itself.
 
 <h3>Value</h3>
 
-<p>A <code><a href="list.html">list</a></code> containing 6 functions:
+<p>A <code><a href="../../base/help/list.html">list</a></code> containing 6 functions:
 </p>
 <table summary="R valueblock">
 <tr valign="top"><td><code><code>add()</code></code></td>
@@ -126,9 +127,9 @@ by this manager.</p>
 
 <h3>See Also</h3>
 
-<p><code><a href="taskCallback.html">addTaskCallback</a></code>,
-<code><a href="taskCallback.html">removeTaskCallback</a></code>,
-<code><a href="taskCallbackNames.html">getTaskCallbackNames</a></code> and the reference.
+<p><code><a href="../../base/help/addTaskCallback.html">addTaskCallback</a></code>,
+<code><a href="../../base/help/removeTaskCallback.html">removeTaskCallback</a></code>,
+<code><a href="../../base/help/getTaskCallbackNames.html">getTaskCallbackNames</a></code> and the reference.
 </p>
 
 
@@ -153,5 +154,5 @@ names(h$callbacks())
 removeTaskCallback("R-taskCallbackManager")
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

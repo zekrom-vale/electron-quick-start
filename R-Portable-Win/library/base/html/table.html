@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Cross Tabulation and Table Creation</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for table {base}"><tr><td>table {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -45,7 +46,7 @@ passed to specific methods; for <code>as.data.frame</code>, unused.)</p>
 <tr valign="top"><td><code>exclude</code></td>
 <td>
 <p>levels to remove for all factors in <code>...</code>.  If
-it does not contain <code><a href="NA.html">NA</a></code> and <code>useNA</code> is not
+it does not contain <code><a href="../../base/help/NA.html">NA</a></code> and <code>useNA</code> is not
 specified, it implies <code>useNA = "ifany"</code>.  See
 &lsquo;Details&rsquo; for its interpretation for non-factor arguments.</p>
 </td></tr>
@@ -69,7 +70,7 @@ constructed.  See &lsquo;Details&rsquo;.</p>
 <p>an arbitrary <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> object, or an object inheriting from class
 <code>"table"</code> for the <code>as.data.frame</code> method. Note that
 <code>as.data.frame.table(x, *)</code> may be called explicitly for
-non-table <code>x</code> for &ldquo;reshaping&rdquo; <code><a href="array.html">array</a></code>s.</p>
+non-table <code>x</code> for &ldquo;reshaping&rdquo; <code><a href="../../base/help/array.html">array</a></code>s.</p>
 </td></tr>
 <tr valign="top"><td><code>row.names</code></td>
 <td>
@@ -88,7 +89,7 @@ returned as factors (the default) or character vectors?</p>
 </td></tr>
 <tr valign="top"><td><code>sep, base</code></td>
 <td>
-<p>passed to <code><a href="dimnames.html">provideDimnames</a></code>.</p>
+<p>passed to <code><a href="../../base/help/provideDimnames.html">provideDimnames</a></code>.</p>
 </td></tr>
 </table>
 
@@ -116,8 +117,8 @@ Note the somewhat &ldquo;pathological&rdquo; case of two different kinds of
 </p>
 <p>Both <code>exclude</code> and <code>useNA</code> operate on an &ldquo;all or none&rdquo;
 basis.  If you want to control the dimensions of a multiway table
-separately, modify each argument using <code><a href="factor.html">factor</a></code> or
-<code><a href="factor.html">addNA</a></code>.
+separately, modify each argument using <code><a href="../../base/help/factor.html">factor</a></code> or
+<code><a href="../../base/help/addNA.html">addNA</a></code>.
 </p>
 <p>Non-factor arguments <code>a</code> are coerced via <code>factor(a,
     exclude=exclude)</code>.  Since <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> 3.4.0, care is taken <em>not</em> to
@@ -136,7 +137,7 @@ only handles 2-d tables).
 
 <p><code>table()</code> returns a <em>contingency table</em>, an object of
 class <code>"table"</code>, an array of integer values.
-Note that unlike S the result is always an <code><a href="array.html">array</a></code>, a 1D
+Note that unlike S the result is always an <code><a href="../../base/help/array.html">array</a></code>, a 1D
 array if one factor is given.
 </p>
 <p><code>as.table</code> and <code>is.table</code> coerce to and test for contingency
@@ -160,14 +161,14 @@ Wadsworth &amp; Brooks/Cole.
 
 <h3>See Also</h3>
 
-<p><code><a href="tabulate.html">tabulate</a></code> is the underlying function and allows finer
+<p><code><a href="../../base/help/tabulate.html">tabulate</a></code> is the underlying function and allows finer
 control.
 </p>
 <p>Use <code><a href="../../stats/html/ftable.html">ftable</a></code> for printing (and more) of
-multidimensional tables.  <code><a href="margin.table.html">margin.table</a></code>,
-<code><a href="prop.table.html">prop.table</a></code>, <code><a href="../../stats/html/addmargins.html">addmargins</a></code>.
+multidimensional tables.  <code><a href="../../base/help/margin.table.html">margin.table</a></code>,
+<code><a href="../../base/help/prop.table.html">prop.table</a></code>, <code><a href="../../stats/html/addmargins.html">addmargins</a></code>.
 </p>
-<p><code><a href="factor.html">addNA</a></code> for constructing factors with <code><a href="NA.html">NA</a></code> as
+<p><code><a href="../../base/help/addNA.html">addNA</a></code> for constructing factors with <code><a href="../../base/help/NA.html">NA</a></code> as
 a level.
 </p>
 <p><code><a href="../../stats/html/xtabs.html">xtabs</a></code> for cross tabulation of data frames with a
@@ -241,5 +242,5 @@ with(airquality,
    table(OzHi = Ozone &gt; 80, addNA(Month)))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

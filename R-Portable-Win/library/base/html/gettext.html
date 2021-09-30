@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Translate Text Messages</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for gettext {base}"><tr><td>gettext {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -9,7 +10,8 @@
 
 <h3>Description</h3>
 
-<p>If Native Language Support was enabled in this build of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>, attempt to
+<p>If Native Language Support (NLS) was enabled in this build of <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> (see
+the <code>bindtextdomain()</code> example), attempt to
 translate character vectors or set where the translations are to be found.
 </p>
 
@@ -59,14 +61,19 @@ catalogs for the domain.</p>
 <h3>Details</h3>
 
 <p>If <code>domain</code> is <code>NULL</code> or <code>""</code>, and <code>gettext</code>
-or <code>ngettext</code>  is called from a function in the namespace of 
-package <span class="pkg">pkg</span> the domain is set to <code>"R-pkg"</code>.  Otherwise 
+or <code>ngettext</code>  is called from a function in the namespace of
+package <span class="pkg">pkg</span> the domain is set to <code>"R-pkg"</code>.  Otherwise
 there is no default domain.
 </p>
 <p>If a suitable domain is found, each character string is offered for
 translation, and replaced by its translation into the current language
 if one is found.  The value (logical) <code>NA</code> suppresses any
 translation.
+</p>
+<p>The <em>language</em> to be used for message translation is determined by
+your OS default and/or the locale setting at <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>'s startup, see
+<code><a href="../../base/help/Sys.getlocale.html">Sys.getlocale</a>()</code>, and notably the <span class="env">LANGUAGE</span> environment
+variable.
 </p>
 <p>Conventionally the domain for <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span> warning/error messages in package
 <span class="pkg">pkg</span> is <code>"R-pkg"</code>, and that for C-level messages is <code>"pkg"</code>.
@@ -78,7 +85,7 @@ looking for the translation.
 integer.  Translating such messages is subject to very specific rules
 for different languages: see the GNU Gettext Manual.  The string
 will often contain a single instance of <code>%d</code> to be used in
-<code><a href="sprintf.html">sprintf</a></code>.  If English is used, <code>msg1</code> is returned if
+<code><a href="../../base/help/sprintf.html">sprintf</a></code>.  If English is used, <code>msg1</code> is returned if
 <code>n == 1</code> and <code>msg2</code> in all other cases.
 </p>
 <p><code>bindtextdomain</code> is a wrapper for the C function of the same
@@ -104,7 +111,7 @@ directory, or <code>NULL</code> if setting it failed.
 
 <h3>See Also</h3>
 
-<p><code><a href="stop.html">stop</a></code> and <code><a href="warning.html">warning</a></code> make use of <code>gettext</code> to
+<p><code><a href="../../base/help/stop.html">stop</a></code> and <code><a href="../../base/help/warning.html">warning</a></code> make use of <code>gettext</code> to
 translate messages.
 </p>
 <p><code><a href="../../tools/html/xgettext.html">xgettext</a></code> for extracting translatable strings from <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>
@@ -143,5 +150,5 @@ cat(sprintf(ngettext(length(miss),
             paste(sQuote(miss), collapse = ", ")))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

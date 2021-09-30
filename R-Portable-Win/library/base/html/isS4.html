@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test for an S4 object</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for isS4 {base}"><tr><td>isS4 {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -46,7 +47,7 @@ completed.  Not usually needed, but see the details section.</p>
 
 <p>Note that <code>isS4</code> does not rely on the <span class="pkg">methods</span>
 package, so in particular it can be used to detect the need to
-<code><a href="library.html">require</a></code> that package.
+<code><a href="../../base/help/require.html">require</a></code> that package.
 </p>
 <p><code>asS3</code> uses the value of
 <code>complete</code> to control whether an attempt is made to transform
@@ -58,7 +59,7 @@ transformed into an S3 object with the corresponding S3 class (see
 pseudo-classes <code>array</code> and <code>matrix</code>: such objects will have
 their class attribute set to <code>NULL</code>.
 </p>
-<p><code>isS4</code> is <a href="Primitive.html">primitive</a>.
+<p><code>isS4</code> is <a href="../../base/help/primitive.html">primitive</a>.
 </p>
 
 
@@ -80,8 +81,8 @@ argument <code>complete</code> is <code>FALSE</code>.
 
 <h3>See Also</h3>
 
-<p><code><a href="is.object.html">is.object</a></code> for a more general test; <a href="../../methods/html/Introduction.html">Introduction</a>
-for general information on S4; <a href="../../methods/html/Classes_Details.html">Classes_Details</a> for more on S4
+<p><code><a href="../../base/help/is.object.html">is.object</a></code> for a more general test; <a href="../../methods/help/Introduction.html">Introduction</a>
+for general information on S4; <a href="../../methods/help/Classes_Details.html">Classes_Details</a> for more on S4
 class definitions.
 </p>
 
@@ -95,5 +96,5 @@ isS4(getClass("MethodDefinition")) # TRUE
 
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Handling Grid Graphical Parameters</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for gpar {grid}"><tr><td>gpar {grid}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -142,6 +143,9 @@ error.)
 individual colours by multiplying (with both alpha settings
 normalised to the range 0 to 1).
 </p>
+<p>The <code>fill</code> setting can also be a linear gradient or a radial
+gradient or a pattern (see <a href="../../grid/help/pattern.html">patterns</a>).
+</p>
 <p>The size of text is <code>fontsize</code>*<code>cex</code>.  The size of a line
 is <code>fontsize</code>*<code>cex</code>*<code>lineheight</code>.
 </p>
@@ -204,7 +208,7 @@ gpar(col = "red")
 gpar(col = "blue", lty = "solid", lwd = 3, fontsize = 16)
 get.gpar(c("col", "lty"))
 grid.newpage()
-vp &lt;- viewport(w = .8, h = .8, gp = gpar(col="blue"))
+vp &lt;- viewport(width = .8, height = .8, gp = gpar(col="blue"))
 grid.draw(gTree(children=gList(rectGrob(gp = gpar(col="red")),
                      textGrob(paste("The rect is its own colour (red)",
                                     "but this text is the colour",
@@ -221,5 +225,5 @@ grid.points(1:10/11, 1:10/11, gp = gpar(col=1:10))
 popViewport()
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>grid</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grid</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

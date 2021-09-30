@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Read Fixed Width Format Files</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for read.fwf {utils}"><tr><td>read.fwf {utils}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -56,15 +57,15 @@ character that does not occur in the file (except in the header).</p>
 <tr valign="top"><td><code>skip</code></td>
 <td>
 <p>number of initial lines to skip; see
-<code><a href="read.table.html">read.table</a></code>.</p>
+<code><a href="../../utils/help/read.table.html">read.table</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>row.names</code></td>
 <td>
-<p>see <code><a href="read.table.html">read.table</a></code>.</p>
+<p>see <code><a href="../../utils/help/read.table.html">read.table</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>col.names</code></td>
 <td>
-<p>see <code><a href="read.table.html">read.table</a></code>.</p>
+<p>see <code><a href="../../utils/help/read.table.html">read.table</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>n</code></td>
 <td>
@@ -80,13 +81,13 @@ to no limit.</p>
 <p>character string: if non-empty declares the
 encoding used on a file (not a connection) so the character data can
 be re-encoded.  See the &lsquo;Encoding&rsquo; section of the help for
-<code><a href="../../base/html/connections.html">file</a></code>, the &lsquo;R Data Import/Export Manual&rsquo; and
+<code><a href="../../base/html/connections.html">file</a></code>, the &lsquo;R Data Import/Export&rsquo; manual and
 &lsquo;Note&rsquo;.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>further arguments to be passed to
-<code><a href="read.table.html">read.table</a></code>.  Useful such arguments include
+<code><a href="../../utils/help/read.table.html">read.table</a></code>.  Useful such arguments include
 <code>as.is</code>, <code>na.strings</code>, <code>colClasses</code> and <code>strip.white</code>.</p>
 </td></tr>
 </table>
@@ -114,7 +115,7 @@ file, so the latter's argument <code>encoding</code> will not be useful.
 
 <h3>Value</h3>
 
-<p>A <code><a href="../../base/html/data.frame.html">data.frame</a></code> as produced by <code><a href="read.table.html">read.table</a></code>
+<p>A <code><a href="../../base/html/data.frame.html">data.frame</a></code> as produced by <code><a href="../../utils/help/read.table.html">read.table</a></code>
 which is called internally.
 </p>
 
@@ -127,9 +128,9 @@ which is called internally.
 
 <h3>See Also</h3>
 
-<p><code><a href="../../base/html/scan.html">scan</a></code> and <code><a href="read.table.html">read.table</a></code>.
+<p><code><a href="../../base/html/scan.html">scan</a></code> and <code><a href="../../utils/help/read.table.html">read.table</a></code>.
 </p>
-<p><code><a href="read.fortran.html">read.fortran</a></code> for another style of fixed-format files.
+<p><code><a href="../../utils/help/read.fortran.html">read.fortran</a></code> for another style of fixed-format files.
 </p>
 
 
@@ -149,5 +150,5 @@ read.fwf(ff, widths = list(c(1,0, 2,3), c(2,2,2))) #&gt; 1 NA 23 456 98 76 54
 unlink(ff)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>utils</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>utils</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

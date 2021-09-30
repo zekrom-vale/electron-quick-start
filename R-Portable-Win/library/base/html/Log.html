@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Logarithms and Exponentials</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for log {base}"><tr><td>log {base}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -58,7 +59,7 @@ logarithms are computed.  Defaults to <i>e</i>=<code>exp(1)</code>.</p>
 <h3>Details</h3>
 
 <p>All except <code>logb</code> are generic functions: methods can be defined
-for them individually or via the <code><a href="groupGeneric.html">Math</a></code>
+for them individually or via the <code><a href="../../base/help/S3groupGeneric.html">Math</a></code>
 group generic.
 </p>
 <p><code>log10</code> and <code>log2</code> are only convenience wrappers, but logs
@@ -71,7 +72,7 @@ Methods can be set for them individually (and otherwise methods for
 (S3 or S4) methods are set for <code>log</code> they will be dispatched.
 Do not set S4 methods on <code>logb</code> itself.
 </p>
-<p>All except <code>log</code> are <a href="Primitive.html">primitive</a> functions.
+<p>All except <code>log</code> are <a href="../../base/help/primitive.html">primitive</a> functions.
 </p>
 
 
@@ -107,7 +108,7 @@ your class.
 <p><code>log1p</code> and <code>expm1</code> may be taken from the operating system,
 but if not available there then they are based on the Fortran subroutine
 <code>dlnrel</code> by W. Fullerton of Los Alamos Scientific Laboratory (see
-<a href="http://www.netlib.org/slatec/fnlib/dlnrel.f">http://www.netlib.org/slatec/fnlib/dlnrel.f</a>) and (for small x) a
+<a href="https://www.netlib.org/slatec/fnlib/dlnrel.f">https://www.netlib.org/slatec/fnlib/dlnrel.f</a>) and (for small x) a
 single Newton step for the solution of <code>log1p(y) = x</code>
 respectively.
 </p>
@@ -128,9 +129,9 @@ Springer. (for <code>logb</code>.)
 
 <h3>See Also</h3>
 
-<p><code><a href="Trig.html">Trig</a></code>,
-<code><a href="MathFun.html">sqrt</a></code>,
-<code><a href="Arithmetic.html">Arithmetic</a></code>.
+<p><code><a href="../../base/help/Trig.html">Trig</a></code>,
+<code><a href="../../base/help/sqrt.html">sqrt</a></code>,
+<code><a href="../../base/help/Arithmetic.html">Arithmetic</a></code>.
 </p>
 
 
@@ -144,5 +145,5 @@ x &lt;- 10^-(1+2*1:9)
 cbind(x, log(1+x), log1p(x), exp(x)-1, expm1(x))
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>base</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>base</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

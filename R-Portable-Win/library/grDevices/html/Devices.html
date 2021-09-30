@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: List of Graphical Devices</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for Devices {grDevices}"><tr><td>Devices {grDevices}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -13,20 +14,20 @@
 </p>
 
 <dl>
-<dt><code><a href="windows.html">windows</a></code>:</dt><dd><p>On Windows only, the graphics device for
+<dt><code><a href="../../grDevices/help/windows.html">windows</a></code>:</dt><dd><p>On Windows only, the graphics device for
 Windows (on screen, to printer and to Windows metafile).</p>
 </dd>
-<dt><code><a href="pdf.html">pdf</a></code>:</dt><dd><p>Write PDF graphics commands to a file</p>
+<dt><code><a href="../../grDevices/help/pdf.html">pdf</a></code>:</dt><dd><p>Write PDF graphics commands to a file</p>
 </dd>
-<dt><code><a href="postscript.html">postscript</a></code>:</dt><dd><p>Writes PostScript graphics commands to
+<dt><code><a href="../../grDevices/help/postscript.html">postscript</a></code>:</dt><dd><p>Writes PostScript graphics commands to
 a file</p>
 </dd>
-<dt><code><a href="xfig.html">xfig</a></code>:</dt><dd><p>Device for XFIG graphics file format</p>
+<dt><code><a href="../../grDevices/help/xfig.html">xfig</a></code>:</dt><dd><p>Device for XFIG graphics file format</p>
 </dd>
-<dt><code><a href="dev2bitmap.html">bitmap</a></code>:</dt><dd><p>bitmap pseudo-device via
+<dt><code><a href="../../grDevices/help/bitmap.html">bitmap</a></code>:</dt><dd><p>bitmap pseudo-device via
 <code>Ghostscript</code> (if available).</p>
 </dd>
-<dt><code><a href="pictex.html">pictex</a></code>:</dt><dd><p>Writes TeX/PicTeX graphics commands to a
+<dt><code><a href="../../grDevices/help/pictex.html">pictex</a></code>:</dt><dd><p>Writes TeX/PicTeX graphics commands to a
 file (of historical interest only)
 </p>
 </dd>
@@ -37,18 +38,18 @@ them (they exist but will return with a warning on other systems):
 </p>
 
 <dl>
-<dt><code><a href="cairo.html">cairo_pdf</a></code>, <code>cairo_ps</code>:</dt><dd><p>PDF and PostScript
+<dt><code><a href="../../grDevices/help/cairo_pdf.html">cairo_pdf</a></code>, <code>cairo_ps</code>:</dt><dd><p>PDF and PostScript
 devices based on cairo graphics.</p>
 </dd>
-<dt><code><a href="cairo.html">svg</a></code>:</dt><dd><p>SVG device based on cairo graphics</p>
+<dt><code><a href="../../grDevices/help/svg.html">svg</a></code>:</dt><dd><p>SVG device based on cairo graphics</p>
 </dd>
-<dt><code><a href="png.html">png</a></code>:</dt><dd><p>PNG bitmap device</p>
+<dt><code><a href="../../grDevices/help/png.html">png</a></code>:</dt><dd><p>PNG bitmap device</p>
 </dd>
-<dt><code><a href="png.html">jpeg</a></code>:</dt><dd><p>JPEG bitmap device</p>
+<dt><code><a href="../../grDevices/help/jpeg.html">jpeg</a></code>:</dt><dd><p>JPEG bitmap device</p>
 </dd>
-<dt><code><a href="png.html">bmp</a></code>:</dt><dd><p>BMP bitmap device</p>
+<dt><code><a href="../../grDevices/help/bmp.html">bmp</a></code>:</dt><dd><p>BMP bitmap device</p>
 </dd>
-<dt><code><a href="png.html">tiff</a></code>:</dt><dd><p>TIFF bitmap device</p>
+<dt><code><a href="../../grDevices/help/tiff.html">tiff</a></code>:</dt><dd><p>TIFF bitmap device</p>
 </dd>
 </dl>
 
@@ -56,9 +57,9 @@ devices based on cairo graphics.</p>
 </p>
 
 <dl>
-<dt><code><a href="x11.html">X11</a></code>:</dt><dd><p>The graphics device for the X11 windowing system</p>
+<dt><code><a href="../../grDevices/help/X11.html">X11</a></code>:</dt><dd><p>The graphics device for the X11 windowing system</p>
 </dd>
-<dt><code><a href="quartz.html">quartz</a></code>:</dt><dd><p>The graphics device for the macOS
+<dt><code><a href="../../grDevices/help/quartz.html">quartz</a></code>:</dt><dd><p>The graphics device for the macOS
 native Quartz 2d graphics system.  (This is only functional on
 macOS where it can be used from the <code>R.app</code> GUI and from the
 command line: but it will display on the local screen even for a
@@ -74,7 +75,7 @@ remote session.)</p>
 a device to be opened.  Which device is determined by
 <code><a href="../../base/html/options.html">options</a>("device")</code> which is initially set as the most
 appropriate for each platform: a screen device for most interactive use and
-<code><a href="pdf.html">pdf</a></code> (or the setting of <span class="env">R_DEFAULT_DEVICE</span>)
+<code><a href="../../grDevices/help/pdf.html">pdf</a></code> (or the setting of <span class="env">R_DEFAULT_DEVICE</span>)
 otherwise.  The exception is interactive use under Unix if no screen
 device is known to be available, when <code>pdf()</code> is used.
 </p>
@@ -92,24 +93,24 @@ devices listed here;
 </p>
 
 <dl>
-<dt>on Windows:</dt><dd><p><code><a href="windows.options.html">windows.options</a></code>,</p>
+<dt>on Windows:</dt><dd><p><code><a href="../../grDevices/help/windows.options.html">windows.options</a></code>,</p>
 </dd>
-<dt>on a Unix-alike:</dt><dd><p><code><a href="x11.html">X11</a>.options</code>, <code><a href="quartz.html">quartz.options</a></code>,</p>
+<dt>on a Unix-alike:</dt><dd><p><code><a href="../../grDevices/help/X11.html">X11</a>.options</code>, <code><a href="../../grDevices/help/quartz.options.html">quartz.options</a></code>,</p>
 </dd>
 </dl>
 
-<p><code><a href="ps.options.html">ps.options</a></code> and <code><a href="pdf.options.html">pdf.options</a></code> for how to
+<p><code><a href="../../grDevices/help/ps.options.html">ps.options</a></code> and <code><a href="../../grDevices/help/pdf.options.html">pdf.options</a></code> for how to
 customize devices.
 </p>
-<p><code><a href="dev.interactive.html">dev.interactive</a></code>,
-<code><a href="dev.html">dev.cur</a></code>, <code><a href="dev2.html">dev.print</a></code>,
-<code><a href="dev.html">graphics.off</a></code>, <code><a href="../../graphics/html/image.html">image</a></code>,
-<code><a href="dev2bitmap.html">dev2bitmap</a></code>.
+<p><code><a href="../../grDevices/help/dev.interactive.html">dev.interactive</a></code>,
+<code><a href="../../grDevices/help/dev.cur.html">dev.cur</a></code>, <code><a href="../../grDevices/help/dev.print.html">dev.print</a></code>,
+<code><a href="../../grDevices/help/graphics.off.html">graphics.off</a></code>, <code><a href="../../graphics/html/image.html">image</a></code>,
+<code><a href="../../grDevices/help/dev2bitmap.html">dev2bitmap</a></code>.
 </p>
 <p>On Unix-alikes only:<br />
-<code><a href="../../base/html/capabilities.html">capabilities</a></code> to see if <code><a href="x11.html">X11</a></code>,
-<code><a href="png.html">jpeg</a></code>, <code><a href="png.html">png</a></code>, <code><a href="png.html">tiff</a></code>,
-<code><a href="quartz.html">quartz</a></code> and the cairo-based devices are available.
+<code><a href="../../base/html/capabilities.html">capabilities</a></code> to see if <code><a href="../../grDevices/help/X11.html">X11</a></code>,
+<code><a href="../../grDevices/help/jpeg.html">jpeg</a></code>, <code><a href="../../grDevices/help/png.html">png</a></code>, <code><a href="../../grDevices/help/tiff.html">tiff</a></code>,
+<code><a href="../../grDevices/help/quartz.html">quartz</a></code> and the cairo-based devices are available.
 </p>
 
 
@@ -122,5 +123,5 @@ if(dev.cur() == 1) dev.new()
 
 ## End(Not run)</pre>
 
-<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>grDevices</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

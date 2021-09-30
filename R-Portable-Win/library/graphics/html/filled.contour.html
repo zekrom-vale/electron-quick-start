@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Level (Contour) Plots</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 
 <table width="100%" summary="page for filled.contour {graphics}"><tr><td>filled.contour {graphics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
@@ -95,7 +96,7 @@ should be one less color than levels</p>
 </td></tr>
 <tr valign="top"><td><code>plot.axes</code></td>
 <td>
-<p>statements which draw axes (and a <code><a href="box.html">box</a></code>)
+<p>statements which draw axes (and a <code><a href="../../graphics/help/box.html">box</a></code>)
 on the main plot.  This overrides the default axes.</p>
 </td></tr>
 <tr valign="top"><td><code>key.title</code></td>
@@ -109,7 +110,7 @@ This overrides the default axis.</p>
 </td></tr>
 <tr valign="top"><td><code>asp</code></td>
 <td>
-<p>the <i>y/x</i> aspect ratio, see <code><a href="plot.window.html">plot.window</a></code>.</p>
+<p>the <i>y/x</i> aspect ratio, see <code><a href="../../graphics/help/plot.window.html">plot.window</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>xaxs</code></td>
 <td>
@@ -129,12 +130,12 @@ use horizontal labeling.</p>
 <tr valign="top"><td><code>axes, frame.plot</code></td>
 <td>
 <p>logicals indicating if axes and a box should be
-drawn, as in <code><a href="plot.default.html">plot.default</a></code>.</p>
+drawn, as in <code><a href="../../graphics/help/plot.default.html">plot.default</a></code>.</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>additional <a href="par.html">graphical parameters</a>, currently only passed to
-<code><a href="title.html">title</a>()</code>.</p>
+<p>additional <a href="../../graphics/help/graphical+20parameters.html">graphical parameters</a>, currently only passed to
+<code><a href="../../graphics/help/title.html">title</a>()</code>.</p>
 </td></tr>
 </table>
 
@@ -158,7 +159,7 @@ responsible for checking the conditions on the arguments.
 
 <h3>Note</h3>
 
-<p><code>filled.contour</code> uses the <code><a href="layout.html">layout</a></code> function and so is
+<p><code>filled.contour</code> uses the <code><a href="../../graphics/help/layout.html">layout</a></code> function and so is
 restricted to a full page display.
 </p>
 <p>The output produced by <code>filled.contour</code> is actually a combination
@@ -186,10 +187,10 @@ Summit, New Jersey: Hobart.
 
 <h3>See Also</h3>
 
-<p><code><a href="contour.html">contour</a></code>, <code><a href="image.html">image</a></code>,
+<p><code><a href="../../graphics/help/contour.html">contour</a></code>, <code><a href="../../graphics/help/image.html">image</a></code>,
 <code><a href="../../grDevices/html/palettes.html">hcl.colors</a></code>, <code><a href="../../grDevices/html/gray.colors.html">gray.colors</a></code>,
-<code><a href="../../grDevices/html/palette.html">palette</a></code>; <code><a href="../../lattice/html/levelplot.html">contourplot</a></code>
-and <code><a href="../../lattice/html/levelplot.html">levelplot</a></code> from package <a href="https://CRAN.R-project.org/package=lattice"><span class="pkg">lattice</span></a>.
+<code><a href="../../grDevices/html/palette.html">palette</a></code>; <code><a href="../../lattice/help/levelplot.html">contourplot</a></code>
+and <code><a href="../../lattice/help/levelplot.html">levelplot</a></code> from package <a href="https://CRAN.R-project.org/package=lattice"><span class="pkg">lattice</span></a>.
 </p>
 
 
@@ -201,7 +202,8 @@ filled.contour(volcano, asp = 1) # simple
 
 x &lt;- 10*1:nrow(volcano)
 y &lt;- 10*1:ncol(volcano)
-filled.contour(x, y, volcano, color = function(n) hcl.colors(n, "terrain"),
+filled.contour(x, y, volcano,
+    color.palette = function(n) hcl.colors(n, "terrain"),
     plot.title = title(main = "The Topography of Maunga Whau",
     xlab = "Meters North", ylab = "Meters West"),
     plot.axes = { axis(1, seq(100, 800, by = 100))
@@ -218,7 +220,7 @@ filled.contour(x = 1:20, y = 1:20, z = b,
                plot.axes = { axis(1); axis(2); points(10, 10) })
 
 ## Persian Rug Art:
-x &lt;- y &lt;- seq(-4*pi, 4*pi, len = 27)
+x &lt;- y &lt;- seq(-4*pi, 4*pi, length.out = 27)
 r &lt;- sqrt(outer(x^2, y^2, "+"))
 filled.contour(cos(r^2)*exp(-r/(2*pi)), axes = FALSE)
 ## rather, the key *should* be labeled:
@@ -226,5 +228,5 @@ filled.contour(cos(r^2)*exp(-r/(2*pi)), frame.plot = FALSE,
                plot.axes = {})
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>graphics</em> version 3.6.1 <a href="00Index.html">Index</a>]</div>
-</body></html>
+<hr /><div style="text-align: center;">[Package <em>graphics</em> version 4.1.1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>
