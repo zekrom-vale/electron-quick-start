@@ -21,11 +21,11 @@ var execPath = "RScript"
 if(process.platform == WINDOWS){
   //killStr = "taskkill /im Rscript.exe /f"
   appPath = appPath.replace(/\\/g, "\\\\");
-  execPath = path.join(app.getAppPath(), "R-Portable-Win", "bin", "RScript.exe" )
+  execPath = path.join(app.getAppPath(), "resources", "app", "R-Portable-Win", "bin", "RScript.exe" )
 } else if(process.platform == MACOS){
   //killStr = 'pkill -9 "R"'
   //execPath = "export PATH=\""+path.join(app.getAppPath(), "R-Portable-Win")+":$PATH\"
-  var macAbsolutePath = path.join(app.getAppPath(), "R-Portable-Mac")
+  var macAbsolutePath = path.join(app.getAppPath(), "resources", "app", "R-Portable-Mac")
   var env_path = macAbsolutePath+((process.env.PATH)?":"+process.env.PATH:"");
   var env_libs_site = macAbsolutePath+"/library"+((process.env.R_LIBS_SITE)?":"+process.env.R_LIBS_SITE:"");
   process.env.PATH = env_path
