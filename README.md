@@ -38,10 +38,8 @@ cd electron-quick-start
 npm install
 ```
 
-Then install any pakages with R at `R-Portable-Win/bin/R.exe` , make sure to specify the path as below:
-```r
-install.packages("shiny", lib="../library")
-```
+Then install any pakages with R (Not with the portable version as that does not resolve dependencies).  Copy those installed files to the relevent library `R-Portable-*/library`.
+
 
 Then you can compile or run the app
 ```bash
@@ -50,7 +48,7 @@ npm start
 # Build the Executable/App
 cd electron-quick-start
 npm run package-win
-OR
+# OR
 npm run package-mac
 ```
 
