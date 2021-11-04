@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=ElectronShinyAppMac --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\"",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=cc.ico --out=ElectronShinyAppWindows --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\"",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\""
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=ElectronShinyApp --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\" --ignore=\"R-Portable-Win|\\.github\"",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=cc.ico --out=ElectronShinyApp --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\" --ignore=\"R-Portable-Mac|\\.github\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=ElectronShinyApp --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\" --ignore=\"\\.github\""
   },
   "repository": "https://github.com/zekrom-vale/electron-quick-start",
   "keywords": [
