@@ -3,7 +3,7 @@ library(foreign)
 sample100 <- read.spss("sample100.sav",FALSE)
 summary(sample100)
 str(sample100)
-d.sample100 <- data.frame(sample100)
+d.sample100 <- data.frame(sample100,stringsAsFactors=TRUE)
 summary(d.sample100)
 s100 <- sample100
 sample100 <- read.spss("sample100.por",FALSE)
@@ -63,7 +63,8 @@ sav <- "testdata.sav"
 x.nodat <- read.spss(file=sav, to.data.frame = FALSE, reencode="UTF-8")
 str(x.nodat)
 
-x.sort <- read.spss(file=sav, to.data.frame = TRUE, reencode="UTF-8")
+x.sort <- read.spss(file=sav, to.data.frame = TRUE, reencode="UTF-8",
+                    stringsAsFactors=TRUE)
 str(x.sort)
 x.append <- read.spss(file=sav, to.data.frame = TRUE, 
     add.undeclared.levels = "append", reencode="UTF-8")

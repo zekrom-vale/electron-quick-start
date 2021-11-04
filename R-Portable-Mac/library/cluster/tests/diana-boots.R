@@ -16,6 +16,7 @@ dianaBoot <- function(data, B = 500, frac.sub = c(0.7, min = 0.2),
 
 .p0 <- proc.time()
 data(ruspini)
+suppressWarnings(RNGversion("3.5.0")) # << as long as we don't have R >= 3.6.0
 set.seed(134)
 dianaBoot(ruspini)
 cat('Time elapsed: ', (.p1 <- proc.time()) - .p0,'\n')

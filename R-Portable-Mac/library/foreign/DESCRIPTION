@@ -1,10 +1,10 @@
 Package: foreign
 Priority: recommended
-Version: 0.8-70
-Date: 2017-11-28
+Version: 0.8-81
+Date: 2020-12-22
 Title: Read Data Stored by 'Minitab', 'S', 'SAS', 'SPSS', 'Stata',
         'Systat', 'Weka', 'dBase', ...
-Depends: R (>= 3.0.0)
+Depends: R (>= 4.0.0)
 Imports: methods, utils, stats
 Authors@R: c(
    person("R Core Team",
@@ -17,11 +17,13 @@ Authors@R: c(
     person("Swetlana", "Herbrandt", role = "ctb"),
     person("Nicholas", "Lewin-Koh", role = c("ctb", "cph")),
     person("Mark", "Myatt", role = c("ctb", "cph")),
+    person("Michael", "Nelson", role = "ctb"),
     person("Ben", "Pfaff", role = "ctb"),
     person("Brian", "Quistorff", role = "ctb"),
     person("Frank", "Warmerdam", role = c("ctb", "cph")),
     person("Stephen", "Weigand", role = c("ctb", "cph")),
     person("Free Software Foundation, Inc.", role = "cph"))
+Contact: see 'MailingList'
 Copyright: see file COPYRIGHTS
 Description: Reading and writing data stored by some versions of
 	'Epi Info', 'Minitab', 'S', 'SAS', 'SPSS', 'Stata', 'Systat', 'Weka',
@@ -30,8 +32,10 @@ ByteCompile: yes
 Biarch: yes
 License: GPL (>= 2)
 BugReports: https://bugs.r-project.org
+MailingList: R-help@r-project.org
+URL: https://svn.r-project.org/R-packages/trunk/foreign/
 NeedsCompilation: yes
-Packaged: 2017-11-28 12:58:54 UTC; ripley
+Packaged: 2020-12-22 13:59:32 UTC; hornik
 Author: R Core Team [aut, cph, cre],
   Roger Bivand [ctb, cph],
   Vincent J. Carey [ctb, cph],
@@ -41,6 +45,7 @@ Author: R Core Team [aut, cph, cre],
   Swetlana Herbrandt [ctb],
   Nicholas Lewin-Koh [ctb, cph],
   Mark Myatt [ctb, cph],
+  Michael Nelson [ctb],
   Ben Pfaff [ctb],
   Brian Quistorff [ctb],
   Frank Warmerdam [ctb, cph],
@@ -48,5 +53,5 @@ Author: R Core Team [aut, cph, cre],
   Free Software Foundation, Inc. [cph]
 Maintainer: R Core Team <R-core@R-project.org>
 Repository: CRAN
-Date/Publication: 2017-11-28 13:19:37 UTC
-Built: R 3.5.0; x86_64-apple-darwin15.6.0; 2018-04-24 18:41:15 UTC; unix
+Date/Publication: 2020-12-22 14:59:20 UTC
+Built: R 4.1.2; x86_64-apple-darwin17.0; 2021-11-01 20:59:13 UTC; unix

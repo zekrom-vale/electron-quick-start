@@ -20,7 +20,7 @@
 options(continue="  ", width=60)
 options(SweaveHooks=list(fig=function() par(mar=c(4.1, 4.1, .3, 1.1))))
 pdf.options(pointsize=8) #text in graph about the same as regular text
-require(survival, quietly=TRUE)
+library(survival, quietly=TRUE)
 @ 
 
 \newcommand{\imat}{H}  % use H for the hessian rather than script I
@@ -50,8 +50,9 @@ require(survival, quietly=TRUE)
   -Lewis Caroll, \emph{Through the Looking Glass}
 \end{quotation}
 
-``Validatation'' is a label which is used for many different things in 
-scientific research, so much so that the word is essentially meaningless
+``Validatation'' has become a Humpty-Dumpty word: it is used for many different
+things in 
+scientific research that it has become essentially meaningless
 without further clarification.
 One of the more common meanings assigned to it in the software
 realm is ``repeatability'', i.e. 
@@ -61,45 +62,46 @@ Users of the software often assume the word implies a more
 rigorous criterion, namely that the routine gives \emph{correct} answers.
 
 Validation of the latter type is rare, however; 
-and I surmise that a primary reason for this is that
-working out correct answers is boring, tedious work.
-This note contains a set of examples, often very simple, that have evolved over
-multiple decades.
-They have proven extremely useful in debugging the methods, not least
+working out formally correct answers is boring, tedious work.
+This note contains a set of examples of this latter type.
+Although the data sets are very simple, the examples
+have proven extremely useful in debugging the methods, not least
 because all the intermediate steps of each calculation are transparent,
 and have been incorporated into the formal test suite for the
-survival package as the files \code{book1.R}, \code{book2.R}, etc.
+survival package as the files \code{book1.R}, \code{book2.R}, etc. in the
+\code{tests} subdirectory.
 They also continue to be a resource for package's defence:
 I have been told multiple times that some person or group cannot use R
 in their work because ``SAS is validated'' while R is not. 
 The survival package passes all of the tests below   
-and SAS passes many but not all of them.
+and SAS passes some but not all of them.
 
 It is my hope that the formal test cases will 
 be a resource for developers on multiple platforms.
 Portions of this work were included as an appendix in 
 the textbook of Therneau and Grambsch
-\cite{Therneau2000} precisely for this reason.
+\cite{Therneau00} precisely for this reason.
 
 \section{Basic formulas}
 All these examples have a single covariate.
 Let $x_i$ be the covariate for each subject, $r_i= exp(x_i \beta)$
 the risk score for the subject, and $w_i$ the case weight, if any.
 Let $Y_i(t)$ be 1 if subject $i$ is at risk at time $t$ and 0 otherwise,
-and $\delta_i(t)$ be the death indicator which is 1 if subject $i$ has
+and $dN_i(t)$ be the death indicator which is 1 if subject $i$ has
 an event at time $t$.
 At each death time we have the following quantities:
 \begin{align}
-  d(t) &= \sum_i Y_i(t) w_i r_i \\
-  LPL(t) &= \left( \sum_i \delta_i(t) \log(r_i) \right) / \log(d(t)) \\
-  \xbar(t) &= \left( \sum_i Y_i(t) w_i r_i x_i \right) /d(t) \\
-  U(t)     &= \sum_i \delta_i(t) (x_i - \xbar(t)) \label{U1} \\
-  H(t)     &= \sum_i Y_i(t) (x_i - \xbar(t))^2 / d(t) \\
-           &=  \left(\sum_i Y_i(t) x_i^2/d(t) \right)- \xbar(t)^2 
+  LPL(t) &= \frac{\sum_i dN_i(t) \log(r_i)}{\log\left( \sum_i Y_i(t) w_i r_i 
+    \right)} \\
+  \xbar(t) &= \frac{\sum_i Y_i(t) w_i r_i x_i}{ \sum_i Y_i(t) w_i r_i}\\
+  U(t)     &= \sum_i dN_i(t) (x_i - \xbar(t)) \label{U1} \\
+  H(t)     &= \frac{\sum_i Y_i(t) (x_i - \xbar(t))^2}{\sum_i Y_i(t) w_i r_i}\\
+           &=  \frac{\sum_i Y_i(t) x_i^2}{\sum_i Y_i(t) w_i r_i}- \xbar(t)^2 
                \label{H2} \\
- \lambda(t) &= \sum_i  \delta_i(t)/ d(t)
+ \lambda(t) &= \frac{\sum_i w_i dN_i(t)}{\sum_i Y_i(t) w_i r_i}
  \end{align}
-The denominator $d$ is the weighted number of subjects at the time, 
+The denominator for all the sums is the weighted number of subjects who
+are at risk,
 $LPL$ is the contribution to the log partial likelihood at time $t$, and
 $\xbar$ and $H$ are the weighted mean and variance of the covariate $x$
 at each time.  
@@ -193,7 +195,7 @@ for (i in 1:6) {
     iter[i,] <- breslow1(beta)
     beta <- beta + iter[i,"U"]/iter[i,"H"]
 }
-iter
+print(iter, digits=10)
 
 # coxph fits
 test1 <- data.frame(time=  c(1, 1, 6, 6, 8, 9),
@@ -425,7 +427,7 @@ $$
 \begin{array}{ll}
  LL(0)=-4.276666 & LL(\bhat)=-3.358979 \\
  U(0) = 52/48 & U(\bhat) = 0 \\
- \imat(0) = 83/144  & \imat(\bhat) = 0.652077.
+ \imat(0) = 83/144  & \imat(\bhat) = 0.612632.
 \end{array}
 $$
 
@@ -437,8 +439,8 @@ $1/(r+3)$ to their expected value.
 For the second event at time 6 subjects 3 and 4 have a weight of 1/2,
 the total number of tickets is $(r+5)/2$
 and the consequent increment in the cumulative hazard is $2/(r+5)$.
-This $\beta=0$ this calculation is equivalent to the Fleming-Harrington \cite{Fleming84}
-estimate of cumulative hazard.
+This $\beta=0$ this calculation is equivalent to the Fleming-Harrington 
+\cite{Fleming84} estimate of cumulative hazard.
 Subjects 3 and 4 receive 1/2 of this second increment to $E$ and subjects
 5 and 6 the full increment.
 Efron \cite{Efron77} did not discuss residuals so did not investigate this
@@ -1025,7 +1027,7 @@ the disadvantage is that the only integer case weights are supported.
 (A secondary advantage is that I did not need to create another
 algebraic derivation for this appendix.)
 
-A second approach, used in {\splus}, allows for non-integer weights.
+A second approach, used in the survival package, allows for non-integer weights.
 The data is considered to be 3 tied observations, and the
 log-likelihood at time 2 is the sum of 3 weighted terms.
 The first term of the three is one of
@@ -1127,4 +1129,46 @@ below.  We have $r\equiv e^\pi/3$, $V$=
 %\multicolumn{2}{c}{$\Lambda$} & \multicolumn{3}{c}{Variance} \\ \hline
 %e/(r^2+ 11r+7) &  0.03272832 & e^2/(r^2+ 11r+7)^2 & 
 
+
+\section{Multi-state data}
+\begin{figure}
+<<mstate1, echo=FALSE, fig=TRUE>>=
+states <- c("Entry", "a", "b", "c")
+smat <- matrix(0, 4, 4, dimnames=list(states, states))
+smat[1,2:3] <- 1
+smat[2,3] <- smat[3,2] <- smat[3,4] <- smat[2,4] <- 1
+statefig(c(1,2,1), smat)
+@ 
+ \caption{A simple 4 state model.}
+ \label{mstate1}
+\end{figure}
+
+Figure \ref{mstate1} shows a simple multi-state model, while table 
+\ref{mstate1t} shows a data set for the model.
+Subject 1 follows the path of Entry, a, b, a, with no further follow
+up after the final transition, while subjects 4 and 5 are 'censored';
+they have further follow-up after the last observed change of state. 
+
+\begin{table} \centering
+  \begin{tabular}{ccrcc}
+    id & time1& time2 & event x \\ \hline
+    1 & 0 & 4 & a & 0 \\
+    1 & 4 & 9 & b & 0  \\
+    1 & 9 & 10 & a & 0 \\
+    2 & 0 & 5  & b & 1 \\
+    3 & 2 & 9  & c & 1 \\
+    4 & 0 & 2  & a & 0 \\
+    4 & 2 & 8  & c & 0\\
+    4 & 8 & 9  &  & 0 \\
+    5 & 1 & 3  & b & 2\\
+    5 & 3 & 11 &   & 2
+    \end{tabular}
+  \caption{A multi-state data set.}
+  \label{mstate1t}
+\end{table}
+
+
+
+\bibliographystyle{plain}
+\bibliography{refer}
 \end{document}

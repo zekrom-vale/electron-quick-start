@@ -12,7 +12,9 @@
 		<string>dSYM</string>
 		<key>CFBundleSignature</key>
 		<string>????</string>
+		<key>CFBundleShortVersionString</key>
+		<string>1.0</string>
 		<key>CFBundleVersion</key>
-		<string>3.5.0</string>
+		<string>4.1.2</string>
 	</dict>
 </plist>

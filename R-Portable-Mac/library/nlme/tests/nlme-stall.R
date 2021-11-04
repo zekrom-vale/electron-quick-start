@@ -41,3 +41,5 @@ try(nlme(y ~ fpl.B.range(x,A,B,C,D), data = dd,
 ## --  [on lynne Fedora 26 (4.14.11-200.fc26.x86_64), Jan.2018]
 ## in R 3.4.3 and R 3.4.3 patched with nlme 3.1.131
 ##                    and R-devel with nlme 3.1.135
+
+summary(warnings())# mostly  "Singular precision matrix in level -1, block *"

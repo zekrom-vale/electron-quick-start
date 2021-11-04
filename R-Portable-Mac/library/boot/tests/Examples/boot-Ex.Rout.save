@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2017-02-10 r72157) -- "Unsuffered Consequences"
-Copyright (C) 2017 The R Foundation for Statistical Computing
+R Under development (unstable) (2019-12-19 r77606) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,6 +23,7 @@ Type 'q()' to quit R.
 > library('boot')
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("Imp.Estimates")
 > ### * Imp.Estimates
@@ -109,8 +110,10 @@ Type 'q()' to quit R.
 +      sum(y[gp1, 1] * w[gp1]) - sum(y[-gp1, 1] * w[-gp1])
 + }
 > grav1 <- gravity[as.numeric(gravity[, 2]) >= 7, ]
+> ## IGNORE_RDIFF_BEGIN
 > abc.ci(grav1, mean.diff, strata = grav1$series)
 [1]  0.95000 -6.70758 -0.39394
+> ## IGNORE_RDIFF_END
 > ## Don't show: 
 > options(op)
 > ## End(Don't show)
@@ -145,8 +148,8 @@ boot(data = city, statistic = ratio, R = 999, stype = "w")
 
 
 Bootstrap Statistics :
-    original  bias    std. error
-t1*   1.5203  0.0396     0.21671
+    original   bias    std. error
+t1*   1.5203 0.049024     0.21583
 > 
 > 
 > # Stratified resampling for the difference of means.  In this
@@ -174,8 +177,8 @@ boot(data = grav1, statistic = diff.means, R = 999, stype = "f",
 
 Bootstrap Statistics :
     original    bias    std. error
-t1*  -2.8462  0.002541      1.5467
-t2*  16.8462 -1.457663      6.7591
+t1*  -2.8462  0.007469      1.5528
+t2*  16.8462 -1.475719      6.7147
 > 
 > # In this example we show the use of boot in a prediction from
 > # regression based on the nuclear data.  This example is taken
@@ -208,10 +211,10 @@ t2*  16.8462 -1.457663      6.7591
 +                   fit.pred = new.fit, x.pred = new.data)
 > # The bootstrap prediction squared error would then be found by
 > mean(nuke.boot$t[, 8]^2)
-[1] 0.088157
+[1] 0.084223
 > # Basic bootstrap prediction limits would be
 > new.fit - sort(nuke.boot$t[, 8])[c(975, 25)]
-[1] 6.1603 7.2988
+[1] 6.1488 7.2619
 > 
 > 
 > # Finally a parametric bootstrap.  For this example we shall look 
@@ -243,7 +246,7 @@ t2*  16.8462 -1.457663      6.7591
 > 
 > # The bootstrap p-value can then be approximated by
 > sum(abs(air.boot$t[,2]-1) > abs(air.boot$t0[2]-1))/(1+air.boot$R)
-[1] 0.461
+[1] 0.446
 > ## Don't show: 
 > options(op)
 > ## End(Don't show)
@@ -267,91 +270,91 @@ t2*  16.8462 -1.457663      6.7591
 > city.boot <- boot(city, corr, R = 40, stype = "w")
 > boot.array(city.boot)
       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]    1    1    3    1    1    0    1    0    1     1
- [2,]    0    0    1    3    1    2    1    1    1     0
- [3,]    0    0    0    1    3    2    0    1    2     1
- [4,]    0    2    2    2    0    1    0    1    0     2
- [5,]    1    1    1    0    1    2    0    2    2     0
- [6,]    0    1    2    0    2    1    0    1    2     1
- [7,]    3    0    0    1    1    2    0    1    1     1
- [8,]    0    4    1    1    1    0    1    2    0     0
- [9,]    0    1    4    0    1    0    2    2    0     0
-[10,]    1    1    1    1    1    1    1    2    0     1
-[11,]    0    0    3    0    2    1    1    1    0     2
-[12,]    2    3    1    0    0    1    0    0    2     1
-[13,]    1    0    0    1    2    0    2    1    1     2
-[14,]    0    0    2    3    0    0    2    0    2     1
-[15,]    2    0    1    1    1    1    0    2    1     1
-[16,]    1    1    0    2    2    1    1    1    1     0
-[17,]    1    0    1    2    2    1    2    1    0     0
-[18,]    0    2    0    0    2    2    0    1    1     2
-[19,]    1    1    0    2    0    1    2    0    1     2
-[20,]    0    0    0    1    2    1    1    1    0     4
-[21,]    0    0    2    0    1    1    3    0    0     3
-[22,]    1    3    2    2    0    1    1    0    0     0
-[23,]    0    0    3    1    2    1    2    0    1     0
-[24,]    0    1    1    2    1    2    0    1    0     2
-[25,]    0    0    2    1    0    0    3    2    1     1
-[26,]    0    2    4    1    1    1    0    0    0     1
-[27,]    2    3    1    0    2    0    0    2    0     0
-[28,]    1    1    0    1    1    0    0    4    2     0
-[29,]    2    2    0    1    1    0    1    0    1     2
-[30,]    0    1    0    1    1    2    0    1    3     1
-[31,]    1    2    0    2    2    0    1    1    0     1
-[32,]    1    4    0    1    0    2    0    1    1     0
-[33,]    0    1    0    5    1    0    0    1    1     1
-[34,]    0    2    0    1    3    1    1    1    0     1
-[35,]    0    2    3    1    1    1    0    0    1     1
-[36,]    1    2    1    1    1    1    2    0    1     0
-[37,]    1    1    1    0    0    1    2    2    2     0
-[38,]    2    3    0    3    0    1    0    0    1     0
-[39,]    0    0    1    2    3    0    0    2    1     1
-[40,]    0    1    1    0    3    0    2    2    0     1
+ [1,]    1    1    0    0    0    2    1    1    3     1
+ [2,]    2    2    0    2    0    0    1    0    1     2
+ [3,]    0    1    1    1    2    1    2    1    0     1
+ [4,]    1    0    1    0    0    1    2    1    1     3
+ [5,]    0    3    0    1    0    0    2    0    2     2
+ [6,]    0    0    1    1    0    1    4    1    2     0
+ [7,]    1    3    1    2    0    0    0    1    2     0
+ [8,]    0    2    2    2    0    1    0    1    0     2
+ [9,]    3    0    1    0    2    2    1    1    0     0
+[10,]    1    1    0    1    3    0    0    1    2     1
+[11,]    0    1    2    1    3    1    0    0    0     2
+[12,]    1    1    3    1    0    0    0    2    1     1
+[13,]    0    1    0    1    1    3    1    1    1     1
+[14,]    2    0    0    1    1    1    0    1    3     1
+[15,]    1    0    0    0    0    0    5    0    4     0
+[16,]    0    0    1    1    2    1    0    1    4     0
+[17,]    1    0    1    0    5    0    0    1    0     2
+[18,]    1    0    1    0    3    2    1    1    0     1
+[19,]    1    2    2    2    0    1    0    1    1     0
+[20,]    1    1    1    1    2    0    1    0    1     2
+[21,]    2    0    2    1    1    1    0    1    0     2
+[22,]    2    0    1    1    1    0    1    2    1     1
+[23,]    1    2    1    1    0    1    1    1    0     2
+[24,]    3    0    1    0    1    0    1    1    0     3
+[25,]    1    2    1    2    1    1    0    1    1     0
+[26,]    2    0    2    0    1    3    0    1    0     1
+[27,]    2    1    0    2    1    1    0    1    2     0
+[28,]    1    1    2    0    1    0    1    0    3     1
+[29,]    1    2    1    1    1    3    1    0    0     0
+[30,]    2    0    0    2    1    0    0    2    1     2
+[31,]    0    1    1    1    2    0    3    1    0     1
+[32,]    0    0    1    1    1    4    0    0    0     3
+[33,]    1    0    3    2    0    0    0    2    1     1
+[34,]    0    1    0    2    4    1    1    1    0     0
+[35,]    0    1    1    0    2    1    1    0    3     1
+[36,]    3    0    1    0    2    0    1    1    2     0
+[37,]    2    1    1    0    1    0    2    2    1     0
+[38,]    1    0    2    0    1    1    3    1    1     0
+[39,]    1    1    0    2    0    1    1    1    2     1
+[40,]    0    1    2    3    1    1    0    2    0     0
 > 
 > perm.cor <- function(d,i) cor(d$x,d$u[i])
 > city.perm <- boot(city, perm.cor, R = 40, sim = "permutation")
 > boot.array(city.perm, indices = TRUE)
       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]    7    2    8   10    6    4    9    3    1     5
- [2,]   10    4    6    8    5    3    2    1    9     7
- [3,]    5   10    6    2    3    8    1    9    7     4
- [4,]   10    1    4    8    9    5    3    6    7     2
- [5,]    1    3    5    8    2    9    6    7   10     4
- [6,]   10    4    3    2    1    9    8    5    7     6
- [7,]    2    5    1    4   10    9    3    8    7     6
- [8,]    5    9    6    3    1    2    4   10    8     7
- [9,]    8    2    7   10    4    3    1    6    9     5
-[10,]    1    9    3    2    8    6    7    4    5    10
-[11,]    6    7   10    5    3    9    2    8    4     1
-[12,]    9    5    1    6   10    8    3    2    7     4
-[13,]    9    7    3    1    8    5    4    6    2    10
-[14,]    7    1    3    2    9    6   10    4    5     8
-[15,]    4    9    6    3    2    1   10    8    7     5
-[16,]    9    6    1    7    5    2    8    4   10     3
-[17,]    7    2    3    6   10    4    1    9    5     8
-[18,]    2    4    3    1    5    8    6   10    9     7
-[19,]    4    9    6    1   10    3    7    2    5     8
-[20,]    6    3    7    5    8    4    2   10    1     9
-[21,]    9   10    2    6    7    5    8    4    3     1
-[22,]   10    4    5    9    8    3    1    2    6     7
-[23,]    9    2    5    1   10    4    6    8    7     3
-[24,]    9    4    3    6    8    2    1   10    5     7
-[25,]   10    3    8    2    5    7    1    9    6     4
-[26,]    7    8    3    9    4    1    5    2   10     6
-[27,]    4    8    1    5    3    6   10    9    7     2
-[28,]    8    5    7    4   10    3    2    1    9     6
-[29,]    8   10    2    4    7    3    9    6    1     5
-[30,]    1    5    7    9    3    6    4   10    2     8
-[31,]   10    9    7    5    4    1    2    6    3     8
-[32,]    8    5    1    6    3    7   10    4    9     2
-[33,]    1    6    8    5    2    7    9    4   10     3
-[34,]    8    5    7    1    9    2    6    3   10     4
-[35,]    4    5    9    2    7    6    8    3    1    10
-[36,]    5    9   10    1    3    7    2    8    4     6
-[37,]    8    2    7    9   10    1    3    4    6     5
-[38,]    5    8    1    7    4    3    9   10    6     2
-[39,]   10    7    6    4    8    1    3    5    9     2
-[40,]    2    1    8    3    4    6    9   10    7     5
+ [1,]    7    8    2    6    9    5    4    3   10     1
+ [2,]    1    9    8    6    5    3    4    7    2    10
+ [3,]   10    1    6    9    4    5    2    8    3     7
+ [4,]    4    5    7    6    3   10    9    8    2     1
+ [5,]   10    3    6    7    5    2    8    9    1     4
+ [6,]    4   10    8    2    5    6    7    3    9     1
+ [7,]    5    8   10    3    2    4    7    1    6     9
+ [8,]    3    8    4    9    2    7    1    5   10     6
+ [9,]    6    5    1    3    7    2    4   10    9     8
+[10,]    4    9    6   10    8    1    7    3    5     2
+[11,]    5   10    1    8    6    2    3    4    9     7
+[12,]    7    6    1    3   10    2    8    4    5     9
+[13,]   10    8    3    6    9    7    1    5    2     4
+[14,]    6    7   10    1    5    4    8    2    9     3
+[15,]    9    1    5    3    2    8    6   10    7     4
+[16,]    9    5    7    6    4   10    1    3    8     2
+[17,]    1    8    3   10    4    5    9    7    6     2
+[18,]    1   10    5    8    2    4    7    9    6     3
+[19,]    8    2    7    4    9    3   10    6    5     1
+[20,]   10    4    8    6    5    9    1    3    2     7
+[21,]    2    1   10    4    5    7    8    3    6     9
+[22,]    3    1   10    5    2    4    8    6    9     7
+[23,]    8    4    1   10    9    6    2    7    5     3
+[24,]    2    3    7    8    1    6    4    5   10     9
+[25,]    4    8    9    5   10    6    2    7    3     1
+[26,]    1    9    2   10    6    5    4    8    7     3
+[27,]    9   10    7    1    3    8    6    2    4     5
+[28,]    6    7    2    3    4    1    8    9   10     5
+[29,]    5    2    1    9    4    8    7    6   10     3
+[30,]    7    4    6    2    5    1    9   10    3     8
+[31,]    8    5    1    6    7    9    4    3    2    10
+[32,]    3   10    4    5    7    6    1    9    8     2
+[33,]    7    4    9   10    3    5    6    1    2     8
+[34,]   10    6    2    8    7    3    4    9    1     5
+[35,]    7    5    6    1   10    9    2    4    3     8
+[36,]    9    1    8    6   10    5    2    7    3     4
+[37,]    5    6    8    2    4   10    3    9    7     1
+[38,]    5   10    4    3    1    2    8    9    7     6
+[39,]    6    9    7    3    5    1   10    2    8     4
+[40,]    9    3    8    2    6    7    5    1   10     4
 > 
 > 
 > 
@@ -382,12 +385,12 @@ boot.ci(boot.out = city.boot, conf = c(0.9, 0.95), type = c("norm",
 
 Intervals : 
 Level      Normal              Basic         
-90%   ( 1.124,  1.837 )   ( 1.059,  1.740 )   
-95%   ( 1.056,  1.905 )   ( 0.932,  1.799 )  
+90%   ( 1.116,  1.826 )   ( 1.054,  1.742 )   
+95%   ( 1.048,  1.894 )   ( 0.956,  1.775 )  
 
 Level     Percentile            BCa          
-90%   ( 1.301,  1.982 )   ( 1.301,  1.984 )   
-95%   ( 1.242,  2.109 )   ( 1.243,  2.110 )  
+90%   ( 1.299,  1.987 )   ( 1.292,  1.957 )   
+95%   ( 1.266,  2.085 )   ( 1.254,  2.058 )  
 Calculations and Intervals on Original Scale
 > 
 > # studentized confidence interval for the two sample 
@@ -414,7 +417,7 @@ boot.ci(boot.out = grav1.boot, type = c("stud", "norm"))
 
 Intervals : 
 Level      Normal            Studentized     
-95%   (-5.880,  0.183 )   (-7.059, -0.101 )  
+95%   (-5.897,  0.190 )   (-7.370, -0.052 )  
 Calculations and Intervals on Original Scale
 > 
 > # Nonparametric confidence intervals for mean failure time 
@@ -437,10 +440,10 @@ boot.ci(boot.out = air.boot, type = c("norm", "basic", "perc",
 
 Intervals : 
 Level      Normal              Basic         
-95%   ( 35.5, 181.9 )   ( 26.0, 170.6 )  
+95%   ( 32.2, 184.5 )   ( 21.2, 169.4 )  
 
 Level    Studentized          Percentile     
-95%   ( 47.9, 294.5 )   ( 45.6, 190.2 )  
+95%   ( 45.6, 295.8 )   ( 46.8, 195.0 )  
 Calculations and Intervals on Original Scale
 > 
 > # Now using the log transformation
@@ -459,10 +462,10 @@ boot.ci(boot.out = air.boot, type = c("norm", "basic", "perc",
 
 Intervals : 
 Level      Normal              Basic         
-95%   ( 4.035,  5.469 )   ( 4.118,  5.546 )  
+95%   ( 4.015,  5.491 )   ( 4.093,  5.521 )  
 
 Level    Studentized          Percentile     
-95%   ( 3.959,  5.808 )   ( 3.820,  5.248 )  
+95%   ( 3.922,  5.808 )   ( 3.845,  5.273 )  
 Calculations and Intervals on  Transformed Scale
 > 
 > # Method 2
@@ -481,10 +484,10 @@ boot.ci(boot.out = air.boot, type = c("norm", "basic", "perc",
 
 Intervals : 
 Level      Normal              Basic         
-95%   ( 4.069,  5.435 )   ( 4.118,  5.546 )  
+95%   ( 4.070,  5.435 )   ( 4.093,  5.521 )  
 
 Level    Studentized          Percentile     
-95%   ( 3.959,  5.808 )   ( 3.820,  5.248 )  
+95%   ( 3.922,  5.808 )   ( 3.845,  5.273 )  
 Calculations and Intervals on Original Scale
 > 
 > 
@@ -504,9 +507,9 @@ Calculations and Intervals on Original Scale
 > 
 > library(survival)
 
-Attaching package: 'survival'
+Attaching package: ‘survival’
 
-The following object is masked from 'package:boot':
+The following object is masked from ‘package:boot’:
 
     aml
 
@@ -529,16 +532,6 @@ The following object is masked from 'package:boot':
 +      out
 + }
 > aml.case <- censboot(aml, aml.fun, R = 499, strata = aml$group)
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
 Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
   no non-missing arguments to min; returning Inf
 Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
@@ -629,24 +622,6 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
   no non-missing arguments to min; returning Inf
 Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
   no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
 > 
 > 
 > # For the weird bootstrap we must redefine our function slightly since
@@ -665,14 +640,6 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
 + }
 > aml.wei <- censboot(cbind(aml$time, aml$cens), aml.fun1, R = 499,
 +      strata = aml$group,  F.surv = aml.s1, sim = "weird")
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
-Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
-  no non-missing arguments to min; returning Inf
 Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
   no non-missing arguments to min; returning Inf
 Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
@@ -726,7 +693,7 @@ Warning in min(surv$time[inds[1 - surv$surv[inds] >= 0.5]]) :
 > 
 > cleanEx()
 
-detaching 'package:splines', 'package:survival'
+detaching ‘package:splines’, ‘package:survival’
 
 > nameEx("control")
 > ### * control
@@ -749,7 +716,7 @@ detaching 'package:splines', 'package:survival'
 + }
 > air.boot <- boot(aircondit, mean.fun, R = 999)
 > control(air.boot, index = 2, bias.adj = TRUE)
-[1] -6.298101
+[1] -11.25369
 > air.cont <- control(air.boot, index = 2)
 > # Now let us try the variance on the log scale.
 > air.cont1 <- control(air.boot, t0 = log(air.boot$t0[2]),
@@ -777,7 +744,7 @@ detaching 'package:splines', 'package:survival'
 > (cv.err <- cv.glm(mammals, mammals.glm)$delta)
 [1] 0.4918650 0.4916571
 > (cv.err.6 <- cv.glm(mammals, mammals.glm, K = 6)$delta)
-[1] 0.4851491 0.4834641
+[1] 0.4911574 0.4887828
 > 
 > # As this is a linear model we could calculate the leave-one-out 
 > # cross-validation estimate without any extra model-fitting.
@@ -796,7 +763,7 @@ detaching 'package:splines', 'package:survival'
 > (cv.err <- cv.glm(nodal, nodal.glm, cost, K = nrow(nodal))$delta)
 [1] 0.1886792 0.1886792
 > (cv.11.err <- cv.glm(nodal, nodal.glm, cost, K = 11)$delta)
-[1] 0.2264151 0.2217871
+[1] 0.2075472 0.2057672
 > 
 > 
 > 
@@ -821,10 +788,10 @@ detaching 'package:splines', 'package:survival'
  [7]  0.09236345  0.20365074  1.02178280  0.73381132
 > city.boot <- boot(city, ratio, 499, stype="w")
 > empinf(boot.out = city.boot, type = "reg")
-          1           1           1           1           1           1 
--1.13619987 -0.69728210 -0.45301061 -0.27615882  0.02108999  0.14896336 
-          1           1           1           1 
- 0.09746429  0.20622340  1.18798956  0.90092079 
+           1            1            1            1            1            1 
+-1.188052737 -0.702204565 -0.447209091 -0.378938644  0.007498044  0.162261064 
+           1            1            1            1 
+ 0.116272627  0.242543405  1.166357773  1.021472124 
 > 
 > # A statistic that may be of interest in the difference of means
 > # problem is the t-statistic for testing equality of means.  In
@@ -852,13 +819,13 @@ detaching 'package:splines', 'package:survival'
 > grav.z <- (grav.boot$t[,1]-grav.boot$t0[1])/sqrt(grav.boot$t[,2])
 > empinf(boot.out = grav.boot, t = grav.z)
          1          1          1          1          1          1          1 
--2.9326019 -1.3760327 -2.4400720 -1.2175846  0.2795352 -0.8258764 -0.8156286 
+-2.7187022 -0.9515832 -2.4507504 -1.3409041  0.6167772 -1.2768844 -1.3438236 
          1          1          1          1          1          1          2 
--0.5573332 -1.1275252 -3.1603140  1.2840693  3.5434781  9.3458860  2.6692589 
+-0.2313133 -1.0504975 -3.1949223  1.2809344  3.7306567  8.9310126  2.7195701 
          2          2          2          2          2          2          2 
- 4.4496570  3.6948000  0.9929002 -3.0100985 -3.2237464 -2.5493305 -0.6551745 
+ 4.1111581  3.1632367  1.1507436 -2.2930450 -2.7667452 -2.3645554 -0.2002981 
          2          2          2          2          2 
- 1.9065308  0.4980530 -1.6219628 -1.6980508 -1.4528364 
+ 2.0526618  0.3615873 -1.9421623 -2.1031282 -1.8890234 
 > 
 > 
 > 
@@ -1816,19 +1783,19 @@ The optimal value of the objective  function is 41400.
 > 
 > # Estimated p-values can be found from these as follows
 > mean(grav.boot$t[, 3] >= grav.z0[3])
-[1] 0.01402806
+[1] 0.0240481
 > imp.prob(grav.boot2, t0 = -grav.z0[3], t = -grav.boot2$t[, 3])
 $t0
 [1] -1.840118
 
 $raw
-[1] 0.02163715
+[1] 0.02254379
 
 $rat
-[1] 0.02099078
+[1] 0.02409135
 
 $reg
-[1] 0.02174393
+[1] 0.02224027
 
 > 
 > 
@@ -1837,7 +1804,7 @@ $reg
 > # probability.  Raw resampling is not reliable for probabilities
 > # greater than 0.5. Thus
 > 1 - imp.prob(grav.boot2, index = 3, t0 = grav.z0[3])$raw
-[1] -0.009155757
+[1] 0.08678105
 > # can give very strange results (negative probabilities).
 > 
 > 
@@ -1877,8 +1844,8 @@ TILTED BOOTSTRAP
 
 Exponential tilting used
 First 249 replicates untilted,
-Next 375 replicates tilted to -2.821,
-Next 375 replicates tilted to 1.636.
+Next 375 replicates tilted to -2.648,
+Next 375 replicates tilted to 1.879.
 
 Call:
 tilt.boot(data = grav1, statistic = grav.fun, R = c(249, 375, 
@@ -1888,9 +1855,9 @@ tilt.boot(data = grav1, statistic = grav.fun, R = c(249, 375,
 
 Bootstrap Statistics :
     original     bias    std. error
-t1* 2.846154 -0.4487564    2.500644
-t2* 2.392353 -0.3221155    1.187574
-t3* 0.000000 -0.8862944    2.208945
+t1* 2.846154 -0.2728113    2.513218
+t2* 2.392353 -0.2450416    1.187570
+t3* 0.000000 -0.7305799    2.152173
 > 
 > 
 > #  Example 9.10 of Davison and Hinkley (1997) requires a balanced 
@@ -1981,24 +1948,24 @@ t3* 0.000000 -0.8862944    2.208945
 > # proceed as follows.
 > table(lynx.1$t[, 1])
 
- 2  3  4  5  7  8 10 11 12 13 14 
-16 19 38  4  6  3  1  9  1  1  1 
+ 2  3  4  5  6  7  8 10 11 13 14 
+16 21 41  4  3  5  3  1  3  1  1 
 > table(lynx.1b$t[, 1])
 
- 2  3  4  5  6  7  8 11 12 14 15 
- 6  2 22  6  4  6  3 40  7  1  2 
+ 2  3  4  5  6  7  9 10 11 12 13 15 16 
+ 2  5 24  3  2  8  2  3 38  8  2  1  1 
 > table(lynx.2$t[, 1])
 
- 2  3  4  5  6  7  8 10 11 13 
-12 18 51  5  2  3  1  2  4  1 
+ 2  3  4  5  6  7  9 11 12 13 15 17 24 
+18 20 41  3  4  1  1  4  1  3  1  1  1 
 > table(lynx.2b$t[, 1])
 
- 2  3  4  5  6  7  8  9 10 11 12 13 15 21 
- 2  1 21  4  1 10  4  1  3 45  3  1  2  1 
+ 2  3  4  5  6  7  8 10 11 12 14 15 
+ 1  3 31  7  1  6  4  3 35  4  3  1 
 > table(lynx.3$t[, 1])
 
- 2  3  4  5  6  7  8  9 10 11 12 13 14 15 
- 4  8 11  2  1  4  2  2  2 54  6  1  1  1 
+ 2  3  4  5  6  7  8  9 10 11 12 13 14 16 
+ 4  2 11  1  3  6  3  2  2 50  7  6  1  1 
 > # Notice that the post-blackened and model-based bootstraps preserve
 > # the true order of the model (11) in many more cases than the others.
 > 
@@ -2026,9 +1993,10 @@ t3* 0.000000 -0.8862944    2.208945
 > 
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  29.023 0.078 29.298 0 0 
+Time elapsed:  44.104 0.665 45.086 0 0 
 > grDevices::dev.off()
 null device 
           1 

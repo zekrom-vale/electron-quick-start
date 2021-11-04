@@ -29,7 +29,7 @@ summary(plantT2)
 
 (mon.pl2 <- mona(plantT2, trace = TRUE))
 
-
+suppressWarnings(RNGversion("3.5.0")) # back compatibility of results
 set.seed(1)
 ani.N1 <- animals; ani.N1[cbind(sample.int(20, 10), sample.int(6, 10, replace=TRUE))] <- NA
 (maniN <- mona(ani.N1, trace=TRUE))
@@ -56,8 +56,6 @@ try( mona(ani.non2) )
 try( mona(ani.idNA) )
 
 if(require(MASS, lib.loc=.Library)) withAutoprint({
-    if(R.version$major != "1" || as.numeric(R.version$minor) >= 7)
-        RNGversion("1.6")
     set.seed(253)
     n <- 512; p <- 3
     Sig <- diag(p); Sig[] <- 0.8 ^ abs(col(Sig) - row(Sig))
@@ -75,7 +73,9 @@ if(require(MASS, lib.loc=.Library)) withAutoprint({
 
 try(
 mona(cbind(1:0), trace=2)
-) ## error: need p >= 2
+) -> et ## error: need p >= 2
+stopifnot(inherits(et, "try-error"),
+          grepl("needs at least p >= 2", et))
 ## in the past, gave
 ## Loop npass = 1: (ka,kb) = (1,2)
 ##   for(j ..) -> jma=1, jtel(.,z) = (17952088, 8) --> splitting: (nel; jres, ka, km) = (1; -17952086, 1, 17952089)

@@ -22,7 +22,8 @@ stopifnot(
     84 == sum(vapply(lapply(fm1, fitted), length, 1L)) # total deg.freedom
    , ## confint() :
     is.list(cnL1), identical(names(cnL1), names(fm1)),
-    sapply(cnL1, class) == "matrix",
+    vapply(cnL1, is.matrix, NA),
+    vapply(cnL1, dim, c(NA,0L)) == 3:2,
     identical(unname(sapply(cnL1, dim)), matrix(3:2, 2, length(fm1))),
     sapply(cnL1, is.finite)
     )

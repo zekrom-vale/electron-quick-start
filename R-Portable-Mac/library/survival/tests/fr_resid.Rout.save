@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2016-01-29 r70039) -- "Unsuffered Consequences"
-Copyright (C) 2016 The R Foundation for Statistical Computing
-Platform: i686-pc-linux-gnu (32-bit)
+R Under development (unstable) (2018-09-18 r75322) -- "Unsuffered Consequences"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -263,15 +263,16 @@ frailty(id, dist = "gauss                            26.54461 14.7 0.0294
 Iterations: 6 outer, 39 Newton-Raphson
      Variance of random effect= 0.569 
 Degrees of freedom for terms=  0.5  0.5 14.7 
-Likelihood ratio test=47.5  on 15.7 df, p=4.65e-05  n= 76 
+Likelihood ratio test=47.5  on 15.7 df, p=5e-05
+n= 76, number of events= 58 
 > kfitx
 Call:
 coxph(formula = Surv(time, status) ~ age + sex + offset(temp), 
     data = kidney, init = kfit1$coef, iter = 0)
 
-        coef exp(coef) se(coef)     z     p
-age  0.00471   1.00472  0.00875  0.54  0.59
-sex -1.41082   0.24394  0.30916 -4.56 5e-06
+         coef exp(coef)  se(coef)      z        p
+age  0.004713  1.004724  0.008749  0.539     0.59
+sex -1.410822  0.243943  0.309164 -4.563 5.03e-06
 
 Likelihood ratio test=0  on 2 df, p=1
 n= 76, number of events= 58 
@@ -354,10 +355,11 @@ frailty(id, dist = "gauss                      23 13.8 0.057
 Iterations: 7 outer, 39 Newton-Raphson
      Variance of random effect= 0.458 
 Degrees of freedom for terms= 13.8 
-Likelihood ratio test=33.4  on 13.8 df, p=0.00234  n= 76 
+Likelihood ratio test=33.4  on 13.8 df, p=0.002
+n= 76, number of events= 58 
 > 
 > 
 > 
 > proc.time()
    user  system elapsed 
-  0.248   0.020   0.262 
+  0.861   0.052   0.907 

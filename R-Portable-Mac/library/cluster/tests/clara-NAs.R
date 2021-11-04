@@ -41,6 +41,7 @@ x <- x[-33,]
 clara(x, 2, samples = 12, trace = 3)
 
 data(xclara)
+suppressWarnings(RNGversion("3.5.0")) # back compatibility of results
 set.seed(123)
 xclara[sample(nrow(xclara), 50),] <- NA
 try( clara(xclara, k = 3) ) #-> "nice" error message depicting first 12 missing obs

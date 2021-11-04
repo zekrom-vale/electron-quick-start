@@ -1,12 +1,13 @@
 Package: stats
-Version: 3.5.0
+Version: 4.1.2
 Priority: base
 Title: The R Stats Package
 Author: R Core Team and contributors worldwide
-Maintainer: R Core Team <R-core@r-project.org>
+Maintainer: R Core Team <do-use-Contact-address@r-project.org>
+Contact: R-help mailing list <r-help@r-project.org>
 Description: R statistical functions.
-License: Part of R 3.5.0
+License: Part of R 4.1.2
 Imports: utils, grDevices, graphics
 Suggests: MASS, Matrix, SuppDists, methods, stats4
 NeedsCompilation: yes
-Built: R 3.5.0; x86_64-apple-darwin15.6.0; 2018-04-24 18:39:31 UTC; unix
+Built: R 4.1.2; x86_64-apple-darwin17.0; 2021-11-01 20:58:26 UTC; unix

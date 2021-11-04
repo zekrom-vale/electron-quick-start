@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2016-05-06 r70588) -- "Unsuffered Consequences"
-Copyright (C) 2016 The R Foundation for Statistical Computing
-Platform: i686-pc-linux-gnu (32-bit)
+R Under development (unstable) (2020-06-10 r78681) -- "Unsuffered Consequences"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -56,10 +56,8 @@ Type 'q()' to quit R.
 [1] TRUE
 > 
 > #
-> # Test of residuals, in response to a reported bug.  The routines for
-> #  m-resids of penalized models were separate from other m-resid calcs;
-> #  refactored to change that.
-> #  These are three progam paths that should all lead to the same C routine
+> # Test of residuals, in response to a reported bug.  
+> # These are three progam paths that should all lead to the same C routine
 > fit <- coxph(Surv(tstart, tstop, status) ~ sex + treat + pspline(age), cgd)
 > fit2 <- coxph(Surv(tstart, tstop, status) ~ fit$linear, cgd, iter=0, init=1)
 > fit3 <- coxph(Surv(tstart, tstop, status) ~ offset(fit$linear), cgd)
@@ -74,6 +72,9 @@ Type 'q()' to quit R.
 > fit4 <-  coxph(Surv(tstart, tstop, status) ~ sex + treat + pspline(age),
 +                cgd, ties='breslow')
 > dt <- coxph.detail(fit4, riskmat=TRUE)
+> 
+> # the results of coxph.detail used to be in time order, now are in data set
+> #  order
 > rscore <- exp(fit4$linear)
 > exp4 <- (rscore *dt$riskmat) %*% dt$hazard
 > r4 <- cgd$status - exp4
@@ -82,4 +83,4 @@ Type 'q()' to quit R.
 > 
 > proc.time()
    user  system elapsed 
-  1.296   0.032   1.323 
+  0.853   0.088   0.934 

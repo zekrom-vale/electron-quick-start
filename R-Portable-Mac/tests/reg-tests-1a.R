@@ -3,7 +3,7 @@
 pdf("reg-tests-1a.pdf", encoding = "ISOLatin1.enc")
 
 ## force standard handling for data frames
-options(stringsAsFactors=TRUE)
+options(stringsAsFactors=FALSE) # R >= 4.0.0
 ## .Machine
 (Meps <- .Machine$double.eps)# and use it in this file
 ## Facilitate diagnosing of testing startup:
@@ -87,7 +87,7 @@ stopifnot(range(z) == z,
 
 
 ## autoload
-stopifnot(ls("Autoloads") == ls(envir = .AutoloadEnv))
+stopifnot(ls("Autoloads") == ls(envir = .AutoloadEnv), allow.logical0=TRUE)
 ## end of moved from autoload.Rd
 
 
@@ -704,7 +704,7 @@ for(n in 1:20) {
     for(x in list(z, round(z,1))) { ## 2nd one has ties
        qxi <- sort(x,  method = "quick",  index.return = TRUE)
        stopifnot(qxi$x == sort(x, method = "shell"),
-		 any(duplicated(x)) || qxi$ix == order(x),
+		 any(duplicated(x)) || all(qxi$ix == order(x)),
 		 x[qxi$ix] == qxi$x)
    }
 }
@@ -795,10 +795,9 @@ stopifnot(
  log2(.Machine$double.xmax) == .Machine$double.max.exp,
  log2(.Machine$double.xmin) == .Machine$double.min.exp
 )
-# This test fails on HP-UX since pow(2,1024) returns DBL_MAX and sets
+# This test failed on HP-UX since pow(2,1024) returns DBL_MAX and sets
 # errno = ERANGE.  Most other systems return Inf and set errno
-if (Sys.info()["sysname"] != "HP-UX")
-    stopifnot(is.infinite(.Machine$double.base ^ .Machine$double.max.exp))
+stopifnot(is.infinite(.Machine$double.base ^ .Machine$double.max.exp))
 ## end of moved from zMachine.Rd
 
 
@@ -1236,9 +1235,9 @@ glm(y ~ 0, family = binomial)
 
 
 ## Integer overflow in type.convert
-res <- type.convert("12345689")
+res <- type.convert("12345689", as.is=FALSE)
 stopifnot(typeof(res) == "integer")
-res <- type.convert("12345689012")
+res <- type.convert("12345689012", as.is=FALSE)
 stopifnot(typeof(res) == "double")
 ##  Comments: was integer in 1.4.0
 
@@ -1576,7 +1575,7 @@ stopifnot(is.character(x$var))
 is.na(x[[1]]) <- 2
 stopifnot(is.character(x$var))
 
-x <- data.frame(var = LETTERS[1:3])
+x <- data.frame(var = factor(LETTERS[1:3]))
 x[[1]][2] <- "3"
 x
 stopifnot(is.factor(x$var))
@@ -1879,11 +1878,11 @@ stopifnot(identical(dimnames(z), dimnames(a)))
 ## internal conversion to factor in type.convert was not right
 ## if a character string NA was involved.
 x <- c(NA, "NA", "foo")
-(z <- type.convert(x))
+(z <- type.convert(x, as.is=FALSE))
 stopifnot(identical(levels(z), "foo"))
-(z <- type.convert(x, na.strings=character(0)))
+(z <- type.convert(x, na.strings=character(0), as.is=FALSE))
 stopifnot(identical(levels(z), sort(c("foo", "NA"))))
-(z <- type.convert(x, na.strings="foo"))
+(z <- type.convert(x, na.strings="foo", as.is=FALSE))
 stopifnot(identical(levels(z), "NA"))
 ## extra level in 1.6.1
 
@@ -1891,7 +1890,7 @@ stopifnot(identical(levels(z), "NA"))
 ## related example
 tmp <- tempfile()
 cat(c("1", "foo", "\n", "2", "NA", "\n"), file = tmp)
-(z <- read.table(tmp, na.strings="foo"))
+(z <- read.table(tmp, na.strings="foo", stringsAsFactors=TRUE))
 unlink(tmp)
 stopifnot(identical(levels(z$V2), "NA"),
 	  identical(is.na(z$V2), c(TRUE, FALSE)))
@@ -2013,12 +2012,31 @@ stopifnot(identical(as.character(i), dimnames(table(fi))[[1]]))
 
 ## [lm.]influence() for multivariate lm :
 n <- 32
-Y <- matrix(rnorm(3 * n), n, 3)
+Y0 <- matrix(rnorm(3 * n), n, 3) # and a version with named Y's
+Yn <- Y0; colnames(Yn) <- paste0("Y",1:3)
 X <- matrix(rnorm(5 * n), n, 5)
-infm <- lm.influence(mod <- lm(Y ~ X))
-## failed up to 2003-03-29 (pre 1.7.0)
-im1 <- influence.measures(mod)
-stopifnot(all.equal(unname(im1$infmat[,1:6]), unname(dfbetas(mod))))
+for(Y in list(Y0, Yn)) {
+    fmL <- lapply(1:3, function(j) lm(Y[,j] ~ X))
+    infL <- lapply(fmL, lm.influence)
+    infm <- lm.influence(mod <- lm(Y ~ X))
+    if(interactive()) str(infL, give.attr=FALSE) # should match the 'infm' parts
+    ## 1. "hat" are all the 3 the same
+    hatL <- sapply(infL, `[[`, "hat")
+    stopifnot(all.equal(hatL[,1], hatL[,2]), all.equal(hatL[,2], hatL[,3]))
+    ## 2. the other 3 components should be "concatenated" to give same as mlm :
+    for(nm in c("coefficients", "sigma", "wt.res")) {
+        stopifnot(all.equal(unname(infm[[nm]]),
+                            unname(sapply(infL, `[[`, nm, simplify="array",
+                                          USE.NAMES=FALSE))))
+    }
+    ## failed up to 2003-03-29 (pre 1.7.0)
+    im1 <- influence.measures(mod)
+    dfbs <- dfbetas(mod)
+    dimnames(dfbs)[[3]] <- dimnames(im1$infmat)[[3]][1:6]
+    stopifnot(all.equal(im1$infmat[,,1:6], dfbs))
+}# for both Y's
+## lm.influence() did not work correctly for "mlm"s in R <= 3.5.1
+
 
 ## rbind.data.frame with character and ordered columns
 A <- data.frame(a=1)
@@ -2034,26 +2052,26 @@ B <- data.frame(a=7:9, b=ordered(letters[7:9]))
 AB <- rbind(A,B)
 (cl <- sapply(AB, class))
 stopifnot(cl$b[1] == "ordered") # was factor in 1.6.2
-C <- data.frame(a=4:6, b=letters[4:6])
+C <- data.frame(a=4:6, b=factor(letters[4:6]))
 ABC <- rbind(AB, C)
 (cl <- sapply(ABC, class))
 stopifnot(cl[2] == "factor")
 
 A <- data.frame(a=1)
 A$b <- "A"
-B <- data.frame(a=2, b="B")
+B <- data.frame(a=2, b=factor("B"))
 (AB <- rbind(A,B))
 (cl <- sapply(AB, class))
 stopifnot(cl[2] == "character")
 
-A <- data.frame(a=1, b="A")
+A <- data.frame(a=1, b=factor("A"))
 B <- data.frame(a=2)
 B$b <- "B"
 (AB <- rbind(A,B))
 (cl <- sapply(AB, class))
 stopifnot(cl[2] == "factor")
-A <- data.frame(a=c("A", NA, "C"))
-B <- data.frame(a=c("B", NA, "C"))
+A <- data.frame(a=factor(c("A", NA, "C")))
+B <- data.frame(a=factor(c("B", NA, "C")))
 (AB <- rbind(A,B))
 stopifnot(levels(AB$a) == c("A", "C", "B"))
 A <- data.frame(a=I(c("A", NA, "C")))
@@ -2069,7 +2087,7 @@ B <- data.frame(a=2, b=I("B"))
 (cl <- sapply(AB, class))
 stopifnot(cl[2] == "character")
 
-A <- data.frame(a=1, b="A")
+A <- data.frame(a=1, b=factor("A"))
 B <- data.frame(a=2, b=I("B"))
 (AB <- rbind(A,B))
 (cl <- sapply(AB, class))
@@ -2089,7 +2107,7 @@ stopifnot(identical(hc, hhc <- as.hclust(hc)),
           identical(hcn$labels, rownames(xn))
           )
 
-if(require(cluster)) { # required package
+if(require(cluster, quietly = TRUE)) { # required package
   ag <- agnes(x, method="complete")
   hcag <- as.hclust(ag)
   agn <- agnes(xn, method="complete")
@@ -2339,7 +2357,7 @@ attach(list(.Random.seed=c(0:4)))
 x <- runif(1)
 detach(2)
 (new <- RNGkind())
-stopifnot(identical(new, c("Mersenne-Twister", "Inversion")))
+stopifnot(identical(new, c("Mersenne-Twister", "Inversion", "Rejection")))
 stopifnot(identical(find(".Random.seed"), ".GlobalEnv"))
 ## took from and assigned to list in 1.7.x.
 
@@ -2943,7 +2961,7 @@ anova(tmp.aov)
 model.tables(tmp.aov, type="means")
 ## failed in 1.9.1.
 
-if(require(survival)) { # required package
+if(require(survival, quietly = TRUE)) { # required package
   a <- Surv(1:4, 2:5, c(0,1,1,0))
   str(a)
   str(a[rep(1:4,3)], vec.len = 7)
@@ -4209,11 +4227,13 @@ stopifnot(identical(x, xx))
 ## Allowed in R < 2.4.0, but corrupted tsp.
 
 
-## Looking up generic in UseMethod
-mycoef <- function(object, ....) UseMethod("coef")
-x <- list(coefficients=1:3)
-mycoef(x)
-## failed to find default method < 2.4.0
+## This only "works" by having an S3 generic use the registry
+## of another S3 generic, which seems a very bad idea.
+## ## Looking up generic in UseMethod
+## mycoef <- function(object, ....) UseMethod("coef")
+## x <- list(coefficients=1:3)
+## mycoef(x)
+## ## failed to find default method < 2.4.0
 
 
 ## regression tests on changes to model.frame and model.matrix

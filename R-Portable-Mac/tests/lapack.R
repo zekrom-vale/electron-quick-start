@@ -50,7 +50,7 @@ eigenok <- function(A, E, Eps=1000*.Machine$double.eps)
     print(zapsmall(E$values))
     V <- E$vectors; lam <- E$values
     stopifnot(abs(A %*% V - V %*% diag(lam)) < Eps,
-              abs(lam[length(lam)]/lam[1]) < Eps || # this one not for singular A :
+              abs(lam[length(lam)]/lam[1]) < Eps | # this one not for singular A :
               abs(A - V %*% diag(lam) %*% t(V)) < Eps)
 }
 
@@ -143,7 +143,10 @@ As[upper.tri(A)] <- t(A)[upper.tri(A)]
 det(As)
 E <- eigen(As)
 E$values
-zapsmall(E$vectors)
+## The eigenvectors are of arbitrary sign, so we fix the first element to
+## be positive for cross-platform comparisons.
+Ev <- E$vectors
+zapsmall(Ev * rep(sign(Ev[1, ]), each = 5))
 solve(As)
 
 ## quite hard to come up with an example where this might make sense.

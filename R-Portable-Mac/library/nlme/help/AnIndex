@@ -49,6 +49,7 @@ coef.reStruct	coef.reStruct
 coef.summary.nlsList	coef.corStruct
 coef.varComb	coef.varFunc
 coef.varConstPower	coef.varFunc
+coef.varConstProp	coef.varFunc
 coef.varExp	coef.varFunc
 coef.varFixed	coef.varFunc
 coef.varFunc	coef.varFunc
@@ -73,6 +74,7 @@ coef<-.pdMat	coef.pdMat
 coef<-.reStruct	coef.reStruct
 coef<-.varComb	coef.varFunc
 coef<-.varConstPower	coef.varFunc
+coef<-.varConstProp	coef.varFunc
 coef<-.varExp	coef.varFunc
 coef<-.varFixed	coef.varFunc
 coef<-.varIdent	coef.varFunc
@@ -92,10 +94,10 @@ corClasses	corClasses
 corCompSymm	corCompSymm
 corExp	corExp
 corFactor	corFactor
-corFactor.compSymm	corFactor.corStruct
 corFactor.corAR1	corFactor.corStruct
 corFactor.corARMA	corFactor.corStruct
 corFactor.corCAR1	corFactor.corStruct
+corFactor.corCompSymm	corFactor.corStruct
 corFactor.corNatural	corFactor.corStruct
 corFactor.corSpatial	corFactor.corStruct
 corFactor.corStruct	corFactor.corStruct
@@ -104,7 +106,6 @@ corGaus	corGaus
 corIdent	corClasses
 corLin	corLin
 corMatrix	corMatrix
-corMatrix.compSymm	corMatrix.corStruct
 corMatrix.corAR1	corMatrix.corStruct
 corMatrix.corARMA	corMatrix.corStruct
 corMatrix.corCAR1	corMatrix.corStruct
@@ -226,6 +227,7 @@ Initialize.lmeStruct	Initialize.lmeStruct
 Initialize.reStruct	Initialize.reStruct
 Initialize.varComb	Initialize.varFunc
 Initialize.varConstPower	Initialize.varFunc
+Initialize.varConstProp	Initialize.varFunc
 Initialize.varExp	Initialize.varFunc
 Initialize.varFixed	Initialize.varFunc
 Initialize.varFunc	Initialize.varFunc
@@ -486,6 +488,7 @@ summary.pdSymm	summary.pdMat
 summary.reStruct	summary.modelStruct
 summary.varComb	summary.varFunc
 summary.varConstPower	summary.varFunc
+summary.varConstProp	summary.varFunc
 summary.varExp	summary.varFunc
 summary.varFixed	summary.varFunc
 summary.varFunc	summary.varFunc
@@ -503,6 +506,7 @@ update.nlsList	nlsList
 update.reStruct	update.modelStruct
 update.varComb	update.varFunc
 update.varConstPower	update.varFunc
+update.varConstProp	update.varFunc
 update.varExp	update.varFunc
 update.varExpon	update.varFunc
 update.varFunc	update.varFunc
@@ -510,6 +514,7 @@ update.varPower	update.varFunc
 varClasses	varClasses
 varComb	varComb
 varConstPower	varConstPower
+varConstProp	varConstProp
 VarCorr	VarCorr
 VarCorr.lme	VarCorr
 VarCorr.pdBlocked	VarCorr

@@ -1,6 +1,6 @@
 /* -*- C -*-
  *  Mathlib : A C Library of Special Functions
- *  Copyright (C) 1998-2018  The R Core Team
+ *  Copyright (C) 1998-2020  The R Core Team
  *  Copyright (C) 2004       The R Foundation
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -37,10 +37,6 @@
 #endif
 #if defined(__cplusplus) && !defined(DO_NOT_USE_CXX_HEADERS)
 # include <cmath>
-// See comment in R.h
-# ifdef __SUNPRO_CC
-using namespace std;
-# endif
 #else
 # include <math.h>
 #endif
@@ -52,9 +48,9 @@ using namespace std;
 /*-- Mathlib as part of R --  define this for standalone : */
 /* #undef MATHLIB_STANDALONE */
 
-#define R_VERSION_STRING "3.5.0"
+#define R_VERSION_STRING "4.1.2"
 
-// Legacy defines -- C99 functions which R >= 3.5.0 reauires
+// Legacy defines -- C99 functions which R >= 3.5.0 requires
 #ifndef HAVE_EXPM1
 # define HAVE_EXPM1 1
 #endif
@@ -254,6 +250,7 @@ double  Rlog1p(double);
 #define lgammafn	Rf_lgammafn
 #define lgammafn_sign	Rf_lgammafn_sign
 #define lgamma1p	Rf_lgamma1p
+#define log1mexp       	Rf_log1mexp
 #define log1pexp       	Rf_log1pexp
 #define log1pmx		Rf_log1pmx
 #define logspace_add	Rf_logspace_add
@@ -361,6 +358,7 @@ double R_pow_di(double, int);
 
 double	norm_rand(void);
 double	unif_rand(void);
+double  R_unif_index(double);
 double	exp_rand(void);
 #ifdef MATHLIB_STANDALONE
 void	set_seed(unsigned int, unsigned int);
@@ -391,6 +389,7 @@ double	rgamma(double, double);
 
 double  log1pmx(double);
 double  log1pexp(double); // <-- ../nmath/plogis.c
+double  log1mexp(double);
 double  lgamma1p(double);
 double  logspace_add(double, double);
 double  logspace_sub(double, double);

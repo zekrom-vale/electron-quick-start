@@ -1,11 +1,13 @@
 
-R version 3.5.0 alpha (2018-03-28 r74481)
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 3.5.3 Patched (2019-03-11 r76305) -- "Great Truth"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -18,6 +20,7 @@ Type 'q()' to quit R.
 > library(cluster)
 > 
 > ## generate 1500 objects, divided into 2 clusters.
+> suppressWarnings(RNGversion("3.5.0")) # << as long as we don't have R >= 3.6.0
 > set.seed(144)
 > x <- rbind(cbind(rnorm(700, 0,8), rnorm(700, 0,8)),
 +            cbind(rnorm(800,50,8), rnorm(800,10,8)))
@@ -1483,10 +1486,10 @@ $sample
 > 
 > ## Last Line:
 > cat('Time elapsed: ', proc.time() - .proctime00,'\n')
-Time elapsed:  2.25 0.018 2.284 0 0 
+Time elapsed:  1.4 0.013 1.433 0 0 
 > ## Lynne (P IV, 1.6 GHz): 18.81; then (no NA; R 1.9.0-alpha): 15.07
 > ## nb-mm (P III,700 MHz): 27.97
 > 
 > proc.time()
    user  system elapsed 
-  2.382   0.050   2.491 
+  1.674   0.102   1.917 

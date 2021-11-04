@@ -1,7 +1,7 @@
 
-R version 3.4.3 Patched (2018-02-11 r74243) -- "Kite-Eating Tree"
-Copyright (C) 2018 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin17.4.0 (64-bit)
+R version 3.5.2 Patched (2019-01-14 r75994) -- "Eggshell Igloo"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -101,6 +101,16 @@ Number of Groups: 26
 + 	   control = lmeControl(msMaxIter = 1, returnObject = TRUE))
 + )
 > 
+> ## "typo" in 'random=' -- giving 27-dim. vector random effect:
+> ## PR#17524 B.Tyner: https://bugs.r-project.org/show_bug.cgi?id=17524
+>                try(lme(distance ~ 1,   data=Orthodont, random = ~ Subject))
+Error in lme.formula(distance ~ 1, data = Orthodont, random = ~Subject) : 
+  fewer observations than random effects in all level 1 groups
+> tools::assertError(lme(distance ~ age, data=Orthodont, random = ~ Subject))
+> ## seg.faults in nlme <= 3.1-137 (2018) because of integer overflow
+> ## The previous warning is now an *error* (unless new lmeControl(allow.n.lt.q=TRUE))
+> 
+> 
 > ## based on bug report on R-help
 > (p3.1 <- predict(fm3, Orthodont[1,]))
     M01 
@@ -198,4 +208,4 @@ Number of Groups: 27
 > 
 > proc.time()
    user  system elapsed 
-  2.627   0.110   2.787 
+  1.376   0.138   1.653 

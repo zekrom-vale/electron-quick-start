@@ -3,6 +3,9 @@ library(Matrix)
 
 source(system.file("test-tools.R", package = "Matrix"))
 
+## from ../R/Auxiliaries.R :
+no_facts <- Matrix:::.drop.factors
+
 ## the empty ones:
 checkMatrix(new("dgeMatrix"))
 checkMatrix(Matrix(,0,0))
@@ -41,7 +44,7 @@ checkMatrix(dcm <- as(cm, "dgeMatrix"))#'dge'
 checkMatrix(mcm <- as(cm, "dMatrix")) # 'dsy' + factors -- buglet? rather == cm?
 checkMatrix(mc. <- as(cm, "Matrix"))  # dpo --> dsy -- (as above)  FIXME? ??
 stopifnot(identical(mc., mcm),
-	  identical(cm, (2*cm)/2),# remains dpo
+	  identical(no_facts(cm), (2*cm)/2),# remains dpo
 	  identical(cm + cp, cp + cs),# dge
 	  identical(mc., mcm),
 	  all(2*cm == mcm * 2))
@@ -91,7 +94,8 @@ validObject(M <- new("dtCMatrix", Dim = c(n,n), diag = "U",
 		     p = rep.int(0:0, n+1)))
 stopifnot(identical(as.mat(T), diag(n)))
 
-set.seed(3) ; (p9 <- as(sample(9), "pMatrix"))
+suppressWarnings(RNGversion("3.5.0")); set.seed(3)
+(p9 <- as(sample(9), "pMatrix"))
 ## Check that the correct error message is triggered:
 ind.try <- try(p9[1,1] <- 1, silent = TRUE)
 np9 <- as(p9, "ngTMatrix")

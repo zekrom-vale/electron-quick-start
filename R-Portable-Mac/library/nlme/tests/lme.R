@@ -32,6 +32,14 @@ fm1 <- lme(distance ~ age, data = Orthodont,
 	   control = lmeControl(msMaxIter = 1, returnObject = TRUE))
 )
 
+## "typo" in 'random=' -- giving 27-dim. vector random effect:
+## PR#17524 B.Tyner: https://bugs.r-project.org/show_bug.cgi?id=17524
+               try(lme(distance ~ 1,   data=Orthodont, random = ~ Subject))
+tools::assertError(lme(distance ~ age, data=Orthodont, random = ~ Subject))
+## seg.faults in nlme <= 3.1-137 (2018) because of integer overflow
+## The previous warning is now an *error* (unless new lmeControl(allow.n.lt.q=TRUE))
+
+
 ## based on bug report on R-help
 (p3.1 <- predict(fm3, Orthodont[1,]))
 # failed in 3.1-88

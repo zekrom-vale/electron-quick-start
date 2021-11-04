@@ -1,6 +1,6 @@
 
-R version 3.5.0 alpha (2018-03-28 r74481)
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 3.5.3 Patched (2019-03-11 r76305) -- "Great Truth"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -641,6 +641,7 @@ Use  'correct.d=FALSE'  to get previous results or set 'correct.d=TRUE' explicit
 to suppress this warning.
 > 
 > data(xclara)
+> suppressWarnings(RNGversion("3.5.0")) # back compatibility of results
 > set.seed(123)
 > xclara[sample(nrow(xclara), 50),] <- NA
 > try( clara(xclara, k = 3) ) #-> "nice" error message depicting first 12 missing obs

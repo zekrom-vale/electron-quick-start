@@ -1,13 +1,15 @@
 BATCH                   Batch Execution of R
-COMPILE                 Compile Files for Use with R
+COMPILE                 Compile Files for Use with R on Unix-alikes
+DLL.version             DLL Version Information on MS Windows
 INSTALL                 Install Add-on Packages
-LINK                    Create Executable Programs
+LINK                    Create Executable Programs on Unix-alikes
 Question                Documentation Shortcuts
 REMOVE                  Remove Add-on Packages
 RHOME                   R Home Directory
 RShowDoc                Show R Manuals and Other Documentation
 RSiteSearch             Search for Key Words or Phrases in
                         Documentation
+Rconsole                R for Windows Configuration
 Rprof                   Enable Profiling of R's Execution
 Rprofmem                Enable Profiling of R's Memory Use
 Rscript                 Scripting Front-End for R
@@ -16,12 +18,13 @@ RweaveLatex             R/LaTeX Driver for Sweave
 SHLIB                   Build Shared Object/DLL for Dynamic Loading
 Sweave                  Automatic Generation of Reports
 SweaveSyntConv          Convert Sweave Syntax
-URLencode               Encode or Decode a (partial) URL
+URLencode               Encode or Decode (partial) URLs
 View                    Invoke a Data Viewer
 adist                   Approximate String Distances
 alarm                   Alert the User
 apropos                 Find Objects by (Partial) Name
 aregexec                Approximate String Match Positions
+arrangeWindows          Rearrange Windows on MS Windows
 as.roman                Roman Numerals
 askYesNo                Ask a Yes/No Question
 aspell                  Spell Check Interface
@@ -37,11 +40,16 @@ build                   Utilities for Building and Checking Add-on
                         Packages
 capture.output          Send Output to a Character String or File
 changedFiles            Detect which Files Have Changed
+charClass               Character Classification
+choose.dir              Choose a Folder Interactively on MS Windows
+choose.files            Choose a List of Files Interactively on MS
+                        Windows
 chooseBioCmirror        Select a Bioconductor Mirror
 chooseCRANmirror        Select a CRAN Mirror
 citEntry                Bibliography Entries (Older Interface)
 citation                Citing R and R Packages in Publications
 cite                    Cite a Bibliography Entry
+clipboard               Read/Write to/from the Clipboard in MS Windows
 close.socket            Close a Socket
 combn                   Generate All Combinations of n Elements, Taken
                         m at a Time
@@ -74,11 +82,13 @@ getFromNamespace        Utility Functions for Developing Namespaces
 getParseData            Get Detailed Parse Information from Object
 getS3method             Get an S3 Method
 getSrcFilename          Source Reference Utilities
+getWindowsHandle        Get a Windows Handle
+getWindowsHandles       Get handles of Windows in the MS Windows RGui
 glob2rx                 Change Wildcard or Globbing Pattern into
                         Regular Expression
 globalVariables         Declarations Used in Checking a Package
 hasName                 Check for Name
-head                    Return the First or Last Part of an Object
+head                    Return the First or Last Parts of an Object
 help                    Documentation
 help.request            Send a Post to R-help
 help.search             Search the Help System
@@ -95,14 +105,15 @@ ls.str                  List Objects and their Structure
 maintainer              Show Package Maintainer
 make.packages.html      Update HTML Package List
 make.socket             Create a Socket Connection
-memory.size             Report on Memory Allocation
+memory.size             Report on Memory Allocation (on Windows)
 menu                    Menu Interaction Function
 methods                 List Methods for S3 Generic Functions or
                         Classes
 mirrorAdmin             Managing Repository Mirrors
 modifyList              Recursively Modify Elements of a List
 news                    Build and Query R or Package News Information
-nsl                     Look up the IP Address by Hostname
+nsl                     Look up the IP Address by Hostname (on
+                        Unix-alikes)
 object.size             Report the Space Allocated for an Object
 package.skeleton        Create a Skeleton for a New Source Package
 packageDescription      Package Description
@@ -120,15 +131,20 @@ read.fortran            Read Fixed-Format Data in a Fortran-like Style
 read.fwf                Read Fixed Width Format Files
 read.socket             Read from or Write to a Socket
 read.table              Data Input
+readRegistry            Read a Windows Registry Hive
 recover                 Browsing after an Error
 relist                  Allow Re-Listing an unlist()ed Object
 remove.packages         Remove Installed Packages
-removeSource            Remove Stored Source from a Function
+removeSource            Remove Stored Source from a Function or
+                        Language Object
 rtags                   An Etags-like Tagging Utility for R
 savehistory             Load or Save or Display the Commands History
 select.list             Select Items from a List
 sessionInfo             Collect Information About the Current R Session
 setRepositories         Select Package Repositories
+setWindowTitle          Set the Window Title or the Statusbar of the
+                        RGui in Windows
+shortPathName           Express File Paths in Short Form on Windows
 stack                   Stack or Unstack Vectors from a Data Frame or
                         List
 str                     Compactly Display the Structure of an Arbitrary
@@ -148,5 +164,9 @@ utils-deprecated        Deprecated Functions in Package 'utils'
 utils-package           The R Utils Package
 vignette                View, List or Get R Source of Package Vignettes
 warnErrList             Collect and Summarize Errors From List
+win.version             Get Windows Version
+winDialog               Dialog Boxes under Windows
+winMenuAdd              User Menus under MS Windows (Rgui)
+winProgressBar          Progress Bars under MS Windows
 write.table             Data Output
 zip                     Create Zip Archives

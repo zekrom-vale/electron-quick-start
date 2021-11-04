@@ -22,7 +22,7 @@ MatrixFactorization-class
                         Class "MatrixFactorization" of Matrix
                         Factorizations
 RsparseMatrix-class     Class "RsparseMatrix" of Sparse Matrices in
-                        Column-compressed Form
+                        Row-compressed Form
 Schur                   Schur Decomposition of a Matrix
 Schur-class             Class "Schur" of Schur Matrix Factorizations
 SparseM-coerce-methods
@@ -45,8 +45,8 @@ band                    Extract bands of a matrix
 bandSparse              Construct Sparse Banded Matrix from
                         (Sup-/Super-) Diagonals
 bdiag                   Construct a Block Diagonal Matrix
-cBind                   Versions of 'cbind' and 'rbind' recursively
-                        built on cbind2/rbind2
+cBind                   'cbind()' and 'rbind()' recursively built on
+                        cbind2/rbind2
 chol                    Choleski Decomposition - 'Matrix' S4 Generic
                         and Methods
 chol2inv-methods        Inverse from Choleski or QR Decomposition -
@@ -86,7 +86,7 @@ dtCMatrix-class         Triangular, (compressed) sparse column matrices
 dtRMatrix-class         Triangular Sparse Compressed Row Matrices
 dtpMatrix-class         Packed Triangular Dense Matrices - "dtpMatrix"
 dtrMatrix-class         Triangular, dense, numeric matrices
-expand                  Expand a Decomposition into Factors
+expand                  Expand a (Matrix) Decomposition into Factors
 expm                    Matrix Exponential
 facmul                  Multiplication by Decomposition Factors
 forceSymmetric          Force a Matrix to 'symmetricMatrix' Without
@@ -106,7 +106,8 @@ is.na-methods           is.na(), is.infinite() Methods for 'Matrix'
 is.null.DN              Are the Dimnames 'dn' NULL-like ?
 isSymmetric-methods     Methods for Function isSymmetric in Package
                         'Matrix'
-isTriangular            isTriangular() and isDiagonal() Methods
+isTriangular            isTriangular() and isDiagonal() Checking if
+                        Matrix is Triangular or Diagonal
 kronecker-methods       Methods for Function 'kronecker()' in Package
                         'Matrix'
 ldenseMatrix-class      Virtual Class "ldenseMatrix" of Dense Logical
@@ -119,6 +120,7 @@ lsyMatrix-class         Symmetric Dense Logical Matrices
 ltrMatrix-class         Triangular Dense Logical Matrices
 lu                      (Generalized) Triangular Decomposition of a
                         Matrix
+mat2triplet             Map Matrix to its Triplet Representation
 nMatrix-class           Class "nMatrix" of Non-zero Pattern Matrices
 ndenseMatrix-class      Virtual Class "ndenseMatrix" of Dense Logical
                         Matrices
@@ -166,3 +168,4 @@ uniqTsparse             Unique (Sorted) TsparseMatrix Representations
 unpack                  Representation of Packed and Unpacked (Dense)
                         Matrices
 updown                  Up- and Down-Dating a Cholesky Decomposition
+wrld_1deg               World 1-degree grid contiguity matrix

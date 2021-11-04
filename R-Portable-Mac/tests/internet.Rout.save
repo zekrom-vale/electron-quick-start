@@ -1,6 +1,6 @@
 
-R version 3.5.0 RC (2018-04-15 r74605) -- "Joy in Playing"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 4.1.1 Patched (2021-10-12 r81047) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -25,7 +25,7 @@ Type 'q()' to quit R.
 > ap <- available.packages(contrib.url("http://cran.r-project.org"))
 > ## IGNORE_RDIFF_BEGIN
 > nrow(ap)
-[1] 12472
+[1] 18281
 > ## IGNORE_RDIFF_END
 > 
 > # test url connections on http

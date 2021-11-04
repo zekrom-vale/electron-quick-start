@@ -20,6 +20,8 @@ bmp	png
 bold	plotmath
 bolditalic	plotmath
 boxplot.stats	boxplot.stats
+bringToTop	bringToTop
+cairoSymbolFont	cairoSymbolFont
 cairo_pdf	cairo
 cairo_ps	cairo
 check.options	check.options
@@ -77,6 +79,8 @@ group	plotmath
 grSoftVersion	grSoftVersion
 hat	plotmath
 hcl	hcl
+hcl.colors	palettes
+hcl.pals	palettes
 heat.colors	palettes
 Hershey	Hershey
 hsv	hsv
@@ -87,12 +91,15 @@ italic	plotmath
 Japanese	Japanese
 jpeg	png
 make.rgb	make.rgb
+msgWindow	msgWindow
 n2mfrow	n2mfrow
 nclass.FD	nclass
 nclass.scott	nclass
 nclass.Sturges	nclass
 over	plotmath
 palette	palette
+palette.colors	palette
+palette.pals	palette
 pdf	pdf
 pdf.options	pdf.options
 pdfFonts	postscriptFonts
@@ -106,6 +113,7 @@ postscriptFonts	postscriptFonts
 pretty.Date	pretty.Date
 pretty.POSIXt	pretty.Date
 print.recordedplot	recordplot
+print.SavedPlots	windows
 ps.options	ps.options
 quartz	quartz
 quartz.options	quartz
@@ -126,6 +134,7 @@ setEPS	ps.options
 setGraphicsEventEnv	getGraphicsEvent
 setGraphicsEventHandlers	getGraphicsEvent
 setPS	ps.options
+stayOnTop	bringToTop
 sup	plotmath
 svg	cairo
 symbol	plotmath
@@ -138,6 +147,13 @@ Type1Font	Type1Font
 underline	plotmath
 widehat	plotmath
 widetilde	plotmath
+win.graph	windows
+win.metafile	windows
+win.print	windows
+windows	windows
+windows.options	windows.options
+windowsFont	windowsFonts
+windowsFonts	windowsFonts
 X11	x11
 x11	x11
 X11.options	x11
@@ -147,3 +163,4 @@ xfig	xfig
 xy.coords	xy.coords
 xyTable	xyTable
 xyz.coords	xyz.coords
+[.SavedPlots	windows

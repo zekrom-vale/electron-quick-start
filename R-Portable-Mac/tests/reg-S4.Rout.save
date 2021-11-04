@@ -1,6 +1,6 @@
 
-R version 3.5.0 RC (2018-04-15 r74605) -- "Joy in Playing"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 4.1.1 Patched (2021-10-12 r81047) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -16,12 +16,16 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > ####--- S4 Methods (and Classes)  --- see also ../src/library/methods/tests/
+> 
+> #### Instead of adding more tests depending on recommended packages,
+> #### re-facror into a separate script and treat like eval-etc-2.R
+> 
 > options(useFancyQuotes=FALSE)
 > require(methods)
 > assertError <- tools::assertError # "import"
 > ##too fragile: showMethods(where = "package:methods")
 > 
-> ## When this test comes too late, it fails too early in R <= 3.2.2
+> ## When this test comes too late, it failed too early in R <= 3.2.2
 > require(stats4)
 Loading required package: stats4
 > detach("package:methods")
@@ -165,8 +169,14 @@ show method
 > print(foo, digits = 4)
 S4 print method
 > 
-> setClassUnion("integer or NULL", members = c("integer","NULL"))
-> setClass("c1", representation(x = "integer", code = "integer or NULL"))
+> cn <- "integer or NULL"
+> setClassUnion(cn, members = c("integer", "NULL"))
+> setClass("c1", representation(x = "integer", code = cn))
+> stopifnot(exprs = {
++     cn %in% extends(getClass("NULL"))
++     cn %in% extends(getClass(".NULL"))
++     cn %in% extends(getClass("integer"))
++ })
 > nc <- new("c1", x = 1:2)
 > str(nc)# gave ^ANULL^A in 2.0.0
 Formal class 'c1' [package ".GlobalEnv"] with 2 slots
@@ -174,8 +184,6 @@ Formal class 'c1' [package ".GlobalEnv"] with 2 slots
   ..@ code: NULL
 > ##
 > 
-> 
-> library(stats4)
 > showMethods("coerce", classes=c("matrix", "numeric"))
 Function: coerce (package methods)
 from="ANY", to="matrix"
@@ -183,18 +191,10 @@ from="ANY", to="numeric"
 
 > ## {gave wrong result for a while in R 2.4.0}
 > 
-> ## the following showMethods() output tends to generate errors in the tests
-> ## whenever the contents of the packages change. Searching in the
-> ## diff's can easily mask real problems.  If there is a point
-> ## to the printout, e.g., to verify that certain methods exist,
-> ## hasMethod() would be a useful replacement
-> 
-> ## showMethods(where = "package:stats4")
-> ## showMethods("show")
-> ## showMethods("show")
-> ## showMethods("plot") # (ANY,ANY) and (profile.mle, missing)
-> ## showMethods(classes="mle")
-> ## showMethods(classes="matrix")
+> ## Most for "mle" in stats4:
+> for(f in c("coef", "confint", "logLik", "plot", "profile",
++ 	   "show", "summary", "update", "vcov"))
++     if(!hasMethods(f)) stop("no S4 methods found for ", f)
 > 
 > 
 > ##--- "[" fiasco before R 2.2.0 :
@@ -605,7 +605,7 @@ An object of class "foo"
 + 	  )
 > ## the last failed in R 2.7.0 : was not showing  "show"
 > 
-> if(require("Matrix")) {
+> if(require("Matrix", lib.loc = .Library, quietly = TRUE)) {
 +     D5. <- Diagonal(x = 5:1)
 +     D5N <- D5.; D5N[5,5] <- NA
 +     stopifnot(isGeneric("dim", where=as.environment("package:Matrix")),
@@ -623,8 +623,8 @@ An object of class "foo"
 + 			       pmin(as.matrix(D5N)+1, 3)),
 + 	      ##
 + 	      TRUE)
-+ }
-Loading required package: Matrix
++ } else
++     message("skipping tests requiring the Matrix package")
 <sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
 > 
 > 
@@ -839,13 +839,16 @@ Creating a new generic function for 'qqplot' in the global environment
 > 
 > 
 > ## prototypes for virtual classes:  NULL if legal, otherwise 1st member
-> ## OptionalPosixct above includes NULL
-> stopifnot(is.null(getClass("OptionalPOSIXct")@prototype))
 > ## "IntOrChar" had invalid NULL prototype < 2.15.0
 > setClassUnion("IntOrChar", c("integer", "character"))
-> stopifnot(is.integer(getClass("IntOrChar")@prototype))
-> ## produced an error < 2.15.0
-> stopifnot(identical(isGeneric("&&"), FALSE))
+> stopifnot(exprs = {
++     ## OptionalPosixct above includes NULL
++     is.null   (getClass("OptionalPOSIXct")@prototype)
++     is.integer(getClass("IntOrChar")      @prototype) ## produced an error < 2.15.0
++     "IntOrChar" %in% extends(getClass("character"))
++     "IntOrChar" %in% extends(getClass("integer"))
++     identical(isGeneric("&&"), FALSE)
++ })
 > 
 > 
 > ## mapply() on S4 objects with a "non-primitive" length() method
@@ -1140,9 +1143,11 @@ Loading required package: methods
 > new("mySubInteger", 1L)
 An object of class "mySubInteger"
 [1] 1
-attr(,"class")
-[1] "myInteger"
 > ## caused infinite recursion in R 3.3.0
+> new("mySubInteger")
+An object of class "mySubInteger"
+integer(0)
+> ## failed due to lack of prototype in R 3.6.0
 > 
 > detach("package:methods", force=TRUE)
 > methods::setClass("test1", methods::representation(date="POSIXct"))
@@ -1246,7 +1251,7 @@ Also defined by 'package2'
 > 
 > 
 > ## R's internal C  R_check_class_and_super()  was not good enough
-> if(require("Matrix")) withAutoprint({
+> if(require("Matrix", lib.loc = .Library, quietly = TRUE)) { withAutoprint({
 +     setClass("Z", representation(zz = "list"))
 +     setClass("C", contains = c("Z", "dgCMatrix"))
 +     setClass("C2", contains = "C")
@@ -1264,7 +1269,9 @@ Also defined by 'package2'
 +       , identical(as(c3, "matrix"), m)
 +     )
 +     invisible(lapply(c("Z","C","C2","C3"), removeClass))
-+ })
++  })
++ } else
++     message("skipping tests requiring the Matrix package")
 > setClass("Z", representation(zz = "list"))
 > setClass("C", contains = c("Z", "dgCMatrix"))
 > setClass("C2", contains = "C")
@@ -1290,7 +1297,7 @@ Also defined by 'package2'
 > invisible(lapply(c("Z", "C", "C2", "C3"), removeClass))
 > 
 > 
-> ## Automatic coerce method creation: 
+> ## Automatic coerce method creation:
 > setClass("A", slots = c(foo = "numeric"))
 > setClass("Ap", contains = "A", slots = c(p = "character"))
 > cd <- getClassDef("Ap")
@@ -1299,4 +1306,54 @@ value <- new("A")
 > ## was ... <-  new(structure("A", package = ".GlobalEnv"))
 > ## for a few days in R-devel (Nov.2017)
 > 
+> 
+> ## Error messages occurring during method selection are forwarded
+> f <- function(x) x
+> setGeneric("f")
+[1] "f"
+> setMethod("f", signature("NULL"), function(x) NULL)
+> err <- tryCatch(f(stop("this is mentioned")), error = identity)
+> stopifnot(identical(err$message, "error in evaluating the argument 'x' in selecting a method for function 'f': this is mentioned"))
+> 
+> 
+> ## canCoerce(obj, .)  when length(class(obj)) > 1 :
+> setOldClass("foo")
+> setAs("foo", "A", function(from) new("A", foo=from))
+> o3 <- structure(1:7, class = c("foo", "bar"))
+> stopifnot( canCoerce(o3, "A") )
+> ## failed in R <= 3.6.1
+> 
+> if(require("Matrix", lib.loc = .Library, quietly = TRUE)) { withAutoprint({
++     sci <- names(getClass("integer")@contains)
++     # These 2 classes have *nothing* to do with Matrix:
++     setClass("MyClass")
++     ncl <- "NumOrMyClass"
++     setClassUnion(ncl, c("numeric", "MyClass"))
++     nsci <- names(getClass("integer")@contains)
++     ## failed in R <= 3.6.2
++     stopifnot(sci %in% nsci, identical(setdiff(nsci, sci), ncl))
++ 
++     setClassUnion('dMatrixOrMatrix', members = c('dMatrix', 'matrix'))
++     ## failed in R <= 3.6.2
++     stopifnot("dMatrixOrMatrix" %in% names(getClass("dgCMatrix")@contains))
++ 
++     invisible(lapply(c("NumOrMyClass", "MyClass", "dMatrixOrMatrix"),
++                      removeClass))
++ })
++ } else
++     message("skipping tests requiring the Matrix package")
+> sci <- names(getClass("integer")@contains)
+> setClass("MyClass")
+> ncl <- "NumOrMyClass"
+> setClassUnion(ncl, c("numeric", "MyClass"))
+> nsci <- names(getClass("integer")@contains)
+> stopifnot(sci %in% nsci, identical(setdiff(nsci, sci), ncl))
+> setClassUnion("dMatrixOrMatrix", members = c("dMatrix", "matrix"))
+> stopifnot("dMatrixOrMatrix" %in% names(getClass("dgCMatrix")@contains))
+> invisible(lapply(c("NumOrMyClass", "MyClass", "dMatrixOrMatrix"), removeClass))
+> 
+> setClass("foo", slots = c(y = "numeric"))
+> setClass("bar", contains = "foo")
+> body(getClass("bar")@contains[[1]]@coerce)[[2]]
+class(from) <- "foo"
 > 

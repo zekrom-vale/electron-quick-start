@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2016-01-29 r70039) -- "Unsuffered Consequences"
-Copyright (C) 2016 The R Foundation for Statistical Computing
-Platform: i686-pc-linux-gnu (32-bit)
+R Under development (unstable) (2020-02-28 r77869) -- "Unsuffered Consequences"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -134,8 +134,8 @@ Call:
 coxph(formula = Surv(time, status) ~ x, data = testw1, weights = wt, 
     iter = 0)
 
-   coef exp(coef) se(coef) z p
-x 0.000     1.000    0.584 0 1
+    coef exp(coef) se(coef) z p
+x 0.0000    1.0000   0.5843 0 1
 
 Likelihood ratio test=0  on 1 df, p=1
 n= 9, number of events= 5 
@@ -151,11 +151,10 @@ x 0.8726    2.3931   0.7126 1.225    0.221
   exp(coef) exp(-coef) lower .95 upper .95
 x     2.393     0.4179    0.5921     9.672
 
-Concordance= 0.638  (se = 0.159 )
-Rsquare= 0.177   (max possible= 0.999 )
-Likelihood ratio test= 1.75  on 1 df,   p=0.1858
-Wald test            = 1.5  on 1 df,   p=0.2207
-Score (logrank) test = 1.58  on 1 df,   p=0.2094
+Concordance= 0.637  (se = 0.161 )
+Likelihood ratio test= 1.75  on 1 df,   p=0.2
+Wald test            = 1.5  on 1 df,   p=0.2
+Score (logrank) test = 1.58  on 1 df,   p=0.2
 
 > resid(fit0, type='score')
           1           2           3           4           5           6 
@@ -188,4 +187,4 @@ Score (logrank) test = 1.58  on 1 df,   p=0.2094
 > 
 > proc.time()
    user  system elapsed 
-  0.220   0.020   0.233 
+  0.891   0.068   0.952 

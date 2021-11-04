@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2018-03-18 r74422) -- "Unsuffered Consequences"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 4.0.5 Patched (2021-03-31 r80163) -- "Shake and Throw"
+Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -17,15 +17,16 @@ Type 'q()' to quit R.
 
 > #### For both 'Extract' ("[") and 'Replace' ("[<-") Method testing
 > ####    aka    subsetting     and  subassignment
+> ####           ~~~~~~~~~~          ~~~~~~~~~~~~~
 > 
 > if(interactive()) {
 +     options(error = recover, warn = 1)
-+ } else if(FALSE) { ## MM @ testing *manually* only
-+     options(error = recover, Matrix.verbose = TRUE, warn = 1)
++ } else if(FALSE) { ## MM / developer  testing *manually* :
++     options(error = recover, Matrix.verbose = 2,   warn = 1)
 + } else {
-+     options(                 Matrix.verbose = TRUE, warn = 1)
++     options(                 Matrix.verbose = 2, warn = 1)
 + }
-> ## Matrix.verbose = TRUE (*before* loading 'Matrix' pkg)
+> ## Matrix.verbose = .. (*before* loading 'Matrix' pkg)
 > ## ==> will also show method dispath ambiguity messages: getOption("ambiguousMethodSelection")
 > 
 > #### suppressPackageStartupMessages(...)  as we have an *.Rout.save to Rdiff against
@@ -47,12 +48,17 @@ doExtras: FALSE
 + 	  identical(m[2, 3],  16), # simple number
 + 	  identical(m[2, 3:4], c(16,23)), # simple numeric of length 2
 + 	  identical(m[NA,NA], as(Matrix(NA, 7,4), "dMatrix")))
+M[m,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
 > 
 > m[2, 3:4, drop=FALSE] # sub matrix of class 'dgeMatrix'
 1 x 2 Matrix of class "dgeMatrix"
      [,1] [,2]
 [1,]   16   23
 > m[-(4:7), 3:4]        # ditto; the upper right corner of 'm'
+M[i,i,m] : nargs()=3
 3 x 2 Matrix of class "dgeMatrix"
      [,1] [,2]
 [1,]   15   22
@@ -61,10 +67,13 @@ doExtras: FALSE
 > 
 > ## rows or columns only:
 > m[1,]     # first row, as simple numeric vector
+M[i,m,m] : nargs()=3
 [1]  1  8 15 22
 > m[,2]     # 2nd column
+M[m,i,m] : nargs()=3
 [1]  8  9 10 11 12 13 14
 > m[,1:2]   # sub matrix of first two columns
+M[m,i,m] : nargs()=3
 7 x 2 Matrix of class "dgeMatrix"
      [,1] [,2]
 [1,]    1    8
@@ -79,9 +88,11 @@ doExtras: FALSE
      [,1] [,2] [,3] [,4]
 [1,]    7   14   21   28
 > m[integer(0),] #-> 0 x 4 Matrix
+M[i,m,m] : nargs()=3
 0 x 4 Matrix of class "dgeMatrix"
      [,1] [,2] [,3] [,4]
 > m[2:4, numeric(0)] #-> 3 x 0 Matrix
+M[i,i,m] : nargs()=3
 3 x 0 Matrix of class "dgeMatrix"
     
 [1,]
@@ -92,24 +103,33 @@ doExtras: FALSE
 > stopifnot(identical(m[2,3], m[(1:nrow(m)) == 2, (1:ncol(m)) == 3]),
 +           identical(m[2,], m[(1:nrow(m)) == 2, ]),
 +           identical(m[,3:4], m[, (1:4) >= 3]))
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[logi,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
 > 
 > ## dimnames indexing:
 > mn <- m
 > dimnames(mn) <- list(paste("r",letters[1:nrow(mn)],sep=""),
 +                      LETTERS[1:ncol(mn)])
 > checkMatrix(mn)
+M[m,i,m] : nargs()=3
  norm(m [7 x 4]) : 1  I  F  M  ok
  Summary:  ok
 2*m =?= m+m: identical
 m >= m for all: ok
 m < m for none: ok
 > mn["rd", "D"]
+M[i,i,m] : nargs()=3
 [1] 25
 > msr <- ms <- as(mn,"sparseMatrix")
 > mnr <- mn
 > v <- rev(as(ms, "vector"))
 > mnr[] <- v
 > msr[] <- v # [<- "sparse" -- not very sensical; did fail w/o a message
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > z <- msr; z[] <- 0
 > zz <- as(array(0, dim(z)), "sparseMatrix")
@@ -128,8 +148,38 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 + 	  identical(unname(z), zz),
 + 	  identical(a.m, array(v, dim=dim(mn), dimnames=dimnames(mn)))
 + 	  )
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > showProc.time()
-Time elapsed:  0.863 0.084 0.953 
+Time (user system elapsed): 0.419 0.013 0.435 
 > 
 > ## Bug found thanks to Timothy Mak, Feb 3, 2017:
 > ## sparseMatrix logical indexing with (partial) NA:
@@ -137,11 +187,15 @@ Time elapsed:  0.863 0.084 0.953
 > assert.EQ(as(ms,"matrix"), a.m) # incl. dimnames
 > iN4 <- c(NA, TRUE, FALSE, TRUE)
 > assert.EQ(as(mn[,iN4],"matrix"), a.m[,iN4]) # (incl. dimnames)
-> ##assert.EQ(as.matrix(ms[,iN4]), a.m[,iN4]) # ms[, <with_NA>]  fails still :
+M[m,i,m] : nargs()=3
+> ##assert.EQ(as.matrix(ms[,iN4]), a.m[,iN4]) # ms[, <with_NA>]  fails still : _FIXME_
 > try(ms[,iN4])
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 Error in intI(j, n = x@Dim[2], dn[[2]], give.dn = FALSE) : 
   'NA' indices are not (yet?) supported for sparse Matrices
 > try(ms[,iN4] <- 100) ## <- segfaulted in Matrix <= 1.2-8  (!)
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (1,0)
 Error in intI(i, n = di[margin], dn = dn[[margin]], give.dn = FALSE) : 
   'NA' indices are not (yet?) supported for sparse Matrices
 > 
@@ -157,6 +211,8 @@ Error in intI(i, n = di[margin], dn = dn[[margin]], give.dn = FALSE) :
 +     stopifnot(identical(names(dimnames(a)), names(dimnames(a0))))
 > i <- 1:2
 > chk.ndn(a[i,]); chk.ndn(a[i, i])
+M[i,m,m] : nargs()=3
+M[i,i,m] : nargs()=3
 > ## Sparse matrix: -----------------------------------------
 > s <- as(a %% 3 == 1, "sparseMatrix")
 > ts <- as(s,"TsparseMatrix")
@@ -167,14 +223,47 @@ Error in intI(i, n = di[margin], dn = dn[[margin]], give.dn = FALSE) :
 +     dimnames(b), dimnames(tb)))
 > 
 > chk.ndn(b [i, i]); chk.ndn(b [i, ])
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > chk.ndn(s [i, i]); chk.ndn(s [i, ])
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > chk.ndn(tb[i, i]); chk.ndn(tb[i, ])
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > chk.ndn(ts[i, i]); chk.ndn(ts[i, ])
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > chk.ndn( b[ , 1, drop=FALSE]); chk.ndn( s[i, 2, drop=FALSE])
+Csp[m,i,l] : nargs()=4
+Csp[i,i,l] : nargs()=4
 > chk.ndn(tb[ , 1, drop=FALSE]); chk.ndn(ts[i, 2, drop=FALSE])
+Csp[m,i,l] : nargs()=4
+Csp[i,i,l] : nargs()=4
+> 
+> L0 <- logical(0)
+> stopifnot(exprs = {
++     identical(dim(b[,L0]), c(4L, 0L))
++     identical(dim(b[L0,]), c(0L, 4L)) # failed till 2019-09-x
++ })
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > 
 > ## Printing sparse colnames:
 > ms[sample(28, 20)] <- 0
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > ms <- t(rbind2(ms, 3*ms))
 > cnam1 <- capture.output(show(ms))[2] ; op <- options("sparse.colnames" = "abb3")
@@ -190,6 +279,7 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > m[1:2, 4] <- 200
 > m[, 1] <- -1
 > m[1:3,]
+M[i,m,m] : nargs()=3
 3 x 4 Matrix of class "dgeMatrix"
      [,1] [,2] [,3] [,4]
 [1,]   -1    8   15  200
@@ -206,8 +296,10 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > 
 > ## testing operations on logical Matrices rather more than indexing:
 > g10 <- m [ m > 10 ]
+M[logi,m,m] : nargs()=2
 > stopifnot(18 == length(g10))
 > stopifnot(10 == length(m[ m <= 10 ]))
+M[logi,m,m] : nargs()=2
 > sel <- (20 <  m) & (m <  150)
 > sel.<- (20 <  m.)& (m.<  150)
 > nsel <-(20 >= m) | (m >= 150)
@@ -227,8 +319,12 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 + 	  identical3(m[ sel],  m[ ssel], .asmatrix(m)[.asmatrix( ssel)]),
 + 	  identical3(m[!sel],  m[!ssel], .asmatrix(m)[.asmatrix(!ssel)])
 + 	  )
+M[logi,m,m] : nargs()=2
+M[logi,m,m] : nargs()=2
+M[logi,m,m] : nargs()=2
+M[logi,m,m] : nargs()=2
 > showProc.time()
-Time elapsed:  0.286 0 0.287 
+Time (user system elapsed): 0.185 0 0.185 
 > 
 > ## more sparse Matrices --------------------------------------
 > 
@@ -298,11 +394,9 @@ Time elapsed:  0.286 0 0.287
 +     i
 + }
 > 
-> ## From package 'sfsmisc':
-> repChar <- function (char, no) paste(rep.int(char, no), collapse = "")
-> 
+> suppressWarnings(RNGversion("3.5.0")); set.seed(101)
 > m <- 1:800
-> set.seed(101) ; m[sample(800, 600)] <- 0
+> m[sample(800, 600)] <- 0
 > m0 <- Matrix(m, nrow = 40)
 > m1 <- add.simpleDimnames(m0)
 > for(kind in c("n", "l", "d")) {
@@ -353,9 +447,9 @@ Time elapsed:  0.286 0 0.287
 +         cat(".")
 +     }
 +     options(op)
-+     cat(sprintf("\n[Ok]%s\n\n", repChar("-", 64)))
++     cat(sprintf("\n[Ok]%s\n\n", strrep("-", 64)))
 +  }
-+  cat(sprintf("\nok( %s )\n== ###%s\n\n", kind, repChar("=", 70)))
++  cat(sprintf("\nok( %s )\n== ###%s\n\n", kind, strrep("=", 70)))
 + }## end{for}---------------------------------------------------------------
 Formal class 'ngCMatrix' [package "Matrix"] with 5 slots
   ..@ i       : int [1:200] 2 6 11 21 24 29 37 38 1 4 ...
@@ -373,19 +467,94 @@ Formal class 'ngTMatrix' [package "Matrix"] with 5 slots
   .. ..$ : NULL
   .. ..$ : NULL
   ..@ factors : list()
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 Note: method with signature 'nsparseMatrix#sparseMatrix' chosen for function '==',
  target signature 'ngCMatrix#ngTMatrix'.
  "nMatrix#nMatrix", "sparseMatrix#nsparseMatrix" would also be valid
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 ok
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
  [1] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
 [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
 [25]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 [37] FALSE  TRUE  TRUE FALSE
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 2 x 20 sparse Matrix of class "ngCMatrix"
                                             
 [1,] . . . | . . | . . . . | . . | . | . . .
 [2,] . | . . . | . . . . . . | | . . . . | .
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] TRUE
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
  for(): .....
 [Ok]----------------------------------------------------------------
 
@@ -405,7 +574,61 @@ Formal class 'ngTMatrix' [package "Matrix"] with 5 slots
   .. ..$ : chr [1:40] "r1" "r2" "r3" "r4" ...
   .. ..$ : chr [1:20] "c1" "c2" "c3" "c4" ...
   ..@ factors : list()
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 ok
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
    r1    r2    r3    r4    r5    r6    r7    r8    r9   r10   r11   r12   r13 
 FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE 
   r14   r15   r16   r17   r18   r19   r20   r21   r22   r23   r24   r25   r26 
@@ -414,12 +637,33 @@ FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
 FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE 
   r40 
 FALSE 
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 2 x 20 sparse Matrix of class "ngCMatrix"
    [[ suppressing 20 column names 'c1', 'c2', 'c3' ... ]]
                                           
 r1 . . . | . . | . . . . | . . | . | . . .
 r2 . | . . . | . . . . . . | | . . . . | .
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] TRUE
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
  for(): .....
 [Ok]----------------------------------------------------------------
 
@@ -445,16 +689,93 @@ Formal class 'lgTMatrix' [package "Matrix"] with 6 slots
   .. ..$ : NULL
   ..@ x       : logi [1:200] TRUE TRUE TRUE TRUE TRUE TRUE ...
   ..@ factors : list()
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 ok
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
  [1] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
 [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
 [25]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 [37] FALSE  TRUE  TRUE FALSE
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 2 x 20 sparse Matrix of class "lgCMatrix"
                                             
 [1,] . . . | . . | . . . . | . . | . | . . .
 [2,] . | . . . | . . . . . . | | . . . . | .
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] TRUE
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
  for(): .....
 [Ok]----------------------------------------------------------------
 
@@ -476,7 +797,63 @@ Formal class 'lgTMatrix' [package "Matrix"] with 6 slots
   .. ..$ : chr [1:20] "c1" "c2" "c3" "c4" ...
   ..@ x       : logi [1:200] TRUE TRUE TRUE TRUE TRUE TRUE ...
   ..@ factors : list()
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 ok
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
    r1    r2    r3    r4    r5    r6    r7    r8    r9   r10   r11   r12   r13 
 FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE 
   r14   r15   r16   r17   r18   r19   r20   r21   r22   r23   r24   r25   r26 
@@ -485,12 +862,33 @@ FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
 FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE 
   r40 
 FALSE 
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 2 x 20 sparse Matrix of class "lgCMatrix"
    [[ suppressing 20 column names 'c1', 'c2', 'c3' ... ]]
                                           
 r1 . . . | . . | . . . . | . . | . | . . .
 r2 . | . . . | . . . . . . | | . . . . | .
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] TRUE
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
  for(): .....
 [Ok]----------------------------------------------------------------
 
@@ -516,14 +914,91 @@ Formal class 'dgTMatrix' [package "Matrix"] with 6 slots
   .. ..$ : NULL
   ..@ x       : num [1:200] 3 7 12 22 25 30 38 39 42 45 ...
   ..@ factors : list()
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 ok
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
  [1]  0  0  3  0  0  0  7  0  0  0  0 12  0  0  0  0  0  0  0  0  0 22  0  0 25
 [26]  0  0  0  0 30  0  0  0  0  0  0  0 38 39  0
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 2 x 20 sparse Matrix of class "dgCMatrix"
                                                                
 [1,] .  . . 121 .   . 241 . . . . 441   .   . 561 . 641 .   . .
 [2,] . 42 .   . . 202   . . . . .   . 482 522   . .   . . 722 .
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] 7
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
  for(): .....
 [Ok]----------------------------------------------------------------
 
@@ -545,17 +1020,94 @@ Formal class 'dgTMatrix' [package "Matrix"] with 6 slots
   .. ..$ : chr [1:20] "c1" "c2" "c3" "c4" ...
   ..@ x       : num [1:200] 3 7 12 22 25 30 38 39 42 45 ...
   ..@ factors : list()
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 ok
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
  r1  r2  r3  r4  r5  r6  r7  r8  r9 r10 r11 r12 r13 r14 r15 r16 r17 r18 r19 r20 
   0   0   3   0   0   0   7   0   0   0   0  12   0   0   0   0   0   0   0   0 
 r21 r22 r23 r24 r25 r26 r27 r28 r29 r30 r31 r32 r33 r34 r35 r36 r37 r38 r39 r40 
   0  22   0   0  25   0   0   0   0  30   0   0   0   0   0   0   0  38  39   0 
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 2 x 20 sparse Matrix of class "dgCMatrix"
    [[ suppressing 20 column names 'c1', 'c2', 'c3' ... ]]
                                                              
 r1 .  . . 121 .   . 241 . . . . 441   .   . 561 . 641 .   . .
 r2 . 42 .   . . 202   . . . . .   . 482 522   . .   . . 722 .
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] 7
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
  for(): .....
 [Ok]----------------------------------------------------------------
 
@@ -564,7 +1116,7 @@ ok( d )
 == ###======================================================================
 
 > showProc.time()
-Time elapsed:  1.022 0.001 1.026 
+Time (user system elapsed): 0.777 0.004 0.784 
 > 
 > if(doExtras) {### {was ./AAA_index.R, MM-only}
 +     ## an nsparse-example
@@ -656,23 +1208,41 @@ Time elapsed:  1.022 0.001 1.026
 > ##---- Symmetric indexing of symmetric Matrix ----------
 > m. <- mC
 > m.[, c(2, 7:12)] <- 0
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (1,0)
 > stopifnotValid(S <- crossprod(add.simpleDimnames(m.) %% 100), "dsCMatrix")
 > ss <- as(S, "matrix")
 > ds <- as(S, "denseMatrix")
 > ## NA-indexing of *dense* Matrices: should work as traditionally
 > assert.EQ.mat(ds[NA,NA], ss[NA,NA])
+M[i,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
 > assert.EQ.mat(ds[NA,  ], ss[NA,])
+M[logi,m,m] : nargs()=3
 > assert.EQ.mat(ds[  ,NA], ss[,NA])
+M[m,i,m] : nargs()=3
 > T <- as(S, "TsparseMatrix")
 > stopifnot(identical(ds[2 ,NA], ss[2,NA]),
 + 	  identical(ds[NA, 1], ss[NA, 1]),
 + 	  identical(S, as(T, "CsparseMatrix")) )
+M[i,i,m] : nargs()=3
+M[i,i,m] : nargs()=3
 > 
 > ## non-repeated indices:
 > i <- c(7:5, 2:4);assert.EQ.mat(T[i,i], ss[i,i])
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > ## NA in indices  -- check that we get a helpful error message:
 > i[2] <- NA
 > er <- tryCatch(T[i,i], error = function(e)e)
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > stopifnot(as.logical(grep("indices.*sparse Matrices", er$message)))
 > 
 > N <- nrow(T)
@@ -685,21 +1255,38 @@ Time elapsed:  1.022 0.001 1.026
 + 	      identical(as(t(Tii),"CsparseMatrix"), as(tTi,"CsparseMatrix")))
 +     assert.EQ.mat(Tii, ss[i,i])
 + }
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > 
 > b <- diag(1:2)[,c(1,1,2,2)]
 > cb <- crossprod(b)
 > cB <- crossprod(Matrix(b, sparse=TRUE))
 > a <- matrix(0, 6, 6)
 > a[1:4, 1:4] <- cb
-> A1 <- A2 <- Matrix(0, 6, 6)#-> sparse
+> A1 <- A2 <- Matrix(0, 6, 6)#-> ddiMatrix
 > A1[1:4, 1:4] <- cb
+replCmat[x,i,j,.., val] : nargs()=4; 
 > A2[1:4, 1:4] <- cB
+replCmat[x,i,j,.., val] : nargs()=4; 
 > assert.EQ.mat(A1, a)# indeed
+> ## "must": symmetric and sparse, i.e., ds*Matrix:
 > stopifnot(identical(A1, A2), is(A1, "dsCMatrix"))
 > 
 > ## repeated ones ``the challenge'' (to do smartly):
 > j <- c(4, 4, 9, 12, 9, 4, 17, 3, 18, 4, 12, 18, 4, 9)
 > assert.EQ.mat(T[j,j], ss[j,j])
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > ## and another two sets  (a, A) &  (a., A.) :
 > a <- matrix(0, 6,6)
 > a[upper.tri(a)] <- (utr <- c(2, 0,-1, 0,0,5, 7,0,0,0, 0,0,-2,0,8))
@@ -721,25 +1308,77 @@ Time elapsed:  1.022 0.001 1.026
 +     assert.EQ.mat(A.ii, a.[i,i])
 +     assert.EQ.mat(T[i,i], ss[i,i])
 + }
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > showProc.time()
-Time elapsed:  0.285 0.005 0.291 
+Time (user system elapsed): 0.258 0.001 0.26 
 > 
 > stopifnot(all.equal(mC[,3], mm[,3]),
 + 	  identical(mC[ij], mC[ij + 0.4]),
 + 	  identical(mC[ij], mm[ij]),
 + 	  identical(mC[iN], mm[iN]))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > ## out of bound indexing must be detected:
 > assertError(mC[cbind(ij[,1] - 5, ij[,2])])
 > assertError(mC[cbind(ij[,1],     ij[,2] + ncol(mC))])
 > 
 > assert.EQ.mat(mC[7, , drop=FALSE], mm[7, , drop=FALSE])
+Csp[i,m,l] : nargs()=4
 > identical    (mC[7,   drop=FALSE], mm[7,   drop=FALSE]) # *vector* indexing
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 [1] TRUE
 > 
 > stopifnot(dim(mC[numeric(0), ]) == c(0,20), # used to give warnings
 +           dim(mC[, integer(0)]) == c(40,0),
 +           identical(mC[, integer(0)], mC[, FALSE]))
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > validObject(print(mT[,c(2,4)]))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 40 x 2 sparse Matrix of class "dgTMatrix"
     c2  c4
 r1   . 121
@@ -788,7 +1427,27 @@ r40 80   .
 + 	  Q.C.identical(mT[2,], t(mT)[,2]),
 + 	  Q.C.identical(mT[-2,], t(t(mT)[,-2])),
 + 	  Q.C.identical(mT[c(2,5),], t(t(mT)[,c(2,5)])) )
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > assert.EQ.mat(mT[4,, drop = FALSE], mm[4,, drop = FALSE])
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > stopifnot(identical3(mm[,1], mC[,1], mT[,1]),
 + 	  identical3(mm[3,], mC[3,], mT[3,]),
 + 	  identical3(mT[2,3], mC[2,3], 0),
@@ -796,13 +1455,36 @@ r40 80   .
 +           identical4(       mm[c(3,7), 2:4],  as.mat( m[c(3,7), 2:4]),
 +                      as.mat(mT[c(3,7), 2:4]), as.mat(mC[c(3,7), 2:4]))
 +           )
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > 
 > x.x <- crossprod(mC)
 > stopifnot(class(x.x) == "dsCMatrix",
 +           class(x.x. <- round(x.x / 10000)) == "dsCMatrix",
 +           identical(x.x[cbind(2:6, 2:6)],
 +                     diag(x.x [2:6, 2:6])))
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > head(x.x.) # Note the *non*-structural 0's printed as "0"
+Csp[i,m,l] : nargs()=4
 6 x 20 sparse Matrix of class "dgCMatrix"
    [[ suppressing 20 column names 'c1', 'c2', 'c3' ... ]]
                                                            
@@ -813,6 +1495,7 @@ c4 1 1 . 17  .  8 10 13  8  6 18 18 29 35 14  8 25 10 19 21
 c5 . 3 4  . 14  4 10  .  . 29  8  9 19 11 11  .  . 26 26 16
 c6 1 5 2  8  4 42  5 19 14  9  8 10 42 56 50 27 29 32 64 16
 > tail(x.x., -3) # all but the first three lines
+Csp[i,m,l] : nargs()=4
 17 x 20 sparse Matrix of class "dgCMatrix"
    [[ suppressing 20 column names 'c1', 'c2', 'c3' ... ]]
                                                                            
@@ -836,6 +1519,8 @@ c20 1 10  7 21 16 16 121 44  25  32 129 106 155  81  86   . 100 111  55 541
 > 
 > lx.x <- as(x.x, "lsCMatrix") # FALSE only for "structural" 0
 > (l10 <- lx.x[1:10, 1:10])# "lsC"
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 10 x 10 sparse Matrix of class "lsCMatrix"
    [[ suppressing 10 column names 'c1', 'c2', 'c3' ... ]]
                        
@@ -850,6 +1535,8 @@ c8  | | | | . | | | | |
 c9  . | | | . | | | | |
 c10 | | | | | | | | | |
 > (l3 <-  lx.x[1:3, ])
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 3 x 20 sparse Matrix of class "lgCMatrix"
    [[ suppressing 20 column names 'c1', 'c2', 'c3' ... ]]
                                           
@@ -866,6 +1553,7 @@ c3 . | | . | | | | | | | | | | | . . | | |
 > 
 > ##-- Sub*assignment* with repeated / duplicated index:
 > A <- Matrix(0,4,3) ; A[c(1,2,1), 2] <- 1 ; A
+replCmat[x,i,j,.., val] : nargs()=4; 
 4 x 3 sparse Matrix of class "dgCMatrix"
           
 [1,] . 1 .
@@ -873,6 +1561,7 @@ c3 . | | . | | | | | | | | | | | . . | | |
 [3,] . . .
 [4,] . . .
 > B <- A;              B[c(1,2,1), 2] <- 1:3; B; B. <- B
+replCmat[x,i,j,.., val] : nargs()=4; 
 4 x 3 sparse Matrix of class "dgCMatrix"
           
 [1,] . 3 .
@@ -880,10 +1569,21 @@ c3 . | | . | | | | | | | | | | | . . | | |
 [3,] . . .
 [4,] . . .
 > B.[3,] <- rbind(4:2)
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (0,1)
 > ## change the diagonal and the upper and lower subdiagonal :
 > diag(B.) <- 10 * diag(B.)
 > diag(B.[,-1]) <- 5* diag(B.[,-1])
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (1,0)
 > diag(B.[-1,]) <- 4* diag(B.[-1,]) ; B.
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (0,1)
 4 x 3 sparse Matrix of class "dgCMatrix"
             
 [1,] . 15  .
@@ -891,6 +1591,15 @@ c3 . | | . | | | | | | | | | | | . . | | |
 [3,] 4 12 20
 [4,] .  .  .
 > C <- B.; C[,2] <- C[,2];  C[1,] <- C[1,]; C[2:3,2:1] <- C[2:3,2:1]
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (1,0)
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (0,1)
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+replCmat[x,i,j,.., val] : nargs()=4; 
 > stopifnot(identical(unname(.asmatrix(A)),
 + 		    local({a <- matrix(0,4,3); a[c(1,2,1), 2] <-  1 ; a})),
 + 	  identical(unname(.asmatrix(B)),
@@ -902,11 +1611,13 @@ c3 . | | . | | | | | | | | | | | . . | | |
 Note: method with signature 'TsparseMatrix#Matrix#missing#replValue' chosen for function '[<-',
  target signature 'dgTMatrix#lgTMatrix#missing#numeric'.
  "Matrix#lsparseMatrix#missing#replValue" would also be valid
+.TM.repl.i.mat(): "lMatrix" case ...
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > C[C>0] <- 21
 Note: method with signature 'CsparseMatrix#Matrix#missing#replValue' chosen for function '[<-',
  target signature 'dgCMatrix#lgCMatrix#missing#numeric'.
  "Matrix#lsparseMatrix#missing#replValue" would also be valid
+.TM.repl.i.mat(): "lMatrix" case ...
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > a. <- local({a <- .asmatrix(C.); a[a>0] <- 21; a})
 > assert.EQ.mat(C, a.)
@@ -924,6 +1635,9 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 [4,] . . . . .
 [5,] . . . . .
 > sm[2,]
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 [1] 0 1 0 0 0
 > stopifnot(sm[2,] == c(0:1, rep.int(0,ncol(sm)-2)),
 + 	  sm[2,] == cm[2,],
@@ -931,8 +1645,28 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 + 	  all(sm[,-(1:3)] == t(sm[-(1:3),])), # all(<lge.>)
 + 	  all(sm[,-(1:3)] == 0)
 + 	  )
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > showProc.time()
-Time elapsed:  0.292 0.001 0.294 
+Time (user system elapsed): 0.186 0.001 0.188 
 > 
 > ##---  "nsparse*" sub-assignment :----------
 > M <- Matrix(c(1, rep(0,7), 1:4), 3,4)
@@ -986,28 +1720,158 @@ Time elapsed:  0.292 0.001 0.294
 +         cat("Now: class", class(Nn0)," :\n~~~~~~~~~~~~~~~~~\n")
 +     }
 + }
-,k.,k.,k.,k.,k.,k.,k.,k.,k.,k.
-,k.,k.,k.,k.,k.,k.,k.,k.,k.,k.
-,k.,k.,k.,k.,k.> showProc.time()
-Time elapsed:  0.179 0 0.18 
+,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.
+,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.
+,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.,.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=24; 
+k.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (0,1)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; missing (i,j) = (1,0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=ngTMatrix; len.(value)=1; 
+.> showProc.time()
+Time (user system elapsed): 0.177 0.002 0.179 
 > Nn <- Nn0
 > ## Check that  NA is interpreted as TRUE (with a warning), for "nsparseMatrix":
 > assertWarning(Nn[ii <-     3  ] <- NA); stopifnot(isValid(Nn,"nsparseMatrix"), Nn[ii])
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > assertWarning(Nn[ii <-   22:24] <- NA); stopifnot(isValid(Nn,"nsparseMatrix"), Nn[ii])
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > assertWarning(Nn[ii <- -(1:99)] <- NA); stopifnot(isValid(Nn,"nsparseMatrix"), Nn[ii])
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
+M[i,m,m] : nargs()=2
 > assertWarning(Nn[ii <- 3:4  ] <- c(0,NA))
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > stopifnot(isValid(Nn,"nsparseMatrix"), Nn[ii] == 0:1)
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > assertWarning(Nn[ii <- 25:27] <- c(0,1,NA))
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > stopifnot(isValid(Nn,"nsparseMatrix"), Nn[ii] == c(FALSE,TRUE,TRUE))
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > 
 > m0 <- Diagonal(5)
 > stopifnot(identical(m0[2,], m0[,2]),
 + 	  identical(m0[,1], c(1,0,0,0,0)))
+M[i,m,m] : nargs()=3
+diag[i,m,l] : nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > ### Diagonal -- Sparse:
 > (m1 <- as(m0, "TsparseMatrix")) # dtTMatrix unitriangular
 5 x 5 sparse Matrix of class "dtTMatrix" (unitriangular)
@@ -1031,11 +1895,133 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 > diag(tr1) <- 100
 > stopifnot(diag(tr1) == 100)# failed when 'diag<-' did not recycle
 > assert.EQ.mat(m2[1:3,],    diag(5)[1:3,])
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > assert.EQ.mat(m2[,c(4,1)], diag(5)[,c(4,1)])
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > stopifnot(identical(m2[1:3,], as(m1[1:3,], "CsparseMatrix")),
 +           identical(uniqTsparse(m1[, c(4,2)]),
 +                     uniqTsparse(as(m2[, c(4,2)], "TsparseMatrix")))
 +           )## failed in 0.9975-11
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+> 
+> ## 0-dimensional diagonal - subsetting ----------------------------
+> ## before that diagU2N() etc for 0-dim. dtC*:
+> m0. <- m00 <- matrix(numeric(),0,0)
+> dimnames(m0.) <- list(NULL, NULL)
+>  tC0.<- new("dtCMatrix")
+>  tC0 <- new("dtCMatrix", diag="U")
+> (gC0 <- new("dgCMatrix")) # 0 x 0
+0 x 0 sparse Matrix of class "dgCMatrix"
+<0 x 0 matrix>
+> D0 <- Diagonal(0)
+> stopifnot(exprs = {
++     identical(m0.,       as(tC0, "matrix")) # failed: Cholmod error 'invalid xtype' ..
++     identical(numeric(), as(tC0, "numeric"))#   "
++     identical(numeric(), tC0[ 0 ])# --> .M.vectorSub(x, i) failed in as(., "matrix")
++     identical(m00[TRUE ], tC0[TRUE ])# (worked already)
++     identical(m00[FALSE], tC0[FALSE])#    ditto
++     ##
++     identical(D0, D0[0,0]) # used to fail --> subCsp_ij  (..)
++     identical(D0, D0[ ,0]) #  (ditto)     --> subCsp_cols(..)
++     identical(D0, D0[0, ]) #     "        --> subCsp_rows(..)
++     identical(D0, D0[,])          # (worked already)
++     identical(m00[ 0 ],  D0[ 0 ] )#      ditto
++     identical(m00[TRUE ], D0[TRUE ])#      "
++     identical(m00[FALSE], D0[FALSE])#      "
++     ##
++     identical(tC0.,tC0[0,0]) # failed --> subCsp_ij  (..)
++     identical(gC0, tC0[ ,0]) #   "    --> subCsp_cols(..)
++     identical(gC0, tC0[0, ]) #   "    --> subCsp_rows(..)
++     identical(tC0, tC0[,])   # (worked already)
++     ## vector indexing
++ })
+M[i,m,m] : nargs()=2
+M[logi,m,m] : nargs()=2
+<sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[logi,m,m] : nargs()=2
+<sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+diag[i,m,l] : nargs()=4
+Csp[i,m,l] : nargs()=4
+M[m,m,m] : nargs()=3
+M[m,m, TRUE] : nargs()=4
+M[i,m,m] : nargs()=2
+M[logi,m,m] : nargs()=2
+<sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[logi,m,m] : nargs()=2
+<sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,m,m] : nargs()=3
+M[m,m, TRUE] : nargs()=4
+> 
+> expr <- quote({ ## FIXME -- both 'TRUE' and 'FALSE'  should fail "out of bound",etc
++   D0[TRUE, TRUE ]
++   D0[    , TRUE ]
++   D0[TRUE,      ] # worked  but should *NOT*
++  tC0[TRUE, TRUE ]
++  tC0[    , TRUE ]
++  tC0[TRUE,      ] # worked  but should *NOT*
++   ##
++   D0[FALSE,FALSE] # fails --> subCsp_ij(..) -> intI()
++   D0[     ,FALSE] #    ditto ............
++   D0[FALSE,     ] #    ditto
++  tC0[FALSE,FALSE] #      "
++  tC0[FALSE,     ] #      "
++  tC0[     ,FALSE] #      "
++ })
+> EE <- lapply(expr[-1], function(e)
++     list(expr = e,
++          r    = tryCatch(eval(e), error = identity)))
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[logi,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+> exR <- lapply(EE, `[[`, "r")
+> stopifnot(exprs = {
++     vapply(exR, inherits, logical(1), what = "error")
++     unique( vapply(exR, `[[`, "<msg>", "message")
++            ) == "logical subscript too long (1, should be 0)"
++ })
+> 
 > 
 > (uTr <- new("dtTMatrix", Dim = c(3L,3L), diag="U"))
 3 x 3 sparse Matrix of class "dtTMatrix" (unitriangular)
@@ -1044,13 +2030,16 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 [2,] . I .
 [3,] . . I
 > uTr[1,] <- 0
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dtTMatrix; len.(value)=1; missing (i,j) = (0,1)
 > assert.EQ.mat(uTr, cbind(0, rbind(0,diag(2))))
 > 
 > M <- m0; M[1,] <- 0
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (0,1)
 > Z <- m0; Z[] <- 0; z <- array(0, dim(M))
 > stopifnot(identical(M, Diagonal(x=c(0, rep(1,4)))),
 +           all(Z == 0), Qidentical(as(Z, "matrix"), z))
 > M <- m0; M[,3] <- 3 ; M ; stopifnot(is(M, "sparseMatrix"), M[,3] == 3)
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (1,0)
 5 x 5 sparse Matrix of class "dgCMatrix"
               
 [1,] 1 . 3 . .
@@ -1058,18 +2047,36 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 [3,] . . 3 . .
 [4,] . . 3 1 .
 [5,] . . 3 . 1
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > checkMatrix(M)
 Note: method with signature 'sparseMatrix#ldiMatrix' chosen for function '==',
  target signature 'nsCMatrix#ldiMatrix'.
  "nsparseMatrix#sparseMatrix", "nMatrix#lMatrix" would also be valid
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+Csp[m,i,l] : nargs()=4
+Compare <Csparse> -- "dgCMatrix" != "dgCMatrix" :
+
  norm(m [5 x 5]) : 1  I  F  M  ok
  Summary:  ok
 as(., "nMatrix") giving full nonzero-pattern: ok
 2*m =?= m+m: identical
 m >= m for all: ok
-m < m for none: ok
+m < m for none: Compare <Csparse> -- "dgCMatrix" < "dgCMatrix" :
+
+ok
 symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 > M <- m0; M[1:3, 3] <- 0 ;M
+replCmat[x,i,j,.., val] : nargs()=4; 
 5 x 5 diagonal matrix of class "ddiMatrix"
      [,1] [,2] [,3] [,4] [,5]
 [1,]    1    .    .    .    .
@@ -1078,10 +2085,14 @@ symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 [4,]    .    .    .    1    .
 [5,]    .    .    .    .    1
 > T <- m0; T[1:3, 3] <- 10
+replCmat[x,i,j,.., val] : nargs()=4; 
 > stopifnot(identical(M, Diagonal(x=c(1,1, 0, 1,1))),
 +           isValid(T, "triangularMatrix"), identical(T[,3], c(10,10,10,0,0)))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > 
 > M <- m1; M[1,] <- 0 ; M ; assert.EQ.mat(M, diag(c(0,rep(1,4))), tol=0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dtTMatrix; len.(value)=1; missing (i,j) = (0,1)
 5 x 5 sparse Matrix of class "dtTMatrix"
               
 [1,] . . . . .
@@ -1090,9 +2101,25 @@ symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 [4,] . . . 1 .
 [5,] . . . . 1
 > M <- m1; M[,3] <- 3 ; stopifnot(is(M,"sparseMatrix"), M[,3] == 3)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dtTMatrix; len.(value)=1; missing (i,j) = (1,0)
 M[i,j] <- v :  coercing symmetric M[] into non-symmetric
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > Z <- m1; Z[] <- 0
 > checkMatrix(M)
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+Csp[m,i,l] : nargs()=4
+Compare <Csparse> -- "dgCMatrix" != "dgCMatrix" :
+
  norm(m [5 x 5]) : 1  I  F  M  ok
  Summary:  ok
 as(., "nMatrix") giving full nonzero-pattern: ok
@@ -1101,9 +2128,12 @@ as(., "nMatrix") giving full nonzero-pattern: ok
  "nsparseMatrix#sparseMatrix", "nMatrix#lMatrix" would also be valid
 ok
 m >= m for all: ok
-m < m for none: ok
+m < m for none: Compare <Csparse> -- "dgCMatrix" < "dgCMatrix" :
+
+ok
 symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 > M <- m1; M[1:3, 3] <- 0 ;M
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dtTMatrix; len.(value)=1; 
 5 x 5 sparse Matrix of class "dtTMatrix"
               
 [1,] 1 . . . .
@@ -1113,20 +2143,40 @@ symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 [5,] . . . . 1
 > assert.EQ.mat(M, diag(c(1,1, 0, 1,1)), tol=0)
 > T <- m1; T[1:3, 3] <- 10; checkMatrix(T)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dtTMatrix; len.(value)=1; 
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+Csp[m,i,l] : nargs()=4
+Compare <Csparse> -- "dtCMatrix" != "dtCMatrix" :
+
  norm(m [5 x 5]) : 1  I  F  M  ok
  Summary:  ok
 as(., "nMatrix") giving full nonzero-pattern: ok
 2*m =?= m+m: identical
 m >= m for all: ok
-m < m for none: ok
+m < m for none: Compare <Csparse> -- "dtCMatrix" < "dtCMatrix" :
+
+ok
 symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
+.TM.repl.i.mat(): drop 'matrix' case ...
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 as(<triangular (ge)matrix>, dtTMatrix): valid: TRUE 
 > stopifnot(is(T, "triangularMatrix"), identical(T[,3], c(10,10,10,0,0)),
 + 	  Qidentical(as(Z, "matrix"), z))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > 
 > M <- m2; M[1,] <- 0 ; M ; assert.EQ.mat(M, diag(c(0,rep(1,4))), tol=0)
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (0,1)
 5 x 5 sparse Matrix of class "dtCMatrix"
               
 [1,] . . . . .
@@ -1135,16 +2185,35 @@ as(<triangular (ge)matrix>, dtTMatrix): valid: TRUE
 [4,] . . . 1 .
 [5,] . . . . 1
 > M <- m2; M[,3] <- 3 ; stopifnot(is(M,"sparseMatrix"), M[,3] == 3)
+replCmat[x,i,j,.., val] : nargs()=4; missing (i,j) = (1,0)
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > checkMatrix(M)
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+Csp[m,i,l] : nargs()=4
+Compare <Csparse> -- "dgCMatrix" != "dgCMatrix" :
+
  norm(m [5 x 5]) : 1  I  F  M  ok
  Summary:  ok
 as(., "nMatrix") giving full nonzero-pattern: ok
 2*m =?= m+m: identical
 m >= m for all: ok
-m < m for none: ok
+m < m for none: Compare <Csparse> -- "dgCMatrix" < "dgCMatrix" :
+
+ok
 symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 > Z <- m2; Z[] <- 0
 > M <- m2; M[1:3, 3] <- 0 ;M
+replCmat[x,i,j,.., val] : nargs()=4; 
 5 x 5 sparse Matrix of class "dtCMatrix"
               
 [1,] 1 . . . .
@@ -1154,20 +2223,39 @@ symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
 [5,] . . . . 1
 > assert.EQ.mat(M, diag(c(1,1, 0, 1,1)), tol=0)
 > T <- m2; T[1:3, 3] <- 10; checkMatrix(T)
+replCmat[x,i,j,.., val] : nargs()=4; 
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[i,m,m] : nargs()=3
+M[m,i,m] : nargs()=3
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+Csp[m,i,l] : nargs()=4
+Compare <Csparse> -- "dtCMatrix" != "dtCMatrix" :
+
  norm(m [5 x 5]) : 1  I  F  M  ok
  Summary:  ok
 as(., "nMatrix") giving full nonzero-pattern: ok
 2*m =?= m+m: identical
 m >= m for all: ok
-m < m for none: ok
+m < m for none: Compare <Csparse> -- "dtCMatrix" < "dtCMatrix" :
+
+ok
 symmpart(m) + skewpart(m) == m: ok;  determinant(): ok
+.TM.repl.i.mat(): drop 'matrix' case ...
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 as(<triangular (ge)matrix>, dtCMatrix): valid: TRUE 
 > stopifnot(is(T, "dtCMatrix"), identical(T[,3], c(10,10,10,0,0)),
 + 	  Qidentical(as(Z, "matrix"), z))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > showProc.time()
-Time elapsed:  0.819 0.001 0.823 
+Time (user system elapsed): 0.596 0.006 0.605 
 > 
 > 
 > ## "Vector indices" -------------------
@@ -1192,13 +2280,15 @@ Time elapsed:  0.819 0.001 0.823
 > ## these now work correctly {though not very efficiently; hence warnings}
 > m[i] <- v # the role model: only first column is affected
 > M[i] <- v; assert.EQ.mat(M,m) # dge
-> D[i] <- v; assert.EQ.mat(D,m) # ddi -> dtT -> dgT
+> D[i] <- v; assert.EQ.mat(D,m) # ddi -> dtC (new! 2019-07; was dgT)
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 > s[i] <- v; assert.EQ.mat(s,m) # dtT -> dgT
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 > S[i] <- v; assert.EQ.mat(S,m); S # dtC -> dtT -> dgT -> dgC
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 6 x 6 sparse Matrix of class "dgCMatrix"
@@ -1209,33 +2299,34 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 [4,]  . . . 1 . .
 [5,]  . . . . 1 .
 [6,] 20 . . . . 1
-> m.L <- asLogical(m)
-> C[i] <- v # - with a warning: C is nMatrix, v not T/F
+> m.L <- asLogical(m) ; assertWarning(
++ C[i] <- v, verbose=TRUE) # warning: C is nMatrix, v not T/F
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class ntTMatrix to ngTMatrix
-Warning in `[<-`(`*tmp*`, i, value = c(10, 15, 20)) :
-  x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
-> assert.EQ.mat(C,m.L); validObject(C)
+Asserted warning: x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
+> assert.EQ.mat(C,m.L); validObject(C); assertWarning(
 [1] TRUE
-> N[i] <- v # - with a warning
++ N[i] <- v, verbose=TRUE)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class ntTMatrix to ngTMatrix
-Warning in `[<-`(`*tmp*`, i, value = c(10, 15, 20)) :
-  x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
+Asserted warning: x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
 > assert.EQ.mat(N,m.L); validObject(N)
 [1] TRUE
-> stopifnot(Q.C.identical(D,s, checkClass=FALSE))
+> stopifnot(identical(D, as(as(s, "triangularMatrix"), "CsparseMatrix")))
 > ## logical *vector* indexing
 > eval(.iniDiag.example)
 > m[L] <- z; m.L <- asLogical(m)
 > M[L] <- z; assert.EQ.mat(M,m)
 > D[L] <- z; assert.EQ.mat(D,m)
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 > s[L] <- z; assert.EQ.mat(s,m)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
-> S[L] <- z; assert.EQ.mat(S,m) ; S
+> S[L] <- z; assert.EQ.mat(S,m) ; S ; assertWarning(
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 6 x 6 sparse Matrix of class "dgCMatrix"
@@ -1246,57 +2337,178 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 [4,]  . 99 .  1 99 .
 [5,]  .  . .  .  1 .
 [6,]  .  . .  .  . 1
-> C[L] <- z; assert.EQ.mat(C,m.L) # with a good warning
++ C[L] <- z, verbose=TRUE); assert.EQ.mat(C,m.L)  ; assertWarning(
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class ntTMatrix to ngTMatrix
-Warning in `[<-`(`*tmp*`, i, value = c(50, 99)) :
-  x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
-> N[L] <- z; assert.EQ.mat(N,m.L)
+Asserted warning: x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
++ N[L] <- z, verbose=TRUE); assert.EQ.mat(N,m.L)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class ntTMatrix to ngTMatrix
-Warning in `[<-`(`*tmp*`, L, value = c(50, 99)) :
-  x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
+Asserted warning: x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
 > 
 > 
 > ## indexing [i]  vs  [i,] --- now ok
 > eval(.iniDiag.example)
 > stopifnot(identical5(m[i], M[i], D[i], s[i], S[i]), identical3(as.logical(m[i]), C[i], N[i]),
 +           identical5(m[L], M[L], D[L], s[L], S[L]), identical3(as.logical(m[L]), C[L], N[L]))
+M[i,m,m] : nargs()=2
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=2
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[logi,m,m] : nargs()=2
+M[logi,m,m] : nargs()=2
 <sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[logi,m,m] : nargs()=2
 <sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[logi,m,m] : nargs()=2
 <sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[logi,m,m] : nargs()=2
 <sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
+M[logi,m,m] : nargs()=2
 <sparse>[ <logic> ] : .M.sub.i.logical() maybe inefficient
 > ## bordercase ' drop = .' *vector* indexing {failed till 2009-04-..)
 > stopifnot(identical5(m[i,drop=FALSE], M[i,drop=FALSE], D[i,drop=FALSE],
 + 		     s[i,drop=FALSE], S[i,drop=FALSE]),
 + 	  identical3(as.logical(m[i,drop=FALSE]),
 + 		     C[i,drop=FALSE], N[i,drop=FALSE]))
+diag[i,m,l] : nargs()=3
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+Tsp[i,m,l]: nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+Csp[i,m,l] : nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+Tsp[i,m,l]: nargs()=3
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > stopifnot(identical5(m[L,drop=FALSE], M[L,drop=FALSE], D[L,drop=FALSE],
 + 		     s[L,drop=FALSE], S[L,drop=FALSE]),
 + 	  identical3(as.logical(m[L,drop=FALSE]),
 + 		     C[L,drop=FALSE], N[L,drop=FALSE]))
+diag[i,m,l] : nargs()=3
+Csp[i,m,l] : nargs()=3
+Tsp[i,m,l]: nargs()=3
+Csp[i,m,l] : nargs()=3
+Csp[i,m,l] : nargs()=3
+Tsp[i,m,l]: nargs()=3
 > ## using L for row-indexing should give an error
 > assertError(m[L,]); assertError(m[L,, drop=FALSE])
 > ## these did not signal an error, upto (including) 0.999375-30:
 > assertError(s[L,]); assertError(s[L,, drop=FALSE])
+M[logi,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > assertError(S[L,]); assertError(S[L,, drop=FALSE])
+M[logi,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+Csp[i,m,l] : nargs()=4
 > assertError(N[L,]); assertError(N[L,, drop=FALSE])
+M[logi,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > 
 > ## row indexing:
 > assert.EQ.mat(D[i,], m[i,])
+M[i,m,m] : nargs()=3
+diag[i,m,l] : nargs()=4
+Csp[i,m,l] : nargs()=4
 > assert.EQ.mat(M[i,], m[i,])
+M[i,m,m] : nargs()=3
 > assert.EQ.mat(s[i,], m[i,])
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > assert.EQ.mat(S[i,], m[i,])
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > assert.EQ.mat(C[i,], asLogical(m[i,]))
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > assert.EQ.mat(N[i,], asLogical(m[i,]))
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > ## column indexing:
 > assert.EQ.mat(D[,i], m[,i])
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > assert.EQ.mat(M[,i], m[,i])
+M[m,i,m] : nargs()=3
 > assert.EQ.mat(s[,i], m[,i])
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > assert.EQ.mat(S[,i], m[,i])
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > assert.EQ.mat(C[,i], asLogical(m[,i]))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > assert.EQ.mat(N[,i], asLogical(m[,i]))
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
 > 
 > 
 > ### --- negative indices ----------
@@ -1306,17 +2518,25 @@ Warning in `[<-`(`*tmp*`, L, value = c(50, 99)) :
 > i <- -(2:30)
 > stopifnot(identical5(m[i], M[i], D[i], s[i], S[i]),
 +           identical3(as.logical(m[i]), C[i], N[i]))
+M[i,m,m] : nargs()=2
+M[i,m,m] : nargs()=2
+M[i,m,m] : nargs()=2
+M[i,m,m] : nargs()=2
+M[i,m,m] : nargs()=2
+M[i,m,m] : nargs()=2
 > ##  negative vector subassignment :
 > v <- seq_along(m[i])
 > m[i] <- v; m.L <- asLogical(m)
 > M[i] <- v; assert.EQ.mat(M,m) # dge
 > D[i] <- v; assert.EQ.mat(D,m) # ddi -> dtT -> dgT
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 > s[i] <- v; assert.EQ.mat(s,m) # dtT -> dgT
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
-> S[i] <- v; assert.EQ.mat(S,m); S # dtC -> dtT -> dgT -> dgC
+> S[i] <- v; assert.EQ.mat(S,m); S ; assertWarning( # dtC -> dtT -> dgT -> dgC
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class dtTMatrix to dgTMatrix
 6 x 6 sparse Matrix of class "dgCMatrix"
@@ -1327,12 +2547,11 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 [4,] . . . 1 . 5
 [5,] . . . . 1 6
 [6,] . . . . . 7
-> N[i] <- v # with a good warning
++ N[i] <- v, verbose=TRUE)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class ntTMatrix to ngTMatrix
-Warning in `[<-`(`*tmp*`, i, value = 1:7) :
-  x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
-> assert.EQ.mat(N,m.L); N
+Asserted warning: x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
+> assert.EQ.mat(N,m.L); N ; assertWarning(
 6 x 6 sparse Matrix of class "ngTMatrix"
                 
 [1,] | . . . . |
@@ -1341,11 +2560,11 @@ Warning in `[<-`(`*tmp*`, i, value = 1:7) :
 [4,] . . . | . |
 [5,] . . . . | |
 [6,] . . . . . |
-> C[i] <- v #  ..  .  ..  warning
++ C[i] <- v, verbose=TRUE)
+replCmat[x,i,j,.., val] : nargs()=3; missing (i,j) = (0,1)
 diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 'sub-optimal sparse 'x[i] <- v' assignment: Coercing class ntTMatrix to ngTMatrix
-Warning in `[<-`(`*tmp*`, i, value = 1:7) :
-  x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
+Asserted warning: x[.] <- val: x is "ngTMatrix", val not in {TRUE, FALSE} is coerced.
 > assert.EQ.mat(C,m.L); C #
 6 x 6 sparse Matrix of class "ngCMatrix"
                 
@@ -1360,29 +2579,69 @@ Warning in `[<-`(`*tmp*`, i, value = 1:7) :
 > 					# =====================
 > ## 2) negative [i,j] indices
 > mc <- mC[1:5, 1:7]
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > mt <- mT[1:5, 1:7]
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > ## sub matrix
 > assert.EQ.mat(mC[1:2, 0:3], mm[1:2, 0:3]) # test 0-index
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > stopifnot(identical(mc[-(3:5), 0:2], mC[1:2, 0:2]),
 +           identical(mt[-(3:5), 0:2], mT[1:2, 0:2]),
 +           identical(mC[2:3, 4],      mm[2:3, 4]))
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > assert.EQ.mat(mC[1:2,], mm[1:2,])
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 > ## sub vector
 > stopifnot(identical4(mc[-(1:4), ], mC[5, 1:7],
 +                      mt[-(1:4), ], mT[5, 1:7]))
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > stopifnot(identical4(mc[-(1:4), -(2:4)], mC[5, c(1,5:7)],
 +                      mt[-(1:4), -(2:4)], mT[5, c(1,5:7)]))
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > 
 > ## mixing of negative and positive must give error
 > assertError(mT[-1:1,])
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > showProc.time()
-Time elapsed:  0.169 0 0.169 
+Time (user system elapsed): 0.277 0 0.279 
 > 
 > ## Sub *Assignment* ---- now works (partially):
 > mt0 <- mt
 > nt <- as(mt, "nMatrix")
 > mt[1, 4] <- -99
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; 
 > mt[2:3, 1:6] <- 0
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; 
 > mt
 5 x 7 sparse Matrix of class "dgTMatrix"
    c1 c2 c3  c4 c5 c6  c7
@@ -1393,13 +2652,23 @@ r4  .  .  .   .  .  .   .
 r5  . 45  .   .  .  .   .
 > m2 <- mt+mt
 > m2[1,4] <- -200
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; 
 > m2[c(1,3), c(5:6,2)] <- 1:6
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=6; 
 > stopifnot(m2[1,4] == -200,
 +           as.vector(m2[c(1,3), c(5:6,2)]) == 1:6)
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > mt[,3] <- 30
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; missing (i,j) = (1,0)
 > mt[2:3,] <- 250
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; missing (i,j) = (0,1)
 > mt[1:5 %% 2 == 1, 3] <- 0
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; 
 > mt[3:1, 1:7 > 5] <- 0
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; 
 > mt
 5 x 7 sparse Matrix of class "dgTMatrix"
     c1  c2  c3  c4  c5 c6 c7
@@ -1414,9 +2683,12 @@ r5   .  45   .   .   .  .  .
 > jj <- c(2:3,5)
 > tt[ii, jj] <- 1:6 # 0 is just "dropped"
 > mt[ii, jj] <- 1:6
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=6; 
 > assert.EQ.mat(mt, tt)
 > 
 > mt[1:5, 2:6]
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 5 x 5 sparse Matrix of class "dgTMatrix"
     c2 c3  c4  c5 c6
 r1   .  . -99   .  .
@@ -1425,6 +2697,8 @@ r3 250  . 250 250  .
 r4   . 30   .   .  .
 r5   2  4   .   6  .
 > as((mt0 - mt)[1:5,], "dsparseMatrix")# [1,5] and lines 2:3
+M[i,m,m] : nargs()=3
+Csp[i,m,l] : nargs()=4
 5 x 7 sparse Matrix of class "dgCMatrix"
      c1   c2  c3   c4   c5  c6  c7
 r1    .    .   .  220    .   . 241
@@ -1434,14 +2708,26 @@ r4    .    . -30    .    .   .   .
 r5    .   43  -4    .   -6   .   .
 > 
 > mt[c(2,4), ] <- 0; stopifnot(as(mt[c(2,4), ],"matrix") == 0)
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; missing (i,j) = (0,1)
+M[i,m,m] : nargs()=3
+Tsp[i,m,l]: nargs()=4
+Csp[i,m,l] : nargs()=4
 > mt[2:3, 4:7] <- 33
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=1; 
 > checkMatrix(mt)
+M[m,i,m] : nargs()=3
+Csp[m,i,l] : nargs()=4
+Csp[m,i,l] : nargs()=4
+Compare <Csparse> -- "dgCMatrix" != "dgCMatrix" :
+
  norm(m [5 x 7]) : 1  I  F  M  ok
  Summary:  ok
 as(., "nMatrix") giving full nonzero-pattern: ok
 2*m =?= m+m: ok
 m >= m for all: ok
-m < m for none: ok
+m < m for none: Compare <Csparse> -- "dgCMatrix" < "dgCMatrix" :
+
+ok
 > mt
 5 x 7 sparse Matrix of class "dgTMatrix"
     c1  c2 c3  c4 c5 c6 c7
@@ -1452,14 +2738,32 @@ r4   .   .  .   .  .  .  .
 r5   .   2  4   .  6  .  .
 > 
 > mc[1,4] <- -99 ; stopifnot(mc[1,4] == -99)
+replCmat[x,i,j,.., val] : nargs()=4; 
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > mc[1,4] <-  00 ; stopifnot(mc[1,4] ==  00)
+replCmat[x,i,j,.., val] : nargs()=4; 
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > mc[1,4] <- -99 ; stopifnot(mc[1,4] == -99)
+replCmat[x,i,j,.., val] : nargs()=4; 
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > mc[1:2,4:3] <- 4:1; stopifnot(.asmatrix(mc[1:2,4:3]) == 4:1)
+replCmat[x,i,j,.., val] : nargs()=4; 
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > 
 > mc[-1, 3] <- -2:1 # 0 should not be entered; 'value' recycled
+replCmat[x,i,j,.., val] : nargs()=4; 
 > mt[-1, 3] <- -2:1
+.. replTmat(x,i,j,v): nargs()= 4; cl.(x)=dgTMatrix; len.(value)=4; 
 > stopifnot(mc@x != 0, mt@x != 0,
 + 	  mc[-1,3] == -2:1, mt[-1,3] == -2:1) ## failed earlier
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
+M[i,i,m] : nargs()=3
+Csp[i,i,l] : nargs()=4
 > 
 > mc0 <- mc
 > mt0 <- as(mc0, "TsparseMatrix")
@@ -1484,7 +2788,7 @@ r5   .   2  4   .  6  .  .
 r2  2
 r4  .
 > showProc.time()
-Time elapsed:  0.219 0 0.22 
+Time (user system elapsed): 0.248 0.001 0.249 
 > options(Matrix.verbose = TRUE)
 > 
 > mc # no longer has non-structural zeros
@@ -1705,10 +3009,23 @@ M[i,j] <- v :  coercing symmetric M[] into non-symmetric
 > assert.EQ.mat(t2, m)# ok
 > assert.EQ.mat(s2, m)# failed in 0.9975-8
 > showProc.time()
-Time elapsed:  0.669 0.001 0.673 
+Time (user system elapsed): 0.563 0 0.565 
+> 
+> ## sub-assign  RsparseMatrix -- Matrix bug [#6709] by David Cortes
+> ## https://r-forge.r-project.org/tracker/?func=detail&atid=294&aid=6709&group_id=61
+> ## simplified by MM
+> X <- new("dgCMatrix", i = c(0L,3L), p = c(0L,2L,2L,2L), x = c(100, -20), Dim = c(12L,3L))
+> R <- as(X, "RsparseMatrix")
+> T <- as(R, "TsparseMatrix")
+> T[, 2] <- 22 # works fine
+> R[, 2] <- 22 # failed, as it called replTmat() giving narg() == 3
+> ## now R is Tsparse (as documented on ../man/RsparseMatrix-class.Rd),
+> identical(R, T) ## but as this may change, rather R & T should have the same *content*
+[1] TRUE
+> assert.EQ.Mat(R, T)
 > 
 > 
-> ## m[cbind(i,j)] <- value: (2-column matrix subassignment):
+> ## m[cbind(i,j)] <- value: (2-column matrix subassignment): -------------------------
 > m.[ cbind(3:5, 1:3) ] <- 1:3
 > stopifnot(m.[3,1] == 1, m.[4,2] == 2)
 > nt. <- nt ; nt[rbind(2:3, 3:4, c(3,3))] <- FALSE
@@ -1745,21 +3062,31 @@ r5  TRUE TRUE FALSE TRUE TRUE TRUE TRUE
 > d6[cbind(ii,ii)] <- 7*ii
 > stopifnot(is(d6, "ddiMatrix"), identical(d6, Diagonal(x=c(7*1:2,1,7*4:5,1))))
 > 
-> for(j in 3:6) { ## even and odd j used to behave differently
+> sclass <- function(obj) as.vector(class(obj)) # as.v*(): drop attr(*,"package")
+> show2cls <- function(C,D, chr = "")
++     cat(sprintf("%s & %s%s: %s %s\n",
++                 deparse(substitute(C)), deparse(substitute(D)), chr,
++                 sclass(C), sclass(D)))
+> for(j in 2:6) { ## even and odd j used to behave differently
++     cat("j = ", j, ":\n-------\n")
 +     M <- Matrix(0, j,j); m <- matrix(0, j,j)
 +     T  <- as(M, "TsparseMatrix")
 +     TG <- as(T, "generalMatrix")
-+     G <-  as(M, "generalMatrix")
++     G  <- as(M, "generalMatrix");  show2cls(TG, G)
++     stopifnot(is(TG, "TsparseMatrix"),
++               is(G,  "CsparseMatrix"))
 +     id <- cbind(1:j,1:j)
 +     i2 <- cbind(1:j,j:1)
 +     m[id] <- 1:j
-+     M[id] <- 1:j ; stopifnot(is(M,"symmetricMatrix"))
-+     T[id] <- 1:j ; stopifnot(is(T,"symmetricMatrix"))
++     M[id] <- 1:j
++     T[id] <- 1:j ; show2cls(M, T,' ("diag")')
++     stopifnot(is(M, "diagonalMatrix"), # since 2019-07 // FIXME (?!) for j=1
++               is(T,"triangularMatrix"), isDiagonal(T)) # was "symmetricMatrix"
 +     G[id] <- 1:j
 +     TG[id]<- 1:j
 +     m[i2] <- 10
-+     M[i2] <- 10 ; stopifnot(is(M,"symmetricMatrix"))
-+     T[i2] <- 10 ; stopifnot(is(T,"symmetricMatrix"))
++     M[i2] <- 10
++     T[i2] <- 10 ; show2cls(M, T,' ("symm")')
 +     G[i2] <- 10
 +     TG[i2]<- 10
 +     ##
@@ -1768,6 +3095,41 @@ r5  TRUE TRUE FALSE TRUE TRUE TRUE TRUE
 +     assert.EQ.mat(G, m)
 +     assert.EQ.mat(TG,m)
 + }
+j =  2 :
+-------
+TG & G: dgTMatrix dgCMatrix
+M & T ("diag"): ddiMatrix dtTMatrix
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M & T ("symm"): dgTMatrix dgTMatrix
+j =  3 :
+-------
+TG & G: dgTMatrix dgCMatrix
+M & T ("diag"): ddiMatrix dtTMatrix
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M & T ("symm"): dgTMatrix dgTMatrix
+j =  4 :
+-------
+TG & G: dgTMatrix dgCMatrix
+M & T ("diag"): ddiMatrix dtTMatrix
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M & T ("symm"): dgTMatrix dgTMatrix
+j =  5 :
+-------
+TG & G: dgTMatrix dgCMatrix
+M & T ("diag"): ddiMatrix dtTMatrix
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M & T ("symm"): dgTMatrix dgTMatrix
+j =  6 :
+-------
+TG & G: dgTMatrix dgCMatrix
+M & T ("diag"): ddiMatrix dtTMatrix
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M[ij] <- v :  coercing symmetric M[] into non-symmetric
+M & T ("symm"): dgTMatrix dgTMatrix
 > 
 > 
 > ## drop, triangular, ...
@@ -1848,7 +3210,7 @@ r5  TRUE TRUE FALSE TRUE TRUE TRUE TRUE
 > 
 > cc <- capture.output(show(dLrg))# show(<diag>) used to error for large n
 > showProc.time()
-Time elapsed:  0.358 0.008 0.366 
+Time (user system elapsed): 0.389 0.005 0.394 
 > 
 > ## Large Matrix indexing / subassignment
 > ## ------------------------------------- (from ex. by Imran Rashid)
@@ -1922,7 +3284,7 @@ M[m,i,m] : nargs()=3
 Csp[m,i,l] : nargs()=4
 > 
 > showProc.time()
-Time elapsed:  2.09 0.719 2.819 
+Time (user system elapsed): 1.063 0.172 1.238 
 > options(op)# revert
 > ##
 > if(doExtras) {#-----------------------------------------------------------------
@@ -2010,13 +3372,80 @@ diagnosing replTmat(x,i,j,v): nargs()= 3; missing (i,j) = (0,1)
 +         vv[ind] <- NA
 > stopifnot(identical(sv , sv0), identical(sv., sv.0))
 > 
-> 
-> 
+> ## <sparseVector>[i] <- val -- failed to resort @i sometimes:  (R-forge Matrix bug #6659)
+> y1 <- sparseVector(1:3, 13:15, 16)
+> y2 <- sparseVector(1:6, c(5, 6, 7, 9, 14, 15), 16)
+> i <- 1:16*12 # 12 24 36 ... 192
+> x <- sparseVector(numeric(1), 1, length=200)
+> x[i] <- y1     ; validObject(x[i]) # TRUE
+[1] TRUE
+> N <- x[i] + y2 ; validObject( N  ) # TRUE
+[1] TRUE
+> x[i] <- N ## <== bug was here ..
+> validObject(x)
+[1] TRUE
+> ## gave 'Error' invalid ..“dsparseVector”.. 'i' must be sorted strictly increasingly
+> stopifnot(all.equal(x[i] ,  y1+y2, tolerance=0),
++ 		    x[i] == y1+y2)
 > showProc.time()
-Time elapsed:  0.576 0.054 0.633 
+Time (user system elapsed): 0.107 0 0.107 
 > 
 > if(!interactive()) warnings()
 > 
+> ## [matrix-Bugs][#6720] Subsetting with empty indices does not drop -- 17 Apr 2021, by David Cortes
+> ##  https://r-forge.r-project.org/tracker/?func=detail&atid=294&aid=6720&group_id=61
+> 
+> ## extended by MM to all versions of "empty" :
+> x <- c(1,8)
+> (m1 <-  rbind(x))
+  [,1] [,2]
+x    1    8
+> m1[]             # remains matrix
+  [,1] [,2]
+x    1    8
+> m1[,,drop=FALSE] # ditto
+  [,1] [,2]
+x    1    8
+> m1[,] # [1] 1 2 -- drops (as default drop=TRUE !)
+[1] 1 8
+> 
+> ## Sparse Matrix and  actually *any* Matrix-extending class did not work
+> (M1 <- as(m1, "denseMatrix")) # "dgeMatrix"
+1 x 2 Matrix of class "dgeMatrix"
+  [,1] [,2]
+x    1    8
+> S1 <- as(m1, "CsparseMatrix")
+> R1 <- as(m1, "RsparseMatrix")
+> stopifnot(exprs = {
++     identical(M1[], M1) # remains
++     identical(S1[], S1) # remains
++     identical(R1[], R1) # remains
++     identical(M1[,,drop=FALSE], M1) # ditto
++     identical(S1[,,drop=FALSE], S1) #  "
++     identical(R1[,,drop=FALSE], R1) #  "
++     ## but drop=TRUE  which is the *default* much be obeyed (also for *empty* (i,j):
++     identical(m1[,], x)
++     identical(M1[,], x) # should drop, but did not
++     identical(S1[,], x) #  "
++     identical(R1[,], x) #  "
++     identical(m1[,,drop=TRUE], x)
++     identical(M1[,,drop=TRUE], x) # should drop, but did not
++     identical(S1[,,drop=TRUE], x) #  "
++     identical(R1[,,drop=TRUE], x)  # "
++ })
+> 
+> 
+> ## [matrix-Bugs][#6721] Assignment to 'dgRMatrix' with missing index takes only first element
+> ## MM: This has been fixed already!
+> X <- rbind(0, 1:3, 0, c(0,1,0))
+> Rx <- as(X, "RsparseMatrix")
+> Cx <- as(X, "CsparseMatrix")
+> X [2,] <- 0
+> Cx[2,] <- 0
+> Rx[2,] <- 0
+> stopifnot(all(Cx == X),
++           all(Rx == X))
+> 
 > proc.time()
    user  system elapsed 
-  6.269   0.241   6.617 
+  5.906   0.269   6.251 

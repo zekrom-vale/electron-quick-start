@@ -2,7 +2,7 @@
 #
 # ${R_HOME}/tests/Makefile.common
 
-## If you add test scripts here, review  ../src/library/tools/R/testing.R
+## If you add test scripts here, review  ../src/library/tools/R/testing.R <<<<<<<<<<<<
 
 test-src-gct = \
 	eval-etc.R \
@@ -17,13 +17,16 @@ test-src-strict-1 = \
 	$(test-src-gct) \
 	d-p-q-r-tests.R
 test-src-strict-auto =
-test-src-sloppy-1 = \
+test-src-sloppy-a = \
 	complex.R \
 	print-tests.R \
 	lapack.R \
 	datasets.R \
 	datetime.R \
 	iec60559.R
+## set in Makefile.{in,win}
+##test-src-sloppy-b = eval-etc-2.R
+test-src-sloppy-1 = $(test-src-sloppy-a) $(test-src-sloppy-b)
 test-src-sloppy-auto =
 
 test-src-1 = $(test-src-strict-1) $(test-src-sloppy-1)
@@ -45,16 +48,18 @@ test-src-random = p-r-random-tests.R
 test-src-regexp = utf8-regex.R PCRE.R
 test-src-segfault = no-segfault.R
 test-src-tz = timezone.R
+test-src-cond = conditions.R
 
 test-src-reg-1 = array-subset.R \
   reg-tests-1a.R reg-tests-1b.R reg-tests-1c.R reg-tests-1d.R reg-tests-2.R \
-  reg-examples1.R reg-examples2.R reg-packages.R p-qbeta-strict-tst.R \
+  reg-examples1.R reg-examples2.R reg-packages.R p-qbeta-strict-tst.R d-p-q-r-tst-2.R \
   r-strict-tst.R \
   reg-IO.R reg-IO2.R reg-plot.R reg-S4-examples.R reg-BLAS.R
 ## added to in Makefile.win
 test-src-reg-1e =
 test-src-reg = $(test-src-reg-1) $(test-src-reg-1e)
 ## overridden in Makefile if recommended packages are not installed.
+## *-src-reg3 are sloppy (*.Rout may differ from *.Rout.save):
 ## reg-S4 has to be a sloppy test, as output differs if Matrix is absent.
 test-src-reg3 = reg-tests-3.R reg-examples3.R reg-plot-latin1.R reg-S4.R
 
@@ -78,6 +83,7 @@ test-out-regexp = $(test-src-regexp:.R=.Rout)
 test-out-reg3 = $(test-src-reg3:.R=.Rout)
 test-out-segfault = $(test-src-segfault:.R=.Rout)
 test-out-tz = $(test-src-tz:.R=.Rout)
+test-out-cond = $(test-src-cond:.R=.Rout)
 
 ## This macro is used only for dependencies and for distclean
 test-out = $(test-src:.R=.Rout) $(test-out-demo) $(test-out-gct) \
@@ -90,6 +96,7 @@ test-out = $(test-src:.R=.Rout) $(test-out-demo) $(test-out-gct) \
 .SUFFIXES:
 .SUFFIXES: .R .Rin .Rout .Rout-gct .Rout-valgct .trin .tsin .log
 
+## This ensures "they" always re-run [a big WASTE for parallel make -j<n> !]
 $(test-out): FORCE
 
 FORCE:
@@ -123,6 +130,14 @@ reg-plot.Rout: reg-plot.R
 	@$(ECHO) $(ECHO_N) \
 	  "  comparing 'reg-plot.pdf' to '$(srcdir)/reg-plot.pdf.save' ...$(ECHO_C)" >> $@.log
 	@$(RDIFF) reg-plot.pdf $(srcdir)/reg-plot.pdf.save >> $@.log
+	@$(ECHO) "$(ECHO_T) OK" >> $@.log
+	@cat $@.log; rm $@.log
+
+## Using $(R2) (whenever LC_ALL=C is not needed - so LANGUAGE can work)
+reg-translation.Rout: reg-translation.R
+	@rm -f $@ $@.fail $@.log
+	@$(ECHO) $(ECHO_N) "running code in '$<' ...$(ECHO_C)" > $@.log
+	@LANGUAGE=fr $(R2) < $< > $@ 2>&1 || (mv $@ $@.fail && cat $@.log && rm $@.log && exit 1)
 	@$(ECHO) "$(ECHO_T) OK" >> $@.log
 	@cat $@.log; rm $@.log
 
@@ -172,8 +187,8 @@ test-all-basics:
 
 ## if you change this, also edit Makefile.install
 ## The definitions for Standalone are in Makefile.{in,win}.
-all-devel-tests = DateTime Docs IsAs Random Demo Primitive Regexp \
-    Internet2 CRANtools Segfault Standalone Packages
+all-devel-tests = DateTime Docs IsAs Random Demo Primitive Regexp Translation \
+    Internet2 CRANtools Segfault Standalone Conditions Packages
 test-all-devel:
 	@for name in $(all-devel-tests); do \
 	  $(MK) test-$${name} || exit 1; \
@@ -194,6 +209,8 @@ test-Specific:
 	@$(MK) test-TimeZone
 
 test-Packages:
+	@$(ECHO) "building NEWS database [for news() example]"; \
+	  (cd $(top_builddir)/doc ; $(MK) NEWS.rds; ls -l NEWS.rds )
 	@if test -n "${TEST_MC_CORES}"; then \
 	  $(ECHO) "Using ${TEST_MC_CORES} cores to check packages"; \
 	  $(MK) -j ${TEST_MC_CORES} test-Packages2; \
@@ -275,6 +292,7 @@ test-CRANtools:
 
 test-Large:
 	@$(ECHO) "running tests needing large amounts of processor memory"
+	@$(ECHO) "  (is slow, notably when memory is available)"
 	@$(MK) $(test-out-large) RVAL_IF_DIFF=0
 
 test-Primitive:
@@ -302,12 +320,23 @@ test-Regexp:
 test-Segfault:
 	@$(ECHO) "running tests to possibly trigger segfaults"
 	@$(MK) $(test-out-segfault) RVAL_IF_DIFF=0
-	-@rm -Rf data dumpdata.R F.Rd c0.Rd df0.Rd l0.Rd m0.Rd Rprof.out Rplots* PACKAGES PACKAGES.gz FALSE-package.Rd FALSE.* ./-Ex.R
+	-@rm -Rf data dumpdata.R ./-package.Rd ./-Ex.R .Rd F.Rd [a-z]*0.Rd Rprof.out Rplots* \
+	    PACKAGES PACKAGES.gz [A-Za-z]*-package.Rd FALSE.* mirrors.html
+
+test-Translation:
+	@$(ECHO) "running tests of translation"
+	@rm -f reg-translation.Rout
+	@$(MK) reg-translation.Rout RVAL_IF_DIFF=0
 
 ## Not run by any other target
 test-UTF-8:
 	@$(ECHO) "running regression tests for UTF-8 <--> int conversion (slow)"
 	@$(R2) < $(srcdir)/utf8.R > utf8.Rout 2>&1 || (mv utf8.Rout utf8.Rout.fail && exit 1)
+
+test-Conditions:
+	@$(ECHO) "running unit tests for the condition system"
+	@rm -f $(test-out-cond)
+	@$(MK) $(test-out-cond) RVAL_IF_DIFF=0
 
 ## Avoid site library, which could be very large
 no-segfault.Rout: no-segfault.R
@@ -445,7 +474,7 @@ test-Packages1-Recommended:
 	@for p in $(R_PKGS_RECOMMENDED); do \
 	  rm -Rf RecPackages/$${p}; \
 	  gzip -dc "$(top_srcdir)/src/library/Recommended/$${p}.tgz" | \
-	    (cd RecPackages && $(TAR) xf -) ; \
+	    (cd RecPackages && $(TAR) -x -f -) ; \
 	  $(ECHO) "checking package '$${p}'"; \
 	  R_LIBS="$(top_builddir)/library:$${R_LIBS}" \
 	    _R_CHECK_FORCE_SUGGESTS_=FALSE $(R3) --install=skip \
@@ -467,7 +496,7 @@ stamp-Packages2: $(PKG_ROBJECTS)
 	@p=`basename $@ .log`; \
 	rm -Rf RecPackages/$${p}; \
 	gzip -dc "$(top_srcdir)/src/library/Recommended/$${p}.tgz" | \
-	    (cd RecPackages && $(TAR) xf -) ; \
+	    (cd RecPackages && $(TAR) -x -f -) ; \
 	  $(ECHO) "begin checking package '$${p}'"; \
 	  R_LIBS="$(top_builddir)/library:$${R_LIBS}" \
 	 _R_CHECK_FORCE_SUGGESTS_=FALSE $(R3) --install=skip \
@@ -489,5 +518,5 @@ INSTFILES = README \
 	  reg-plot.pdf.save reg-tests-2.Rout.save reg-tests-3.Rout.save \
 	  reg-examples3.Rout.save reg-plot-latin1.pdf.save \
 	  encodings.R utf8-regex.R PCRE.R CRANtools.R \
-	  timezone.R \
+	  timezone.R conditions.R \
 	  nanbug.rda WinUnicode.dat arima.rda EmbeddedNuls.csv

@@ -9,6 +9,8 @@ as.graphicsAnnot        Coerce an Object for Graphics Annotation
 as.raster               Create a Raster Object
 axisTicks               Compute Pretty Axis Tick Scales
 boxplot.stats           Box Plot Statistics
+bringToTop              Assign Focus to a Window
+cairoSymbolFont         Specify a Symbol Font
 check.options           Set Options with Consistency Checks
 chull                   Compute Convex Hull of a Set of Points
 cm                      Unit Transformation
@@ -42,7 +44,8 @@ gray.colors             Gray Color Palette
 hcl                     HCL Color Specification
 hsv                     HSV Color Specification
 make.rgb                Create colour spaces
-n2mfrow                 Compute Default mfrow From Number of Plots
+msgWindow               Manipulate a Window
+n2mfrow                 Compute Default 'mfrow' From Number of Plots
 nclass.Sturges          Compute the Number of Classes for a Histogram
 palette                 Set or View the Graphics Palette
 pdf                     PDF Graphics Device
@@ -57,7 +60,7 @@ pretty.Date             Pretty Breakpoints for Date-Time Classes
 ps.options              Auxiliary Function to Set/View Defaults for
                         Arguments of postscript
 quartz                  macOS Quartz Device
-quartzFonts             quartz Fonts
+quartzFonts             Quartz Fonts Setup
 rainbow                 Color Palettes
 recordGraphics          Record Graphics Operations
 recordPlot              Record and Replay Plots
@@ -67,7 +70,11 @@ savePlot                Save Cairo X11 Plot to File
 svg                     Cairographics-based SVG, PDF and PostScript
                         Graphics Devices
 trans3d                 3D to 2D Transformation for Perspective Plots
-x11                     X Window System Graphics
+windows                 Windows Graphics Devices
+windows.options         Auxiliary Function to Set/View Defaults for
+                        Arguments of windows()
+windowsFonts            Windows Fonts
+x11                     X Window System Graphics (X11)
 xfig                    XFig Graphics Device
 xy.coords               Extracting Plotting Structures
 xyTable                 Multiplicities of (x,y) Points, e.g., for a

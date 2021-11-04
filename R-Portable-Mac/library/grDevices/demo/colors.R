@@ -18,7 +18,7 @@ showCols2 <- function(bg = "grey", cex = 0.75, rot = 30) {
     length(cl) <- m*m; cm <- matrix(cl, m)
     ##
     require("grid")
-    grid.newpage(); vp <- viewport(w = .92, h = .92)
+    grid.newpage(); vp <- viewport(width = .92, height = .92)
     grid.rect(gp=gpar(fill=bg))
     grid.text(cm, x = col(cm)/m, y = rev(row(cm))/m, rot = rot,
               vp=vp, gp=gpar(cex = cex, col = cm))
@@ -86,7 +86,7 @@ nearRcolor <- function(rgb, cSpace = c("hsv", "rgb255", "Luv", "Lab"),
                      "Lab" = function(RGB) convRGB2(RGB, "Lab"))
     d <- sqrt(colSums((TransF(Rcol) - as.vector(TransF(rgb)))^2))
     iS <- sort.list(d[near <- d <= dist])# sorted: closest first
-    setNames(.cc[near][iS], format(d[near][iS], digits=3))
+    setNames(.cc[near][iS], format(zapsmall(d[near][iS]), digits=3))
 }
 
 nearRcolor(col2rgb("tan2"), "rgb")

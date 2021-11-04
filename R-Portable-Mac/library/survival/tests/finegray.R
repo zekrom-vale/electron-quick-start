@@ -36,14 +36,16 @@ all.equal(test1$fgstop[test1$fgcount>0], c(4,6,12, 12,12))
 #  compare at the event times
 sfit <- survfit(Surv(time, status) ~1, fdata)
 sfit1<- survfit(Surv(fgstart, fgstop, fgstatus) ~1, test1, weight=fgwt)
-i1 <- sfit$n.event[,1] > 0
+sfita<- sfit["type1"]
+i1 <- sfita$n.event > 0
 i2 <- sfit1$n.event > 0
-all.equal(sfit$pstate[i1, 1], 1- sfit1$surv[i2])
+all.equal(sfita$pstate[i1], 1- sfit1$surv[i2])
 
+sfitb <- sfit["type2"]
 sfit2 <- survfit(Surv(fgstart, fgstop, fgstatus) ~1, test2, weight=fgwt)
-i1 <- sfit$n.event[,2] > 0
+i1 <- sfitb$n.event > 0
 i2 <- sfit2$n.event > 0
-all.equal(sfit$pstate[i1, 2], 1- sfit2$surv[i2])
+all.equal(sfitb$pstate[i1], 1- sfit2$surv[i2])
 
 # Test strata.  Make a single data set that has fdata for the first 19
 #  rows, then fdata with outcomes switched for the second 19.  It should
@@ -121,10 +123,10 @@ for (i in 1:ntime)
     H[i] <- prod((1- Hevent/pmax(1, Hrisk))[-(i:1)])
 H2 <- rev(cumprod(rev(1 - Hevent/pmax(1, Hrisk))))  #alternate form
 H3 <- survfit(Surv(-time2, -time1, rep(1,14)) ~1, fdata) # alternate 3
-all.equal(tt, -rev(H3$time))
 # c(0,H) = H(t-), H2 = H(t-) already due to the time reversal
+i2 <- sort(match(unique(fdata$time1), tt))  #time points in H3
 all.equal(c(0, H), c(H2, 1))  
-all.equal(H2, rev(H3$surv))
+all.equal(H2[i2], rev(H3$surv))
 
 fg <- finegray(Surv(time1, time2, factor(status, 0:2)) ~ x, id=id, fdata)
 stat2 <- !is.na(match(fg$id, fdata$id[fdata$status==2]))  #expanded ids

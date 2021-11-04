@@ -112,7 +112,9 @@ if(!all((res10 <- round(10 * as.vector(resiv))) == res.T)) {
 ## function of ring age. TreeIDs grouped by SP (spacing)
 set.seed(1)
 df <- data.frame(SP = rep(LETTERS[1:5], 60),
-		 expand.grid(TreeID = factor(1:12), age = seq(2, 50, 2)))
+		 expand.grid(TreeID = factor(1:12),
+                             age = seq(2, 50, 2)),
+                 stringsAsFactors = TRUE)
 df[,"dens"] <- with(df, (runif(1,10,20)*age)/(runif(1,9,10)+age)) + rnorm(25, 0, 1)
 str(df)
 ## 'data.frame':	300 obs. of  4 variables:

@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2017-02-13 r72168) -- "Unsuffered Consequences"
-Copyright (C) 2017 The R Foundation for Statistical Computing
+R Under development (unstable) (2019-12-19 r77606) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,6 +23,7 @@ Type 'q()' to quit R.
 > library('MASS')
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("Insurance")
 > ### * Insurance
@@ -598,10 +599,10 @@ Call:
 coxph(formula = Surv(Time, unclass(y)) ~ week + strata(ID), data = bacteria, 
     method = "exact")
 
-        coef exp(coef) se(coef)     z     p
-week -0.1626    0.8500   0.0547 -2.97 0.003
+         coef exp(coef) se(coef)      z       p
+week -0.16256   0.84996  0.05472 -2.971 0.00297
 
-Likelihood ratio test=9.85  on 1 df, p=0.0017
+Likelihood ratio test=9.85  on 1 df, p=0.001696
 n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ factor(week) + strata(ID),
 +       data = bacteria, method = "exact")
@@ -609,13 +610,13 @@ Call:
 coxph(formula = Surv(Time, unclass(y)) ~ factor(week) + strata(ID), 
     data = bacteria, method = "exact")
 
-                 coef exp(coef) se(coef)     z     p
-factor(week)2   0.198     1.219    0.724  0.27 0.784
-factor(week)4  -1.421     0.242    0.667 -2.13 0.033
-factor(week)6  -1.661     0.190    0.682 -2.43 0.015
-factor(week)11 -1.675     0.187    0.678 -2.47 0.013
+                  coef exp(coef) se(coef)      z      p
+factor(week)2   0.1983    1.2193   0.7241  0.274 0.7842
+factor(week)4  -1.4206    0.2416   0.6665 -2.131 0.0331
+factor(week)6  -1.6615    0.1899   0.6825 -2.434 0.0149
+factor(week)11 -1.6752    0.1873   0.6780 -2.471 0.0135
 
-Likelihood ratio test=15.4  on 4 df, p=0.00385
+Likelihood ratio test=15.45  on 4 df, p=0.003854
 n= 220, number of events= 177 
 > coxph(Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID),
 +       data = bacteria, method = "exact")
@@ -623,10 +624,10 @@ Call:
 coxph(formula = Surv(Time, unclass(y)) ~ I(week > 2) + strata(ID), 
     data = bacteria, method = "exact")
 
-                  coef exp(coef) se(coef)     z       p
-I(week > 2)TRUE -1.670     0.188    0.482 -3.47 0.00053
+                   coef exp(coef) se(coef)      z        p
+I(week > 2)TRUE -1.6701    0.1882   0.4817 -3.467 0.000527
 
-Likelihood ratio test=15.2  on 1 df, p=9.93e-05
+Likelihood ratio test=15.15  on 1 df, p=9.927e-05
 n= 220, number of events= 177 
 > 
 > # PQL glmm analysis
@@ -862,6 +863,7 @@ s.e.  0.0681     0.0939  0.1282     0.105    0.0997
 
 sigma^2 estimated as 0.01434:  log likelihood = 69.83,  aic = -127.67
 > 
+> ## IGNORE_RDIFF_BEGIN
 > library(nlme) # for gls and corAR1
 > beav2.gls <- gls(temp ~ activ, data = beav2, corr = corAR1(0.8),
 +                  method = "ML")
@@ -923,6 +925,7 @@ Standardized residuals:
 Residual standard error: 0.2188542 
 Degrees of freedom: 95 total; 93 residual
 > detach("beav2"); rm(temp, activ)
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -1531,6 +1534,7 @@ Number of Fisher Scoring iterations: 5
 > 
 > contrasts(epil3$pred) <- structure(contr.sdif(3),
 +     dimnames = list(NULL, c("placebo-base", "drug-placebo")))
+> ## IGNORE_RDIFF_BEGIN
 > summary(glm(y ~ pred + factor(subject) + offset(log(time)),
 +             family = poisson, data = epil3), cor = FALSE)
 
@@ -1616,6 +1620,7 @@ AIC: 1003.5
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > 
 > summary(glmmPQL(y ~ lbase*trt + lage + V4,
 +                 random = ~ 1 | subject,
@@ -2007,15 +2012,15 @@ factor(pair)21   treatcontrol
 Scale fixed at 1 
 
 Loglik(model)= -101.6   Loglik(intercept only)= -116.8
-	Chisq= 30.27 on 21 degrees of freedom, p= 0.087 
+	Chisq= 30.27 on 21 degrees of freedom, p= 0.0866 
 n= 42 
 > summary(survreg(Surv(time, cens) ~ treat, gehan, dist = "exponential"))
 
 Call:
 survreg(formula = Surv(time, cens) ~ treat, data = gehan, dist = "exponential")
-             Value Std. Error     z        p
-(Intercept)   3.69      0.333 11.06 2.00e-28
-treatcontrol -1.53      0.398 -3.83 1.27e-04
+              Value Std. Error     z       p
+(Intercept)   3.686      0.333 11.06 < 2e-16
+treatcontrol -1.527      0.398 -3.83 0.00013
 
 Scale fixed at 1 
 
@@ -2029,10 +2034,10 @@ n= 42
 
 Call:
 survreg(formula = Surv(time, cens) ~ treat, data = gehan)
-              Value Std. Error     z        p
-(Intercept)   3.516      0.252 13.96 2.61e-44
-treatcontrol -1.267      0.311 -4.08 4.51e-05
-Log(scale)   -0.312      0.147 -2.12 3.43e-02
+              Value Std. Error     z       p
+(Intercept)   3.516      0.252 13.96 < 2e-16
+treatcontrol -1.267      0.311 -4.08 4.5e-05
+Log(scale)   -0.312      0.147 -2.12   0.034
 
 Scale= 0.732 
 
@@ -2057,11 +2062,10 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
              exp(coef) exp(-coef) lower .95 upper .95
 treatcontrol     4.817     0.2076     2.147     10.81
 
-Concordance= 0.69  (se = 0.053 )
-Rsquare= 0.322   (max possible= 0.988 )
-Likelihood ratio test= 16.35  on 1 df,   p=5.261e-05
-Wald test            = 14.53  on 1 df,   p=0.0001378
-Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
+Concordance= 0.69  (se = 0.041 )
+Likelihood ratio test= 16.35  on 1 df,   p=5e-05
+Wald test            = 14.53  on 1 df,   p=1e-04
+Score (logrank) test = 17.25  on 1 df,   p=3e-05
 
 > 
 > 
@@ -2070,35 +2074,6 @@ Score (logrank) test = 17.25  on 1 df,   p=3.283e-05
 
 detaching ‘package:survival’
 
-> nameEx("ginv")
-> ### * ginv
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: ginv
-> ### Title: Generalized Inverse of a Matrix
-> ### Aliases: ginv
-> ### Keywords: algebra
-> 
-> ### ** Examples
-> 
-> ## Not run: 
-> ##D # The function is currently defined as
-> ##D function(X, tol = sqrt(.Machine$double.eps))
-> ##D {
-> ##D ## Generalized Inverse of a Matrix
-> ##D   dnx <- dimnames(X)
-> ##D   if(is.null(dnx)) dnx <- vector("list", 2)
-> ##D   s <- svd(X)
-> ##D   nz <- s$d > tol * s$d[1]
-> ##D   structure(
-> ##D     if(any(nz)) s$v[, nz] %*% (t(s$u[, nz])/s$d[nz]) else X,
-> ##D     dimnames = dnx[2:1])
-> ##D }
-> ## End(Not run)
-> 
-> 
-> cleanEx()
 > nameEx("glm.convert")
 > ### * glm.convert
 > 
@@ -2379,6 +2354,7 @@ detaching ‘package:nlme’
 > # Surrogate Poisson models
 > house.glm0 <- glm(Freq ~ Infl*Type*Cont + Sat, family = poisson,
 +                   data = housing)
+> ## IGNORE_RDIFF_BEGIN
 > summary(house.glm0, cor = FALSE)
 
 Call:
@@ -2428,6 +2404,7 @@ AIC: 610.43
 
 Number of Fisher Scoring iterations: 5
 
+> ## IGNORE_RDIFF_END
 > 
 > addterm(house.glm0, ~. + Sat:(Infl+Type+Cont), test = "Chisq")
 Single term additions
@@ -2969,14 +2946,14 @@ converged
 > table(Iris$Sp[train])
 
  c  s  v 
-28 26 21 
+20 28 27 
 > ## your answer may differ
 > ##  c  s  v
 > ## 22 23 30
 > z <- lda(Sp ~ ., Iris, prior = c(1,1,1)/3, subset = train)
 > predict(z, Iris[-train, ])$class
- [1] s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c c c c c c c c
-[39] c c c c c c c c v v v v v v v v v v v v v v v v v v v v v v v v v v v v v
+ [1] s s s s s s s s s s s s s s s s s s s s s s c c c c c c c c c c c c c c c v
+[39] c c c c c c c c c c c c c c v v v v v v v v v v v v v v c v v v v v v v v
 Levels: c s v
 > ##  [1] s s s s s s s s s s s s s s s s s s s s s s s s s s s c c c
 > ## [31] c c c c c c c v c c c c v c c c c c c c c c c c c v v v v v
@@ -2992,19 +2969,19 @@ Prior probabilities of groups:
 
 Group means:
   Sepal.L. Sepal.W. Petal.L.
-c 5.878571 2.785714 4.278571
-s 4.950000 3.338462 1.457692
-v 6.504762 2.957143 5.500000
+c 5.975000 2.810000 4.395000
+s 4.978571 3.432143 1.460714
+v 6.748148 2.988889 5.637037
 
 Coefficients of linear discriminants:
                 LD1        LD2
-Sepal.L.  1.2555097 -0.2975141
-Sepal.W.  0.9085695  2.8401071
-Petal.L. -3.5502485  0.4380715
+Sepal.L.  1.1643015 0.68235619
+Sepal.W.  0.7945307 2.23093702
+Petal.L. -3.0421425 0.01236265
 
 Proportion of trace:
    LD1    LD2 
-0.9957 0.0043 
+0.9929 0.0071 
 > 
 > 
 > 
@@ -3042,11 +3019,10 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 agpresent    0.3433     2.9126     0.148    0.7964
 log(wbc)     1.4444     0.6923     1.106    1.8857
 
-Concordance= 0.726  (se = 0.065 )
-Rsquare= 0.377   (max possible= 0.994 )
-Likelihood ratio test= 15.64  on 2 df,   p=0.0004014
-Wald test            = 15.06  on 2 df,   p=0.0005365
-Score (logrank) test = 16.49  on 2 df,   p=0.0002629
+Concordance= 0.726  (se = 0.047 )
+Likelihood ratio test= 15.64  on 2 df,   p=4e-04
+Wald test            = 15.06  on 2 df,   p=5e-04
+Score (logrank) test = 16.49  on 2 df,   p=3e-04
 
 > 
 > 
@@ -3215,6 +3191,7 @@ Pearson          14.07985  5 0.01511005
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > set.seed(123) # make reproducible
 > lqs(stack.loss ~ ., data = stackloss)
 Call:
@@ -3237,6 +3214,7 @@ Coefficients:
 
 Scale estimates 1.912 
 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > 
@@ -3304,10 +3282,10 @@ Correlations 0.806 0.745  cumulative % explained 26.87 51.71
 
 Call:
 survreg(formula = Surv(time, cens) ~ temp, data = motors)
-              Value Std. Error     z         p
-(Intercept) 16.3185    0.62296  26.2 3.03e-151
-temp        -0.0453    0.00319 -14.2  6.74e-46
-Log(scale)  -1.0956    0.21480  -5.1  3.38e-07
+               Value Std. Error     z       p
+(Intercept) 16.31852    0.62296  26.2 < 2e-16
+temp        -0.04531    0.00319 -14.2 < 2e-16
+Log(scale)  -1.09564    0.21480  -5.1 3.4e-07
 
 Scale= 0.334 
 
@@ -3337,11 +3315,10 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
      exp(coef) exp(-coef) lower .95 upper .95
 temp     1.096     0.9122     1.039     1.157
 
-Concordance= 0.84  (se = 0.076 )
-Rsquare= 0.472   (max possible= 0.936 )
-Likelihood ratio test= 25.56  on 1 df,   p=4.299e-07
-Wald test            = 11.27  on 1 df,   p=0.0007863
-Score (logrank) test = 22.73  on 1 df,   p=1.862e-06
+Concordance= 0.84  (se = 0.035 )
+Likelihood ratio test= 25.56  on 1 df,   p=4e-07
+Wald test            = 11.27  on 1 df,   p=8e-04
+Score (logrank) test = 22.73  on 1 df,   p=2e-06
 
 > # predict at temperature 200
 > plot(survfit(motor.cox, newdata = data.frame(temp=200),
@@ -3380,6 +3357,7 @@ detaching ‘package:survival’
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > A <- model.matrix(~ Strip - 1, data=muscle)
 > rats.nls1 <- nls(log(Length) ~ cbind(A, rho^Conc),
 +    data = muscle, start = c(rho=0.1), algorithm="plinear")
@@ -3417,6 +3395,7 @@ alpha..lin.StripS21         beta..lin22             rho.rho
 
 Number of iterations to convergence: 0 
 Achieved convergence tolerance: 4.923e-06
+> ## IGNORE_RDIFF_END
 > 
 > Muscle <- with(muscle, {
 + Muscle <- expand.grid(Conc = sort(unique(Conc)), Strip = levels(Strip))
@@ -3542,6 +3521,7 @@ Residual Deviance: 172 	AIC: 1095
 > 
 > nl.lme <- nlme::lme(lang ~ IQ*COMB + IQave + SES,
 +                     random = ~ IQ | class, data = nl1)
+> ## IGNORE_RDIFF_BEGIN
 > summary(nl.lme)
 Linear mixed-effects model fit by REML
  Data: nl1 
@@ -3578,6 +3558,7 @@ Standardized Within-Group Residuals:
 
 Number of Observations: 2287
 Number of Groups: 133 
+> ## IGNORE_RDIFF_END
 > ## Don't show: 
 > options(op)
 > ## End(Don't show)
@@ -3671,6 +3652,7 @@ F-statistic: 5.772 on 7 and 16 DF,  p-value: 0.001805
 
 > se.contrast(npk.aov1, list(N=="0", N=="1"), data = npk)
 [1] 1.609175
+> ## IGNORE_RDIFF_BEGIN
 > model.tables(npk.aov1, type = "means", se = TRUE)
 Tables of means
 Grand mean
@@ -3696,7 +3678,7 @@ Standard errors for differences of means
         block     N     K
         2.787 1.609 1.609
 replic.     4    12    12
-> 
+> ## IGNORE_RDIFF_END
 > 
 > 
 > base::options(contrasts = c(unordered = "contr.treatment",ordered = "contr.poly"))
@@ -3715,6 +3697,7 @@ replic.     4    12    12
 > 
 > oats$Nf <- ordered(oats$N, levels = sort(levels(oats$N)))
 > oats.aov <- aov(Y ~ Nf*V + Error(B/V), data = oats, qr = TRUE)
+> ## IGNORE_RDIFF_BEGIN
 > summary(oats.aov)
 
 Error: B
@@ -3755,6 +3738,7 @@ Nf:V         6    322      54   0.303    0.932
 Residuals   45   7969     177                     
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> ## IGNORE_RDIFF_END
 > par(mfrow = c(1,2), pty = "s")
 > plot(fitted(oats.aov[[4]]), studres(oats.aov[[4]]))
 > abline(h = 0, lty = 2)
@@ -4297,8 +4281,8 @@ attr(,"label")
 > cl <- factor(c(rep("s",25), rep("c",25), rep("v",25)))
 > z <- lda(train, cl)
 > predict(z, test)$class
- [1] s s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c c c c v c c
-[39] c c c c c c c c c c c c v v v v v v v v v c v v v v v v v v v v v v v v v
+ [1] s s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c c c c c c c
+[39] c c c c c c c c c c c c v v v v v v v v v v v v v v v v v c v v v v v v v
 Levels: c s v
 > 
 > 
@@ -4347,7 +4331,7 @@ Levels: c s v
 > cl <- factor(c(rep("s",25), rep("c",25), rep("v",25)))
 > zq <- qda(train, cl)
 > predict(zq, test)$class
- [1] s s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c c c c v c c
+ [1] s s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c v c c c c c
 [39] c c c c c c c c c c c c v v v v v v v v v v v v v v v v v v v v v v v v v
 Levels: c s v
 > 
@@ -4399,7 +4383,7 @@ Levels: c s v
 > cl <- factor(c(rep("s",25), rep("c",25), rep("v",25)))
 > z <- qda(train, cl)
 > predict(z,test)$class
- [1] s s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c c c c v c c
+ [1] s s s s s s s s s s s s s s s s s s s s s s s s s c c c c c c c v c c c c c
 [39] c c c c c c c c c c c c v v v v v v v v v v v v v v v v v v v v v v v v v
 Levels: c s v
 > 
@@ -4645,14 +4629,13 @@ Initial Model:
 log10(perf) ~ syct + mmin + mmax + cach + chmin + chmax
 
 Final Model:
-log10(perf) ~ mmax + cach + chmax
+log10(perf) ~ syct + mmax + cach + chmax
 
 
-     Step Df  Deviance Resid. Df Resid. Dev       AIC
-1                             82   3.362324 -303.2538
-2  - syct  3 0.0445369        85   3.406861 -307.9379
-3  - mmin  3 0.1947053        88   3.601566 -308.3801
-4 - chmin  3 0.1924133        91   3.793980 -309.1755
+     Step Df   Deviance Resid. Df Resid. Dev       AIC
+1                              82   3.458189 -300.4425
+2 - chmin  3 0.02548983        85   3.483679 -305.7081
+3  - mmin  3 0.12039102        88   3.604070 -308.3106
 > 
 > example(birthwt)
 
@@ -5141,6 +5124,7 @@ detaching ‘package:lattice’
 > 
 > ### ** Examples
 > 
+> ## IGNORE_RDIFF_BEGIN
 > wtloss.fm <- nls(Weight ~ b0 + b1*2^(-Days/th),
 +     data = wtloss, start = list(b0=90, b1=95, th=120))
 > wtloss.fm
@@ -5153,6 +5137,7 @@ Nonlinear regression model
 
 Number of iterations to convergence: 3 
 Achieved convergence tolerance: 4.324e-06
+> ## IGNORE_RDIFF_END
 > plot(wtloss)
 > with(wtloss, lines(Days, fitted(wtloss.fm)))
 > 
@@ -5160,9 +5145,10 @@ Achieved convergence tolerance: 4.324e-06
 > 
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  8.4 0.226 9.501 0 0 
+Time elapsed:  15.33 0.298 15.737 0 0 
 > grDevices::dev.off()
 null device 
           1 

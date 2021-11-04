@@ -1,6 +1,6 @@
 
-R version 3.5.0 RC (2018-04-15 r74605) -- "Joy in Playing"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 4.1.1 Patched (2021-10-12 r81047) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -18,7 +18,7 @@ Type 'q()' to quit R.
 > ## tests of boundary cases in read.table()
 > 
 > ## force standard handling for character cols
-> options(stringsAsFactors=TRUE)
+> options(stringsAsFactors=FALSE) # R >= 4.0.0
 > 
 > # empty file
 > file.create("foo1")
@@ -120,7 +120,7 @@ Error in read.table("foo6", header = TRUE, fill = TRUE) :
 +     "2 NA NA NA NA NA NA\n",
 +     "3 1 2 3 NA TRUE def\n",
 +     sep = "", file = "foo7")
-> (res <- read.table("foo7"))
+> (res <- read.table("foo7", stringsAsFactors=TRUE))
    A   B      C  D     E    F
 1  1 1.1 1.1+0i NA FALSE  abc
 2 NA  NA     NA NA    NA <NA>
@@ -147,7 +147,7 @@ Error in read.table("foo6", header = TRUE, fill = TRUE) :
 > unlink("foo7")
 > 
 > # should be logical
-> type.convert(character(0))
+> type.convert(character(0), as.is=FALSE)
 logical(0)
 > 
 > # test of comments in data files

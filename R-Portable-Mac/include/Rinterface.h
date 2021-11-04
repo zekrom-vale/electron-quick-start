@@ -53,7 +53,7 @@ extern "C" {
 /* this duplication will be removed in due course */
 
 extern Rboolean R_Interactive;	/* TRUE during interactive use*/
-extern Rboolean	R_Slave;	/* Run as a slave process */
+extern Rboolean	R_NoEcho;	/* do not echo R code */
 
 extern void R_RestoreGlobalEnv(void);
 extern void R_RestoreGlobalEnvFromFile(const char *, Rboolean);
@@ -61,7 +61,7 @@ extern void R_SaveGlobalEnv(void);
 extern void R_SaveGlobalEnvToFile(const char *);
 extern void R_FlushConsole(void);
 extern void R_ClearerrConsole(void);
-extern void R_Suicide(const char *);
+extern void NORET R_Suicide(const char *);
 extern char *R_HomeDir(void);
 extern int R_DirtyImage;	/* Current image dirty */
 extern char *R_GUIType;

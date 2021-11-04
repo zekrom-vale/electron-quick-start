@@ -1,27 +1,9 @@
 #!/bin/sh
 # Shell wrapper for R executable.
 
-#R_HOME_DIR=/Library/Frameworks/R.framework/Resources
-path=$(pwd)
-last_dir="${path##*/}"  # sets last_dir to 'to' (equivalent of basename)
-echo ${path}
-
-
-if [ "${last_dir}" = "bin" ]; then 
-  R_HOME_DIR=$(dirname $(pwd))
-else
-  R_HOME_DIR=${path}
-fi
-
-if [ "${NODE_R_HOME}" != "" ]; then
-  R_HOME_DIR=${NODE_R_HOME}
-fi
-
-echo "*** R_HOME_DIR ***"
-echo ${R_HOME_DIR}
-
+R_HOME_DIR=/Library/Frameworks/R.framework/Resources
 if test "${R_HOME_DIR}" = "/Library/Frameworks/lib/R"; then
-   case "darwin15.6.0" in
+   case "darwin17.0" in
    linux*)
      run_arch=`uname -m`
      case "$run_arch" in
@@ -50,13 +32,11 @@ if test -n "${R_HOME}" && \
 fi
 R_HOME="${R_HOME_DIR}"
 export R_HOME
-#R_SHARE_DIR=/Library/Frameworks/R.framework/Resources/share
+R_SHARE_DIR=/Library/Frameworks/R.framework/Resources/share
 export R_SHARE_DIR
-#R_INCLUDE_DIR=/Library/Frameworks/R.framework/Resources/include
-
+R_INCLUDE_DIR=/Library/Frameworks/R.framework/Resources/include
 export R_INCLUDE_DIR
-#R_DOC_DIR=/Library/Frameworks/R.framework/Resources/doc
-R_DOC_DIR=${R_HOME_DIR}/doc
+R_DOC_DIR=/Library/Frameworks/R.framework/Resources/doc
 export R_DOC_DIR
 
 # Since this script can be called recursively, we allow R_ARCH to
@@ -95,7 +75,7 @@ Options:
   --min-vsize=N         Set vector heap minimum to N bytes; '4M' = 4 MegaB
   -q, --quiet           Don't print startup message
   --silent              Same as --quiet
-  --slave               Make R run as quietly as possible
+  -s, --no-echo         Make R run as quietly as possible
   --interactive         Force an interactive session
   --verbose             Print more information about progress
   -d, --debugger=NAME   Run R through debugger NAME
@@ -211,7 +191,9 @@ while test -n "${1}"; do
       ;;
     -e)
       if test -n "`echo ${2} | ${SED} 's/^-.*//'`"; then
-	a=`echo "${2}" | ${SED} -e 's/ /~+~/g'`; shift
+	a=`(echo "${2}" && echo) | ${SED} -e 's/ /~+~/g' | \
+          ${SED} -e :a -e N -e '$!ba' -e 's/\n/~n~/g' -e 's/~n~$//g'`
+        shift
       else
 	error "option '${1}' requires a non-empty argument"
       fi
@@ -230,23 +212,31 @@ while test -n "${1}"; do
       args="${args} --file=$a"
       ;;
     --no-environ)
-      export R_ENVIRON=''
-      export R_ENVIRON_USER=''
+      R_ENVIRON=''
+      export R_ENVIRON
+      R_ENVIRON_USER=''
+      export R_ENVIRON_USER
       args="${args} ${1}"
       ;;
     --no-site-file)
-      export R_PROFILE=''
+      R_PROFILE=''
+      export R_PROFILE
       args="${args} ${1}"
       ;;
     --no-init-file)
-      export R_PROFILE_USER=''
+      R_PROFILE_USER=''
+      export R_PROFILE_USER
       args="${args} ${1}"
       ;;
     --vanilla)
-      export R_ENVIRON=''
-      export R_ENVIRON_USER=''
-      export R_PROFILE=''
-      export R_PROFILE_USER=''
+      R_ENVIRON=''
+      export R_ENVIRON
+      R_ENVIRON_USER=''
+      export R_ENVIRON_USER
+      R_PROFILE=''
+      export R_PROFILE
+      R_PROFILE_USER=''
+      export R_PROFILE_USER
       args="${args} ${1}"
       ;;
     *)
@@ -258,7 +248,6 @@ done
 . "${R_HOME}/etc${R_ARCH}/ldpaths"
 
 R_binary="${R_HOME}/bin/exec${R_ARCH}/R"
-
 export R_ARCH
 
 case "${gui}" in

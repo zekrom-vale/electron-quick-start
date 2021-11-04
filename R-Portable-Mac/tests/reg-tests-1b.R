@@ -3,12 +3,12 @@
 pdf("reg-tests-1b.pdf", encoding = "ISOLatin1.enc")
 
 ## force standard handling for data frames
-options(stringsAsFactors = TRUE)
+options(stringsAsFactors=FALSE) # R >= 4.0.0
 ## .Machine
 (Meps <- .Machine$double.eps)# and use it in this file
 
 assertWarning <- tools::assertWarning
-assertError <- tools::assertError
+assertError   <- tools::assertError
 
 ## str() for list-alikes :
 "[[.foo" <- function(x,i) x
@@ -272,7 +272,7 @@ merge(women, women[FALSE, ])
 
 
 ## influence.measures() for lm and glm, and its constituents
-if(require(MASS)) {
+if(require(MASS, quietly = TRUE)) {
     fit <- lm(formula = 1000/MPG.city ~ Weight + Cylinders + Type + EngineSize + DriveTrain, data = Cars93)
     gf <- glm(formula(fit), data=Cars93) # should be "identical"
     im1 <- influence.measures(fit)
@@ -1817,8 +1817,9 @@ d <- dist(matrix(round(rnorm(n*p), digits = 2), n,p), "manhattan")
 d[] <- d[] * sample(1 + (-4:4)/100, length(d), replace=TRUE)
 hc <- hclust(d, method = "median")
 stopifnot(all.equal(hc$height[5:11],
-                    c(1.69805, 1.75134375, 1.34036875, 1.47646406,
-                      3.21380039, 2.9653438476, 6.1418258), tolerance = 1e-9))
+		    c(1.70595, 1.657675, 1.8909, 1.619973438,
+                      1.548624609, 3.097474902, 6.097159351),
+                    tolerance = 1e-9))
 ## Also ensure that hclust() remains fast:
 set.seed(1); nn <- 2000
 tm0 <- system.time(dst <- as.dist(matrix(runif(n = nn^2, min = 0, max = 1)^1.1, nn, nn)))
@@ -1866,13 +1867,18 @@ stopifnot(identical(as.vector(m1[,2]), as.vector(m2[,2])))
 
 
 ## JMC's version of class<- did not work as documented. (PR#14942)
-x <- 1:10
-class(x) <- character()
-class(x) <- "foo"
-class(x) <- character()
-oldClass(x) <- "foo"
-oldClass(x) <- character()
+chk1 <- function(x, cls="foo")
+    stopifnot(identical(list(attr(x,"class"), class(x), oldClass(x)),
+                        list(cls, cls, cls)))
+chk2 <- function(x) stopifnot(identical(class(x), "integer"),
+                              is.null(oldClass(x)),
+                              is.null(attr(x,"class")))
+## all class setting variants work consistently:
+f <- 1:2; attr(f, "class") <- "foo"; chk1(f); attr(f, "class") <- character(0); chk2(f)
+f <- 1:2;         class(f) <- "foo"; chk1(f);         class(f) <- character(0); chk2(f)
+f <- 1:2;      oldClass(f) <- "foo"; chk1(f);      oldClass(f) <- character(0); chk2(f)
 ## class<- version failed: required NULL
+## in R <= 2.15.1 (2012)
 
 
 ## anova.lmlist could fail (PR#14960)

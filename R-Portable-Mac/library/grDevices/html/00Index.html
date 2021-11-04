@@ -2,8 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><title>R: The R Graphics Devices and Support for Colours and Fonts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="R.css" />
-</head><body>
+</head><body><div class="container">
 <h1> The R Graphics Devices and Support for Colours and Fonts
 <img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
 </h1>
@@ -11,7 +12,7 @@
 <div style="text-align: center;">
 <a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
 <a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
-</div><h2>Documentation for package &lsquo;grDevices&rsquo; version 3.5.0</h2>
+</div><h2>Documentation for package &lsquo;grDevices&rsquo; version 4.1.2</h2>
 
 <ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
 <li><a href="../demo">Code demos</a>.  Use <a href="../../utils/help/demo">demo()</a> to run them.</li>
@@ -97,11 +98,15 @@
 <td>Mathematical Annotation in R</td></tr>
 <tr><td style="width: 25%;"><a href="boxplot.stats.html">boxplot.stats</a></td>
 <td>Box Plot Statistics</td></tr>
+<tr><td style="width: 25%;"><a href="bringToTop.html">bringToTop</a></td>
+<td>Assign Focus to a Window</td></tr>
 </table>
 
 <h2><a name="C">-- C --</a></h2>
 
 <table width="100%">
+<tr><td style="width: 25%;"><a href="cairoSymbolFont.html">cairoSymbolFont</a></td>
+<td>Specify a Symbol Font</td></tr>
 <tr><td style="width: 25%;"><a href="cairo.html">cairo_pdf</a></td>
 <td>Cairographics-based SVG, PDF and PostScript Graphics Devices</td></tr>
 <tr><td style="width: 25%;"><a href="cairo.html">cairo_ps</a></td>
@@ -241,6 +246,10 @@
 <td>Mathematical Annotation in R</td></tr>
 <tr><td style="width: 25%;"><a href="hcl.html">hcl</a></td>
 <td>HCL Color Specification</td></tr>
+<tr><td style="width: 25%;"><a href="palettes.html">hcl.colors</a></td>
+<td>Color Palettes</td></tr>
+<tr><td style="width: 25%;"><a href="palettes.html">hcl.pals</a></td>
+<td>Color Palettes</td></tr>
 <tr><td style="width: 25%;"><a href="palettes.html">heat.colors</a></td>
 <td>Color Palettes</td></tr>
 <tr><td style="width: 25%;"><a href="Hershey.html">Hershey</a></td>
@@ -276,13 +285,15 @@
 <table width="100%">
 <tr><td style="width: 25%;"><a href="make.rgb.html">make.rgb</a></td>
 <td>Create colour spaces</td></tr>
+<tr><td style="width: 25%;"><a href="msgWindow.html">msgWindow</a></td>
+<td>Manipulate a Window</td></tr>
 </table>
 
 <h2><a name="N">-- N --</a></h2>
 
 <table width="100%">
 <tr><td style="width: 25%;"><a href="n2mfrow.html">n2mfrow</a></td>
-<td>Compute Default mfrow From Number of Plots</td></tr>
+<td>Compute Default 'mfrow' From Number of Plots</td></tr>
 <tr><td style="width: 25%;"><a href="nclass.html">nclass.FD</a></td>
 <td>Compute the Number of Classes for a Histogram</td></tr>
 <tr><td style="width: 25%;"><a href="nclass.html">nclass.scott</a></td>
@@ -302,6 +313,10 @@
 
 <table width="100%">
 <tr><td style="width: 25%;"><a href="palette.html">palette</a></td>
+<td>Set or View the Graphics Palette</td></tr>
+<tr><td style="width: 25%;"><a href="palette.html">palette.colors</a></td>
+<td>Set or View the Graphics Palette</td></tr>
+<tr><td style="width: 25%;"><a href="palette.html">palette.pals</a></td>
 <td>Set or View the Graphics Palette</td></tr>
 <tr><td style="width: 25%;"><a href="pdf.html">pdf</a></td>
 <td>PDF Graphics Device</td></tr>
@@ -329,6 +344,8 @@
 <td>Pretty Breakpoints for Date-Time Classes</td></tr>
 <tr><td style="width: 25%;"><a href="recordplot.html">print.recordedplot</a></td>
 <td>Record and Replay Plots</td></tr>
+<tr><td style="width: 25%;"><a href="windows.html">print.SavedPlots</a></td>
+<td>Windows Graphics Devices</td></tr>
 <tr><td style="width: 25%;"><a href="ps.options.html">ps.options</a></td>
 <td>Auxiliary Function to Set/View Defaults for Arguments of postscript</td></tr>
 </table>
@@ -343,9 +360,9 @@
 <tr><td style="width: 25%;"><a href="quartz.html">quartz.save</a></td>
 <td>macOS Quartz Device</td></tr>
 <tr><td style="width: 25%;"><a href="quartzFonts.html">quartzFont</a></td>
-<td>quartz Fonts</td></tr>
+<td>Quartz Fonts Setup</td></tr>
 <tr><td style="width: 25%;"><a href="quartzFonts.html">quartzFonts</a></td>
-<td>quartz Fonts</td></tr>
+<td>Quartz Fonts Setup</td></tr>
 </table>
 
 <h2><a name="R">-- R --</a></h2>
@@ -384,6 +401,8 @@
 <td>Wait for a mouse or keyboard event from a graphics window</td></tr>
 <tr><td style="width: 25%;"><a href="ps.options.html">setPS</a></td>
 <td>Auxiliary Function to Set/View Defaults for Arguments of postscript</td></tr>
+<tr><td style="width: 25%;"><a href="bringToTop.html">stayOnTop</a></td>
+<td>Assign Focus to a Window</td></tr>
 <tr><td style="width: 25%;"><a href="plotmath.html">sup</a></td>
 <td>Mathematical Annotation in R</td></tr>
 <tr><td style="width: 25%;"><a href="cairo.html">svg</a></td>
@@ -423,17 +442,31 @@
 <td>Mathematical Annotation in R</td></tr>
 <tr><td style="width: 25%;"><a href="plotmath.html">widetilde</a></td>
 <td>Mathematical Annotation in R</td></tr>
+<tr><td style="width: 25%;"><a href="windows.html">win.graph</a></td>
+<td>Windows Graphics Devices</td></tr>
+<tr><td style="width: 25%;"><a href="windows.html">win.metafile</a></td>
+<td>Windows Graphics Devices</td></tr>
+<tr><td style="width: 25%;"><a href="windows.html">win.print</a></td>
+<td>Windows Graphics Devices</td></tr>
+<tr><td style="width: 25%;"><a href="windows.html">windows</a></td>
+<td>Windows Graphics Devices</td></tr>
+<tr><td style="width: 25%;"><a href="windows.options.html">windows.options</a></td>
+<td>Auxiliary Function to Set/View Defaults for Arguments of windows()</td></tr>
+<tr><td style="width: 25%;"><a href="windowsFonts.html">windowsFont</a></td>
+<td>Windows Fonts</td></tr>
+<tr><td style="width: 25%;"><a href="windowsFonts.html">windowsFonts</a></td>
+<td>Windows Fonts</td></tr>
 </table>
 
 <h2><a name="X">-- X --</a></h2>
 
 <table width="100%">
 <tr><td style="width: 25%;"><a href="x11.html">X11</a></td>
-<td>X Window System Graphics</td></tr>
+<td>X Window System Graphics (X11)</td></tr>
 <tr><td style="width: 25%;"><a href="x11.html">x11</a></td>
-<td>X Window System Graphics</td></tr>
+<td>X Window System Graphics (X11)</td></tr>
 <tr><td style="width: 25%;"><a href="x11.html">X11.options</a></td>
-<td>X Window System Graphics</td></tr>
+<td>X Window System Graphics (X11)</td></tr>
 <tr><td style="width: 25%;"><a href="x11Fonts.html">X11Font</a></td>
 <td>X11 Fonts</td></tr>
 <tr><td style="width: 25%;"><a href="x11Fonts.html">X11Fonts</a></td>
@@ -455,5 +488,7 @@
 <td>Compute Pretty Axis Tick Scales</td></tr>
 <tr><td style="width: 25%;"><a href="postscript.html">.ps.prolog</a></td>
 <td>PostScript Graphics</td></tr>
+<tr><td style="width: 25%;"><a href="windows.html">[.SavedPlots</a></td>
+<td>Windows Graphics Devices</td></tr>
 </table>
-</body></html>
+</div></body></html>

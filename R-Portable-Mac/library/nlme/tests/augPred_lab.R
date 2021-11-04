@@ -74,7 +74,7 @@ augp.m2 <- augPred(M2.nlme, level = 0:1)
 stopifnot(is.data.frame(augp.m2), dim(augp.m2) == c(5308, 4)
           ,
           all.equal(colMeans(augp.m2[,c("Time","weight")]),
-                    c(Time = 48.585908, weight =7.8599693), tolerance = 1e-7)# 2e-9
+                    c(Time = 48.585908, weight =7.8599693), tolerance = 1e-6)# was 1e-7, 2e-9 but failed with ATLAS builds
           ,
           identical(c(table(augp.m2[,".type"])),
                     c(predict.fixed = 2448L, predict.Plot = 2448L, original = 412L))

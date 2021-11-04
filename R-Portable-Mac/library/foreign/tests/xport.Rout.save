@@ -1,17 +1,19 @@
 
-R : Copyright 2003, The R Development Core Team
-Version 1.7.0 Patched (2003-04-24)
+R Under development (unstable) (2019-07-31 r76909) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
-Type `license()' or `licence()' for distribution details.
+Type 'license()' or 'licence()' for distribution details.
 
 R is a collaborative project with many contributors.
-Type `contributors()' for more information.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
 
-Type `demo()' for some demos, `help()' for on-line help, or
-`help.start()' for a HTML browser interface to help.
-Type `q()' to quit R.
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
 
 > library(foreign)
 > lookup.xport("Alfalfa.xpt")
@@ -50,7 +52,7 @@ $SPEC$length
 [1] 40
 
 
-> Alfalfa <- read.xport("Alfalfa.xpt")
+> Alfalfa <- read.xport("Alfalfa.xpt", stringsAsFactors = TRUE)
 > summary(Alfalfa)
   POP         SAMPLE         REP           SEEDWT          HARV1      
  MAX:20   Min.   :0.0   Min.   :1.00   Min.   :35.00   Min.   :120.6  
@@ -113,3 +115,6 @@ $TEST$length
  3rd Qu.:3.25   3rd Qu.:3  
  Max.   :4.00   Max.   :3  
 > q()
+> proc.time()
+   user  system elapsed 
+  0.107   0.024   0.121 

@@ -70,19 +70,19 @@ truth <- truth[c(1:6, 6:11),]/10  #the explicit censor at 22
 
 #dimnames(truth) <- list(c(5, 6, 10, 15, 18, 20, 25, 30, 34, 40, 50),
 #                        c('a', 'b', 'c', 'd')
-all.equal(truth, fit$pstate[,1:4])
+all.equal(truth, fit$pstate[,2:5])
 
 # Test the dfbetas
 # It was a big surprise, but the epsilon where a finite difference approx to
 #  the derivative is most accurate is around 1e-7 = approx sqrt(precision).
-# Smaller eps makes the all.equal test worse.
+# Smaller eps makes the approximate derivative worse.
 # There is a now a formal test in mstate.R, not approximate.
 dfbeta <- 0*fit$influence[,-1,] #  lose the first row
 eps <- sqrt(.Machine$double.eps)     
 for (i in 1:6) {
     twt <- tdata$wt
     twt[tdata$id ==i] <- twt[tdata$id==i] + eps
-    tfit <- survfit(Surv(time1, time2, stat2) ~ cluster(id), tdata,
+    tfit <- survfit(Surv(time1, time2, stat2) ~ 1, id=id, tdata,
                     weight=twt)
     dfbeta[i,,] <- (tfit$pstate - fit$pstate)/eps  #finite difference approx
 }
@@ -118,3 +118,13 @@ if (FALSE) {
             id=c(1,1,1,2,2,3))
 }
 
+# Check the start.time option
+#
+fit2 <- survfit(Surv(time1, time2, stat2) ~1, id=id, weight=wt, tdata,
+                start.time=20)
+data2 <- subset(tdata, time2> 20)
+data2$time1 <- pmax(20, data2$time1)
+fit2x <- survfit(Surv(time1, time2, stat2) ~1, id=id, weight=wt, data2)
+
+ii <- names(fit2)[!(names(fit2) %in%  c("call", "start.time"))]
+all.equal(unclass(fit2)[ii], unclass(fit2x)[ii])
