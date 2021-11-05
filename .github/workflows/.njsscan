@@ -1,8 +1,0 @@
----
-- nodejs-extensions:
-  - .js
-
-  ignore-paths:
-  - __MACOSX
-  - R-Portable-Mac
-  - R-Portable-Win
