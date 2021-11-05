@@ -5,13 +5,11 @@
 
 # ----------------------------------------------
 
-#
-#
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**
 
-This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
+This is a minimal Electron and R application that expands on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
 
 **Use this app along with the [Electron API Demos](https://electronjs.org/#get-started) app for API code examples to help you get started.**
 
@@ -22,6 +20,15 @@ A basic Electron application needs just these files:
 - `index.html` - A web page to render. This is the app's **renderer process**.
 
 You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
+
+R adds a few more files required
+- `R-Portable-Win` - The windows R files (Just take them from ProgramFiles)
+- `R-Portable-Mac` - The mac R files (Just take them from Applications and run `R-Portable-Mac/bin/R`)
+- `R-Portable-*/library` - The location to protably install R packages
+- `app.R` - The shiny application to start
+- `cc.ico` - The icon used for the application made
+- Other files to be coppied to resoruces
+
 
 ## To Use
 
@@ -38,7 +45,7 @@ cd electron-quick-start
 npm install
 ```
 
-Then install any pakages with R (Not with the portable version as that does not resolve dependencies).  Copy those installed files to the relevent library `R-Portable-*/library`.
+Then install any pakages with R (Not with the portable version as that does not resolve dependencies).  Copy those installed files to the relevent library `R-Portable-*/library`.  Do not remove the existing library files as it breaks the base packages.
 
 
 Then you can compile or run the app
