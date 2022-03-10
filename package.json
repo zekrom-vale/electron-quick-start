@@ -24,6 +24,6 @@
   "author": "zekrom-vale",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^15.3.0"
+    "electron": "^17.1.2"
   }
 }
