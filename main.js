@@ -41,7 +41,9 @@ if(process.platform == WINDOWS){
 
 console.log(process.env)
 
-const childProcess = child.spawn(execPath, ["-e", "shiny::runApp(file.path('"+appPath+"'), port="+port+")"])
+// Due to an issue with shiny, the port needs to be set via options and not passed to the runApp function
+// https://github.com/rstudio/shiny/issues/1942
+const childProcess = child.spawn(execPath, ["-e", "options(shiny.port="+port+"); shiny::runApp(file.path('"+appPath+"'))"])
 childProcess.stdout.on('data', (data) => {
   console.log(`stdout:${data}`)
 })
