@@ -2,7 +2,8 @@ options(na.action=na.exclude) # preserve missings
 options(contrasts=c('contr.treatment', 'contr.poly')) #ensure constrast type
 library(survival)
 
-expect <- survexp(futime ~ ratetable(age=(accept.dt - birth.dt), sex=1,
+expect <- survexp(futime ~ 1,
+                  rmap = list(age=(accept.dt - birth.dt), sex=1,
 		year=accept.dt, race='white'), jasa, cohort=F, 
                   ratetable=survexp.usr)
 
@@ -36,9 +37,10 @@ newdata <- data.frame(start=c(0,50,100), stop=c(50,100, max(jasa1$stop)),
                    transplant=rep(0,3), name=c("Smith", "Smith", "Smith"))
 surv2 <- survfit(sfit.1, newdata, id=name)
 # Have to use unclass to avoid [.survfit trying to pick curves,
-#  remove the final element "call" because it won't match
-all.equal(unclass(surv1)[-length(surv1)],
-          unclass(surv2)[-length(surv2)])
+#  remove the final element "call" because it won't match, nor will newdata
+ii <- match(c("newdata", "call"), names(surv1))
+all.equal(unclass(surv1)[-ii],
+          unclass(surv2)[-ii])
 
 
 # Survival curve for a subject of age 50, with prior surgery, tx at 6 months

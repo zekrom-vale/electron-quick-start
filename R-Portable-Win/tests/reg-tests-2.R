@@ -226,9 +226,11 @@ tabulate(numeric(0))
 
 ## ts
 # Ensure working arithmetic for 'ts' objects :
-z <- ts(matrix(1:900, 100, 3), start = c(1961, 1), frequency = 12)
+z <- ts(matrix(1:300, 100, 3), start = c(1961, 1), frequency = 12)
 stopifnot(z == z)
 stopifnot(z-z == 0)
+if(FALSE) ## <<-- not currently: _R_CHECK_MATRIX_DATA_ \\ related to earlier code:
+tools::assertWarning(matrix(1:90, 10, 3), verbose=TRUE)
 
 ts(1:5, start=2, end=4) # truncate
 ts(1:5, start=3, end=17)# repeat
@@ -310,15 +312,15 @@ summary(data.frame(x))
 
 ## Chong Gu 2001-Feb-16.  step on binomials
 detg1 <-
-structure(list(Temp = structure(c(2L, 1L, 2L, 1L, 2L, 1L, 2L,
-    1L, 2L, 1L, 2L, 1L), .Label = c("High", "Low"), class = "factor"),
-    M.user = structure(c(1L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L,
-    1L, 2L, 2L), .Label = c("N", "Y"), class = "factor"),
-    Soft = structure(c(1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L),
-    .Label = c("Hard", "Medium", "Soft"), class = "factor"),
+structure(list(Temp = factor(c(2L, 1L, 2L, 1L, 2L, 1L, 2L,
+    1L, 2L, 1L, 2L, 1L), labels = c("High", "Low")),
+    M.user = factor(c(1L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L,
+    1L, 2L, 2L), labels = c("N", "Y")),
+    Soft = factor(c(1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L),
+    labels = c("Hard", "Medium", "Soft")),
     M = c(42, 30, 52, 43,
     50, 23, 55, 47, 53, 27, 49, 29), X = c(68, 42, 37, 24, 66,
-    33, 47, 23, 63, 29, 57, 19)), .Names = c("Temp", "M.user",
+    33, 47, 23, 63, 29, 57, 19)), names = c("Temp", "M.user",
 "Soft", "M", "X"), class = "data.frame", row.names = c("1", "3",
 "5", "7", "9", "11", "13", "15", "17", "19", "21", "23"))
 detg1.m0 <- glm(cbind(X,M)~1,binomial,detg1)
@@ -365,10 +367,11 @@ gofX.df<-
     0.999573603041505, 0.67546318055115, -0.756802495307928,
     -0.0583741434275801, -0.756802495307928, 0.999573603041505,
     -0.756802495307928, 0.67546318055115, -0.0583741434275801
-    ), groups = structure(c(1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2,
-    2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3), class = "factor", .Label = c("1",
-    "2", "3"))), .Names = c("A", "B", "C", "D", "groups"), row.names = 1:24,
-            class = "data.frame")
+    ), groups = factor(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+                         2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L),
+                       labels = c("1", "2", "3"))),
+names = c("A", "B", "C", "D", "groups"), row.names = 1:24,
+class = "data.frame")
 
 gofX.manova <- manova(formula = cbind(A, B, C, D) ~ groups, data = gofX.df)
 try(summary(gofX.manova))
@@ -675,7 +678,7 @@ glm(y ~ x, family = poisson(identity), start = c(1,0))
 set.seed(123)
 y <- rpois(100, pmax(3*x, 0))
 glm(y ~ x, family = poisson(identity), start = c(1,0))
-warnings()
+summary(warnings())
 
 
 ## extending char arrrays
@@ -832,7 +835,7 @@ par(mfrow = c(1,1))
                    x4 = c(60, 52, 20, 47, 33, 22, 6, 44, 22, 26, 34, 12, 12),
                    y = c(78.5, 74.3, 104.3, 87.6, 95.9, 109.2, 102.7, 72.5,
                    93.1, 115.9, 83.8, 113.3, 109.4)),
-              .Names = c("x1", "x2", "x3", "x4", "y"), class = "data.frame",
+              names = c("x1", "x2", "x3", "x4", "y"), class = "data.frame",
               row.names = 1:13)
 teststep <- function(formula, data)
 {
@@ -894,6 +897,7 @@ women[,"height", drop = FALSE] # no warning
 women[,"height", drop = TRUE]  # a vector
 ## second and third were interpreted as women["height", , drop] in 1.7.x
 
+op <- options(warn = 2) # *no* warnings (for now)
 
 ## make.names
 make.names("")
@@ -945,7 +949,12 @@ model.matrix(fit)
 summary(fit)
 anova(fit)
 predict(fit)
-predict(fit, data.frame(x=x), se=TRUE)
+tools::assertWarning(
+ predict(fit, data.frame(x=x), se=TRUE) -> p0
+)
+p0
+if(FALSE)## not yet:
+stopifnot(identical(p0$fit, predict(fit, data.frame(x=x), rankdeficient = "NA")))
 predict(fit, type="terms", se=TRUE)
 variable.names(fit) #should be empty
 model.matrix(fit)
@@ -961,7 +970,12 @@ predict(fit, type="terms", se=TRUE)
 summary(fit)
 anova(fit)
 predict(fit)
-predict(fit, data.frame(x=x), se=TRUE)
+tools::assertWarning(
+ predict(fit, data.frame(x=x), se=TRUE) -> p0
+)
+p0
+if(FALSE)## not yet:
+stopifnot(identical(p0$fit, predict(fit, data.frame(x=x), rankdeficient = "NA")))
 predict(fit, type="terms", se=TRUE)
 ## Lots of problems in 1.7.x
 
@@ -1147,6 +1161,7 @@ aov(y ~ a + b - 1 + Error(c), data=test.df)
 
 binom.test(c(800,10))# p-value < epsilon
 
+options(op) # revert: warnings allowed
 
 ## aov with a singular error model
 rd <- c(16.53, 12.12, 10.04, 15.32, 12.33, 10.1, 17.09, 11.69, 11.81, 14.75,
@@ -1160,7 +1175,7 @@ sample.df <- data.frame(dep.variable=rd,
                         f1=factor(rep(rep(c("f1","f2","f3"),each=6),3)),
                         f2=factor(rep(c("g1","g2","g3"),each=18))
 )
-sample.aov <- aov(dep.variable ~ f1 * f2 + Error(subject/(f1+f2)), data=sample.df)
+sample.aov <- aov(dep.variable ~ f1 * f2 + Error(subject/(f1+f2)), data=sample.df) # warning: singular
 sample.aov
 summary(sample.aov)
 sample.aov <- aov(dep.variable ~ f1 * f2 + Error(subject/(f2+f1)), data=sample.df)
@@ -1742,6 +1757,7 @@ c(10485849600,10477641600,10561104000,10562745600)+ISOdate(1582,10,14)
 
 
 ## Limiting lines on deparse (wishlist PR#8638)
+Sys.unsetenv("_R_CHECK_BROWSER_NONINTERACTIVE_")
 op <- options(deparse.max.lines = 3)
 f <- function(...) browser()
 do.call(f, mtcars)
@@ -1751,14 +1767,22 @@ op <- c(op, options(error = expression(NULL)))
 f <- function(...) stop()
 do.call(f, mtcars)
 traceback()
+## unlimited < 2.3.0
+options(op)
 
 ## Debugger can handle a function that has a single function call as its body
 g <- function(fun) fun(1)
 debug(g)
 g(function(x) x+1)
+c
 
-options(op)
-## unlimited < 2.3.0
+## Trap debugger in non-interactive sessions
+if (!interactive()) {
+    Sys.setenv("_R_CHECK_BROWSER_NONINTERACTIVE_" = "true")
+    tools::assertError(browser())
+    browser(expr = FALSE) # but this passes (with no output)
+    Sys.unsetenv("_R_CHECK_BROWSER_NONINTERACTIVE_")
+}
 
 
 ## row names in as.table (PR#8652)
@@ -2006,7 +2030,7 @@ x[2, invisible(3)]
 
 
 ## tests of deparsing
-x <-list(a = NA, b = as.integer(NA), c=0+NA, d=0i+NA,
+x <-list(a = NA, b = NA_integer_, c = NA_real_, d = NA_complex_,
          e = 1, f = 1:1, g = 1:3, h = c(NA, 1:3),
          i = as.character(NA), j = c("foo", NA, "bar")
          )
@@ -2076,6 +2100,9 @@ dput(d0)
 dput(d1)
 identical(d0, d1)
 all.equal(d0, d1)
+## change to identical(,attrib.as.set) code to support internal representation in 4.2.0
+identical(d0, d1, attrib.as.set = FALSE)
+##
 row.names(d1) <- as.character(1:4)
 dput(d1)
 identical(d0, d1)
@@ -2182,7 +2209,7 @@ stopifnot(identical(pmax(x, y, na.rm=TRUE), pmax(y, x, na.rm=TRUE)))
 
 x <- as.POSIXlt(x, tz="GMT"); y <- as.POSIXlt(y, tz="GMT")
 format(pmin(x, y), tz="GMT")
-class(pmin(x, y))
+class (pmin(y, x))  ## (updating "filled")
 stopifnot(identical(pmin(x, y), pmin(y, x)))
 format(pmin(x, y, na.rm=TRUE), tz="GMT")
 stopifnot(identical(pmin(x, y, na.rm=TRUE), pmin(y, x, na.rm=TRUE)))
@@ -2190,7 +2217,7 @@ format(pmax(x, y), tz="GMT")
 stopifnot(identical(pmax(x, y), pmax(y, x)))
 format(pmax(x, y, na.rm=TRUE), tz="GMT")
 stopifnot(identical(pmax(x, y, na.rm=TRUE), pmax(y, x, na.rm=TRUE)))
-## regresion tests
+## regression tests
 
 
 ## regression tests on names of 1D arrays
@@ -2725,7 +2752,7 @@ str(d)
   saveopt <- options(warnPartialMatchDollar=TRUE)
   pl <- pairlist(abc=1, def=2)
   pl$ab
-  if (!is.null(saveopt[["warnPartialMatchDollar"]])) options(saveopt)
+  options(saveopt)
 ## 'abc' was just ''
 
 
@@ -2766,12 +2793,15 @@ all.equal(x, y, check.names = FALSE)
 ## failed on mismatched attributes
 
 
-## PR#15411, plus digits change
+## PR#15411; PR#18098 ==> digits=0 not ok:
 format(9992, digits = 3)
 format(9996, digits = 3)
-format(0.0002, digits = 0, nsmall = 2)
-format(pi*10, digits = 0, nsmall = 1)
-## second added an extra space; 3rd and 4th were not allowed.
+format(0.0002, digits = 1, nsmall = 2, scientific = FALSE)
+assertErrorV(
+format(pi*10,  digits = 0))
+format(pi*10,  digits = 1)
+format(pi*10,  digits = 1, nsmall = 1)
+## second added an extra space.
 
 ## and one branch of this was wrong:
 xx <- c(-86870268, 107833358, 302536985, 481015309, 675718935, 854197259,
@@ -3032,6 +3062,9 @@ quote(!!x) # was `!(!x)`
 quote(??x) # Suboptimal
 quote(~+-!?x) # ditto: ....`?`(x)
 ## `!` no longer produces parentheses now
+##
+## There should be no parentheses (always worked)
+quote(+!x)
 
 
 ## summary.data.frame() with NAs in columns of class "Date" -- PR#16709
@@ -3188,3 +3221,150 @@ stopifnot( identical(ddd, dd2) )
 ##cm <- summary(lm(c(0,0,0) ~ 1))$coefficients
 cm <- cbind(Estimate = 0, SE = 0, t = NaN, "Pr(>|t|)" = NaN)
 printCoefmat(cm)  # NaN's were replaced by NA in R < 4.1.0
+
+
+## deparse() wraps cflow bodies when deeply burried through a LHS (PR#18232)
+##
+## These didn't print the same before fix, the bquote() expression
+## missed parentheses
+ quote(1 +        (if (TRUE) 2)  + 3)
+bquote(1 + .(quote(if (TRUE) 2)) + 3)
+bquote(2 * .(quote(if (TRUE) 2 else 3)) / 4)
+## From Suharto. Failed `left` state wasn't properly forwarded across operators
+bquote(1 + ++.(quote(if (TRUE) 2)) + 3)
+bquote(1^- .  (quote(if (TRUE) 2)) + 3)
+## (found when fiddling w/ cases below):
+quote(`-`(1 + if(L) 2, 3+4))# wrongly was  1 + if (L) 2 - (3 + 4)
+##
+##__ All the following were ok in R <= 4.1.x already __
+bquote(1 + .(quote(if (TRUE) 2)) ^ 3) # already correct previously
+## other constructs cancel the LHS state ==> `if` call isn't wrapped:
+bquote(1 + .(quote(   f(if (TRUE) 2))) + 3)
+bquote(1 + .(quote((2 + if (TRUE) 3))) + 4)
+## cflow bodies are only wrapped if needed ==> no parentheses here :
+quote(a <- if (TRUE) 1)
+## print the same
+quote(`^`(-1, 2))
+quote((-1)^2)
+## no parentheses:
+quote(1^-2)
+quote(1^-2 + 3)
+## The "formula" case of Adrian Dusa (maintainer of QCA); R-devel ML, Nov.15, 2021
+quote(A + ~B + C ~ D) # no parens
+## 'simple' binary op
+quote(a$"b")
+## When cflow body is burried deeply through the right, don't rewrap
+## unnecessarily. There should be only one set of parentheses.
+## Cases where R-devel 81211 still gave unneeded parens:
+quote(`^`(1 + if(L) 2, 3))
+quote(`*`(1 - if(L) 2 else 22, 3))
+quote(`^`(1 + repeat 2, 3))
+quote(`*`(1 + repeat 2, 3))
+quote(`=`(1 + repeat 2, 3))# *no* parens in R <= 4.1.x
+quote(`=`(1 + `+`(2, repeat 3), 4))
+quote(`+`(`<-`(1, `=`(2, repeat 3)), 4)) # (1 <- (2 = ..
+quote(`+`(`:`(1, `=`(2, repeat 3)), 4))
+## No parentheses when the cflow form is trailing
+quote(1 + +repeat 2)
+quote(`<-`(1, +repeat 2))
+quote(1^+repeat 2)
+quote(`$`(1, +repeat 2))
+## More cases where parens are needed
+quote(`^`(`+`(repeat 1, 2), 3))
+quote(`+`(`+`(repeat 1, 2), 3))
+quote(`+`(`+`(`+`(repeat 1, repeat 2), repeat 3), 4))
+##__ end { all fine in older R }
+
+## Unary operators are parenthesised if needed; print the same:
+quote((-a)$b)
+quote(`$`(-a, b))    # no parens in R <= 4.1.x
+## Binary operators are parenthesised on the LHS of `$`. ; the same:
+quote((1 + 1)$b)
+quote(`$`(1 + 1, b)) # no parens in R <= 4.1.x
+##
+## Unparseable expressions are deparsed in prefixed form
+quote(`$`(1))       # was 1$NULL  in R <= 4.1.x
+quote(`$`(1, 2, 3)) # was 1$2
+quote(`$`(1, NA_character_)) # was 1$NA_char..
+quote(`$`(1, if(L) 2))   # was 1$if (L) 2
+quote(`$`(`$`(1, if(L) 2), 3))
+## No parens because prefix form
+quote(`$`(1 + repeat 2, 3))
+quote(`=`(`$`(1, `$`(2, repeat 3)), 4))
+## these were really bad in  R <= 4.1.x
+
+
+## Deparsing of !  -- PR#18284
+## no parens in 3.5.0 <= R <= 4.1.x:
+quote(1 +  `!`(2) + 3) -> x; x
+quote(1 + +`!`(2) + 3)
+quote(1 + `!`(!2) + 3)
+quote(1 + `!`(if(L) 2) + 3)
+## ok in 3.5.0 <= R <= 4.1.x:
+quote(`&`(a < !b, d))
+## deparse--parse roundtrip is stable (basically)
+stopifnot(eval(x) == 4, eval(parse(text = deparse(x))) == 4)
+## eval()ed to 1 since R 3.5.0 {also because of the weak precedence of `!`}
+
+
+## packageDate(<pkg>) w/o valid package
+dput(packageDate("foo"))
+## gave *five* warnings* in R <= 4.2.x
+
+
+## object not found error mentions lexical call
+if (exists("foo")) rm(foo)
+## Should not mention call because called at top level
+try(identity(foo))
+try(do.call("identity", alist(foo)))
+##
+## Should mention `f()` call
+f <- function() identity(foo)
+try(f())
+f <- compiler::cmpfun(f)
+try(f())
+f <- function() do.call("identity", alist(foo))
+try(f())
+f <- compiler::cmpfun(f)
+try(f())
+##
+## Should not mention call because there is no matching execution env
+try(do.call("identity", alist(foo), envir = new.env()))
+f <- function() do.call("identity", alist(foo), envir = new.env())
+try(f())
+f <- compiler::cmpfun(f)
+try(f())
+
+
+## Missing argument error mentions lexical call
+## Local evaluation: Mentions `identity()`
+try(identity())
+f <- function() identity()
+try(f())
+f <- compiler::cmpfun(f)
+try(f())
+##
+## Promise evaluation: Mentions `f()` or `g()`
+f <- function(arg) is.factor(arg)
+g <- function(x) f(x)
+try(f())
+try(g())
+f <- compiler::cmpfun(f)
+g <- compiler::cmpfun(g)
+try(f())
+try(g())
+##
+## Direct evaluation, `eval()` wrapper: Mentions `eval()`
+f <- function() eval(quote(expr = ))
+try(f())
+f <- compiler::cmpfun(f)
+try(f())
+##
+## Direct evaluation, no `eval()` wrapper: Mentions `f()`
+f <- function() {
+    eval(bquote(delayedAssign("go", .(quote(expr = )))))
+    go
+}
+try(f())
+f <- compiler::cmpfun(f)
+try(f())

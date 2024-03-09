@@ -26,6 +26,7 @@ bladder2	bladder
 blog	blogit
 blogit	blogit
 bprobit	blogit
+brier	brier
 c.Surv	Survmethods
 cancer	lung
 capacitor	reliability
@@ -54,6 +55,7 @@ coxph.getdata	coxph
 coxph.object	coxph.object
 coxph.penalty	coxph
 coxph.wtest	coxph.wtest
+coxphms.object	coxphms.object
 coxsurv.fit	coxsurv.fit
 cracks	reliability
 diabetic	diabetic
@@ -71,6 +73,7 @@ gbsg	gbsg
 genfan	reliability
 head.Surv	Survmethods
 heart	heart
+hoel	hoel
 ifluid	reliability
 imotor	reliability
 is.na.coxph.penalty	survival-internal
@@ -96,6 +99,7 @@ Math.ratetable	is.ratetable
 Math.Surv	Survmethods
 mean.Surv	Survmethods
 median.Surv	Survmethods
+median.survfit	quantile.survfit
 mgus	mgus
 mgus1	mgus
 mgus2	mgus2
@@ -103,6 +107,7 @@ model.frame.coxph	model.frame.coxph
 model.frame.survreg	survreg
 model.matrix.coxph	model.matrix.coxph
 myeloid	myeloid
+myeloma	myeloma
 nafld1	nafld
 nafld2	nafld
 nafld3	nafld
@@ -131,7 +136,6 @@ print.cox.zph	cox.zph
 print.coxph	coxph.object
 print.coxph.null	coxph
 print.coxph.penal	coxph
-print.ratetable	ratetable
 print.summary.coxph	print.summary.coxph
 print.summary.survexp	print.summary.survexp
 print.summary.survfit	print.summary.survfit
@@ -182,7 +186,6 @@ summary.aareg	summary.aareg
 summary.coxph	summary.coxph
 summary.coxph.penal	coxph
 summary.pyears	summary.pyears
-summary.ratetable	ratetable
 Summary.Surv	Survmethods
 summary.survexp	summary.survexp
 summary.survfit	summary.survfit
@@ -193,6 +196,7 @@ Surv2data	Surv2data
 survcheck	survcheck
 survConcordance	survival-deprecated
 survConcordance.fit	survival-deprecated
+survcondense	survcondense
 survdiff	survdiff
 survdiff.fit	survival-internal
 survexp	survexp
@@ -203,6 +207,7 @@ survexp.us	survexp.us
 survexp.usr	survexp.us
 survfit	survfit
 survfit.coxph	survfit.coxph
+survfit.coxphms	survfit.coxph
 survfit.formula	survfit.formula
 survfit.matrix	survfit.matrix
 survfit.object	survfit.object
@@ -211,6 +216,7 @@ survfitCI	survival-internal
 survfitcoxph.fit	survfitcoxph.fit
 survfitKM	survival-internal
 survfitms.object	survfit.object
+survfitTurnbull	survival-internal
 survival-deprecated	survival-deprecated
 survival-internal	survival-internal
 survobrien	survobrien
@@ -245,7 +251,6 @@ yates	yates
 yates_setup	yates_setup
 [.cox.zph	cox.zph
 [.coxph.penalty	survival-internal
-[.ratetable	ratetable
 [.Surv	Surv
 [.survfit	survfit.formula
 [.tcut	tcut

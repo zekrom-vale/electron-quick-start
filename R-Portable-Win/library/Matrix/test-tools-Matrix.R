@@ -44,7 +44,7 @@ Qidentical <- function(x,y, strictClass = TRUE) {
            return(FALSE)
         ## else try further
     }
-    slts <- slotNames(x)
+    slts <- slotNames(x) ## MJ: should be slotNames(y), since is(x, class(y)) ??
     if("Dimnames" %in% slts) { ## always (or we have no 'Matrix')
 	slts <- slts[slts != "Dimnames"]
 	if(!Qidentical.DN(x@Dimnames, y@Dimnames) &&
@@ -60,6 +60,42 @@ Qidentical <- function(x,y, strictClass = TRUE) {
     }
     for(sl in slts)
         if(!identical(slot(x,sl), slot(y,sl)))
+            return(FALSE)
+    TRUE
+}
+
+## MJ: It seems intuitive to allow either of is(x, class(y))
+##     and is(y, class(x)) when strictClass=FALSE ...
+.MJ.Qidentical <- function(x, y, strictClass = TRUE, skipSlots = NULL) {
+    isxy <- identical(cx <- class(x), cy <- class(y))
+    if (!isxy) {
+        if (strictClass)
+            return(FALSE)
+        isxy <- is(x, cy)
+        if (!(isxy || is(y, cx)))
+            return(FALSE)
+        ## else try further
+    }
+    slts <- slotNames(if (isxy) y else x)
+    if (length(skipSlots))
+        slts <- setdiff(slts, skipSlots)
+    if ("Dimnames" %in% slts) { ## always, or we have no "Matrix"
+	## allow symmetrization of 'Dimnames' for "symmetricMatrix" :
+	slts <- slts[slts != "Dimnames"]
+        if(!Qidentical.DN(x@Dimnames, y@Dimnames) &&
+	   !Qidentical.DN(dimnames(x), dimnames(y)))
+	    return(FALSE)
+    }
+    if ("factors" %in% slts) {
+        ## allow one empty and one non-empty 'factors' :
+        slts <- slts[slts != "factors"]
+        ## if both are not empty, they must be the same:
+        if (length(xf <- x@factors) && length(yf <- y@factors) &&
+           !identical(xf, yf))
+            return(FALSE)
+    }
+    for (slt in slts)
+        if (!identical(slot(x, slt), slot(y, slt)))
             return(FALSE)
     TRUE
 }
@@ -120,7 +156,7 @@ Q.eq <- function(x, y,
         if((isDense <- extends(xcl,"denseMatrix")))
             function(m) as(m, "matrix")
         else function(m)
-            as(as(as(m,"CsparseMatrix"), "dMatrix"), "dgCMatrix")
+            as(as(as(m,"CsparseMatrix"), "dMatrix"), "generalMatrix") # => "dgC"
     if(is.na(tol)) {
 	if(isDense)
 	    all(x == y | (is.na(x) & is.na(y)))
@@ -250,7 +286,7 @@ rUnitTri <- function(n, upper = TRUE, ...)
 ##' @param n matrix dimension \eqn{n \times n}{n x n}
 ##' @param density ratio of number of non-zero entries to total number
 ##' @param d0 The sqrt of the diagonal entries of D default \code{10}, to be
-##' \dQuote{different} from \code{L} entries.
+##' \dQuote{different} from \code{L} entries.  More generally these can be negative
 ##' @param rcond logical indicating if \code{\link{rcond}(A, useInv=TRUE)}
 ##' should be returned which requires non-singular A and D.
 ##' @param condest logical indicating if \code{\link{condest}(A)$est}
@@ -266,12 +302,13 @@ mkLDL <- function(n, density = 1/3,
     stopifnot(n == round(n), density <= 1)
     n <- as.integer(n)
     stopifnot(n >= 1, is.numeric(d.half),
-              length(d.half) == n, d.half >= 0)
+              length(d.half) == n)# no longer (2023-05-24): d.half >= 0
     L <- Matrix(0, n,n)
     nnz <- round(density * n*n)
     L[sample(n*n, nnz)] <- seq_len(nnz)
     L <- tril(L, -1L)
     diag(L) <- 1
+### FIXME: allow  *negative* d.half[] entries!
     dh2 <- d.half^2
     non.sing <- sum(dh2 > 0) == n
     D <- Diagonal(x = dh2)
@@ -319,7 +356,7 @@ allCholesky <- function(A, verbose = FALSE, silentTry = FALSE)
     ##' @return an is(perm,LDL,super) matrix with interesting and *named* rownames
     CHM_to_pLs <- function(r) {
         is.perm <- function(.)
-            if(inherits(., "try-error")) NA else !all(.@perm == 0:(.@Dim[1]-1))
+            if(inherits(., "try-error")) NA else .@type[1L] != 0L
         is.LDL <- function(.)if(inherits(., "try-error")) NA else isLDL(.)
 	r.st <-
 	    cbind(perm	= sapply(r, is.perm),
@@ -363,7 +400,23 @@ allCholesky <- function(A, verbose = FALSE, silentTry = FALSE)
 ##' Cheap  Boolean Arithmetic Matrix product
 ##' Should be equivalent to  %&%  which is faster [not for large dense!].
 ##' Consequently mainly used in  checkMatrix()
-boolProd <- function(x,y) as((abs(x) %*% abs(y)) > 0, "nMatrix")
+## The first version (up to Aug.2022)  -- possibly what we should use for dense case (!?)
+boolProd0 <- function(x,y) as((abs(x) %*% abs(y)) > 0, "nMatrix")
+## New since  Aug.13, 2022, ensuring that zeros are dropped
+isCRT <- function(x, cl = getClass(class(x)))
+    extends(cl, "CsparseMatrix") || extends(cl, "TsparseMatrix") || extends(cl, "RsparseMatrix")
+boolProd <- function(x,y) {
+    ## treat x & y, drop0() & coercing to "n" -- this treats  NA  <==>  1  (!)
+    x <- if(isCRT(x)) .sparse2kind(x, kind="n", drop0=TRUE) else as(drop0(x), "nMatrix")
+    y <- if(isCRT(y)) .sparse2kind(y, kind="n", drop0=TRUE) else as(drop0(y), "nMatrix")
+    r <- (abs(x) %*% abs(y)) > 0
+    if(isCRT(r))
+        .sparse2kind(r, kind="n", drop0=TRUE)
+    else # also for "sparseMatrix" cases "indMatrix" (incl "pMatrix") or "diagonalMatrix"
+        ## NB: "diagonalMatrix already *does* drop0(.) when coerced to "nMatrix"
+        as(r, "nMatrix")
+}
+.sparse2kind <- Matrix:::.sparse2kind # (FIXME -- a version of this should be exported!)
 
 ###----- Checking a "Matrix" -----------------------------------------
 
@@ -403,15 +456,18 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 
     clNam <- class(m)
     cld <- getClassDef(clNam) ## extends(cld, FOO) is faster than is(m, FOO)
-    isCor    <- extends(cld, "corMatrix")
-    isSym    <- extends(cld, "symmetricMatrix")
+    isGen <- extends(cld, "generalMatrix")
+    isSym <- extends(cld, "symmetricMatrix")
+    isTri <- extends(cld, "triangularMatrix")
+    isCor <- isSym && (extends(cld, "corMatrix") || extends(cld, "pcorMatrix"))
     if(isSparse <- extends(cld, "sparseMatrix")) { # also true for these
+        isCsp  <- extends(cld, "CsparseMatrix")
 	isRsp  <- extends(cld, "RsparseMatrix")
+        isTsp  <- extends(cld, "TsparseMatrix")
 	isDiag <- extends(cld, "diagonalMatrix")
 	isInd  <- extends(cld, "indMatrix")
 	isPerm <- extends(cld, "pMatrix")
-    } else isRsp <- isDiag <- isInd <- isPerm <- FALSE
-    isTri <- !isSym && !isDiag && !isInd && extends(cld, "triangularMatrix")
+    } else isCsp <- isRsp <- isTsp <- isDiag <- isInd <- isPerm <- FALSE
     is.n     <- extends(cld, "nMatrix")
     nonMatr  <- clNam != (Mcl <- MatrixClass(clNam, cld))
 
@@ -431,6 +487,7 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
     ina <- is.na(m)
     if(do.matrix) {
 	stopifnot(all(ina == is.na(m.m)),
+                  all(is.nan(m) == is.nan(m.m)),
 		  all(is.finite(m) == is.finite(m.m)),
 		  all(is.infinite(m) == is.infinite(m.m)),
 		  all(m == m | ina), ## check all() , "==" [Compare], "|" [Logic]
@@ -451,8 +508,7 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 	ttm <- t(tm)
         ## notInd: "pMatrix" ok, but others inheriting from "indMatrix" are not
         notInd <- (!isInd || isPerm)
-	if(notInd && (extends(cld, "CsparseMatrix") ||
-	   extends(cld, "generalMatrix") || isDiag))
+	if(notInd && (isCsp || isGen || isDiag))
             stopifnot(Qidentical(m, ttm, strictClass = !nonMatr))
 	else if(do.matrix) {
 	    if(notInd) stopifnot(nonMatr || class(ttm) == clNam)
@@ -519,35 +575,52 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
     }
 
     if(!isInd)
-        m.d <- local({ m. <- m; diag(m.) <- diag(m); m. })
+        m.d <- local({ m. <- m
+            diag(m.) <- diag(m) ## << *assigning* to 'm.' now typically annihilates @factor
+            if(.hasSlot(m, "factors") && length(f <- m@factors))
+                m.@factors <- f
+            m. })
     if(do.matrix)
     stopifnot(identical(dim(m.m), dim(m)),
-	      ## base::diag() keeps names [Matrix FIXME]
+
 ## now that "pMatrix" subsetting gives *LOGICAL*
 ## 	      if(isPerm) {
 ## 		  identical(as.integer(unname(diag(m))), unname(diag(m.m)))
 ## 	      } else
-	      identical(unname(diag(m)),
-			unname(diag(m.m))),## not for NA: diag(m) == diag(m.m),
+	      identical(diag(m), # base:: *and* Matrix diag()  now keep names
+			diag(m.m)),## not for NA: diag(m) == diag(m.m),
 	      identical(nnzero(m), sum(m.m != 0)),
-	      identical(nnzero(m, na.= FALSE), sum(m.m != 0, na.rm = TRUE)),
-	      identical(nnzero(m, na.= TRUE),  sum(m.m != 0 | is.na(m.m)))
+	      identical(nnzero(m, na.counted = FALSE),
+                        sum(m.m != 0, na.rm = TRUE)),
+	      identical(nnzero(m, na.counted = TRUE),
+                        sum(m.m != 0 | is.na(m.m)))
 	      )
 
     if(isSparse) {
 	n0m <- drop0(m) #==> n0m is Csparse
 	has0 <- !Qidentical(n0m, as(m,"CsparseMatrix"))
-	if(!isInd && !isRsp &&
-           !(extends(cld, "TsparseMatrix") && anyDuplicatedT(m, di = d)))
-                                        # 'diag<-' is does not change attrib:
-	    stopifnot(Qidentical(m, m.d))# e.g., @factors may differ
     }
-    else if(!identical(m, m.d)) { # dense : 'diag<-' is does not change attrib
-	if(isTri && m@diag == "U" && m.d@diag == "N" &&
-	   all(m == m.d))
-	    message("unitriangular m: diag(m) <- diag(m) lost \"U\" .. is ok")
-	else stop("diag(m) <- diag(m) has changed 'm' too much")
-    }
+
+    if(isDiag)
+        stopifnot(exprs = {
+            .MJ.Qidentical(m, m.d, strictClass = FALSE,
+                           skipSlots = if(m@diag != "N") c("diag", "x"))
+            m@diag == "N" || (m.d@diag == "N" &&
+                              identical(m.d@x, diag(m, names = FALSE)))
+        })
+    else if(isTri && m@diag != "N")
+        stopifnot(exprs = {
+            is(m.d, "triangularMatrix") && m.d@diag == "N"
+            .MJ.Qidentical(m, m.d, strictClass = FALSE,
+                           skipSlots = c("diag", "p", "i", "j", "x"))
+            isSparse || all(m == m.d)
+        })
+    else if(!isInd)
+        stopifnot(.MJ.Qidentical(m, m.d, strictClass = FALSE,
+                                 skipSlots =
+                                     if(((isCsp || isRsp) && has0) || isTsp)
+                                         c("p", "i", "j", "x")))
+
     ## use non-square matrix when "allowed":
 
     ## m12: sparse and may have 0s even if this is not: if(isSparse && has0)
@@ -566,8 +639,12 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 	n1 <- as(m, "nMatrix")
 	ns <- as(m, "nsparseMatrix")
 	stopifnot(identical(n1,ns),
-		  isDiag || ((if(isSym) Matrix:::nnzSparse else sum)(n1) ==
-			     length(if(isInd) m@perm else diagU2N(m)@x)))
+                  ## only testing [CR]sparseMatrix and indMatrix here ...
+                  ## sum(<n.T>) excludes duplicated (i,j) pairs whereas
+                  ## length(diagU2N(<[^n].T>)) includes them ...
+                  isDiag || isTsp ||
+                  (if(isSym) length(if(.hasSlot(n1, "i")) n1@i else n1@j)
+                   else sum(n1)) == length(if(isInd) m@perm else diagU2N(m)@x))
         Cat("ok\n")
     }
 
@@ -609,7 +686,7 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 		CatF("ok;  determinant(): ")
 		if(!doDet)
 		    Cat(" skipped (!doDet): ")
-		else if(any(is.na(m.m)) && extends(cld, "triangularMatrix"))
+		else if(any(is.na(m.m)) && isTri)
 		    Cat(" skipped: is triang. and has NA: ")
 		else
 		    stopifnot(eqDeterminant(m, m.m, NA.Inf.ok=TRUE))
@@ -634,7 +711,7 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 	}
 	else if(extends(cld, "lMatrix")) { ## should fulfill even with NA:
 	    stopifnot(all(m | !m | ina), !any(!m & m & !ina))
-	    if(extends(cld, "TsparseMatrix")) # allow modify, since at end here
+	    if(isTsp) # allow modify, since at end here
 		m <- uniqTsparse(m, clNam)
 	    stopifnot(identical(m, m & TRUE),
 		      identical(m, FALSE | m))
@@ -650,12 +727,8 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 	}
 	else if(extends(cld, "dMatrix")) {
 	    m. <- if(isSparse && has0) n0m else m
-	    m1 <- (m. != 0)*1
-	    if(!isSparse && substr(clNam,1,3) == "dpp")
-		## no "nppMatrix" possible
-		m1 <- unpack(m1)
-
-	    m1. <- m1 # replace NA by 1 in m1. , carefully not changing class:
+	    m1 <- m1. <- (m. != 0)*1
+            ## replace NA by 1 in m1. , carefully not changing class:
 	    if(any(ina)) m1.@x[is.na(m1.@x)] <- 1
 	    ## coercion to n* (nz-pattern!) and back: only identical when no extra 0s and no NAs:
 	    stopifnot(Q.C.identical(m1., as(as(m., "nMatrix"),"dMatrix"),
@@ -664,18 +737,22 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
 				    isSparse, checkClass = FALSE))
 	}
 
-	if(extends(cld, "triangularMatrix")) {
+        maybeDense <- if(isSparse) identity else function(.) as(., "denseMatrix")
+	if(isTri) {
 	    mm. <- m
 	    i0 <- if(m@uplo == "L")
 		upper.tri(mm.) else lower.tri(mm.)
 	    n.catchWarn <- if(is.n) suppressWarnings else identity
 	    n.catchWarn( mm.[i0] <- 0 ) # ideally, mm. remained triangular, but can be dge*
-	    CatF("as(<triangular (ge)matrix>, ",clNam,"): ", sep='')
-	    tm <- as(as(mm., "triangularMatrix"), clNam)
+            ## Aug.2022 - Coercion deprecations: No longer do as(*, clNam):
+	    CatF("as(mm., \"triangularMatrix\"): ")
+	    tm <- as(mm., "triangularMatrix")
 	    Cat("valid:", validObject(tm), "\n")
-	    if(m@uplo == tm@uplo) ## otherwise, the matrix effectively was *diagonal*
-		## note that diagU2N(<dtr>) |-> dtC :
-		stopifnot(Qidentical(tm, as(diagU2N(m), clNam)))
+	    if(m@uplo == tm@uplo) { ## otherwise, the matrix effectively was *diagonal*
+                if(!isSparse && Matrix:::.isPacked(m)) m <- unpack(m) # to match tm
+		## note that diagU2N(<dtr>) |-> dtC, now dtT:
+		stopifnot(Qidentical(tm, maybeDense(diagU2N(m))))
+            }
 	}
 	else if(isDiag) {
 
@@ -695,7 +772,7 @@ checkMatrix <- function(m, m.m = if(do.matrix) as(m, "matrix"),
     }
 
     invisible(TRUE)
-}
+} ## {checkMatrix}
 
 ### --- These use
 
@@ -709,12 +786,9 @@ chk.qr.D.S <- function(d., s., y, Y = Matrix(y), force = FALSE, tol = 1e-10) {
     ## when system is rank deficient, have differing cases, not always just NA <-> 0 coef
     ## FIXME though:  resid & fitted should be well determined
     if(force || !rank.def) stopifnot(
-### FIXME: temporary:
-###	is.all.equal3(	    cc	     , drop(qr.coef  (s.,y)), drop(qr.coef  (s.,Y)), tol=tol),
-	is.all.equal3(	unname( cc ) , drop(qr.coef  (s.,y)), drop(qr.coef  (s.,Y)), tol=tol),
-### END{FIXME}
-	is.all.equal3(qr.resid (d.,y), drop(qr.resid (s.,y)), drop(qr.resid (s.,Y)), tol=tol),
-	is.all.equal3(qr.fitted(d.,y), drop(qr.fitted(s.,y)), drop(qr.fitted(s.,Y)), tol=tol)
+	is.all.equal3(	    cc	     , qr.coef  (s.,y), drop(qr.coef  (s.,Y)), tol=tol),
+	is.all.equal3(qr.resid (d.,y), qr.resid (s.,y), drop(qr.resid (s.,Y)), tol=tol),
+	is.all.equal3(qr.fitted(d.,y), qr.fitted(s.,y), drop(qr.fitted(s.,Y)), tol=tol)
 	)
 }
 

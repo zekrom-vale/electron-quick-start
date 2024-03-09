@@ -1,6 +1,6 @@
 
-R version 4.1.0 Patched (2021-06-17 r80511) -- "Camp Pontanezen"
-Copyright (C) 2021 The R Foundation for Statistical Computing
+R version 4.3.1 Patched (2023-10-16 r85342) -- "Beagle Scouts"
+Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -342,9 +342,17 @@ lm2  6 336.3417
 > all.equal(df(x^2, 1, 5), dt(x, 5)/x)
 [1] TRUE
 > 
-> ## Identity:  qf(2*p - 1, 1, df) == qt(p, df)^2  for  p >= 1/2
+> ## Identity (F <-> t):  qf(2*p - 1, 1, df) == qt(p, df)^2  for  p >= 1/2
 > p <- seq(1/2, .99, length.out = 50); df <- 10
 > rel.err <- function(x, y) ifelse(x == y, 0, abs(x-y)/mean(abs(c(x,y))))
+> stopifnot(all.equal(qf(2*p - 1, df1 = 1, df2 = df),
++                     qt(p, df)^2))
+> 
+> ## Identity (F <-> Beta <-> incompl.beta):
+> n1 <- 7 ; n2 <- 12; qF <- c((0:4)/4, 1.5, 2:16)
+> x <- n2/(n2 + n1*qF)
+> stopifnot(all.equal(pf(qF, n1, n2, lower.tail=FALSE),
++                     pbeta(x, n2/2, n1/2)))
 > 
 > 
 > 
@@ -1249,7 +1257,7 @@ Residual standard error: 0.04103 on 7 degrees of freedom
 > datN$conc <- predict(fm1, newdata=datN)
 > plot(conc ~ time, data=datN) # perfect, no noise
 > ## IGNORE_RDIFF_BEGIN
-> ## Fails by default (scaleOffset=0):
+> ## Fails by default (scaleOffset=0) on most platforms {also after increasing maxiter !}
 > ## Not run: 
 > ##D         nls(conc ~ SSbiexp(time, A1, lrc1, A2, lrc2), data = datN, trace=TRUE)
 > ## End(Not run)
@@ -1258,16 +1266,16 @@ Residual standard error: 0.04103 on 7 degrees of freedom
 +         nls(conc ~ SSbiexp(time, A1, lrc1, A2, lrc2), data = datN,
 +             trace=TRUE, control = list(maxiter = 10)) )
 0.01722077  (5.34e+02): par = (0.6168807 -1.783839 2.050204 0.2004597)
-3.308944e-06 (1.13e+04): par = (0.5798674 -1.784335 2.028943 0.1920502)
-2.571095e-11 (7.68e+06): par = (0.5793882 -1.78778 2.029276 0.1915479)
-1.619248e-23 (5.90e+03): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.243570e-28 (8.88e+00): par = (0.5793887 -1.787785 2.029277 0.1915474)
-2.599121e-29 (1.38e+01): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.292713e-29 (1.71e+00): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.292713e-29 (1.71e+00): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.292713e-29 (1.71e+00): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.292713e-29 (1.71e+00): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.292713e-29 (1.71e+00): par = (0.5793887 -1.787785 2.029277 0.1915474)
+3.308943e-06 (1.13e+04): par = (0.5798674 -1.784335 2.028943 0.1920502)
+2.571069e-11 (7.68e+06): par = (0.5793882 -1.78778 2.029276 0.1915479)
+1.669346e-23 (5.53e+03): par = (0.5793887 -1.787785 2.029277 0.1915475)
+2.285755e-29 (1.59e+01): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.345909e-29 (1.20e+01): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.224242e-29 (9.63e+00): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.224242e-29 (9.63e+00): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.224242e-29 (9.63e+00): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.224242e-29 (9.63e+00): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.224242e-29 (9.63e+00): par = (0.5793887 -1.787785 2.029277 0.1915475)
 Error in nls(y ~ cbind(exp(-exp(lrc1) * x), exp(-exp(lrc2) * x)), data = xy,  : 
   number of iterations exceeded maximum of 10
 > ## End(Don't show)
@@ -1278,14 +1286,14 @@ Error in nls(y ~ cbind(exp(-exp(lrc1) * x), exp(-exp(lrc2) * x)), data = xy,  :
   It.   1, fac=           1, eval (no.,total): ( 1,  1): new dev = 3.30894e-06
 3.308942e-06  (9.08e-04): par = (0.5798674 -1.784335 2.028943 0.1920502)
   It.   2, fac=           1, eval (no.,total): ( 1,  2): new dev = 2.57108e-11
-2.571082e-11  (2.53e-06): par = (0.5793882 -1.78778 2.029276 0.1915479)
-  It.   3, fac=           1, eval (no.,total): ( 1,  3): new dev = 1.66996e-23
-1.669964e-23  (2.04e-12): par = (0.5793887 -1.787785 2.029277 0.1915474)
-1.671287e-23  (1.67e-13): par = (2.029277 0.5793887 0.1915474 -1.787785)
+2.571081e-11  (2.53e-06): par = (0.5793882 -1.78778 2.029276 0.1915479)
+  It.   3, fac=           1, eval (no.,total): ( 1,  3): new dev = 1.66926e-23
+1.669257e-23  (2.04e-12): par = (0.5793887 -1.787785 2.029277 0.1915475)
+1.670550e-23  (1.67e-13): par = (2.029277 0.5793887 0.1915475 -1.787785)
 > all.equal(coef(fm1), coef(fmX1), tolerance=0) # ... rel.diff.: 1.57e-6
-[1] "Mean relative difference: 1.574124e-06"
+[1] "Mean relative difference: 1.574118e-06"
 > all.equal(coef(fm1), coef(fmX),  tolerance=0) # ... rel.diff.: 1.03e-12
-[1] "Mean relative difference: 1.032014e-12"
+[1] "Mean relative difference: 1.032123e-12"
 > ## IGNORE_RDIFF_END
 > stopifnot(all.equal(coef(fm1), coef(fmX1), tolerance = 6e-6),
 +           all.equal(coef(fm1), coef(fmX ), tolerance = 1e-11))
@@ -1849,6 +1857,21 @@ Variances:
 > plot(function(x) dt(x, df = 3, ncp = 2), -3, 11, ylim = c(0, 0.32),
 +      main = "Non-central t - Density", yaxs = "i")
 > 
+> ## Relation between F_t(.) = pt(x, n) and pbeta():
+> ptBet <- function(t, n) {
++     x <- n/(n + t^2)
++     r <- pb <- pbeta(x, n/2, 1/2) / 2
++     pos <- t > 0
++     r[pos] <- 1 - pb[pos]
++     r
++ }
+> x <- seq(-5, 5, by = 1/8)
+> nu <- 3:10
+> pt. <- outer(x, nu, pt)
+> ptB <- outer(x, nu, ptBet)
+> ## matplot(x, pt., type = "l")
+> stopifnot(all.equal(pt., ptB, tolerance = 1e-15))
+> 
 > 
 > 
 > cleanEx()
@@ -2361,7 +2384,7 @@ Sum Buzz        19   28  14    26  14  28
 > sqsm <- function(x) sum(x)^2/100
 > B <- table(Sea, Bee)
 > round(sweep(addmargins(B, 1, list(list(All = sum, N = sqsm))), 2,
-+             apply(B, 2, sum)/100, "/"), 1)
++             apply(B, 2, sum)/100, `/`), 1)
        Bee
 Sea      Buzz   Hum
   Black  21.8  20.0
@@ -2371,7 +2394,7 @@ Sea      Buzz   Hum
   All   100.0 100.0
   N      87.0  90.0
 > round(sweep(addmargins(B, 2, list(list(All = sum, N = sqsm))), 1,
-+             apply(B, 1, sum)/100, "/"), 1)
++             apply(B, 1, sum)/100, `/`), 1)
        Bee
 Sea      Buzz   Hum   All     N
   Black  51.4  48.6 100.0  37.0
@@ -2382,7 +2405,7 @@ Sea      Buzz   Hum   All     N
 > # A total over Bee requires formation of the Bee-margin first:
 > mB <-  addmargins(B, 2, FUN = list(list(Total = sum)))
 > round(ftable(sweep(addmargins(mB, 1, list(list(All = sum, N = sqsm))), 2,
-+                    apply(mB, 2, sum)/100, "/")), 1)
++                    apply(mB, 2, sum)/100, `/`)), 1)
       Bee  Buzz   Hum Total
 Sea                        
 Black      21.8  20.0  20.9
@@ -2541,6 +2564,28 @@ x      1  2  3  4  5  6  7 Sum
 15    80-119      30+      7         5
 16      120+      30+     10         3
 > 
+> ## "complete cases" vs. "available cases"
+> colSums(is.na(airquality))  # NAs in Ozone but not Temp
+  Ozone Solar.R    Wind    Temp   Month     Day 
+     37       7       0       0       0       0 
+> ## the default is to summarize *complete cases*:
+> aggregate(cbind(Ozone, Temp) ~ Month, data = airquality, FUN = mean)
+  Month    Ozone     Temp
+1     5 23.61538 66.73077
+2     6 29.44444 78.22222
+3     7 59.11538 83.88462
+4     8 59.96154 83.96154
+5     9 31.44828 76.89655
+> ## to handle missing values *per variable*:
+> aggregate(cbind(Ozone, Temp) ~ Month, data = airquality, FUN = mean,
++           na.action = na.pass, na.rm = TRUE)
+  Month    Ozone     Temp
+1     5 23.61538 65.54839
+2     6 29.44444 79.10000
+3     7 59.11538 83.90323
+4     8 59.96154 83.96774
+5     9 31.44828 76.90000
+> 
 > ## Dot notation:
 > aggregate(. ~ Species, data = iris, mean)
      Species Sepal.Length Sepal.Width Petal.Length Petal.Width
@@ -2564,6 +2609,15 @@ supp   0.5     1     2
   OJ 13.23 22.70 26.06
   VC  7.98 16.77 26.14
 > 
+> ## Formula interface via 'by' (for pipe operations)
+> ToothGrowth |> aggregate(len ~ ., FUN = mean)
+  supp dose   len
+1   OJ  0.5 13.23
+2   VC  0.5  7.98
+3   OJ  1.0 22.70
+4   VC  1.0 16.77
+5   OJ  2.0 26.06
+6   VC  2.0 26.14
 > 
 > ## Compute the average annual approval ratings for American presidents.
 > aggregate(presidents, nfrequency = 1, FUN = mean)
@@ -3118,7 +3172,7 @@ N          1 189.28  189.28  12.259 0.00437 **
 P          1   8.40    8.40   0.544 0.47490   
 K          1  95.20   95.20   6.166 0.02880 * 
 N:P        1  21.28   21.28   1.378 0.26317   
-N:K        1  33.14   33.14   2.146 0.16865   
+N:K        1  33.13   33.13   2.146 0.16865   
 P:K        1   0.48    0.48   0.031 0.86275   
 Residuals 12 185.29   15.44                   
 ---
@@ -3251,8 +3305,10 @@ CN   constant TRUE       1.0 1.0 1.0 1.0 1.0 3.0 3.0 4.0  NA
      linear   TRUE       1.0 1.0 1.5 2.0 2.5 3.0 3.5 4.0  NA
               FALSE      1.0 1.0  NA  NA  NA 3.0 3.5 4.0  NA
 > ## Don't show: 
+> ryna <- ry
+> ryna[is.na(ryna)] <- NA ## approx may turn NAs into NaNs
 > stopifnot(exprs = {
-+  identical(unname(ry),
++  identical(unname(ryna),
 +    array(c(NA, 1, 1,   1, 1, 3, 3, 4, NA,      NA, 1,  1, NA, NA, 3, 3, 4, NA,
 +            NA, 1, 1.5, 2, 2.5, 3, 3.5, 4, NA,  NA, 1, NA, NA, NA, 3, 3.5, 4, NA,
 +             1, 1, 1,   1, 1, 3, 3, 4, 4,        1, 1,  1, NA, NA, 3, 3, 4, 4,
@@ -3992,11 +4048,17 @@ sigma^2 estimated as 0.4566:  log likelihood = -101.2,  aic = 212.4
 > 
 > ### ** Examples
 > 
-> asOneSidedFormula("age")
+> (form <- asOneSidedFormula("age"))
 ~age
-<environment: 0x8a71b18>
-> asOneSidedFormula(~ age)
-~age
+> stopifnot(exprs = {
++     identical(form, asOneSidedFormula(form))
++     identical(form, asOneSidedFormula(as.name("age")))
++     identical(form, asOneSidedFormula(expression(age)))
++ })
+> asOneSidedFormula(quote(log(age)))
+~log(age)
+> asOneSidedFormula(1)
+~1
 > 
 > 
 > 
@@ -5031,7 +5093,7 @@ function (V)
     r[cbind(1L:p, 1L:p)] <- 1
     r
 }
-<bytecode: 0x5020e70>
+<bytecode: 0x5637260>
 <environment: namespace:stats>
 > stopifnot(all.equal(Cl, cov2cor(cov(longley))),
 +           all.equal(cor(longley, method = "kendall"),
@@ -5559,10 +5621,8 @@ surv(ft, case) ~ a + b * f
 `+-` ~ `P/E` + `% Growth`
 > 
 > x <- c("a name", "another name")
-> try( reformulate(x) ) # -> Error ..... unexpected symbol
-Error in str2lang(termtext) : <text>:1:3: unexpected symbol
-1: a name
-      ^
+> tryCatch( reformulate(x), error = function(e) "Syntax error." )
+[1] "Syntax error."
 > ## rather backquote the strings in x :
 > reformulate(sprintf("`%s`", x))
 ~`a name` + `another name`
@@ -7148,7 +7208,7 @@ Family: gaussian
 Link function: identity 
 
 > str(nf)
-List of 11
+List of 12
  $ family    : chr "gaussian"
  $ link      : chr "identity"
  $ linkfun   :function (mu)  
@@ -7160,6 +7220,7 @@ List of 11
  $ initialize:  expression({  n <- rep.int(1, nobs)  if (is.null(etastart) && is.null(start) && is.null(mustart) && ((family$link| __truncated__
  $ validmu   :function (mu)  
  $ valideta  :function (eta)  
+ $ dispersion: num NA
  - attr(*, "class")= chr "family"
 > 
 > gf <- Gamma()
@@ -7169,7 +7230,7 @@ Family: Gamma
 Link function: inverse 
 
 > str(gf)
-List of 12
+List of 13
  $ family    : chr "Gamma"
  $ link      : chr "inverse"
  $ linkfun   :function (mu)  
@@ -7182,6 +7243,7 @@ List of 12
  $ validmu   :function (mu)  
  $ valideta  :function (eta)  
  $ simulate  :function (object, nsim)  
+ $ dispersion: num NA
  - attr(*, "class")= chr "family"
 > gf$linkinv
 function (eta) 
@@ -7548,8 +7610,8 @@ alternative hypothesis: two.sided
 > # Exactly the same p-value, as Cochran's conditions are never met:
 > fisher.test(MP6, hybrid=TRUE)
 
-	Fisher's Exact Test for Count Data hybrid using asym.chisq. iff
-	(exp=5, perc=80, Emin=1)
+	Fisher's Exact Test for Count Data hybrid using asym.chisq. iff (exp=5,
+	perc=80, Emin=1)
 
 data:  MP6
 p-value = 0.03929
@@ -7655,7 +7717,7 @@ attr(,".Environment")
 > environment(as.formula("y ~ x"))
 <environment: R_GlobalEnv>
 > environment(as.formula("y ~ x", env = new.env()))
-<environment: 0x8fdb630>
+<environment: 0x506c1e8>
 > 
 > 
 > ## Create a formula for a model with a large number of variables:
@@ -7664,6 +7726,9 @@ attr(,".Environment")
 y ~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11 + 
     x12 + x13 + x14 + x15 + x16 + x17 + x18 + x19 + x20 + x21 + 
     x22 + x23 + x24 + x25
+> ## Equivalent with reformulate():
+> fmla2 <- reformulate(xnam, response = "y")
+> stopifnot(identical(fmla, fmla2))
 > 
 > 
 > 
@@ -8099,10 +8164,6 @@ treatment  2   0.0000         4     5.1291
 Call:
 glm(formula = lot1 ~ log(u), family = Gamma, data = clotting)
 
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--0.04008  -0.03756  -0.02637   0.02905   0.08641  
-
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)    
 (Intercept) -0.0165544  0.0009275  -17.85 4.28e-07 ***
@@ -8122,10 +8183,6 @@ Number of Fisher Scoring iterations: 3
 
 Call:
 glm(formula = lot2 ~ log(u), family = Gamma, data = clotting)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--0.05574  -0.02925   0.01030   0.01714   0.06371  
 
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)    
@@ -8521,8 +8578,9 @@ PRESS :[1] 798.939
 > yh <- c(2.48, .73, -.04, -1.44, -1.32, 0)
 > lmH <- lm(yh ~ xh)
 > im <- influence.measures(lmH)
+> is.inf <- apply(im$is.inf, 1, any)
 > plot(xh,yh, main = "Huber's data: L.S. line and influential obs.")
-> abline(lmH); points(xh[im$is.inf], yh[im$is.inf], pch = 20, col = 2)
+> abline(lmH); points(xh[is.inf], yh[is.inf], pch = 20, col = 2)
 > 
 > ## Irwin's data [Williams 1987]
 > xi <- 1:5
@@ -8622,7 +8680,8 @@ Asserted error: length(lower) == 1 is not TRUE
 > with(ToothGrowth, {
 + interaction.plot(dose, supp, len, fixed = TRUE)
 + dose <- ordered(dose)
-+ interaction.plot(dose, supp, len, fixed = TRUE, col = 2:3, leg.bty = "o")
++ interaction.plot(dose, supp, len, fixed = TRUE,
++                  col = 2:3, leg.bty = "o", xtick = TRUE)
 + interaction.plot(dose, supp, len, fixed = TRUE, col = 2:3, type = "p")
 + })
 > 
@@ -8884,6 +8943,8 @@ totss        60.99123 60.99123
 > 
 > ## random starts do help here with too many clusters
 > ## (and are often recommended anyway!):
+> ## The ordering of the clusters may be platform-dependent.
+> ## IGNORE_RDIFF_BEGIN
 > (cl <- kmeans(x, 5, nstart = 25))
 K-means clustering with 5 clusters of sizes 12, 24, 24, 15, 25
 
@@ -8901,13 +8962,14 @@ Clustering vector:
  [75] 3 1 4 4 4 4 3 4 1 3 1 3 4 3 3 3 3 1 3 4 3 3 1 3 4 3
 
 Within cluster sum of squares by cluster:
-[1] 1.0314888 1.2816507 1.5056575 0.7104553 2.5330710
+[1] 1.0314888 0.7104553 2.5330710 1.2816507 1.5056575
  (between_SS / total_SS =  88.4 %)
 
 Available components:
 
 [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
 [6] "betweenss"    "size"         "iter"         "ifault"      
+> ## IGNORE_RDIFF_END
 > plot(x, col = cl$cluster)
 > points(cl$centers, col = 1:5, pch = 8)
 > 
@@ -8973,21 +9035,23 @@ Kruskal-Wallis chi-squared = 29.267, df = 4, p-value = 6.901e-06
 > 
 > flush(stderr()); flush(stdout())
 > 
+> ### Encoding: UTF-8
+> 
 > ### Name: ks.test
 > ### Title: Kolmogorov-Smirnov Tests
-> ### Aliases: ks.test
+> ### Aliases: ks.test ks.test.default ks.test.formula
 > ### Keywords: htest
 > 
 > ### ** Examples
 > 
-> require(graphics)
+> require("graphics")
 > 
 > x <- rnorm(50)
 > y <- runif(30)
 > # Do x and y come from the same distribution?
 > ks.test(x, y)
 
-	Two-sample Kolmogorov-Smirnov test
+	Exact two-sample Kolmogorov-Smirnov test
 
 data:  x and y
 D = 0.48, p-value = 0.0002033
@@ -8996,7 +9060,7 @@ alternative hypothesis: two-sided
 > # Does x come from a shifted gamma distribution with shape 3 and rate 2?
 > ks.test(x+2, "pgamma", 3, 2) # two-sided, exact
 
-	One-sample Kolmogorov-Smirnov test
+	Exact one-sample Kolmogorov-Smirnov test
 
 data:  x + 2
 D = 0.40962, p-value = 4.227e-08
@@ -9004,7 +9068,7 @@ alternative hypothesis: two-sided
 
 > ks.test(x+2, "pgamma", 3, 2, exact = FALSE)
 
-	One-sample Kolmogorov-Smirnov test
+	Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  x + 2
 D = 0.40962, p-value = 1.033e-07
@@ -9012,7 +9076,7 @@ alternative hypothesis: two-sided
 
 > ks.test(x+2, "pgamma", 3, 2, alternative = "gr")
 
-	One-sample Kolmogorov-Smirnov test
+	Exact one-sample Kolmogorov-Smirnov test
 
 data:  x + 2
 D^+ = 0.039998, p-value = 0.8302
@@ -9046,11 +9110,33 @@ alternative hypothesis: true location shift is greater than 0
 
 > ks.test(x, x2, alternative = "l")
 
-	Two-sample Kolmogorov-Smirnov test
+	Exact two-sample Kolmogorov-Smirnov test
 
 data:  x and x2
-D^- = 0.5, p-value = 3.727e-06
+D^- = 0.5, p-value = 2.404e-06
 alternative hypothesis: the CDF of x lies below that of y
+
+> 
+> # with ties, example from Schröer and Trenkler (1995)
+> # D = 3 / 7, p = 0.2424242
+> ks.test(c(1, 2, 2, 3, 3), c(1, 2, 3, 3, 4, 5, 6), exact = TRUE)
+
+	Exact two-sample Kolmogorov-Smirnov test
+
+data:  c(1, 2, 2, 3, 3) and c(1, 2, 3, 3, 4, 5, 6)
+D = 0.42857, p-value = 0.2424
+alternative hypothesis: two-sided
+
+> 
+> # formula interface, see ?wilcox.test
+> ks.test(Ozone ~ Month, data = airquality,
++         subset = Month %in% c(5, 8))
+
+	Exact two-sample Kolmogorov-Smirnov test
+
+data:  Ozone by Month
+D = 0.53846, p-value = 0.0006919
+alternative hypothesis: two-sided
 
 > 
 > 
@@ -9188,7 +9274,7 @@ it = 10 -2.083333 -2.083333
 > 
 > ### Name: lm
 > ### Title: Fitting Linear Models
-> ### Aliases: lm
+> ### Aliases: lm print.lm
 > ### Keywords: regression
 > 
 > ### ** Examples
@@ -10250,7 +10336,7 @@ NA        0    3    0
 > plot(med.d)
 > ## Check decomposition:
 > all(deaths ==
-+     med.d$overall + outer(med.d$row,med.d$col, "+") + med.d$residuals)
++     med.d$overall + outer(med.d$row,med.d$col, `+`) + med.d$residuals)
 [1] TRUE
 > 
 > 
@@ -11144,32 +11230,38 @@ Consider specifying 'start' or using a selfStart model
 > curve(100 + 10 * exp(x / 2), col = 4, add = TRUE)
 > lines(x, predict(nlmod), col = 2)
 > 
-> ## Here, requiring close convergence, you need to use more accurate numerical
-> ##  differentiation; this gives Error: "step factor .. reduced below 'minFactor' .."
-> options(digits = 10) # more accuracy for 'trace'
+> ## Here, requiring close convergence, must use more accurate numerical differentiation,
+> ## as this typically gives Error: "step factor .. reduced below 'minFactor' .."
 > ## IGNORE_RDIFF_BEGIN
-> try(nlm1 <- update(nlmod, control = list(tol = 1e-7))) # where central diff. work here:
+> try(nlm1 <- update(nlmod, control = list(tol = 1e-7)))
 Warning in nls(formula = y ~ Const + A * exp(B * x), algorithm = "default",  :
   No starting values specified for some parameters.
 Initializing ‘Const’, ‘A’, ‘B’ to '1.'.
 Consider specifying 'start' or using a selfStart model
->    (nlm2 <- update(nlmod, control = list(tol = 8e-8, nDcentral=TRUE), trace=TRUE))
+> o2 <- options(digits = 10) # more accuracy for 'trace'
+> ## central differencing works here typically (PR#18165: not converging on *some*):
+> ctr2 <- nls.control(nDcentral=TRUE, tol = 8e-8, # <- even smaller than above
++    warnOnly =
++         TRUE || # << work around; e.g. needed on some ATLAS-Lapack setups
++         (grepl("^aarch64.*linux", R.version$platform) && grepl("^NixOS", osVersion)
++               ))
+> (nlm2 <- update(nlmod, control = ctr2, trace = TRUE)); options(o2)
 Warning in nls(formula = y ~ Const + A * exp(B * x), algorithm = "default",  :
   No starting values specified for some parameters.
 Initializing ‘Const’, ‘A’, ‘B’ to '1.'.
 Consider specifying 'start' or using a selfStart model
 1017460.306    (4.15e+02): par = (1 1 1)
-758164.7503    (2.34e+02): par = (13.42031396 1.961485 0.05947543746)
-269506.3540    (3.23e+02): par = (51.75719814 -13.09155954 0.8428607699)
-68969.21900    (1.03e+02): par = (76.00069849 -1.93522673 1.019085799)
-633.3672239    (1.29e+00): par = (100.3761515 8.62464841 5.104490279)
-151.4400266    (9.39e+00): par = (100.6344391 4.913490966 0.284920948)
-53.08740235    (7.24e+00): par = (100.6830408 6.899303242 0.4637755057)
-1.344478691    (5.97e-01): par = (100.0368306 9.89771414 0.5169294949)
-0.9908415909   (1.55e-02): par = (100.0300625 9.9144191 0.5023516842)
+758164.7503    (2.34e+02): par = (13.42031396 1.961485 0.05947543745)
+269506.3539    (3.23e+02): par = (51.75719815 -13.09155956 0.8428607704)
+68969.21896    (1.03e+02): par = (76.0006985 -1.93522674 1.019085799)
+633.3672231    (1.29e+00): par = (100.3761515 8.624648403 5.104490265)
+151.4400225    (9.39e+00): par = (100.6344391 4.913490981 0.2849209558)
+53.08739902    (7.24e+00): par = (100.6830407 6.899303306 0.4637755073)
+1.344478646    (5.97e-01): par = (100.0368306 9.897714142 0.516929494)
+0.9908415909   (1.55e-02): par = (100.0300625 9.9144191 0.5023516843)
 0.9906046057   (1.84e-05): par = (100.0288724 9.916224018 0.5025207337)
 0.9906046054   (9.94e-08): par = (100.028875 9.916228366 0.50252165)
-0.9906046054   (5.06e-10): par = (100.028875 9.916228388 0.5025216549)
+0.9906046054   (5.87e-10): par = (100.028875 9.916228388 0.5025216549)
 Nonlinear regression model
   model: y ~ Const + A * exp(B * x)
    data: parent.frame()
@@ -11221,14 +11313,14 @@ S21
 Formula: Length ~ cbind(1, exp(-Conc/th))
 
 Parameters:
-         Estimate  Std. Error  t value   Pr(>|t|)    
-th      0.6081721   0.1145552  5.30899 1.8857e-06 ***
-.lin1  28.9632992   1.2297715 23.55177 < 2.22e-16 ***
-.lin2 -34.2274057   3.7925871 -9.02482 1.4064e-12 ***
+      Estimate Std. Error t value Pr(>|t|)    
+th       0.608      0.115    5.31  1.9e-06 ***
+.lin1   28.963      1.230   23.55  < 2e-16 ***
+.lin2  -34.227      3.793   -9.02  1.4e-12 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 4.666216 on 57 degrees of freedom
+Residual standard error: 4.67 on 57 degrees of freedom
 
 > b <- coef(musc.1)
 > musc.2 <- nls(Length ~ a[Strip] + b[Strip] * exp(-Conc/th), MASS::muscle, 
@@ -11238,54 +11330,54 @@ Residual standard error: 4.666216 on 57 degrees of freedom
 Formula: Length ~ a[Strip] + b[Strip] * exp(-Conc/th)
 
 Parameters:
-       Estimate  Std. Error   t value   Pr(>|t|)    
-a1   23.4540819   0.7962295  29.45643 4.9571e-16 ***
-a2   28.3020428   0.7927066  35.70305 < 2.22e-16 ***
-a3   30.8007135   1.7156438  17.95286 1.7342e-12 ***
-a4   25.9211323   3.0158262   8.59504 1.3559e-07 ***
-a5   23.2007530   2.8912033   8.02460 3.5004e-07 ***
-a6   20.1200085   2.4354351   8.26136 2.3496e-07 ***
-a7   33.5953318   1.6815460  19.97884 3.0449e-13 ***
-a8   39.0526855   3.7532604  10.40500 8.6252e-09 ***
-a9   32.1369315   3.3175349   9.68699 2.4626e-08 ***
-a10  40.0052055   3.3358051  11.99267 1.0157e-09 ***
-a11  36.1904288   3.1094720  11.63877 1.6038e-09 ***
-a12  36.9108971   1.8390047  20.07113 2.8240e-13 ***
-a13  30.6346316   1.7004083  18.01604 1.6383e-12 ***
-a14  34.3118441   3.4951420   9.81701 2.0282e-08 ***
-a15  38.3952357   3.3749308  11.37660 2.2657e-09 ***
-a16  31.2258023   0.8856740  35.25654 < 2.22e-16 ***
-a17  31.2302543   0.8214463  38.01862 < 2.22e-16 ***
-a18  19.9976663   1.0108248  19.78351 3.5750e-13 ***
-a19  37.0953309   1.0705800  34.64975 < 2.22e-16 ***
-a20  32.5941641   1.1212451  29.06962 6.1805e-16 ***
-a21  30.3756809   1.0569695  28.73846 7.4819e-16 ***
-b1  -27.3003577   6.8732042  -3.97200 0.00098521 ***
-b2  -26.2701728   6.7536700  -3.88976 0.00117756 ** 
-b3  -30.9010573   2.2700237 -13.61266 1.4292e-10 ***
-b4  -32.2383591   3.8100408  -8.46142 1.6870e-07 ***
-b5  -29.9405722   3.7727989  -7.93590 4.0717e-07 ***
-b6  -20.6218720   3.6472872  -5.65403 2.8577e-05 ***
-b7  -19.6245933   8.0847806  -2.42735 0.02661027 *  
-b8  -45.7798845   4.1131227 -11.13020 3.1530e-09 ***
-b9  -31.3446373   6.3522188  -4.93444 0.00012572 ***
-b10 -38.5987261   3.9554994  -9.75824 2.2137e-08 ***
-b11 -33.9210725   3.8388091  -8.83635 9.1889e-08 ***
-b12 -38.2679569   8.9920330  -4.25576 0.00053345 ***
-b13 -22.5682822   8.1943002  -2.75414 0.01354976 *  
-b14 -36.1668892   6.3576226  -5.68874 2.6648e-05 ***
-b15 -32.9520546   6.3539346  -5.18609 7.4378e-05 ***
-b16 -47.2068080   9.5402928  -4.94815 0.00012215 ***
-b17 -33.8745814   7.6883885  -4.40594 0.00038623 ***
-b18 -15.8962439   6.2222341  -2.55475 0.02050841 *  
-b19 -28.9689854   7.2352656  -4.00386 0.00091949 ***
-b20 -36.9171074   8.0325132  -4.59596 0.00025726 ***
-b21 -26.5075443   7.0124928  -3.78005 0.00149420 ** 
-th    0.7969074   0.1265653   6.29641 8.0431e-06 ***
+    Estimate Std. Error t value Pr(>|t|)    
+a1    23.454      0.796   29.46  5.0e-16 ***
+a2    28.302      0.793   35.70  < 2e-16 ***
+a3    30.801      1.716   17.95  1.7e-12 ***
+a4    25.921      3.016    8.60  1.4e-07 ***
+a5    23.201      2.891    8.02  3.5e-07 ***
+a6    20.120      2.435    8.26  2.3e-07 ***
+a7    33.595      1.682   19.98  3.0e-13 ***
+a8    39.053      3.753   10.41  8.6e-09 ***
+a9    32.137      3.318    9.69  2.5e-08 ***
+a10   40.005      3.336   11.99  1.0e-09 ***
+a11   36.190      3.109   11.64  1.6e-09 ***
+a12   36.911      1.839   20.07  2.8e-13 ***
+a13   30.635      1.700   18.02  1.6e-12 ***
+a14   34.312      3.495    9.82  2.0e-08 ***
+a15   38.395      3.375   11.38  2.3e-09 ***
+a16   31.226      0.886   35.26  < 2e-16 ***
+a17   31.230      0.821   38.02  < 2e-16 ***
+a18   19.998      1.011   19.78  3.6e-13 ***
+a19   37.095      1.071   34.65  < 2e-16 ***
+a20   32.594      1.121   29.07  6.2e-16 ***
+a21   30.376      1.057   28.74  7.5e-16 ***
+b1   -27.300      6.873   -3.97  0.00099 ***
+b2   -26.270      6.754   -3.89  0.00118 ** 
+b3   -30.901      2.270  -13.61  1.4e-10 ***
+b4   -32.238      3.810   -8.46  1.7e-07 ***
+b5   -29.941      3.773   -7.94  4.1e-07 ***
+b6   -20.622      3.647   -5.65  2.9e-05 ***
+b7   -19.625      8.085   -2.43  0.02661 *  
+b8   -45.780      4.113  -11.13  3.2e-09 ***
+b9   -31.345      6.352   -4.93  0.00013 ***
+b10  -38.599      3.955   -9.76  2.2e-08 ***
+b11  -33.921      3.839   -8.84  9.2e-08 ***
+b12  -38.268      8.992   -4.26  0.00053 ***
+b13  -22.568      8.194   -2.75  0.01355 *  
+b14  -36.167      6.358   -5.69  2.7e-05 ***
+b15  -32.952      6.354   -5.19  7.4e-05 ***
+b16  -47.207      9.540   -4.95  0.00012 ***
+b17  -33.875      7.688   -4.41  0.00039 ***
+b18  -15.896      6.222   -2.55  0.02051 *  
+b19  -28.969      7.235   -4.00  0.00092 ***
+b20  -36.917      8.033   -4.60  0.00026 ***
+b21  -26.508      7.012   -3.78  0.00149 ** 
+th     0.797      0.127    6.30  8.0e-06 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.114868 on 17 degrees of freedom
+Residual standard error: 1.11 on 17 degrees of freedom
 
 > ## IGNORE_RDIFF_END
 > ## Don't show: 
@@ -12089,7 +12181,7 @@ Warning in xy.coords(x, y, xlabel, ylabel, log) :
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: plot.lm
-> ### Title: Plot Diagnostics for an lm Object
+> ### Title: Plot Diagnostics for an 'lm' Object
 > ### Aliases: plot.lm
 > ### Keywords: hplot regression
 > 
@@ -12104,7 +12196,7 @@ Warning in xy.coords(x, y, xlabel, ylabel, log) :
 > 
 > ## 4 plots on 1 page;
 > ## allow room for printing model formula in outer margin:
-> par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+> par(mfrow = c(2, 2), oma = c(0, 0, 2, 0)) -> opar
 > plot(lm.SR)
 > plot(lm.SR, id.n = NULL)                 # no id's
 > plot(lm.SR, id.n = 5, labels.id = NULL)  # 5 id numbers
@@ -12113,20 +12205,34 @@ Warning in xy.coords(x, y, xlabel, ylabel, log) :
 > ## Cook's distances instead of Residual-Leverage plot
 > plot(lm.SR, which = 1:4)
 > 
-> ## Fit a smooth curve, where applicable:
-> plot(lm.SR, panel = panel.smooth)
-> ## Gives a smoother curve
+> ## All the above fit a smooth curve where applicable
+> ## by default unless "add.smooth" is changed.
+> ## Give a smoother curve by increasing the lowess span :
 > plot(lm.SR, panel = function(x, y) panel.smooth(x, y, span = 1))
 > 
-> par(mfrow = c(2,1))  # same oma as above
+> par(mfrow = c(2,1)) # same oma as above
 > plot(lm.SR, which = 1:2, sub.caption = "Saving Rates, n=50, p=5")
+> 
+> ## Cook's distance tweaking
+> par(mfrow = c(2,3)) # same oma ...
+> plot(lm.SR, which = 1:6, cook.col = "royalblue")
+> 
+> ## A case where over plotting of the "legend" is to be avoided:
+> if(dev.interactive(TRUE)) getOption("device")(height = 6, width = 4)
+> par(mfrow = c(3,1), mar = c(5,5,4,2)/2 +.1, mgp = c(1.4, .5, 0))
+> plot(lm.SR, which = 5, extend.ylim.f = c(0.2, 0.08))
+> plot(lm.SR, which = 5, cook.lty = "dotdash",
++      cook.legendChanges = list(x = "bottomright", legend = "Cook"))
+> plot(lm.SR, which = 5, cook.legendChanges = NULL)  # no "legend"
 > 
 > ## Don't show: 
 > ## An example with *long* formula that needs abbreviation:
+> par(mfrow = c(2,2))
 > for(i in 1:5) assign(paste("long.var.name", i, sep = "."), runif(10))
 > plot(lm(long.var.name.1 ~
 +         long.var.name.2 + long.var.name.3 + long.var.name.4 + long.var.name.5))
 > ## End(Don't show)
+> par(opar) # reset par()s
 > 
 > 
 > 
@@ -12466,14 +12572,14 @@ attr(,"class")
 $linkfun
 function (mu) 
 mu^lambda
-<bytecode: 0x6885910>
-<environment: 0x8a20478>
+<bytecode: 0x32d0388>
+<environment: 0x32d8a18>
 
 $linkinv
 function (eta) 
 pmax(eta^(1/lambda), .Machine$double.eps)
-<bytecode: 0x68857c0>
-<environment: 0x8a20478>
+<bytecode: 0x32d0238>
+<environment: 0x32d8a18>
 
 > 
 > 
@@ -13041,7 +13147,7 @@ predict.glmmPQL :
 predict.lda :
 	 function (object, newdata, prior = object$prior, dimen, method = c("plug-in",      "predictive", "debiased"), ...)  NULL 
 predict.lm :
-	 function (object, newdata, se.fit = FALSE, scale = NULL, df = Inf,      interval = c("none", "confidence", "prediction"), level = 0.95,      type = c("response", "terms"), terms = NULL, na.action = na.pass,      pred.var = res.var/weights, weights = 1, ...)  NULL 
+	 function (object, newdata, se.fit = FALSE, scale = NULL, df = Inf,      interval = c("none", "confidence", "prediction"), level = 0.95,      type = c("response", "terms"), terms = NULL, na.action = na.pass,      pred.var = res.var/weights, weights = 1, rankdeficient = c("warnif",          "simple", "non-estim", "NA", "NAwarn"), tol = 1e-06,      verbose = FALSE, ...)  NULL 
 predict.loess :
 	 function (object, newdata = NULL, se = FALSE, na.action = na.pass,      ...)  NULL 
 predict.lqs :
@@ -13171,10 +13277,6 @@ $se
 
 Call:
 glm(formula = SF ~ sex * ldose, family = binomial)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--1.39849  -0.32094  -0.07592   0.38220   1.10375  
 
 Coefficients:
             Estimate Std. Error z value Pr(>|z|)    
@@ -13559,10 +13661,16 @@ $data$w
 $no.weights
 [1] TRUE
 
+$n
+[1] 50
+
 $lev
  [1] 0.8934338 0.4379689 0.1842314 0.1529048 0.3641292 0.2022506 0.3399561
  [8] 0.3123173 0.3248036 0.2745481 0.1965797 0.2777060 0.3368286 0.2546068
 [15] 0.5210306 0.1743541 0.1531692 0.6249904 0.3750748
+
+$cv
+[1] FALSE
 
 $cv.crit
 [1] 257.2678
@@ -14386,8 +14494,7 @@ sample estimates:
 > patients <- c( 86, 93, 136, 82 )
 > prop.test(smokers, patients)
 
-	4-sample test for equality of proportions without continuity
-	correction
+	4-sample test for equality of proportions without continuity correction
 
 data:  smokers out of patients
 X-squared = 12.6, df = 3, p-value = 0.005585
@@ -14416,8 +14523,7 @@ sample estimates:
 > patients <- c( 86, 93, 136, 82 )
 > prop.test(smokers, patients)
 
-	4-sample test for equality of proportions without continuity
-	correction
+	4-sample test for equality of proportions without continuity correction
 
 data:  smokers out of patients
 X-squared = 12.6, df = 3, p-value = 0.005585
@@ -14477,6 +14583,48 @@ X-squared = 12.173, df = 1, p-value = 0.0004848
 > ## (Note that the above uses ppoints() with a = 1/2, giving the
 > ## probability points for quantile type 5: so theoretically, using
 > ## qqline(qtype = 5) might be preferable.) 
+> 
+> ## Figure 1 in Switzer (1976), knee angle data
+> switzer <- data.frame(
++     angle = c(-31, -30, -25, -25, -23, -23, -22, -20, -20, -18,
++               -18, -18, -16, -15, -15, -14, -13, -11, -10, - 9,
++               - 8, - 7, - 7, - 7, - 6, - 6, - 4, - 4, - 3, - 2,
++               - 2, - 1,   1,   1,   4,   5,  11,  12,  16,  34,
++               -31, -20, -18, -16, -16, -16, -15, -14, -14, -14,
++               -14, -13, -13, -11, -11, -10, - 9, - 9, - 8, - 7,
++               - 7, - 6, - 6,  -5, - 5, - 5, - 4, - 2, - 2, - 2,
++                 0,   0,   1,   1,   2,   4,   5,   5,   6,  17),
++     sex = gl(2, 40, labels = c("Female", "Male")))
+> 
+> ks.test(angle ~ sex, data = switzer)
+
+	Exact two-sample Kolmogorov-Smirnov test
+
+data:  angle by sex
+D = 0.225, p-value = 0.212
+alternative hypothesis: two-sided
+
+> d <- with(switzer, split(angle, sex))
+> with(d, qqplot(Female, Male, pch = 19, xlim = c(-31, 31), ylim = c(-31, 31),
++                conf.level = 0.945, 
++                conf.args = list(col = "lightgrey", exact = TRUE))
++ )
+> abline(a = 0, b = 1)
+> 
+> ## agreement with ks.test
+> set.seed(1)
+> x <- rnorm(50)
+> y <- rnorm(50, mean = .5, sd = .95)
+> ex <- TRUE
+> ### p = 0.112
+> (pval <- ks.test(x, y, exact = ex)$p.value)
+[1] 0.1123852
+> ## 88.8% confidence band with bisecting line
+> ## touching the lower bound
+> qqplot(x, y, pch = 19, conf.level = 1 - pval, 
++        conf.args = list(exact = ex, col = "lightgrey"))
+> abline(a = 0, b = 1)
+> 
 > 
 > 
 > 
@@ -14633,7 +14781,7 @@ Quade F = 3.8293, num df = 4, denom df = 24, p-value = 0.01519
 > rowTotals <- rowSums(TeaTasting)
 > colTotals <- colSums(TeaTasting)
 > nOfCases <- sum(rowTotals)
-> expected <- outer(rowTotals, colTotals, "*") / nOfCases
+> expected <- outer(rowTotals, colTotals) / nOfCases
 > maxSqResid <- function(x) max((x - expected) ^ 2 / expected)
 > simMaxSqResid <-
 +     sapply(r2dtable(1000, rowTotals, colTotals), maxSqResid)
@@ -14970,6 +15118,15 @@ F-statistic: 6.138 on 3 and 50 DF,  p-value: 0.00123
 +         xlab = "Type of spray", ylab = "Insect count",
 +         main = "InsectSprays data", varwidth = TRUE,
 +         col = "lightgray")
+> 
+> bymedianR <- with(InsectSprays, reorder(spray, count, median, decreasing=TRUE))
+> stopifnot(exprs = {
++     identical(attr(bymedian, "scores") -> sc,
++               attr(bymedianR,"scores"))
++     identical(nms <- names(sc), LETTERS[1:6])
++     identical(levels(bymedian ), nms[isc <- order(sc)])
++     identical(levels(bymedianR), nms[rev(isc)])
++ })
 > 
 > 
 > 
@@ -15827,8 +15984,8 @@ Contrast 1 Contrast 2 Contrast 3
 > ## self-starting logistic model
 > 
 > ## The "initializer" (finds initial values for parameters from data):
-> initLogis <- function(mCall, data, LHS) {
-+     xy <- data.frame(sortedXyData(mCall[["input"]], LHS, data))
+> initLogis <- function(mCall, data, LHS, ...) {
++     xy <- sortedXyData(mCall[["x"]], LHS, data)
 +     if(nrow(xy) < 4)
 +         stop("too few distinct input values to fit a logistic model")
 +     z <- xy[["y"]]
@@ -15840,14 +15997,24 @@ Contrast 1 Contrast 2 Contrast 3
 +     pars <- coef(nls(y ~ 1/(1 + exp((xmid - x)/scal)),
 +                      data = xy,
 +                      start = list(xmid = aux[[1L]], scal = aux[[2L]]),
-+                      algorithm = "plinear"))
-+     setNames(pars[c(".lin", "xmid", "scal")], nm = mCall[c("Asym", "xmid", "scal")])
++                      algorithm = "plinear", ...))
++     setNames(pars [c(".lin", "xmid", "scal")],
++              mCall[c("Asym", "xmid", "scal")])
 + }
 > 
-> SSlogis <- selfStart(~ Asym/(1 + exp((xmid - x)/scal)),
-+                      initial = initLogis,
-+                      parameters = c("Asym", "xmid", "scal"))
-> 
+> mySSlogis <- selfStart(~ Asym/(1 + exp((xmid - x)/scal)),
++                        initial = initLogis,
++                        parameters = c("Asym", "xmid", "scal"))
+> ## Don't show: 
+> ## IGNORE_RDIFF_BEGIN
+> ## End(Don't show)
+> getInitial(weight ~ mySSlogis(Time, Asym, xmid, scal),
++            data = subset(ChickWeight, Chick == 1))
+     Asym      xmid      scal 
+937.03011  35.22296  11.40521 
+> ## Don't show: 
+> ## IGNORE_RDIFF_END
+> ## End(Don't show)
 > 
 > # 'first.order.log.model' is a function object defining a first order
 > # compartment model
@@ -15953,7 +16120,7 @@ W = 0.93092, p-value = 5.616e-05
 > 
 > ### Name: sigma
 > ### Title: Extract Residual Standard Deviation 'Sigma'
-> ### Aliases: sigma sigma.default sigma.mlm
+> ### Aliases: sigma sigma.default sigma.mlm sigma.glm
 > ### Keywords: models
 > 
 > ### ** Examples
@@ -15978,7 +16145,7 @@ W = 0.93092, p-value = 5.616e-05
 > sex <- factor(rep(c("M", "F"), c(6, 6)))
 > SF <- cbind(numdead, numalive = 20-numdead)
 > sigma(budworm.lg <- glm(SF ~ sex*ldose, family = binomial))
-[1] 0.7900734
+[1] 1
 > 
 > ## -- b) Poisson -- from ?glm :
 > ## Dobson (1990) Page 93: Randomized Controlled Trial :
@@ -15986,15 +16153,15 @@ W = 0.93092, p-value = 5.616e-05
 > outcome <- gl(3,1,9)
 > treatment <- gl(3,3)
 > sigma(glm.D93 <- glm(counts ~ outcome + treatment, family = poisson()))
-[1] 1.13238
-> ## (currently) *differs* from
-> summary(glm.D93)$dispersion # == 1
+[1] 1
+> ## equal to
+> sqrt(summary(glm.D93)$dispersion) # == 1
 [1] 1
 > ## and the *Quasi*poisson's dispersion
 > sigma(glm.qD93 <- update(glm.D93, family = quasipoisson()))
-[1] 1.13238
-> sigma (glm.qD93)^2 # 1.282285 is close, but not the same
-[1] 1.282285
+[1] 1.137234
+> sigma (glm.qD93)^2 # 1.2933 equal to
+[1] 1.2933
 > summary(glm.qD93)$dispersion # == 1.2933
 [1] 1.2933
 > 
@@ -16179,7 +16346,7 @@ GCV: 244.1044
 > ## Don't show: 
 >   stopifnot(cars.spl $ w == table(cars$speed)) # weights = multiplicities
 >   utils::str(cars.spl, digits.d = 5, vec.len = 6)
-List of 19
+List of 21
  $ x         : num [1:19] 4 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ...
  $ y         : num [1:19] 1.6578 11.6829 15.0644 18.4823 21.9471 25.4656 29.0505 32.7076 ...
  $ w         : num [1:19] 2 2 1 1 3 2 4 4 4 3 2 3 4 3 5 ...
@@ -16190,7 +16357,9 @@ List of 19
   ..$ y: num [1:50] 2 10 4 22 16 10 18 26 34 17 28 14 20 24 28 ...
   ..$ w: num 1
  $ no.weights: logi TRUE
+ $ n         : int 50
  $ lev       : num [1:19] 0.399342 0.179105 0.069771 0.055561 0.136721 0.077539 0.137252 0.126354 ...
+ $ cv        : logi FALSE
  $ cv.crit   : num 244.1
  $ pen.crit  : num 4187.8
  $ crit      : num 244.1
@@ -16745,8 +16914,8 @@ Step function with continuity 'f'= 0.2 ,  3 knots at
 > unclass(sfun0)
 function (v) 
 .approxfun(x, y, v, method, yleft, yright, f, na.rm)
-<bytecode: 0x5e5d148>
-<environment: 0x68afce0>
+<bytecode: 0x3a23c68>
+<environment: 0x4045bf0>
 attr(,"call")
 stepfun(1:3, y0, f = 0)
 > ls(envir = environment(sfun0))
@@ -17497,12 +17666,12 @@ mean of x
 
 data:  Pair(extra.1, extra.2)
 t = -4.0621, df = 9, p-value = 0.002833
-alternative hypothesis: true difference in means is not equal to 0
+alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
  -2.4598858 -0.7001142
 sample estimates:
-mean of the differences 
-                  -1.58 
+mean difference 
+          -1.58 
 
 > 
 > 
@@ -17683,8 +17852,8 @@ attr(,".Environment")
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: toeplitz
-> ### Title: Form Symmetric Toeplitz Matrix
-> ### Aliases: toeplitz
+> ### Title: Create Symmetric and Asymmetric Toeplitz Matrix
+> ### Aliases: toeplitz toeplitz2
 > ### Keywords: ts
 > 
 > ### ** Examples
@@ -17697,6 +17866,82 @@ attr(,".Environment")
 [3,]    3    2    1    2    3
 [4,]    4    3    2    1    2
 [5,]    5    4    3    2    1
+> 
+> T. <- toeplitz (1:5, 11:13) # with a  *Warning* x[1] != r[1]
+Warning in toeplitz(1:5, 11:13) : x[1] != r[1]; using x[1] for diagonal
+> T2 <- toeplitz2(c(13:12, 1:5), 5, 3)# this is the same matrix:
+> stopifnot(identical(T., T2))
+> 
+> # Matrix of character (could also have logical, raw, complex ..) {also warning}:
+> noquote(toeplitz(letters[1:4], LETTERS[20:26]))
+Warning in toeplitz(letters[1:4], LETTERS[20:26]) :
+  x[1] != r[1]; using x[1] for diagonal
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,] a    U    V    W    X    Y    Z   
+[2,] b    a    U    V    W    X    Y   
+[3,] c    b    a    U    V    W    X   
+[4,] d    c    b    a    U    V    W   
+> 
+> ## A convolution/smoother weight matrix :
+> m <- 17
+> k <- length(wts <- c(76, 99, 60, 20, 1))
+> n <- m-k+1
+> ## Convolution
+> W <- toeplitz2(c(rep(0, m-k), wts, rep(0, m-k)), ncol=n)
+> ## Don't show: 
+> hadM <- isNamespaceLoaded("Matrix")
+> ## IGNORE_RDIFF_BEGIN
+> ## End(Don't show)
+> ## "display" nicely :
+> if(requireNamespace("Matrix"))
++    print(Matrix::Matrix(W))    else {
++    colnames(W) <- paste0(",", if(n <= 9) 1:n else c(1:9, letters[seq_len(n-9)]))
++    print(W)
++ }
+Loading required namespace: Matrix
+17 x 13 sparse Matrix of class "dgCMatrix"
+                                            
+ [1,] 76  .  .  .  .  .  .  .  .  .  .  .  .
+ [2,] 99 76  .  .  .  .  .  .  .  .  .  .  .
+ [3,] 60 99 76  .  .  .  .  .  .  .  .  .  .
+ [4,] 20 60 99 76  .  .  .  .  .  .  .  .  .
+ [5,]  1 20 60 99 76  .  .  .  .  .  .  .  .
+ [6,]  .  1 20 60 99 76  .  .  .  .  .  .  .
+ [7,]  .  .  1 20 60 99 76  .  .  .  .  .  .
+ [8,]  .  .  .  1 20 60 99 76  .  .  .  .  .
+ [9,]  .  .  .  .  1 20 60 99 76  .  .  .  .
+[10,]  .  .  .  .  .  1 20 60 99 76  .  .  .
+[11,]  .  .  .  .  .  .  1 20 60 99 76  .  .
+[12,]  .  .  .  .  .  .  .  1 20 60 99 76  .
+[13,]  .  .  .  .  .  .  .  .  1 20 60 99 76
+[14,]  .  .  .  .  .  .  .  .  .  1 20 60 99
+[15,]  .  .  .  .  .  .  .  .  .  .  1 20 60
+[16,]  .  .  .  .  .  .  .  .  .  .  .  1 20
+[17,]  .  .  .  .  .  .  .  .  .  .  .  .  1
+> ## Don't show: 
+> if(!hadM) unloadNamespace("Matrix")
+> ## IGNORE_RDIFF_END
+> ## End(Don't show)
+> ## scale W to have column sums 1:
+> W. <- W / sum(wts)
+> all.equal(rep(1, ncol(W.)), colSums(W.), check.attributes = FALSE)
+[1] TRUE
+> ## Visualize "mass-preserving" convolution
+> x <- 1:n; f <- function(x) exp(-((x - .4*n)/3)^2)
+> y <- f(x) + rep_len(3:-2, n)/10
+> ## Smoothing convolution:
+> y.hat <- W. %*% y # y.hat := smoothed(y) ("mass preserving" -> longer than y)
+> stopifnot(length(y.hat) == m, m == n + (k-1))
+> plot(x,y, type="b", xlim=c(1,m)); curve(f(x), 1,n, col="gray", lty=2, add=TRUE)
+> lines(1:m, y.hat, col=2, lwd=3)
+> rbind(sum(y), sum(y.hat)) ## mass preserved
+         [,1]
+[1,] 6.149807
+[2,] 6.149807
+> 
+> ## And, yes, convolve(y, *) does the same when called appropriately:
+> all.equal(c(y.hat), convolve(y, rev(wts/sum(wts)), type="open"))
+[1] TRUE
 > 
 > 
 > 
@@ -17733,7 +17978,9 @@ attr(,".Environment")
 > ## Multivariate
 > z <- ts(matrix(rnorm(300), 100, 3), start = c(1961, 1), frequency = 12)
 > class(z)
-[1] "mts"    "ts"     "matrix"
+[1] "mts"    "ts"     "matrix" "array" 
+> is.mts(z)
+[1] TRUE
 > head(z) # as "matrix"
         Series 1   Series 2   Series 3
 [1,] -0.62036668  0.4094018  0.8936737
@@ -18607,7 +18854,7 @@ difference in location
 > boxplot(Ozone ~ Month, data = airquality)
 > wilcox.test(Ozone ~ Month, data = airquality,
 +             subset = Month %in% c(5, 8))
-Warning in wilcox.test.default(x = c(41L, 36L, 12L, 18L, 28L, 23L, 19L,  :
+Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...) :
   cannot compute exact p-value with ties
 
 	Wilcoxon rank sum test with continuity correction
@@ -19128,8 +19375,8 @@ Coefficients:
                       Estimate Std. Error t value Pr(>|t|)    
 (Intercept)             29.278      3.162   9.260    2e-12 ***
 woolB                   -5.778      3.162  -1.827   0.0736 .  
-C(tension, base = 2)1   10.000      3.872   2.582   0.0128 *  
-C(tension, base = 2)3   -4.722      3.872  -1.219   0.2284    
+C(tension, base = 2)L   10.000      3.872   2.582   0.0128 *  
+C(tension, base = 2)H   -4.722      3.872  -1.219   0.2284    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -19147,10 +19394,6 @@ F-statistic: 6.138 on 3 and 50 DF,  p-value: 0.00123
 Call:
 glm(formula = cbind(ncases, ncontrols) ~ agegp + C(tobgp, , 1) + 
     C(alcgp, , 1), family = binomial(), data = esoph)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.3018  -0.7234  -0.2306   0.5737   2.4290  
 
 Coefficients:
                 Estimate Std. Error z value Pr(>|z|)    
@@ -19182,7 +19425,7 @@ Number of Fisher Scoring iterations: 6
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  7.19 0.229 7.457 0 0 
+Time elapsed:  3.766 0.167 3.98 0 0 
 > grDevices::dev.off()
 null device 
           1 

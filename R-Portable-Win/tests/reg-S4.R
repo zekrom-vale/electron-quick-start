@@ -418,8 +418,8 @@ if(require("Matrix", lib.loc = .Library, quietly = TRUE)) {
 	      identical(pmin(1, D5.), pmin(1, as.matrix(D5.))),
 	      identical(D5N, pmax(D5N, -1)),
 	      identical(D5N, pmin(D5N, 5)),
-	      identical(unname(as.matrix(pmin(D5N+1, 3))),
-			       pmin(as.matrix(D5N)+1, 3)),
+	      identical(as.matrix(pmin(D5N +1, 3)),
+			pmin(as.matrix(D5N)+1, 3)),
 	      ##
 	      TRUE)
 } else
@@ -555,12 +555,12 @@ problNames <- c("names", "dimnames", "row.names",
 myTry <- function(expr, ...) tryCatch(expr, error = function(e) e)
 tstSlotname <- function(nm) {
     r <- myTry(setClass("foo", representation =
-                        structure(list("character"), .Names = nm)))
+                        structure(list("character"), names = nm)))
     if(is(r, "error")) return(r$message)
     ## else
     ch <- LETTERS[1:5]
     ## instead of  new("foo", <...> = ch):
-    x <- myTry(do.call(new, structure(list("foo", ch), .Names=c("", nm))))
+    x <- myTry(do.call(new, structure(list("foo", ch), names=c("", nm))))
     if(is(x, "error")) return(x$message)
     y <- myTry(new("foo"));		 if(is(y, "error")) return(y$message)
     r <- myTry(capture.output(show(x))); if(is(r, "error")) return(r$message)
@@ -957,6 +957,7 @@ if(require("Matrix", lib.loc = .Library, quietly = TRUE)) { withAutoprint({
     setClass("C2", contains = "C")
     setClass("C3", contains = "C2")
     m <- matrix(c(0,0,2:0), 3,5, dimnames = list(NULL,NULL))
+    m2 <- matrix(c(0,0,2:0), 3,5)
     (mC <- as(m, "dgCMatrix"))
     (cc <- as(mC, "C"))
      c2 <- as(mC, "C2")
@@ -964,9 +965,9 @@ if(require("Matrix", lib.loc = .Library, quietly = TRUE)) { withAutoprint({
     stopifnot(
         identical(capture.output(c2),
                   sub("C3","C2", capture.output(c3)))
-      , identical(as(cc, "matrix"), m)
-      , identical(as(c2, "matrix"), m)
-      , identical(as(c3, "matrix"), m)
+      , identical(as(cc, "matrix"), m2) # changed for Matrix 1.5-x
+      , identical(as(c2, "matrix"), m2)
+      , identical(as(c3, "matrix"), m2)
     )
     invisible(lapply(c("Z","C","C2","C3"), removeClass))
  })

@@ -1,7 +1,7 @@
 R FAQ
 Frequently Asked Questions on R
-Version 2021-05-29
-Kurt Hornik
+Version 2023-04-05
+Kurt Hornik and the R Core Team
 
 
 
@@ -122,7 +122,8 @@ questions about R.
 1.1 Legalese
 ============
 
-This document is copyright © 1998-2021 by Kurt Hornik.
+Copyright (C) 1998-2020 Kurt Hornik
+Copyright (C) 2021-2023 R Core Team
 
    This document is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the Free
@@ -155,13 +156,13 @@ site (*note What is CRAN?::).
 1.3 Citing this document
 ========================
 
-In publications, please refer to this FAQ as Hornik (2021), "The R FAQ", and
-give the above, _official_ URL:
+In publications, please refer to this FAQ as Hornik and R Core Team (2023),
+"The R FAQ", and give the above, _official_ URL:
 
      @Misc{,
-       author        = {Kurt Hornik},
+       author        = {Kurt Hornik and the R Core Team},
        title         = {{R} {FAQ}},
-       year          = {2021},
+       year          = {2023},
        url           = {https://CRAN.R-project.org/doc/FAQ/R-FAQ.html}
      }
 
@@ -174,15 +175,14 @@ Everything should be pretty standard.  'R>' is used for the R prompt, and a
 1.5 Feedback
 ============
 
-Feedback via email to <Kurt.Hornik@R-project.org> is of course most welcome.
+Feedback via email to <R-devel@R-project.org> is most welcome.
 
-   In particular, note that I do not have access to Windows or Mac systems.
-Features specific to the Windows and macOS ports of R are described in the
-"R for Windows FAQ"
+   Features specific to the Windows and macOS ports of R are described in
+the "R for Windows FAQ"
 (https://CRAN.R-project.org/bin/windows/base/rw-FAQ.html) and the "R for Mac
 OS X FAQ" (https://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html).  If you
 have information on Mac or Windows systems that you think should be added to
-this document, please let me know.
+this document, please let us know.
 
 2 R Basics
 **********
@@ -225,9 +225,9 @@ and bug reports.
 modify the R source code archive.  The group currently consists of Doug
 Bates, John Chambers, Peter Dalgaard, Robert Gentleman, Kurt Hornik, Ross
 Ihaka, Tomas Kalibera, Michael Lawrence, Friedrich Leisch, Uwe Ligges,
-Thomas Lumley, Martin Maechler, Martin Morgan, Paul Murrell, Martyn Plummer,
-Brian Ripley, Deepayan Sarkar, Duncan Temple Lang, Luke Tierney, and Simon
-Urbanek.
+Thomas Lumley, Martin Maechler, Sebastian Meyer, Paul Murrell, Martyn
+Plummer, Brian Ripley, Deepayan Sarkar, Duncan Temple Lang, Luke Tierney,
+and Simon Urbanek.
 
    R has a home page at <https://www.R-project.org/>.  It is free software
 (https://www.gnu.org/philosophy/free-sw.html) distributed under a GNU-style
@@ -295,8 +295,8 @@ does R run on?::).  The file 'INSTALL' that comes with the R distribution
 contains a brief introduction, and the "R Installation and Administration"
 guide (*note What documentation exists for R?::) has full details.
 
-   Note that you need a FORTRAN compiler or perhaps 'f2c' in addition to a C
-compiler to build R.
+   Note that you need a FORTRAN 90 compiler as well as a C compiler to build
+R.
 
    In the simplest case, untar the R source code, change to the directory
 thus created, and issue the following commands (at the shell prompt):
@@ -307,18 +307,16 @@ thus created, and issue the following commands (at the shell prompt):
    If these commands execute successfully, the R binary and a shell script
 front-end called 'R' are created and copied to the 'bin' directory.  You can
 copy the script to a place where users can invoke it, for example to
-'/usr/local/bin'.  In addition, plain text help pages as well as HTML and
-LaTeX versions of the documentation are built.
+'/usr/local/bin'.  In addition, HTML versions of the R manuals (e.g.,
+'R-exts.html', the "Writing R Extensions" manual) are built in the
+'doc/manual' subdirectory.
 
-   Use 'make dvi' to create DVI versions of the R manuals, such as
-'refman.dvi' (an R object reference index) and 'R-exts.dvi', the "R
-Extension Writers Guide", in the 'doc/manual' subdirectory.  These files can
-be previewed and printed using standard programs such as 'xdvi' and 'dvips'.
-You can also use 'make pdf' to build PDF (Portable Document Format) version
-of the manuals, and view these using e.g. Acrobat.  Manuals written in the
-GNU Texinfo system can also be converted to info files suitable for reading
-online with Emacs or stand-alone GNU Info; use 'make info' to create these
-versions (note that this requires Makeinfo version 4.5).
+   Use 'make pdf' to build PDF (Portable Document Format) versions of the R
+manuals, including 'fullrefman.pdf' (an R object reference index).  Manuals
+written in the GNU Texinfo system can also be converted to info files
+suitable for reading online with Emacs or stand-alone GNU Info; use 'make
+info' to create these versions (note that this requires Makeinfo version
+4.5).
 
    Finally, use 'make check' to find out whether your R system works
 correctly.
@@ -342,18 +340,19 @@ In the above, 'prefix' is determined during configuration (typically
 (E.g., the R executable will then be installed into
 '/where/you/want/R/to/go/bin'.)
 
-   To install DVI, info and PDF versions of the manuals, use 'make
-install-dvi', 'make install-info' and 'make install-pdf', respectively.
+   To install info and PDF versions of the manuals, use 'make install-info'
+and 'make install-pdf', respectively.
 
 2.5.2 How can R be installed (Windows)
 --------------------------------------
 
 The 'bin/windows' directory of a CRAN site contains binaries for a base
-distribution and add-on packages from CRAN to run on Windows 7 and later
-(including 64-bit versions of Windows) on ix86 and x86_64 chips.  The
-Windows version of R was created by Robert Gentleman and Guido Masarotto,
-Brian D. Ripley and Duncan Murdoch made substantial contributions and it is
-now being maintained by other members of the R Core team.
+distribution and add-on packages from CRAN to run on 64-bit versions of
+Windows 7 and later on x86_64 chips (R 4.1.3 was the last version of R to
+support 32-bit Windows).  The Windows version of R was created by Robert
+Gentleman and Guido Masarotto; Brian Ripley and Duncan Murdoch made
+substantial contributions and it is now being maintained by other members of
+the R Core team.
 
    The same directory has links to snapshots of the r-patched and r-devel
 versions of R.
@@ -365,23 +364,25 @@ versions of R.
 ----------------------------------
 
 The 'bin/macosx' directory of a CRAN site contains a standard Apple
-installer package to run on macOS 10.13 ('High Sierra') and later.  Once
-downloaded and executed, the installer will install the current release of R
-and R.app, the macOS GUI.  This port of R for macOS is maintained by Simon
-Urbanek <Simon.Urbanek@R-project.org> (and previously by Stefano Iacus).
-The "R for macOS FAQ"
+installer package to run on macOS 10.13 ('High Sierra') or later, and
+another which runs only on 'Apple Silicon' Macs under macOS 11 ('Big Sur')
+or later.  Once downloaded and executed, the installer will install the
+current release of R and R.app, the macOS GUI.  This port of R for macOS is
+maintained by Simon Urbanek <Simon.Urbanek@R-project.org> (and previously by
+Stefano Iacus).  The "R for macOS FAQ"
 (https://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html) has more details.
 
    Snapshots of the r-patched and r-devel versions of R are available as
 Apple installer packages at <https://mac.R-project.org>.
 
-   As from R 4.1.0 there are separate builds for ARM-based Macs (also known
-as 'M1' or 'Apple Silicon') running macOS 11 ('Big Sur') or later.
-
 2.6 Are there Unix-like binaries for R?
 =======================================
 
-The 'bin/linux' directory of a CRAN site contains the following packages.
+Binary distributions of R are available on many Unix-like OSes: only some
+can be mentioned here so check your OS's search facilities to see if one is
+available for yours.
+
+   The 'bin/linux' directory of a CRAN site contains the following packages.
 
                CPU           Versions               Provider
      ----------------------------------------------------------------
@@ -413,18 +414,17 @@ as well as 'R-java', which ensures that R is configured for use with Java.
 The R RPM also installs the standalone R math library ('libRmath' and
 'libRmath-devel'), although this is not necessary to use R. When a new
 version of R is released, there may be a delay of up to 2 weeks until the
-Fedora RPM becomes publicly available, as it must pass through the statutory
-Fedora review process.  RPMs for a selection of R packages are also provided
-by Fedora.  The Extra Packages for Enterprise Linux (EPEL) project
-(<https://fedoraproject.org/wiki/EPEL>) provides ports of the Fedora RPMs
-for RedHat Enterprise Linux and compatible distributions (e.g., Centos,
+Fedora RPM becomes publicly available, as it must pass through the Fedora
+review process.  RPMs for a selection of R packages are also provided by
+Fedora.  The Extra Packages for Enterprise Linux (EPEL) project
+(<https://docs.fedoraproject.org/en-US/epel/>) provides ports of the Fedora
+RPMs for RedHat Enterprise Linux and compatible distributions (e.g., Centos,
 Scientific Linux, Oracle Linux).
 
    See <https://CRAN.R-project.org/bin/linux/suse/README.html> for
 information about RPMs for openSUSE.
 
-   No other binary distributions are currently publically available via
-CRAN.
+   No other binary distributions are currently publicly available via CRAN.
 
 2.7 What documentation exists for R?
 ====================================
@@ -433,7 +433,7 @@ Online documentation for most of the functions and variables in R exists,
 and can be printed on-screen by typing 'help(NAME)' (or '?NAME') at the R
 prompt, where NAME is the name of the topic help is sought for.  (In the
 case of unary and binary operators and control-flow special forms, the name
-may need to be be quoted.)
+may need to be quoted.)
 
    This documentation can also be made available as one reference manual for
 on-line reading in HTML and PDF formats, and as hardcopy via LaTeX, see
@@ -538,13 +538,14 @@ mailing lists devoted to R, including the following:
      enhanced contributed packages.
 'R-help'
      The 'main' R mailing list, for discussion about problems and solutions
-     using R, announcements (not covered by 'R-announce' and 'R-packages')
-     about the development of R and the availability of new code.
+     encountered using R, including using R packages in the standard R
+     distribution and on CRAN; announcements (not covered by 'R-announce' or
+     'R-packages'); the availability of new functionality for R and
+     documentation of R; and for posting nice examples and benchmarks.
 'R-devel'
      This list is for questions and discussion about code development in R.
 'R-package-devel'
-     A list which provides a forum for learning about the R package
-     development process.
+     A list which provides a forum for those developing R packages.
 
 Please read the posting guide (https://www.R-project.org/posting-guide.html)
 _before_ sending anything to any mailing list.
@@ -589,8 +590,8 @@ The "Comprehensive R Archive Network" (CRAN) is a collection of sites which
 carry identical material, consisting of the R distribution(s), the
 contributed extensions, documentation for R, and binaries.
 
-   The CRAN master site at WU (Wirtschaftsuniversit‰t Wien) in Austria can
-be found at the URL
+   The CRAN main site at WU (Wirtschaftsuniversit√§t Wien) in Austria can be
+found at the URL
 
      <https://CRAN.R-project.org/>
 
@@ -623,7 +624,7 @@ purposes (e.g., in business or in consulting).  The GPL, like all Open
 Source licenses, permits all and any use of the package.  It only restricts
 distribution of R or of other programs containing code from R. This is made
 clear in clause 6 ("No Discrimination Against Fields of Endeavor") of the
-Open Source Definition (https://opensource.org/docs/definition.html):
+Open Source Definition (https://opensource.org/osd/):
 
      The license must not restrict anyone from making use of the program in
      a specific field of endeavor.  For example, it may not restrict the
@@ -673,7 +674,7 @@ based on GForge (https://en.wikipedia.org/wiki/GForge) offering easy access
 to the best in SVN, daily built and checked packages, mailing lists, bug
 tracking, message boards/forums, site hosting, permanent file archival, full
 backups, and total web-based administration.  For more information, see the
-R-Forge web page and Stefan Theuﬂl and Achim Zeileis (2009), "Collaborative
+R-Forge web page and Stefan Theu√ül and Achim Zeileis (2009), "Collaborative
 software development using R-Forge", _The R Journal_, *1*(1):9-14.
 
 3 R and S
@@ -729,7 +730,7 @@ information on the "Evolution of the S Language".
 3.2 What is S-PLUS?
 ===================
 
-S-PLUS is a value-added version of S currently sold by TIBCO Software Inc
+S-PLUS is a value-added version of S sold by TIBCO Software Inc
 (https://www.tibco.com/) as 'TIBCO Spotfire S+'.  See
 <https://en.wikipedia.org/wiki/S-PLUS> for more information.
 
@@ -1195,12 +1196,6 @@ The R distribution comes with the following packages:
      Tools for package development and administration.
 *utils*
      R utility functions.
-   These "base packages" were substantially reorganized in R 1.9.0.  The
-former *base* was split into the four packages *base*, *graphics*, *stats*,
-and *utils*.  Packages *ctest*, *eda*, *modreg*, *mva*, *nls*, *stepfun* and
-*ts* were merged into *stats*, package *lqs* returned to the recommended
-package *MASS* (https://CRAN.R-project.org/package=MASS), and package *mle*
-moved to *stats4*.
 
 5.1.2 Add-on packages from CRAN
 -------------------------------
@@ -1214,21 +1209,19 @@ distributions of R.
      to the book "Kernel Smoothing" by M. P. Wand and M. C. Jones, 1995.
 *MASS*
      Functions and datasets from the main package of Venables and Ripley,
-     "Modern Applied Statistics with S". (Contained in the 'VR' bundle for R
-     versions prior to 2.10.0.)
+     "Modern Applied Statistics with S".
 *Matrix*
-     A Matrix package.  (Recommended for R 2.9.0 or later.)
+     Support for spares and dense matrices
 *boot*
      Functions and datasets for bootstrapping from the book "Bootstrap
      Methods and Their Applications" by A. C. Davison and D. V. Hinkley,
      1997, Cambridge University Press.
 *class*
-     Functions for classification (k-nearest neighbor and LVQ). (Contained
-     in the 'VR' bundle for R versions prior to 2.10.0.)
+     Functions for classification (k-nearest neighbor and LVQ).
 *cluster*
      Functions for cluster analysis.
 *codetools*
-     Code analysis tools.  (Recommended for R 2.5.0 or later.)
+     Code analysis tools.
 *foreign*
      Functions for reading and writing data stored by statistical software
      like Minitab, S, SAS, SPSS, Stata, Systat, etc.
@@ -1241,14 +1234,12 @@ distributions of R.
      Fit and compare Gaussian linear and nonlinear mixed-effects models.
 *nnet*
      Software for single hidden layer perceptrons ("feed-forward neural
-     networks"), and for multinomial log-linear models.  (Contained in the
-     'VR' bundle for R versions prior to 2.10.0.)
+     networks"), and for multinomial log-linear models.
 *rpart*
      Recursive PARTitioning and regression trees.
 *spatial*
      Functions for kriging and point pattern analysis from "Modern Applied
-     Statistics with S" by W. Venables and B. Ripley.  (Contained in the
-     'VR' bundle for R versions prior to 2.10.0.)
+     Statistics with S" by W. Venables and B. Ripley.
 *survival*
      Functions for survival analysis, including penalized likelihood.
    See the CRAN contributed packages page for more information.
@@ -1276,9 +1267,9 @@ for available packages and a complete taxonomy via BioC Views.
 5.1.4 Other add-on packages
 ---------------------------
 
-Many more packages are available from places other than the three default
-repositories discussed above (CRAN, Bioconductor and Omegahat).  In
-particular, R-Forge provides a CRAN style repository at
+Many more packages are available from places other than the default
+repositories discussed above (CRAN and Bioconductor).  In particular,
+R-Forge provides a CRAN style repository at
 <https://R-Forge.R-project.org/>.
 
    More code has been posted to the R-help mailing list, and can be obtained
@@ -1288,9 +1279,8 @@ from the mailing list archive.
 =========================================
 
 (Unix-like only.)  The add-on packages on CRAN come as gzipped tar files
-named 'PKG_VERSION.tar.gz', which may in fact be "bundles" containing more
-than one package.  Let PATH be the path to such a package file.  Provided
-that 'tar' and 'gzip' are available on your system, type
+named 'PKG_VERSION.tar.gz'.  Let PATH be the path to such a package file.
+Provided that 'tar' and 'gzip' are available on your system, type
 
      $ R CMD INSTALL PATH/PKG_VERSION.tar.gz
 
@@ -1326,12 +1316,14 @@ at the R prompt.
           Packages in `/usr/local/lib/R/library':
 
           KernSmooth    Functions for kernel smoothing for Wand & Jones (1995)
-          MASS          Main Package of Venables and Ripley's MASS
+          MASS          Support Functions and Datasets for Venables and Ripley's MASS
           Matrix        Sparse and Dense Matrix Classes and Methods
           base          The R Base package
           boot          Bootstrap R (S-Plus) Functions (Canty)
+          boot          Bootstrap Functions (Originally by Angelo Canty for S)
           class         Functions for Classification
-          cluster       Functions for clustering (by Rousseeuw et al.)
+          cluster       "Finding Groups in Data": Cluster Analysis Extended
+                        Rousseeuw et al.
           codetools     Code Analysis Tools for R
           datasets      The R Datasets Package
           foreign       Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat,
@@ -1381,8 +1373,7 @@ Use
 
 to remove the packages PKG_1, ..., PKG_N from the library tree rooted at the
 first directory given in 'R_LIBS' if this is set and non-null, and from the
-default library otherwise.  (Versions of R prior to 1.3.0 removed from the
-default library by default.)
+default library otherwise.
 
    To remove from library LIB, do
 
@@ -1626,7 +1617,9 @@ will return a vector rather than a matrix if 'index' happens to have length
 7.6 How does autoloading work?
 ==============================
 
-R has a special environment called '.AutoloadEnv'.  Using 'autoload(NAME,
+Autoloading is rarely used since packages became lazy-loaded.
+
+   R has a special environment called '.AutoloadEnv'.  Using 'autoload(NAME,
 PKG)', where NAME and PKG are strings giving the names of an object and the
 package containing it, stores some information in this environment.  When R
 tries to evaluate NAME, it loads the corresponding package PKG and
@@ -1682,16 +1675,13 @@ also replace '\' by '/' ('"c:/data/money.dat"').
 7.9 Why does plotting give a color allocation error?
 ====================================================
 
-On an X11 device, plotting sometimes, e.g., when running 'demo("image")',
+This is about a problem rarely seen with modern X11 installations.
+
+   On an X11 device, plotting sometimes, e.g., when running 'demo("image")',
 results in "Error: color allocation error".  This is an X problem, and only
 indirectly related to R. It occurs when applications started prior to R have
 used all the available colors.  (How many colors are available depends on
 the X configuration; sometimes only 256 colors can be used.)
-
-   One application which is notorious for "eating" colors is Netscape.  If
-the problem occurs when Netscape is running, try (re)starting it with either
-the '-no-install' (to use the default colormap) or the '-install' (to
-install a private colormap) option.
 
    You could also set the 'colortype' of 'X11()' to '"pseudo.cube"' rather
 than the default '"pseudo"'.  See the help page for 'X11()' for more
@@ -1811,10 +1801,9 @@ the term "name" is used in several different (but related) ways in the
 language:
 
   1. A _syntactic name_ is a string the parser interprets as this type of
-     expression.  It consists of letters, numbers, and the dot and (for
-     versions of R at least 1.9.0) underscore characters, and starts with
-     either a letter or a dot not followed by a number.  Reserved words are
-     not syntactic names.
+     expression.  It consists of letters, numbers, and the dot and
+     underscore characters, and starts with either a letter or a dot not
+     followed by a number.  Reserved words are not syntactic names.
   2. An _object name_ is a string associated with an object that is assigned
      in an expression either by having the object name on the left of an
      assignment operation or as an argument to the 'assign()' function.  It
@@ -1953,9 +1942,7 @@ can use 'bitmap()', which produces a PostScript or PDF file then converts it
 to any bitmap format supported by Ghostscript.  On some installations this
 produces ugly output, on others it is perfectly satisfactory.  Many systems
 now come with Xvfb from X.Org (https://www.x.org/) (possibly as an optional
-install), which is an X11 server that does not require a screen; and there
-is the *GDD* (https://CRAN.R-project.org/package=GDD) package from CRAN,
-which produces PNG, JPEG and GIF bitmaps without X11.
+install), which is an X11 server that does not require a screen.
 
 7.20 How can I get command line editing to work?
 ================================================
@@ -2030,16 +2017,11 @@ more of the columns, simply use 'order()' (e.g., 'DF[order(DF$a, DF[["b"]]),
 7.24 Why does the help.start() search engine not work?
 ======================================================
 
-The browser-based search engine in 'help.start()' utilizes a Java applet.
-In order for this to function properly, a compatible version of Java must
-installed on your system and linked to your browser, and both Java _and_
-JavaScript need to be enabled in your browser.
-
-   There have been a number of compatibility issues with versions of Java
-and of browsers.  For further details please consult section "Enabling
-search in HTML help" in 'R Installation and Administration'.  This manual is
-included in the R distribution, *note What documentation exists for R?::,
-and its HTML version is linked from the HTML search page.
+Since R 2.10.0, the browser-based search engine in 'help.start()' is an HTML
+interface to 'help.search()', and should always work.  Before that, the
+engine utilized a Java applet.  In order for this to function properly, one
+needed a compatible version of Java installed on the system and linked to
+the browser, and both Java _and_ JavaScript enabled in the browser.
 
 7.25 Why did my .Rprofile stop working when I updated R?
 ========================================================
@@ -2161,7 +2143,7 @@ you will need to consider error propagation carefully.
 _Statistical Analysis and Data Display: An Intermediate Course with Examples
 in R_, Richard M. Heiberger and Burt Holland (Springer 2015, second
 edition).  This appendix is a free download from
-<https://link.springer.com/content/pdf/bbm%3A978-1-4939-2122-5%2F1.pdf>.
+<https://link.springer.com/content/pdf/bbm:978-1-4939-2122-5/1.pdf>.
 
    For more information, see e.g. David Goldberg (1991), "What Every
 Computer Scientist Should Know About Floating-Point Arithmetic", _ACM
@@ -2449,32 +2431,13 @@ unused memory that cannot be released.
 7.43 How can I enable secure https downloads in R?
 ==================================================
 
-When R transfers files over HTTP (e.g., using the 'install.packages()' or
-'download.file()' function), a download method is chosen based on the
-'download.file.method' option.  There are several methods available and the
-default behavior if no option is explicitly specified is to use R's internal
-HTTP implementation.  In most circumstances this internal method will not
-support HTTPS URLs so you will need to override the default: this is done
-automatically for such URLs as from R 3.2.2.
+From R 4.2.0, '"libcurl"' download method is always available and used for
+HTTPS by default on all platforms.  It has been used since R 3.3.0
+everywhere but Windows where the default method '"wininet"' also supported
+HTTPS.
 
-   R versions 3.2.0 and greater include two download methods ('"libcurl"'
-and '"wininet"') that both support HTTPS connections: we recommend that you
-use these methods.  The requisite code to add to '.Rprofile' or
-'Rprofile.site' is:
-
-     options(download.file.method = "wininet", url.method = "wininet")
-     (Windows)
-     options(download.file.method = "libcurl", url.method = "libcurl")
-     (Linux and macOS)
-
-(Method '"wininet"' is the default on Windows as from R 3.2.2.)
-
-   Note that the '"libcurl"' method may or may not have been compiled in.
-In the case that it was not, i.e. 'capabilities("libcurl") == FALSE', we
-recommend method '"wget"' on Linux and '"curl"' on macOS. It is possible
-that system versions of '"libcurl"', 'wget' or 'curl' may have been compiled
-without HTTPS support, but this is unlikely.  As from R 3.3.0 '"libcurl"'
-with HTTPS support is required except on Windows.
+   So nothing needs to be done to access 'https://' websites in recent
+versions of R.
 
 7.44 How can I get CRAN package binaries for outdated versions of R?
 ====================================================================
@@ -2534,11 +2497,6 @@ determined when R was built).
 files in '$HOME/.R' to override the default flags.  See section "Add-on
 packages" in 'R Installation and Administration'.
 
-   For earlier versions of R, you could change the file
-'R_HOME/etc/Makeconf' to reflect your preferences, or (at least for systems
-using GNU Make) override them by the environment variable 'MAKEFLAGS'.  See
-section "Creating shared objects" in 'Writing R Extensions'.
-
 8.5 How can I debug S4 methods?
 ===============================
 
@@ -2593,6 +2551,9 @@ report this.
 
    If the online argument list of a function disagrees with the manual, one
 of them must be wrong, so report the bug.
+
+   See also "Making sure it's a bug" in Bug Reporting in R
+(https://www.r-project.org/bugs.html) for more information.
 
 9.2 How to report a bug
 =======================
@@ -2656,9 +2617,13 @@ maintainer, and only submitted to the R-bugs repository by package
 maintainers, mentioning the package in the subject line.
 
    A bug report can be generated using the function 'bug.report()'.  For
-reports on R this will open the Web page at <https://bugs.R-project.org/>:
-for a contributed package it will open the package's bug tracker Web page or
-help you compose an email to the maintainer.
+reports on R this will open the R Bugzilla page at
+<https://bugs.R-project.org/>: for a contributed package it will open the
+package's bug tracker Web page or help you compose an email to the
+maintainer.  Since 2016, only "members" (including all who have previously
+submitted bugs) can submit new bugs on the R Bugzilla.  See "Where to submit
+bug reports and patches" on Bug Reporting in R
+(https://www.r-project.org/bugs.html) for more information.
 
    There is a section of the bug repository for suggestions for enhancements
 for R labelled 'wishlist'.  Suggestions can be submitted in the same ways as

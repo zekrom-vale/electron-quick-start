@@ -5,107 +5,15 @@
 
 ### ------- Part I --  unrelated to "Matrix" classes ---------------
 
-if(!exists("paste0", .BaseNamespaceEnv)) # have in R >= 2.15.0
-    paste0 <- function(...) paste(..., sep = '')
-
 identical3 <- function(x,y,z)	  identical(x,y) && identical (y,z)
 identical4 <- function(a,b,c,d)   identical(a,b) && identical3(b,c,d)
 identical5 <- function(a,b,c,d,e) identical(a,b) && identical4(b,c,d,e)
 identical6 <- function(a,b,c,d,e,f)  identical(a,b) && identical5(b,c,d,e,f)
 identical7 <- function(a,b,c,d,e,f,g)identical(a,b) && identical6(b,c,d,e,f,g)
 
-if( exists("assertCondition", asNamespace("tools")) ) { ## R > 3.0.1
-
-if(FALSE) {
-assertError <- function(expr, verbose=getOption("verbose"))
-    tools::assertCondition(expr, "error", verbose=verbose)
-assertWarning <- function(expr, verbose=getOption("verbose"))
-    tools::assertCondition(expr, "warning", verbose=verbose)
+require(tools)#-> assertError() and assertWarning()
 assertWarningAtLeast <- function(expr, verbose=getOption("verbose"))
     tools::assertCondition(expr, "error", "warning", verbose=verbose)
-} else {
-    require(tools)#-> assertError() and assertWarning()
-    assertWarningAtLeast <- function(expr, verbose=getOption("verbose"))
-        tools::assertCondition(expr, "error", "warning", verbose=verbose)
-}
-
-} else { ## in R <= 3.0.1 :
-
-##' @title Ensure evaluating 'expr' signals an error
-##' @param expr
-##' @return the caught error, invisibly
-##' @author Martin Maechler
-assertError <- function(expr, verbose=getOption("verbose")) {
-    d.expr <- deparse(substitute(expr))
-    t.res <- tryCatch(expr, error = function(e) e)
-    if(!inherits(t.res, "error"))
-	stop(d.expr, "\n\t did not give an error", call. = FALSE)
-    if(verbose) cat("Asserted Error:", conditionMessage(t.res),"\n")
-    invisible(t.res)
-}
-
-## Note that our previous version of assertWarning() did *not* work correctly:
-##     x <- 1:3; assertWarning({warning("bla:",x[1]); x[2] <- 99}); x
-## had 'x' not changed!
-
-
-## From ~/R/D/r-devel/R/src/library/tools/R/assertCondition.R :
-assertCondition <- function(expr, ...,
-                            .exprString = .deparseTrim(substitute(expr), cutoff = 30L),
-                            verbose = FALSE) {
-    fe <- function(e)e
-    getConds <- function(expr) {
-	conds <- list()
-	tryCatch(withCallingHandlers(expr,
-				     warning = function(w) {
-					 conds <<- c(conds, list(w))
-					 invokeRestart("muffleWarning")
-				     },
-				     condition = function(cond)
-					 conds <<- c(conds, list(cond))),
-		 error = function(e)
-		     conds <<- c(conds, list(e)))
-	conds
-    }
-    conds <- if(nargs() > 1) c(...) # else NULL
-    .Wanted <- if(nargs() > 1) paste(c(...), collapse = " or ") else "any condition"
-    res <- getConds(expr)
-    if(length(res)) {
-	if(is.null(conds)) {
-            if(verbose)
-                message("assertConditon: Successfully caught a condition\n")
-	    invisible(res)
-        }
-	else {
-	    ii <- sapply(res, function(cond) any(class(cond) %in% conds))
-	    if(any(ii)) {
-                if(verbose) {
-                    found <-
-                        unique(sapply(res, function(cond) class(cond)[class(cond) %in% conds]))
-                    message(sprintf("assertCondition: caught %s",
-                                    paste(dQuote(found), collapse =", ")))
-                }
-		invisible(res)
-            }
-	    else {
-                .got <- paste(unique((sapply(res, function(obj)class(obj)[[1]]))),
-                                     collapse = ", ")
-		stop(gettextf("Got %s in evaluating %s; wanted %s",
-			      .got, .exprString, .Wanted))
-            }
-	}
-    }
-    else
-	stop(gettextf("Failed to get %s in evaluating %s",
-		      .Wanted, .exprString))
-}
-
-assertWarning <- function(expr, verbose=getOption("verbose"))
-    assertCondition(expr, "warning", verbose=verbose)
-assertWarningAtLeast <- function(expr, verbose=getOption("verbose"))
-    assertCondition(expr, "error", "warning", verbose=verbose)
-
-}# [else: no assertCondition ]
 
 ##' [ from R's  demo(error.catching) ]
 ##' We want to catch *and* save both errors and warnings, and in the case of
@@ -155,7 +63,7 @@ mkNA.0 <- function(x) { x[is.na(x)] <- 0 ; x }
 
 ##' ... : further arguments passed to all.equal() such as 'check.attributes'
 is.all.equal <- function(x,y, tol = .Machine$double.eps^0.5, ...)
-    identical(TRUE, all.equal(x,y, tolerance=tol, ...))
+    isTRUE(all.equal(x,y, tolerance=tol, ...))
 is.all.equal3 <- function(x,y,z, tol = .Machine$double.eps^0.5, ...)
     is.all.equal(x,y, tol=tol, ...) && is.all.equal(y,z, tol=tol, ...)
 
@@ -186,6 +94,7 @@ all.equal.X <- function(x,y, except, tol = .Machine$double.eps^0.5, ...)
 ##  all.equal.X(env(m1), env(m2), except = c("call", "frame"))
 
 ## The relative error typically returned by all.equal:
+if(!exists("relErr", mode="function"))##  use sfsmisc::relErr  if {sfsmisc} is attached:
 relErr <- function(target, current) { ## make this work for 'Matrix' ==> no mean() ..
     n <- length(current)
     if(length(target) < n)
@@ -199,6 +108,10 @@ relErr <- function(target, current) { ## make this work for 'Matrix' ==> no mean
 ##' @param current numeric of length() a multiple of length(target)
 ##' @return *vector* of the same length as current
 ##' @author Martin Maechler
+##'
+##' @note OUTDATED/SUPERSEDED by  sfsmisc::relErrV() which deals with Inf, denormalized, ...
+##'    ==> define it only if it does not exist visibly at this point:
+if(!exists("relErrV", mode="function"))
 relErrV <- function(target, current) {
     n <- length(target <- as.vector(target))
     ## assert( <length current> is multiple of <length target>) :
@@ -251,18 +164,18 @@ showProc.time <- local({ ## function + 'pct' variable
 
 ##' A version of sfsmisc::Sys.memGB() which should never give an error
 ##'  ( ~/R/Pkgs/sfsmisc/R/unix/Sys.ps.R  )
-##' TODO: A version that also works on Windows, using memory.size(max=TRUE)
-##' Windows help on memory.limit(): size in Mb (1048576 bytes), rounded down.
-
-Sys.memGB <- function(kind = "MemTotal") {## "MemFree" is typically more relevant
+##' TODO: on Windows, with memory.size() & memory.limit() defunct, how do I get it ????
+Sys.memGB <- function(kind = "MemTotal", ## "MemFree" is typically more relevant
+                      NA.value = 2.10201) {
     if(!file.exists(pf <- "/proc/meminfo"))
 	return(if(.Platform$OS.type == "windows")
-		   memory.limit() / 1000
-	       else NA)
+                   NA.value ## memory.limit() / 1000  ## no longer with R 4.2.0
+	       else
+                   NA.value)
     mm <- tryCatch(drop(read.dcf(pf, fields=kind)),
                    error = function(e) NULL)
     if(is.null(mm) || any(is.na(mm)) || !all(grepl(" kB$", mm)))
-        return(NA)
+        return(NA.value)
     ## return memory in giga bytes
     as.numeric(sub(" kB$", "", mm)) / (1000 * 1024)
 }
@@ -367,8 +280,11 @@ isOrthogonal <- function(x, tol = 1e-15) {
               rep(1, ncol(x)), tolerance = tol)
 }
 
-.M.DN <- Matrix:::.M.DN ## from ../R/Auxiliaries.R :
-dnIdentical  <- function(x,y) identical(.M.DN(x), .M.DN(y))
+## .M.DN <- Matrix:::.M.DN -- but do *NOT* want to load Matrix namespace!
+## from ../R/Auxiliaries.R :
+`%||%` <- function(x, orElse) if(!is.null(x)) x else orElse
+.M.DN <- function(x) dimnames(x) %||% list(NULL,NULL)
+dnIdentical  <- function(x,y)   identical (.M.DN(x), .M.DN(y))
 dnIdentical3 <- function(x,y,z) identical3(.M.DN(x), .M.DN(y), .M.DN(z))
 
 ##' @title Are two matrices practically equal - including dimnames
@@ -394,10 +310,13 @@ is.EQ.mat3 <- function(M1, M2, M3, tol = 1e-15, dimnames = TRUE, ...) {
 ##' here, as it also works for qr(<base matrix>)
 chkQR <- function(a,
                   y = seq_len(nrow(a)),## RHS: made to contain no 0
-                  a.qr = qr(a), tol = 1e-11, # 1e-13 failing very rarely (interesting)
+                  a.qr = qr(a),
+                  tol = 1e-11, # 1e-13 failing very rarely (interesting)
                   ##----------
-                  Qinv.chk = !sp.rank.def, QtQ.chk = !sp.rank.def,
-                  verbose = getOption("Matrix.verbose", FALSE), giveRE = verbose,
+                  Qinv.chk = !sp.rank.def,
+                  QtQ.chk = !sp.rank.def,
+                  verbose = getOption("Matrix.verbose", FALSE),
+                  giveRE = verbose,
                   quiet = FALSE)
 {
     d <- dim(a)

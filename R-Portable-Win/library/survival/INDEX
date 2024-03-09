@@ -14,6 +14,7 @@ attrassign              Create new-style "assign" attribute
 basehaz                 Alias for the survfit function
 bladder                 Bladder Cancer Recurrences
 blogit                  Bounded link functions
+brier                   Compute the Brier score for a Cox model
 cch                     Fits proportional hazards regression model to
                         case-cohort data
 cgd                     Chronic Granulotamous Disease data
@@ -32,6 +33,8 @@ coxph.control           Ancillary arguments for controlling coxph fits
 coxph.detail            Details of a Cox Model Fit
 coxph.object            Proportional Hazards Regression Object
 coxph.wtest             Compute a quadratic form
+coxphms.object          Multi-state Proportional Hazards Regression
+                        Object
 coxsurv.fit             A direct interface to the 'computational
                         engine' of survfit.coxph
 diabetic                Ddiabetic retinopathy
@@ -43,6 +46,7 @@ frailty                 Random effects terms
 gbsg                    Breast cancer data sets used in Royston and
                         Altman (2013)
 heart                   Stanford Heart Transplant data
+hoel                    Mouse cancer data
 is.ratetable            Verify that an object is of class ratetable.
 kidney                  Kidney catheter data
 levels.Surv             Return the states of a multi-state Surv object
@@ -55,6 +59,8 @@ mgus2                   Monoclonal gammopathy data
 model.frame.coxph       Model.frame method for coxph objects
 model.matrix.coxph      Model.matrix method for coxph models
 myeloid                 Acute myeloid leukemia
+myeloma                 Survival times of patients with multiple
+                        myeloma
 nafld1                  Non-alcohol fatty liver disease
 neardate                Find the index of the closest value in data set
                         2, for each entry in data set one.
@@ -78,7 +84,7 @@ pseudo                  Pseudo values for survival.
 pspline                 Smoothing splines using a pspline basis
 pyears                  Person Years
 quantile.survfit        Quantiles from a survfit object
-ratetable               Rate table structure
+ratetable               Allow ratetable() terms in a model
 ratetableDate           Convert date objects to ratetable form
 rats                    Rat treatment data from Mantel et al
 rats2                   Rat data from Gail et al.
@@ -104,6 +110,7 @@ summary.survexp         Summary function for a survexp object
 summary.survfit         Summary of a Survival Curve
 survSplit               Split a survival data set at specified times
 survcheck               Checks of a survival data set
+survcondense            Shorten a (time1, time2) survival dataset
 survdiff                Test Survival Curve Differences
 survexp                 Compute Expected Survival
 survexp.fit             Compute Expected Survival

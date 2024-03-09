@@ -1,4 +1,9 @@
 ### Testing positive definite matrices
+
+## for R_DEFAULT_PACKAGES=NULL :
+library(stats)
+library(utils)
+
 library(Matrix)
 source(system.file("test-tools.R", package = "Matrix"))# identical3() etc
 cat("doExtras:",doExtras,"\n")
@@ -13,9 +18,9 @@ assert.EQ.(c(determinant(h9)$modulus),	-96.7369487, tol = 8e-8)
 
 ## determinant() now working via chol(): ==> h9 now has factorization
 stopifnot(names(h9@factors) == "Cholesky",
-          identical(ch9 <- chol(h9), h9@factors$Cholesky))
-round(ch9, 3) ## round() preserves 'triangular' !
+          identical(ch9 <- Cholesky(h9, perm = FALSE), h9@factors$Cholesky))
 str(f9 <- as(ch9, "dtrMatrix"))
+round(f9, 3) ## round() preserves 'triangular' !
 stopifnot(all.equal(rcond(h9), 9.0938e-13),
           all.equal(rcond(f9), 9.1272e-7, tolerance = 1e-6))# more precision fails
 options(digits=4)
@@ -26,7 +31,7 @@ h9. <- round(h9, 2)# actually loses pos.def. "slightly"
                    # ==> the above may be invalid in the future
 h9p  <- as(h9,  "dppMatrix")
 h9.p <- as(h9., "dppMatrix")
-ch9p <- chol(h9p)
+ch9p <- Cholesky(h9p, perm = FALSE)
 stopifnot(identical(ch9p, h9p@factors$pCholesky),
 	  identical(names(h9p@factors), c("Cholesky", "pCholesky")))
 h4  <- h9.[1:4, 1:4] # this and the next
@@ -44,27 +49,29 @@ h6 <- h9[1:6,1:6]
 stopifnot(all(h6 == Hilbert(6)), length(h6@factors) == 0)
 stopifnotValid(th9p <- t(h9p), "dppMatrix")
 stopifnotValid(h9p@factors$Cholesky,"Cholesky")
-H6  <- as(h6, "dspMatrix")
+H6  <- as(h6, "packedMatrix")
 pp6 <- as(H6, "dppMatrix")
-po6 <- as(pp6,"dpoMatrix")
+po6 <- as(pp6, "dpoMatrix")
 hs <- as(h9p, "dspMatrix")
 stopifnot(names(H6@factors)  == "pCholesky",
 	  names(pp6@factors) == "pCholesky",
 	  names(hs@factors)  == "Cholesky") # for now
 chol(hs) # and that is cached in 'hs' too :
 stopifnot(names(hs@factors) %in% c("Cholesky","pCholesky"),
-	  all.equal(h9, crossprod(hs@factors$pCholesky), tolerance =1e-13),
-	  all.equal(h9, crossprod(hs@factors$ Cholesky), tolerance =1e-13))
+	  all.equal(h9, crossprod(as(hs@factors$pCholesky, "dtpMatrix")),
+                    tolerance = 1e-13),
+	  all.equal(h9, crossprod(as(hs@factors$ Cholesky, "dtrMatrix")),
+                    tolerance = 1e-13))
 
 hs@x <- 1/h9p@x # is not pos.def. anymore
 validObject(hs) # "but" this does not check
-stopifnot(diag(hs) == seq(1, by = 2, length = 9))
+stopifnot(diag(hs) == seq(1, by = 2, length.out = 9))
 
 s9 <- solve(h9p, seq(nrow(h9p)))
 signif(t(s9)/10000, 4)# only rounded numbers are platform-independent
 (I9 <- h9p %*% s9)
-m9 <- matrix(1:9, dimnames = list(NULL,NULL))
-stopifnot(all.equal(m9, .asmatrix(I9), tolerance = 2e-9))
+m9 <- as.matrix(1:9)
+stopifnot(all.equal(m9, as(I9, "matrix"), tolerance = 2e-9))
 
 ### Testing nearPD() --- this is partly in  ../man/nearPD.Rd :
 pr <- Matrix(c(1,     0.477, 0.644, 0.478, 0.651, 0.826,
@@ -78,8 +85,8 @@ pr <- Matrix(c(1,     0.477, 0.644, 0.478, 0.651, 0.826,
 nL <-
     list(r   = nearPD(pr, conv.tol = 1e-7), # default
 	 r.1 = nearPD(pr, conv.tol = 1e-7,		corr = TRUE),
-	 rs  = nearPD(pr, conv.tol = 1e-7, doDyk=FALSE),
-	 rs1 = nearPD(pr, conv.tol = 1e-7, doDyk=FALSE, corr = TRUE),
+	 rs  = nearPD(pr, conv.tol = 1e-7, doDykstra=FALSE),
+	 rs1 = nearPD(pr, conv.tol = 1e-7, doDykstra=FALSE, corr = TRUE),
 	 rH  = nearPD(pr, conv.tol = 1e-15),
          rH.1= nearPD(pr, conv.tol = 1e-15, corr = TRUE))
 
@@ -145,7 +152,7 @@ m[ltm[sample(ne, 3/4*ne)]] <- 0
 m <- (m + t(m))/2 # now is a covariance matrix with many 0 entries
 (spr <- Matrix(m))
 cspr <- cov2cor(spr)
-ev <- eigen(cspr, only.v = TRUE)$values
+ev <- eigen(cspr, only.values = TRUE)$values
 stopifnot(is(spr, "dsCMatrix"),
           is(cspr,"dsCMatrix"),
           all.equal(ev, c(1.5901626099,  1.1902658504, 1, 1,
@@ -157,7 +164,7 @@ mM
 stopifnot(length(mM@factors)== 0)
 (po <- as(mM, "dpoMatrix")) # still has dimnames
 mm <- as(mM, "matrix")
-msy <- as(mm, "dsyMatrix")
+msy <- as(mm, "symmetricMatrix")
 stopifnot(Qidentical(mM, msy),
 	  length(mM @factors)== 1,
 	  length(msy@factors)== 0)

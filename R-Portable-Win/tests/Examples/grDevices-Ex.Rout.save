@@ -1,6 +1,6 @@
 
-R version 4.1.0 Patched (2021-06-17 r80511) -- "Camp Pontanezen"
-Copyright (C) 2021 The R Foundation for Statistical Computing
+R Under development (unstable) (2023-07-31 r84791) -- "Unsuffered Consequences"
+Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -2019,6 +2019,29 @@ $locator
 $events
 character(0)
 
+$patterns
+[1] "LinearGradient" "RadialGradient" "TilingPattern" 
+
+$clippingPaths
+[1] TRUE
+
+$masks
+[1] "alpha"     "luminance"
+
+$compositing
+ [1] "multiply"    "screen"      "overlay"     "darken"      "lighten"    
+ [6] "color.dodge" "color.burn"  "hard.light"  "soft.light"  "difference" 
+[11] "exclusion"  
+
+$transformations
+[1] TRUE
+
+$paths
+[1] TRUE
+
+$glyphs
+[1] TRUE
+
 > 
 > 
 > 
@@ -2952,7 +2975,8 @@ pdf
 +  "     second: {f * second}(x) "        == {f * second}(x)), adj = 0)
 > 
 > 
-> plot(1:10, 1:10)
+> ## note the "{ .. }" trick to get "chained" equations:
+> plot(1:10, 1:10, main = quote(1 <= {1 < 2}))
 > text(4, 9, expression(hat(beta) == (X^t * X)^{-1} * X^t * y))
 > text(4, 8.4, "expression(hat(beta) == (X^t * X)^{-1} * X^t * y)",
 +      cex = .8)
@@ -3526,6 +3550,20 @@ attr(,"class")
 > 
 > ### ** Examples
 > 
+> ## time-dependent ==> ignore diffs:
+> ## IGNORE_RDIFF_BEGIN
+> pretty(Sys.Date())
+[1] "2023-07-29" "2023-07-30" "2023-07-31" "2023-08-01" "2023-08-02"
+[6] "2023-08-03"
+> pretty(Sys.time(), n = 10)
+ [1] "2023-07-31 10:42:05 CEST" "2023-07-31 10:42:06 CEST"
+ [3] "2023-07-31 10:42:07 CEST" "2023-07-31 10:42:08 CEST"
+ [5] "2023-07-31 10:42:09 CEST" "2023-07-31 10:42:10 CEST"
+ [7] "2023-07-31 10:42:11 CEST" "2023-07-31 10:42:12 CEST"
+ [9] "2023-07-31 10:42:13 CEST" "2023-07-31 10:42:14 CEST"
+[11] "2023-07-31 10:42:15 CEST"
+> ## IGNORE_RDIFF_END
+> 
 > pretty(as.Date("2000-03-01")) # R 1.0.0 came in a leap year
 [1] "2000-02-28" "2000-02-29" "2000-03-01" "2000-03-02" "2000-03-03"
 [6] "2000-03-04"
@@ -3891,6 +3929,34 @@ v 0.98039216 0.7647059 0.4588235 0.8549020 0.9960784
 > ## See  help(persp) {after attaching the 'graphics' package}
 > ##      -----------
 > 
+> ## Example for 'continuous = TRUE' (vs default):
+> require(graphics)
+> x <- -10:10/10 # [-1, 1]
+> y <- -16:16/16 # [-1, 1] ==> z = fxy := outer(x,y) is also in [-1,1]
+> 
+> p <- persp(x, y, fxy <- outer(x,y), phi = 20, theta = 15, r = 3, ltheta = -75,
++            shade = 0.8, col = "green3", ticktype = "detailed")
+> ## 5 axis-parallel auxiliary lines in x-y  and y-z planes :
+> lines(trans3d(-.5 , y=-1:1, z=min(fxy),  pmat=p), lty=2)
+> lines(trans3d(  0 , y=-1:1, z=min(fxy),  pmat=p), lty=2)
+> lines(trans3d(-1:1, y= -.7, z=min(fxy),  pmat=p), lty=2)
+> lines(trans3d( -1,  y= -.7, z=c(-1,1) ,  pmat=p), lty=2)
+> lines(trans3d( -1,  y=-1:1, z= -.5    ,  pmat=p), lty=2)
+> ## 2 pillars to carry the horizontals below:
+> lines(trans3d(-.5 , y= -.7, z=c(-1,-.5), pmat=p), lwd=1.5, col="gray10")
+> lines(trans3d( 0  , y= -.7, z=c(-1,-.5), pmat=p), lwd=1.5, col="gray10")
+> ## now some "horizontal rays" (going from center to very left or very right):
+> doHor <- function(x1, x2, z, CNT=FALSE, ...)
++     lines(trans3d(x=seq(x1, x2, by=0.5), y= -0.7, z = z, pmat = p, continuous = CNT),
++           lwd = 3, type="b", xpd=NA, ...)
+> doHor(-10,  0, z = -0.5, col = 2)  # x in [-10, 0] -- to the very left : fine
+> doHor(-.5,  2, z = -0.52,col = 4) # x in [-0.5, 2] only {to the right} --> all fine
+> ## but now, x in [-0.5, 20] -- "too far" ==> "wrap around" problem (without 'continuous=TRUE'):
+> doHor(-.5, 20, z = -0.58, col = "steelblue", lty=2)
+> ## but it is fixed with continuous = CNT = TRUE:
+> doHor(-.5, 20, z = -0.55, CNT=TRUE, col = "skyblue")
+points cut off after point[39]
+> 
 > 
 > 
 > cleanEx()
@@ -4010,6 +4076,40 @@ v 0.98039216 0.7647059 0.4588235 0.8549020 0.9960784
 + utopia <- X11Font("-*-utopia-*-*-*-*-*-*-*-*-*-*-*-*")
 + X11Fonts(utopia = utopia)
 + })
+> X11Fonts()
+$serif
+[1] "-*-times-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$sans
+[1] "-*-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$mono
+[1] "-*-courier-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Times
+[1] "-adobe-times-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Helvetica
+[1] "-adobe-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$CyrTimes
+[1] "-cronyx-times-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$CyrHelvetica
+[1] "-cronyx-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Arial
+[1] "-monotype-arial-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Mincho
+[1] "-*-mincho-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+> X11Fonts("mono")
+$mono
+[1] "-*-courier-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+> utopia <- X11Font("-*-utopia-*-*-*-*-*-*-*-*-*-*-*-*")
+> X11Fonts(utopia = utopia)
 > ## IGNORE_RDIFF_END
 > 
 > 
@@ -4099,6 +4199,11 @@ $ylab
 NULL
 
 > ##> xlab: "Index"  \\  warning: 3 y values <= 0 omitted ..
+> op <- options(warn = 2)# ==> warnings would be errors, we suppress the one "we know":
+> suppressWarnings(xy.coords(-2:10, log = "y"), classes="log_le_0") -> xy
+> options(op) # revert
+> stopifnot(is.list(xy), identical (1:13 +0,  xy$x),
++           identical(c(rep(NA, 3), 1:10 +0), xy$y))
 > 
 > 
 > 
@@ -4261,6 +4366,27 @@ $zlab
 [1] "z"
 
 > ##> Warning message: 2 x values <= 0 omitted ...
+> ## Suppress this specific warning:
+> suppressWarnings(xyz.coords(x = -1:9, y = 2:12, z = 3:13, log = "xy"),
++                  classes = "log_le_0")
+$x
+ [1] NA NA  1  2  3  4  5  6  7  8  9
+
+$y
+ [1]  2  3  4  5  6  7  8  9 10 11 12
+
+$z
+ [1]  3  4  5  6  7  8  9 10 11 12 13
+
+$xlab
+NULL
+
+$ylab
+NULL
+
+$zlab
+NULL
+
 > 
 > 
 > 
@@ -4269,7 +4395,7 @@ $zlab
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.523 0.616 50.307 0 0 
+Time elapsed:  29.035 0.328 29.373 0 0 
 > grDevices::dev.off()
 null device 
           1 

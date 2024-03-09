@@ -44,6 +44,30 @@ logistInit <- function(mCall, LHS, data) {
 }
 logist <- selfStart(logist, initial = logistInit) ##-> Error in R 1.5.0
 str(logist)
+## with parameters  and  getInitial():
+logist <- selfStart(logist, initial = logistInit,
+                    parameters = c("Asym", "xmid", "scal"))
+tools::assertWarning(verbose = TRUE,
+ in1 <- getInitial(circumference ~ logist(age, Asym, xmid, scal), Orange)
+) # no warning previously
+## but this then failed, now gives the same warning:
+tools::assertWarning(verbose = TRUE,
+ fm <- nls(circumference ~ logist(age, Asym, xmid, scal), Orange)
+)
+## in R 4.1.{0,1,2} gave
+## Error in (attr(object, "initial"))(mCall = mCall, data = data, LHS = LHS,  :
+##  unused arguments (control = list(.......), trace = FALSE)
+## IGNORE_RDIFF_BEGIN
+coef(summary(fm))
+## IGNORE_RDIFF_END
+
+## getInitial.formula() gets selfStart function from environment(formula)
+plogis <- stats::SSlogis
+in2 <- getInitial(circumference ~ plogis(age, Asym, xmid, scal), Orange)
+## in R <= 4.2.x gave Error:
+##   no 'getInitial' method found for "function" objects
+rm(plogis)
+
 
 ## lower and upper in algorithm="port"
 set.seed(123)

@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2020-09-23 r79248) -- "Unsuffered Consequences"
-Copyright (C) 2020 The R Foundation for Statistical Computing
+R Under development (unstable) (2023-05-10 r84417) -- "Unsuffered Consequences"
+Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -19,7 +19,8 @@ Type 'q()' to quit R.
 > options(contrasts=c('contr.treatment', 'contr.poly')) #ensure constrast type
 > library(survival)
 > 
-> expect <- survexp(futime ~ ratetable(age=(accept.dt - birth.dt), sex=1,
+> expect <- survexp(futime ~ 1,
++                   rmap = list(age=(accept.dt - birth.dt), sex=1,
 + 		year=accept.dt, race='white'), jasa, cohort=F, 
 +                   ratetable=survexp.usr)
 > 
@@ -161,9 +162,10 @@ n= 170, number of events= 75
 +                    transplant=rep(0,3), name=c("Smith", "Smith", "Smith"))
 > surv2 <- survfit(sfit.1, newdata, id=name)
 > # Have to use unclass to avoid [.survfit trying to pick curves,
-> #  remove the final element "call" because it won't match
-> all.equal(unclass(surv1)[-length(surv1)],
-+           unclass(surv2)[-length(surv2)])
+> #  remove the final element "call" because it won't match, nor will newdata
+> ii <- match(c("newdata", "call"), names(surv1))
+> all.equal(unclass(surv1)[-ii],
++           unclass(surv2)[-ii])
 [1] TRUE
 > 
 > 
@@ -281,4 +283,4 @@ Call: survfit(formula = sfit.1, newdata = data, id = id)
 > 
 > proc.time()
    user  system elapsed 
-  0.908   0.076   0.976 
+  1.011   0.101   1.104 

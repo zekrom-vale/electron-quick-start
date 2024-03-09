@@ -4,13 +4,7 @@
 ## library(nlme,lib.loc=lib.loc)
 library(nlme)
 
-## possibly move to ../R/ or ../inst/ if used in more places
-doExtras <- function ()
-{
-    interactive() || nzchar(Sys.getenv("R_nlme_check_extra")) ||
-        identical("true", unname(Sys.getenv("R_PKG_CHECKING_doExtras")))
-}
-doExtras()  ## used below {when activated by the tester, e.g., MM..r}
+nlme:::doExtras()  ## used below {when activated by the tester, e.g., MM..r}
 ## isSun <- Sys.info()[["sysname"]] == "SunOS"
 
 ##===   example 1 general linear model page 251  gls ML  and LME ================
@@ -134,8 +128,8 @@ stopifnot(
     all.equal(fixef(t1.fix.ML.nlme),
               c(lKe = -2.432512, lKa = 0.450163, lCl = -3.2144713), tol= 8e-6)
     ,
-    all.equal(sM4$tTable[,"Std.Error"],
-              c(lKe = 0.0640155, lKa = 0.196058, lCl = 0.0808379), tol = 5e-5)
+    all.equal(sM4$tTable[,"Std.Error"], # aarch64/linux gave 5.915e-5
+              c(lKe = 0.0640155, lKa = 0.196058, lCl = 0.0808379), tol = 1e-4)
     ,
     all.equal(aM4[,"F-value"],
               c(65.439, 9.09557, 1581.21), tol = 1e-4) # ATLAS had 7.86e-05
@@ -143,7 +137,7 @@ stopifnot(
 
 ##
 ##   REML method
-if(doExtras()) { ## -- takes 2--3 minutes
+if(nlme:::doExtras()) { ## -- takes 2--3 minutes
 method <- "REML"
 sigma <- 0.7
 cat("\nFixed sigma= ", sigma,"  estimation method ", method,"\n")
@@ -159,7 +153,7 @@ cat(" -> numIter: ", t1.fix.REML.nlme$numIter, "\n") # 380 or so
 print(summary(t1.fix.REML.nlme))
 print( anova(t1.fix.REML.nlme))
 it1.fRn <- try( intervals(t1.fix.REML.nlme) ) ## cannot get .. Non-positive ...
-}# only if(doExtras())
+}# only if(nlme:::doExtras())
 
 cat("Time elapsed: ", (proc.time() - .pt)[1:3], "\n")
 

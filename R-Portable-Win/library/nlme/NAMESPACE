@@ -13,10 +13,11 @@ importFrom("stats", # many S3 generics for which we define methods
            nlm, nlminb, nls, nls.control, nobs, optim,
            pchisq, pf, predict, pt,
            qchisq, qf, qnorm, qqnorm, qt, quantile,
-           resid, residuals, rnorm, runif, simulate, setNames, terms,
+           resid, residuals, rnorm, runif, setNames, sigma, simulate, terms,
            update, update.formula, var, vcov)
 
-importFrom("utils", head, tail, capture.output, packageDescription)
+importFrom("utils", head, tail, capture.output, packageDescription, str
+        , warnErrList)
 
 importFrom("lattice",
            Rows, bwplot, dotplot, llines, lpoints, lsegments, ltext,
@@ -24,18 +25,12 @@ importFrom("lattice",
            panel.histogram, panel.linejoin, panel.loess, panel.superpose,
            panel.xyplot, splom, strip.default, trellis.par.get, xyplot)
 
-if(getRversion() >= "3.3.0") {
-    if(getRversion() >= "3.5.0")
-        importFrom("utils", warnErrList)
-    importFrom("stats", sigma)
-} else {
-    export(sigma)
-}
-
 export(ACF, allCoef, asOneFormula, asTable, augPred, balancedGrouped,
        "coef<-", "coefficients<-", collapse, compareFits,
        comparePred, corAR1, corARMA, corCAR1, corCompSymm,
-       corExp, corFactor, corGaus, corIdent, corLin, corMatrix,
+       corExp, corFactor, corGaus
+     , corIdent # deprecated
+     , corLin, corMatrix,
        corNatural, corRatio, corSpatial, corSpher, corSymm,
        "covariate<-", Dim, fdHess, fixed.effects, fixef, gapply,
        getCovariate, getCovariateFormula, getData, getGroups,
@@ -85,7 +80,6 @@ S3method(coef, corAR1)
 S3method(coef, corARMA)
 S3method(coef, corCAR1)
 S3method(coef, corCompSymm)
-S3method(coef, corIdent)
 S3method(coef, corLin)
 S3method(coef, corNatural)
 S3method(coef, corSpatial)
@@ -120,7 +114,6 @@ S3method("coef<-", corAR1)
 S3method("coef<-", corARMA)
 S3method("coef<-", corCAR1)
 S3method("coef<-", corCompSymm)
-S3method("coef<-", corIdent)
 S3method("coef<-", corNatural)
 S3method("coef<-", corSpatial)
 S3method("coef<-", corStruct)
@@ -155,7 +148,6 @@ S3method(corMatrix, corAR1)
 S3method(corMatrix, corARMA)
 S3method(corMatrix, corCAR1)
 S3method(corMatrix, corCompSymm)
-S3method(corMatrix, corIdent)
 S3method(corMatrix, corNatural)
 S3method(corMatrix, corSpatial)
 S3method(corMatrix, corStruct)
@@ -235,7 +227,6 @@ S3method(Initialize, corAR1)
 S3method(Initialize, corARMA)
 S3method(Initialize, corCAR1)
 S3method(Initialize, corCompSymm)
-S3method(Initialize, corIdent)
 S3method(Initialize, corLin)
 S3method(Initialize, corNatural)
 S3method(Initialize, corSpatial)
@@ -266,7 +257,6 @@ S3method(lme, groupedData)
 S3method(lme, lmList)
 S3method(lmList, formula)
 S3method(lmList, groupedData)
-S3method(logDet, corIdent)
 S3method(logDet, corStruct)
 S3method(logDet, pdBlocked)
 S3method(logDet, pdCompSymm)
@@ -408,7 +398,6 @@ S3method(recalc, corAR1)
 S3method(recalc, corARMA)
 S3method(recalc, corCAR1)
 S3method(recalc, corCompSymm)
-S3method(recalc, corIdent)
 S3method(recalc, corNatural)
 S3method(recalc, corSpatial)
 S3method(recalc, corStruct)
@@ -443,7 +432,6 @@ S3method(summary, corCAR1)
 S3method(summary, corCompSymm)
 S3method(summary, corExp)
 S3method(summary, corGaus)
-S3method(summary, corIdent)
 S3method(summary, corLin)
 S3method(summary, corNatural)
 S3method(summary, corRatio)
@@ -472,7 +460,7 @@ S3method(summary, varFixed)
 S3method(summary, varFunc)
 S3method(summary, varIdent)
 S3method(summary, varPower)
-S3method(terms, gls)
+S3method(str, pdMat)
 S3method(update, corStruct)
 S3method(update, gls)
 S3method(update, gnls)
@@ -507,3 +495,11 @@ S3method(varWeights, varComb)
 S3method(varWeights, varFunc)
 S3method(vcov, gls)
 S3method(vcov, lme)
+
+## deprecated:
+S3method("coef<-", corIdent)
+S3method(summary, corIdent)
+S3method(recalc, corIdent)
+S3method(logDet, corIdent)
+S3method(Initialize, corIdent)
+S3method(corMatrix, corIdent)
