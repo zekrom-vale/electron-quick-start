@@ -21,7 +21,7 @@ You can learn more about each of these components within the [Quick Start Guide]
 ### R adds a few more files required, these are used and defined in `main.js`:
 - `R-Portable-Win` - The windows R files (Just take them from ProgramFiles)
 - `R-Portable-Mac` - The mac R files (Just take them from Applications and run `R-Portable-Mac/bin/R` to untangle it)
-- `R-Portable-*/library` - The location to protably install R packages
+- `R-Portable-*/library` - The location to protably install R packages find these files with `.libPaths()` to find the library paths
 - `app.R` - The shiny application to start
 - `cc.ico` - The icon used for the application made
 - Other files to be coppied to `resources\app`
