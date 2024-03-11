@@ -1,0 +1,58 @@
+
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pdf(file = "reg-plot-latin1.pdf", encoding = "ISOLatin1",
++     width = 7, height = 7, paper = "a4r", compress = FALSE,
++     useDingbats = TRUE)
+> library(graphics) # to be sure
+> example(text)     # has examples that need to he plotted in latin-1
+
+text> plot(-1:1, -1:1, type = "n", xlab = "Re", ylab = "Im")
+
+text> K <- 16; text(exp(1i * 2 * pi * (1:K) / K), col = 2)
+
+text> ## The following two examples use latin1 characters: these may not
+text> ## appear correctly (or be omitted entirely).
+text> plot(1:10, 1:10, main = "text(...) examples\n~~~~~~~~~~~~~~",
+text+      sub = "R is GNU ©, but not ® ...")
+
+text> mtext("«Latin-1 accented chars»: éè øØ å<Å æ<Æ", side = 3)
+
+text> points(c(6,2), c(2,1), pch = 3, cex = 4, col = "red")
+
+text> text(6, 2, "the text is CENTERED around (x,y) = (6,2) by default",
+text+      cex = .8)
+
+text> text(2, 1, "or Left/Bottom - JUSTIFIED at (2,1) by 'adj = c(0,0)'",
+text+      adj = c(0,0))
+
+text> text(4, 9, expression(hat(beta) == (X^t * X)^{-1} * X^t * y))
+
+text> text(4, 8.4, "expression(hat(beta) == (X^t * X)^{-1} * X^t * y)",
+text+      cex = .75)
+
+text> text(4, 7, expression(bar(x) == sum(frac(x[i], n), i==1, n)))
+
+text> ## Two more latin1 examples
+text> text(5, 10.2,
+text+      "Le français, c'est facile: Règles, Liberté, Egalité, Fraternité...")
+
+text> text(5, 9.8,
+text+      "Jetz no chli züritüütsch: (noch ein bißchen Zürcher deutsch)")
+> q("no")

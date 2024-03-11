@@ -1,0 +1,25 @@
+Rd.sty in R_HOME/share/texmf uses hyperref.sty.  This is
+normally installed, and can be obtained from any CTAN node or mirror:
+see
+
+	https://www.tug.org/ctan.html
+
+It also uses the standard package bm, which is part of the standard
+tools bundle and should be part of any reasonably recent LaTeX
+installation.
+
+The reference manual is made using the times fonts package. If you do not
+have that available, you can get it from CTAN, or set the environment
+variable R_RD4PDF to "".  Other alternatives are discussed
+in the R-admin manual.
+
+You may have to increase the poolsize of your pdflatex to process the
+reference manual with hyperlinks, although these days the limits are
+set high.
+
+pdftex will warn (correctly) about missing hyperlinks in forming
+refman.pdf.
+
+Other LaTeX engines can be used by setting the environment variable
+PDFLATEX (to "lualatex", for example) and R_RD4PDF to "". Rd.sty uses
+iftex.sty to detect alternative engines and skip loading fontenc.

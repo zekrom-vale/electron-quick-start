@@ -1,0 +1,2453 @@
+
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ## For examples skipped in testing because they are 'random'
+> 
+> set.seed(1)
+> if(.Platform$OS.type == "windows") options(pager = "console")
+> 
+> pdf("reg-examples-1.pdf", encoding = "ISOLatin1.enc")
+> 
+> 
+> ## base
+> example(Cstack_info, run.donttest = TRUE)
+
+Cstck_> ## No test: 
+Cstck_> Cstack_info()
+      size    current  direction eval_depth 
+   7969177      73640          1          9 
+
+Cstck_> ## End(No test)
+Cstck_> 
+Cstck_> 
+> example(DateTimeClasses, run.donttest = TRUE)
+
+DtTmCl> ## IGNORE_RDIFF_BEGIN
+DtTmCl> (z <- Sys.time())             # the current date, as class "POSIXct"
+[1] "2024-03-09 23:03:08 CST"
+
+DtTmCl> Sys.time() - 3600             # an hour ago
+[1] "2024-03-09 22:03:08 CST"
+
+DtTmCl> as.POSIXlt(Sys.time(), "GMT") # the current time in GMT
+[1] "2024-03-10 05:03:08 GMT"
+
+DtTmCl> format(.leap.seconds)         # the leap seconds in your time zone
+ [1] "1972-07-01" "1973-01-01" "1974-01-01" "1975-01-01" "1976-01-01"
+ [6] "1977-01-01" "1978-01-01" "1979-01-01" "1980-01-01" "1981-07-01"
+[11] "1982-07-01" "1983-07-01" "1985-07-01" "1988-01-01" "1990-01-01"
+[16] "1991-01-01" "1992-07-01" "1993-07-01" "1994-07-01" "1996-01-01"
+[21] "1997-07-01" "1999-01-01" "2006-01-01" "2009-01-01" "2012-07-01"
+[26] "2015-07-01" "2017-01-01"
+
+DtTmCl> print(.leap.seconds, tz = "PST8PDT")  # and in Seattle's
+ [1] "1972-06-30 17:00:00 PDT" "1972-12-31 16:00:00 PST"
+ [3] "1973-12-31 16:00:00 PST" "1974-12-31 16:00:00 PST"
+ [5] "1975-12-31 16:00:00 PST" "1976-12-31 16:00:00 PST"
+ [7] "1977-12-31 16:00:00 PST" "1978-12-31 16:00:00 PST"
+ [9] "1979-12-31 16:00:00 PST" "1981-06-30 17:00:00 PDT"
+[11] "1982-06-30 17:00:00 PDT" "1983-06-30 17:00:00 PDT"
+[13] "1985-06-30 17:00:00 PDT" "1987-12-31 16:00:00 PST"
+[15] "1989-12-31 16:00:00 PST" "1990-12-31 16:00:00 PST"
+[17] "1992-06-30 17:00:00 PDT" "1993-06-30 17:00:00 PDT"
+[19] "1994-06-30 17:00:00 PDT" "1995-12-31 16:00:00 PST"
+[21] "1997-06-30 17:00:00 PDT" "1998-12-31 16:00:00 PST"
+[23] "2005-12-31 16:00:00 PST" "2008-12-31 16:00:00 PST"
+[25] "2012-06-30 17:00:00 PDT" "2015-06-30 17:00:00 PDT"
+[27] "2016-12-31 16:00:00 PST"
+
+DtTmCl> ## IGNORE_RDIFF_END
+DtTmCl> 
+DtTmCl> ## look at *internal* representation of "POSIXlt" :
+DtTmCl> leapS <- as.POSIXlt(.leap.seconds)
+
+DtTmCl> names(unclass(leapS)) ; is.list(leapS)
+ [1] "sec"    "min"    "hour"   "mday"   "mon"    "year"   "wday"   "yday"  
+ [9] "isdst"  "zone"   "gmtoff"
+[1] TRUE
+
+DtTmCl> ## str() on inner structure needs unclass(.):
+DtTmCl> utils::str(unclass(leapS), vec.len = 7)
+List of 11
+ $ sec   : num [1:27] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+ $ min   : int [1:27] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+ $ hour  : int [1:27] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+ $ mday  : int [1:27] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ...
+ $ mon   : int [1:27] 6 0 0 0 0 0 0 0 0 6 6 6 6 0 0 0 6 6 ...
+ $ year  : int [1:27] 72 73 74 75 76 77 78 79 80 81 82 83 85 88 90 91 92 93 ...
+ $ wday  : int [1:27] 6 1 2 3 4 6 0 1 2 3 4 5 1 5 1 2 3 4 ...
+ $ yday  : int [1:27] 182 0 0 0 0 0 0 0 0 181 181 181 181 0 0 0 182 181 ...
+ $ isdst : int [1:27] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+ $ zone  : chr [1:27] "GMT" "GMT" "GMT" "GMT" "GMT" "GMT" "GMT" ...
+ $ gmtoff: int [1:27] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
+ - attr(*, "tzone")= chr "GMT"
+ - attr(*, "balanced")= logi TRUE
+
+DtTmCl> ## show all (apart from "tzone" attr):
+DtTmCl> data.frame(unclass(leapS))
+   sec min hour mday mon year wday yday isdst zone gmtoff
+1    0   0    0    1   6   72    6  182     0  GMT      0
+2    0   0    0    1   0   73    1    0     0  GMT      0
+3    0   0    0    1   0   74    2    0     0  GMT      0
+4    0   0    0    1   0   75    3    0     0  GMT      0
+5    0   0    0    1   0   76    4    0     0  GMT      0
+6    0   0    0    1   0   77    6    0     0  GMT      0
+7    0   0    0    1   0   78    0    0     0  GMT      0
+8    0   0    0    1   0   79    1    0     0  GMT      0
+9    0   0    0    1   0   80    2    0     0  GMT      0
+10   0   0    0    1   6   81    3  181     0  GMT      0
+11   0   0    0    1   6   82    4  181     0  GMT      0
+12   0   0    0    1   6   83    5  181     0  GMT      0
+13   0   0    0    1   6   85    1  181     0  GMT      0
+14   0   0    0    1   0   88    5    0     0  GMT      0
+15   0   0    0    1   0   90    1    0     0  GMT      0
+16   0   0    0    1   0   91    2    0     0  GMT      0
+17   0   0    0    1   6   92    3  182     0  GMT      0
+18   0   0    0    1   6   93    4  181     0  GMT      0
+19   0   0    0    1   6   94    5  181     0  GMT      0
+20   0   0    0    1   0   96    1    0     0  GMT      0
+21   0   0    0    1   6   97    2  181     0  GMT      0
+22   0   0    0    1   0   99    5    0     0  GMT      0
+23   0   0    0    1   0  106    0    0     0  GMT      0
+24   0   0    0    1   0  109    4    0     0  GMT      0
+25   0   0    0    1   6  112    0  182     0  GMT      0
+26   0   0    0    1   6  115    3  181     0  GMT      0
+27   0   0    0    1   0  117    0    0     0  GMT      0
+
+DtTmCl> ## Extracting *single* components of POSIXlt objects:
+DtTmCl> leapS[1 : 5, "year"]
+[1] 72 73 74 75 76
+
+DtTmCl> leapS[17:22, "mon" ]
+[1] 6 6 6 0 6 0
+
+DtTmCl> ##  length(.) <- n   now works for "POSIXct" and "POSIXlt" :
+DtTmCl> for(lpS in list(.leap.seconds, leapS)) {
+DtTmCl+     ls <- lpS; length(ls) <- 12
+DtTmCl+     l2 <- lpS; length(l2) <- 5 + length(lpS)
+DtTmCl+     stopifnot(exprs = {
+DtTmCl+       ## length(.) <- * is compatible to subsetting/indexing:
+DtTmCl+       identical(ls, lpS[seq_along(ls)])
+DtTmCl+       identical(l2, lpS[seq_along(l2)])
+DtTmCl+       ## has filled with NA's
+DtTmCl+       is.na(l2[(length(lpS)+1):length(l2)])
+DtTmCl+     })
+DtTmCl+ }
+> example(Dates, run.donttest = TRUE)
+
+Dates> ## No test: 
+Dates> (today <- Sys.Date())
+[1] "2024-03-09"
+
+Dates> format(today, "%d %b %Y")  # with month as a word
+[1] "09 Mar 2024"
+
+Dates> (tenweeks <- seq(today, length.out=10, by="1 week")) # next ten weeks
+ [1] "2024-03-09" "2024-03-16" "2024-03-23" "2024-03-30" "2024-04-06"
+ [6] "2024-04-13" "2024-04-20" "2024-04-27" "2024-05-04" "2024-05-11"
+
+Dates> weekdays(today)
+[1] "Saturday"
+
+Dates> months(tenweeks)
+ [1] "March" "March" "March" "March" "April" "April" "April" "April" "May"  
+[10] "May"  
+
+Dates> ## End(No test)
+Dates> (Dls <- as.Date(.leap.seconds))
+ [1] "1972-07-01" "1973-01-01" "1974-01-01" "1975-01-01" "1976-01-01"
+ [6] "1977-01-01" "1978-01-01" "1979-01-01" "1980-01-01" "1981-07-01"
+[11] "1982-07-01" "1983-07-01" "1985-07-01" "1988-01-01" "1990-01-01"
+[16] "1991-01-01" "1992-07-01" "1993-07-01" "1994-07-01" "1996-01-01"
+[21] "1997-07-01" "1999-01-01" "2006-01-01" "2009-01-01" "2012-07-01"
+[26] "2015-07-01" "2017-01-01"
+
+Dates> ## Show use of year zero:
+Dates> (z <- as.Date("01-01-01")) # how it is printed depends on the OS
+[1] "1-01-01"
+
+Dates> z - 365 # so year zero was a leap year.
+[1] "0-01-02"
+
+Dates> as.Date("00-02-29")
+[1] "0-02-29"
+
+Dates> # if you want a different format, consider something like (if supported)
+Dates> ## Not run: 
+Dates> ##D format(z, "%04Y-%m-%d") # "0001-01-01"
+Dates> ##D format(z, "%_4Y-%m-%d") # "   1-01-01"
+Dates> ##D format(z, "%_Y-%m-%d")  # "1-01-01"
+Dates> ## End(Not run) 
+Dates> 
+Dates> ##  length(<Date>) <- n   now works
+Dates> ls <- Dls; length(ls) <- 12
+
+Dates> l2 <- Dls; length(l2) <- 5 + length(Dls)
+
+Dates> stopifnot(exprs = {
+Dates+   ## length(.) <- * is compatible to subsetting/indexing:
+Dates+   identical(ls, Dls[seq_along(ls)])
+Dates+   identical(l2, Dls[seq_along(l2)])
+Dates+   ## has filled with NA's
+Dates+   is.na(l2[(length(Dls)+1):length(l2)])
+Dates+ })
+> example(Ops.Date, run.donttest = TRUE)
+
+Ops.Dt> ## No test: 
+Ops.Dt> (z <- Sys.Date())
+[1] "2024-03-09"
+
+Ops.Dt> z + 10
+[1] "2024-03-19"
+
+Ops.Dt> z < c("2009-06-01", "2010-01-01", "2015-01-01")
+[1] FALSE FALSE FALSE
+
+Ops.Dt> ## End(No test)
+Ops.Dt> 
+Ops.Dt> 
+> example(Random, run.donttest = TRUE)
+
+Random> require(stats)
+
+Random> ## Seed the current RNG, i.e., set the RNG status
+Random> set.seed(42); u1 <- runif(30)
+
+Random> set.seed(42); u2 <- runif(30) # the same because of identical RNG status:
+
+Random> stopifnot(identical(u1, u2))
+
+Random> ## No test: 
+Random> ## the default random seed is 626 integers, so only print a few
+Random>  runif(1); .Random.seed[1:6]; runif(1); .Random.seed[1:6]
+[1] 0.7375956
+[1]       10403          31 -1577024373  1699409082  1745430460  -928819969
+[1] 0.8110551
+[1]       10403          32 -1577024373  1699409082  1745430460  -928819969
+
+Random>  ## If there is no seed, a "random" new one is created:
+Random>  rm(.Random.seed); runif(1); .Random.seed[1:6]
+[1] 0.4007608
+[1]       10403           1  -743953639 -2122797141 -1125200486 -1687881380
+
+Random> ## End(No test)
+Random> ok <- RNGkind()
+
+Random> RNGkind("Wich")  # (partial string matching on 'kind')
+
+Random> ## This shows how 'runif(.)' works for Wichmann-Hill,
+Random> ## using only R functions:
+Random> 
+Random> p.WH <- c(30269, 30307, 30323)
+
+Random> a.WH <- c(  171,   172,   170)
+
+Random> next.WHseed <- function(i.seed = .Random.seed[-1])
+Random+   { (a.WH * i.seed) %% p.WH }
+
+Random> my.runif1 <- function(i.seed = .Random.seed)
+Random+   { ns <- next.WHseed(i.seed[-1]); sum(ns / p.WH) %% 1 }
+
+Random> set.seed(1998-12-04)# (when the next lines were added to the souRce)
+
+Random> rs <- .Random.seed
+
+Random> (WHs <- next.WHseed(rs[-1]))
+[1] 16476 24419 11857
+
+Random> u <- runif(1)
+
+Random> stopifnot(
+Random+  next.WHseed(rs[-1]) == .Random.seed[-1],
+Random+  all.equal(u, my.runif1(rs))
+Random+ )
+
+Random> ## ----
+Random> .Random.seed
+[1] 10400 16476 24419 11857
+
+Random> RNGkind("Super") # matches  "Super-Duper"
+
+Random> RNGkind()
+[1] "Super-Duper" "Inversion"   "Rejection"  
+
+Random> .Random.seed # new, corresponding to  Super-Duper
+[1]      10402   47619480 -915084615
+
+Random> ## Reset:
+Random> RNGkind(ok[1])
+
+Random> RNGversion(getRversion()) # the default version for this R version
+
+Random> ## ----
+Random> sum(duplicated(runif(1e6))) # around 110 for default generator
+[1] 103
+
+Random> ## and we would expect about almost sure duplicates beyond about
+Random> qbirthday(1 - 1e-6, classes = 2e9) # 235,000
+[1] 235075
+> head(s <- Sys.getenv(), 12) # from Sys.getenv.Rd
+BROWSER                 firefox
+COLORFGBG               15;0
+COLORTERM               truecolor
+DBUS_SESSION_BUS_ADDRESS
+                        unix:path=/run/user/1000/bus
+DESKTOP_SESSION         Lubuntu
+DISPLAY                 :0
+EDITOR                  vi
+GPG_AGENT_INFO          /run/user/1000/gnupg/S.gpg-agent:0:1
+GTK_CSD                 0
+GTK_OVERLAY_SCROLLING   0
+HOME                    /home/vm
+JAVA_HOME               /usr/lib/jvm/java-11-openjdk-amd64
+> writeLines(formatDL(s, style = "list")) # from formatDL.Rd
+BROWSER: firefox
+COLORFGBG: 15;0
+COLORTERM: truecolor
+DBUS_SESSION_BUS_ADDRESS: unix:path=/run/user/1000/bus
+DESKTOP_SESSION: Lubuntu
+DISPLAY: :0
+EDITOR: vi
+GPG_AGENT_INFO: /run/user/1000/gnupg/S.gpg-agent:0:1
+GTK_CSD: 0
+GTK_OVERLAY_SCROLLING: 0
+HOME: /home/vm
+JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+LANG: en_US.UTF-8
+LANGUAGE: en
+LC_ADDRESS: en_US.UTF-8
+LC_ALL: C
+LC_IDENTIFICATION: en_US.UTF-8
+LC_MEASUREMENT: en_US.UTF-8
+LC_MONETARY: en_US.UTF-8
+LC_NAME: en_US.UTF-8
+LC_NUMERIC: en_US.UTF-8
+LC_PAPER: en_US.UTF-8
+LC_TELEPHONE: en_US.UTF-8
+LC_TIME: en_US.UTF-8
+LD_LIBRARY_PATH:
+        /home/vm/Desktop/R-4.3.3/lib:/usr/local/lib:/usr/lib/jvm/java-11-openjdk-amd64/lib/server
+LESSCLOSE: /usr/bin/lesspipe %s %s
+LESSOPEN: | /usr/bin/lesspipe %s
+LN_S: ln -s
+LOGNAME: vm
+LS_COLORS:
+        rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LXQT_SESSION_CONFIG: session
+MAKE: make
+MAKEFLAGS: w -- RVAL_IF_DIFF=1
+MAKELEVEL: 4
+MAKEOVERRIDES: ${-*-command-variables-*-}
+MAKE_TERMERR: /dev/pts/0
+MAKE_TERMOUT: /dev/pts/0
+MFLAGS: -w
+OLDPWD: /home/vm/Desktop/R-4.3.3
+PAGER: /usr/bin/less
+PATH:
+        /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PWD: /home/vm/Desktop/R-4.3.3/tests
+QT_ACCESSIBILITY: 1
+QT_PLATFORM_PLUGIN: lxqt
+QT_QPA_PLATFORMTHEME: lxqt
+RVAL_IF_DIFF: 1
+R_ARCH:
+R_BROWSER: /usr/bin/xdg-open
+R_BZIPCMD: /usr/bin/bzip2
+R_DEFAULT_PACKAGES:
+R_DOC_DIR: /home/vm/Desktop/R-4.3.3/doc
+R_ENVIRON:
+R_ENVIRON_USER:
+R_GZIPCMD: /usr/bin/gzip
+R_HOME: /home/vm/Desktop/R-4.3.3
+R_INCLUDE_DIR: /home/vm/Desktop/R-4.3.3/include
+R_LIBS_SITE: /home/vm/Desktop/R-4.3.3/site-library
+R_LIBS_USER: NULL
+R_PAPERSIZE: a4
+R_PDFVIEWER: /usr/bin/xdg-open
+R_PLATFORM: x86_64-pc-linux-gnu
+R_PRINTCMD: lpr
+R_PROFILE:
+R_PROFILE_USER:
+R_RD4PDF: times,inconsolata,hyper
+R_SESSION_TMPDIR: /tmp/RtmpGyfbA6
+R_SHARE_DIR: /home/vm/Desktop/R-4.3.3/share
+R_STRIP_SHARED_LIB: strip --strip-unneeded
+R_STRIP_STATIC_LIB: strip --strip-debug
+R_SYSTEM_ABI: linux,gcc,gxx,gfortran,gfortran
+R_TEXI2DVICMD: /usr/bin/texi2dvi
+R_UNZIPCMD: /usr/bin/unzip
+R_ZIPCMD: /usr/bin/zip
+SAL_USE_VCLPLUGIN: qt5
+SAL_VCL_QT5_USE_CAIRO: true
+SED: /usr/bin/sed
+SHELL: /bin/bash
+SHLVL: 5
+SRCDIR: .
+SSH_AGENT_PID: 1825
+SSH_AUTH_SOCK: /tmp/ssh-XXXXXXdACqpR/agent.1733
+TAR: /usr/bin/tar
+TERM: xterm-256color
+USER: vm
+WINDOWID: 0
+XAUTHORITY: /home/vm/.Xauthority
+XDG_CACHE_HOME: /home/vm/.cache
+XDG_CONFIG_DIRS: /etc/xdg/xdg-Lubuntu:/etc/xdg:/etc:/usr/share
+XDG_CONFIG_HOME: /home/vm/.config
+XDG_CURRENT_DESKTOP: LXQt
+XDG_DATA_DIRS:
+        /usr/share/Lubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+XDG_DATA_HOME: /home/vm/.local/share
+XDG_MENU_PREFIX: lxqt-
+XDG_RUNTIME_DIR: /run/user/1000
+XDG_SEAT: seat0
+XDG_SEAT_PATH: /org/freedesktop/DisplayManager/Seat0
+XDG_SESSION_CLASS: user
+XDG_SESSION_DESKTOP:
+XDG_SESSION_ID: 1
+XDG_SESSION_PATH: /org/freedesktop/DisplayManager/Session0
+XDG_SESSION_TYPE: x11
+XDG_VTNR: 1
+> example(Sys.getpid, run.donttest = TRUE)
+
+Sys.gt> ## No test: 
+Sys.gt> Sys.getpid()
+[1] 50750
+
+Sys.gt> ## Show files opened from this R process
+Sys.gt> if(.Platform$OS.type == "unix") ## on Unix-alikes such Linux, macOS, FreeBSD:
+Sys.gt+    system(paste("lsof -p", Sys.getpid()))
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+R       50750   vm  cwd    DIR    8,1     4096 1242040 /home/vm/Desktop/R-4.3.3/tests
+R       50750   vm  rtd    DIR    8,1     4096       2 /
+R       50750   vm  txt    REG    8,1    17976 1244479 /home/vm/Desktop/R-4.3.3/bin/exec/R
+R       50750   vm  mem    REG    8,1  2989432  679620 /usr/lib/x86_64-linux-gnu/libgfortran.so.5.0.0
+R       50750   vm  mem    REG    8,1  4618912 1244522 /home/vm/Desktop/R-4.3.3/lib/libRlapack.so
+R       50750   vm  mem    REG    8,1   114080 1244961 /home/vm/Desktop/R-4.3.3/library/utils/libs/utils.so
+R       50750   vm  mem    REG    8,1   216328 1244923 /home/vm/Desktop/R-4.3.3/library/tools/libs/tools.so
+R       50750   vm  mem    REG    8,1   289592  679933 /usr/lib/x86_64-linux-gnu/libquadmath.so.0.0.0
+R       50750   vm  mem    REG    8,1   125488  679606 /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+R       50750   vm  mem    REG    8,1  1451664 1245149 /home/vm/Desktop/R-4.3.3/library/stats/libs/stats.so
+R       50750   vm  mem    REG    8,1   500816 1245130 /home/vm/Desktop/R-4.3.3/library/graphics/libs/graphics.so
+R       50750   vm  mem    REG    8,1   538664 1245102 /home/vm/Desktop/R-4.3.3/library/grDevices/libs/grDevices.so
+R       50750   vm  mem    REG    8,1    68552  657006 /usr/lib/x86_64-linux-gnu/libresolv.so.2
+R       50750   vm  mem    REG    8,1   182864  673300 /usr/lib/x86_64-linux-gnu/libk5crypto.so.3.1
+R       50750   vm  mem    REG    8,1   827936  673316 /usr/lib/x86_64-linux-gnu/libkrb5.so.3.3
+R       50750   vm  mem    REG    8,1   338648  673324 /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2.2
+R       50750   vm  mem    REG    8,1   200136  680030 /usr/lib/x86_64-linux-gnu/libtinfo.so.6.3
+R       50750   vm  mem    REG    8,1   298776  679633 /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0
+R       50750   vm  mem    REG    8,1  2220400  655621 /usr/lib/x86_64-linux-gnu/libc.so.6
+R       50750   vm  mem    REG    8,1    22600  679733 /usr/lib/x86_64-linux-gnu/libkeyutils.so.1.9
+R       50750   vm  mem    REG    8,1   182912  680031 /usr/lib/x86_64-linux-gnu/libtirpc.so.3.0.0
+R       50750   vm  mem    REG    8,1   108936  680145 /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+R       50750   vm  mem    REG    8,1   613064  679886 /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4
+R       50750   vm  mem    REG    8,1   940560  655637 /usr/lib/x86_64-linux-gnu/libm.so.6
+R       50750   vm  mem    REG    8,1  6394264 1244476 /home/vm/Desktop/R-4.3.3/lib/libR.so
+R       50750   vm  mem    REG    8,1    52016  673303 /usr/lib/x86_64-linux-gnu/libkrb5support.so.0.1
+R       50750   vm  mem    REG    8,1    18504  679485 /usr/lib/x86_64-linux-gnu/libcom_err.so.2.1
+R       50750   vm  mem    REG    8,1    74848  679455 /usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+R       50750   vm  mem    REG    8,1   170456  679760 /usr/lib/x86_64-linux-gnu/liblzma.so.5.2.5
+R       50750   vm  mem    REG    8,1   335936  679941 /usr/lib/x86_64-linux-gnu/libreadline.so.8.1
+R       50750   vm  mem    REG    8,1   405840 1244267 /home/vm/Desktop/R-4.3.3/lib/libRblas.so
+R       50750   vm  mem    REG    8,1    27002  680688 /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+R       50750   vm  mem    REG    8,1    79976 1245169 /home/vm/Desktop/R-4.3.3/library/methods/libs/methods.so
+R       50750   vm  mem    REG    8,1   240936  655618 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+R       50750   vm    0r   REG    8,1     3181 1242117 /home/vm/Desktop/R-4.3.3/tests/reg-examples1.R
+R       50750   vm    1w   REG    8,1    16008 1245568 /home/vm/Desktop/R-4.3.3/tests/reg-examples1.Rout.fail
+R       50750   vm    2w   REG    8,1    16008 1245568 /home/vm/Desktop/R-4.3.3/tests/reg-examples1.Rout.fail
+R       50750   vm    3w   REG    8,1        0 1245569 /home/vm/Desktop/R-4.3.3/tests/reg-examples-1.pdf
+
+Sys.gt> ## End(No test)
+Sys.gt> 
+Sys.gt> 
+> example(Sys.sleep, run.donttest = TRUE)
+
+Sys.sl> ## No test: 
+Sys.sl> testit <- function(x)
+Sys.sl+ {
+Sys.sl+     p1 <- proc.time()
+Sys.sl+     Sys.sleep(x)
+Sys.sl+     proc.time() - p1 # The cpu usage should be negligible
+Sys.sl+ }
+
+Sys.sl> testit(3.7)
+   user  system elapsed 
+  0.000   0.000   3.705 
+
+Sys.sl> ## End(No test)
+Sys.sl> 
+Sys.sl> 
+> example(Sys.time, run.donttest = TRUE)
+
+Sys.tm> ## No test: 
+Sys.tm> Sys.time()
+[1] "2024-03-09 23:03:14 CST"
+
+Sys.tm> ## print with possibly greater accuracy:
+Sys.tm> op <- options(digits.secs = 6)
+
+Sys.tm> Sys.time()
+[1] "2024-03-09 23:03:14.480216 CST"
+
+Sys.tm> options(op)
+
+Sys.tm> ## locale-specific version of date()
+Sys.tm> format(Sys.time(), "%a %b %d %X %Y")
+[1] "Sat Mar 09 23:03:14 2024"
+
+Sys.tm> Sys.Date()
+[1] "2024-03-09"
+
+Sys.tm> ## End(No test)
+Sys.tm> 
+Sys.tm> 
+> example(as.POSIXlt, run.donttest = TRUE)
+
+a.POSI> ## No test: 
+a.POSI> (z <- Sys.time())             # the current datetime, as class "POSIXct"
+[1] "2024-03-09 23:03:14 CST"
+
+a.POSI> unclass(z)                    # a large integer
+[1] 1710046995
+
+a.POSI> floor(unclass(z)/86400)       # the number of days since 1970-01-01 (UTC)
+[1] 19792
+
+a.POSI> (now <- as.POSIXlt(Sys.time())) # the current datetime, as class "POSIXlt"
+[1] "2024-03-09 23:03:14 CST"
+
+a.POSI> str(unclass(now))             # the internal list ; use now$hour, etc :
+List of 11
+ $ sec   : num 14.6
+ $ min   : int 3
+ $ hour  : int 23
+ $ mday  : int 9
+ $ mon   : int 2
+ $ year  : int 124
+ $ wday  : int 6
+ $ yday  : int 68
+ $ isdst : int 0
+ $ zone  : chr "CST"
+ $ gmtoff: int -21600
+ - attr(*, "tzone")= chr [1:3] "" "CST" "CDT"
+ - attr(*, "balanced")= logi TRUE
+
+a.POSI> now$year + 1900               # see ?DateTimeClasses
+[1] 2024
+
+a.POSI> months(now); weekdays(now)    # see ?months; using LC_TIME locale
+[1] "March"
+[1] "Saturday"
+
+a.POSI> ## suppose we have a time in seconds since 1960-01-01 00:00:00 GMT
+a.POSI> ## (the origin used by SAS)
+a.POSI> z <- 1472562988
+
+a.POSI> # ways to convert this
+a.POSI> as.POSIXct(z, origin = "1960-01-01")                # local
+[1] "2006-08-30 08:16:28 CDT"
+
+a.POSI> as.POSIXct(z, origin = "1960-01-01", tz = "GMT")    # in UTC
+[1] "2006-08-30 13:16:28 GMT"
+
+a.POSI> ## SPSS dates (R-help 2006-02-16)
+a.POSI> z <- c(10485849600, 10477641600, 10561104000, 10562745600)
+
+a.POSI> as.Date(as.POSIXct(z, origin = "1582-10-14", tz = "GMT"))
+[1] "1915-01-26" "1914-10-23" "1917-06-15" "1917-07-04"
+
+a.POSI> ## Stata date-times: milliseconds since 1960-01-01 00:00:00 GMT
+a.POSI> ## format %tc excludes leap-seconds, assumed here
+a.POSI> ## For format %tC including leap seconds, see foreign::read.dta()
+a.POSI> z <- 1579598122120
+
+a.POSI> op <- options(digits.secs = 3)
+
+a.POSI> # avoid rounding down: milliseconds are not exactly representable
+a.POSI> as.POSIXct((z+0.1)/1000, origin = "1960-01-01")
+[1] "2010-01-20 03:15:22.120 CST"
+
+a.POSI> options(op)
+
+a.POSI> ## Matlab 'serial day number' (days and fractional days)
+a.POSI> z <- 7.343736909722223e5 # 2010-08-23 16:35:00
+
+a.POSI> as.POSIXct((z - 719529)*86400, origin = "1970-01-01", tz = "UTC")
+[1] "2010-08-23 16:35:00 UTC"
+
+a.POSI> as.POSIXlt(Sys.time(), "GMT") # the current time in UTC
+[1] "2024-03-10 05:03:14 GMT"
+
+a.POSI> ## End(No test)
+a.POSI> ## No test: 
+a.POSI> ## These may not be correct names on your system
+a.POSI> as.POSIXlt(Sys.time(), "America/New_York")  # in New York
+[1] "2024-03-10 00:03:14 EST"
+
+a.POSI> as.POSIXlt(Sys.time(), "EST5EDT")           # alternative.
+[1] "2024-03-10 00:03:14 EST"
+
+a.POSI> as.POSIXlt(Sys.time(), "EST" )   # somewhere in Eastern Canada
+[1] "2024-03-10 00:03:14 EST"
+
+a.POSI> as.POSIXlt(Sys.time(), "HST")    # in Hawaii
+[1] "2024-03-09 19:03:14 HST"
+
+a.POSI> as.POSIXlt(Sys.time(), "Australia/Darwin")
+[1] "2024-03-10 14:33:14 ACST"
+
+a.POSI> ## End(No test)
+a.POSI> 
+a.POSI> tab <- file.path(R.home("share"), "zoneinfo", "zone1970.tab")
+
+a.POSI> if(file.exists(tab)) { # typically on Windows; *not* on Linux
+a.POSI+   cols <- c("code", "coordinates", "TZ", "comments")
+a.POSI+   tmp <- read.delim(tab,
+a.POSI+                     header = FALSE, comment.char = "#", col.names = cols)
+a.POSI+   if(interactive()) View(tmp)
+a.POSI+   head(tmp, 10)
+a.POSI+ }
+> example(difftime, run.donttest = TRUE)
+
+difftm> ## No test: 
+difftm> (z <- Sys.time() - 3600)
+[1] "2024-03-09 22:03:14 CST"
+
+difftm> Sys.time() - z                # just over 3600 seconds.
+Time difference of 1 hours
+
+difftm> ## time interval between release days of R 1.2.2 and 1.2.3.
+difftm> ISOdate(2001, 4, 26) - ISOdate(2001, 2, 26)
+Time difference of 59 days
+
+difftm> as.difftime(c("0:3:20", "11:23:15"))
+Time differences in mins
+[1]   3.333333 683.250000
+
+difftm> as.difftime(c("3:20", "23:15", "2:"), format = "%H:%M") # 3rd gives NA
+Time differences in hours
+[1]  3.333333 23.250000        NA
+
+difftm> (z <- as.difftime(c(0,30,60), units = "mins"))
+Time differences in mins
+[1]  0 30 60
+
+difftm> as.numeric(z, units = "secs")
+[1]    0 1800 3600
+
+difftm> as.numeric(z, units = "hours")
+[1] 0.0 0.5 1.0
+
+difftm> format(z)
+[1] " 0 mins" "30 mins" "60 mins"
+
+difftm> ## End(No test)
+difftm> 
+difftm> 
+> example(format.Date, run.donttest = TRUE)
+
+frmt.D> ## No test: 
+frmt.D> ## locale-specific version of the date
+frmt.D> format(Sys.Date(), "%a %b %d")
+[1] "Sat Mar 09"
+
+frmt.D> ## End(No test)
+frmt.D> 
+frmt.D> ## read in date info in format 'ddmmmyyyy'
+frmt.D> ## This will give NA(s) in some locales; setting the C locale
+frmt.D> ## as in the commented lines will overcome this on most systems.
+frmt.D> ## lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
+frmt.D> x <- c("1jan1960", "2jan1960", "31mar1960", "30jul1960")
+
+frmt.D> z <- as.Date(x, "%d%b%Y")
+
+frmt.D> ## Sys.setlocale("LC_TIME", lct)
+frmt.D> z
+[1] "1960-01-01" "1960-01-02" "1960-03-31" "1960-07-30"
+
+frmt.D> ## read in date/time info in format 'm/d/y'
+frmt.D> dates <- c("02/27/92", "02/27/92", "01/14/92", "02/28/92", "02/01/92")
+
+frmt.D> as.Date(dates, "%m/%d/%y")
+[1] "1992-02-27" "1992-02-27" "1992-01-14" "1992-02-28" "1992-02-01"
+
+frmt.D> ## date given as number of days since 1900-01-01 (a date in 1989)
+frmt.D> as.Date(32768, origin = "1900-01-01")
+[1] "1989-09-19"
+
+frmt.D> ## Excel is said to use 1900-01-01 as day 1 (Windows default) or
+frmt.D> ## 1904-01-01 as day 0 (Mac default), but this is complicated by Excel
+frmt.D> ## incorrectly treating 1900 as a leap year.
+frmt.D> ## So for dates (post-1901) from Windows Excel
+frmt.D> as.Date(35981, origin = "1899-12-30") # 1998-07-05
+[1] "1998-07-05"
+
+frmt.D> ## and Mac Excel
+frmt.D> as.Date(34519, origin = "1904-01-01") # 1998-07-05
+[1] "1998-07-05"
+
+frmt.D> ## (these values come from http://support.microsoft.com/kb/214330)
+frmt.D> 
+frmt.D> ## Experiment shows that Matlab's origin is 719529 days before ours,
+frmt.D> ## (it takes the non-existent 0000-01-01 as day 1)
+frmt.D> ## so Matlab day 734373 can be imported as
+frmt.D> as.Date(734373) - 719529 # 2010-08-23
+[1] "2010-08-23"
+
+frmt.D> ## (value from
+frmt.D> ## http://www.mathworks.de/de/help/matlab/matlab_prog/represent-date-and-times-in-MATLAB.html)
+frmt.D> 
+frmt.D> ## Time zone effect
+frmt.D> z <- ISOdate(2010, 04, 13, c(0,12)) # midnight and midday UTC
+
+frmt.D> as.Date(z) # in UTC
+[1] "2010-04-13" "2010-04-13"
+
+frmt.D> ## No test: 
+frmt.D> ## these time zone names are common
+frmt.D> as.Date(z, tz = "NZ")
+[1] "2010-04-13" "2010-04-14"
+
+frmt.D> as.Date(z, tz = "HST") # Hawaii
+[1] "2010-04-12" "2010-04-13"
+
+frmt.D> ## End(No test)
+frmt.D> 
+frmt.D> 
+frmt.D> 
+> example(Reduce, run.donttest = TRUE) # funprog.Rd
+
+Reduce> ## A general-purpose adder:
+Reduce> add <- function(x) Reduce(`+`, x)
+
+Reduce> add(list(1, 2, 3))
+[1] 6
+
+Reduce> ## Like sum(), but can also used for adding matrices etc., as it will
+Reduce> ## use the appropriate '+' method in each reduction step.
+Reduce> ## More generally, many generics meant to work on arbitrarily many
+Reduce> ## arguments can be defined via reduction:
+Reduce> FOO <- function(...) Reduce(FOO2, list(...))
+
+Reduce> FOO2 <- function(x, y) UseMethod("FOO2")
+
+Reduce> ## FOO() methods can then be provided via FOO2() methods.
+Reduce> 
+Reduce> ## A general-purpose cumulative adder:
+Reduce> cadd <- function(x) Reduce(`+`, x, accumulate = TRUE)
+
+Reduce> cadd(seq_len(7))
+[1]  1  3  6 10 15 21 28
+
+Reduce> ## A simple function to compute continued fractions:
+Reduce> cfrac <- function(x) Reduce(function(u, v) u + 1 / v, x, right = TRUE)
+
+Reduce> ## Continued fraction approximation for pi:
+Reduce> cfrac(c(3, 7, 15, 1, 292))
+[1] 3.141593
+
+Reduce> ## Continued fraction approximation for Euler's number (e):
+Reduce> cfrac(c(2, 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8))
+[1] 2.718282
+
+Reduce> ## Map() now recycles similar to basic Ops:
+Reduce> Map(`+`, 1,         1 : 3) ;         1 + 1:3
+[[1]]
+[1] 2
+
+[[2]]
+[1] 3
+
+[[3]]
+[1] 4
+
+[1] 2 3 4
+
+Reduce> Map(`+`, numeric(), 1 : 3) ; numeric() + 1:3
+list()
+numeric(0)
+
+Reduce> ## Iterative function application:
+Reduce> Funcall <- function(f, ...) f(...)
+
+Reduce> ## Compute log(exp(acos(cos(0))))
+Reduce> Reduce(Funcall, list(log, exp, acos, cos), 0, right = TRUE)
+[1] 0
+
+Reduce> ## n-fold iterate of a function, functional style:
+Reduce> Iterate <- function(f, n = 1)
+Reduce+     function(x) Reduce(Funcall, rep.int(list(f), n), x, right = TRUE)
+
+Reduce> ## Continued fraction approximation to the golden ratio:
+Reduce> Iterate(function(x) 1 + 1 / x, 30)(1)
+[1] 1.618034
+
+Reduce> ## which is the same as
+Reduce> cfrac(rep.int(1, 31))
+[1] 1.618034
+
+Reduce> ## Computing square root approximations for x as fixed points of the
+Reduce> ## function t |-> (t + x / t) / 2, as a function of the initial value:
+Reduce> asqrt <- function(x, n) Iterate(function(t) (t + x / t) / 2, n)
+
+Reduce> asqrt(2, 30)(10) # Starting from a positive value => +sqrt(2)
+[1] 1.414214
+
+Reduce> asqrt(2, 30)(-1) # Starting from a negative value => -sqrt(2)
+[1] -1.414214
+
+Reduce> ## A list of all functions in the base environment:
+Reduce> funs <- Filter(is.function, sapply(ls(baseenv()), get, baseenv()))
+
+Reduce> ## Functions in base with more than 10 arguments:
+Reduce> names(Filter(function(f) length(formals(f)) > 10, funs))
+[1] "format.default"   "formatC"          "library"          "merge.data.frame"
+[5] "prettyNum"        "scan"             "source"           "system2"         
+
+Reduce> ## Number of functions in base with a '...' argument:
+Reduce> length(Filter(function(f)
+Reduce+               any(names(formals(f)) %in% "..."),
+Reduce+               funs))
+[1] 423
+
+Reduce> ## No test: 
+Reduce> ## Find all objects in the base environment which are *not* functions:
+Reduce> Filter(Negate(is.function),  sapply(ls(baseenv()), get, baseenv()))
+$F
+[1] FALSE
+
+$LETTERS
+ [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S"
+[20] "T" "U" "V" "W" "X" "Y" "Z"
+
+$R.version
+               _                           
+platform       x86_64-pc-linux-gnu         
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          4                           
+minor          3.3                         
+year           2024                        
+month          02                          
+day            29                          
+svn rev        86002                       
+language       R                           
+version.string R version 4.3.3 (2024-02-29)
+nickname       Angel Food Cake             
+
+$R.version.string
+[1] "R version 4.3.3 (2024-02-29)"
+
+$T
+[1] TRUE
+
+$letters
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+[20] "t" "u" "v" "w" "x" "y" "z"
+
+$month.abb
+ [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+
+$month.name
+ [1] "January"   "February"  "March"     "April"     "May"       "June"     
+ [7] "July"      "August"    "September" "October"   "November"  "December" 
+
+$pi
+[1] 3.141593
+
+$version
+               _                           
+platform       x86_64-pc-linux-gnu         
+arch           x86_64                      
+os             linux-gnu                   
+system         x86_64, linux-gnu           
+status                                     
+major          4                           
+minor          3.3                         
+year           2024                        
+month          02                          
+day            29                          
+svn rev        86002                       
+language       R                           
+version.string R version 4.3.3 (2024-02-29)
+nickname       Angel Food Cake             
+
+
+Reduce> ## End(No test)
+Reduce> 
+Reduce> 
+> example(gc, run.donttest = TRUE)
+
+gc> ## No test: 
+gc> gc() #- do it now
+          used (Mb) gc trigger (Mb) max used (Mb)
+Ncells  525102 28.1    1168080 62.4   664422 35.5
+Vcells 1118511  8.6    8388608 64.0  5839140 44.6
+
+gc> gcinfo(TRUE) #-- in the future, show when R does it
+[1] FALSE
+
+gc> ##            vvvvv use larger to *show* something
+gc> x <- integer(100000); for(i in 1:18) x <- c(x, i)
+
+gc> gcinfo(verbose = FALSE) #-- don't show it anymore
+[1] TRUE
+
+gc> gc(TRUE)
+Garbage collection 9 = 5+1+3 (level 2) ... 
+28.1 Mbytes of cons cells used (45%)
+9.0 Mbytes of vectors used (14%)
+          used (Mb) gc trigger (Mb) max used (Mb)
+Ncells  525098 28.1    1168080 62.4   664422 35.5
+Vcells 1168499  9.0    8388608 64.0  5839140 44.6
+
+gc> gc(reset = TRUE)
+          used (Mb) gc trigger (Mb) max used (Mb)
+Ncells  525106 28.1    1168080 62.4   525106 28.1
+Vcells 1168531  9.0    8388608 64.0  1168531  9.0
+
+gc> ## End(No test)
+gc> 
+gc> 
+> example(memory.profile, run.donttest = TRUE)
+
+mmry.p> ## No test: 
+mmry.p> memory.profile()
+       NULL      symbol    pairlist     closure environment     promise 
+          1        9143      245051        4413        1098        7084 
+   language     special     builtin        char     logical     integer 
+      76650          47         701       11893        8923       49674 
+     double     complex   character         ...         any        list 
+       3469          21       60707           0           0       22727 
+ expression    bytecode externalptr     weakref         raw          S4 
+          3       19824        1034        1242         437         917 
+
+mmry.p> ## End(No test)
+mmry.p> 
+mmry.p> 
+> paste("Today is", date()) # from paste.Rd
+[1] "Today is Sat Mar  9 23:03:16 2024"
+> trunc(Sys.time(), "day") # from round.POSIXt.Rd
+[1] "2024-03-09 CST"
+> example(srcref, run.donttest = TRUE)
+
+srcref> ## No test: 
+srcref>  # has timestamp
+srcref> src <- srcfile(system.file("DESCRIPTION", package = "base"))
+
+srcref> summary(src)
+/home/vm/Desktop/R-4.3.3/library/base/DESCRIPTION 
+Timestamp: 2024-03-09 22:49:14 CST
+Encoding: "native.enc"
+
+srcref> getSrcLines(src, 1, 4)
+[1] "Package: base"             "Version: 4.3.3"           
+[3] "Priority: base"            "Title: The R Base Package"
+
+srcref> ref <- srcref(src, c(1, 1, 2, 1000))
+
+srcref> ref
+Package: base
+Version: 4.3.3
+
+srcref> print(ref, useSource = FALSE)
+<srcref: file "/home/vm/Desktop/R-4.3.3/library/base/DESCRIPTION" chars 1:1 to 2:1000>
+
+srcref> ## End(No test)
+srcref> 
+srcref> 
+> example(strptime, run.donttest = TRUE)
+
+strptm> ## No test: 
+strptm> ## locale-specific version of date()
+strptm> format(Sys.time(), "%a %b %d %X %Y %Z")
+[1] "Sat Mar 09 23:03:16 2024 CST"
+
+strptm> ## time to sub-second accuracy (if supported by the OS)
+strptm> format(Sys.time(), "%H:%M:%OS3")
+[1] "23:03:16.683"
+
+strptm> ## End(No test)
+strptm> ## read in date info in format 'ddmmmyyyy'
+strptm> ## This will give NA(s) in some non-English locales; setting the C locale
+strptm> ## as in the commented lines will overcome this on most systems.
+strptm> ## lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
+strptm> x <- c("1jan1960", "2jan1960", "31mar1960", "30jul1960")
+
+strptm> z <- strptime(x, "%d%b%Y")
+
+strptm> ## Sys.setlocale("LC_TIME", lct)
+strptm> ## No test: 
+strptm> z
+[1] "1960-01-01 CST" "1960-01-02 CST" "1960-03-31 CST" "1960-07-30 CDT"
+
+strptm> ## End(No test)
+strptm> (chz <- as.character(z)) # same w/o TZ
+[1] "1960-01-01" "1960-01-02" "1960-03-31" "1960-07-30"
+
+strptm> ## *here* (but not in general), the same as format():
+strptm> stopifnot(exprs = {
+strptm+      identical(chz, format(z))
+strptm+      grepl("^1960-0[137]-[03][012]$", chz[!is.na(z)])
+strptm+ })
+
+strptm> ## read in date/time info in format 'm/d/y h:m:s'
+strptm> dates <- c("02/27/92", "02/27/92", "01/14/92", "02/28/92", "02/01/92")
+
+strptm> times <- c("23:03:20", "22:29:56", "01:03:30", "18:21:03", "16:56:26")
+
+strptm> x <- paste(dates, times)
+
+strptm> z2 <- strptime(x, "%m/%d/%y %H:%M:%S")
+
+strptm> ## No test: 
+strptm> z2 
+[1] "1992-02-27 23:03:20 CST" "1992-02-27 22:29:56 CST"
+[3] "1992-01-14 01:03:30 CST" "1992-02-28 18:21:03 CST"
+[5] "1992-02-01 16:56:26 CST"
+
+strptm> ## End(No test)
+strptm> ## *here* (but not in general), the same as format():
+strptm> stopifnot(identical(format(z2), as.character(z2)))
+
+strptm> ## time with fractional seconds
+strptm> z3 <- strptime("20/2/06 11:16:16.683", "%d/%m/%y %H:%M:%OS") ## No test: 
+
+strptm> z3 # prints without fractional seconds by default, digits.sec = NULL ("= 0")
+[1] "2006-02-20 11:16:16 CST"
+
+strptm> ## End(No test)
+strptm> op <- options(digits.secs = 3)
+
+strptm> ## No test: 
+strptm> z3 # shows the 3 extra digits
+[1] "2006-02-20 11:16:16.683 CST"
+
+strptm> ## End(No test)
+strptm> as.character(z3) # ditto
+[1] "2006-02-20 11:16:16.683"
+
+strptm> options(op)
+
+strptm> ## time zone names are not portable, but 'EST5EDT' comes pretty close.
+strptm> z4 <- strptime(c("2006-01-08 10:07:52", "2006-08-07 19:33:02"),
+strptm+                "%Y-%m-%d %H:%M:%S", tz = "EST5EDT")
+
+strptm> ## No test: 
+strptm> z4 
+[1] "2006-01-08 10:07:52 EST" "2006-08-07 19:33:02 EDT"
+
+strptm> ## End(No test)
+strptm> attr(z4, "tzone")
+[1] "EST5EDT" "EST"     "EDT"    
+
+strptm> as.character(z4)
+[1] "2006-01-08 10:07:52" "2006-08-07 19:33:02"
+
+strptm> z4$sec[2] <- pi # "very" fractional seconds
+
+strptm> as.character(z4) # shows full precision
+[1] "2006-01-08 10:07:52"                "2006-08-07 19:33:03.14159265358979"
+
+strptm> format(z4) # no fractional sec
+[1] "2006-01-08 10:07:52" "2006-08-07 19:33:03"
+
+strptm> format(z4, digits=8) # shows only 6  (hard-wired maximum)
+[1] "2006-01-08 10:07:52.000000" "2006-08-07 19:33:03.141592"
+
+strptm> format(z4, digits=4)
+[1] "2006-01-08 10:07:52.0000" "2006-08-07 19:33:03.1415"
+
+strptm> ## An RFC 5322 header (Eastern Canada, during DST)
+strptm> ## In a non-English locale the commented lines may be needed.
+strptm> ## No test: 
+strptm> ## prev <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
+strptm> strptime("Tue, 23 Mar 2010 14:36:38 -0400", "%a, %d %b %Y %H:%M:%S %z")
+[1] "2010-03-23 13:36:38"
+
+strptm> ## Sys.setlocale("LC_TIME", prev)
+strptm> 
+strptm> ## Make sure you know what the abbreviated names are for you if you wish
+strptm> ## to use them for input (they are matched case-insensitively):
+strptm> format(s1 <- seq.Date(as.Date('1978-01-01'), by = 'day',   len =  7), "%a")
+[1] "Sun" "Mon" "Tue" "Wed" "Thu" "Fri" "Sat"
+
+strptm> format(s2 <- seq.Date(as.Date('2000-01-01'), by = 'month', len = 12), "%b")
+ [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+
+strptm> ## End(No test)
+strptm> ## Non-finite date-times :
+strptm> format(as.POSIXct(Inf)) # "Inf"  (was  NA  in R <= 4.1.x)
+[1] "Inf"
+
+strptm> format(as.POSIXlt(c(-Inf,Inf,NaN,NA))) # were all NA
+[1] "-Inf" "Inf"  "NaN"  NA    
+> example(sys.parent, run.donttest = TRUE)
+
+sys.pr> ## No test: 
+sys.pr> require(utils)
+
+sys.pr> ## Note: the first two examples will give different results
+sys.pr> ## if run by example().
+sys.pr> ff <- function(x) gg(x)
+
+sys.pr> gg <- function(y) sys.status()
+
+sys.pr> str(ff(1))
+List of 3
+ $ sys.calls  :Dotted pair list of 9
+  ..$ : language example(sys.parent, run.donttest = TRUE)
+  ..$ : language source(tf, local, echo = echo, prompt.echo = paste0(prompt.prefix, getOption("prompt")),      continue.echo = pas| __truncated__ ...
+  ..$ : language withVisible(eval(ei, envir))
+  ..$ : language eval(ei, envir)
+  ..$ : language eval(ei, envir)
+  ..$ : language str(ff(1))
+  .. ..- attr(*, "srcref")= 'srcref' int [1:8] 15 1 15 10 1 10 15 15
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+  ..$ : language ff(1)
+  ..$ : language gg(x)
+  .. ..- attr(*, "srcref")= 'srcref' int [1:8] 13 7 13 23 7 23 13 13
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+  ..$ : language sys.status()
+  .. ..- attr(*, "srcref")= 'srcref' int [1:8] 14 7 14 30 7 30 14 14
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+ $ sys.parents: int [1:9] 0 1 2 2 4 0 0 7 8
+ $ sys.frames :Dotted pair list of 9
+  ..$ :<environment: 0x5d428c706650> 
+  ..$ :<environment: 0x5d428eeeedd0> 
+  ..$ :<environment: 0x5d428ed5d700> 
+  ..$ :<environment: 0x5d428ed5d540> 
+  ..$ :<environment: R_GlobalEnv> 
+  ..$ :<environment: 0x5d428ed5d2a0> 
+  ..$ :<environment: 0x5d428ed5d0e0> 
+  ..$ :<environment: 0x5d428ed5cf90> 
+  ..$ :<environment: 0x5d428ed5cee8> 
+
+sys.pr> gg <- function(y) {
+sys.pr+     ggg <- function() {
+sys.pr+         cat("current frame is", sys.nframe(), "\n")
+sys.pr+         cat("parents are", sys.parents(), "\n")
+sys.pr+         print(sys.function(0)) # ggg
+sys.pr+         print(sys.function(2)) # gg
+sys.pr+     }
+sys.pr+     if(y > 0) gg(y-1) else ggg()
+sys.pr+ }
+
+sys.pr> gg(3)
+current frame is 10 
+parents are 0 1 2 2 4 0 6 7 8 9 
+function() {
+        cat("current frame is", sys.nframe(), "\n")
+        cat("parents are", sys.parents(), "\n")
+        print(sys.function(0)) # ggg
+        print(sys.function(2)) # gg
+    }
+<bytecode: 0x5d428f465f88>
+<environment: 0x5d428f4ea600>
+function (file, local = FALSE, echo = verbose, print.eval = echo, 
+    exprs, spaced = use_file, verbose = getOption("verbose"), 
+    prompt.echo = getOption("prompt"), max.deparse.length = 150, 
+    width.cutoff = 60L, deparseCtrl = "showAttributes", chdir = FALSE, 
+    encoding = getOption("encoding"), continue.echo = getOption("continue"), 
+    skip.echo = 0, keep.source = getOption("keep.source")) 
+{
+    envir <- if (isTRUE(local)) 
+        parent.frame()
+    else if (isFALSE(local)) 
+        .GlobalEnv
+    else if (is.environment(local)) 
+        local
+    else stop("'local' must be TRUE, FALSE or an environment")
+    if (!missing(echo)) {
+        if (!is.logical(echo)) 
+            stop("'echo' must be logical")
+        if (!echo && verbose) {
+            warning("'verbose' is TRUE, 'echo' not; ... coercing 'echo <- TRUE'")
+            echo <- TRUE
+        }
+    }
+    if (verbose) {
+        cat("'envir' chosen:")
+        print(envir)
+    }
+    if (use_file <- missing(exprs)) {
+        ofile <- file
+        from_file <- FALSE
+        srcfile <- NULL
+        if (is.character(file)) {
+            if (!length(file) || file == "") 
+                stop("empty file/url name")
+            have_encoding <- !missing(encoding) && !identical(encoding, 
+                "unknown")
+            if (identical(encoding, "unknown")) {
+                enc <- utils::localeToCharset()
+                encoding <- enc[length(enc)]
+            }
+            else enc <- encoding
+            if (length(enc) > 1L) {
+                encoding <- NA
+                owarn <- options(warn = 2)
+                for (e in enc) {
+                  if (is.na(e)) 
+                    next
+                  zz <- file(file, encoding = e)
+                  res <- tryCatch(readLines(zz, warn = FALSE), 
+                    error = identity)
+                  close(zz)
+                  if (!inherits(res, "error")) {
+                    encoding <- e
+                    break
+                  }
+                }
+                options(owarn)
+            }
+            if (is.na(encoding)) 
+                stop("unable to find a plausible encoding")
+            if (verbose) 
+                cat(gettextf("encoding = \"%s\" chosen", encoding), 
+                  "\n", sep = "")
+            {
+                filename <- file
+                file <- file(filename, "r", encoding = encoding)
+                on.exit(close(file))
+                if (isTRUE(keep.source)) {
+                  lines <- readLines(file, warn = FALSE)
+                  on.exit()
+                  close(file)
+                  srcfile <- srcfilecopy(filename, lines, file.mtime(filename)[1], 
+                    isFile = TRUE)
+                }
+                else {
+                  from_file <- TRUE
+                  srcfile <- filename
+                }
+                loc <- utils::localeToCharset()[1L]
+                encoding <- if (have_encoding) 
+                  switch(loc, `UTF-8` = "UTF-8", `ISO8859-1` = "latin1", 
+                    "unknown")
+                else "unknown"
+            }
+        }
+        else {
+            lines <- readLines(file, warn = FALSE)
+            srcfile <- if (isTRUE(keep.source)) 
+                srcfilecopy(deparse1(substitute(file), ""), lines)
+            else deparse1(substitute(file), "")
+        }
+        if (verbose) {
+            cat(sprintf(" --> from_file='%s'\n lines:", from_file))
+            utils::str(lines)
+        }
+        exprs <- if (!from_file) {
+            if (length(lines) && is.character(lines)) 
+                .Internal(parse(stdin(), n = -1, lines, "?", 
+                  srcfile, encoding))
+            else expression()
+        }
+        else .Internal(parse(file, n = -1, NULL, "?", srcfile, 
+            encoding))
+        on.exit()
+        if (from_file) 
+            close(file)
+        if (verbose) 
+            cat("--> parsed", length(exprs), "expressions; now eval(.)ing them:\n")
+        if (chdir) {
+            if (is.character(ofile)) {
+                if (grepl("^(ftp|ftps|http|https|file)://", ofile)) 
+                  warning("'chdir = TRUE' makes no sense for a URL")
+                else if ((path <- dirname(ofile)) != ".") {
+                  owd <- getwd()
+                  if (is.null(owd)) 
+                    stop("cannot 'chdir' as current directory is unknown")
+                  on.exit(setwd(owd), add = TRUE)
+                  setwd(path)
+                }
+            }
+            else {
+                warning("'chdir = TRUE' makes no sense for a connection")
+            }
+        }
+    }
+    else {
+        if (!missing(file)) 
+            stop("specify either 'file' or 'exprs' but not both")
+        if (!is.expression(exprs)) 
+            exprs <- as.expression(exprs)
+    }
+    Ne <- length(exprs)
+    if (echo) {
+        sd <- "\""
+        nos <- "[^\"]*"
+        oddsd <- paste0("^", nos, sd, "(", nos, sd, nos, sd, 
+            ")*", nos, "$")
+        trySrcLines <- function(srcfile, showfrom, showto) {
+            tryCatch(suppressWarnings(getSrcLines(srcfile, showfrom, 
+                showto)), error = function(e) character())
+        }
+    }
+    yy <- NULL
+    lastshown <- 0
+    srcrefs <- attr(exprs, "srcref")
+    if (verbose && !is.null(srcrefs)) {
+        cat("has srcrefs:\n")
+        utils::str(srcrefs)
+    }
+    for (i in seq_len(Ne + echo)) {
+        tail <- i > Ne
+        if (!tail) {
+            if (verbose) 
+                cat("\n>>>> eval(expression_nr.", i, ")\n\t\t =================\n")
+            ei <- exprs[i]
+        }
+        if (echo) {
+            nd <- 0
+            srcref <- if (tail) 
+                attr(exprs, "wholeSrcref")
+            else if (i <= length(srcrefs)) 
+                srcrefs[[i]]
+            if (!is.null(srcref)) {
+                if (length(srcref) >= 8) {
+                  firstl <- srcref[7L]
+                  lastl <- srcref[8L]
+                }
+                else {
+                  firstl <- srcref[1L]
+                  lastl <- srcref[3L]
+                }
+                if (i == 1) 
+                  lastshown <- min(skip.echo, lastl - 1)
+                if (lastshown < lastl) {
+                  srcfile <- attr(srcref, "srcfile")
+                  dep <- trySrcLines(srcfile, lastshown + 1, 
+                    lastl)
+                  if (length(dep)) {
+                    leading <- if (tail) 
+                      length(dep)
+                    else firstl - lastshown
+                    lastshown <- lastl
+                    while (length(dep) && grepl("^[[:blank:]]*$", 
+                      dep[1L])) {
+                      dep <- dep[-1L]
+                      leading <- leading - 1L
+                    }
+                    dep <- paste0(rep.int(c(prompt.echo, continue.echo), 
+                      pmax(0L, c(leading, length(dep) - leading))), 
+                      dep, collapse = "\n")
+                    nd <- nchar(dep, "c")
+                  }
+                  else srcref <- NULL
+                }
+            }
+            if (is.null(srcref)) {
+                if (!tail) {
+                  dep <- substr(paste(deparse(ei, width.cutoff = width.cutoff, 
+                    control = deparseCtrl), collapse = "\n"), 
+                    12L, 1000000L)
+                  dep <- paste0(prompt.echo, gsub("\n", paste0("\n", 
+                    continue.echo), dep, fixed = TRUE))
+                  nd <- nchar(dep, "c") - 1L
+                }
+            }
+            if (nd) {
+                do.trunc <- nd > max.deparse.length
+                dep <- substr(dep, 1L, if (do.trunc) 
+                  max.deparse.length
+                else nd)
+                cat(if (spaced) 
+                  "\n", dep, if (do.trunc) 
+                  paste(if (grepl(sd, dep) && grepl(oddsd, dep)) 
+                    " ...\" ..."
+                  else " ....", "[TRUNCATED] "), "\n", sep = "")
+            }
+        }
+        if (!tail) {
+            yy <- withVisible(eval(ei, envir))
+            i.symbol <- mode(ei[[1L]]) == "name"
+            if (!i.symbol) {
+                curr.fun <- ei[[1L]][[1L]]
+                if (verbose) {
+                  cat("curr.fun:")
+                  utils::str(curr.fun)
+                }
+            }
+            if (verbose >= 2) {
+                cat(".... mode(ei[[1L]])=", mode(ei[[1L]]), "; paste(curr.fun)=")
+                utils::str(paste(curr.fun))
+            }
+            if (print.eval && yy$visible) {
+                if (isS4(yy$value)) 
+                  methods::show(yy$value)
+                else print(yy$value)
+            }
+            if (verbose) 
+                cat(" .. after ", sQuote(deparse(ei, control = unique(c(deparseCtrl, 
+                  "useSource")))), "\n", sep = "")
+        }
+    }
+    invisible(yy)
+}
+<bytecode: 0x5d428e325150>
+<environment: namespace:base>
+
+sys.pr> t1 <- function() {
+sys.pr+   aa <- "here"
+sys.pr+   t2 <- function() {
+sys.pr+     ## in frame 2 here
+sys.pr+     cat("current frame is", sys.nframe(), "\n")
+sys.pr+     str(sys.calls()) ## list with two components t1() and t2()
+sys.pr+     cat("parents are frame numbers", sys.parents(), "\n") ## 0 1
+sys.pr+     print(ls(envir = sys.frame(-1))) ## [1] "aa" "t2"
+sys.pr+     invisible()
+sys.pr+   }
+sys.pr+   t2()
+sys.pr+ }
+
+sys.pr> t1()
+current frame is 7 
+Dotted pair list of 7
+ $ : language example(sys.parent, run.donttest = TRUE)
+ $ : language source(tf, local, echo = echo, prompt.echo = paste0(prompt.prefix, getOption("prompt")),      continue.echo = pas| __truncated__ ...
+ $ : language withVisible(eval(ei, envir))
+ $ : language eval(ei, envir)
+ $ : language eval(ei, envir)
+ $ : language t1()
+  ..- attr(*, "srcref")= 'srcref' int [1:8] 40 1 40 4 1 4 40 40
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+ $ : language t2()
+  ..- attr(*, "srcref")= 'srcref' int [1:8] 38 3 38 6 3 6 38 38
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+parents are frame numbers 0 1 2 2 4 0 6 
+[1] "aa" "t2"
+
+sys.pr> test.sys.on.exit <- function() {
+sys.pr+   on.exit(print(1))
+sys.pr+   ex <- sys.on.exit()
+sys.pr+   str(ex)
+sys.pr+   cat("exiting...\n")
+sys.pr+ }
+
+sys.pr> test.sys.on.exit()
+ language print(1)
+exiting...
+[1] 1
+
+sys.pr> ## gives 'language print(1)', prints 1 on exit
+sys.pr> 
+sys.pr> ## An example where the parent is not the next frame up the stack
+sys.pr> ## since method dispatch uses a frame.
+sys.pr> as.double.foo <- function(x)
+sys.pr+ {
+sys.pr+     str(sys.calls())
+sys.pr+     print(sys.frames())
+sys.pr+     print(sys.parents())
+sys.pr+     print(sys.frame(-1)); print(parent.frame())
+sys.pr+     x
+sys.pr+ }
+
+sys.pr> t2 <- function(x) as.double(x)
+
+sys.pr> a <- structure(pi, class = "foo")
+
+sys.pr> t2(a)
+Dotted pair list of 8
+ $ : language example(sys.parent, run.donttest = TRUE)
+ $ : language source(tf, local, echo = echo, prompt.echo = paste0(prompt.prefix, getOption("prompt")),      continue.echo = pas| __truncated__ ...
+ $ : language withVisible(eval(ei, envir))
+ $ : language eval(ei, envir)
+ $ : language eval(ei, envir)
+ $ : language t2(a)
+  ..- attr(*, "srcref")= 'srcref' int [1:8] 63 1 63 5 1 5 63 63
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+ $ : language as.double(x)
+  ..- attr(*, "srcref")= 'srcref' int [1:8] 61 7 61 30 7 30 61 61
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+ $ : language as.double.foo(x)
+  ..- attr(*, "srcref")= 'srcref' int [1:8] 61 7 61 30 7 30 61 61
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x5d428c9a7938> 
+[[1]]
+<environment: 0x5d428c706650>
+
+[[2]]
+<environment: 0x5d428eeeedd0>
+
+[[3]]
+<environment: 0x5d428f6da440>
+
+[[4]]
+<environment: 0x5d428f6da280>
+
+[[5]]
+<environment: R_GlobalEnv>
+
+[[6]]
+<environment: 0x5d428f6d9fe0>
+
+[[7]]
+<environment: 0x5d428f6d9e58>
+
+[[8]]
+<environment: 0x5d428f6d9c28>
+
+[1] 0 1 2 2 4 0 6 6
+<environment: 0x5d428f6d9e58>
+<environment: 0x5d428f6d9fe0>
+[1] 3.141593
+attr(,"class")
+[1] "foo"
+
+sys.pr> ## End(No test)
+sys.pr> 
+sys.pr> 
+> example(system.time, run.donttest = TRUE)
+
+systm.> require(stats)
+
+systm.> ## No test: 
+systm.> system.time(for(i in 1:100) mad(runif(1000)))
+   user  system elapsed 
+  0.184   0.000   0.183 
+
+systm.> ## End(No test)
+systm.> ## Not run: 
+systm.> ##D exT <- function(n = 10000) {
+systm.> ##D   # Purpose: Test if system.time works ok;   n: loop size
+systm.> ##D   system.time(for(i in 1:n) x <- mean(rt(1000, df = 4)))
+systm.> ##D }
+systm.> ##D #-- Try to interrupt one of the following (using Ctrl-C / Escape):
+systm.> ##D exT()                 #- about 4 secs on a 2.5GHz Xeon
+systm.> ##D system.time(exT())    #~ +/- same
+systm.> ## End(Not run)
+systm.> 
+systm.> 
+> example(tempfile, run.donttest = TRUE)
+
+tempfl> ## No test: 
+tempfl> tempfile(c("ab", "a b c"))   # give file name with spaces in!
+[1] "/tmp/RtmpGyfbA6/abc63e7c58c108"    "/tmp/RtmpGyfbA6/a b cc63e6d2871b8"
+
+tempfl> tempfile("plot", fileext = c(".ps", ".pdf"))
+[1] "/tmp/RtmpGyfbA6/plotc63e497df799.ps" 
+[2] "/tmp/RtmpGyfbA6/plotc63e5e0962d0.pdf"
+
+tempfl> tempdir() # works on all platforms with a platform-dependent result
+[1] "/tmp/RtmpGyfbA6"
+
+tempfl> ## End(No test)
+tempfl> 
+tempfl> ## Show how 'check' is working on some platforms:
+tempfl> if(exists("I'm brave") && `I'm brave` &&
+tempfl+    identical(.Platform$OS.type, "unix") && grepl("^/tmp/", tempdir())) {
+tempfl+   cat("Current tempdir(): ", tempdir(), "\n")
+tempfl+   cat("Removing it :", file.remove(tempdir()),
+tempfl+       "; dir.exists(tempdir()):", dir.exists(tempdir()), "\n")
+tempfl+   cat("and now  tempdir(check = TRUE) :", tempdir(check = TRUE),"\n")
+tempfl+ }
+> example(weekdays, run.donttest = TRUE)
+
+wekdys> ## No test: 
+wekdys> ## first two are locale dependent:
+wekdys> weekdays(.leap.seconds)
+ [1] "Saturday"  "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Saturday" 
+ [7] "Sunday"    "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"   
+[13] "Monday"    "Friday"    "Monday"    "Tuesday"   "Wednesday" "Thursday" 
+[19] "Friday"    "Monday"    "Tuesday"   "Friday"    "Sunday"    "Thursday" 
+[25] "Sunday"    "Wednesday" "Sunday"   
+
+wekdys> months  (.leap.seconds)
+ [1] "July"    "January" "January" "January" "January" "January" "January"
+ [8] "January" "January" "July"    "July"    "July"    "July"    "January"
+[15] "January" "January" "July"    "July"    "July"    "January" "July"   
+[22] "January" "January" "January" "July"    "July"    "January"
+
+wekdys> ## End(No test)
+wekdys> quarters(.leap.seconds)
+ [1] "Q3" "Q1" "Q1" "Q1" "Q1" "Q1" "Q1" "Q1" "Q1" "Q3" "Q3" "Q3" "Q3" "Q1" "Q1"
+[16] "Q1" "Q3" "Q3" "Q3" "Q1" "Q3" "Q1" "Q1" "Q1" "Q3" "Q3" "Q1"
+
+wekdys> ## Show how easily you get month, day, year, day (of {month, week, yr}), ... :
+wekdys> ## (remember to count from 0 (!): mon = 0..11, wday = 0..6,  etc !!)
+wekdys> 
+wekdys> ##' Transform (Time-)Date vector  to  convenient data frame :
+wekdys> dt2df <- function(dt, dName = deparse(substitute(dt))) {
+wekdys+     DF <- as.data.frame(unclass(as.POSIXlt( dt )))
+wekdys+     `names<-`(cbind(dt, DF, deparse.level=0L), c(dName, names(DF)))
+wekdys+ }
+
+wekdys> ## e.g.,
+wekdys> dt2df(.leap.seconds)    # date+time
+   .leap.seconds sec min hour mday mon year wday yday isdst zone gmtoff
+1     1972-07-01   0   0    0    1   6   72    6  182     0  GMT      0
+2     1973-01-01   0   0    0    1   0   73    1    0     0  GMT      0
+3     1974-01-01   0   0    0    1   0   74    2    0     0  GMT      0
+4     1975-01-01   0   0    0    1   0   75    3    0     0  GMT      0
+5     1976-01-01   0   0    0    1   0   76    4    0     0  GMT      0
+6     1977-01-01   0   0    0    1   0   77    6    0     0  GMT      0
+7     1978-01-01   0   0    0    1   0   78    0    0     0  GMT      0
+8     1979-01-01   0   0    0    1   0   79    1    0     0  GMT      0
+9     1980-01-01   0   0    0    1   0   80    2    0     0  GMT      0
+10    1981-07-01   0   0    0    1   6   81    3  181     0  GMT      0
+11    1982-07-01   0   0    0    1   6   82    4  181     0  GMT      0
+12    1983-07-01   0   0    0    1   6   83    5  181     0  GMT      0
+13    1985-07-01   0   0    0    1   6   85    1  181     0  GMT      0
+14    1988-01-01   0   0    0    1   0   88    5    0     0  GMT      0
+15    1990-01-01   0   0    0    1   0   90    1    0     0  GMT      0
+16    1991-01-01   0   0    0    1   0   91    2    0     0  GMT      0
+17    1992-07-01   0   0    0    1   6   92    3  182     0  GMT      0
+18    1993-07-01   0   0    0    1   6   93    4  181     0  GMT      0
+19    1994-07-01   0   0    0    1   6   94    5  181     0  GMT      0
+20    1996-01-01   0   0    0    1   0   96    1    0     0  GMT      0
+21    1997-07-01   0   0    0    1   6   97    2  181     0  GMT      0
+22    1999-01-01   0   0    0    1   0   99    5    0     0  GMT      0
+23    2006-01-01   0   0    0    1   0  106    0    0     0  GMT      0
+24    2009-01-01   0   0    0    1   0  109    4    0     0  GMT      0
+25    2012-07-01   0   0    0    1   6  112    0  182     0  GMT      0
+26    2015-07-01   0   0    0    1   6  115    3  181     0  GMT      0
+27    2017-01-01   0   0    0    1   0  117    0    0     0  GMT      0
+
+wekdys> ## No test: 
+wekdys> dt2df(Sys.Date() + 0:9) # date
+   Sys.Date() + 0:9 sec min hour mday mon year wday yday isdst zone gmtoff
+1        2024-03-09   0   0    0    9   2  124    6   68     0  UTC      0
+2        2024-03-10   0   0    0   10   2  124    0   69     0  UTC      0
+3        2024-03-11   0   0    0   11   2  124    1   70     0  UTC      0
+4        2024-03-12   0   0    0   12   2  124    2   71     0  UTC      0
+5        2024-03-13   0   0    0   13   2  124    3   72     0  UTC      0
+6        2024-03-14   0   0    0   14   2  124    4   73     0  UTC      0
+7        2024-03-15   0   0    0   15   2  124    5   74     0  UTC      0
+8        2024-03-16   0   0    0   16   2  124    6   75     0  UTC      0
+9        2024-03-17   0   0    0   17   2  124    0   76     0  UTC      0
+10       2024-03-18   0   0    0   18   2  124    1   77     0  UTC      0
+
+wekdys> ## End(No test)
+wekdys> ##' Even simpler:  Date -> Matrix - dropping time info {sec,min,hour, isdst}
+wekdys> d2mat <- function(x) simplify2array(unclass(as.POSIXlt(x))[4:7])
+
+wekdys> ## e.g.,
+wekdys> d2mat(seq(as.Date("2000-02-02"), by=1, length.out=30)) # has R 1.0.0's release date
+      mday mon year wday
+ [1,]    2   1  100    3
+ [2,]    3   1  100    4
+ [3,]    4   1  100    5
+ [4,]    5   1  100    6
+ [5,]    6   1  100    0
+ [6,]    7   1  100    1
+ [7,]    8   1  100    2
+ [8,]    9   1  100    3
+ [9,]   10   1  100    4
+[10,]   11   1  100    5
+[11,]   12   1  100    6
+[12,]   13   1  100    0
+[13,]   14   1  100    1
+[14,]   15   1  100    2
+[15,]   16   1  100    3
+[16,]   17   1  100    4
+[17,]   18   1  100    5
+[18,]   19   1  100    6
+[19,]   20   1  100    0
+[20,]   21   1  100    1
+[21,]   22   1  100    2
+[22,]   23   1  100    3
+[23,]   24   1  100    4
+[24,]   25   1  100    5
+[25,]   26   1  100    6
+[26,]   27   1  100    0
+[27,]   28   1  100    1
+[28,]   29   1  100    2
+[29,]    1   2  100    3
+[30,]    2   2  100    4
+
+wekdys> ## No test: 
+wekdys> ## Julian Day Number (JDN, https://en.wikipedia.org/wiki/Julian_day)
+wekdys> ## is the number of days since noon UTC on the first day of 4317 BCE.
+wekdys> ## in the proleptic Julian calendar.  To more recently, in
+wekdys> ## 'Terrestrial Time' which differs from UTC by a few seconds
+wekdys> ## See https://en.wikipedia.org/wiki/Terrestrial_Time
+wekdys> julian(Sys.Date(), -2440588) # from a day
+[1] 2460379
+attr(,"origin")
+[1] -2440588
+
+wekdys> floor(as.numeric(julian(Sys.time())) + 2440587.5) # from a date-time
+[1] 2460379
+
+wekdys> ## End(No test)
+wekdys> 
+wekdys> 
+wekdys> 
+> library(help = "splines")
+
+		Information on package 'splines'
+
+Description:
+
+Package:            splines
+Version:            4.3.3
+Priority:           base
+Imports:            graphics, stats
+Title:              Regression Spline Functions and Classes
+Author:             Douglas M. Bates <bates@stat.wisc.edu> and William
+                    N. Venables <Bill.Venables@csiro.au>
+Maintainer:         R Core Team <do-use-Contact-address@r-project.org>
+Contact:            R-help mailing list <r-help@r-project.org>
+Description:        Regression spline functions and classes.
+License:            Part of R 4.3.3
+Suggests:           Matrix, methods
+NeedsCompilation:   yes
+Built:              R 4.3.3; x86_64-pc-linux-gnu; 2024-03-10 04:48:51
+                    UTC; unix
+
+Index:
+
+asVector                Coerce an Object to a Vector
+backSpline              Monotone Inverse Spline
+bs                      B-Spline Basis for Polynomial Splines
+interpSpline            Create an Interpolation Spline
+ns                      Generate a Basis Matrix for Natural Cubic
+                        Splines
+periodicSpline          Create a Periodic Interpolation Spline
+polySpline              Piecewise Polynomial Spline Representation
+predict.bSpline         Evaluate a Spline at New Values of x
+predict.bs              Evaluate a Spline Basis
+splineDesign            Design Matrix for B-splines
+splineKnots             Knot Vector from a Spline
+splineOrder             Determine the Order of a Spline
+splines-package         Regression Spline Functions and Classes
+xyVector                Construct an 'xyVector' Object
+
+> 
+> ## for example(NA)
+> if(require("microbenchmark")) {
++   x <- c(NaN, 1:10000)
++   print(microbenchmark(any(is.na(x)), anyNA(x)))
++ } else { ## much less accurate
++   x <- c(NaN, 1e6)
++   nSim <- 2^13
++   print(rbind(is.na = system.time(replicate(nSim, any(is.na(x)))),
++               anyNA = system.time(replicate(nSim, anyNA(x)))))
++ }
+Loading required package: microbenchmark
+      user.self sys.self elapsed user.child sys.child
+is.na     0.145        0   0.146          0         0
+anyNA     0.101        0   0.101          0         0
+Warning message:
+In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called 'microbenchmark'
+> 
+> ## utils
+> example(news, run.donttest = TRUE)
+
+news> ## Build a db of all R news entries.
+news> db <- news()
+
+news> ## Don't show: 
+news>   vv <- capture.output(print(db, doBrowse=FALSE))  # without an error
+
+news>   stopifnot(is.character(vv), length(vv) >= 3) # was wrong (for weeks during devel.)
+
+news> ## End(Don't show)
+news> ## Bug fixes with PR number in 4.0.0.
+news> db4 <- news(Version == "4.0.0" & grepl("^BUG", Category) & grepl("PR#", Text),
+news+             db = db)
+
+news> nrow(db4)
+[1] 25
+
+news> ## print db4 to show in an HTML browser.
+news> 
+news> ## News from a date range ('Matrix' is there in a regular R installation):
+news> if(length(iM <- find.package("Matrix", quiet = TRUE)) && nzchar(iM)) {
+news+    dM <- news(package="Matrix")
+news+    stopifnot(identical(dM, news(db=dM)))
+news+    dM2014 <- news("2014-01-01" <= Date & Date <= "2014-12-31", db = dM)
+news+    stopifnot(paste0("1.1-", 2:4) %in% dM2014[,"Version"])
+news+ }
+
+news> ## Which categories have been in use? % R-core maybe should standardize a bit more
+news> sort(table(db[, "Category"]), decreasing = TRUE)
+
+                             BUG FIXES                           NEW FEATURES 
+                                   338                                    235 
+                             UTILITIES                     C-LEVEL FACILITIES 
+                                    35                                     31 
+          INSTALLATION on a UNIX-ALIKE                 DEPRECATED AND DEFUNCT 
+                                    25                                     24 
+                               WINDOWS                               GRAPHICS 
+                                    18                                     15 
+                       DATES and TIMES                   BUG FIXES on Windows 
+                                    13                                     12 
+                  PACKAGE INSTALLATION       SIGNIFICANT USER-VISIBLE CHANGES 
+                                    12                                     11 
+              ENCODING-RELATED CHANGES                    BUG FIXES (Windows) 
+                                     8                                      7 
+                               Windows LINK-TIME OPTIMIZATION on a UNIX-ALIKE 
+                                     6                                      5 
+                          INSTALLATION                     MIGRATION TO PCRE2 
+                                     4                                      4 
+                 BUILDING R on Windows                INSTALLATION on WINDOWS 
+                                     3                                      3 
+                         FORTRAN FLAGS                      FUTURE DIRECTIONS 
+                                     1                                      1 
+       PACKAGE INSTALLATION on Windows          PACKAGE INSTALLATION on macOS 
+                                     1                                      1 
+                    REFERENCE COUNTING 
+                                     1 
+
+news> ## Entries with version >= 4.0.0
+news> table(news(Version >= "4.0.0", db = db)$Version)
+
+4.0.0 4.0.1 4.0.2 4.0.3 4.0.4 4.0.5 4.1.0 4.1.1 4.1.2 4.1.3 4.2.0 4.2.1 4.2.2 
+  156    11     6    26    18     2   127    19    17    20   143    21    25 
+4.2.3 4.3.0 4.3.1 4.3.2 4.3.3 
+   17   148    10    25    23 
+
+news> ## No test: 
+news> ## do the same for R 3.x.y, more slowly
+news> db3 <- news(package = "R-3")
+
+news> sort(table(db3[, "Category"]), decreasing = TRUE)
+
+                         BUG FIXES                       NEW FEATURES 
+                               773                                653 
+                         UTILITIES             DEPRECATED AND DEFUNCT 
+                                90                                 79 
+                C-LEVEL FACILITIES INSTALLATION and INCLUDED SOFTWARE 
+                                58                                 55 
+              PACKAGE INSTALLATION       INSTALLATION on a UNIX-ALIKE 
+                                41                                 34 
+  SIGNIFICANT USER-VISIBLE CHANGES                       LONG VECTORS 
+                                18                                 13 
+                      INSTALLATION           PERFORMANCE IMPROVEMENTS 
+                                10                                  7 
+                         DEBUGGING               INTERNATIONALIZATION 
+                                 5                                  5 
+             WINDOWS BUILD CHANGES                     CODE MIGRATION 
+                                 4                                  3 
+                  PACKAGE parallel                  INCLUDED SOFTWARE 
+                                 3                                  2 
+                     DOCUMENTATION                            TESTING 
+                                 1                                  1 
+                           Windows 
+                                 1 
+
+news> ## Entries with version >= 3.6.0
+news> table(news(Version >= "3.6.0", db = db3)$Version)
+
+3.6.0 3.6.1 3.6.2 3.6.3 
+  174    19    32     8 
+
+news> ## End(No test)
+news> 
+news> 
+news> 
+> example(packageDescription, run.donttest = TRUE)
+
+pckgDs> ## No test: 
+pckgDs> packageDescription("stats")
+Package: stats
+Version: 4.3.3
+Priority: base
+Title: The R Stats Package
+Author: R Core Team and contributors worldwide
+Maintainer: R Core Team <do-use-Contact-address@r-project.org>
+Contact: R-help mailing list <r-help@r-project.org>
+Description: R statistical functions.
+License: Part of R 4.3.3
+Imports: utils, grDevices, graphics
+Suggests: MASS, Matrix, SuppDists, methods, stats4
+NeedsCompilation: yes
+Built: R 4.3.3; x86_64-pc-linux-gnu; 2024-03-10 04:43:08 UTC; unix
+
+-- File: /home/vm/Desktop/R-4.3.3/library/stats/Meta/package.rds 
+
+pckgDs> packageDescription("stats", fields = c("Package", "Version"))
+Package: stats
+Version: 4.3.3
+
+-- File: /home/vm/Desktop/R-4.3.3/library/stats/Meta/package.rds 
+-- Fields read: Package, Version
+
+pckgDs> packageDescription("stats", fields = "Version")
+[1] "4.3.3"
+
+pckgDs> packageDescription("stats", fields = "Version", drop = FALSE)
+Version: 4.3.3
+
+-- File: /home/vm/Desktop/R-4.3.3/library/stats/Meta/package.rds 
+-- Fields read: Version
+
+pckgDs> ## End(No test)
+pckgDs> if(requireNamespace("MASS") && packageVersion("MASS") < "7.3.29")
+pckgDs+   message("you need to update 'MASS'")
+Loading required namespace: MASS
+Failed with error:  'there is no package called 'MASS''
+
+pckgDs> pu <- packageDate("utils")
+
+pckgDs> ## No test: 
+pckgDs> str(pu)
+ Date[1:1], format: "2024-03-10"
+
+pckgDs> ## End(No test)
+pckgDs> stopifnot(identical(pu, packageDate(desc = packageDescription("utils"))),
+pckgDs+           identical(pu, packageDate("stats"))) # as "utils" and "stats" are
+
+pckgDs>                                    # both 'base R' and "Built" at same time
+pckgDs> 
+pckgDs> 
+pckgDs> 
+> example(sessionInfo, run.donttest = TRUE)
+
+sssnIn> ## No test: 
+sssnIn> sI <- sessionInfo()
+
+sssnIn> sI
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 22.04.4 LTS
+
+Matrix products: default
+BLAS:   /home/vm/Desktop/R-4.3.3/lib/libRblas.so 
+LAPACK: /home/vm/Desktop/R-4.3.3/lib/libRlapack.so;  LAPACK version 3.11.0
+
+locale:
+[1] C
+
+time zone: America/Chicago
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.3.3 tools_4.3.3   
+
+sssnIn> # The same, showing the RNGkind, but not the locale :
+sssnIn>   print(sI, RNG = TRUE, locale = FALSE)
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 22.04.4 LTS
+
+Matrix products: default
+BLAS:   /home/vm/Desktop/R-4.3.3/lib/libRblas.so 
+LAPACK: /home/vm/Desktop/R-4.3.3/lib/libRlapack.so;  LAPACK version 3.11.0
+
+Random number generation:
+ RNG:     Mersenne-Twister 
+ Normal:  Inversion 
+ Sample:  Rejection 
+ 
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.3.3 tools_4.3.3   
+
+sssnIn> toLatex(sI, locale = FALSE) # shortest; possibly desirable at end of report
+\begin{itemize}\raggedright
+  \item R version 4.3.3 (2024-02-29), \verb|x86_64-pc-linux-gnu|
+  \item Running under: \verb|Ubuntu 22.04.4 LTS|
+  \item Matrix products: default
+  \item BLAS:   \verb|/home/vm/Desktop/R-4.3.3/lib/libRblas.so|
+  \item LAPACK: \verb|/home/vm/Desktop/R-4.3.3/lib/libRlapack.so|
+; \quad\ LAPACK version3.11.0
+  \item Base packages: base, datasets, grDevices, graphics, methods,
+    stats, utils
+  \item Loaded via a namespace (and not attached): compiler~4.3.3,
+    tools~4.3.3
+\end{itemize}
+
+sssnIn> ## End(No test)
+sssnIn> 
+sssnIn> 
+> 
+> ## datasets
+> example(JohnsonJohnson, run.donttest = TRUE)
+
+JhnsnJ> ## No test: 
+JhnsnJ> require(stats); require(graphics)
+
+JhnsnJ> JJ <- log10(JohnsonJohnson)
+
+JhnsnJ> plot(JJ)
+
+JhnsnJ> ## This example gives a possible-non-convergence warning on some
+JhnsnJ> ## platforms, but does seem to converge on x86 Linux and Windows.
+JhnsnJ> (fit <- StructTS(JJ, type = "BSM"))
+
+Call:
+StructTS(x = JJ, type = "BSM")
+
+Variances:
+    level      slope       seas    epsilon  
+1.948e-04  6.548e-06  4.138e-04  2.647e-04  
+
+JhnsnJ> tsdiag(fit)
+
+JhnsnJ> sm <- tsSmooth(fit)
+
+JhnsnJ> plot(cbind(JJ, sm[, 1], sm[, 3]-0.5), plot.type = "single",
+JhnsnJ+      col = c("black", "green", "blue"))
+
+JhnsnJ> abline(h = -0.5, col = "grey60")
+
+JhnsnJ> monthplot(fit)
+
+JhnsnJ> ## End(No test)
+JhnsnJ> 
+JhnsnJ> 
+> example(ability.cov, run.donttest = TRUE)
+
+ablty.> ## No test: 
+ablty.> require(stats)
+
+ablty.> (ability.FA <- factanal(factors = 1, covmat = ability.cov))
+
+Call:
+factanal(factors = 1, covmat = ability.cov)
+
+Uniquenesses:
+general picture  blocks    maze reading   vocab 
+  0.535   0.853   0.748   0.910   0.232   0.280 
+
+Loadings:
+        Factor1
+general 0.682  
+picture 0.384  
+blocks  0.502  
+maze    0.300  
+reading 0.877  
+vocab   0.849  
+
+               Factor1
+SS loadings      2.443
+Proportion Var   0.407
+
+Test of the hypothesis that 1 factor is sufficient.
+The chi square statistic is 75.18 on 9 degrees of freedom.
+The p-value is 1.46e-12 
+
+ablty.> update(ability.FA, factors = 2)
+
+Call:
+factanal(factors = 2, covmat = ability.cov)
+
+Uniquenesses:
+general picture  blocks    maze reading   vocab 
+  0.455   0.589   0.218   0.769   0.052   0.334 
+
+Loadings:
+        Factor1 Factor2
+general 0.499   0.543  
+picture 0.156   0.622  
+blocks  0.206   0.860  
+maze    0.109   0.468  
+reading 0.956   0.182  
+vocab   0.785   0.225  
+
+               Factor1 Factor2
+SS loadings      1.858   1.724
+Proportion Var   0.310   0.287
+Cumulative Var   0.310   0.597
+
+Test of the hypothesis that 2 factors are sufficient.
+The chi square statistic is 6.11 on 4 degrees of freedom.
+The p-value is 0.191 
+
+ablty.> ## The signs of factors and hence the signs of correlations are
+ablty.> ## arbitrary with promax rotation.
+ablty.> update(ability.FA, factors = 2, rotation = "promax")
+
+Call:
+factanal(factors = 2, covmat = ability.cov, rotation = "promax")
+
+Uniquenesses:
+general picture  blocks    maze reading   vocab 
+  0.455   0.589   0.218   0.769   0.052   0.334 
+
+Loadings:
+        Factor1 Factor2
+general  0.364   0.470 
+picture          0.671 
+blocks           0.932 
+maze             0.508 
+reading  1.023         
+vocab    0.811         
+
+               Factor1 Factor2
+SS loadings      1.853   1.807
+Proportion Var   0.309   0.301
+Cumulative Var   0.309   0.610
+
+Factor Correlations:
+        Factor1 Factor2
+Factor1   1.000   0.557
+Factor2   0.557   1.000
+
+Test of the hypothesis that 2 factors are sufficient.
+The chi square statistic is 6.11 on 4 degrees of freedom.
+The p-value is 0.191 
+
+ablty.> ## End(No test)
+ablty.> 
+ablty.> 
+> example(npk, run.donttest = TRUE)
+
+npk> ## No test: 
+npk> options(contrasts = c("contr.sum", "contr.poly"))
+
+npk> npk.aov <- aov(yield ~ block + N*P*K, npk)
+
+npk> npk.aov
+Call:
+   aov(formula = yield ~ block + N * P * K, data = npk)
+
+Terms:
+                   block        N        P        K      N:P      N:K      P:K
+Sum of Squares  343.2950 189.2817   8.4017  95.2017  21.2817  33.1350   0.4817
+Deg. of Freedom        5        1        1        1        1        1        1
+                Residuals
+Sum of Squares   185.2867
+Deg. of Freedom        12
+
+Residual standard error: 3.929447
+1 out of 13 effects not estimable
+Estimated effects may be unbalanced
+
+npk> summary(npk.aov)
+            Df Sum Sq Mean Sq F value  Pr(>F)   
+block        5  343.3   68.66   4.447 0.01594 * 
+N            1  189.3  189.28  12.259 0.00437 **
+P            1    8.4    8.40   0.544 0.47490   
+K            1   95.2   95.20   6.166 0.02880 * 
+N:P          1   21.3   21.28   1.378 0.26317   
+N:K          1   33.1   33.13   2.146 0.16865   
+P:K          1    0.5    0.48   0.031 0.86275   
+Residuals   12  185.3   15.44                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+npk> coef(npk.aov)
+(Intercept)      block1      block2      block3      block4      block5 
+ 54.8750000  -0.8500000   2.5750000   5.9000000  -4.7500000  -4.3500000 
+         N1          P1          K1       N1:P1       N1:K1       P1:K1 
+ -2.8083333   0.5916667   1.9916667  -0.9416667  -1.1750000   0.1416667 
+
+npk> options(contrasts = c("contr.treatment", "contr.poly"))
+
+npk> npk.aov1 <- aov(yield ~ block + N + K, data = npk)
+
+npk> summary.lm(npk.aov1)
+
+Call:
+aov(formula = yield ~ block + N + K, data = npk)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.4083 -2.1438  0.2042  2.3292  7.0750 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   53.208      2.276  23.381  8.5e-14 ***
+block2         3.425      2.787   1.229  0.23690    
+block3         6.750      2.787   2.422  0.02769 *  
+block4        -3.900      2.787  -1.399  0.18082    
+block5        -3.500      2.787  -1.256  0.22723    
+block6         2.325      2.787   0.834  0.41646    
+N1             5.617      1.609   3.490  0.00302 ** 
+K1            -3.983      1.609  -2.475  0.02487 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.942 on 16 degrees of freedom
+Multiple R-squared:  0.7163,	Adjusted R-squared:  0.5922 
+F-statistic: 5.772 on 7 and 16 DF,  p-value: 0.001805
+
+
+npk> se.contrast(npk.aov1, list(N=="0", N=="1"), data = npk)
+[1] 1.609175
+
+npk> model.tables(npk.aov1, type = "means", se = TRUE)
+Tables of means
+Grand mean
+       
+54.875 
+
+ block 
+block
+    1     2     3     4     5     6 
+54.02 57.45 60.78 50.12 50.52 56.35 
+
+ N 
+N
+    0     1 
+52.07 57.68 
+
+ K 
+K
+    0     1 
+56.87 52.88 
+
+Standard errors for differences of means
+        block     N     K
+        2.787 1.609 1.609
+replic.     4    12    12
+
+npk> ## End(No test)
+npk> 
+npk> 
+> 
+> ## grDevices
+> example(grSoftVersion, run.donttest = TRUE)
+
+grSftV> ## No test: 
+grSftV> grSoftVersion()
+   cairo  cairoFT    pango   libpng     jpeg  libtiff 
+      ""       ""       "" "1.6.37"       ""       "" 
+
+grSftV> ## End(No test)
+grSftV> 
+grSftV> 
+grSftV> 
+> if(.Platform$OS.type == "windows") {
++     example(windowsFonts, run.donttest = TRUE)
++ } else {
++     example(X11Fonts, run.donttest = TRUE)
++     example(quartzFonts, run.donttest = TRUE)
++ }
+
+X11Fnt> ## IGNORE_RDIFF_BEGIN
+X11Fnt> if(capabilities()[["X11"]]) withAutoprint({
+X11Fnt+ X11Fonts()
+X11Fnt+ X11Fonts("mono")
+X11Fnt+ utopia <- X11Font("-*-utopia-*-*-*-*-*-*-*-*-*-*-*-*")
+X11Fnt+ X11Fonts(utopia = utopia)
+X11Fnt+ })
+> X11Fonts()
+$serif
+[1] "-*-times-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$sans
+[1] "-*-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$mono
+[1] "-*-courier-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Times
+[1] "-adobe-times-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Helvetica
+[1] "-adobe-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$CyrTimes
+[1] "-cronyx-times-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$CyrHelvetica
+[1] "-cronyx-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Arial
+[1] "-monotype-arial-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+$Mincho
+[1] "-*-mincho-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+> X11Fonts("mono")
+$mono
+[1] "-*-courier-%s-%s-*-*-%d-*-*-*-*-*-*-*"
+
+> utopia <- X11Font("-*-utopia-*-*-*-*-*-*-*-*-*-*-*-*")
+> X11Fonts(utopia = utopia)
+
+X11Fnt> ## IGNORE_RDIFF_END
+X11Fnt> 
+X11Fnt> 
+X11Fnt> 
+
+qrtzFn> if(.Platform$OS.type == "unix") { # includes Mac
+qrtzFn+ 
+qrtzFn+  utils::str( quartzFonts() ) # a list(serif = .., sans = .., mono = ..)
+qrtzFn+  quartzFonts("mono") # the list(mono = ..) sublist of quartzFonts()
+qrtzFn+ ## Not run: 
+qrtzFn+ ##D   ## for East Asian locales you can use something like
+qrtzFn+ ##D   quartzFonts(sans = quartzFont(rep("AppleGothic", 4)),
+qrtzFn+ ##D 	      serif = quartzFont(rep("AppleMyungjp", 4)))
+qrtzFn+ ##D   ## since the default fonts may well not have the glyphs needed
+qrtzFn+ ## End(Not run)
+qrtzFn+ }
+List of 3
+ $ serif: chr [1:4] "Times-Roman" "Times-Bold" "Times-Italic" "Times-BoldItalic"
+ $ sans : chr [1:4] "Helvetica" "Helvetica-Bold" "Helvetica-Oblique" "Helvetica-BoldOblique"
+ $ mono : chr [1:4] "Courier" "Courier-Bold" "Courier-Oblique" "Courier-BoldOblique"
+$mono
+[1] "Courier"             "Courier-Bold"        "Courier-Oblique"    
+[4] "Courier-BoldOblique"
+
+> 
+> library(tools)
+> example(Rd_db, run.donttest = TRUE)
+
+Rd_db> ## No test: 
+Rd_db> ## Build the Rd db for the (installed) base package.
+Rd_db> db <- Rd_db("base")
+
+Rd_db> ## Keyword metadata per Rd object.
+Rd_db> keywords <- lapply(db, tools:::.Rd_get_metadata, "keyword")
+
+Rd_db> ## Tabulate the keyword entries.
+Rd_db> kw_table <- sort(table(unlist(keywords)))
+
+Rd_db> ## The 5 most frequent ones:
+Rd_db> rev(kw_table)[1 : 5]
+
+  utilities programming        file       array       manip 
+         86          76          45          43          35 
+
+Rd_db> ## The "most informative" ones:
+Rd_db> kw_table[kw_table == 1]
+
+complex  device   files   hplot package 
+      1       1       1       1       1 
+
+Rd_db> ## Concept metadata per Rd file.
+Rd_db> concepts <- lapply(db, tools:::.Rd_get_metadata, "concept")
+
+Rd_db> ## How many files already have \concept metadata?
+Rd_db> sum(sapply(concepts, length) > 0)
+[1] 34
+
+Rd_db> ## How many concept entries altogether?
+Rd_db> length(unlist(concepts))
+[1] 74
+
+Rd_db> ## End(No test)
+Rd_db> 
+Rd_db> 
+> example(file_ext, run.donttest = TRUE)
+
+fil_xt> ## No test: 
+fil_xt> dir <- file.path(R.home(), "library", "stats")
+
+fil_xt> list_files_with_exts(file.path(dir, "demo"), "R")
+[1] "/home/vm/Desktop/R-4.3.3/library/stats/demo/glm.vr.R"
+[2] "/home/vm/Desktop/R-4.3.3/library/stats/demo/lm.glm.R"
+[3] "/home/vm/Desktop/R-4.3.3/library/stats/demo/nlm.R"   
+[4] "/home/vm/Desktop/R-4.3.3/library/stats/demo/smooth.R"
+
+fil_xt> list_files_with_type(file.path(dir, "demo"), "demo") # the same
+[1] "/home/vm/Desktop/R-4.3.3/library/stats/demo/glm.vr.R"
+[2] "/home/vm/Desktop/R-4.3.3/library/stats/demo/lm.glm.R"
+[3] "/home/vm/Desktop/R-4.3.3/library/stats/demo/nlm.R"   
+[4] "/home/vm/Desktop/R-4.3.3/library/stats/demo/smooth.R"
+
+fil_xt> file_path_sans_ext(list.files(file.path(R.home("modules"))))
+[1] "R_X11"    "R_de"     "internet" "lapack"  
+
+fil_xt> ## End(No test)
+fil_xt> 
+fil_xt> 
+> example(makevars_user, run.donttest = TRUE)
+
+mkvrs_> ## No test: 
+mkvrs_> makevars_user()
+character(0)
+
+mkvrs_> makevars_site()
+character(0)
+
+mkvrs_> ## End(No test)
+mkvrs_> ## Don't show: 
+mkvrs_> checkMV <- function(r)
+mkvrs_+   stopifnot(is.character(r),
+mkvrs_+             length(r) == 0 || (length(r) == 1 && file.exists(r)))
+
+mkvrs_> checkMV(makevars_user())
+
+mkvrs_> checkMV(makevars_site())
+
+mkvrs_> ## End(Don't show)
+mkvrs_> 
+mkvrs_> 
+mkvrs_> 
+> ## results are location- and OS-specific
+> example(parseLatex, run.donttest = TRUE) # charset-specific
+
+prsLtx> ## No test: 
+prsLtx> latex <- parseLatex("fa\\c{c}ile")
+
+prsLtx> deparseLatex(latexToUtf8(latex))
+[1] "fa<U+00E7>ile"
+
+prsLtx> ## End(No test)
+prsLtx> 
+prsLtx> 
+> 
+> ## part of example(buildVignettes) at one time
+> gVigns <- pkgVignettes("grid")
+> str(gVigns) # contains paths
+List of 8
+ $ docs     : chr [1:13] "/home/vm/Desktop/R-4.3.3/library/grid/doc/displaylist.Rnw" "/home/vm/Desktop/R-4.3.3/library/grid/doc/frame.Rnw" "/home/vm/Desktop/R-4.3.3/library/grid/doc/grid.Rnw" "/home/vm/Desktop/R-4.3.3/library/grid/doc/grobs.Rnw" ...
+ $ names    : chr [1:13] "displaylist" "frame" "grid" "grobs" ...
+ $ engines  : chr [1:13] "utils::Sweave" "utils::Sweave" "utils::Sweave" "utils::Sweave" ...
+ $ patterns : chr [1:13] "[.][rRsS](nw|tex)$" "[.][rRsS](nw|tex)$" "[.][rRsS](nw|tex)$" "[.][rRsS](nw|tex)$" ...
+ $ encodings: Named chr [1:13] "" "" "" "" ...
+  ..- attr(*, "names")= chr [1:13] "/home/vm/Desktop/R-4.3.3/library/grid/doc/displaylist.Rnw" "/home/vm/Desktop/R-4.3.3/library/grid/doc/frame.Rnw" "/home/vm/Desktop/R-4.3.3/library/grid/doc/grid.Rnw" "/home/vm/Desktop/R-4.3.3/library/grid/doc/grobs.Rnw" ...
+ $ dir      : chr "/home/vm/Desktop/R-4.3.3/library/grid/doc"
+ $ pkgdir   : chr "/home/vm/Desktop/R-4.3.3/library/grid"
+ $ msg      : chr(0) 
+ - attr(*, "class")= chr "pkgVignettes"
+> 
+> vind <- system.file(package = "grid", "doc", "index.html")
+> if(nzchar(vind)) { # so vignettes have been installed
++     `%=f=%` <- function(a, b) normalizePath(a) == normalizePath(b)
++     with(gVigns,
++          stopifnot(engines == "utils::Sweave",
++                    pkgdir %=f=% system.file(package="grid"),
++                    dir    %=f=% system.file(package = "grid", "doc"),
++                    (n. <- length(docs)) >= 12, # have 13
++                    n. == length(names), n. == length(engines),
++                    length(msg) == 0) ) # as it is a 'base' package
++     stopifnot("grid" %in% gVigns$names, inherits(gVigns, "pkgVignettes"))
++ }
+> 
+> ## This might leave collation changed, so do not put other things after it.
+> example(icuSetCollate, run.donttest = TRUE)
+
+icStCl> ## No test: 
+icStCl> ## These examples depend on having ICU available, and on the locale.
+icStCl> ## As we don't know the current settings, we can only reset to the default.
+icStCl> if(capabilities("ICU")) withAutoprint({
+icStCl+     icuGetCollate()
+icStCl+     icuGetCollate("valid")
+icStCl+     x <- c("Aarhus", "aarhus", "safe", "test", "Zoo")
+icStCl+     sort(x)
+icStCl+     icuSetCollate(case_first = "upper"); sort(x)
+icStCl+     icuSetCollate(case_first = "lower"); sort(x)
+icStCl+ 
+icStCl+     ## Danish collates upper-case-first and with 'aa' as a single letter
+icStCl+     icuSetCollate(locale = "da_DK", case_first = "default"); sort(x) 
+icStCl+     ## Estonian collates Z between S and T
+icStCl+     icuSetCollate(locale = "et_EE"); sort(x)
+icStCl+     icuSetCollate(locale = "default"); icuGetCollate("valid")
+icStCl+ })
+
+icStCl> ## End(No test)
+icStCl> 
+icStCl> 
+> proc.time()
+   user  system elapsed 
+ 68.489   0.657  73.308 
+> 

@@ -1,0 +1,135 @@
+The R for Windows Build Process
+===============================
+
+from the point of view of a Unix installer of R.
+
+Compilation of C/Fortran code is done in two pathways.
+
+1) standard and add-on packages, the most similar to Unix.
+
+The primary Makefiles are
+$(R_HOME)/etc${R_ARCH}/Makeconf
+share/make/winshlib.mk
+
+included in that order.  Some settings in Makeconf are substituted in
+etc/Makeconf by fixed/Makefile, taken from MkRules.
+
+
+2) Everything else, where the primary Makefile is MkRules which is
+where all the customization is done.  This is included by all
+Makefile.win files in directories above this one and
+
+./Makefile
+./fixed/Makefile
+./front-ends/Makefile
+./getline/Makefile
+./installer/Makefile
+
+and replaces Unix's top-level Makeconf.
+
+
+The largest difference from Unix (even a R-shlib build) is the use of
+DLLs, which require the exported symbols to be listed (via nm) in a
+.def file and fed to the compiler with the object files for linking.
+
+In recent years DLLs are linked to directly as libraries, but there
+remains provision for import libraries via lib%.dll.a: %.def rules.
+
+Making executables has a number of Windows-specific features, done in
+front-ends/Makefile:
+
+- A resource compiler is used to compile in version information, an
+  icon and a manifest.  Also done for version information in all the
+  other DLLs under bin and modules (R.dll Rblas.dll Rgraphapp.dll
+  Riconv.dll Rlapack.dll lapack.dll).
+
+- LINKFLAGS includes flags for the stack size.
+
+A resource compiler is used to add version information to the DLLs
+under directories bin and modules.
+
+The default is to compile without debug info: this can be enabled by
+using 'make DEBUG=T' from this directory, or install add-on packages
+with Rcmd INSTALL --debug.  Otherwise DLLs and executables are
+stripped.
+
+
+Link-Time Optimization
+======================
+
+To enable LTO for building R set the LTO macro in MkRules.local, to
+-flto or e.g. -flto=8 to use 8 threads.
+
+Checking of packages with LTO can be performed by setting the LTO_OPT
+macro to -flto in MkRules.local and using Rcmd INSTALL --use-LTO.
+
+For an installed version of R it should suffice to edit the value of
+LTO_OPT in the etc/*/Makeconf files or to set it in a personal or site
+Makevars file.
+
+[Unlike a Unix-alike, LTO/LTO_OPT are used for Fortran as well as C/C++.]
+
+
+Cross-compilation
+=================
+
+Versions of R prior to 4.2.0 could be cross-compiled using the tools
+provided by Linux distributions including Fedora, Debian and Ubuntu.
+However, these do not (at the time of writing) support UCRT-based builds.
+
+https://cran.r-project.org/bin/windows/base/howto-R-devel.html
+describes how to obtain a suitable cross-compilation toolchain for
+x86_64 Linux (based on glibc).  Look at the section entitled something
+like
+
+'Setting up MXE build from pre-built tarballs',
+
+and follow the instructions, which install the toolchain under a place
+it (and we) call MXE_ROOT.  (To build R only the
+'rtools43-toolchain-libs-base' version is required.)
+
+You will also need to fetch the pre-built Tcl/Tk as described in the
+section 'Building R from source using a toolchain tarball'.  The default
+location for the latter is R_HOME/Tcl.
+
+To build all the compiled code, edit MkRules.local to something like
+
+MXE_ROOT = wherever you put it, or /usr/lib/mxe (which was set as a symlink)
+BINPREF64 = $(MXE_ROOT)/usr/bin/x86_64-w64-mingw32.static.posix-
+EXT_LIBS = $(MXE_ROOT)/usr/x86_64-w64-mingw32.static.posix
+#CURL_CA_BUNDLE = /etc/pki/tls/certs/ca-bundle.crt
+TEXI2ANY=/usr/bin/texi2any
+
+Setting LTO is supported.
+
+Then in this directory
+
+make MkRules rbuild rpackages-cross cairodevices
+
+
+Cross-building packages
+=======================
+
+There is experimental minimal support for cross-building packages.
+
+Copy {bin,etc}/x64 from this build to a standard Linux build of R.
+
+Edit the copy of etc/x64/Makeconf to have
+
+R_WIN = /path/to/top/directory/of/this/build
+R_XTRA_CPPFLAGS = -I"$(R_WIN)/include" -DNDEBUG
+
+Set the environment variable R_CROSS_BUILD to x64.
+
+Use R CMD INSTALL as usual. (This does not do a staged install nor
+test loading.)  --use-LTO is supported if LTO_OPT was set.  Use a
+separate library tree (-l) as these are Windows and not Linux
+binaries.
+
+R CMD INSTALL --build will produce a zipped installation.
+
+Should a package require external libraries, these can be placed under
+LOCAL_SOFT as defined in etc/x64/Makeconf in the copy.
+
+
+
