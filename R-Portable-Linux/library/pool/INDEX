@@ -1,0 +1,6 @@
+DBI-custom              Unsupported DBI methods
+Pool-class              Create a pool of reusable objects
+dbPool                  Create a pool of database connections
+poolCheckout            Check out and return object from the pool
+poolWithTransaction     Self-contained database transactions using pool
+tbl.Pool                Use pool with dbplyr
