@@ -108,7 +108,10 @@ function createWindow () {
       })
       console.log(port)
       // long loading html
-      mainWindow.loadURL('http://127.0.0.1:'+port)
+      setTimeout( () => {
+      	console.log("Loading port")
+      	mainWindow.loadURL('http://127.0.0.1:'+port)
+      }, 6000)
       
       /**
       mainWindow.loadURL(url.format({
