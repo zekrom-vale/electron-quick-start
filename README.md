@@ -58,6 +58,12 @@ cd electron-quick-start
 npm run package-win
 ```
 
+#### Build the Executable/App for Linux
+```bash
+cd electron-quick-start
+npm run package-linux
+```
+
 #### Build the Executable/App for macOS
 ```bash
 cd electron-quick-start
