@@ -1,0 +1,13 @@
+Client-flags            Client flags
+MariaDB                 Connect/disconnect to a MariaDB DBMS
+RMariaDB-package        RMariaDB: Database Interface and MariaDB Driver
+dbDataType              Determine the SQL Data Type of an S object
+mariadb-tables          Read and write MariaDB tables.
+mariadbClientLibraryVersions
+                        MariaDB Check for Compiled Versus Loaded Client
+                        Library Versions
+mariadbHasDefault       Check if default database is available.
+query                   Execute a SQL statement on a database
+                        connection.
+result-meta             Database interface meta-data.
+transactions            DBMS Transaction Management

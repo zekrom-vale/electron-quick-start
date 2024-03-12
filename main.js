@@ -10,8 +10,7 @@ const port = "9191"
 const child = require('child_process');
 const MACOS = "darwin"
 const WINDOWS = "win32"
-//const cmdStr = ".\\R-Portable\\bin\\RScript.exe -e \"shiny::runApp('shinyApp.R', port="+port+")\"";
-//ShinyProjects\MarketSizing\Market_sizing_Cardinal-master-b823f3aa918475f5d56f01aec9763ed860715158\mrktsiz_no_crosstalk
+const LINUX = "linux"
 
 var killStr = ""
 var appPath = path.join(app.getAppPath(), "app.R" )
@@ -22,9 +21,10 @@ if(process.platform == WINDOWS){
   killStr = "taskkill /im Rscript.exe /f"
   appPath = appPath.replace(/\\/g, "\\\\");
   execPath = path.join(app.getAppPath(),"R-Portable-Win", "bin", "RScript.exe" )
-} else if(process.platform == MACOS){
+}
+else if(process.platform == MACOS){
+  console.log("Experamental platform")
   killStr = 'pkill -9 "R"'
-  //execPath = "export PATH=\""+path.join(app.getAppPath(), "R-Portable-Win")+":$PATH\"
   var macAbsolutePath = path.join(app.getAppPath(), "R-Portable-Mac")
   var env_path = macAbsolutePath+((process.env.PATH)?":"+process.env.PATH:"");
   var env_libs_site = macAbsolutePath+"/library"+((process.env.R_LIBS_SITE)?":"+process.env.R_LIBS_SITE:"");
@@ -34,7 +34,20 @@ if(process.platform == WINDOWS){
   
   //process.env.R_HOME = macAbsolutePath
   execPath = path.join(app.getAppPath(), "R-Portable-Mac", "bin", "R" )
-} else {
+}
+else if(process.platform == LINUX){
+  console.log("Experamental platform")
+  killStr = 'pkill -9 "R"'
+  var linuxAbsolutePath = path.join(app.getAppPath(), "R-Portable-Linux")
+  var env_path = linuxAbsolutePath+((process.env.PATH)?":"+process.env.PATH:"");
+  var env_libs_site = linuxAbsolutePath+"/library"+((process.env.R_LIBS_SITE)?":"+process.env.R_LIBS_SITE:"");
+  process.env.PATH = env_path
+  process.env.R_LIBS_SITE = env_libs_site
+  process.env.NODE_R_HOME = linuxAbsolutePath
+  
+  execPath = path.join(app.getAppPath(), "R-Portable-Linux", "bin", "R" )
+}
+else {
   console.log("not on windows or macos?")
   throw new Error("not on windows or macos?")
 }
@@ -43,7 +56,7 @@ console.log(process.env)
 
 // Due to an issue with shiny, the port needs to be set via options and not passed to the runApp function
 // https://github.com/rstudio/shiny/issues/1942
-const childProcess = child.spawn(execPath, ["-e", "options(shiny.port="+port+"); shiny::runApp(file.path('"+appPath+"'))"])
+const childProcess = child.spawn(execPath, ["-e", `options(shiny.port=${port}); shiny::runApp(file.path('${appPath}'))`])
 childProcess.stdout.on('data', (data) => {
   console.log(`stdout:${data}`)
 })
@@ -95,7 +108,21 @@ function createWindow () {
       })
       console.log(port)
       // long loading html
-      mainWindow.loadURL('http://127.0.0.1:'+port)
+	  
+	  async function loadPage(){
+		try{
+			return(await mainWindow.loadURL('http://127.0.0.1:'+port))
+		}
+		catch(e){
+			var x=new Promise(async function(re, rj){
+				setTimeout(async function(){
+					re(await loadPage())
+				}, 1000)
+			})
+			await x
+		}
+	  }
+	  loadPage()
       
       /**
       mainWindow.loadURL(url.format({
