@@ -38,13 +38,6 @@ else if(process.platform == MACOS){
 else if(process.platform == LINUX){
   console.log("Experamental platform")
   killStr = 'pkill -9 "R"'
-  var linuxAbsolutePath = path.join(app.getAppPath(), "R-Portable-Linux")
-  var env_path = linuxAbsolutePath+((process.env.PATH)?":"+process.env.PATH:"");
-  var env_libs_site = linuxAbsolutePath+"/library"+((process.env.R_LIBS_SITE)?":"+process.env.R_LIBS_SITE:"");
-  process.env.PATH = env_path
-  process.env.R_LIBS_SITE = env_libs_site
-  process.env.NODE_R_HOME = linuxAbsolutePath
-  
   execPath = path.join(app.getAppPath(), "R-Portable-Linux", "bin", "R" )
 }
 else {
