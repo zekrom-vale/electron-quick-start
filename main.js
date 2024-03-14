@@ -3,6 +3,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const shell = require('child_process').execSync
 
 
 const url = require('url')
@@ -23,7 +24,7 @@ if(process.platform == WINDOWS){
   execPath = path.join(app.getAppPath(),"R-Portable-Win", "bin", "RScript.exe" )
 }
 else if(process.platform == MACOS){
-  console.log("Experamental platform")
+  console.log("Experamental UNTESTED platform")
   killStr = 'pkill -9 "R"'
   var macAbsolutePath = path.join(app.getAppPath(), "R-Portable-Mac")
   var env_path = macAbsolutePath+((process.env.PATH)?":"+process.env.PATH:"");
@@ -46,6 +47,16 @@ else {
 }
 
 console.log(process.env)
+
+// Fix issue with R Home path
+if(process.platform == LINUX){
+	let home=path.join(app.getAppPath(), "R-Portable-Linux" )
+	shell(`sed -i 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+}
+else if(process.platform == MACOS){
+	let home=path.join(app.getAppPath(), "R-Portable-Mac" )
+	shell(`sed -i "" 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+}
 
 // Due to an issue with shiny, the port needs to be set via options and not passed to the runApp function
 // https://github.com/rstudio/shiny/issues/1942
