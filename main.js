@@ -1,62 +1,52 @@
-
-
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const shell = require('child_process').execSync
 const to = require('await-to-js').default
-
-
 const url = require('url')
-const port = "9191"
-const child = require('child_process');
+const child = require('child_process')
+
+process.env.NODE_ENV = process.platform
+const config = require("config")
+
+
+const port = config.get("R.port")
 const MACOS = "darwin"
 const WINDOWS = "win32"
 const LINUX = "linux"
 
-var killStr = ""
-var appPath = path.join(app.getAppPath(), "app.R" )
-var execPath = "RScript"
-
-
 if(process.platform == WINDOWS){
-  killStr = "taskkill /im Rscript.exe /f"
   appPath = appPath.replace(/\\/g, "\\\\");
-  execPath = path.join(app.getAppPath(),"R-Portable-Win", "bin", "RScript.exe" )
 }
-else if(process.platform == MACOS){
-  console.log("Experamental UNTESTED platform")
-  killStr = 'pkill -9 "R"'
-  var macAbsolutePath = path.join(app.getAppPath(), "R-Portable-Mac")
-  var env_path = macAbsolutePath+((process.env.PATH)?":"+process.env.PATH:"");
-  var env_libs_site = macAbsolutePath+"/library"+((process.env.R_LIBS_SITE)?":"+process.env.R_LIBS_SITE:"");
-  process.env.PATH = env_path
-  process.env.R_LIBS_SITE = env_libs_site
-  process.env.NODE_R_HOME = macAbsolutePath
-  
-  //process.env.R_HOME = macAbsolutePath
-  execPath = path.join(app.getAppPath(), "R-Portable-Mac", "bin", "R" )
-}
-else if(process.platform == LINUX){
-  console.log("Experamental platform")
-  killStr = 'pkill -9 "R"'
-  execPath = path.join(app.getAppPath(), "R-Portable-Linux", "bin", "R" )
-}
-else {
+else if(process.platform != LINUX && process.platform != MACOS) {
   console.log("not on windows or macos?")
   throw new Error("not on windows or macos?")
+}
+
+var appPath = config.get("R.app")
+if(!path.isAbsolute(appPath)){
+	appPath=path.join(app.getAppPath(), appPath)
+}
+
+var execPath = config.get("R.path")
+var execAbs = true
+if(!path.isAbsolute(execPath)){
+	execAbs = false
+	execPath = path.join(app.getAppPath(), execPath)
 }
 
 console.log(process.env)
 
 // Fix issue with R Home path
-if(process.platform == LINUX){
-	let home=path.join(app.getAppPath(), "R-Portable-Linux" )
-	shell(`sed -i 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
-}
-else if(process.platform == MACOS){
-	let home=path.join(app.getAppPath(), "R-Portable-Mac" )
-	shell(`sed -i "" 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+if(!execAbs && config.get("R.fixhome")){
+	if(process.platform == LINUX){
+		let home=path.join(app.getAppPath(), config.get("R.home") )
+		shell(`sed -i 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+	}
+	else if(process.platform == MACOS){
+		let home=path.join(app.getAppPath(), config.get("R.home") )
+		shell(`sed -i "" 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+	}
 }
 
 // Due to an issue with shiny, the port needs to be set via options and not passed to the runApp function
@@ -83,12 +73,12 @@ function createWindow () {
     let loading = new BrowserWindow({show: false, frame: false})
     //let loading = new BrowserWindow()
     console.log(new Date().toISOString()+'::showing loading');
-    loading.loadURL("data:text/html;charset=utf-8;base64,PGh0bWw+DQo8c3R5bGU+DQpib2R5ew0KICBwYWRkaW5nOiAxZW07DQogIGNvbG9yOiAjNzc3Ow0KICB0ZXh0LWFsaWduOiBjZW50ZXI7DQogIGZvbnQtZmFtaWx5OiAiR2lsbCBzYW5zIiwgc2Fucy1zZXJpZjsNCiAgd2lkdGg6IDgwJTsNCiAgbWFyZ2luOiAwIGF1dG87DQp9DQpoMXsNCiAgbWFyZ2luOiAxZW0gMDsNCiAgYm9yZGVyLWJvdHRvbTogMXB4IGRhc2hlZDsNCiAgcGFkZGluZy1ib3R0b206IDFlbTsNCiAgZm9udC13ZWlnaHQ6IGxpZ2h0ZXI7DQp9DQpwew0KICBmb250LXN0eWxlOiBpdGFsaWM7DQp9DQoubG9hZGVyew0KICBtYXJnaW46IDAgMCAyZW07DQogIGhlaWdodDogMTAwcHg7DQogIHdpZHRoOiAyMCU7DQogIHRleHQtYWxpZ246IGNlbnRlcjsNCiAgcGFkZGluZzogMWVtOw0KICBtYXJnaW46IDAgYXV0byAxZW07DQogIGRpc3BsYXk6IGlubGluZS1ibG9jazsNCiAgdmVydGljYWwtYWxpZ246IHRvcDsNCn0NCg0KLyoNCiAgU2V0IHRoZSBjb2xvciBvZiB0aGUgaWNvbg0KKi8NCnN2ZyBwYXRoLA0Kc3ZnIHJlY3R7DQogIGZpbGw6ICNGRjY3MDA7DQp9DQo8L3N0eWxlPg0KPGJvZHk+PCEtLSAzICAtLT4NCjxkaXYgY2xhc3M9ImxvYWRlciBsb2FkZXItLXN0eWxlMyIgdGl0bGU9IjIiPg0KICA8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImxvYWRlci0xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCiAgICAgd2lkdGg9IjgwcHgiIGhlaWdodD0iODBweCIgdmlld0JveD0iMCAwIDUwIDUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MCA1MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KICA8cGF0aCBmaWxsPSIjMDAwIiBkPSJNNDMuOTM1LDI1LjE0NWMwLTEwLjMxOC04LjM2NC0xOC42ODMtMTguNjgzLTE4LjY4M2MtMTAuMzE4LDAtMTguNjgzLDguMzY1LTE4LjY4MywxOC42ODNoNC4wNjhjMC04LjA3MSw2LjU0My0xNC42MTUsMTQuNjE1LTE0LjYxNWM4LjA3MiwwLDE0LjYxNSw2LjU0MywxNC42MTUsMTQuNjE1SDQzLjkzNXoiPg0KICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZVR5cGU9InhtbCINCiAgICAgIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSINCiAgICAgIHR5cGU9InJvdGF0ZSINCiAgICAgIGZyb209IjAgMjUgMjUiDQogICAgICB0bz0iMzYwIDI1IDI1Ig0KICAgICAgZHVyPSIwLjZzIg0KICAgICAgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4NCiAgICA8L3BhdGg+DQogIDwvc3ZnPg0KPC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+");
+    loading.loadURL(config.get("window.loading"))
     ///loading.toggleDevTools()
 
     loading.once('show', async function(){
       console.log(new Date().toISOString()+'::show loading')
-      mainWindow = new BrowserWindow({webPreferences:{nodeIntegration:false}, show:false, width: 800, height: 600, title:""})
+      mainWindow = new BrowserWindow(config.get("window.config"))
       /*
         mainWindow = new BrowserWindow({
           width: 800,
@@ -108,16 +98,17 @@ function createWindow () {
           loading.hide()
           loading.close()
 
-        }, 2000)
+        }, config.get("window.delay"))
 
       })
       console.log(port)
       // long loading html
 	  
 	  var response = false;
+	  let poll = config.get("window.poll")
 	  while(!response){
-		let [err, r] = await to(mainWindow.loadURL('http://127.0.0.1:'+port))
-		if(err) await new Promise(r => setTimeout(r, 1000))
+		let [err, r] = await to(mainWindow.loadURL(config.get("R.url")+port))
+		if(err) await new Promise(r => setTimeout(r, poll))
 		else response = true 
 	  }
       
@@ -145,7 +136,7 @@ function createWindow () {
       });
 
       // Open the DevTools.
-      // mainWindow.webContents.openDevTools()
+      if(config.get("window.dev"))mainWindow.webContents.openDevTools()
 
       // Emitted when the window is closed.
       mainWindow.on('closed', function () {
@@ -162,11 +153,10 @@ function createWindow () {
 function cleanUpApplication(){
 
   app.quit()
-  
-  if(childProcess){
-    childProcess.kill();
-    if(killStr != "")
-      child.execSync(killStr)      
+  let kill = config.get("R.kill")
+  if(childProcess && kill){
+    childProcess.kill()
+    child.execSync(kill)      
   }
 }
 // This method will be called when Electron has finished

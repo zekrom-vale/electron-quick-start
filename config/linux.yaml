@@ -1,0 +1,4 @@
+R:
+    kill: pkill -9 "R"
+    path: ./R-Portable-Linux/bin/R
+    home: ./R-Portable-Linux

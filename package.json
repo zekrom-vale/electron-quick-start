@@ -27,6 +27,8 @@
     "electron": "^29.1.1"
   },
   "dependencies": {
-    "await-to-js": "^3.0.0"
+    "await-to-js": "^3.0.0",
+    "config": "^3.3.11",
+    "js-yaml": "^4.1.0"
   }
 }

@@ -1,0 +1,4 @@
+R:
+    kill: pkill -9 "R"
+    path: ./R-Portable-Mac/bin/R
+    home: ./R-Portable-Mac
