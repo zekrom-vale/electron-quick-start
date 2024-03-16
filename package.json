@@ -1,13 +1,13 @@
 {
   "name": "electron-quick-start",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=ElectronShinyApp --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\" --ignore=\"R-Portable-Win|R-Portable-Luinx|\\.github\"",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=cc.ico --out=ElectronShinyApp --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\" --ignore=\"R-Portable-Mac|R-Portable-Luinx|\\.github\"",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=ElectronShinyApp --icon=assets/icons/png/1024x1024.png --prune=true --version-string.CompanyName=None --version-string.FileDescription=CE --version-string.ProductName=\"Shiny Electron App\" --ignore=\"R-Portable-Win|R-Portable-Mac|\\.github\""
+    "package-mac": "node scripts/darwin.js",
+    "package-win": "node scripts/win32.js",
+    "package-linux": "node scripts/linux.js"
   },
   "repository": "https://github.com/zekrom-vale/electron-quick-start",
   "keywords": [
@@ -29,6 +29,7 @@
   "dependencies": {
     "await-to-js": "^3.0.0",
     "config": "^3.3.11",
+    "fs-extra": "^11.2.0",
     "js-yaml": "^4.1.0"
   }
 }
