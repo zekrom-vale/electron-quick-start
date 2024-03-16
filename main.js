@@ -79,15 +79,6 @@ function createWindow () {
     loading.once('show', async function(){
       console.log(new Date().toISOString()+'::show loading')
       mainWindow = new BrowserWindow(config.get("window.config"))
-      /*
-        mainWindow = new BrowserWindow({
-          width: 800,
-          height: 600,
-          webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-          }
-        })
-      */
       mainWindow.webContents.once('dom-ready', () => {
         console.log(new Date().toISOString()+'::mainWindow loaded')
         setTimeout( () => {
