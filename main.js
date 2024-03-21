@@ -144,17 +144,52 @@ async function createWindow(){
 	//Quit the loading page
 	loading.hide()
 	loading.close()
+	
+	////////////////////////////////////////////////////////////////////////////////
+	// Window Closed or Reloaded
+	////////////////////////////////////////////////////////////////////////////////
+	// This may not work well
+	if(config.get("window.fullReload") && config.get("R.kill"))mainWindow.webContents.on('beforeunload', function(){
+		mainWindow.loadURL(config.get("window.loading"))
+		setTimeout(()=>{
+			console.log(new Date().toISOString()+'::window-reload')
+			console.log("==================================================================")
+			console.log("Disposing prior window and R session, starting loading please wait")
+			cleanUpApplication(false)
+			createWindow()
+		}, 1000)
+	})
+	// Could assume R will quit, Ie
+	// onSessionEnded(function(){
+    // 		quit(save = "no")
+  	// })
+	if(config.get("window.fullReload") && !config.get("R.kill"))childProcess.on('exit', function(){
+		console.log(new Date().toISOString()+'::R-exit')
+		console.log("==================================================================")
+		console.log("Disposing prior window and R session, starting loading please wait")
+		cleanUpApplication(false)
+		createWindow()
+	})
 }
 
-
-function cleanUpApplication(){
-
-  app.quit()
-  let kill = config.get("R.kill")
-  if(childProcess && kill){
-    childProcess.kill()
-    child.execSync(kill)      
-  }
+function cleanUpApplication(quit=true){
+	if(childProcess && config.get("R.kill")){
+		// We will see if R gracefully exits
+		childProcess.exit()
+		// childProcess.kill()
+		// We are not able to kill the program, not allowed 
+		// child.execSync(kill)
+	}
+	if(quit){
+		app.quit()
+		// This will only exit when all async processes are finished
+		// I could do process.kill(pid)
+		process.exit()
+	}
+	else{
+		mainWindow.hide()
+		mainWindow.close()
+	}
 }
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
