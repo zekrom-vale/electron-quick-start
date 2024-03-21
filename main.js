@@ -9,47 +9,48 @@ const child = require('child_process')
 process.env.NODE_ENV = process.platform
 const config = require("config")
 
-
-const port = config.get("R.port")
-const MACOS = "darwin"
-const WINDOWS = "win32"
-const LINUX = "linux"
-
-if(process.platform == WINDOWS){
-  appPath = appPath.replace(/\\/g, "\\\\");
-}
-else if(process.platform != LINUX && process.platform != MACOS) {
-  console.log("not on windows or macos?")
-  throw new Error("not on windows or macos?")
-}
-
-var appPath = config.get("R.app")
-if(!path.isAbsolute(appPath)){
-	appPath=path.join(app.getAppPath(), appPath)
-}
-
-var execPath
-var execAbs
-if(config.get("R.path.isPortable")){
-	execAbs = true
-	execPath = config.get("R.path.portable")
-}
-else{
-	execAbs = false
-	execPath = path.join(app.getAppPath(), config.get("R.path.local"))
-}
+var appPath = path.normalize(config.get("R.app"))
+	// This may not be required
+	if(!path.isAbsolute(appPath))appPath=path.join(app.getAppPath(), appPath)
+var port = parseInt(config.get("R.port"))
+	if(is.NaN(port)){
+		process.emitWarning(`R.port is not a Number change config settings got ${config.get("R.port")}, using port 9191`, "Port Warning")
+		port = 9191
+	}
+const execPortable = !!config.get("R.path.isPortable")
+const execPath = path.normalize(
+		execPortable?
+			path.join(app.getAppPath(), config.get("R.path.local")):
+			config.get("R.path.portable")
+	)
 
 console.log(process.env)
 
-// Fix issue with R Home path
-if(!execAbs && config.get("R.path.fixHome")){
-	if(process.platform == LINUX){
-		let home=path.join(app.getAppPath(), config.get("R.path.home") )
-		shell(`sed -i 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
-	}
-	else if(process.platform == MACOS){
-		let home=path.join(app.getAppPath(), config.get("R.path.home") )
-		shell(`sed -i "" 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+
+//Platform switch
+const MACOS = "darwin"
+const WINDOWS = "win32"
+const LINUX = "linux"
+{
+	// let and const here will be discarded after this block, var will be kept
+	let _i=''
+	switch(process.platform){
+		case WINDOWS:
+			break
+		case MACOS:
+			// Adapt to support MacOS sed
+			_i=' ""'
+			//Fall through as mac is linux like
+		case LINUX:
+			// Fix issue with R Home path by overriding the R sh script with the correct value
+			if(execPortable && config.get("R.path.fixHome")){
+				let home=path.join(app.getAppPath(), config.get("R.path.home"))
+				// Must use ! as / is an issue with paths
+				shell(`sed -i${_i} 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
+			}
+			break
+		default:
+			process.emitWarning(`Not on windows, linux, or macos. Got ${process.platform}`, "Platform Error")
 	}
 }
 
