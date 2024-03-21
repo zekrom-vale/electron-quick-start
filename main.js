@@ -86,7 +86,7 @@ var mainWindow = null
 async function createWindow(){
 	sartR()
 	
-	console.log(new Date().toISOString()+'create-window')
+	console.log(now()+'create-window')
 	let loading = new BrowserWindow(config.get("window.loading.config"))
     // May need to staralize the URL
     if(config.get("window.loading.isURL"))
@@ -139,7 +139,7 @@ async function createWindow(){
 		)
 	)
 	
-	console.log(new Date().toISOString()+'::mainWindow loaded')
+	console.log(now()+'::mainWindow loaded')
 	mainWindow.show()
 	//Quit the loading page
 	loading.hide()
@@ -152,7 +152,7 @@ async function createWindow(){
 	if(config.get("window.fullReload") && config.get("R.kill"))mainWindow.webContents.on('beforeunload', function(){
 		mainWindow.loadURL(config.get("window.loading"))
 		setTimeout(()=>{
-			console.log(new Date().toISOString()+'::window-reload')
+			console.log(now()+'::window-reload')
 			console.log("==================================================================")
 			console.log("Disposing prior window and R session, starting loading please wait")
 			cleanUpApplication(false)
@@ -164,12 +164,16 @@ async function createWindow(){
     // 		quit(save = "no")
   	// })
 	if(config.get("window.fullReload") && !config.get("R.kill"))childProcess.on('exit', function(){
-		console.log(new Date().toISOString()+'::R-exit')
+		console.log(now()+'::R-exit')
 		console.log("==================================================================")
 		console.log("Disposing prior window and R session, starting loading please wait")
 		cleanUpApplication(false)
 		createWindow()
 	})
+}
+
+function now(){
+	return new Date().toISOString()
 }
 
 function cleanUpApplication(quit=true){
@@ -204,7 +208,7 @@ app.on('activate', function () {
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
 
-  console.log(new Date().toISOString()+'::window-all-closed')
+  console.log(now()+'::window-all-closed')
   cleanUpApplication()
 	if(config.get("app.quitOnClose"))app.quit()
 })
