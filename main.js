@@ -85,8 +85,11 @@ async function createWindow() {
     console.log(new Date().toISOString()+'::showing loading')
     // May need to staralize the URL
     loading.loadURL(config.get("window.loading"))
-    ///loading.toggleDevTools()
-
+    if(config.get("window.dev"))loading.toggleDevTools()
+	
+	// loading.once('show', ...) only runs once so this should be able to replace
+	// await new Promise((r, x)=>loading.once('show', r))
+	
     loading.once('show', async function(){
       console.log(new Date().toISOString()+'::show loading')
       mainWindow = new BrowserWindow(config.get("window.config"))
