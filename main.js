@@ -83,15 +83,17 @@ shiny::runApp(file.path('${appPath}'))`
 // be closed automatically when the JavaScript object is garbage collected.
 // To be updated later in createWindow
 var mainWindow = null
-async function createWindow() {
+async function createWindow(){
 	sartR()
-	// Create the browser window
-	// console.log(process.cwd())
-	console.log(new Date().toISOString()+'create-window')
-	let loading = new BrowserWindow({show: false, frame: false})
-    console.log(new Date().toISOString()+'::showing loading')
+	
+	console.log(now()+'create-window')
+	let loading = new BrowserWindow(config.get("window.loading.config"))
     // May need to staralize the URL
-    loading.loadURL(config.get("window.loading"))
+    if(config.get("window.loading.isURL"))
+    	loading.loadURL(config.get("window.loading.path"))
+    else
+    	loading.loadFile(path.normalize(config.get("window.loading.path")))
+    
     if(config.get("window.dev"))loading.toggleDevTools()
 	
 	// loading.once('show', ...) only runs once so this should be able to replace
