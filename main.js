@@ -54,30 +54,36 @@ const LINUX = "linux"
 	}
 }
 
+// Looks like this is resolved
 // Due to an issue with shiny, the port needs to be set via options and not passed to the runApp function
 // https://github.com/rstudio/shiny/issues/1942
-const childProcess = child.spawn(execPath, ["-e", `options(shiny.port=${port}); shiny::runApp(file.path('${appPath}'))`])
-childProcess.stdout.on('data', (data) => {
-  console.log(`stdout:${data}`)
-})
-childProcess.stderr.on('data', (data) => {
-  console.log(`stderr:${data}`)
-})
+var childProcess = null
+function sartR(){
+    // Need to steralize R.port and appPath
+    // Try to cast R.port to int
+    childProcess = child.spawn(
+    	execPath, [
+    		"-e",
+    		`options(shiny.port=${port});
+shiny::runApp(file.path('${appPath}'))`
+    	]
+    )
+    childProcess.stdout.on('data', data => console.log(`stdout:${data}`))
+    childProcess.stderr.on('data', data => console.warn(`stderr:${data}`))
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
-
-function createWindow () {
-  // Create the browser window.
-  //  mainWindow = new BrowserWindow({webPreferences:{nodeIntegration:false},width: 800, height: 600})
-  //  console.log(process.cwd())
-  console.log('create-window')
-
-
-    let loading = new BrowserWindow({show: false, frame: false})
-    //let loading = new BrowserWindow()
-    console.log(new Date().toISOString()+'::showing loading');
+// To be updated later in createWindow
+var mainWindow = null
+async function createWindow() {
+	sartR()
+	// Create the browser window
+	// console.log(process.cwd())
+	console.log(new Date().toISOString()+'create-window')
+	let loading = new BrowserWindow({show: false, frame: false})
+    console.log(new Date().toISOString()+'::showing loading')
+    // May need to staralize the URL
     loading.loadURL(config.get("window.loading"))
     ///loading.toggleDevTools()
 
