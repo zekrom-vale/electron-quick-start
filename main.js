@@ -124,29 +124,9 @@ async function createWindow(){
 		  else break
 	  }
 	}
-      mainWindow.webContents.on('did-finish-load', function() {
-        console.log(new Date().toISOString()+'::did-finish-load')
-      });
-
-      mainWindow.webContents.on('did-start-load', function() {
-        console.log(new Date().toISOString()+'::did-start-load')
-      });
-
-      mainWindow.webContents.on('did-stop-load', function() {
-        console.log(new Date().toISOString()+'::did-stop-load')
-      });
-      mainWindow.webContents.on('dom-ready', function() {
-        console.log(new Date().toISOString()+'::dom-ready')
-      });
 
       // Open the DevTools if set in config
       if(config.get("window.dev"))mainWindow.webContents.openDevTools()
-
-      // Emitted when the window is closed.
-      mainWindow.on('closed', function () {
-        console.log(new Date().toISOString()+'::mainWindow.closed()')
-        cleanUpApplication()
-      })
     })
 
     loading.show()
