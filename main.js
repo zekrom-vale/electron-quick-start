@@ -92,29 +92,21 @@ function createWindow () {
           }
           loading.hide()
           loading.close()
-
         }, config.get("window.delay"))
-
       })
-      console.log(port)
-      // long loading html
-	  
-	  var response = false;
-	  let poll = config.get("window.poll")
-	  while(!response){
-		let [err, r] = await to(mainWindow.loadURL(config.get("R.url")+port))
-		if(err) await new Promise(r => setTimeout(r, poll))
-		else response = true 
-	  }
       
-      /**
-      mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-      }))
-      **/
-    
+	// Try loading the URL
+	// Since Shiny is not instantly loaded, it needs to try to connect until it loads
+	// Whithout this it likely will load a blank page until the user manualy reloads it
+	{
+	  let poll = config.get("window.poll")
+	  while(true){
+		  let [err, r] = await to(mainWindow.loadURL(config.get("R.url")+port))
+		  //On failure it creates an async delay it waits for and continues the loop
+		  if(err) await new Promise(r => setTimeout(r, poll))
+		  else break
+	  }
+	}
       mainWindow.webContents.on('did-finish-load', function() {
         console.log(new Date().toISOString()+'::did-finish-load')
       });
@@ -130,7 +122,7 @@ function createWindow () {
         console.log(new Date().toISOString()+'::dom-ready')
       });
 
-      // Open the DevTools.
+      // Open the DevTools if set in config
       if(config.get("window.dev"))mainWindow.webContents.openDevTools()
 
       // Emitted when the window is closed.
