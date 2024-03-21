@@ -5,9 +5,16 @@ const shell = require('child_process').execSync
 const to = require('await-to-js').default
 const url = require('url')
 const child = require('child_process')
-
 process.env.NODE_ENV = process.platform
 const config = require("config")
+
+// Error
+process.on('warning', warning=>{
+  console.warn(warning.name);
+  console.warn(warning.message);
+  console.warn(warning.code);
+  console.warn(warning.stack);
+});
 
 var appPath = path.normalize(config.get("R.app"))
 	// This may not be required
