@@ -1,10 +1,13 @@
+---
+# WARNING THIS FILE IS SUBJECT TO SHELL, and URL INJECTION
+# Settings in platform specific files override these values
 R:
-    url: "http://127.0.0.1:" # The url of where shiny is hosted
-    port: 9191 # The url of where shiny is hosted
+    url: "http://127.0.0.1:" # The url of where shiny is hosted most likely the loop back at 127.0.0.1
+    port: 9191 # The url of where shiny is hosted `${url}${port}`
     kill: false # Should R be killed on exit?
     app: app.R # The R script to run with shiny
     path:
-        fixHome: true # Should the app fix R's `R_HOME_DIR` in `R-Portable-*/R`
+        fixHome: true # Should the app fix R's `R_HOME_DIR` in `R-Portable-*/R` ignored if isPortable is false
         isPortable: true # should R be run as portable?
 window:
     delay: 2000 # How long to wait to show the window
@@ -29,7 +32,7 @@ app:
     CompanyName: None
     FileDescription: CE
     ProductName: Shiny Electron App
-    out: ElectronShinyApp # Where to build the files to
+    out: ElectronShinyApp # Where to build the files to see below for more
     name: electron-quick-start # used in the specific arch and platform build under `${out}/${name}-${platform}-${arch}`
     icon: assets/icons/png/1024x1024.png # Icon of the run file
     quitOnClose: true # When all windows are closed is the application termniated?
