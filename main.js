@@ -96,22 +96,24 @@ async function createWindow(){
     
     if(config.get("window.dev"))loading.toggleDevTools()
 	
-	// loading.once('show', ...) only runs once so this should be able to replace
-	// await new Promise((r, x)=>loading.once('show', r))
+	// loading.once('show', ...) only runs once
 	
-    loading.once('show', async function(){
-      console.log(new Date().toISOString()+'::show loading')
-      mainWindow = new BrowserWindow(config.get("window.config"))
-      mainWindow.webContents.once('dom-ready', () => {
-        console.log(new Date().toISOString()+'::mainWindow loaded')
-        setTimeout( () => {
-          mainWindow.show()
-          //Quit the loading page
-          loading.hide()
-          loading.close()
-        }, config.get("window.delay"))
-      })
-      
+	////////////////////////////////////////////////////////////////////////////////
+	// Show Loading
+	////////////////////////////////////////////////////////////////////////////////
+	
+	{
+		let p new Promise((r, x)=>loading.once('show', r))
+		loading.show()
+		await p
+	}
+	
+	mainWindow = new BrowserWindow(config.get("window.config"))
+
+	////////////////////////////////////////////////////////////////////////////////
+	// Connect to Shiny
+	////////////////////////////////////////////////////////////////////////////////
+	
 	// Try loading the URL
 	// Since Shiny is not instantly loaded, it needs to try to connect until it loads
 	// Whithout this it likely will load a blank page until the user manualy reloads it
@@ -124,13 +126,24 @@ async function createWindow(){
 		  else break
 	  }
 	}
-
-      // Open the DevTools if set in config
-      if(config.get("window.dev"))mainWindow.webContents.openDevTools()
-    })
-
-    loading.show()
-
+	// Open the DevTools if set in config
+	if(config.get("window.dev"))mainWindow.webContents.openDevTools()
+	
+	////////////////////////////////////////////////////////////////////////////////
+	// Shiny Ready
+	////////////////////////////////////////////////////////////////////////////////
+	
+	await new Promise(
+		(r, x)=>mainWindow.webContents.once('dom-ready',
+			()=>setTimeout(r, config.get("window.delay"))
+		)
+	)
+	
+	console.log(new Date().toISOString()+'::mainWindow loaded')
+	mainWindow.show()
+	//Quit the loading page
+	loading.hide()
+	loading.close()
 }
 
 
