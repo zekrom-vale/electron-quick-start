@@ -104,9 +104,7 @@ async function createWindow() {
         console.log(new Date().toISOString()+'::mainWindow loaded')
         setTimeout( () => {
           mainWindow.show()
-          if(process.platform==MACOS){
-            mainWindow.reload()
-          }
+          //Quit the loading page
           loading.hide()
           loading.close()
         }, config.get("window.delay"))
