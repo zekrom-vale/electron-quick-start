@@ -28,23 +28,27 @@ if(!path.isAbsolute(appPath)){
 	appPath=path.join(app.getAppPath(), appPath)
 }
 
-var execPath = config.get("R.path")
-var execAbs = true
-if(!path.isAbsolute(execPath)){
+var execPath
+var execAbs
+if(config.get("R.path.isPortable")){
+	execAbs = true
+	execPath = config.get("R.path.portable")
+}
+else{
 	execAbs = false
-	execPath = path.join(app.getAppPath(), execPath)
+	execPath = path.join(app.getAppPath(), config.get("R.path.local"))
 }
 
 console.log(process.env)
 
 // Fix issue with R Home path
-if(!execAbs && config.get("R.fixhome")){
+if(!execAbs && config.get("R.path.fixHome")){
 	if(process.platform == LINUX){
-		let home=path.join(app.getAppPath(), config.get("R.home") )
+		let home=path.join(app.getAppPath(), config.get("R.path.home") )
 		shell(`sed -i 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
 	}
 	else if(process.platform == MACOS){
-		let home=path.join(app.getAppPath(), config.get("R.home") )
+		let home=path.join(app.getAppPath(), config.get("R.path.home") )
 		shell(`sed -i "" 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`)
 	}
 }
