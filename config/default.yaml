@@ -13,13 +13,13 @@ window:
     delay: 2000 # How long to wait to show the window
     poll: 1000 # How long to wait to try to conect to the URL again after failing
     loading:     # A URL to load for the loading bar
-    	path: loading.html # The URL or file to load
-    	isURL: false # Is path a file or a URL?
-		config: # Loading window settings
-			show: false # Show the window?  Using true may break things
-		    width: 1200 # Width of the window
-		    height: 1000 # Height of the window
-		    title: My app # Title of the loading window
+        path: loading.html # The URL or file to load
+        isURL: false # Is path a file or a URL?
+        config: # Loading window settings
+            show: false # Show the window?  Using true may break things
+            width: 1200 # Width of the window
+            height: 1000 # Height of the window
+            title: My app # Title of the loading window
     config: # Main window settings
         show: false # Show the window?  Using true may break things
         width: 1200 # Width of the window
@@ -28,6 +28,12 @@ window:
         webPreferences: 
             nodeIntegration: false # Should node be interated into JS?  Not implimented yet
     dev: false # Load developer tools?
+    fullReload: true # Reload the entire R sesion?
+    # Recomended this to be true and R.kill be false
+    # Use the folowing in R shiny server:
+    # onSessionEnded(function(){
+    #     quit(save = "no")
+    #  })
 app:
     CompanyName: None
     FileDescription: CE

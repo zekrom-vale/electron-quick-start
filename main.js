@@ -27,8 +27,8 @@ var port = parseInt(config.get("R.port"))
 const execPortable = !!config.get("R.path.isPortable")
 const execPath = path.normalize(
 		execPortable?
-			path.join(app.getAppPath(), config.get("R.path.local")):
-			config.get("R.path.portable")
+			path.join(app.getAppPath(), config.get("R.path.portable")):
+			config.get("R.path.local")
 	)
 
 console.log(process.env)
@@ -103,7 +103,7 @@ async function createWindow(){
 	////////////////////////////////////////////////////////////////////////////////
 	
 	{
-		let p new Promise((r, x)=>loading.once('show', r))
+		let p = new Promise((r, x)=>loading.once('show', r))
 		loading.show()
 		await p
 	}
@@ -114,30 +114,34 @@ async function createWindow(){
 	// Connect to Shiny
 	////////////////////////////////////////////////////////////////////////////////
 	
-	// Try loading the URL
-	// Since Shiny is not instantly loaded, it needs to try to connect until it loads
-	// Whithout this it likely will load a blank page until the user manualy reloads it
 	{
-	  let poll = config.get("window.poll")
-	  while(true){
-		  let [err, r] = await to(mainWindow.loadURL(config.get("R.url")+port))
-		  //On failure it creates an async delay it waits for and continues the loop
-		  if(err) await new Promise(r => setTimeout(r, poll))
-		  else break
-	  }
+		let p = new Promise(
+				(r, x)=>mainWindow.webContents.on('dom-ready',
+					()=>setTimeout(r, config.get("window.delay"))
+				)
+			)
+		
+		// Try loading the URL
+		// Since Shiny is not instantly loaded, it needs to try to connect until it loads
+		// Whithout this it likely will load a blank page until the user manualy reloads it
+		{
+		  let poll = config.get("window.poll")
+		  while(true){
+			  let [err, r] = await to(mainWindow.loadURL(config.get("R.url")+port))
+			  //On failure it creates an async delay it waits for and continues the loop
+			  if(err) await new Promise(r => setTimeout(r, poll))
+			  else break
+		  }
+		}
+		// Open the DevTools if set in config
+		if(config.get("window.dev"))mainWindow.webContents.openDevTools()
+		
+		////////////////////////////////////////////////////////////////////////////////
+		// Shiny Ready
+		////////////////////////////////////////////////////////////////////////////////
+		
+		await p
 	}
-	// Open the DevTools if set in config
-	if(config.get("window.dev"))mainWindow.webContents.openDevTools()
-	
-	////////////////////////////////////////////////////////////////////////////////
-	// Shiny Ready
-	////////////////////////////////////////////////////////////////////////////////
-	
-	await new Promise(
-		(r, x)=>mainWindow.webContents.once('dom-ready',
-			()=>setTimeout(r, config.get("window.delay"))
-		)
-	)
 	
 	console.log(now()+'::mainWindow loaded')
 	mainWindow.show()
@@ -159,12 +163,11 @@ async function createWindow(){
 			createWindow()
 		}, 1000)
 	})
-	// Could assume R will quit, Ie
 	// onSessionEnded(function(){
     // 		quit(save = "no")
   	// })
-	if(config.get("window.fullReload") && !config.get("R.kill"))childProcess.on('exit', function(){
-		console.log(now()+'::R-exit')
+	if(config.get("window.fullReload") && !config.get("R.kill"))childProcess.on('close', function(){
+		console.log(now()+'::R-close')
 		console.log("==================================================================")
 		console.log("Disposing prior window and R session, starting loading please wait")
 		cleanUpApplication(false)

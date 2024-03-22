@@ -1,5 +1,5 @@
 R:
-    kill: pkill -9 "R" # The command to kill R
+    kill: false # pkill -9 "R" # The command to kill R
     path: # The path to R
         portable: R-Portable-Linux/bin/R
         home: R-Portable-Linux # The home dir of R

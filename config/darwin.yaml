@@ -1,9 +1,9 @@
 R:
-    kill: pkill -9 "R" # The command to kill R
+    kill: false # pkill -9 "R" # The command to kill R
     path: # The path to R
         portable: R-Portable-Mac/bin/R
         home: R-Portable-Mac # The home dir of R
         local: /Library/Frameworks/lib/R/bin/R 
 app:
-	quitOnClose: false # On macOS it's common to re-create a window in the app when the
-	                   # dock icon is clicked and there are no other windows open.
+    quitOnClose: false # On macOS it's common to re-create a window in the app when the
+                       # dock icon is clicked and there are no other windows open.

@@ -1,5 +1,5 @@
 R:
-    kill: taskkill /im Rscript.exe /f # The command to kill R
+    kill: false # taskkill /im Rscript.exe /f # The command to kill R
     path: # The path to R
         portable: R-Portable-Win\\bin\\RScript.exe
         home: R-Portable-Win # The home dir of R
