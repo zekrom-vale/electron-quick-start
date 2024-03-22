@@ -9,19 +9,16 @@ process.env.NODE_ENV = process.platform
 const config = require("config")
 
 // Error
-process.on('warning', warning=>{
-  console.warn(warning.name);
-  console.warn(warning.message);
-  console.warn(warning.code);
-  console.warn(warning.stack);
-});
+function error(msg, name=""){
+  console.warn(`${name}: ${msg}`);
+}
 
 var appPath = path.normalize(config.get("R.app"))
 	// This may not be required
 	if(!path.isAbsolute(appPath))appPath=path.join(app.getAppPath(), appPath)
 var port = parseInt(config.get("R.port"))
 	if(is.NaN(port)){
-		process.emitWarning(`R.port is not a Number change config settings got ${config.get("R.port")}, using port 9191`, "Port Warning")
+		error(`R.port is not a Number change config settings got ${config.get("R.port")}, using port 9191`, "Port Warning")
 		port = 9191
 	}
 const execPortable = !!config.get("R.path.isPortable")
@@ -57,7 +54,7 @@ const LINUX = "linux"
 			}
 			break
 		default:
-			process.emitWarning(`Not on windows, linux, or macos. Got ${process.platform}`, "Platform Error")
+			error(`Not on windows, linux, or macos. Got ${process.platform}`, "Platform Error")
 	}
 }
 
