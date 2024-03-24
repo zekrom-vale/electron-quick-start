@@ -2,7 +2,7 @@
 # WARNING THIS FILE IS SUBJECT TO SHELL, and URL INJECTION
 # Settings in platform specific files override these values
 R:
-    url: "http://127.0.0.1:" # The url of where shiny is hosted most likely the loop back at 127.0.0.1
+    url: "http://127.0.0.1" # The url of where shiny is hosted most likely the loop back at 127.0.0.1
     port: 9191 # The url of where shiny is hosted `${url}${port}`
     kill: false # Should R be killed on exit?
     app: app.R # The R script to run with shiny

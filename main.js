@@ -5,6 +5,7 @@ const shell = require('child_process').execSync
 const to = require('await-to-js').default
 const url = require('url')
 const child = require('child_process')
+const { URL } = require('url');
 process.env.NODE_ENV = process.platform
 const config = require("config")
 
@@ -85,9 +86,8 @@ async function createWindow(){
 	
 	console.log(now()+'create-window')
 	let loading = new BrowserWindow(config.get("window.loading.config"))
-    // May need to staralize the URL
     if(config.get("window.loading.isURL"))
-    	loading.loadURL(config.get("window.loading.path"))
+    	loading.loadURL(new URL(config.get("window.loading.path")).herf)
     else
     	loading.loadFile(path.normalize(config.get("window.loading.path")))
     
@@ -123,8 +123,10 @@ async function createWindow(){
 		// Whithout this it likely will load a blank page until the user manualy reloads it
 		{
 		  let poll = config.get("window.poll")
+		  let address = new URL(config.get("R.url"))
+		  address.port = port
 		  while(true){
-			  let [err, r] = await to(mainWindow.loadURL(config.get("R.url")+port))
+			  let [err, r] = await to(mainWindow.loadURL(address.href))
 			  //On failure it creates an async delay it waits for and continues the loop
 			  if(err) await new Promise(r => setTimeout(r, poll))
 			  else break
