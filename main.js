@@ -73,8 +73,8 @@ function sartR(){
 shiny::runApp(file.path('${appPath}'))`
     	]
     )
-    childProcess.stdout.on('data', data => console.log(`stdout:${data}`))
-    childProcess.stderr.on('data', data => console.warn(`stderr:${data}`))
+    childProcess.stdout.on('data', data => console.log(`Rout: ${data}`))
+    childProcess.stderr.on('data', data => console.warn(`Rerr: ${data}`))
 }
 
 // Keep a global reference of the window object, if you don't, the window will

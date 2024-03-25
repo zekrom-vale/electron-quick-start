@@ -8,7 +8,7 @@ R:
     app: app.R # The R script to run with shiny
     path:
         fixHome: true # Should the app fix R's `R_HOME_DIR` in `R-Portable-*/R` ignored if isPortable is false
-        isPortable: true # should R be run as portable?
+        isPortable: false # should R be run as portable?
 window:
     delay: 2000 # How long to wait to show the window
     poll: 1000 # How long to wait to try to conect to the URL again after failing

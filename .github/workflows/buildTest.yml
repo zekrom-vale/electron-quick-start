@@ -16,10 +16,25 @@ jobs:
       with:
         node-version: ${{ matrix.node_version }}
 
-    - name: npm install, build and test
+    - name: setup r
+      run: |
+        sudo apt update -qq
+        sudo apt install --no-install-recommends software-properties-common dirmngr
+        wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+        sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+        sudo apt install -y --no-install-recommends r-base
+    - name: setup wine
       run: |
         sudo apt install wine
+    - name: npm install
+      run: |
         npm install electron-packager -g 
         npm install
+    - name: package
+      run: |
         npm run package-win --if-present
         npm run package-linux --if-present
+    - name: test
+      run: |
+        npm run test-linux
+ 
