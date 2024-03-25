@@ -49,6 +49,6 @@ ${name}
 		var buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`)
 		console.log(buildPath)
 		
-		execSync(`timeout 30 ./${path.join(buildPath, name)}`)
+		execSync(`timeout 30 ${path.join(buildPath, name)}`)
 	}
 }
