@@ -1,11 +1,16 @@
 module.exports = {
-	start: async function (platform, arch, ignore){
+	start: function (platform, arch, ignore = undefined){
 		const path = require('path')
 		const {execSync, exec} = require('child_process')
 		const fs = require('fs-extra');
 		
 		process.env.NODE_ENV = platform
 		const config = require("config")
+		if(ignore === undefined)ignore = config.get("app.ignore")
+		if(!config.get("R.path.isPortable")){
+			if(ignore=="") ignore = "R-Portable-*"
+			else ignore = `R-Portable-*|${ignore}`
+		}
 		
 		var name=config.get("app.name")
 		var out=config.get("app.out")
