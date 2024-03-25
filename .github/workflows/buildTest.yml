@@ -37,7 +37,9 @@ jobs:
       run: |
         npm run package-win --if-present
         npm run package-linux --if-present
-    - name: test
-      run: |
-        npm run test-linux
+    - name: test with xvfb
+      uses: GabrielBB/xvfb-action@v1.6
+      with:
+        run: |
+          npm run test-linux
  
