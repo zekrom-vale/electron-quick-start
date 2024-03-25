@@ -1,9 +1,0 @@
-## Versions from settings when configure was run
-: ${JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64}
-: ${JAVA_CPPFLAGS=~autodetect~}
-: ${JAVA_LD_LIBRARY_PATH=~autodetect~}
-: ${JAVA_LIBS=~autodetect~}
-: ${JAVA=}
-: ${JAVAC=}
-: ${JAVAH=}
-: ${JAR=}

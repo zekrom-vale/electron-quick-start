@@ -1,4 +1,0 @@
-@set VERSIONno 4.3.3
-@set VERSION 4.3.3 (2024-02-29)
-@set RWVERSION R-4.3.3
-@afourpaper

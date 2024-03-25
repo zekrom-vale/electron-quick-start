@@ -1,2 +1,0 @@
-.c.lo:
-	$(CC) $(ALL_CPPFLAGS) $(ALL_CFLAGS_LO) -c $< -o $@
