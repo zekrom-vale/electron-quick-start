@@ -18,6 +18,7 @@ jobs:
 
     - name: npm install, build and test
       run: |
+        sudo apt install wine
         npm install electron-packager -g 
         npm install
         npm run package-win --if-present
