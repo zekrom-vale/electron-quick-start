@@ -38,7 +38,7 @@ ${name}
 	
 	test: async function (platform, arch){
 		const path = require('path')
-		const child = require('child_process')
+		const {execSync} = require('child_process')
 		const fs = require('fs-extra');
 		
 		process.env.NODE_ENV = platform
@@ -48,10 +48,7 @@ ${name}
 		var out=config.get("app.out")
 		var buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`)
 		console.log(buildPath)
-
-		var app = child.spawn(`./${path.join(buildPath, name)}`, [], {timeout: 1*60000})
 		
-		app.stdout.on('data', data => console.log(`appout: ${data}`))
-		app.stderr.on('data', data => console.warn(`apperr: ${data}`))
+		execSync(`timeout 30 ./${path.join(buildPath, name)}`)
 	}
 }
