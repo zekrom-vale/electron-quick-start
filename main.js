@@ -18,7 +18,7 @@ var appPath = path.normalize(config.get("R.app"))
 	// This may not be required
 	if(!path.isAbsolute(appPath))appPath=path.join(app.getAppPath(), appPath)
 var port = parseInt(config.get("R.port"))
-	if(is.NaN(port)){
+	if(isNaN(port)){
 		error(`R.port is not a Number change config settings got ${config.get("R.port")}, using port 9191`, "Port Warning")
 		port = 9191
 	}
