@@ -43,13 +43,7 @@ ${name}
 		
 		process.env.NODE_ENV = platform
 		const config = require("config")
-		
-		const execPath = path.normalize(config.get("R.path.local"))
-		
-		// Install required packages
-		child.execSync(execPath, [ "-e", `install.packages("shiny");quit(save = "no")`])
-		
-		
+
 		var name=config.get("app.name")
 		var out=config.get("app.out")
 		var buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`)
