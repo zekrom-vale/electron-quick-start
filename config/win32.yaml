@@ -1,8 +1,8 @@
 R:
     kill: false # taskkill /im Rscript.exe /f # The command to kill R
     path: # The path to R
-        portable: R-Portable-Win\\bin\\RScript.exe
+        portable: R-Portable-Win\\bin\\R.exe
         home: R-Portable-Win # The home dir of R
-        local: "%ProgramFiles%\\R\\R-4.3.2\\bin\\RScript.exe" # Need to update for any version of R
+        local: "C:\\Program Files\\R\\R-4.3.2\\bin\\R.exe" # Need to update for any version of R
 app:
     ignore: R-Portable-(Mac|Linux)

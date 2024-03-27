@@ -36,11 +36,13 @@ console.log(process.env)
 const MACOS = "darwin"
 const WINDOWS = "win32"
 const LINUX = "linux"
-{
+function platform(){
 	// let and const here will be discarded after this block, var will be kept
 	let _i=''
 	switch(process.platform){
 		case WINDOWS:
+			// Fix issue with R escaping \\ on windows
+			appPath = appPath.replace(/\\/g, "\\\\");
 			break
 		case MACOS:
 			// Adapt to support MacOS sed
@@ -58,19 +60,19 @@ const LINUX = "linux"
 			error(`Not on windows, linux, or macos. Got ${process.platform}`, "Platform Error")
 	}
 }
+platform()
 
 // Looks like this is resolved
 // Due to an issue with shiny, the port needs to be set via options and not passed to the runApp function
 // https://github.com/rstudio/shiny/issues/1942
 var childProcess = null
-function sartR(){
+function startR(){
     // Need to steralize R.port and appPath
     // Try to cast R.port to int
     childProcess = child.spawn(
     	execPath, [
     		"-e",
-    		`options(shiny.port=${port});
-shiny::runApp(file.path('${appPath}'))`
+    		`options(shiny.port=${port});shiny::runApp(file.path('${appPath}'))`
     	]
     )
     childProcess.stdout.on('data', data => console.log(`Rout: ${data}`))
@@ -82,7 +84,7 @@ shiny::runApp(file.path('${appPath}'))`
 // To be updated later in createWindow
 var mainWindow = null
 async function createWindow(){
-	sartR()
+	startR()
 	
 	console.log(now()+'create-window')
 	let loading = new BrowserWindow(config.get("window.loading.config"))
