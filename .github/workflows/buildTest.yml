@@ -41,5 +41,6 @@ jobs:
       uses: GabrielBB/xvfb-action@v1.6
       with:
         run: |
-          npm run test-linux
- 
+          npm i -g electron
+          npm i -g electron-mocha
+          electron-mocha

@@ -1,4 +1,5 @@
 // Modules to control application life and create native browser window
+Object.defineProperty(exports, "__esModule", { value: true });
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const shell = require('child_process').execSync
@@ -77,6 +78,7 @@ function startR(){
     )
     childProcess.stdout.on('data', data => console.log(`Rout: ${data}`))
     childProcess.stderr.on('data', data => console.warn(`Rerr: ${data}`))
+	return childProcess
 }
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -221,3 +223,7 @@ app.on('window-all-closed', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
+exports.startR = startR
+exports.createWindow = createWindow
+exports.cleanUpApplication = cleanUpApplication
+exports.platform = platform

@@ -34,21 +34,5 @@ ${name}
 		execSync(run)
 
 		fs.copySync(path.join(buildPath, "resources", "app", "config"), path.join(buildPath, "config"))
-	},
-	
-	test: async function (platform, arch){
-		const path = require('path')
-		const {execSync} = require('child_process')
-		const fs = require('fs-extra');
-		
-		process.env.NODE_ENV = platform
-		const config = require("config")
-
-		var name=config.get("app.name")
-		var out=config.get("app.out")
-		var buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`)
-		console.log(buildPath)
-		
-		execSync(`timeout 30 ${path.join(buildPath, name)}`)
 	}
 }
