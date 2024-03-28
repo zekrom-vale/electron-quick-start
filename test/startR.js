@@ -13,12 +13,24 @@ test( "R Tests", async (contex) =>{
 	var childProcess = child.spawn(
 		execPath, [
 			"-e",
-			`1+1`
+			`(1221*124-786/2)**3;log(25890123570891234)`
 		]
 	)
-	childProcess.stdout.on('data', data => console.log(`Rout: ${data}`))
-	childProcess.stderr.on('data', data => console.warn(`Rerr: ${data}`))
+	var i = 0;
+	childProcess.stdout.on('data', data =>{
+		switch(i++){
+			case 3:
+				assert.match(`${data}`, /3\.443703e\+15/i)
+				break
+			case 4:
+				assert.match(`${data}`, /37\.79264/i)
+		}
+	})
+	childProcess.stderr.on('data', data => {
+		assert.fail(data)
+	})
 	await new Promise((r,x)=>{
+		assert.ok(true)
 		childProcess.on("close", r)
 	})
 	console.log("end")
