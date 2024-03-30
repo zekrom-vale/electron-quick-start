@@ -16,31 +16,42 @@ test("Main Test", async (contex) =>{
 
 	  console.log(now()+'::window-all-closed')
 	  main.cleanUpApplication()
-		if(config.get("app.quitOnClose"))app.quit()
+	  if(config.get("app.quitOnClose"))app.quit()
 	})
+
 	await new Promise((r,x)=>{setTimeout(r, 100)})
-	var p = new Promise((r,x)=>{
-		setTimeout(r, 7*1000)
-	})
-	main.childProcess.stdout.on('data', data => console.log(`Rout: ${data}`))
+	
+	// Hook into R process standard error
 	var pass = true
     main.childProcess.stderr.on('data', data => {
 		// Fix array of chars
 		data = String.fromCharCode(...data)
 		if(/halted/ig.test(data)){
 			pass = false
-			console.warn("Failing")
+			console.error("Failing: Halted")
 			assert.fail(`R Halted: ${data}`)
 		}
 		if(/error/ig.test(data)){
 			pass = false
-			console.warn("Failing")
+			console.warn("Failing: Error")
 			assert.fail(`R Had an error: ${data}`)
 		}
+		if(/warning/ig.test(data)){
+			console.warn("Warning Detected")
+		}
 	})
-	await p
+	
+	await new Promise((r,x)=>setTimeout(r, 7*1000))
+	
+	// Test reload
+	main.mainWindow.reload()
+	
+	await new Promise((r,x)=>setTimeout(r, 7*1000))
 	
 	main.cleanUpApplication()
 	// TODO: Add test to check if cleanup passed
+	
+	await new Promise((r,x)=>setTimeout(r, .5*1000))
+	
 	assert.ok(pass)
 })

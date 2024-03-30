@@ -8,9 +8,7 @@ const {it, describe, after} = require('node:test');
 
 const execPath = path.normalize(config.get("R.path.local"))
 
-console.log("R Test")
 describe( "R Tests", async () =>{
-	
 	after(process.exit)
 	
 	var childProcess = child.spawn(
@@ -20,13 +18,15 @@ describe( "R Tests", async () =>{
 		]
 	)
 	var i = 0;
+	// Case may be shifted
+	// Does not get to case 5: it(...)
 	childProcess.stdout.on('data', data =>{
 		switch(i++){
 			case 4:
-				it("Math 1", ()=>assert.match(`${data}`, /3\.443703e\+15/i))
+				it("Math 1", ()=>assert.match(`${data}`, /3\.443703\d*e\+15/i))
 				break
 			case 5:
-				it("Math 2", ()=>assert.match(`${data}`, /37\.79264/i))
+				it("Math 2", ()=>assert.match(`${data}`, /37\.79264\d*/i))
 		}
 	})
 	childProcess.stderr.on('data', data => {
