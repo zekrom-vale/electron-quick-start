@@ -36,9 +36,6 @@ const execPath = path.normalize(
 			config.get("R.path.local")
 	)
 
-console.log(process.env)
-
-
 //Platform switch
 const MACOS = "darwin"
 const WINDOWS = "win32"
