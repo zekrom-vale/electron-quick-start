@@ -7,7 +7,8 @@
     "start": "electron .",
     "package-mac": "node scripts/darwin.js",
     "package-win": "node scripts/win32.js",
-    "package-linux": "node scripts/linux.js"
+    "package-linux": "node scripts/linux.js",
+    "test-linux": "node scripts/test-linux.js"
   },
   "repository": "https://github.com/zekrom-vale/electron-quick-start",
   "keywords": [
@@ -24,7 +25,7 @@
   "author": "zekrom-vale",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^29.1.1"
+    "electron": "^29.1.5"
   },
   "dependencies": {
     "await-to-js": "^3.0.0",

@@ -36,7 +36,7 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/zekrom-vale/electron-quick-start
+git clone https://github.com/zekrom-vale/shinyElectron/tree/stable
 # Install Electron Packager (if first time)
 npm install electron-packager -g 
 # Go into the repository
@@ -53,31 +53,46 @@ The configuration files are included in the `config` folder, if you want to use 
 `default.yaml` The default options to use, see [node-config](https://github.com/node-config/node-config/wiki/Configuration-Files#file-load-order) to learn more on loading order.
 ```yaml
 R:
-    url: "http://127.0.0.1:" # The url of where shiny is hosted
-    port: 9191 # The url of where shiny is hosted
-    overrideHome: true
+    url: "http://127.0.0.1:" # The url of where shiny is hosted most likely the loop back at 127.0.0.1
+    port: 9191 # The url of where shiny is hosted `${url}${port}`
     kill: false # Should R be killed on exit?
-    fixhome: true # Should the app fix R's `R_HOME_DIR` in `R-Portable-*/R`
     app: app.R # The R script to run with shiny
+    path:
+        fixHome: true # Should the app fix R's `R_HOME_DIR` in `R-Portable-*/R` ignored if isPortable is false
+        isPortable: true # should R be run as portable?
 window:
     delay: 2000 # How long to wait to show the window
     poll: 1000 # How long to wait to try to conect to the URL again after failing
-    config:
+    loading:     # A URL to load for the loading bar
+        path: loading.html # The URL or file to load
+        isURL: false # Is path a file or a URL?
+        config: # Loading window settings
+            show: false # Show the window?  Using true may break things
+            width: 1200 # Width of the window
+            height: 1000 # Height of the window
+            title: My app # Title of the loading window
+    config: # Main window settings
         show: false # Show the window?  Using true may break things
         width: 1200 # Width of the window
         height: 1000 # Height of the window
         title: My app # Title of the window
         webPreferences: 
-            nodeIntegration: false
+            nodeIntegration: false # Should node be interated into JS?  Not implimented yet
     dev: false # Load developer tools?
-    loading: "data:text/html;charset=utf-8;base64,..." # A URL to load for the loading bar
+    fullReload: true # Reload the entire R sesion?
+    # Recomended this to be true and R.kill be false
+    # Use the folowing in R shiny server:
+    # onSessionEnded(function(){
+    #     quit(save = "no")
+    #  })
 app:
     CompanyName: None
     FileDescription: CE
     ProductName: Shiny Electron App
-    out: ElectronShinyApp # Where to build the files to
+    out: ElectronShinyApp # Where to build the files to see below for more
     name: electron-quick-start # used in the specific arch and platform build under `${out}/${name}-${platform}-${arch}`
     icon: assets/icons/png/1024x1024.png # Icon of the run file
+    quitOnClose: true # When all windows are closed is the application termniated?
 ```
 
 `linux.yaml` Linux specific options, anything here will overwite `default.yaml`
@@ -86,6 +101,19 @@ R:
     kill: pkill -9 "R" # The command to kill R
     path: ./R-Portable-Linux/bin/R # The path to R
     home: ./R-Portable-Linux # The home dir of R
+```
+
+`darwin.yaml` MacOS specific options
+```yaml
+R:
+    kill: false # pkill -9 "R" # The command to kill R
+    path: # The path to R
+        portable: R-Portable-Mac/bin/R
+        home: R-Portable-Mac # The home dir of R
+        local: /Library/Frameworks/lib/R/bin/R 
+app:
+    quitOnClose: false # On macOS it's common to re-create a window in the app when the
+                       # dock icon is clicked and there are no other windows open.
 ```
 
 ### Compile/Run

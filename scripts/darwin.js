@@ -1,2 +1,5 @@
 const {start} = require("./core.js")
-start("darwin", "x64", "R-Portable-(Win|Linux)")
+console.warn("Experamental and untested: Things may break")
+console.warn("Please submit all issues to https://github.com/zekrom-vale/electron-quick-start/issues/59")
+console.warn("Note: I have no plan on fixing issues for MacOS at this point")
+start("darwin", "x64")

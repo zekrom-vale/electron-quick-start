@@ -1,0 +1,46 @@
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['18.x', '20.x']
+        os: [ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node_version }}
+
+    - name: setup r
+      run: |
+        sudo apt update -qq
+        sudo apt install --no-install-recommends software-properties-common dirmngr
+        wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+        sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+        sudo apt install -y --no-install-recommends r-base
+        sudo chmod 777 -R /usr/local/lib/R/site-library
+        sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
+        sudo apt install --no-install-recommends r-cran-shiny
+    - name: setup wine
+      run: |
+        sudo apt install wine
+    - name: npm install
+      run: |
+        npm install electron-packager -g 
+        npm install
+    - name: package
+      run: |
+        npm run package-win --if-present
+        npm run package-linux --if-present
+    - name: test with xvfb
+      uses: GabrielBB/xvfb-action@v1.6
+      with:
+        run: |
+          npm i -g electron
+          npm i -g electron-mocha
+          electron-mocha
