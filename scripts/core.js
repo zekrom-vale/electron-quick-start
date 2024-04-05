@@ -14,7 +14,10 @@ module.exports = {
 		
 		var name=config.get("app.name")
 		var out=config.get("app.out")
-		var buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`)
+		if(platform == "darwin")
+			 buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`, `${name}.app`)
+		else
+			var buildPath=path.join(process.cwd(), out, `${name}-${platform}-${arch}`)
 		console.log(buildPath)
 
 		var run=`electron-packager .
@@ -32,7 +35,10 @@ ${name}
 		run=run.replace(/[\n\r]+/g, " ")
 		console.log(run)
 		execSync(run)
-
-		fs.copySync(path.join(buildPath, "resources", "app", "config"), path.join(buildPath, "config"))
+		if(platform == "darwin"){
+			fs.copySync(path.join(buildPath, "Contents", "Resources", "app", "config"), path.join(buildPath, "Contents", "MacOS", "config"))
+		}
+		else
+			fs.copySync(path.join(buildPath, "resources", "app", "config"), path.join(buildPath, "config"))
 	}
 }
