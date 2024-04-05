@@ -1,13 +1,18 @@
 on:
-  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "master" ]
 jobs:
   test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    name: Test on node ${{ matrix.node_version }}, R ${{ matrix.R }}, and  ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node_version: ['18.x', '20.x']
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
+        R: ['4.1.3', '4.2.3', '4.3.3']
 
     steps:
     - uses: actions/checkout@v4
@@ -16,28 +21,33 @@ jobs:
       with:
         node-version: ${{ matrix.node_version }}
 
-    - name: setup r
+    - name: Use R ${{ matrix.R }}
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: ${{ matrix.R }}
+    - name: Setup R dependencies
+      uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        extra-packages: shiny
+    - name: Setup wine
       run: |
-        sudo apt update -qq
-        sudo apt install --no-install-recommends software-properties-common dirmngr
-        wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-        sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-        sudo apt install -y --no-install-recommends r-base
-        sudo chmod 777 -R /usr/local/lib/R/site-library
-        sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
-        sudo apt install --no-install-recommends r-cran-shiny
-    - name: setup wine
-      run: |
-        sudo apt install wine
-    - name: npm install
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          sudo apt install wine
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          brew install wine-stable --cask
+        fi
+    - name: Npm install
       run: |
         npm install electron-packager -g 
         npm install
-    - name: package
+    - name: Package
       run: |
         npm run package-win --if-present
         npm run package-linux --if-present
-    - name: test with xvfb
+        if [ "$RUNNER_OS" == "macOS" ]; then
+          npm run package-mac --if-present
+        fi
+    - name: Test with xvfb
       uses: GabrielBB/xvfb-action@v1.6
       with:
         run: |

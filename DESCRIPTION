@@ -1,0 +1,13 @@
+Package: shinyElectron
+Type: Package
+Title: Run a shiny app with electron
+Version: 0.2.0
+Author: ZekromVale
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Runs shiny applications with R
+License: CC0 1.0 Universal
+Encoding: UTF-8
+LazyData: true
+Imports: shiny
+RoxygenNote: 7.3.1
+Roxygen: list(markdown = TRUE)
