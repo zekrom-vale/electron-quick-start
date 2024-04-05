@@ -29,6 +29,11 @@ jobs:
       uses: r-lib/actions/setup-r-dependencies@v2
       with:
         extra-packages: shiny
+    - name: Find R
+      run: |
+        which R
+        whereis R
+      continue-on-error: true
     - name: Setup wine
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
@@ -44,9 +49,7 @@ jobs:
       run: |
         npm run package-win --if-present
         npm run package-linux --if-present
-        if [ "$RUNNER_OS" == "macOS" ]; then
-          npm run package-mac --if-present
-        fi
+        npm run package-mac --if-present
     - name: Test with xvfb
       uses: GabrielBB/xvfb-action@v1.6
       with:
