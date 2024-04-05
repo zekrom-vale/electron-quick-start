@@ -1,4 +1,5 @@
 // Tests the platform switch
+const {app, BrowserWindow} = require('electron')
 const path = require('path')
 process.env.NODE_ENV = process.platform
 const config = require("config")
