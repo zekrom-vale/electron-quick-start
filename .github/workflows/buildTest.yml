@@ -6,12 +6,12 @@ on:
     branches: [ "master" ]
 jobs:
   test:
-    name: Test on node ${{ matrix.node_version }}, R ${{ matrix.R }}, and  ${{ matrix.os }}
+    name: Node ${{ matrix.node_version }}, R ${{ matrix.R }}, ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node_version: ['18.x', '20.x']
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         R: ['4.1.3', '4.2.3', '4.3.3']
 
     steps:
@@ -29,18 +29,14 @@ jobs:
       uses: r-lib/actions/setup-r-dependencies@v2
       with:
         extra-packages: shiny
-    - name: Find R
+    - name: Setup wine Ubuntu
+      if: matrix.os == 'ubuntu-latest'
       run: |
-        which R
-        whereis R
-      continue-on-error: true
-    - name: Setup wine
+        sudo apt install wine
+    - name: Setup wine macOS
+      if: matrix.os =='macos-latest'
       run: |
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          sudo apt install wine
-        elif [ "$RUNNER_OS" == "macOS" ]; then
-          brew install wine-stable --cask
-        fi
+        brew install wine-stable --cask
     - name: Npm install
       run: |
         npm install -g --save-dev @electron/packager
