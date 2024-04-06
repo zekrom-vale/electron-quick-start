@@ -43,7 +43,7 @@ jobs:
         fi
     - name: Npm install
       run: |
-        npm install electron-packager -g 
+        npm install -g --save-dev @electron/packager
         npm install
     - name: Package
       run: |
@@ -51,7 +51,7 @@ jobs:
         npm run package-linux --if-present
         npm run package-mac --if-present
     - name: Test with xvfb
-      uses: GabrielBB/xvfb-action@v1.6
+      uses: coactions/setup-xvfb@v1
       with:
         run: |
           npm i -g electron

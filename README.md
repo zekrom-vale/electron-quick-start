@@ -38,7 +38,7 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 # Clone this repository
 git clone https://github.com/zekrom-vale/shinyElectron/tree/stable
 # Install Electron Packager (if first time)
-npm install electron-packager -g 
+npm install -g --save-dev @electron/packager
 # Go into the repository
 cd electron-quick-start
 # Install dependencies
