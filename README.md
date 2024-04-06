@@ -1,7 +1,7 @@
-***This is the second revision to combine Electron with [R-Portable](https://sourceforge.net/projects/rportable/files/R-Portable/) (version 4.1.1) and [RStudio Shiny](https://cran.r-project.org/web/packages/shiny/index.html) package to deliver Electron Applications that run standalone with R and Shiny.***
+***This is the third revision to combine Electron with [R-Portable](https://sourceforge.net/projects/rportable/files/R-Portable/) (version 4.1.1) and [RStudio Shiny](https://cran.r-project.org/web/packages/shiny/index.html) package to deliver Electron Applications that run standalone with R and Shiny.***
 
 
-# electron-quick-start
+# shinyElectron [![.github/workflows/buildTest.yml](https://github.com/zekrom-vale/shinyElectron/actions/workflows/buildTest.yml/badge.svg)](https://github.com/zekrom-vale/shinyElectron/actions/workflows/buildTest.yml)
 
 **Clone and run for a quick way to see Electron in action with R's Shiny.**
 

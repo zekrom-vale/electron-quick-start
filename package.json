@@ -1,6 +1,6 @@
 {
-  "name": "electron-quick-start",
-  "version": "2.1.1",
+  "name": "shinyElectron",
+  "version": "3.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {

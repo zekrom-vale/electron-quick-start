@@ -39,7 +39,7 @@ app:
     FileDescription: CE
     ProductName: Shiny Electron App
     out: ElectronShinyApp # Where to build the files to see below for more
-    name: electron-quick-start # used in the specific arch and platform build under `${out}/${name}-${platform}-${arch}`
+    name: shinyElectron # used in the specific arch and platform build under `${out}/${name}-${platform}-${arch}`
     icon: assets/icons/png/1024x1024.png # Icon of the run file
     quitOnClose: true # When all windows are closed is the application termniated?
 
