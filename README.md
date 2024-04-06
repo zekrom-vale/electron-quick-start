@@ -27,6 +27,7 @@ Painless-R-compilation-...-Ubuntu](https://github.com/Jiefei-Wang/Painless-R-com
 - `cc.ico` - The icon used for the application made
 - `config` - Contains configuration files for building and runing the app
 - `scripts` - Contains the instalation scripts used to build your application
+- `DESCRIPTION` - Required for testing action on GitHub, can be safely removed
 - Other files to be coppied to `resources\app`
 
 
