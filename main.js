@@ -13,9 +13,6 @@ const { URL } = require('url');
 process.env.NODE_ENV = process.platform
 const config = require("config")
 
-// TESTING EXPORT OBJECT exports
-Object.defineProperty(exports, "__esModule", { value: true });
-
 // Error
 function error(msg, name=""){
   console.warn(`${name}: ${msg}`);
@@ -56,9 +53,6 @@ function platform(plat=process.platform, test=false){
 			var home=path.join(app.getAppPath(), config.get("R.path.home"))
 			// Must use ! as / is an issue with paths
 			var exec = `sed -i${_i} 's!R_HOME_DIR=.*$!R_HOME_DIR="${home}"!' ${execPath}`
-			// START TEST CODE
-			if(test) return exec
-			// END TEST CODE
 			if(execPortable && config.get("R.path.fixHome"))shell(exec)
 			break
 		default:
@@ -82,8 +76,6 @@ function startR(){
     )
     childProcess.stdout.on('data', data => console.log(`Rout: ${data}`))
     childProcess.stderr.on('data', data => console.warn(`Rerr: ${data}`))
-	// TESTING EXPORT childProcess
-	exports.childProcess=childProcess
 }
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -115,8 +107,6 @@ async function createWindow(){
 	}
 	
 	mainWindow = new BrowserWindow(config.get("window.config"))
-	// TESTING EXPORT mainWindow
-	exports.mainWindow=mainWindow
 
 	////////////////////////////////////////////////////////////////////////////////
 	// Connect to Shiny
@@ -212,31 +202,21 @@ function cleanUpApplication(quit=true){
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 
-// TESTING SWITCH START SHOULD ALWAYS BE TRUE
-if (module.parent == undefined){
-	app.on('ready', createWindow)
-	app.on('activate', function () {
-	  // On macOS it's common to re-create a window in the app when the
-	  // dock icon is clicked and there are no other windows open.
-	  if(mainWindow === null) createWindow()
-	})
+app.on('ready', createWindow)
+app.on('activate', function () {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if(mainWindow === null) createWindow()
+})
 
-	// Quit when all windows are closed.
-	app.on('window-all-closed', function () {
+// Quit when all windows are closed.
+app.on('window-all-closed', function () {
 
-	  console.log(now()+'::window-all-closed')
-	  cleanUpApplication()
-		if(config.get("app.quitOnClose"))app.quit()
-	})
-}
-// TESTING CODE ONLY / WHEN REQUIRED
-else{
-	exports.startR = startR
-	exports.createWindow = createWindow
-	exports.cleanUpApplication = cleanUpApplication
-	exports.platform = platform
-}
-// TESTING SWITCH END
+  console.log(now()+'::window-all-closed')
+  cleanUpApplication()
+	if(config.get("app.quitOnClose"))app.quit()
+})
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
